@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ZENITH design v2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800&family=Kalam:wght@400;700&family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8M5 10v10h14V10"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 012-2h13v16H6a2 2 0 00-2 2zM4 19V5M9 7h6"/></symbol>
+  <symbol id="i-peak" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20L9 6l4 7 3-4 6 11z"/></symbol>
+  <symbol id="i-class" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.5 2.7-6 6-6s6 2.5 6 6M16 5a3 3 0 010 6M18 14c2 .7 3 2.5 3 5"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h10"/></symbol>
+  <symbol id="logo" viewBox="0 0 32 32"><path d="M2 27L13 7l5 9 3-5 9 16z" fill="var(--brand)" stroke="var(--ink)" stroke-width="2" stroke-linejoin="round"/><circle cx="24" cy="8" r="3.4" fill="var(--hi)" stroke="var(--ink)" stroke-width="2"/></symbol>
+</svg>
+
+<div class="banner">Design mockup. Names, scores and counts are placeholders for layout only; production screens use real database records.</div>
+
+<div class="app" id="app">
+  <aside class="rail" aria-label="Main">
+    <div class="brand"><svg width="34" height="34"><use href="#logo"/></svg><span>ZENITH</span></div>
+    <a class="nav-i" href="#home" data-go="home"><svg><use href="#i-home"/></svg><span>Home</span></a>
+    <a class="nav-i" href="#learn" data-go="learn"><svg><use href="#i-book"/></svg><span>Learn</span></a>
+    <a class="nav-i" href="#lesson" data-go="lesson"><svg><use href="#i-sun"/></svg><span>Lesson</span></a>
+    <a class="nav-i" href="#climb" data-go="climb"><svg><use href="#i-peak"/></svg><span>Climb</span></a>
+    <a class="nav-i" href="#teacher" data-go="teacher"><svg><use href="#i-class"/></svg><span>Teacher</span></a>
+    <div class="grow"></div>
+    <p class="hand">your next step is waiting ↑</p>
+    <button class="nav-i" id="collapse" aria-label="Collapse sidebar"><svg><use href="#i-menu"/></svg><span>Collapse</span></button>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <span class="chip">Class 7 · CBSE</span>
+      <span style="flex:1"></span>
+      <span class="chip hi">🔥 6</span><span class="chip">⚡ 240 XP</span>
+      <button class="icon-btn" id="theme" aria-label="Toggle theme"><svg width="22" height="22"><use href="#i-sun"/></svg></button>
+    </header>
+
+    <main class="page">
+
+      <!-- HOME -->
+      <section class="screen on" id="home">
+        <div class="hero">
+          <h1>Everyone climbs at their <mark>own pace.</mark></h1>
+          <svg class="squig" viewBox="0 0 360 14" preserveAspectRatio="none" aria-hidden="true"><path d="M4 8 C 40 0, 70 14, 110 7 S 180 1, 220 8 S 300 13, 356 5"/></svg>
+          <p class="lead" style="margin-top:22px">ZENITH finds the missing step beneath whatever you are stuck on, helps you fix it, and shows your teacher exactly who needs help.</p>
+          <div class="cta"><a class="btn brand" href="#learn" data-go="learn">Start climbing →</a><span class="hand">try a lesson, no sign-up ↗</span></div>
+        </div>
+        <div class="three">
+          <a class="card reveal" href="#lesson" data-go="lesson"><span class="tag">Learn</span><h3>Short lessons that make you think</h3><p class="muted sm">One idea per screen. Try it before you read the answer.</p>
+            <svg viewBox="0 0 300 130" aria-hidden="true"><rect x="20" y="20" width="120" height="90" rx="8" fill="var(--brand-soft)" stroke="var(--ink)" stroke-width="3"/><path d="M40 50h80M40 70h60M40 90h70" stroke="var(--ink)" stroke-width="3" stroke-linecap="round"/><path d="M170 100c40-70 80-70 110-70" fill="none" stroke="var(--brand)" stroke-width="4" stroke-dasharray="2 9" stroke-linecap="round"/><circle cx="282" cy="30" r="9" fill="var(--hi)" stroke="var(--ink)" stroke-width="3"/></svg></a>
+          <a class="card reveal" href="#climb" data-go="climb"><span class="tag">Solve</span><h3>Practice that adapts to you</h3><p class="muted sm">Harder when you are flying, gentler steps when you are stuck.</p>
+            <svg viewBox="0 0 300 130" aria-hidden="true"><path d="M20 110h260" stroke="var(--ink)" stroke-width="3" stroke-linecap="round"/><rect x="40" y="70" width="40" height="40" fill="var(--science-soft)" stroke="var(--ink)" stroke-width="3"/><rect x="100" y="45" width="40" height="65" fill="var(--science-soft)" stroke="var(--ink)" stroke-width="3"/><rect x="160" y="20" width="40" height="90" fill="var(--hi)" stroke="var(--ink)" stroke-width="3"/><path d="M215 60l20-25 20 25" fill="none" stroke="var(--ink)" stroke-width="3" stroke-linecap="round"/></svg></a>
+          <a class="card reveal" href="#teacher" data-go="teacher"><span class="tag">Test</span><h3>Checks that end with a plan</h3><p class="muted sm">Not just a score: what to revisit, what to practise, what is next.</p>
+            <svg viewBox="0 0 300 130" aria-hidden="true"><rect x="30" y="14" width="120" height="104" rx="8" fill="var(--surface)" stroke="var(--ink)" stroke-width="3"/><circle cx="56" cy="44" r="8" fill="var(--ok)" stroke="var(--ink)" stroke-width="2"/><circle cx="56" cy="72" r="8" fill="var(--gap)" stroke="var(--ink)" stroke-width="2"/><circle cx="56" cy="100" r="8" fill="var(--ok)" stroke="var(--ink)" stroke-width="2"/><path d="M76 44h50M76 72h40M76 100h46" stroke="var(--ink)" stroke-width="3" stroke-linecap="round"/><path d="M170 70h100M170 94h70" stroke="var(--ink-2)" stroke-width="3" stroke-linecap="round"/><path d="M170 46l8 8 14-16" fill="none" stroke="var(--ok)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+        <div class="split reveal">
+          <div><h2 class="section-t">It finds the gap <mark>under</mark> the gap.</h2>
+            <p class="muted">Stuck on linear equations? The real problem may be two classes back. ZENITH follows the chain of ideas down and checks each step.</p></div>
+          <div class="card"><div class="chain"><div class="node">Linear equations<small>Class 8</small></div><span>←</span><div class="node now">Algebraic expressions<small>Class 7</small></div><span>←</span><div class="node gap">Integers<small>Class 6 · gap found</small></div></div>
+            <p class="hand" style="text-align:center">“start here, then climb back up”</p></div>
+        </div>
+        <div class="split reveal">
+          <div class="card"><div class="reco"><strong>Suggestion for Class 7B</strong><p class="sm muted">7 students repeatedly missed questions on negative integers while solving linear equations. Consider assigning the prerequisite lesson and a 3-question reassessment.</p><div style="display:flex;gap:10px;margin-top:10px;flex-wrap:wrap"><button class="btn ghost" style="min-height:42px">Assign lesson</button><button class="btn ghost" style="min-height:42px">See the 7 students</button></div></div></div>
+          <div><h2 class="section-t">Teachers stay in charge.</h2><p class="muted">Every suggestion cites the answers behind it. You decide what to assign; ZENITH does the noticing.</p></div>
+        </div>
+      </section>
+
+      <!-- LEARN -->
+      <section class="screen" id="learn">
+        <h1 style="font-size:clamp(2rem,5vw,3rem)">Learn</h1>
+        <p class="muted">Pick your class. Chapters appear here once a teacher has reviewed them.</p>
+        <div class="filters">
+          <div class="seg" role="group" aria-label="Class"><button aria-pressed="false">6</button><button aria-pressed="true">7</button><button aria-pressed="false">8</button><button aria-pressed="false">9</button><button aria-pressed="false">10</button></div>
+          <div class="seg" role="group" aria-label="Subject"><button aria-pressed="true">Maths</button><button aria-pressed="false">Science</button></div>
+        </div>
+        <div class="grid">
+          <a class="card chap lift" href="#lesson" data-go="lesson"><div class="art"><svg viewBox="0 0 120 84"><path d="M10 42h100" stroke="var(--ink)" stroke-width="4" stroke-linecap="round"/><circle cx="60" cy="42" r="7" fill="var(--hi)" stroke="var(--ink)" stroke-width="3"/><path d="M30 34v16M90 34v16" stroke="var(--ink)" stroke-width="3"/></svg></div>
+            <div class="body"><span class="pill">Ready</span><h3>Integers</h3><p class="muted sm">6 lessons · 14 concepts</p><div class="bar"><b data-w="33%"></b></div><span class="sm muted">2 of 6 done</span></div></a>
+          <a class="card chap lift" href="#lesson" data-go="lesson"><div class="art"><svg viewBox="0 0 120 84"><rect x="12" y="20" width="96" height="44" rx="8" fill="var(--surface)" stroke="var(--ink)" stroke-width="4"/><text x="60" y="52" text-anchor="middle" font-family="Bricolage Grotesque" font-weight="800" font-size="26" fill="var(--brand)">3x + 2</text></svg></div>
+            <div class="body"><span class="pill">Ready</span><h3>Algebraic expressions</h3><p class="muted sm">5 lessons · 11 concepts</p><div class="bar"><b data-w="0%"></b></div><span class="sm muted">Not started</span></div></a>
+          <div class="card chap soon"><div class="art"><svg viewBox="0 0 120 84"><circle cx="60" cy="42" r="28" fill="none" stroke="var(--ink-3)" stroke-width="4" stroke-dasharray="6 8"/></svg></div>
+            <div class="body"><span class="pill soon">Coming soon</span><h3>Simple equations</h3><p class="muted sm">Under review by a teacher</p></div></div>
+          <div class="card chap soon"><div class="art"><svg viewBox="0 0 120 84"><path d="M20 62L60 20l40 42z" fill="none" stroke="var(--ink-3)" stroke-width="4" stroke-dasharray="6 8"/></svg></div>
+            <div class="body"><span class="pill soon">Coming soon</span><h3>Triangles</h3><p class="muted sm">Under review by a teacher</p></div></div>
+        </div>
+      </section>
+
+      <!-- LESSON -->
+      <section class="screen" id="lesson">
+        <div class="lesson">
+          <nav class="toc" aria-label="Chapter lessons">
+            <span class="eyebrow">Chapter 1 · Integers</span><p class="sm muted">2 of 6 done</p>
+            <ol><li><a href="#">1 · Numbers below zero</a></li><li><a href="#">2 · Comparing integers</a></li><li><a href="#" aria-current="step">3 · Moving on the line</a></li><li><a href="#">4 · Adding integers</a></li><li><a href="#">5 · Subtracting integers</a></li><li><a href="#">6 · Word problems</a></li></ol>
+          </nav>
+          <article>
+            <div class="prereq"><span style="font-size:1.6rem">🧭</span><div><strong>Strengthen this first</strong><div class="sm">Counting backwards past zero. We saw two misses there. <a href="#" style="text-decoration:underline;font-weight:800">5-minute refresher</a></div></div></div>
+            <div class="sec"><span class="eyebrow">3 · Moving on the line</span><h1 style="font-size:clamp(2rem,5vw,3rem);margin:6px 0">Subtracting walks you <mark>left</mark></h1>
+              <p>On a <span class="kw">number line</span>, adding moves you to the right and subtracting moves you to the left. Start at 2 and try taking steps.</p></div>
+            <div class="widget" id="nl">
+              <div class="nl" id="nlbox"><div class="ln"></div><div class="hop" id="hop">start</div><div class="me" id="me"></div></div>
+              <div class="ctrl"><button class="btn ghost" id="minus" style="min-height:46px">− 1</button><button class="btn ghost" id="plus" style="min-height:46px">+ 1</button><button class="icon-btn" id="reset" aria-label="Reset">↺</button><span class="eq" id="eq">2</span></div>
+              <p class="hand" style="margin-top:6px">tap − five times and watch where you land</p>
+            </div>
+            <div class="callout"><span class="hand">watch out</span><p class="sm" style="margin:6px 0 0"><strong>2 − 5 is not 3.</strong> The answer lands <em>left</em> of zero.</p></div>
+            <div class="sec"><h2>Worked example</h2><p>Work out <span class="kw">−3 + 5</span>.</p>
+              <ol class="steps" id="steps"><li class="on"><span>Start at −3 on the line.</span></li><li><span>Adding means move right. Take 5 steps right.</span></li><li><span>You pass 0 after 3 steps, then 2 more: you land on <strong>2</strong>.</span></li></ol>
+              <button class="btn ghost" id="more" style="min-height:44px">Show next step</button></div>
+            <div class="sec"><h2>Think first, then check</h2><p style="margin-bottom:0">What is 2 − 5?</p>
+              <div class="opts" role="radiogroup" aria-label="Answer">
+                <button class="opt" role="radio" aria-checked="false" data-ok="0"><b>A</b>3</button>
+                <button class="opt" role="radio" aria-checked="false" data-ok="1"><b>B</b>−3</button>
+                <button class="opt" role="radio" aria-checked="false" data-ok="0"><b>C</b>−7</button></div>
+              <div class="fb" id="fb"></div><button class="btn brand" id="check">Check my answer</button></div>
+            <button class="btn ghost sheet-btn" style="margin-top:8px">💡 Notes &amp; Ask ZENITH</button>
+          </article>
+          <aside class="notes" aria-label="Notes">
+            <div class="card" style="padding:16px"><span class="eyebrow">On this page</span><ol class="sm" style="list-style:none;margin-top:8px;display:grid;gap:6px;color:var(--ink-2);font-weight:700"><li>Subtracting walks you left</li><li>Worked example</li><li>Think first, then check</li></ol></div>
+            <div class="card" style="padding:16px;background:var(--hi);color:var(--hi-ink)"><span class="hand" style="color:inherit">remember</span><p class="sm" style="font-weight:700">Add → right. Subtract → left. Crossing zero changes the sign.</p></div>
+            <div class="card" style="padding:16px"><span class="eyebrow">Ask ZENITH</span><p class="sm muted">Stuck? Ask in English, Hindi or Telugu. Replies are labelled AI-translated.</p><button class="btn ghost" style="min-height:42px;width:100%;margin-top:8px">Ask a question</button></div>
+          </aside>
+        </div>
+        <div class="actionbar"><button class="btn ghost" style="min-height:46px">← Previous</button><div class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i></div><button class="btn" style="min-height:46px">Next →</button></div>
+      </section>
+
+      <!-- CLIMB -->
+      <section class="screen" id="climb">
+        <h1 style="font-size:clamp(2rem,5vw,3rem)">Climb</h1><p class="muted">Class 7B · league resets in 3 days. Ranked by growth, so improving beats grinding.</p>
+        <div class="cols" style="margin-top:22px">
+          <div class="card"><h3>Ridge league</h3>
+            <div class="zone up">▲ Moves up</div><div class="lrow"><span class="rk">1</span><span class="av">🦊</span>Kiwi<span class="xp2">312</span></div><div class="lrow"><span class="rk">2</span><span class="av">🐼</span>Panda<span class="xp2">290</span></div>
+            <div class="lrow me"><span class="rk">3</span><span class="av">🚀</span>You<span class="xp2">240</span></div>
+            <div class="zone">Stays</div><div class="lrow"><span class="rk">4</span><span class="av">🦉</span>Owl<span class="xp2">205</span></div>
+            <div class="zone dn">▼ Moves down</div><div class="lrow"><span class="rk">5</span><span class="av">🐢</span>Turtle<span class="xp2">96</span></div></div>
+          <div style="display:grid;gap:22px;align-content:start">
+            <div class="card"><h3>Class goal</h3><p class="muted sm">80% of us secure on Integers by Friday</p><div class="bar" style="margin:10px 0 6px;--subject:var(--science)"><b data-w="62%"></b></div><span class="hand">62% there. Finish the practice set to help!</span></div>
+            <div class="card"><h3>Today's quests</h3><p class="sm" style="margin-top:8px">🎯 Fix one weak concept <strong style="float:right;color:var(--ok)">done ✓</strong></p><div class="bar" style="margin:6px 0 12px"><b data-w="100%"></b></div><p class="sm">🔗 3 correct in a row <strong style="float:right">2/3</strong></p><div class="bar" style="margin-top:6px"><b data-w="66%"></b></div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TEACHER -->
+      <section class="screen" id="teacher">
+        <h1 style="font-size:clamp(2rem,5vw,3rem)">Class 7B</h1><p class="muted">Concept understanding from real answers. Dashed cells mean not enough evidence yet.</p>
+        <div class="card" style="margin-top:20px;overflow:hidden"><div class="heat" id="heat"></div>
+          <div class="legend"><span><i style="background:var(--ok)"></i>Secure</span><span><i style="background:var(--hi)"></i>Learning</span><span><i style="background:var(--gap)"></i>Gap found</span><span><i style="border-style:dashed"></i>Not enough evidence</span></div></div>
+        <div class="reco" style="margin-top:22px"><strong>Needs your attention</strong><p class="sm muted" style="margin-top:4px">7 students repeatedly missed negative-integer questions inside linear-equation problems (evidence: 31 answers over 9 days). Suggested: assign “Subtracting integers” and a 3-question reassessment.</p></div>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<nav class="bottom" aria-label="Main">
+  <a href="#home" data-go="home" aria-current="page"><svg><use href="#i-home"/></svg>Today</a>
+  <a href="#learn" data-go="learn"><svg><use href="#i-book"/></svg>Learn</a>
+  <a href="#lesson" data-go="lesson"><svg><use href="#i-sun"/></svg>Lesson</a>
+  <a href="#climb" data-go="climb"><svg><use href="#i-peak"/></svg>Climb</a>
+  <a href="#teacher" data-go="teacher"><svg><use href="#i-class"/></svg>Class</a>
+</nav>
+
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+function go(id,first){
+  const swap=()=>{$$('.screen').forEach(s=>s.classList.toggle('on',s.id===id));
+    $$('[data-go]').forEach(a=>a.getAttribute('data-go')===id?a.setAttribute('aria-current','page'):a.removeAttribute('aria-current'));
+    window.scrollTo(0,0);setTimeout(anim,60)};
+  document.startViewTransition&&!first?document.startViewTransition(swap):swap();
+}
+function anim(){$$('.bar b').forEach(b=>b.style.width=b.dataset.w||'0');
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15});
+  $$('.reveal:not(.in)').forEach(el=>io.observe(el))}
+$$('[data-go]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();go(a.dataset.go);history.replaceState(null,'','#'+a.dataset.go)}));
+$('#collapse').onclick=()=>$('#app').classList.toggle('min');
+$('#theme').onclick=()=>{const r=document.documentElement,d=getComputedStyle(r).colorScheme==='dark';r.dataset.theme=d?'light':'dark'};
+$$('.seg').forEach(g=>g.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;g.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b))}));
+/* number line */
+(function(){const box=$('#nlbox'),lo=-6,hi=6;let pos=2;
+  for(let v=lo;v<=hi;v++){const t=document.createElement('div');t.className='tk'+(v===0?' z':'');t.style.left=((v-lo)/(hi-lo)*100)+'%';t.innerHTML='<i>'+(v<0?'−'+(-v):v)+'</i>';box.appendChild(t)}
+  const me=$('#me'),hop=$('#hop'),eq=$('#eq');
+  function draw(note){const p=(pos-lo)/(hi-lo)*100;me.style.left=p+'%';hop.style.left=p+'%';hop.textContent=note||'';eq.textContent=pos<0?'−'+(-pos):pos}
+  const mv=d=>{pos=Math.max(lo,Math.min(hi,pos+d));draw(d<0?'← left':'right →')};
+  $('#minus').onclick=()=>mv(-1);$('#plus').onclick=()=>mv(1);$('#reset').onclick=()=>{pos=2;draw('start')};draw('start')})();
+/* steps */
+$('#more').onclick=()=>{const n=$$('#steps li:not(.on)')[0];if(n)n.classList.add('on');if(!$$('#steps li:not(.on)').length)$('#more').style.display='none'};
+/* check */
+let sel=null;$$('.opt').forEach(o=>o.onclick=()=>{$$('.opt').forEach(x=>{x.setAttribute('aria-checked','false');x.classList.remove('ok','retry')});o.setAttribute('aria-checked','true');sel=o;$('#fb').className='fb'});
+$('#check').onclick=()=>{if(!sel)return;const fb=$('#fb');
+  if(sel.dataset.ok==='1'){sel.classList.add('ok');fb.className='fb ok';fb.textContent='Yes! 2 − 5 lands left of zero at −3.';
+    const x=document.createElement('div');x.className='xp';x.textContent='+10 XP';document.body.appendChild(x);setTimeout(()=>x.remove(),1200)}
+  else{sel.classList.remove('ok');void sel.offsetWidth;sel.classList.add('retry');fb.className='fb retry';fb.textContent='Not quite. Hint: subtracting moves you left. Try the number line above.'}};
+/* heatmap (placeholder sample) */
+(function(){const cols=['Integers','Expressions','Like terms','Equations','Word prob.','Graphs'],names=['Aarav','Diya','Rohan','Meera','Kabir','Isha','Neel','Sara'];
+  const m=['sslugu','ggulgu','sssslu','lglugu','ssslsu','guuuuu','sslsgu','slllgu'];
+  const h=$('#heat');h.innerHTML='<span></span>'+cols.map(c=>'<span class="h">'+c+'</span>').join('');
+  m.forEach((row,i)=>{h.insertAdjacentHTML('beforeend','<span style="align-self:center">'+names[i]+'</span>');[...row].forEach(c=>h.insertAdjacentHTML('beforeend','<i class="cell '+c+'"></i>'))})})();
+addEventListener('hashchange',()=>go(location.hash.slice(1)||'home'));
+go((location.hash||'#home').slice(1)||'home',true);
+</script>
+</body>
+</html>

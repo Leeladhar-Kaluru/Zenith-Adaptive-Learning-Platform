@@ -44,3 +44,6 @@ diagrams/
 Thumbs.db
 .vscode/
 .idea/
+
+# Playwright MCP output
+.playwright-mcp/

@@ -14,11 +14,11 @@ sign-up -> pick class -> Learn library -> lesson reader with checks -> adaptive 
 - [ ] A3 [you] In the Vercel project settings add env vars from `backend/.env.production.example` (values never in chat).
 - [ ] A4 [both] Approve the production database reset (backup first, then drop legacy document tables, apply new migrations). Existing 8 users are test data.
 
-## B. Visual research done properly (1 hour)
+## B. Visual research done properly (B1 done with screenshots; B2 partial; B3 mockup at docs/design/v2/index.html awaiting your approval)
 
-- [ ] B1 [me] Inspect Canvas Classes in a real rendered browser (screenshots of home, class page, chapter, lesson, tools) for layout, rhythm and components. View only; no copying of content, text or assets.
-- [ ] B2 [me] Same for 2-3 more reference sites that render in a browser (Khan Academy India, Brilliant, Duolingo) using screenshots instead of text scraping.
-- [ ] B3 [me] New design v2: responsive **desktop + mobile**, component kit, animation set. Show 4 key screens rendered; you approve before the full build.
+- [x] B1 [me] Inspect Canvas Classes in a real rendered browser (screenshots of home, class page, chapter, lesson, tools) for layout, rhythm and components. View only; no copying of content, text or assets.
+- [~] B2 [me] Same for 2-3 more reference sites that render in a browser (Khan Academy India, Brilliant, Duolingo) using screenshots instead of text scraping.
+- [~] B3 [me] New design v2: responsive **desktop + mobile**, component kit, animation set. Show 4 key screens rendered; you approve before the full build.
 
 ## C. Foundation (backend)
 

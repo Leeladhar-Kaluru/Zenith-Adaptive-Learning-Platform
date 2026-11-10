@@ -1,0 +1,22 @@
+.loader { min-height: 60vh; display: grid; place-items: center; align-content: center; gap: 14px; animation: fade .2s .15s both; }
+@keyframes fade { from { opacity: 0; } }
+.loader svg { width: 190px; overflow: visible; }
+.loader .mt { fill: var(--brand-soft); stroke: var(--ink); stroke-width: 3; stroke-linejoin: round; }
+.loader .route { fill: none; stroke: var(--brand); stroke-width: 3.5; stroke-linecap: round; stroke-dasharray: 2 8; }
+.loader .dot { fill: var(--hi); stroke: var(--ink); stroke-width: 3; offset-path: path('M12 84 L52 40 L72 62 L98 20'); animation: climb 1.8s var(--ease) infinite; }
+@keyframes climb { 0% { offset-distance: 0%; } 70%, 100% { offset-distance: 100%; } }
+.loader .flag { fill: var(--gap); transform-origin: 98px 20px; animation: wave 1s ease-in-out infinite alternate; }
+@keyframes wave { to { transform: skewY(-12deg); } }
+
+.floater { position: fixed; z-index: 90; left: 50%; top: 42%; pointer-events: none; font-family: var(--display); font-weight: 800; font-size: 2.6rem; color: var(--ok); -webkit-text-stroke: 2px var(--ink); paint-order: stroke fill; animation: floatUp 1.2s var(--ease) forwards; display: flex; gap: 8px; align-items: center; }
+@keyframes floatUp { 0% { opacity: 0; transform: translate(-50%, 14px) scale(.6); } 25% { opacity: 1; transform: translate(-50%, -16px) scale(1.15); } 100% { opacity: 0; transform: translate(-50%, -100px) scale(1); } }
+
+.confetti { position: fixed; inset: 0; z-index: 85; pointer-events: none; overflow: hidden; }
+.confetti i { position: absolute; top: -20px; left: var(--x); width: 10px; height: 16px; background: var(--c); border: 2px solid var(--ink); border-radius: 3px; animation: fall var(--t) var(--d) cubic-bezier(.3, .6, .4, 1) forwards; transform: rotate(var(--r)); }
+@keyframes fall { to { transform: translate(var(--dx), 108vh) rotate(calc(var(--r) + 720deg)); opacity: .9; } }
+
+.overlay { position: fixed; inset: 0; z-index: 80; display: grid; place-items: center; background: rgba(12, 16, 32, .6); backdrop-filter: blur(3px); padding: 20px; animation: fade .25s both; }
+.cele { width: min(440px, 100%); text-align: center; background: var(--surface); border: 2px solid var(--ink); border-radius: 26px; box-shadow: var(--hard-lg); padding: 34px 26px 26px; animation: celeIn .6s var(--spring) both; display: grid; gap: 10px; justify-items: center; }
+@keyframes celeIn { from { opacity: 0; transform: scale(.7) rotate(-4deg); } }
+.badge { width: 104px; height: 104px; display: grid; place-items: center; border-radius: 30px; background: var(--hi); border: 3px solid var(--ink); box-shadow: var(--hard); animation: bounce 1.2s var(--spring) infinite alternate; }
+@keyframes bounce { to { transform: translateY(-8px) rotate(4deg); } }

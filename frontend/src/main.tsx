@@ -1,20 +1,31 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
+import '@fontsource-variable/bricolage-grotesque/wght.css';
+import '@fontsource-variable/plus-jakarta-sans/wght.css';
+import '@fontsource/kalam/400.css';
+import '@fontsource/kalam/700.css';
+import '@fontsource-variable/noto-sans-devanagari/wght.css';
+import '@fontsource-variable/noto-sans-telugu/wght.css';
+import './styles/tokens.css';
+import './styles/global.css';
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
-import { registerSW } from 'virtual:pwa-register';
 import App from './App';
-import './tokens.css';
+import { AuthProvider } from './context/AuthContext';
+import { ToastProvider } from './ui/kit';
+import { FxProvider } from './fx/fx';
+import { IconDefs } from './icons/Icon';
 
-// Register service worker for offline caching and PWA functionality
-if ('serviceWorker' in navigator) {
-  registerSW({ immediate: true });
-}
-
-ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
+createRoot(document.getElementById('root')!).render(
+  <StrictMode>
     <BrowserRouter>
-      <App />
+      <AuthProvider>
+        <ToastProvider>
+          <FxProvider>
+            <IconDefs />
+            <App />
+          </FxProvider>
+        </ToastProvider>
+      </AuthProvider>
     </BrowserRouter>
-  </React.StrictMode>
+  </StrictMode>,
 );
-

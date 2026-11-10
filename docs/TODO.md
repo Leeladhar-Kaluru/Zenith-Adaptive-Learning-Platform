@@ -18,7 +18,7 @@ sign-up -> pick class -> Learn library -> lesson reader with checks -> adaptive 
 
 - [x] B1 [me] Inspect Canvas Classes in a real rendered browser (screenshots of home, class page, chapter, lesson, tools) for layout, rhythm and components. View only; no copying of content, text or assets.
 - [~] B2 [me] Same for 2-3 more reference sites that render in a browser (Khan Academy India, Brilliant, Duolingo) using screenshots instead of text scraping.
-- [~] B3 [me] New design v2: responsive **desktop + mobile**, component kit, animation set. Show 4 key screens rendered; you approve before the full build.
+- [x] B3 [me] New design v2: responsive **desktop + mobile**, component kit, animation set. Show 4 key screens rendered; you approve before the full build.
 
 ## C. Foundation (backend)
 
@@ -34,13 +34,13 @@ sign-up -> pick class -> Learn library -> lesson reader with checks -> adaptive 
 
 ## D. Frontend rebuild (lightweight, animated)
 
-- [ ] D1 [me] App shell: bottom nav on phone, sidebar on desktop, route-level lazy loading, view transitions, skeletons.
-- [ ] D2 [me] Component kit (Button, Card, Chip, Sheet, Tabs, Progress path, Toast, etc.) with spring/ease motion; reduced-motion respected.
-- [ ] D3 [me] Screens: Landing/sign-in, Onboarding, Today, Learn (class -> subject -> chapter), Lesson reader, Practice, Climb, Ask, Settings.
-- [ ] D4 [me] Teacher screens: Class, Concepts heatmap, Student, Assign, Review queue.
-- [ ] D5 [me] Interactive widgets: number line, fraction/balance model, step-reveal worked examples.
-- [ ] D6 [me] Offline: download chapter, queue answers, idempotent sync.
-- [ ] D7 [me] Performance: initial JS <= 170 kB gzip, Lighthouse mobile >= 90, fonts subset.
+- [x] D1 [me] App shell: bottom nav on phone, sidebar on desktop, route-level lazy loading, view transitions, skeletons.
+- [x] D2 [me] Component kit (Button, Card, Chip, Sheet, Tabs, Progress path, Toast, etc.) with spring/ease motion; reduced-motion respected.
+- [x] D3 [me] Screens: Landing/sign-in, Onboarding, Today, Learn (class -> subject -> chapter), Lesson reader, Practice, Climb, Ask, Settings.
+- [x] D4 [me] Teacher screens: Class, Concepts heatmap, Student, Assign, Review queue.
+- [x] D5 [me] Interactive widgets: number line, fraction/balance model, step-reveal worked examples.
+- [~] D6 [me] Offline: download chapter, queue answers, idempotent sync.
+- [~] D7 [me] Performance: initial JS <= 170 kB gzip, Lighthouse mobile >= 90, fonts subset.
 
 ## E. Content (the long pole)
 
@@ -59,3 +59,7 @@ sign-up -> pick class -> Learn library -> lesson reader with checks -> adaptive 
 
 B (research + design approval) -> C1-C4 + D1-D3 (core learning loop) -> E1-E2 -> C5-C6 + D4 -> C7 -> F -> D6 as time allows.
 Anything not finished today is shown as "Coming soon" or hidden, never faked.
+
+
+## Progress log
+- 2026-11-10: Frontend rebuilt in React (custom icons, 12 avatars, tier badges, UI kit, shell, view transitions, FX, 22 screens incl. teacher and review) against a typed API contract with a dev-only mock. Entry bundle 92 kB gzip. Checked rendered on desktop and phone. D6 (offline): Dexie store and Offline screen done; chapter download and evidence queue sync pending. D7: size budget met; Lighthouse not yet run. Backend rebuild (C1-C9) is next.

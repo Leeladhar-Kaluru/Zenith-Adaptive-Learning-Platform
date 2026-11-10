@@ -1,0 +1,40 @@
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  font-family: var(--font); background: var(--bg); color: var(--ink); line-height: 1.6; font-size: 17px;
+  background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 28px 28px; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+}
+button { font: inherit; color: inherit; cursor: pointer; border: 0; background: none; }
+a { color: inherit; text-decoration: none; }
+img, svg { max-width: 100%; }
+h1, h2, h3, h4 { font-family: var(--display); line-height: 1.12; letter-spacing: -0.02em; font-weight: 800; }
+:focus-visible { outline: 3px solid var(--brand); outline-offset: 3px; border-radius: 8px; }
+::selection { background: var(--hi); color: var(--hi-ink); }
+.hand { font-family: var(--hand); color: var(--ink-2); font-size: 1.15rem; line-height: 1.25; }
+.muted { color: var(--ink-2); }
+.sm { font-size: 0.9rem; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.eyebrow { font-weight: 800; font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--subject); }
+mark {
+  background: linear-gradient(transparent 55%, var(--hi) 55%) no-repeat; background-size: 0 100%; color: inherit; padding: 0 3px;
+  animation: hl 0.9s 0.3s var(--ease) forwards;
+}
+@keyframes hl { to { background-size: 100% 100%; } }
+@keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+@keyframes pop { 40% { transform: scale(1.05); } }
+@keyframes shake { 25% { transform: translateX(-7px); } 75% { transform: translateX(7px); } }
+@keyframes pulse { 50% { transform: scale(1.05); } }
+@keyframes shimmer { to { background-position: -200% 0; } }
+
+/* cross-page transitions (View Transitions API, progressive enhancement) */
+::view-transition-old(root) { animation: 0.18s var(--ease) both vt-out; }
+::view-transition-new(root) { animation: 0.32s var(--ease) both vt-in; }
+@keyframes vt-out { to { opacity: 0; transform: translateY(-6px); } }
+@keyframes vt-in { from { opacity: 0; transform: translateY(12px); } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
+  mark { background-size: 100% 100%; }
+}

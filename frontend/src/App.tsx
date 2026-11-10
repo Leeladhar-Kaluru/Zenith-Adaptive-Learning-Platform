@@ -1,132 +1,79 @@
-import React, { ReactNode, Suspense, lazy } from 'react';
-import { Navigate, Routes, Route } from 'react-router-dom';
-import { AuthProvider, useAuth } from './context/AuthContext';
-import { AppLayout } from './components/layout/AppLayout';
-import { AuthGate } from './components/AuthGate';
-import { ErrorBoundary } from './components/ErrorBoundary';
-import styles from './App.module.css';
+import { lazy, Suspense, type ReactNode } from 'react';
+import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
+import { useAuth } from './context/AuthContext';
+import Shell from './layout/Shell';
+import { RouteLoader } from './fx/fx';
+import type { Role } from './api/types';
 
-// Lazy-loaded pages for optimal chunking
-const HomePage = lazy(() => import('./pages/HomePage'));
-const ExplorePage = lazy(() => import('./pages/ExplorePage'));
-const ChapterPage = lazy(() => import('./pages/ChapterPage'));
-const LessonReaderPage = lazy(() => import('./pages/LessonReaderPage'));
-const PracticePage = lazy(() => import('./pages/PracticePage'));
-const LearningMapPage = lazy(() => import('./pages/LearningMapPage'));
-const AchievementsPage = lazy(() => import('./pages/AchievementsPage'));
-const AskZenithPage = lazy(() => import('./pages/AskZenithPage'));
-const OfflineLibraryPage = lazy(() => import('./pages/OfflineLibraryPage').then(m => ({ default: m.OfflineLibraryPage })));
-const DoubtQueuePage = lazy(() => import('./pages/DoubtQueuePage').then(m => ({ default: m.DoubtQueuePage })));
-const StudentDashboardPage = lazy(() => import('./pages/StudentDashboardPage').then(m => ({ default: m.StudentDashboardPage })));
-const TeacherDashboardPage = lazy(() => import('./pages/TeacherDashboardPage').then(m => ({ default: m.TeacherDashboardPage })));
-const NotFoundPage = lazy(() => import('./pages/NotFoundPage').then(m => ({ default: m.NotFoundPage })));
+const Landing = lazy(() => import('./pages/Landing'));
+const Auth = lazy(() => import('./pages/Auth'));
+const Onboarding = lazy(() => import('./pages/Onboarding'));
+const TodayPage = lazy(() => import('./pages/Today'));
+const Learn = lazy(() => import('./pages/Learn'));
+const Chapter = lazy(() => import('./pages/Chapter'));
+const LessonPage = lazy(() => import('./pages/Lesson'));
+const Practice = lazy(() => import('./pages/Practice'));
+const ClimbPage = lazy(() => import('./pages/Climb'));
+const MapPage = lazy(() => import('./pages/ConceptMap'));
+const Ask = lazy(() => import('./pages/Ask'));
+const Settings = lazy(() => import('./pages/Settings'));
+const Offline = lazy(() => import('./pages/Offline'));
+const TeacherClass = lazy(() => import('./pages/teacher/ClassView'));
+const TeacherStudent = lazy(() => import('./pages/teacher/StudentView'));
+const Assign = lazy(() => import('./pages/teacher/Assign'));
+const ReviewQueue = lazy(() => import('./pages/review/Queue'));
+const ReviewLesson = lazy(() => import('./pages/review/Lesson'));
+const NotFound = lazy(() => import('./pages/NotFound'));
 
-const StudentOnly: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const { user, isLoading } = useAuth();
-  if (isLoading) return null;
-  if (user?.role === 'teacher') return <Navigate to="/teacher" replace />;
+function homeFor(role?: Role) {
+  return role === 'teacher' ? '/teacher' : role === 'reviewer' || role === 'admin' ? '/review' : '/today';
+}
+
+function Guard({ roles, children }: { roles?: Role[]; children: ReactNode }) {
+  const { profile, loading } = useAuth();
+  const loc = useLocation();
+  if (loading) return <RouteLoader label="Opening ZENITH" />;
+  if (!profile) return <Navigate to="/signin" state={{ from: loc.pathname }} replace />;
+  if (!profile.onboardingCompleted && loc.pathname !== '/onboarding') return <Navigate to="/onboarding" replace />;
+  if (roles && !roles.includes(profile.role)) return <Navigate to={homeFor(profile.role)} replace />;
   return <>{children}</>;
-};
+}
 
-const PageSkeleton: React.FC = () => (
-  <div style={{ padding: 'var(--space-8)', textAlign: 'center', fontFamily: 'var(--font-mono)', fontSize: 'var(--text-sm)', color: 'var(--ink-secondary)' }}>
-    Loading ZENITH desk…
-  </div>
-);
+function PublicOnly({ children }: { children: ReactNode }) {
+  const { profile, loading } = useAuth();
+  if (loading) return <RouteLoader label="Opening ZENITH" />;
+  if (profile) return <Navigate to={homeFor(profile.role)} replace />;
+  return <>{children}</>;
+}
 
-const AppContent: React.FC = () => {
-  const { isLoading, sessionError, retrySession, logout } = useAuth();
-
-  if (isLoading) {
-    return (
-      <div className={styles.shell}>
-        <main id="main-content" className={styles.main} tabIndex={-1}>
-          <p className={styles.appLoading}>Loading ZENITH…</p>
-        </main>
-      </div>
-    );
-  }
-
-  if (sessionError) {
-    return (
-      <div className={styles.shell}>
-        <main id="main-content" className={styles.main} tabIndex={-1}>
-          <section className={styles.sessionError} role="alert">
-            <span className={styles.sessionKicker}>Connection paused</span>
-            <h1>Your desk is still here</h1>
-            <p>{sessionError}</p>
-            <div className={styles.sessionActions}>
-              <button type="button" onClick={() => void retrySession()}>Try again</button>
-              <button type="button" className={styles.sessionSignOut} onClick={() => void logout()}>
-                Sign out
-              </button>
-            </div>
-          </section>
-        </main>
-      </div>
-    );
-  }
-
+export default function App() {
   return (
-    <AppLayout>
-      <ErrorBoundary>
-        <Suspense fallback={<PageSkeleton />}>
-          <Routes>
-            <Route path="/" element={<StudentOnly><HomePage /></StudentOnly>} />
-            <Route path="/explore" element={<StudentOnly><ExplorePage /></StudentOnly>} />
-            <Route path="/chapter/:slug" element={<StudentOnly><ChapterPage /></StudentOnly>} />
-            <Route path="/learn/:lessonId" element={<StudentOnly><LessonReaderPage /></StudentOnly>} />
-            <Route path="/practice" element={<StudentOnly><PracticePage /></StudentOnly>} />
-            <Route path="/map" element={<StudentOnly><LearningMapPage /></StudentOnly>} />
-            <Route path="/map/:slug" element={<StudentOnly><LearningMapPage /></StudentOnly>} />
-            <Route path="/achievements" element={<StudentOnly><AchievementsPage /></StudentOnly>} />
-            <Route path="/ask" element={<StudentOnly><AskZenithPage /></StudentOnly>} />
-            <Route
-              path="/dashboard"
-              element={
-                <AuthGate>
-                  <StudentOnly><StudentDashboardPage /></StudentOnly>
-                </AuthGate>
-              }
-            />
-            <Route
-              path="/library"
-              element={
-                <AuthGate>
-                  <StudentOnly><OfflineLibraryPage /></StudentOnly>
-                </AuthGate>
-              }
-            />
-            <Route
-              path="/doubts"
-              element={
-                <AuthGate>
-                  <StudentOnly><DoubtQueuePage /></StudentOnly>
-                </AuthGate>
-              }
-            />
-            <Route
-              path="/teacher"
-              element={
-                <AuthGate teacherOnly>
-                  <TeacherDashboardPage />
-                </AuthGate>
-              }
-            />
-            <Route path="*" element={<NotFoundPage />} />
-          </Routes>
-        </Suspense>
-      </ErrorBoundary>
-    </AppLayout>
+    <Suspense fallback={<RouteLoader />}>
+      <Routes>
+        <Route path="/" element={<PublicOnly><Landing /></PublicOnly>} />
+        <Route path="/signin" element={<PublicOnly><Auth mode="signin" /></PublicOnly>} />
+        <Route path="/signup" element={<PublicOnly><Auth mode="signup" /></PublicOnly>} />
+        <Route path="/onboarding" element={<Guard><Onboarding /></Guard>} />
+        <Route element={<Guard><Shell /></Guard>}>
+          <Route path="/today" element={<Guard roles={['student']}><TodayPage /></Guard>} />
+          <Route path="/learn" element={<Learn />} />
+          <Route path="/learn/:slug" element={<Chapter />} />
+          <Route path="/lesson/:id" element={<LessonPage />} />
+          <Route path="/practice" element={<Guard roles={['student']}><Practice /></Guard>} />
+          <Route path="/climb" element={<Guard roles={['student']}><ClimbPage /></Guard>} />
+          <Route path="/map/:slug" element={<MapPage />} />
+          <Route path="/ask" element={<Guard roles={['student']}><Ask /></Guard>} />
+          <Route path="/settings" element={<Settings />} />
+          <Route path="/offline" element={<Offline />} />
+          <Route path="/teacher" element={<Guard roles={['teacher', 'admin']}><TeacherClass /></Guard>} />
+          <Route path="/teacher/class/:id" element={<Guard roles={['teacher', 'admin']}><TeacherClass /></Guard>} />
+          <Route path="/teacher/student/:id" element={<Guard roles={['teacher', 'admin']}><TeacherStudent /></Guard>} />
+          <Route path="/teacher/assign" element={<Guard roles={['teacher', 'admin']}><Assign /></Guard>} />
+          <Route path="/review" element={<Guard roles={['teacher', 'reviewer', 'admin']}><ReviewQueue /></Guard>} />
+          <Route path="/review/:id" element={<Guard roles={['teacher', 'reviewer', 'admin']}><ReviewLesson /></Guard>} />
+        </Route>
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </Suspense>
   );
-};
-
-export const App: React.FC = () => {
-  return (
-    <AuthProvider>
-      <AppContent />
-    </AuthProvider>
-  );
-};
-
-export default App;
+}

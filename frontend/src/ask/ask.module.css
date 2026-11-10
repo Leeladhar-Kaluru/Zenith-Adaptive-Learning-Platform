@@ -1,0 +1,26 @@
+.panel { display: grid; grid-template-rows: auto 1fr auto auto; gap: 12px; height: min(72vh, 640px); }
+.compact { height: min(66vh, 560px); }
+.head { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; }
+.row { display: flex; align-items: center; gap: 8px; }
+.langs { display: inline-flex; gap: 4px; padding: 3px; border: 2px solid var(--ink); border-radius: 12px; background: var(--surface); }
+.langs button { min-height: 34px; padding: 0 12px; border-radius: 8px; font-weight: 800; font-size: .85rem; color: var(--ink-2); }
+.langs button[aria-pressed='true'] { background: var(--ink); color: var(--bg); }
+.log { overflow: auto; display: grid; align-content: start; gap: 14px; padding: 6px 2px; }
+.hello { display: grid; gap: 8px; padding: 10px 0; }
+.chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 6px; }
+.sugg { padding: 8px 14px; border-radius: 999px; border: 2px solid var(--ink); background: var(--surface); font-weight: 700; font-size: .9rem; transition: transform .2s var(--spring), background .2s; }
+.sugg:hover { background: var(--hi); color: var(--hi-ink); transform: translateY(-2px) rotate(-1deg); }
+.msg { display: flex; gap: 10px; align-items: flex-start; animation: rise .3s var(--ease); max-width: 92%; }
+.msg p { font-weight: 600; }
+.me { justify-self: end; flex-direction: row-reverse; text-align: right; }
+.me > div { background: var(--brand-soft); border: 2px solid var(--ink); border-radius: 16px 4px 16px 16px; padding: 10px 14px; }
+.ai > div { background: var(--surface); border: 2px solid var(--ink); border-radius: 4px 16px 16px 16px; padding: 10px 14px; box-shadow: var(--hard-sm); display: grid; gap: 6px; }
+.errMsg > div { background: var(--retry-soft); }
+.bot { flex: none; width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; background: var(--hi); border: 2px solid var(--ink); }
+.typing { display: inline-flex; gap: 5px; padding: 14px; border: 2px solid var(--ink); border-radius: 4px 16px 16px 16px; background: var(--surface); }
+.typing i { width: 8px; height: 8px; border-radius: 50%; background: var(--ink-2); animation: bounce .9s infinite; }
+.typing i:nth-child(2) { animation-delay: .15s; } .typing i:nth-child(3) { animation-delay: .3s; }
+@keyframes bounce { 50% { transform: translateY(-6px); } }
+.form { display: flex; gap: 10px; }
+.input { flex: 1; min-height: 52px; padding: 0 16px; border-radius: 14px; border: 2px solid var(--ink); background: var(--surface); font: inherit; font-weight: 600; color: var(--ink); }
+.input:focus { outline: none; box-shadow: var(--hard-sm); border-color: var(--brand); }

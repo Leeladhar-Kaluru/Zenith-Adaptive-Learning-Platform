@@ -1,0 +1,9 @@
+.icon { flex: none; overflow: visible; }
+.icon :global(.a) { fill: var(--icon-accent, var(--hi)); stroke: none; opacity: 0.9; }
+.avatar { flex: none; display: block; }
+.tier {
+  display: inline-grid; place-items: center; border-radius: 28%;
+  background: var(--surface-2); color: var(--ink-3);
+  border: 2px solid var(--line); transition: transform 0.3s var(--spring);
+}
+.tierOn { background: color-mix(in srgb, var(--tier) 18%, var(--surface)); color: var(--ink); border: 2px solid var(--ink); box-shadow: var(--hard-sm); }

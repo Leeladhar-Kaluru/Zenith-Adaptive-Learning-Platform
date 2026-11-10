@@ -170,3 +170,16 @@ def test_only_one_published_version_per_lesson(db, tmp_path):
     with pytest.raises(IntegrityError):
         db.commit()
     db.rollback()
+
+
+def test_reimport_with_a_lesson_inserted_or_reordered_keeps_positions_unique(db, tmp_path):
+    from sqlalchemy import select
+    from app.models import Chapter, Lesson
+    tree = importer.load_tree(build(tmp_path / "content"))
+    importer.import_tree(db, tree)
+    ch, _ = tree.chapters[0]
+    ch.lessons = list(reversed(ch.lessons))
+    importer.import_tree(db, tree)
+    chapter = db.scalar(select(Chapter).where(Chapter.slug == ch.slug))
+    got = [l.slug for l in db.scalars(select(Lesson).where(Lesson.chapter_id == chapter.id).order_by(Lesson.position))]
+    assert got == ch.lessons

@@ -8,7 +8,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 
 import yaml
-from sqlalchemy import func, select
+from sqlalchemy import func, select, update
 from sqlalchemy.orm import Session
 
 from app.cms import gates as gate_lib
@@ -217,13 +217,17 @@ def import_tree(db: Session, tree: Tree, actor_id: uuid.UUID | None = None) -> d
         for ref in ch.concepts:
             db.add(ChapterConcept(chapter_id=chapter.id, concept_id=ref.id, role=ref.role))
 
+        # Lessons may be inserted or reordered: park existing ones out of the way, then give each its final position.
+        db.execute(update(Lesson).where(Lesson.chapter_id == chapter.id).values(position=Lesson.position + 1000))
         for pos, slug in enumerate(ch.lessons, start=1):
             les = lessons[slug]
             lesson = db.scalar(select(Lesson).where(Lesson.chapter_id == chapter.id, Lesson.slug == slug))
             if lesson is None:
                 lesson = Lesson(chapter_id=chapter.id, slug=slug, position=pos)
                 db.add(lesson)
-                db.flush()
+            else:
+                lesson.position = pos
+            db.flush()
             misc_ids: dict[tuple[str, str], uuid.UUID] = {}
             codes_to_concept = {m.code: m.concept for m in les.misconceptions}
             for m in les.misconceptions:

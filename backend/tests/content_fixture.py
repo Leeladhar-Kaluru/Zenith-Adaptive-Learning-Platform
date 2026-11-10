@@ -17,16 +17,33 @@ def item(key, stem, correct_text, wrong, concept, *, difficulty="standard", purp
     }
 
 
+def _pad_items(slug, concept, existing):
+    """Enough extra questions that a fixture lesson meets the depth standard (8 questions, every difficulty, two tagged mistakes)."""
+    out = []
+    have = {i["difficulty"] for i in existing}
+    for n, d in enumerate(["intro", "standard", "challenge", "standard", "intro", "challenge", "standard", "standard"]):
+        if len(existing) + len(out) >= 8 and d in have:
+            break
+        it = item(f"{slug}-pad{n}", f"Practice question {n} on {concept}?", "right", ["wrong one", "wrong two"], concept, difficulty=d, purpose="practice", misc="pad-mistake")
+        it["options"][2]["misconception"] = "reverses-subtraction"
+        out.append(it)
+        have.add(d)
+    return out
+
+
 def lesson(slug, title, concept, items, minutes=10):
+    items = items + _pad_items(slug, concept, items)
     blocks = [
         {"kind": "text", "heading": "Idea", "html": "<p>Numbers can be less than zero. We show them on a line.</p>"},
+        {"kind": "example", "heading": "Worked example", "prompt": "Move from 2 to -1.", "steps": ["Start at 2.", "Move 3 steps left.", "You land on -1."]},
         {"kind": "figure", "svg": SVG, "alt": "A circle used as a placeholder diagram", "caption": "A figure."},
         {"kind": "check", "item": items[0]["key"]},
-        {"kind": "summary", "points": ["Negative numbers are left of zero."]},
+        {"kind": "summary", "points": ["Negative numbers are left of zero.", "Left means smaller.", "Check by counting steps."]},
     ]
     return {"slug": slug, "title": title, "minutes": minutes, "objectives": ["Place integers on a number line"], "concepts": [concept],
             "blocks": blocks, "items": items,
-            "misconceptions": [{"code": "reverses-subtraction", "concept": concept, "description": "Subtracts the smaller from the larger and ignores direction."}]}
+            "misconceptions": [{"code": "reverses-subtraction", "concept": concept, "description": "Subtracts the smaller from the larger and ignores direction."},
+                                          {"code": "pad-mistake", "concept": concept, "description": "A second common mistake used to give the fixture lesson enough depth."}]}
 
 
 def build(root: Path, *, verified=False, bad_answer=False) -> Path:

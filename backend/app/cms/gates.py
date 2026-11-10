@@ -140,6 +140,25 @@ def lesson_gates(*, title: str, grade: int, objectives: list[str], blocks: list[
             problems.append(f"{a} has no attribution text")
     g.append(Gate("Imported assets are credited", not problems, "; ".join(problems) if problems else (f"{len(sources)} imported asset(s), all approved and credited" if sources else "No imported assets")))
 
+    # depth: a lesson must be a real lesson, not an outline
+    need = []
+    ex = [b for b in blocks if b["kind"] == "example"]
+    if not (len(ex) >= 2 or any(len(b.get("steps", [])) >= 3 for b in ex)):
+        need.append("a worked example (two examples, or one with at least 3 steps)")
+    if not any(b["kind"] in ("figure", "widget") for b in blocks):
+        need.append("a figure or simulation")
+    if not any(len(b.get("points", [])) >= 3 for b in blocks if b["kind"] == "summary"):
+        need.append("a recap with at least 3 points")
+    if len(items) < 8:
+        need.append(f"at least 8 questions (has {len(items)})")
+    for level in ("intro", "standard", "challenge"):
+        if not any(it["difficulty"] == level for it in items):
+            need.append(f"{"an" if level == "intro" else "a"} {level} question")
+    used_mis = {o["misconception"] for it in items for o in it.get("options", []) if o.get("misconception")}
+    if len(used_mis) < 2:
+        need.append(f"at least 2 tagged misconceptions (has {len(used_mis)})")
+    g.append(Gate("Lesson has enough depth", not need, ("Needs " + "; ".join(need)) if need else "Examples, visual, recap, questions and misconceptions are all present"))
+
     g.append(Gate("Prerequisite graph is acyclic", graph_error is None, graph_error or "ok"))
     g.append(Gate("Curriculum mapping confirmed", curriculum_verified, "Chapter placement checked against the board's current textbook" if curriculum_verified else "Reviewer must confirm the chapter matches the current textbook", manual=True))
     return g

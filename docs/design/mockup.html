@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ZENITH design mockup</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+*{box-sizing:border-box;margin:0}
+body{font-family:var(--font);background:#e9e4d8;color:var(--ink);line-height:var(--lh);padding:24px 12px}
+.note{max-width:1200px;margin:0 auto 16px;font-size:var(--fs-sm);color:#555}
+.row{display:flex;gap:28px;justify-content:center;flex-wrap:wrap}
+.phone{width:390px;height:780px;background:var(--bg);border-radius:36px;box-shadow:var(--shadow-2);overflow:hidden;position:relative;display:flex;flex-direction:column;border:8px solid #1a1a1a}
+.scroll{flex:1;overflow:auto;padding:18px 16px 12px}
+h1{font-size:var(--fs-lg);line-height:1.25;letter-spacing:-.01em}
+h2{font-size:var(--fs-md);letter-spacing:-.005em}
+.muted{color:var(--ink-2);font-size:var(--fs-sm)}
+.top{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.logo{display:flex;align-items:center;gap:8px;font-weight:800;letter-spacing:.08em;font-size:var(--fs-sm)}
+.chips{display:flex;gap:8px}
+.chip{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:var(--r-pill);background:var(--surface);box-shadow:var(--shadow-1);font-weight:700;font-size:var(--fs-xs)}
+.chip.z{background:var(--zenith-soft);color:var(--zenith-ink)}
+.card{background:var(--surface);border-radius:var(--r-lg);box-shadow:var(--shadow-1);padding:16px;margin-bottom:14px}
+.hero{background:linear-gradient(160deg,var(--ink),#22306e);color:#fff;border-radius:var(--r-lg);padding:18px;margin-bottom:14px;position:relative;overflow:hidden}
+.hero .muted{color:#c9d0f5}
+.tag{display:inline-block;font-size:var(--fs-xs);font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--zenith)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:var(--tap);padding:0 20px;border:0;border-radius:var(--r-md);font:700 var(--fs-md) var(--font);background:var(--zenith);color:var(--zenith-ink);box-shadow:0 3px 0 #c98400;cursor:pointer;transition:transform var(--t-fast) var(--ease)}
+.btn:active{transform:translateY(2px);box-shadow:0 1px 0 #c98400}
+.btn.ghost{background:var(--surface);color:var(--ink);box-shadow:inset 0 0 0 2px var(--line)}
+.btn.block{width:100%}
+.why{display:flex;gap:10px;align-items:flex-start;background:rgba(255,255,255,.1);border-radius:var(--r-md);padding:10px 12px;margin:12px 0;font-size:var(--fs-sm)}
+.path{display:flex;align-items:center;gap:6px;margin-top:6px}
+.dot{width:12px;height:12px;border-radius:50%;background:#ffffff33}.dot.on{background:var(--zenith)}.bar{flex:1;height:4px;background:#ffffff33;border-radius:4px}.bar.on{background:var(--zenith)}
+.subj{display:flex;gap:12px}
+.tile{flex:1;border-radius:var(--r-lg);padding:14px;color:#fff;font-weight:800;min-height:96px;display:flex;flex-direction:column;justify-content:space-between}
+.tile small{font-weight:600;opacity:.9}
+.m{background:var(--maths)}.s{background:var(--science)}
+.nav{display:flex;border-top:1px solid var(--line);background:var(--surface);padding:6px 4px 10px}
+.nav a{flex:1;text-align:center;font-size:11px;font-weight:700;color:var(--ink-3);padding:6px 0;text-decoration:none}
+.nav a.on{color:var(--brand)}
+.nav i{display:block;font-style:normal;font-size:20px}
+.meter{height:8px;border-radius:8px;background:var(--surface-2);overflow:hidden;margin:6px 0 4px}.meter b{display:block;height:100%;background:var(--subject);border-radius:8px}
+/* lesson */
+.prog{display:flex;gap:4px;margin-bottom:14px}.prog span{flex:1;height:6px;border-radius:6px;background:var(--line)}.prog span.on{background:var(--subject)}
+.lesson{--subject:var(--maths);--subject-soft:var(--maths-soft)}
+.lesson p{font-size:var(--fs-lesson);margin:10px 0}
+.kw{background:var(--subject-soft);color:var(--subject);padding:0 6px;border-radius:6px;font-weight:700}
+.nline{margin:14px 0 6px}
+.callout{border-radius:var(--r-md);padding:12px 14px;background:var(--retry-soft);color:#6b2f05;font-size:var(--fs-sm);margin:12px 0}
+.opt{display:flex;align-items:center;gap:12px;min-height:var(--tap);padding:10px 14px;border-radius:var(--r-md);background:var(--surface);box-shadow:inset 0 0 0 2px var(--line);font-weight:600;margin-bottom:10px}
+.opt.sel{box-shadow:inset 0 0 0 2px var(--brand);background:var(--brand-soft)}
+.opt b{width:28px;height:28px;border-radius:8px;background:var(--surface-2);display:grid;place-items:center;font-size:var(--fs-xs)}
+.prereq{display:flex;gap:10px;background:var(--gap-soft);border-radius:var(--r-md);padding:10px 12px;font-size:var(--fs-sm);margin-bottom:12px;color:#7a1237}
+/* league */
+.tiers{display:flex;justify-content:space-between;margin:12px 0}
+.tier{text-align:center;font-size:11px;font-weight:700;color:var(--ink-3)}.tier i{display:grid;place-items:center;width:44px;height:44px;margin:0 auto 4px;border-radius:14px;background:var(--surface-2);font-style:normal;font-size:20px}
+.tier.on{color:var(--ink)}.tier.on i{background:var(--zenith);box-shadow:var(--shadow-1)}
+.lrow{display:flex;align-items:center;gap:12px;padding:10px 4px;border-bottom:1px solid var(--line)}
+.lrow:last-child{border:0}.rk{width:22px;font-weight:800;color:var(--ink-3)}
+.av{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-size:18px;background:var(--brand-soft)}
+.lrow .xp{margin-left:auto;font-weight:800}
+.lrow.me{background:var(--zenith-soft);border-radius:var(--r-md);padding-inline:10px}
+.zone{font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:8px 4px 2px}.up{color:var(--ok)}.down{color:var(--retry)}
+.quest{display:flex;align-items:center;gap:12px}.quest .meter{flex:1}
+</style>
+</head>
+<body>
+<p class="note"><strong>ZENITH design mockup.</strong> Sample names and numbers are placeholders for layout only; production screens use real database records. Left to right: Today, Lesson reader, Climb (weekly class league).</p>
+<div class="row">
+
+<!-- TODAY -->
+<div class="phone"><div class="scroll">
+  <div class="top"><div class="logo"><svg width="26" height="26" viewBox="0 0 32 32"><path d="M2 27 13 7l5 9 3-5 9 16z" fill="var(--brand)"/><circle cx="23" cy="8" r="3.2" fill="var(--zenith)"/></svg>ZENITH</div>
+  <div class="chips"><span class="chip z">🔥 6</span><span class="chip">⚡ 240 XP</span></div></div>
+  <h1>Good evening, Aarav</h1><p class="muted" style="margin-bottom:14px">Class 7 · CBSE</p>
+  <div class="hero">
+    <span class="tag">Your next step · 12 min</span>
+    <h1 style="margin:4px 0 2px;color:#fff">Negative numbers on a number line</h1>
+    <div class="why">💡<span>You missed 2 of 3 questions on −3 + 5. This lesson builds the idea first.</span></div>
+    <div class="path"><i class="dot on"></i><i class="bar on"></i><i class="dot on"></i><i class="bar"></i><i class="dot"></i><i class="bar"></i><i class="dot"></i></div>
+    <button class="btn block" style="margin-top:16px">Start lesson →</button>
+  </div>
+  <h2 style="margin-bottom:8px">Learn</h2>
+  <div class="subj"><div class="tile m">Maths<small>6 chapters</small></div><div class="tile s">Science<small>Coming soon</small></div></div>
+  <div class="card" style="margin-top:14px"><h2>Assigned by Ms. Rao</h2><p class="muted">Integers: practice set · due Friday</p><div class="meter" style="--subject:var(--maths)"><b style="width:40%"></b></div><span class="muted">2 of 5 done</span></div>
+</div>
+<nav class="nav"><a class="on"><i>🏠</i>Today</a><a><i>📘</i>Learn</a><a><i>🎯</i>Practice</a><a><i>⛰️</i>Climb</a><a><i>💬</i>Ask</a></nav></div>
+
+<!-- LESSON -->
+<div class="phone lesson"><div class="scroll">
+  <div class="top"><span class="muted">← Integers</span><span class="chip">3 / 7</span></div>
+  <div class="prog"><span class="on"></span><span class="on"></span><span class="on"></span><span></span><span></span><span></span><span></span></div>
+  <div class="prereq">🧭<span><strong>Strengthen this first:</strong> Class 6 · Counting backwards. We found a gap here. <u>Open 5-min refresher</u></span></div>
+  <span class="tag" style="color:var(--subject)">3 · Moving left of zero</span>
+  <h1 style="margin:4px 0">Subtracting walks you left</h1>
+  <p>On a <span class="kw">number line</span>, adding moves right and subtracting moves left. Start at 2 and take 5 steps left.</p>
+  <svg class="nline" viewBox="0 0 340 70" width="100%" role="img" aria-label="Number line from minus 4 to 4 with an arrow from 2 to minus 3"><line x1="10" y1="40" x2="330" y2="40" stroke="var(--ink-3)" stroke-width="3" stroke-linecap="round"/>
+  <g font-size="13" font-weight="700" fill="var(--ink-2)" text-anchor="middle"><text x="30" y="64">−4</text><text x="80" y="64">−3</text><text x="130" y="64">−2</text><text x="180" y="64">−1</text><text x="230" y="64">0</text><text x="280" y="64">1</text></g>
+  <path d="M280 30 C 230 -6, 120 -6, 80 30" fill="none" stroke="var(--subject)" stroke-width="4" stroke-linecap="round" stroke-dasharray="1 9"/><circle cx="280" cy="40" r="8" fill="var(--zenith)"/><circle cx="80" cy="40" r="8" fill="var(--subject)"/></svg>
+  <div class="callout"><strong>Watch out:</strong> 2 − 5 is not 3. The answer lands <em>left</em> of zero.</div>
+  <h2 style="margin:14px 0 8px">Think first, then check</h2>
+  <p style="font-size:var(--fs-md);margin:0 0 10px">What is 2 − 5?</p>
+  <div class="opt"><b>A</b>3</div><div class="opt sel"><b>B</b>−3</div><div class="opt"><b>C</b>−7</div>
+  <button class="btn block">Check my answer</button>
+</div>
+<nav class="nav"><a><i>🏠</i>Today</a><a class="on"><i>📘</i>Learn</a><a><i>🎯</i>Practice</a><a><i>⛰️</i>Climb</a><a><i>💬</i>Ask</a></nav></div>
+
+<!-- CLIMB -->
+<div class="phone"><div class="scroll">
+  <div class="top"><h1>Climb</h1><span class="chip z">Ridge league</span></div>
+  <p class="muted">Class 7B · resets in 3 days. Ranked by growth XP, so improving beats grinding.</p>
+  <div class="tiers"><div class="tier"><i>🌱</i>Foothill</div><div class="tier on"><i>⛰️</i>Ridge</div><div class="tier"><i>🏔️</i>Summit</div><div class="tier"><i>☀️</i>Zenith</div></div>
+  <div class="card" style="padding:6px 12px">
+    <div class="zone up">▲ Moves up</div>
+    <div class="lrow"><span class="rk">1</span><span class="av">🦊</span><span>Kiwi</span><span class="xp">312</span></div>
+    <div class="lrow"><span class="rk">2</span><span class="av">🐼</span><span>Panda</span><span class="xp">290</span></div>
+    <div class="lrow me"><span class="rk">3</span><span class="av">🚀</span><span><strong>You</strong></span><span class="xp">240</span></div>
+    <div class="zone" style="color:var(--ink-3)">Stays</div>
+    <div class="lrow"><span class="rk">4</span><span class="av">🦉</span><span>Owl</span><span class="xp">205</span></div>
+    <div class="zone down">▼ Moves down</div>
+    <div class="lrow"><span class="rk">5</span><span class="av">🐢</span><span>Turtle</span><span class="xp">96</span></div>
+  </div>
+  <div class="card"><h2>Class goal</h2><p class="muted">80% of us secure on Integers by Friday</p><div class="meter" style="--subject:var(--science)"><b style="width:62%"></b></div><span class="muted">62% there · you can help by finishing the practice set</span></div>
+  <div class="card"><h2>Today's quests</h2>
+    <div class="quest" style="margin:8px 0"><span>🎯</span><div style="flex:1"><span class="muted">Fix one weak concept</span><div class="meter"><b style="width:100%"></b></div></div><span>✓</span></div>
+    <div class="quest"><span>🔗</span><div style="flex:1"><span class="muted">3 correct in a row</span><div class="meter"><b style="width:66%"></b></div></div><span class="muted">2/3</span></div></div>
+</div>
+<nav class="nav"><a><i>🏠</i>Today</a><a><i>📘</i>Learn</a><a><i>🎯</i>Practice</a><a class="on"><i>⛰️</i>Climb</a><a><i>💬</i>Ask</a></nav></div>
+
+</div>
+</body>
+</html>

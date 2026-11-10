@@ -3,7 +3,7 @@ from __future__ import annotations
 
 import uuid
 
-from app.core.memo import memo
+from app.core.memo import memo, per_request
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
@@ -11,6 +11,7 @@ from app.engine import bkt, graph
 from app.models import Concept, ConceptEdge, ConceptState, LearnerRating
 
 
+@per_request
 def edges(db: Session) -> list[tuple[str, str]]:
     return [(a, b) for a, b in db.execute(select(ConceptEdge.prereq_id, ConceptEdge.concept_id))]
 

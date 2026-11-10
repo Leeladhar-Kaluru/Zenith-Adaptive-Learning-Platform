@@ -44,8 +44,16 @@ def chapter_concept_ids(db: Session, chapter_id: uuid.UUID) -> list[str]:
     return list(memo(db, "chapter_concepts", load).get(chapter_id, []))
 
 
+def progress_rows(db: Session, student_id: uuid.UUID) -> list[tuple[uuid.UUID, str]]:
+    """The student's lesson progress, most recent first, loaded once per request and shared by every page section."""
+    def load():
+        return [(lid, st) for lid, st in db.execute(select(LessonProgress.lesson_id, LessonProgress.status).where(LessonProgress.student_id == student_id)
+                                                     .order_by(LessonProgress.updated_at.desc().nulls_last(), LessonProgress.started_at.desc()))]
+    return list(memo(db, ("progress_rows", student_id), load))
+
+
 def _progress_map(db: Session, student_id: uuid.UUID) -> dict[uuid.UUID, str]:
-    return {lid: s for lid, s in db.execute(select(LessonProgress.lesson_id, LessonProgress.status).where(LessonProgress.student_id == student_id))}
+    return dict(progress_rows(db, student_id))
 
 
 def chapter_card(db: Session, ch: Chapter, student_id: uuid.UUID | None, prog: dict) -> dict:
@@ -139,10 +147,12 @@ def _resolve_blocks(db: Session, lv: LessonVersion) -> list[dict]:
 
 def lesson_payload(db: Session, profile: Profile, lesson_id: uuid.UUID, version_id: uuid.UUID | None = None) -> dict:
     """Published lesson for students. `version_id` previews an unpublished version for reviewers only (caller checks the role)."""
-    lesson = db.get(Lesson, lesson_id)
-    if lesson is None:
+    # one joined lookup for the lesson, its chapter and the version to show
+    base = select(Lesson, Chapter).join(Chapter, Chapter.id == Lesson.chapter_id).where(Lesson.id == lesson_id)
+    row = db.execute(base).first()
+    if row is None:
         raise NotFound("Lesson not found.")
-    ch = db.get(Chapter, lesson.chapter_id)
+    lesson, ch = row
     q = select(LessonVersion).where(LessonVersion.lesson_id == lesson.id)
     q = q.where(LessonVersion.id == version_id) if version_id else q.where(LessonVersion.status == "published", LessonVersion.language == "en")
     lv = db.scalar(q.limit(1))

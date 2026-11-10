@@ -74,13 +74,14 @@ def next_steps(db: Session, profile: Profile) -> list[dict]:
         cands.append(policy.step("review", "review", f"Revise {due[0]['title']}" + (f" and {len(due) - 1} more" if len(due) > 1 else ""),
                                  "Spaced revision: you knew this, and a quick refresher keeps it.", "/revision", 5 + 2 * len(due), len(due)))
 
-    cont = db.execute(select(LessonProgress.lesson_id).where(LessonProgress.student_id == sid, LessonProgress.status == "started").order_by(LessonProgress.updated_at.desc().nulls_last(), LessonProgress.started_at.desc()).limit(1)).first()
+    prog_rows = library.progress_rows(db, sid)
+    cont = next(((lid,) for lid, st in prog_rows if st == "started"), None)
     if cont:
         v = db.scalar(select(LessonVersion).where(LessonVersion.lesson_id == cont[0], LessonVersion.status == "published", LessonVersion.language == "en"))
         if v:
             cands.append(policy.step("continue", "lesson", f"Continue: {v.title}", "You started this lesson.", f"/lesson/{cont[0]}", v.minutes))
 
-    done = {l for (l,) in db.execute(select(LessonProgress.lesson_id).where(LessonProgress.student_id == sid, LessonProgress.status == "completed"))}
+    done = {lid for lid, st in prog_rows if st == "completed"}
     for ch in chapters:
         nxt = next(((l, v) for l, v in library._published_lessons(db, ch.id) if l.id not in done), None)
         if nxt:
@@ -110,7 +111,7 @@ def today(db: Session, profile: Profile) -> dict:
     xp = engage.total_xp(db, sid)
     row = engage.today_row(db, sid)
     q = engage.quests(db, sid)
-    recent = db.execute(select(LessonProgress.lesson_id, LessonProgress.status).where(LessonProgress.student_id == sid).order_by(LessonProgress.updated_at.desc().nulls_last(), LessonProgress.started_at.desc()).limit(3)).all()
+    recent = library.progress_rows(db, sid)[:3]
     recent_out = []
     for lid, status in recent:
         v = db.scalar(select(LessonVersion).where(LessonVersion.lesson_id == lid, LessonVersion.status == "published"))
@@ -131,7 +132,7 @@ def today(db: Session, profile: Profile) -> dict:
 def milestones(db: Session, sid: uuid.UUID) -> list[dict]:
     stt = st_svc.states(db, sid)
     secure = sum(1 for s in stt.values() if s["status"] == "secure")
-    lessons = db.scalar(select(func.count(LessonProgress.lesson_id)).where(LessonProgress.student_id == sid, LessonProgress.status == "completed")) or 0
+    lessons = sum(1 for _, st in library.progress_rows(db, sid) if st == "completed")
     answers = db.scalar(select(func.count(EvidenceEvent.id)).where(EvidenceEvent.student_id == sid)) or 0
     out = []
     for label, val, steps_ in (("Topics made secure", secure, (1, 3, 5, 10, 25)), ("Lessons finished", lessons, (1, 5, 10, 25, 50)), ("Questions answered", answers, (10, 50, 100, 250, 500))):
@@ -150,7 +151,7 @@ def overview(db: Session, profile: Profile) -> dict:
         concepts.append({"id": c.id, "title": c.title, "grade": c.grade, "subject": c.subject_id, "band": s["status"], "pKnown": round(s["p"], 3),
                          "evidence": s["n"], "correct": s["c"], "confidence": bkt.uncertainty(s["n"]), "level": bkt.level(s["p"], s["n"]),
                          "lastAt": s["last"].isoformat() if s["last"] else None})
-    prog = {l for (l,) in db.execute(select(LessonProgress.lesson_id).where(LessonProgress.student_id == sid, LessonProgress.status == "completed"))}
+    prog = {lid for lid, st in library.progress_rows(db, sid) if st == "completed"}
     chapters = []
     for ch in _chapters_for(db, profile):
         lessons = library._published_lessons(db, ch.id)
@@ -163,8 +164,8 @@ def overview(db: Session, profile: Profile) -> dict:
                          "lessons": len(lessons), "concepts": counts, "conceptTotal": len(cids)})
     since = _now() - timedelta(days=28)
     from app.models import DailyActivity
-    activity = [{"day": d.isoformat(), "answers": a, "correct": c, "xp": x} for d, a, c, x in db.execute(
-        select(DailyActivity.day, DailyActivity.answers, DailyActivity.correct, DailyActivity.xp).where(DailyActivity.student_id == sid, DailyActivity.day >= since.date()).order_by(DailyActivity.day))]
+    activity = [{"day": r.day.isoformat(), "answers": r.answers, "correct": r.correct, "xp": r.xp}
+                for r in sorted(engage.daily_rows(db, sid), key=lambda r: r.day) if r.day >= since.date()]
     return {"concepts": concepts, "chapters": chapters, "activity": activity, "streak": engage.streak_info(db, sid), "xp": streaks.level(engage.total_xp(db, sid)),
             "badges": engage.badge_catalog(db, sid), "mistakes": mistake_count(db, sid), "revisionDue": len(due_revision(db, sid)), "milestones": milestones(db, sid)}
 

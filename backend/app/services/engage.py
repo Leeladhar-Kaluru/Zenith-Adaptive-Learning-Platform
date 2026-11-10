@@ -4,6 +4,7 @@ from __future__ import annotations
 import uuid
 from datetime import date, datetime, timedelta, timezone
 
+from app.core.memo import memo
 from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
@@ -30,13 +31,19 @@ def total_xp(db: Session, student_id: uuid.UUID) -> int:
     return int(db.scalar(select(func.coalesce(func.sum(XpEvent.amount), 0)).where(XpEvent.student_id == student_id)) or 0)
 
 
+def daily_rows(db: Session, student_id: uuid.UUID) -> list[DailyActivity]:
+    """All of the student's daily activity rows, loaded once per request (one row per day they used ZENITH)."""
+    return list(memo(db, ("daily_rows", student_id), lambda: list(db.scalars(select(DailyActivity).where(DailyActivity.student_id == student_id)))))
+
+
 def streak_info(db: Session, student_id: uuid.UUID) -> dict:
-    days = {d for (d,) in db.execute(select(DailyActivity.day).where(DailyActivity.student_id == student_id, (DailyActivity.answers > 0) | (DailyActivity.lessons > 0)))}
+    days = {r.day for r in daily_rows(db, student_id) if r.answers > 0 or r.lessons > 0}
     return streaks.streak(days, _today())
 
 
 def today_row(db: Session, student_id: uuid.UUID) -> DailyActivity | None:
-    return db.get(DailyActivity, (student_id, _today()))
+    today = _today()
+    return next((r for r in daily_rows(db, student_id) if r.day == today), None)
 
 
 def quests(db: Session, student_id: uuid.UUID) -> list[dict]:

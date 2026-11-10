@@ -3,10 +3,14 @@ import uuid
 
 import pytest
 
-_url = os.environ.get("SETU_TEST_DATABASE_URL")
+# Tests run against Supabase, in their own schema (zenith_test). They TRUNCATE tables, so they must never see real data.
+from dotenv import dotenv_values  # noqa: E402
+
+_url = os.environ.get("SETU_TEST_DATABASE_URL") or dotenv_values(os.path.join(os.path.dirname(__file__), "..", ".env")).get("DATABASE_URL")
 if not _url:
-    raise RuntimeError("SETU_TEST_DATABASE_URL is required (start backend/docker-compose.test.yml).")
+    raise RuntimeError("Set SETU_TEST_DATABASE_URL, or DATABASE_URL in backend/.env (a Supabase connection string).")
 os.environ["DATABASE_URL"] = _url
+os.environ["DB_SCHEMA"] = "zenith_test"
 os.environ["APP_ENV"] = "test"
 os.environ["ZENITH_DEV_AUTH"] = "true"
 os.environ["ENABLE_REMOTE_AI"] = "false"
@@ -26,6 +30,7 @@ from app.main import app  # noqa: E402
 from app.models import Base, Board, Profile, Subject  # noqa: E402
 
 KEEP = {"alembic_version"}
+assert os.environ["DB_SCHEMA"] == "zenith_test", "tests must only ever run in the zenith_test schema"
 
 
 @pytest.fixture(scope="session", autouse=True)
@@ -46,7 +51,7 @@ def db():
         s.close()
         names = [t.name for t in Base.metadata.sorted_tables if t.name not in KEEP]
         with engine.begin() as c:
-            c.execute(text("TRUNCATE TABLE " + ", ".join(f'"{n}"' for n in names) + " RESTART IDENTITY CASCADE"))
+            c.execute(text("TRUNCATE TABLE " + ", ".join(f'"zenith_test"."{n}"' for n in names) + " RESTART IDENTITY CASCADE"))
 
 
 @pytest.fixture()

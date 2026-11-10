@@ -11,6 +11,8 @@ class Settings(BaseSettings):
     FRONTEND_ORIGINS: str = "http://localhost:5173,http://127.0.0.1:5173"
 
     DATABASE_URL: str
+    # All ZENITH tables live in this PostgreSQL schema (production: zenith; tests: zenith_test). Never the legacy public schema.
+    DB_SCHEMA: str = "zenith"
     # Sized for Supabase transaction pooler (port 6543)
     POOL_SIZE: int = 5
     MAX_OVERFLOW: int = 5

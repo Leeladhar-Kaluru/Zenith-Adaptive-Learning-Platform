@@ -7,7 +7,7 @@ backend_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 if backend_dir not in sys.path:
     sys.path.insert(0, backend_dir)
 
-from sqlalchemy import engine_from_config
+from sqlalchemy import engine_from_config, text
 from sqlalchemy import pool
 
 from alembic import context
@@ -44,10 +44,18 @@ def run_migrations_online() -> None:
         poolclass=pool.NullPool,
     )
 
+    schema = settings.DB_SCHEMA
+    if schema == "public" or not schema.replace("_", "").isalnum():
+        raise RuntimeError("Refusing to migrate: DB_SCHEMA must be a dedicated ZENITH schema, never 'public'.")
     with connectable.connect() as connection:
+        # Create the dedicated schema (additive) and build everything inside it. The legacy public schema is never touched.
+        connection.execute(text(f'CREATE SCHEMA IF NOT EXISTS "{schema}"'))
+        connection.execute(text(f'SET search_path TO "{schema}"'))
+        connection.commit()
         context.configure(
             connection=connection,
-            target_metadata=target_metadata
+            target_metadata=target_metadata,
+            version_table_schema=schema,
         )
 
         with context.begin_transaction():

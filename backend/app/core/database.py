@@ -6,6 +6,10 @@ from app.core.config import settings
 # Supabase's session-mode pooler caps the whole project at 15 clients. Each
 # process keeps a small pool (API 2+2, worker 1+1 via POOL_SIZE env) so the
 # API, the worker, and short-lived scripts never exhaust the shared cap.
+_SCHEMA = settings.DB_SCHEMA
+if not _SCHEMA.replace("_", "").isalnum():
+    raise RuntimeError("DB_SCHEMA must be letters, digits and underscores only")
+
 engine = create_engine(
     settings.DATABASE_URL,
     connect_args={
@@ -18,6 +22,9 @@ engine = create_engine(
     max_overflow=settings.MAX_OVERFLOW,
     pool_timeout=settings.POOL_TIMEOUT,
     pool_use_lifo=True,
+    # Qualify every table with the schema in each statement. Works behind any pooler (including Supabase's
+    # transaction pooler, which does not keep session state such as search_path).
+    execution_options={"schema_translate_map": {None: _SCHEMA}},
 )
 
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)

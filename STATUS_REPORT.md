@@ -28,7 +28,7 @@ Plan and decisions: [docs/ZENITH_TRANSFORMATION_ASSESSMENT.md](docs/ZENITH_TRANS
 
 ### Verification (exact commands and results)
 
-- Backend: `pytest` against a disposable Docker PostgreSQL → **79 passed** (engines 22, streaks 8, CMS 12, API journeys 37).
+- Backend: `pytest` against Supabase in the `zenith_test` schema → **79 passed** (engines 22, streaks 8, CMS 12, API journeys 37). Docker is no longer used.
 - Frontend: `npx tsc -b && npx vite build` → passes. Entry bundle **126 kB gzip** (budget 170 kB).
 - Real stack, no mocks: backend on :8000 with the local database, frontend on :5180 through the Vite proxy.
   - Review screen showed real gate results; approving through the real UI published a lesson; a chapter stayed closed until all its lessons were published.
@@ -45,17 +45,16 @@ Plan and decisions: [docs/ZENITH_TRANSFORMATION_ASSESSMENT.md](docs/ZENITH_TRANS
 4. **Not built:** Explore labs (physics, chemistry, biology, maps), parent view, voice, in-app content editor (content is edited as files, reviewed in the app), coins (no use for them yet), Lighthouse run, Playwright browser tests.
 5. Hindi/Telugu **lesson text** is not translated; only Ask replies are AI-translated and labelled.
 
+### Database (Supabase only)
+
+- `zenith` schema created in your Supabase project by `alembic upgrade head`; 10 lesson drafts imported (`in_review`, nothing published). The old SETU tables in `public` are untouched (27 tables, 8 profiles, 528 questions, verified after the migration).
+- `zenith_test` schema holds the automated tests' data; the tests refuse to run in any other schema.
+- Backups: `.github/workflows/backup.yml` (encrypted weekly dump to your Backblaze B2 bucket). **Inactive and untested** until you add the five GitHub secrets.
+
 ### Run it locally
 
-```powershell
-cd backend; docker compose -f docker-compose.test.yml up -d
-$env:DATABASE_URL="postgresql+psycopg://setu:setu_test@localhost:55432/setu_test"; $env:APP_ENV="local"; $env:ZENITH_DEV_AUTH="true"
-python -m alembic upgrade head; python -m app.cli import ../content
-python -m uvicorn app.main:app --port 8000
-cd ../frontend; npm run dev        # proxies /api to :8000
-python -m app.cli promote <email> reviewer   # then approve lessons at /review
-```
+See [README.md](README.md). In short: put your Supabase `DATABASE_URL` in `backend/.env`, run `alembic upgrade head`, `app.cli import ../content`, start uvicorn and `npm run dev`.
 
 ### Tools used
 
-pytest, Docker (disposable PostgreSQL), Alembic, SymPy, npm/tsc/vite, Playwright (screenshots), Supabase MCP (read-only), `skills` CLI (five vetted skills installed). Stitch MCP unavailable.
+pytest, Alembic, SymPy, npm/tsc/vite, Playwright (screenshots), Supabase MCP (read-only), `skills` CLI (five vetted skills installed). Stitch MCP unavailable.

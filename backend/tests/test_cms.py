@@ -152,7 +152,7 @@ def test_database_refuses_published_content_without_a_reviewer(db, tmp_path):
     importer.import_tree(db, load(tmp_path))
     lv = versions(db)["Moving on the line"]
     with pytest.raises(IntegrityError):
-        db.execute(text("update lesson_versions set status='published' where id=:i"), {"i": lv.id})
+        db.query(LessonVersion).filter(LessonVersion.id == lv.id).update({"status": "published"})
         db.commit()
     db.rollback()
 

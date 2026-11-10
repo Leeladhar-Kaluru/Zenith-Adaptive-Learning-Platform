@@ -46,3 +46,10 @@ The first application key was pasted in chat. In Backblaze create a new key limi
 
 ## 9. Later (needs your explicit approval)
 Dropping the legacy SETU tables in the `public` schema.
+
+## Emails through Resend (instead of Supabase's built-in email)
+Supabase Auth sends sign-up/reset emails; point it at Resend's SMTP. No code change is needed.
+1. Resend -> Domains -> add a domain you own and add the DNS records it shows (SPF/DKIM). Without a verified domain Resend only delivers to your own account email, so real students would not receive anything.
+2. Resend -> API Keys -> create a key with "Sending access".
+3. Supabase -> Authentication -> Emails -> SMTP Settings -> enable Custom SMTP: host `smtp.resend.com`, port `465`, username `resend`, password = the API key, sender e.g. `ZENITH <no-reply@yourdomain>`.
+4. Rename the templates so they say ZENITH.

@@ -1,0 +1,6 @@
+# Needed to run migrations, import content and make backups (laptop or CI), not by the production API.
+-r requirements.txt
+alembic>=1.13.0
+pyyaml>=6.0
+sympy>=1.12
+cryptography>=43.0

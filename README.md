@@ -51,7 +51,7 @@ Local AI with LM Studio: set `LLM_PROVIDER=lmstudio`, `LLM_BASE_URL=http://local
 
 ## Backups
 
-Supabase's free plan has no automatic backups. `.github/workflows/backup.yml` dumps the `zenith` schema weekly, encrypts it with your public age key, and uploads it to your private Backblaze B2 bucket. It does nothing until the secrets `BACKUP_DATABASE_URL`, `AGE_RECIPIENT`, `B2_KEY_ID`, `B2_APP_KEY` and `B2_BUCKET` are added to the GitHub repository.
+Supabase's free plan has no automatic backups. `.github/workflows/backup.yml` runs weekly (Sunday 20:30 UTC): it dumps the `zenith` schema, encrypts it with AES-256-GCM using your `BACKUP_KEY`, uploads it to the private Backblaze bucket and then downloads and verifies the newest file. A B2 lifecycle rule deletes backups after 60 days (`python -m app.cli retention 60`), so storage stays small. Add the GitHub secrets `BACKUP_DATABASE_URL`, `B2_KEY_ID`, `B2_APP_KEY`, `B2_BUCKET`, `BACKUP_KEY` (see docs/DEPLOY.md). Commands: `backup`, `backups`, `verify`, `restore <file|latest> <new_schema>`, `retention <days>`, `backup-key`. Keep a copy of `BACKUP_KEY` in a password manager; without it no backup can be read.
 
 ## Rules
 

@@ -49,7 +49,9 @@ Plan and decisions: [docs/ZENITH_TRANSFORMATION_ASSESSMENT.md](docs/ZENITH_TRANS
 
 - `zenith` schema created in your Supabase project by `alembic upgrade head`; 10 lesson drafts imported (`in_review`, nothing published). The old SETU tables in `public` are untouched (27 tables, 8 profiles, 528 questions, verified after the migration).
 - `zenith_test` schema holds the automated tests' data; the tests refuse to run in any other schema.
-- Backups: `.github/workflows/backup.yml` (encrypted weekly dump to your Backblaze B2 bucket). **Inactive and untested** until you add the five GitHub secrets.
+- Backups: encrypted (AES-256-GCM) dump to B2, tested live (backup, verify, restore into a scratch schema, row counts match), 60-day B2 retention set; weekly GitHub Actions job needs the five secrets in docs/DEPLOY.md.
+- Curriculum reference: content/reference/ncert_books.yaml holds facts only (book names and chapter counts, retrieved 2026-11-10). Chapter titles could not be read from the NCERT page automatically and no NCERT text is copied; new lessons are original, AI-assisted and need your approval.
+- Deploy files: vercel.json and api/index.py are written but untested until a Vercel project exists.
 
 ### Run it locally
 

@@ -1,0 +1,10 @@
+# ZENITH runtime dependencies (what the production API needs; kept small for serverless).
+# Keep identical to the root requirements.txt, which Vercel installs.
+fastapi>=0.115.0
+sqlalchemy>=2.0.30
+psycopg[binary]>=3.1.18
+pydantic>=2.7.0
+pydantic-settings>=2.2.0
+python-dotenv>=1.0.1
+httpx>=0.27.0
+tzdata>=2024.1

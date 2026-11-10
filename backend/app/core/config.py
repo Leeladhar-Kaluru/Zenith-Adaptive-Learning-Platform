@@ -1,7 +1,7 @@
 import os
 from typing import List, Optional
 from pydantic_settings import BaseSettings, SettingsConfigDict
-from pydantic import Field
+from pydantic import AliasChoices, Field
 
 class Settings(BaseSettings):
     APP_ENV: str = "local"
@@ -30,6 +30,11 @@ class Settings(BaseSettings):
     LLM_MODEL: str = "openai/gpt-oss-120b"
     LLM_FALLBACK_MODEL: Optional[str] = None
     TUTOR_DAILY_LIMIT: int = 40
+    # Backups (Backblaze B2, private bucket). The key id and bucket name are not secrets; the application key and BACKUP_KEY are.
+    B2_KEY_ID: Optional[str] = None
+    B2_APP_KEY: Optional[str] = Field(default=None, validation_alias=AliasChoices("B2_APP_KEY", "BACK_BLAZE_API_KEY"))
+    B2_BUCKET: Optional[str] = None
+    BACKUP_KEY: Optional[str] = None
     XP_DAILY_CAP: int = 300
 
     model_config = SettingsConfigDict(

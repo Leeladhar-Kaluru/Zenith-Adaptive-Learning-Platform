@@ -1,0 +1,20 @@
+# Facts only: which official NCERT books exist for Classes 6-10 and how many chapters each has.
+# Source: https://ncert.nic.in/textbook.php (book list as rendered), retrieved 2026-11-10.
+# No NCERT text, exercises, figures or chapter wording is stored here. Lessons in content/chapters are original.
+# Chapter titles are intentionally not copied; they are written by our own authors/reviewers when a chapter is built.
+source: https://ncert.nic.in/textbook.php
+retrieved: 2026-11-10
+books:
+  - {grade: 6,  subject: mathematics, book: "Ganita Prakash",          chapters: 10}
+  - {grade: 6,  subject: science,     book: "Curiosity",               chapters: 12}
+  - {grade: 7,  subject: mathematics, book: "Ganita Prakash Part I",   chapters: 8}
+  - {grade: 7,  subject: mathematics, book: "Ganita Prakash Part II",  chapters: 7}
+  - {grade: 7,  subject: science,     book: "Curiosity",               chapters: 12}
+  - {grade: 8,  subject: mathematics, book: "Ganita Prakash Part I",   chapters: 7}
+  - {grade: 8,  subject: mathematics, book: "Ganita Prakash Part II",  chapters: 7}
+  - {grade: 8,  subject: science,     book: "Curiosity",               chapters: 13}
+  - {grade: 9,  subject: mathematics, book: "Ganita Manjari Part I",   chapters: 8}
+  - {grade: 9,  subject: mathematics, book: "Ganita Manjari Part II",  chapters: 6}
+  - {grade: 9,  subject: science,     book: "Exploration",             chapters: 13}
+  - {grade: 10, subject: mathematics, book: "Mathematics",             chapters: 14}
+  - {grade: 10, subject: science,     book: "Science",                 chapters: 13}

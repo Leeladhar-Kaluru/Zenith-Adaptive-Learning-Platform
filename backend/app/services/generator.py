@@ -62,7 +62,7 @@ def level_for(db: Session, student_id: uuid.UUID, concept_id: str, p_known: floa
 
 
 def next_generated(db: Session, profile: Profile, concept_ids: list[str], states: dict[str, dict], *, harder: bool = False,
-                   recent: set[str] | None = None, rng: random.Random | None = None) -> tuple[Item, int, str] | None:
+                   recent: set[str] | None = None, rng: random.Random | None = None, level: int | None = None) -> tuple[Item, int, str] | None:
     """Return (item, level, reason) or None, in which case the caller serves a stored question instead."""
     rng = rng or random.Random()
     recent = recent or set()
@@ -71,7 +71,8 @@ def next_generated(db: Session, profile: Profile, concept_ids: list[str], states
         return None
     # work where the learner model says help is most needed; unseen concepts come first
     concept = min(options, key=lambda c: (states.get(c, {}).get("p", bkt.P_INIT), rng.random()))
-    level, reason = level_for(db, profile.id, concept, states.get(concept, {}).get("p"))
+    lv, reason = level_for(db, profile.id, concept, states.get(concept, {}).get("p"))
+    level = min(5, max(1, level)) if level else lv
     if harder:
         level = min(5, level + 1)
     for _ in range(8):

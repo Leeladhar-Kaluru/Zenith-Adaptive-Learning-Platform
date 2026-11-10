@@ -139,13 +139,19 @@ def unlocks(db: Session, profile: Profile) -> dict:
 
 
 # ---- assessments -------------------------------------------------------------------------------
-KINDS = ("diagnostic", "chapter_test", "topic_test", "revision")
+KINDS = ("diagnostic", "chapter_test", "topic_test", "revision", "boss")
+BOSS_UNLOCK = 0.70
+BOSS_PASS = 0.75
+BOSS_ITEMS = 8
+BOSS_MIN_EVIDENCE = 3
 
 
 def create_assessment(db: Session, profile: Profile, kind: str, *, chapter: str | None = None, concept: str | None = None, timed: bool = False,
                       assignment_id: uuid.UUID | None = None) -> AssessmentSession:
     if kind not in KINDS:
         raise PracticeError("Unknown test type.")
+    if kind == "boss":
+        return create_boss(db, profile, chapter, timed=timed)
     e = st_svc.edges(db)
     ch = None
     if kind in ("diagnostic", "chapter_test"):
@@ -198,6 +204,64 @@ def create_assessment(db: Session, profile: Profile, kind: str, *, chapter: str 
     chosen.sort(key=lambda c: {"intro": 0, "standard": 1, "challenge": 2}[c["difficulty"]])
     s = AssessmentSession(student_id=profile.id, kind=kind, chapter_id=ch.id if ch else None, assignment_id=assignment_id,
                           concept_ids=cids, item_ids=[c["id"] for c in chosen], time_limit_s=(len(chosen) * 90 if timed else None))
+    db.add(s)
+    db.commit()
+    return s
+
+
+def boss_status(db: Session, profile: Profile, chapter_slug: str) -> dict:
+    """Is the chapter boss quiz open for this student? It opens when the student has real evidence on every topic and mean mastery is high enough."""
+    ch = db.scalar(select(Chapter).where(Chapter.slug == chapter_slug))
+    if ch is None or ch.status != "published":
+        raise PracticeError("That chapter is not available yet.", 404)
+    cids = [c for (c,) in db.execute(select(ChapterConcept.concept_id).join(Concept, Concept.id == ChapterConcept.concept_id)
+                                    .where(ChapterConcept.chapter_id == ch.id, ChapterConcept.role != "foundation"))]
+    stt = st_svc.states(db, profile.id, cids)
+    rows = [{"id": c, "title": db.get(Concept, c).title, "p": round(stt.get(c, {}).get("p", 0.0), 3), "n": stt.get(c, {}).get("n", 0)} for c in cids]
+    mean = round(sum(r["p"] for r in rows) / len(rows), 3) if rows else 0.0
+    thin = [r for r in rows if r["n"] < BOSS_MIN_EVIDENCE]
+    if not rows:
+        reason = "This chapter has no topics yet."
+    elif thin:
+        reason = f"Answer at least {BOSS_MIN_EVIDENCE} questions on {thin[0]['title']} first so ZENITH can tell how well you know it."
+    elif mean < BOSS_UNLOCK:
+        reason = f"Your mastery in this chapter is {round(mean * 100)}%. The boss quiz opens at {round(BOSS_UNLOCK * 100)}%. Practise your weakest topic to get there."
+    else:
+        reason = ""
+    return {"chapter": ch.slug, "unlocked": bool(rows) and not reason, "meanMastery": mean, "needed": BOSS_UNLOCK, "concepts": rows, "reason": reason,
+            "passMark": BOSS_PASS}
+
+
+def create_boss(db: Session, profile: Profile, chapter: str | None, *, timed: bool = False) -> AssessmentSession:
+    if not chapter:
+        raise PracticeError("Choose a chapter.")
+    status = boss_status(db, profile, chapter)
+    if not status["unlocked"]:
+        raise PracticeError(status["reason"], 409)
+    ch = db.scalar(select(Chapter).where(Chapter.slug == chapter))
+    cids = [r["id"] for r in status["concepts"]]
+    stt = st_svc.states(db, profile.id)
+    rng = random.Random()
+    chosen: list[Item] = []
+    templated = [c for c in cids if templates_for(c)]
+    for i in range(BOSS_ITEMS):
+        c = templated[i % len(templated)] if templated else None
+        if c is None:
+            break
+        level, _ = generator.level_for(db, profile.id, c, stt.get(c, {}).get("p"))
+        got = generator.next_generated(db, profile, [c], stt, recent={str(x.id) for x in chosen}, rng=rng, level=max(4, level))
+        if got:
+            chosen.append(got[0])
+    # topics without question templates use their stored questions, hardest first
+    others = [c for c in cids if not templates_for(c)]
+    if others and len(chosen) < BOSS_ITEMS:
+        stored = [x for x in pool(db, others, ("test", "practice")) if x["id"] not in {str(c.id) for c in chosen}]
+        stored.sort(key=lambda x: {"challenge": 0, "standard": 1, "intro": 2}[x["difficulty"]])
+        chosen += [x["obj"] for x in stored[: BOSS_ITEMS - len(chosen)]]
+    if not chosen:
+        raise PracticeError("No questions are available for this chapter yet.", 409)
+    s = AssessmentSession(student_id=profile.id, kind="boss", chapter_id=ch.id, concept_ids=cids, item_ids=[str(x.id) for x in chosen],
+                          time_limit_s=(len(chosen) * 90 if timed else None))
     db.add(s)
     db.commit()
     return s
@@ -259,6 +323,7 @@ def submit(db: Session, profile: Profile, s: AssessmentSession) -> dict:
                                 else (f"/lesson/{les['lessonId']}" if les else f"/practice?concept={c}")})
     summary = {"right": right, "total": total, "answered": len(evs), "accuracy": round(right / total, 3) if total else 0,
                "byConcept": by_concept, "mistakes": mistakes, "suggestions": suggestions,
+               **({"boss": True, "passed": (right / total if total else 0) >= BOSS_PASS, "passMark": BOSS_PASS} if s.kind == "boss" else {}),
                "note": "A test score is one signal. The concept bands show what you understand, and how sure we are."}
     s.status, s.submitted_at, s.summary = "submitted", _now(), summary
     db.commit()

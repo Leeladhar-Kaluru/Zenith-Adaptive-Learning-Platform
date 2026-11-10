@@ -19,7 +19,7 @@ function Results({ r, session }: { r: TestSummary; session: TestSession }) {
   useEffect(() => { if (r.accuracy >= 0.8) fx.confetti(); }, []); // eslint-disable-line react-hooks/exhaustive-deps
   return (
     <div className={s.q}>
-      <div><span className={s.tag}>Results</span><h1 className={s.title}><CountUp to={r.right} /> of {r.total} right</h1><p className={s.lead}>{r.answered < r.total ? `${r.total - r.answered} question${r.total - r.answered === 1 ? ' was' : 's were'} not answered. ` : ''}{r.note}</p></div>
+      <div><span className={s.tag}>Results</span><h1 className={s.title}><CountUp to={r.right} /> of {r.total} right</h1>{r.boss && <Chip tone={r.passed ? 'ok' : 'hi'}>{r.passed ? 'Boss beaten' : `Not yet. You need ${Math.round((r.passMark ?? 0.75) * 100)} percent`}</Chip>}<p className={s.lead}>{r.answered < r.total ? `${r.total - r.answered} question${r.total - r.answered === 1 ? ' was' : 's were'} not answered. ` : ''}{r.note}</p></div>
       <Card><h3>By topic</h3><div className={s.stack} style={{ marginTop: 12 }}>{r.byConcept.map((c) => (
         <div key={c.conceptId} className={s.between}><div><strong>{c.title}</strong><div className="sm muted">{c.right} of {c.total} in this test · {c.evidence} answers in total · confidence {c.confidence}</div></div><Chip tone={TONE[c.band]}>{NAME[c.band]}</Chip></div>
       ))}</div></Card>

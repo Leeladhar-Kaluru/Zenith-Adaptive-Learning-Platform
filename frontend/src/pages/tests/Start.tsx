@@ -11,6 +11,7 @@ const COPY: Record<string, string> = {
   chapter_test: 'Questions from across the chapter. You see how you did on each topic at the end.',
   topic_test: 'A short test on one topic.',
   revision: 'Questions on topics that are due for revision.',
+  boss: 'The chapter boss quiz: harder questions made just for you across the whole chapter. Score 75 percent to beat it.',
 };
 
 export default function Start() {

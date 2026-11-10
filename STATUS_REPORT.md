@@ -87,3 +87,10 @@ Not done yet: mistake notebook and chapter boss quiz, more lessons (Science, Cla
 - All four simulations (equation, line graph, spinner, density) were exercised in a real browser against the local test stack.
 - Tests: 146 backend tests pass. An independent physics check caught and fixed a rounding bug in the density and pressure templates.
 - Still missing: Science for Classes 9-10 and more chapters, mistake notebook, boss quiz, signed-in walkthrough of the live site, monitoring.
+
+## Mistake notebook and chapter boss quiz (2026-11-10, later)
+
+- Notebook: `GET /progress/notebook` groups wrong answers by the misunderstanding behind them, with two real examples, the explanation and a link to a fresh question. A group closes after three correct answers in a row on the topic. Shown under My Progress > Mistakes.
+- Boss quiz: `GET /boss/{chapter}` says whether it is open and why not. It opens when every topic has at least 3 answers and mean mastery is 70 percent or more. `POST /assessments` with kind `boss` builds 8 generated questions at level 4 or 5 (stored hard questions for topics without templates). Pass mark 75 percent, reported honestly. Shown as a card on each chapter page.
+- Migration 003 relaxes one check constraint so the `boss` kind can be stored. NOT yet applied to production (needs approval). Until it is applied, creating a boss quiz in production would fail.
+- Tests: 152 backend tests pass. Both screens were checked in a real browser (locked boss card, grouped notebook).

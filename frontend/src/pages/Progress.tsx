@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useApi } from '../api/useApi';
-import type { Band, Gamification, Mistake, Overview } from '../api/types';
+import type { Band, Gamification, Notebook, Overview } from '../api/types';
 import { Avatar, Icon, TierBadge } from '../icons/Icon';
 import { TIERS } from '../icons/icons.mjs';
 import { Button, Card, Chip, CountUp, EmptyState, Progress as Bar, Reveal, Segmented, Skeleton } from '../ui/kit';
@@ -85,20 +85,22 @@ function Achievements() {
 
 function Mistakes() {
   const [all, setAll] = useState(false);
-  const { data, error, loading, reload } = useApi<Mistake[]>(`/progress/mistakes${all ? '?all=1' : ''}`);
+  const { data, error, loading, reload } = useApi<Notebook>(`/progress/notebook${all ? '?resolved=true' : ''}`);
   return (
     <div className={s.stack}>
-      <div className={s.between}><div><h2>Mistake notebook</h2><p className="muted sm">Questions you missed, with why. Get one right later and it is marked fixed.</p></div>
+      <div className={s.between}><div><h2>Mistake notebook</h2><p className="muted sm">Your mistakes grouped by the idea behind them. A group closes when you get that topic right three times in a row.</p></div>
         <Segmented label="Show" value={all ? 'all' : 'open'} onChange={(v) => setAll(v === 'all')} options={[{ value: 'open', label: 'To fix' }, { value: 'all', label: 'All' }]} /></div>
       {loading && !data && <Skeleton h={160} r={16} />}
       {error && !data && <EmptyState icon="wifiOff" title="Could not load" text={error.message} action={<Button onClick={reload} icon="refresh">Try again</Button>} />}
-      {data && data.length === 0 && <Card><EmptyState icon="check" title={all ? 'No mistakes yet' : 'Nothing to fix'} text="Mistakes you make while practising will collect here so you can learn from them." /></Card>}
-      {data?.map((m) => (
-        <Card key={m.itemId} flat><div className={s.between}><strong>{m.stem}</strong><Chip tone={m.resolved ? 'ok' : 'gap'}>{m.resolved ? 'Fixed' : `Missed ${m.missedTimes}×`}</Chip></div>
-          {m.misconception && <p className="sm" style={{ marginTop: 8 }}><strong>Common mistake:</strong> {m.misconception}</p>}
-          <p className="sm muted" style={{ marginTop: 6 }}>{m.explanation}</p></Card>
+      {data && data.groups.length === 0 && <Card><EmptyState icon="check" title={all ? 'No mistakes yet' : 'Nothing to fix'} text="When you slip on a question, the idea behind it collects here with a chance to try a fresh question." /></Card>}
+      {data?.groups.map((g) => (
+        <Card key={g.code + g.concept.id} flat>
+          <div className={s.between}><strong>{g.misconception}</strong><Chip tone={g.resolved ? 'ok' : 'gap'}>{g.resolved ? 'Fixed' : `${g.times} time${g.times === 1 ? '' : 's'}`}</Chip></div>
+          <p className="sm muted" style={{ marginTop: 4 }}>Topic: {g.concept.title}</p>
+          {g.examples.map((e, i) => <div key={i} style={{ marginTop: 10 }}><div className="sm"><strong>Example:</strong> {e.stem}</div><div className="sm muted">{e.explanation}</div></div>)}
+          {!g.resolved && <div style={{ marginTop: 12 }}><Button to={g.practice} size="sm" variant="brand" icon="target">Try a fresh question</Button></div>}
+        </Card>
       ))}
-      {data && data.length > 0 && <Button to="/practice?weak=1" variant="brand" icon="target">Practise my weak topics</Button>}
     </div>
   );
 }

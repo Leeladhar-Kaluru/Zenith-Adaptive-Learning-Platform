@@ -85,7 +85,7 @@ class AssessmentSession(Base):
     submitted_at = Column(DateTime(timezone=True))
     summary = Column(JSONB)
     __table_args__ = (
-        CheckConstraint("kind in ('diagnostic','chapter_test','topic_test','revision','practice')", name="ck_session_kind"),
+        CheckConstraint("kind in ('diagnostic','chapter_test','topic_test','revision','practice','boss')", name="ck_session_kind"),
         CheckConstraint("status in ('active','submitted','expired')", name="ck_session_status"),
     )
 

@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { api } from '../api/client';
 import { useApi } from '../api/useApi';
-import type { Band, ChapterDetail, Lesson } from '../api/types';
+import type { Band, BossStatus, ChapterDetail, Lesson } from '../api/types';
+import { useAuth } from '../context/AuthContext';
 import { Icon } from '../icons/Icon';
 import { savePack } from '../offline/db';
 import { Button, Card, Chip, EmptyState, Progress, Reveal, Skeleton, useToast } from '../ui/kit';
@@ -11,11 +12,27 @@ import s from './pages.module.css';
 const TONE: Record<Band, 'ok' | 'hi' | 'gap' | 'soft'> = { secure: 'ok', learning: 'hi', gap_confirmed: 'gap', gap_suspected: 'hi', unassessed: 'soft' };
 const NAME: Record<Band, string> = { secure: 'Secure', learning: 'Learning', gap_confirmed: 'Gap found', gap_suspected: 'Early signal', unassessed: 'Not started' };
 
+function Boss({ slug }: { slug: string }) {
+  const { data } = useApi<BossStatus>(`/boss/${slug}`);
+  if (!data) return null;
+  const pct = Math.round(data.meanMastery * 100);
+  return (
+    <Card flat>
+      <div className={s.between}><strong>Chapter boss quiz</strong><Chip tone={data.unlocked ? 'ok' : 'soft'} icon={data.unlocked ? 'check' : 'lock'}>{data.unlocked ? 'Open' : 'Locked'}</Chip></div>
+      <p className="sm muted" style={{ marginTop: 6 }}>{data.unlocked ? 'Harder questions made for you across the whole chapter. Score 75 percent to beat it.' : data.reason}</p>
+      <div style={{ marginTop: 10 }}><Progress value={Math.min(100, (pct / Math.round(data.needed * 100)) * 100)} label="Progress to unlock the boss quiz" /></div>
+      <div className="sm muted" style={{ marginTop: 6 }}>Mastery in this chapter: {pct}% (opens at {Math.round(data.needed * 100)}%)</div>
+      {data.unlocked && <div style={{ marginTop: 12 }}><Button to={`/tests/new?kind=boss&chapter=${slug}`} variant="brand" icon="trophy">Take the boss quiz</Button></div>}
+    </Card>
+  );
+}
+
 export default function Chapter() {
   const { slug = '' } = useParams();
   const toast = useToast();
   const { data, error, loading, reload } = useApi<ChapterDetail>(`/library/chapters/${slug}`);
   const [saving, setSaving] = useState(false);
+  const { profile } = useAuth();
 
   if (loading && !data) return <div className={s.stack}><Skeleton h={44} w="50%" /><Skeleton h={90} /><Skeleton h={300} r={16} /></div>;
   if (error && !data) return <EmptyState icon="wifiOff" title="Could not open this chapter" text={error.message} action={<Button onClick={reload} icon="refresh">Try again</Button>} />;
@@ -65,6 +82,8 @@ export default function Chapter() {
           <Button to={`/tests/new?kind=chapter_test&chapter=${chapter.slug}`} variant="ghost" icon="clipboard">Chapter test</Button>
         </div>
       </Card>
+
+      {profile?.role === 'student' && <Boss slug={chapter.slug} />}
 
       {data.objectives.length > 0 && <Card flat><h3>What you will learn</h3><ul style={{ margin: '8px 0 0 1.2em' }}>{data.objectives.map((o) => <li key={o}>{o}</li>)}</ul></Card>}
 

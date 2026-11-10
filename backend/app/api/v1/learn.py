@@ -14,7 +14,7 @@ from app.core.database import get_db
 from app.core.security import get_profile, student_only
 from app.engine import graph
 from app.models import AssessmentSession, Board, Chapter, ChapterConcept, Concept, Item, LessonProgress, Profile, Subject
-from app.services import assign, engage, evidence, home, interactions, library, practice
+from app.services import assign, engage, evidence, home, interactions, library, notebook as notebook_svc, practice
 from app.services import states as st_svc
 
 router = APIRouter()
@@ -262,6 +262,18 @@ def today(p: Profile = Depends(learner), db: Session = Depends(get_db)):
 @router.get("/progress/overview")
 def overview(p: Profile = Depends(learner), db: Session = Depends(get_db)):
     return home.overview(db, p)
+
+
+@router.get("/progress/notebook")
+def notebook(resolved: bool = False, p: Profile = Depends(learner), db: Session = Depends(get_db)):
+    """Wrong answers grouped by the misunderstanding behind them, with a way to practise each."""
+    return notebook_svc.notebook(db, p.id, include_resolved=resolved)
+
+
+@router.get("/boss/{chapter}")
+def boss_status(chapter: str, p: Profile = Depends(learner), db: Session = Depends(get_db)):
+    """Whether the chapter boss quiz is open yet, and what is still needed."""
+    return _wrap(practice.boss_status, db, p, chapter)
 
 
 @router.get("/progress/mistakes")

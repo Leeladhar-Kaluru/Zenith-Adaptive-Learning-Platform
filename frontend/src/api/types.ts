@@ -69,6 +69,10 @@ export interface Overview {
 }
 export interface Mistake { itemId: string; stem: string; explanation: string; missedTimes: number; resolved: boolean; lastMissedAt: string; misconception: string | null; kind: string; concepts: string[] }
 
+export interface NotebookGroup { misconception: string; code: string; concept: { id: string; title: string }; times: number; lastAt: string; resolved: boolean; examples: Array<{ stem: string; explanation: string }>; practice: string }
+export interface Notebook { groups: NotebookGroup[]; openCount: number; resolvedCount: number; note: string }
+export interface BossStatus { chapter: string; unlocked: boolean; meanMastery: number; needed: number; passMark: number; reason: string; concepts: Array<{ id: string; title: string; p: number; n: number }> }
+
 export interface Gamification {
   league: { tier: 'foothill' | 'ridge' | 'summit' | 'zenith'; endsAt: string; classroom: string; rows: Array<{ rank: number; nickname: string; avatar: string; xp: number; me: boolean; zone: 'up' | 'stay' | 'down' }> } | null;
   reason: 'no_classroom' | 'teacher_off' | 'opted_out' | 'too_few' | null; quests: Quest[]; badges: Badge[]; streak: StreakInfo; xp: LevelInfo;
@@ -80,6 +84,7 @@ export interface TestSummary {
   byConcept: Array<{ conceptId: string; title: string; right: number; total: number; band: Band; evidence: number; confidence: string }>;
   mistakes: Array<{ itemId: string; stem: string; answered: boolean; explanation: string; misconception: string | null }>;
   suggestions: Array<{ conceptId: string; title: string; action: string; why: string; href: string }>;
+  boss?: boolean; passed?: boolean; passMark?: number;
 }
 export interface Revision { due: Array<{ conceptId: string; title: string; dueAt: string }>; cards: Array<{ id: string; conceptId: string; front: string; back: string }> }
 export interface Explore { available: Array<{ key: string; title: string; text: string; href: string; count: number }>; planned: Array<{ key: string; title: string; text: string }> }

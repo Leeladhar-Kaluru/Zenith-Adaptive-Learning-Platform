@@ -26,7 +26,7 @@ class Instance:
     version: int
     seed: int
     level: int
-    kind: str                      # "mcq"
+    kind: str                      # "mcq" or "find_error"
     stem: str
     payload: dict
     answer_spec: dict
@@ -56,7 +56,21 @@ def templates_for(concept: str) -> list[Template]:
     return [t for t in REGISTRY.values() if t.concept == concept]
 
 
+def _self_check_find_error(inst: Instance) -> None:
+    steps, wrong = inst.payload.get("steps", []), inst.answer_spec.get("wrong_step")
+    if len(steps) < 3 or len(set(steps)) != len(steps):
+        raise InvalidInstance("a worked solution needs at least 3 distinct steps")
+    if not isinstance(wrong, int) or not 1 <= wrong < len(steps):
+        raise InvalidInstance("wrong_step must point at a line after the given problem")
+    if not grading.grade("find_error", inst.answer_spec, {"step": wrong}).correct:
+        raise InvalidInstance("declared wrong step not accepted")
+    if any(grading.grade("find_error", inst.answer_spec, {"step": i}).correct for i in range(len(steps)) if i != wrong):
+        raise InvalidInstance("more than one step is accepted")
+
+
 def _self_check(inst: Instance) -> None:
+    if inst.kind == "find_error":
+        return _self_check_find_error(inst)
     if inst.kind != "mcq":
         raise InvalidInstance(f"unsupported kind {inst.kind}")
     keys = [o["key"] for o in inst.payload["options"]]

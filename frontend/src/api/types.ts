@@ -22,8 +22,8 @@ export interface ChapterDetail {
 }
 
 export interface PublicItem {
-  id: string; kind: 'mcq' | 'multi' | 'truefalse' | 'numeric' | 'fill' | 'match'; stem: string; difficulty: 'intro' | 'standard' | 'challenge'; hintCount: number;
-  options?: Array<{ key: string; text: string }>; unit?: string; left?: string[]; right?: string[];
+  id: string; kind: 'mcq' | 'multi' | 'truefalse' | 'numeric' | 'fill' | 'match' | 'find_error'; stem: string; difficulty: 'intro' | 'standard' | 'challenge'; hintCount: number;
+  options?: Array<{ key: string; text: string }>; steps?: string[]; unit?: string; left?: string[]; right?: string[];
 }
 export type Block =
   | { id: string; kind: 'text'; heading?: string; html: string }

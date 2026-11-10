@@ -76,7 +76,8 @@ def next_generated(db: Session, profile: Profile, concept_ids: list[str], states
     if harder:
         level = min(5, level + 1)
     for _ in range(8):
-        tpl = rng.choice(templates_for(concept))
+        usable = [t for t in templates_for(concept) if getattr(t, "min_level", 1) <= level]
+        tpl = rng.choices(usable, weights=[getattr(t, "weight", 1.0) for t in usable])[0]
         seed = rng.randrange(1 << 30)
         try:
             inst = generate(tpl.id, seed, level)

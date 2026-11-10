@@ -97,9 +97,15 @@ def upgrade() -> None:
         sa.PrimaryKeyConstraint("lesson_version_id", "asset_id"),
     )
     _rls("web_vitals", "sources", "source_assets", "content_provenance")
+    # new question kinds: find_error (Mistake Detective)
+    op.drop_constraint("ck_item_kind", "items", type_="check")
+    op.create_check_constraint("ck_item_kind", "items", "kind in ('mcq','multi','truefalse','numeric','fill','match','find_error')")
 
 
 def downgrade() -> None:
+    op.execute("DELETE FROM items WHERE kind = 'find_error'")
+    op.drop_constraint("ck_item_kind", "items", type_="check")
+    op.create_check_constraint("ck_item_kind", "items", "kind in ('mcq','multi','truefalse','numeric','fill','match')")
     op.drop_table("content_provenance")
     op.drop_table("source_assets")
     op.drop_table("sources")

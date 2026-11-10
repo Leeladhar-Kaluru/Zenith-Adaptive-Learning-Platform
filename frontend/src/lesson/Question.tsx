@@ -25,6 +25,7 @@ function reveal(item: PublicItem, r: unknown): string {
   if (item.kind === 'mcq') return item.options?.find((o) => o.key === r)?.text ?? String(r);
   if (item.kind === 'multi') return (r as string[]).map((k) => item.options?.find((o) => o.key === k)?.text ?? k).join(', ');
   if (item.kind === 'truefalse') return r ? 'True' : 'False';
+  if (item.kind === 'find_error') return `Line ${Number(r) + 1}`;
   if (item.kind === 'match') return Object.entries(r as Record<string, string>).map(([a, b]) => `${a} → ${b}`).join('; ');
   return String(r);
 }
@@ -32,6 +33,7 @@ function reveal(item: PublicItem, r: unknown): string {
 export function Question({ item, context = 'learn_check', sessionId, deferFeedback, onResult, resetKey }: Props) {
   const [choice, setChoice] = useState<string | null>(null);
   const [multi, setMulti] = useState<string[]>([]);
+  const [step, setStep] = useState<number | null>(null);
   const [tf, setTf] = useState<boolean | null>(null);
   const [text, setText] = useState('');
   const [pairs, setPairs] = useState<Record<string, string>>({});
@@ -44,15 +46,15 @@ export function Question({ item, context = 'learn_check', sessionId, deferFeedba
   const toast = useToast();
 
   useEffect(() => {
-    setChoice(null); setMulti([]); setTf(null); setText(''); setPairs({}); setHints([]); setRes(null); setSaved(false); t0.current = Date.now(); picked.current = false;
+    setChoice(null); setStep(null); setMulti([]); setTf(null); setText(''); setPairs({}); setHints([]); setRes(null); setSaved(false); t0.current = Date.now(); picked.current = false;
   }, [item.id, resetKey]);
 
   // Changing a picked answer (not the first pick) is a signal the student was unsure.
   const picked = useRef(false);
-  const sig = JSON.stringify([choice, multi, tf, pairs]);
+  const sig = JSON.stringify([choice, multi, tf, pairs, step]);
   useEffect(() => {
     if (item.kind === 'numeric' || item.kind === 'fill' || res || saved) return;
-    if (choice === null && !multi.length && tf === null && !Object.keys(pairs).length) return;
+    if (choice === null && !multi.length && tf === null && step === null && !Object.keys(pairs).length) return;
     if (picked.current) track('answer_change', 'item', item.id, {}, Date.now() - t0.current);
     picked.current = true;
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -62,6 +64,7 @@ export function Question({ item, context = 'learn_check', sessionId, deferFeedba
     switch (item.kind) {
       case 'mcq': return choice ? { choice } : null;
       case 'multi': return multi.length ? { choices: multi } : null;
+      case 'find_error': return step === null ? null : { step };
       case 'truefalse': return tf === null ? null : { choice: tf };
       case 'numeric': return text.trim() ? { value: text.trim() } : null;
       case 'fill': return text.trim() ? { text: text.trim() } : null;
@@ -118,6 +121,19 @@ export function Question({ item, context = 'learn_check', sessionId, deferFeedba
             </button>
           ))}
         </div>
+      )}
+      {item.kind === 'find_error' && (
+        <ol className={s.opts} role="radiogroup" aria-label="Which line is wrong?" style={{ listStyle: 'none', padding: 0 }}>
+          {item.steps?.map((line, i) => {
+            const right = res && i === Number(res.reveal);
+            const state = res ? (right ? s.ok : i === step ? s.retry : '') : '';
+            return (
+              <li key={i}><button className={`${s.opt} ${state}`} role="radio" aria-checked={step === i} disabled={done || i === 0} onClick={() => setStep(i)}>
+                <b>{i + 1}</b>{line}{right && <Icon name="check" size={22} />}
+              </button></li>
+            );
+          })}
+        </ol>
       )}
       {item.kind === 'multi' && (
         <div className={s.opts} role="group" aria-label="Choose all that apply">

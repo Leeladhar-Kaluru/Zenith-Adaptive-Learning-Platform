@@ -172,7 +172,7 @@ class ItemConceptRef(Strict):
 
 class ItemDef(Strict):
     key: str
-    kind: Literal["mcq", "multi", "truefalse", "numeric", "fill", "match"]
+    kind: Literal["mcq", "multi", "truefalse", "numeric", "fill", "match", "find_error"]
     stem: str
     purpose: Literal["check", "practice", "test", "probe"] = "practice"
     difficulty: Literal["intro", "standard", "challenge"] = "standard"
@@ -187,6 +187,8 @@ class ItemDef(Strict):
     unit: Optional[str] = None
     accepted: list[str] = []                # fill
     pairs: dict[str, str] = {}              # match
+    steps: list[str] = []                   # find_error: a worked solution, one line per step
+    wrong_step: Optional[int] = None        # find_error: index of the one wrong line (never 0, the given problem)
     verify: Optional[str] = None            # SymPy expression that must evaluate to the correct numeric answer
 
     @model_validator(mode="after")
@@ -213,6 +215,11 @@ class ItemDef(Strict):
         elif k == "match":
             if len(self.pairs) < 3:
                 raise ValueError("match needs at least 3 pairs")
+        elif k == "find_error":
+            if len(self.steps) < 3:
+                raise ValueError("find_error needs at least 3 steps")
+            if self.wrong_step is None or not 1 <= self.wrong_step < len(self.steps):
+                raise ValueError("find_error wrong_step must be a step after the first line")
         return self
 
 

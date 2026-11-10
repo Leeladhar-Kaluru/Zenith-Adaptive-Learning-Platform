@@ -96,5 +96,37 @@ class BothSides:
                      ["Collect the x terms on one side by doing the same thing to both sides.", "Then solve the one-step or two-step equation that is left."], self.concept, mis)
 
 
-for _t in (OneStep(), TwoStep(), WordProblem(), BothSides()):
+class EqFindError:
+    """Mistake Detective: a worked two-step solution with exactly one wrong line. The student finds it."""
+    id, version, concept = "eq_find_error", 1, "simple-equation-two-step"
+    min_level, weight = 3, 0.5            # from level 3 up, and half as often as an ordinary question
+
+    def make(self, rng: random.Random, level: int) -> Instance:
+        a = rng.randint(2, 3 + level)
+        x = rng.randint(2, 9 + level)
+        b = rng.randint(2, 12 + 2 * level) * (rng.choice([1, -1]) if level >= 4 else 1)
+        c = a * x + b
+        start = f"Start with {a}x {sign(b)} {abs(b)} = {fmt(c)}"
+        first_ok = f"{'Subtract' if b > 0 else 'Add'} {abs(b)} {'from' if b > 0 else 'to'} both sides: {a}x = {fmt(c - b)}"
+        second_ok = f"Divide both sides by {a}: x = {fmt(x)}"
+        kind = rng.choice(["inverse", "forgot_divide", "slip"])
+        if kind == "inverse":
+            steps = [start, f"{'Add' if b > 0 else 'Subtract'} {abs(b)} {'to' if b > 0 else 'from'} both sides: {a}x = {fmt(c + b)}", f"Divide both sides by {a}: x = {fmt((c + b) // a) if (c + b) % a == 0 else 'x'}"]
+            if (c + b) % a != 0:
+                kind = "forgot_divide"
+            else:
+                wrong, why = 1, f"Line 2 uses the same operation as the problem instead of the opposite one. To remove {sign(b)} {abs(b)} you {'subtract' if b > 0 else 'add'} {abs(b)}, which gives {a}x = {fmt(c - b)}."
+        if kind == "forgot_divide":
+            steps = [start, first_ok, f"Divide both sides by {a}: x = {fmt(c - b)}"]
+            wrong, why = 2, f"Line 3 says it divides by {a} but leaves {fmt(c - b)} unchanged. {fmt(c - b)} divided by {a} is {fmt(x)}."
+        elif kind == "slip":
+            k = rng.choice([-2, -1, 1, 2])                      # the slip is a multiple of a, so the later lines follow from it
+            slipped = c - b + a * k
+            steps = [start, f"{'Subtract' if b > 0 else 'Add'} {abs(b)} {'from' if b > 0 else 'to'} both sides: {a}x = {fmt(slipped)}", f"Divide both sides by {a}: x = {fmt(x + k)}"]
+            wrong, why = 1, f"Line 2 has an arithmetic slip: {fmt(c)} {MINUS if b > 0 else '+'} {abs(b)} is {fmt(c - b)}, not {fmt(slipped)}."
+        return Instance("", 0, 0, 0, "find_error", "This worked solution has exactly one wrong line. Tap the wrong line.", {"steps": steps}, {"wrong_step": wrong},
+                        f"{why} The correct solution is x = {fmt(x)}.", ["Check each line: did it do the same thing to both sides?", f"Put x = {fmt(x)} into the first line. Does it work?"], self.concept, {})
+
+
+for _t in (OneStep(), TwoStep(), WordProblem(), BothSides(), EqFindError()):
     register(_t)

@@ -131,6 +131,8 @@ def _item_payload(it: ItemDef) -> tuple[dict, dict]:
         return ({"unit": it.unit} if it.unit else {}), {"value": it.value, "tolerance": it.tolerance}
     if it.kind == "fill":
         return {}, {"accepted": it.accepted}
+    if it.kind == "find_error":
+        return {"steps": list(it.steps)}, {"wrong_step": it.wrong_step}
     return {"left": list(it.pairs.keys()), "right": list(it.pairs.values())}, {"pairs": it.pairs}
 
 

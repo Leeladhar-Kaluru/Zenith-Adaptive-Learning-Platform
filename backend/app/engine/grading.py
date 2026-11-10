@@ -75,6 +75,14 @@ def grade(kind: str, spec: dict, response: dict) -> Grade:
         ok = got in accepted
         return Grade(ok, 1.0 if ok else 0.0, spec["accepted"][0], got)
 
+    if kind == "find_error":
+        raw = response["step"]
+        if isinstance(raw, bool) or not isinstance(raw, int) and not (isinstance(raw, str) and raw.strip().lstrip("-").isdigit()):
+            raise ValueError("step must be a whole number")
+        step = int(raw)
+        ok = step == int(spec["wrong_step"])
+        return Grade(ok, 1.0 if ok else 0.0, int(spec["wrong_step"]), step)
+
     if kind == "match":
         want: dict = spec["pairs"]
         got = response.get("pairs", {}) or {}

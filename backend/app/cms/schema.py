@@ -103,12 +103,20 @@ SIM_CHOICES: dict[str, dict[str, set[str]]] = {"sim_density": {"goal": {"float",
 
 class WidgetBlock(Strict):
     kind: Literal["widget"]
-    widget: Literal["numberline", "balance", "fraction", "sim_linegraph", "sim_equation", "sim_spinner", "sim_density", "data_chart"]
+    widget: Literal["numberline", "balance", "fraction", "sim_linegraph", "sim_equation", "sim_spinner", "sim_density", "data_chart", "atlas"]
     config: dict[str, Union[int, float, str]] = {}
     task: str = ""
 
     @model_validator(mode="after")
     def _sim_rules(self):
+        if self.widget == "atlas":
+            if not isinstance(self.config.get("dataset"), str) or not str(self.config["dataset"]).strip():
+                raise ValueError("atlas needs 'dataset' (an approved map layer) in config")
+            if "find" in self.config and not isinstance(self.config["find"], str):
+                raise ValueError("atlas 'find' must be a country name")
+            if not self.task.strip():
+                raise ValueError("atlas needs a plain-language task (what to find or explore).")
+            return self
         if self.widget == "data_chart":
             for k in ("dataset", "x", "y"):
                 if not isinstance(self.config.get(k), str) or not str(self.config[k]).strip():

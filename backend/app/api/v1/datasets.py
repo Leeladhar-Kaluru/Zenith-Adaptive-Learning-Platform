@@ -17,6 +17,9 @@ def get_dataset(dataset_id: str, p: Profile = Depends(get_profile), db: Session 
         a = db.get(SourceAsset, uuid.UUID(dataset_id))
     except ValueError:
         a = None
-    if a is None or a.kind != "dataset" or a.status != "approved" or not a.data:
+    if a is None or a.kind not in ("dataset", "geo") or a.status != "approved" or not a.data:
         raise HTTPException(404, "Dataset not found.")
-    return {"id": str(a.id), "fields": a.data["fields"], "rows": a.data["rows"], "credit": {"text": a.attribution_text, "url": a.url, "licence": a.licence_id}}
+    credit = {"text": a.attribution_text, "url": a.url, "licence": a.licence_id}
+    if a.kind == "geo":
+        return {"id": str(a.id), "viewBox": a.data["viewBox"], "features": a.data["features"], "credit": credit}
+    return {"id": str(a.id), "fields": a.data["fields"], "rows": a.data["rows"], "credit": credit}

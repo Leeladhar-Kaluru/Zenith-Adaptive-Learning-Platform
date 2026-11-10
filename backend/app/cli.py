@@ -11,6 +11,7 @@
   retention <days>        set how long B2 keeps backups before deleting them
   backup-key              create BACKUP_KEY and append it to backend/.env (never printed)
   dataset worldbank <indicator> <country> "<Title>"   import a World Bank indicator (CC BY 4.0), left pending for approval
+  map import <file.geojson> <external-id>   import a Natural Earth GeoJSON a person has downloaded (public domain, left pending)
   assets-due              imported assets whose licence re-check date has passed
   new-lesson <content-dir> <chapter-slug> <lesson-slug> "<Title>" <concept,concept>   start a lesson from a TODO skeleton
   asset commons <File:Title>   import one Wikimedia Commons file (licence checked, left pending)
@@ -97,6 +98,19 @@ def main(argv: list[str]) -> int:
                 print("Not imported:", e)
                 return 1
             print(f"{a.status}: {a.external_id} [{a.licence_id}] {len(a.data['rows'])} rows  (id {a.id})")
+            return 0
+        if cmd == "map" and argv[2] == "import":
+            import json as _json
+            from sqlalchemy import select
+            from app.models import Profile
+            from app.ingest import naturalearth
+            who = db.scalar(select(Profile).where(Profile.role.in_(("reviewer", "admin"))))
+            try:
+                a = naturalearth.import_geojson(db, _json.loads(Path(argv[3]).read_text(encoding="utf-8")), argv[4], who.id if who else None)
+            except naturalearth.GeoError as e:
+                print("Not imported:", e)
+                return 1
+            print(f"{a.status}: {a.external_id} [{a.licence_id}] {len(a.data['features'])} countries, {a.bytes // 1024} kB  (id {a.id})")
             return 0
         if cmd == "assets-due":
             from app.ingest.recheck import due_for_recheck

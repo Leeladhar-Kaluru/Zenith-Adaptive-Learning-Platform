@@ -37,6 +37,7 @@ function Example({ b }: { b: Extract<Block, { kind: 'example' }> }) {
 const LineGraphSim = lazy(() => import('./sims/LineGraphSim').then((m) => ({ default: m.LineGraphSim })));
 const EquationSim = lazy(() => import('./sims/EquationSim').then((m) => ({ default: m.EquationSim })));
 const DensitySim = lazy(() => import('./sims/DensitySim').then((m) => ({ default: m.DensitySim })));
+const Atlas = lazy(() => import('./viz/Atlas').then((m) => ({ default: m.Atlas })));
 const Chart = lazy(() => import('./viz/Chart').then((m) => ({ default: m.Chart })));
 const SpinnerSim = lazy(() => import('./sims/SpinnerSim').then((m) => ({ default: m.SpinnerSim })));
 
@@ -55,7 +56,8 @@ export function RenderBlock({ b }: { b: Block }) {
   switch (b.kind) {
     case 'text': return <div className={s.text}>{b.heading && <h2 id={b.id}>{b.heading}</h2>}<Html html={b.html} /></div>;
     case 'figure': return <figure className={s.figure}>{b.imageUrl ? <img src={b.imageUrl} alt={b.alt} loading="lazy" decoding="async" /> : <div role="img" aria-label={b.alt} dangerouslySetInnerHTML={{ __html: b.svg }} />}{b.caption && <figcaption>{b.caption}</figcaption>}</figure>;
-    case 'widget': if (b.widget === 'data_chart') return <Suspense fallback={<div className={s.widget}>Loading the chart…</div>}><Chart dataset={String(b.config.dataset)} x={String(b.config.x)} y={String(b.config.y)} chart={String(b.config.chart ?? 'line')} task={b.task} /></Suspense>;
+    case 'widget': if (b.widget === 'atlas') return <Suspense fallback={<div className={s.widget}>Loading the map…</div>}><Atlas dataset={String(b.config.dataset)} find={b.config.find === undefined ? undefined : String(b.config.find)} task={b.task} /></Suspense>;
+      if (b.widget === 'data_chart') return <Suspense fallback={<div className={s.widget}>Loading the chart…</div>}><Chart dataset={String(b.config.dataset)} x={String(b.config.x)} y={String(b.config.y)} chart={String(b.config.chart ?? 'line')} task={b.task} /></Suspense>;
       if (b.widget.startsWith('sim_')) return <Suspense fallback={<div className={s.widget}>Loading the simulation…</div>}><Sim b={b} /></Suspense>;
       return b.widget === 'numberline' ? <NumberLine start={Number(b.config.start ?? 0)} min={Number(b.config.min ?? -6)} max={Number(b.config.max ?? 6)} />
       : b.widget === 'balance' ? <Balance a={Number(b.config.a ?? 3)} b={Number(b.config.b ?? 7)} /> : <Fraction num={Number(b.config.num ?? 1)} den={Number(b.config.den ?? 4)} />;

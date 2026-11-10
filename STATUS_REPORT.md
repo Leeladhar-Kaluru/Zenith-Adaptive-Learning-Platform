@@ -94,3 +94,11 @@ Not done yet: mistake notebook and chapter boss quiz, more lessons (Science, Cla
 - Boss quiz: `GET /boss/{chapter}` says whether it is open and why not. It opens when every topic has at least 3 answers and mean mastery is 70 percent or more. `POST /assessments` with kind `boss` builds 8 generated questions at level 4 or 5 (stored hard questions for topics without templates). Pass mark 75 percent, reported honestly. Shown as a card on each chapter page.
 - Migration 003 relaxes one check constraint so the `boss` kind can be stored. NOT yet applied to production (needs approval). Until it is applied, creating a boss quiz in production would fail.
 - Tests: 152 backend tests pass. Both screens were checked in a real browser (locked boss card, grouped notebook).
+
+## Speed work and content research (2026-11-10, latest)
+
+Measured and fixed (no features changed): API moved to Mumbai next to the database (it ran in Washington); per-request memo cut queries (today 29 to 21, chapter list 13 to 5, progress 24 to 15, chapter page 11 to 8); pre-ping off on Vercel; service worker precache cut from 88 files / 1,885 KB to 22 files / 612 KB. Live result: `/library/boards` 1.04-1.10 s to 0.09-0.14 s; `/health/ready` 1.18-1.29 s to 0.37-0.52 s. Found and fixed a missing `return` in `today()` that the benchmark's 200 status hid; the benchmark now asserts a non-empty body. 162 backend tests pass.
+
+Not measured: authenticated endpoints on the live site (no student login), cold start after the change, Lighthouse on a throttled phone. Remaining speed tasks are Phase 0 of the new plan.
+
+Research and plan delivered, nothing implemented from them yet: `docs/CONTENT_SOURCES.md` (ranked sources with licences, verified vs check-before-ingest) and `docs/superpowers/plans/2026-11-10-content-intelligence.md`. Key finding: NCERT books are copyrighted and may not be copied or hosted, so NCERT is used only as a hand-entered curriculum reference. Waiting for approval before building the provenance pipeline.

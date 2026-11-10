@@ -81,7 +81,12 @@ def validate_tree(tree: Tree) -> list[str]:
         errs.append(str(e))
     except ValueError as e:
         errs.append(str(e))
+    from app.cms.draft import find_todos
     for ch, lessons in tree.chapters:
+        for slug, les in lessons.items():
+            todos = find_todos(les.model_dump(mode="json"))
+            if todos:
+                errs.append(f"{ch.slug}/{slug}: unfinished TODO in {len(todos)} place(s), first at {todos[0]}")
         if ch.board not in boards:
             errs.append(f"{ch.slug}: unknown board {ch.board}")
         if (ch.board, ch.curriculum) not in labels:

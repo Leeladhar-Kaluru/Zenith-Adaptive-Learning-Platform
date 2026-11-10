@@ -11,6 +11,7 @@
   retention <days>        set how long B2 keeps backups before deleting them
   backup-key              create BACKUP_KEY and append it to backend/.env (never printed)
   assets-due              imported assets whose licence re-check date has passed
+  new-lesson <content-dir> <chapter-slug> <lesson-slug> "<Title>" <concept,concept>   start a lesson from a TODO skeleton
   asset commons <File:Title>   import one Wikimedia Commons file (licence checked, left pending)
   asset approve <asset-id> <reviewer-email>   approve an imported asset for use in lessons
 """
@@ -29,6 +30,15 @@ def main(argv: list[str]) -> int:
         errs = importer.validate_tree(tree)
         print("OK" if not errs else "\n".join(errs))
         return 0 if not errs else 1
+    if cmd == "new-lesson":
+        from app.cms import draft
+        try:
+            path = draft.write_skeleton(Path(argv[2]), argv[3], argv[4], argv[5], argv[6].split(","))
+        except draft.DraftError as e:
+            print("Not created:", e)
+            return 1
+        print(f"Created {path}. Fill every TODO; `validate` fails until you do.")
+        return 0
     if cmd in ("backup", "backups", "verify", "restore", "retention", "backup-key"):
         return ops(cmd, argv)
     from app.core.database import SessionLocal

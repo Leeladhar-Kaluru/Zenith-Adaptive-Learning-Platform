@@ -113,7 +113,7 @@ def lesson_gates(*, title: str, grade: int, objectives: list[str], blocks: list[
 
     figs = [b for b in blocks if b["kind"] == "figure"]
     missing_alt = [b for b in figs if len(b.get("alt", "").strip()) < 8]
-    g.append(Gate("Figures have alt text", not missing_alt, f"{len(figs)} figures"))
+    g.append(Gate("Figures have alt text", not missing_alt, f"{len(figs)} figure{'' if len(figs) == 1 else 's'}"))
 
     unknown = {c["id"] for it in items for c in it["concepts"]} - known_concepts
     g.append(Gate("Questions are mapped to known concepts", not unknown, ("Unknown: " + ", ".join(sorted(unknown))) if unknown else f"{len(concept_ids)} lesson concepts"))

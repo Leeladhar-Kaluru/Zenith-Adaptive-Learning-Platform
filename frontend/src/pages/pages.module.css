@@ -118,3 +118,10 @@ a.lrow:hover { transform: translate(-2px, -2px); box-shadow: var(--hard); }
   .hero { padding-top: 20px; }
   .avatars { grid-template-columns: repeat(4, 1fr); }
 }
+
+.flash { width: 100%; min-height: 260px; display: grid; place-items: center; align-content: center; gap: 14px; padding: 26px; border-radius: 22px; border: 2px solid var(--ink); background: var(--surface); box-shadow: var(--hard); text-align: center; transition: transform .25s var(--spring); }
+.flash:hover { transform: translate(-2px, -2px) rotate(-.4deg); }
+.flashText { font-family: var(--display); font-weight: 800; font-size: clamp(1.3rem, 3.4vw, 1.9rem); line-height: 1.25; }
+
+.decide { position: sticky; bottom: 16px; background: var(--surface); box-shadow: var(--hard); z-index: 6; }
+@media (max-width: 899px) { .decide { bottom: 74px; } }

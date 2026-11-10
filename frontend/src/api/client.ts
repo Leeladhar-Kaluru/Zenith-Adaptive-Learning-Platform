@@ -8,8 +8,6 @@ export class ApiError extends Error {
   }
 }
 
-export const MOCK = import.meta.env.DEV && (import.meta.env.VITE_MOCK === '1' || (typeof localStorage !== 'undefined' && localStorage.getItem('zenith_mock') === '1'));
-
 export const token = {
   get: () => localStorage.getItem(TOKEN_KEY),
   set: (t: string) => localStorage.setItem(TOKEN_KEY, t),
@@ -18,11 +16,13 @@ export const token = {
 
 type Opts = { method?: string; body?: unknown; signal?: AbortSignal };
 
+function message(detail: unknown, fallback: string): string {
+  if (typeof detail === 'string') return detail;
+  if (Array.isArray(detail) && detail[0]?.msg) return String(detail[0].msg);
+  return fallback;
+}
+
 export async function api<T>(path: string, opts: Opts = {}): Promise<T> {
-  if (MOCK) {
-    const { mockFetch } = await import('../mocks/mock');
-    return mockFetch<T>(path, opts);
-  }
   const headers: Record<string, string> = { Accept: 'application/json' };
   const t = token.get();
   if (t) headers.Authorization = `Bearer ${t}`;
@@ -30,19 +30,18 @@ export async function api<T>(path: string, opts: Opts = {}): Promise<T> {
   let res: Response;
   try {
     res = await fetch(`${API_BASE}${path}`, {
-      method: opts.method ?? 'GET',
-      headers,
+      method: opts.method ?? 'GET', headers, signal: opts.signal,
       body: opts.body !== undefined ? JSON.stringify(opts.body) : undefined,
-      signal: opts.signal,
     });
-  } catch {
+  } catch (e) {
+    if ((e as Error).name === 'AbortError') throw e;
     throw new ApiError(0, 'You appear to be offline, or ZENITH is waking up. Try again in a moment.', true);
   }
-  if (res.status === 401) token.clear();
+  if (res.status === 401 && t) token.clear();
   if (!res.ok) {
-    let detail = res.statusText;
-    try { const j = await res.json(); detail = typeof j.detail === 'string' ? j.detail : detail; } catch { /* ignore */ }
-    throw new ApiError(res.status, detail, res.status >= 500 || res.status === 429);
+    let detail: unknown = res.statusText;
+    try { detail = (await res.json()).detail; } catch { /* not json */ }
+    throw new ApiError(res.status, message(detail, 'Something went wrong.'), res.status >= 500 || res.status === 429);
   }
   return res.status === 204 ? (undefined as T) : ((await res.json()) as T);
 }

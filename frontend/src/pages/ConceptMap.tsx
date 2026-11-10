@@ -11,7 +11,7 @@ const LABEL: Record<Band, string> = { secure: 'Secure', learning: 'Learning', ga
 
 export default function MapPage() {
   const { slug = '' } = useParams();
-  const { data, error, loading, reload } = useApi<MapGraph>(`/map/${slug}`);
+  const { data, error, loading, reload } = useApi<MapGraph>(`/library/map/${slug}`);
   const [pick, setPick] = useState<string | null>(null);
   if (loading && !data) return <Skeleton h={420} r={16} />;
   if (error && !data) return <EmptyState icon="wifiOff" title="Could not load the map" text={error.message} action={<Button onClick={reload} icon="refresh">Try again</Button>} />;
@@ -41,8 +41,8 @@ export default function MapPage() {
         <div className={s.legend}>{(['secure', 'learning', 'gap_confirmed', 'unassessed'] as Band[]).map((b) => <span key={b}><i style={{ background: FILL[b] }} />{LABEL[b]}</span>)}</div>
       </Card>
       {sel && (
-        <Card flat><div className={s.between}><div><h3>{sel.title}</h3><p className="muted sm">Class {sel.grade}</p></div><Chip tone={sel.band === 'secure' ? 'ok' : sel.band === 'gap_confirmed' ? 'gap' : sel.band === 'learning' ? 'hi' : 'soft'}>{LABEL[sel.band]}</Chip></div>
-          {sel.band === 'gap_confirmed' && <div style={{ marginTop: 12 }}><Button to="/practice" variant="brand" size="sm" iconRight="arrowR">Fix this first</Button></div>}</Card>
+        <Card flat><div className={s.between}><div><h3>{sel.title}</h3><p className="muted sm">Class {sel.grade}{sel.inChapter ? '' : ' · from an earlier class'}</p></div><Chip tone={sel.band === 'secure' ? 'ok' : sel.band === 'gap_confirmed' ? 'gap' : sel.band === 'learning' ? 'hi' : 'soft'}>{LABEL[sel.band]}</Chip></div>
+          <div className={s.row} style={{ marginTop: 12 }}>{sel.lessonId && <Button to={`/lesson/${sel.lessonId}`} variant="brand" size="sm" iconRight="arrowR">Open the lesson</Button>}<Button to={`/practice?concept=${sel.id}`} variant="ghost" size="sm" icon="target">Practise</Button></div></Card>
       )}
     </div>
   );

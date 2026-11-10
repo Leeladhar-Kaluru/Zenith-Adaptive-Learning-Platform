@@ -1,0 +1,17 @@
+slug: 8-maths-linear-equations
+board: cbse
+curriculum: NCERT current editions (to be confirmed by a reviewer)
+grade: 8
+subject: maths
+title: Linear Equations in One Variable
+summary: Solve equations with the variable on both sides and equations containing fractions.
+concepts:
+- id: linear-eq-both-sides
+- id: linear-eq-fractions
+- id: simple-equation-two-step
+  role: foundation
+- id: integers-subtract
+  role: foundation
+lessons:
+- both-sides
+- with-fractions

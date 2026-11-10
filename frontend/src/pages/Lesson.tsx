@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { api } from '../api/client';
-import { useApi } from '../api/useApi';
+import { clearApiCache, useApi } from '../api/useApi';
 import type { Lesson } from '../api/types';
 import AskPanel from '../ask/AskPanel';
 import { useFx } from '../fx/fx';
@@ -21,7 +21,7 @@ export default function LessonPage() {
   const [busy, setBusy] = useState(false);
   const [seen, setSeen] = useState(0);
 
-  useEffect(() => { setSeen(0); }, [id]);
+  useEffect(() => { setSeen(0); void api('/progress', { method: 'POST', body: { lessonId: id, action: 'start' } }).catch(() => undefined); }, [id]);
   useEffect(() => {
     if (!data) return;
     const els = Array.from(document.querySelectorAll('[data-blk]'));
@@ -43,10 +43,11 @@ export default function LessonPage() {
     if (!data) return;
     setBusy(true);
     try {
-      await api('/progress', { method: 'POST', body: { lessonId: data.id } });
+      const r = await api<{ xp: number; newBadges: string[] }>('/progress', { method: 'POST', body: { lessonId: data.id, action: 'complete' } });
+      clearApiCache();
       const go = () => nav(data.nextId ? `/lesson/${data.nextId}` : `/learn/${data.chapterSlug}`);
       fx.celebrate({ title: data.nextId ? 'Lesson complete!' : 'Chapter complete!', text: data.nextId ? 'Nice work. Your next lesson is ready.' : 'You finished every lesson in this chapter.', icon: data.nextId ? 'star' : 'trophy', cta: data.nextId ? 'Next lesson' : 'Back to chapter', onClose: go });
-      fx.xp(20);
+      if (r.xp) fx.xp(r.xp);
     } catch (e) { toast((e as Error).message, 'err'); } finally { setBusy(false); }
   }
 
@@ -63,7 +64,7 @@ export default function LessonPage() {
           {data.prereqGap && (
             <div className={p.prereq} style={{ marginBottom: 24 }}>
               <Icon name="compass" size={30} accent="var(--gap)" />
-              <div style={{ flex: 1 }}><strong>Strengthen this first</strong><div className="sm">{data.prereqGap.title} (Class {data.prereqGap.grade}). We saw a gap here.</div></div>
+              <div style={{ flex: 1 }}><strong>Strengthen this first</strong><div className="sm">{data.prereqGap.title} (Class {data.prereqGap.grade}). Your answers suggest this is holding you back here.</div></div>
               {data.prereqGap.lessonId && <Button to={`/lesson/${data.prereqGap.lessonId}`} size="sm" variant="ghost">5-minute refresher</Button>}
             </div>
           )}
@@ -73,6 +74,8 @@ export default function LessonPage() {
             <span className="muted sm"><Icon name="clock" size={16} /> {data.minutes} min</span>
           </header>
           {data.blocks.map((b, i) => <section key={b.id} className={s.block} data-blk={i} id={b.id}><RenderBlock b={b} /></section>)}
+          {data.objectives.length > 0 && <Card flat style={{ marginTop: 8 }}><strong>In this lesson you learned to</strong><ul style={{ margin: '8px 0 0 1.2em' }}>{data.objectives.map((o) => <li key={o}>{o}</li>)}</ul></Card>}
+          {data.related.length > 0 && <Card flat style={{ marginTop: 16 }}><strong>Related lessons</strong><div className={p.stack} style={{ marginTop: 10 }}>{data.related.map((r) => <Link key={r.lessonId} to={`/lesson/${r.lessonId}`} className={p.lrow}><div style={{ flex: 1 }}><strong>{r.title}</strong><div className="sm muted">{r.why}</div></div><Icon name="chevR" size={20} /></Link>)}</div></Card>}
           <div className={s.notesBtn}><Button variant="ghost" icon="chat" onClick={() => setAsk(true)}>Ask ZENITH</Button></div>
         </article>
 

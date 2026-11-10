@@ -1,0 +1,137 @@
+slug: number-line
+title: Numbers on both sides of zero
+minutes: 12
+objectives:
+- Place positive and negative integers on a number line
+- Say how far a number is from zero and in which direction
+concepts:
+- integers-number-line
+origin: ai_assisted
+blocks:
+- kind: text
+  heading: Beyond zero
+  html: <p>Think of a lift in a tall building. The ground floor is 0. Floors above are 1, 2, 3. A basement is <strong>below</strong>
+    zero, so we call the first basement floor <strong>-1</strong>.</p><p>Whole numbers together with their negatives and zero
+    are called <strong>integers</strong>.</p>
+- kind: widget
+  widget: numberline
+  config:
+    start: 0
+    min: -6
+    max: 6
+- kind: figure
+  svg: <svg viewBox="0 0 320 90" role="img"><line x1="10" y1="48" x2="310" y2="48" stroke="currentColor" stroke-width="4"
+    stroke-linecap="round"/><g font-size="14" font-weight="700" text-anchor="middle" fill="currentColor"><text x="40" y="78">-3</text><text
+    x="100" y="78">-2</text><text x="160" y="78">-1</text><text x="220" y="78">0</text><text x="280" y="78">1</text></g><circle
+    cx="220" cy="48" r="8" fill="#ffd43b" stroke="#14193a" stroke-width="3"/></svg>
+  alt: A number line with minus 3, minus 2, minus 1, 0 and 1. A yellow dot marks zero.
+  caption: Negative numbers sit to the left of zero.
+- kind: callout
+  tone: real
+  html: In Shimla on a winter night the temperature can drop to <strong>-3 degrees</strong>. That is three degrees below zero.
+- kind: check
+  item: q-int-line-1
+- kind: summary
+  points:
+  - Integers are whole numbers, their negatives and zero.
+  - Negative numbers are to the left of zero.
+  - Zero is neither positive nor negative.
+items:
+- key: q-int-line-1
+  kind: mcq
+  stem: Which number is two steps to the left of 0?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: integers-number-line
+    weight: 1.0
+  explanation: Left of zero means negative, so two steps left is -2.
+  hints:
+  - Left of zero is the negative side.
+  correct: B
+  options:
+  - key: A
+    text: '2'
+    misconception: drops-the-sign
+  - key: B
+    text: '-2'
+  - key: C
+    text: '-1'
+  - key: D
+    text: '0'
+- key: q-int-line-2
+  kind: numeric
+  stem: What number is 4 steps to the left of 0?
+  difficulty: intro
+  purpose: practice
+  concepts:
+  - id: integers-number-line
+  explanation: Four steps left of zero is -4.
+  hints:
+  - Count 4 steps to the left starting at 0.
+  value: -4
+  tolerance: 0.0
+  verify: 0-4
+- key: q-int-line-3
+  kind: truefalse
+  stem: -5 is to the right of -2 on the number line.
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: integers-number-line
+  explanation: -5 is further left than -2, so it is to the left of -2.
+  hints:
+  - Which of them is closer to zero?
+  correct: false
+- key: q-int-line-4
+  kind: mcq
+  stem: A lift is on floor 2 and goes down 5 floors. Which floor does it reach?
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: integers-number-line
+    weight: 1.0
+  explanation: 'Going down is moving left: 2 minus 5 is -3.'
+  hints:
+  - Start at 2 and move 5 steps to the left.
+  correct: A
+  options:
+  - key: A
+    text: '-3'
+  - key: B
+    text: '3'
+    misconception: reverses-subtraction
+  - key: C
+    text: '-7'
+  - key: D
+    text: '7'
+  verify: 2-5
+- key: q-int-line-5
+  kind: fill
+  stem: The number that is neither positive nor negative is ____.
+  difficulty: intro
+  purpose: practice
+  concepts:
+  - id: integers-number-line
+  explanation: Zero is the number between the positives and the negatives.
+  hints:
+  - It is where the number line splits.
+  accepted:
+  - '0'
+  - zero
+misconceptions:
+- code: drops-the-sign
+  concept: integers-number-line
+  description: Ignores the minus sign and treats -2 as 2.
+- code: reverses-subtraction
+  concept: integers-number-line
+  description: Subtracts the smaller number from the larger and ignores direction.
+cards:
+- key: number-line-card-1
+  concept: integers-number-line
+  front: What is an integer?
+  back: A whole number that can be positive, negative or zero, like -3, 0 or 5.
+- key: number-line-card-2
+  concept: integers-number-line
+  front: Where are negative numbers on the number line?
+  back: To the left of zero.

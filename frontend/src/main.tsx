@@ -14,6 +14,9 @@ import { AuthProvider } from './context/AuthContext';
 import { ToastProvider } from './ui/kit';
 import { FxProvider } from './fx/fx';
 import { IconDefs } from './icons/Icon';
+import { startSync } from './offline/sync';
+
+startSync();
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

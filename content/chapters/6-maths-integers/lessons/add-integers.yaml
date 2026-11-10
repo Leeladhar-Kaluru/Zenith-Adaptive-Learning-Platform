@@ -1,0 +1,144 @@
+slug: add-integers
+title: Adding integers
+minutes: 14
+objectives:
+- Add a positive and a negative integer using the number line
+- Explain why adding a negative number moves you left
+concepts:
+- integers-add
+origin: ai_assisted
+blocks:
+- kind: text
+  heading: Move along the line
+  html: <p>To add, start at the first number. Adding a <strong>positive</strong> number moves you to the right. Adding a <strong>negative</strong>
+    number moves you to the left.</p>
+- kind: widget
+  widget: numberline
+  config:
+    start: 2
+    min: -6
+    max: 6
+- kind: example
+  heading: Worked example
+  prompt: Work out -3 + 5.
+  steps:
+  - Start at -3 on the number line.
+  - Adding 5 means move 5 steps right.
+  - You pass 0 after 3 steps and 2 more steps land you on 2. So -3 + 5 = 2.
+- kind: callout
+  tone: remember
+  html: Adding a negative number moves you <strong>left</strong>, just like subtracting.
+- kind: check
+  item: q-int-add-1
+- kind: summary
+  points:
+  - 'Add a positive: move right. Add a negative: move left.'
+  - 'Opposites add to zero: (-5) + 5 = 0.'
+  - A quick sketch of the number line helps when you are unsure.
+items:
+- key: q-int-add-1
+  kind: mcq
+  stem: What is -3 + 5?
+  difficulty: standard
+  purpose: check
+  concepts:
+  - id: integers-add
+    weight: 1.0
+  explanation: Start at -3 and move 5 steps right to land on 2.
+  hints:
+  - Move 5 steps right from -3.
+  correct: B
+  options:
+  - key: A
+    text: '-8'
+    misconception: adds-digits-ignores-sign
+  - key: B
+    text: '2'
+  - key: C
+    text: '8'
+  - key: D
+    text: '-2'
+  verify: -3+5
+- key: q-int-add-2
+  kind: numeric
+  stem: What is 4 + (-6)?
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: integers-add
+  explanation: Start at 4 and move 6 steps left to reach -2.
+  hints:
+  - Adding a negative moves left.
+  value: -2
+  tolerance: 0.0
+  verify: 4+(-6)
+- key: q-int-add-3
+  kind: numeric
+  stem: What is -7 + (-2)?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: integers-add
+  explanation: Start at -7 and move 2 more steps left to reach -9.
+  hints:
+  - Both are negative, so keep moving left.
+  value: -9
+  tolerance: 0.0
+  verify: -7+(-2)
+- key: q-int-add-4
+  kind: truefalse
+  stem: (-5) + 5 = 0
+  difficulty: intro
+  purpose: practice
+  concepts:
+  - id: integers-add
+  explanation: A number and its opposite add up to zero.
+  hints:
+  - Move 5 right from -5.
+  correct: true
+- key: q-int-add-5
+  kind: fill
+  stem: (-4) + 0 = ____
+  difficulty: intro
+  purpose: practice
+  concepts:
+  - id: integers-add
+  explanation: Adding zero changes nothing.
+  hints:
+  - What does adding 0 do?
+  accepted:
+  - '-4'
+- key: q-int-add-6
+  kind: mcq
+  stem: Rahul owes his friend Rs 40 and then earns Rs 25. Treat the debt as -40. What is his money now?
+  difficulty: challenge
+  purpose: practice
+  concepts:
+  - id: integers-add
+    weight: 1.0
+  explanation: -40 + 25 = -15, so he still owes Rs 15.
+  hints:
+  - Write the sum -40 + 25 and move on the line.
+  correct: B
+  options:
+  - key: A
+    text: Rs 15
+  - key: B
+    text: -Rs 15
+  - key: C
+    text: Rs 65
+  - key: D
+    text: -Rs 65
+misconceptions:
+- code: adds-digits-ignores-sign
+  concept: integers-add
+  description: Adds -3 and 5 as 3 + 5 or gets -8 by ignoring the direction of each number.
+cards:
+- key: add-integers-card-1
+  concept: integers-add
+  front: What happens when you add a negative number?
+  back: You move to the left on the number line.
+- key: add-integers-card-2
+  concept: integers-add
+  front: What is a number plus its opposite?
+  back: Zero.

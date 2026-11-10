@@ -45,6 +45,16 @@ export default function Settings() {
         </Card>
       )}
 
+      {profile.role === 'student' && (
+        <Card>
+          <h3>League</h3>
+          <label style={{ display: 'flex', gap: 10, alignItems: 'center', marginTop: 10, fontWeight: 700 }}>
+            <input type="checkbox" checked={!profile.leagueOptOut} onChange={(e) => void save({ leagueOptOut: !e.target.checked })} style={{ width: 22, height: 22, accentColor: 'var(--brand)' }} />
+            Show me in my class league (classmates see only my nickname and character)
+          </label>
+        </Card>
+      )}
+
       <Card>
         <h3>Look and feel</h3>
         <div style={{ marginTop: 14 }}><Segmented label="Theme" value={theme} onChange={setTheme} options={[{ value: 'system', label: 'Match device' }, { value: 'light', label: 'Light' }, { value: 'dark', label: 'Dark' }]} /></div>

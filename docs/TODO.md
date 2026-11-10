@@ -22,15 +22,15 @@ sign-up -> pick class -> Learn library -> lesson reader with checks -> adaptive 
 
 ## C. Foundation (backend)
 
-- [ ] C1 [me] Migrations: boards, curriculum versions, chapters, lessons and versions (draft -> approved -> published), items, concepts, prerequisite edges, evidence log, concept states, classrooms, league tables.
-- [ ] C2 [me] Content importer + validator (schema, SymPy answers, prerequisite graph). Load existing 10 chapters as drafts.
-- [ ] C3 [me] Review API + screen: teacher approves; DB forbids publishing without approval.
-- [ ] C4 [me] Evidence API with server-side answer checking; BKT per concept; item selection; prerequisite gap probes; next-best-action with stored reasons.
-- [ ] C5 [me] Teacher API: class overview, concept heatmap, misconceptions, recommendations, assignments.
-- [ ] C6 [me] League/quests/streaks (classroom-scoped, opt-out).
-- [ ] C7 [me] Tutor: grounded in published lessons, Hindi/Telugu replies labelled AI-translated, graceful when Groq is down or rate-limited.
-- [ ] C8 [me] Security pass: RLS deny-all kept, fix `rls_auto_enable()` exposure, rate limits, input validation.
-- [ ] C9 [me] Tests written alongside each item (pytest on disposable Postgres).
+- [x] C1 [me] Migrations: boards, curriculum versions, chapters, lessons and versions (draft -> approved -> published), items, concepts, prerequisite edges, evidence log, concept states, classrooms, league tables.
+- [x] C2 [me] Content importer + validator (schema, SymPy answers, prerequisite graph). Load existing 10 chapters as drafts.
+- [x] C3 [me] Review API + screen: teacher approves; DB forbids publishing without approval.
+- [x] C4 [me] Evidence API with server-side answer checking; BKT per concept; item selection; prerequisite gap probes; next-best-action with stored reasons.
+- [x] C5 [me] Teacher API: class overview, concept heatmap, misconceptions, recommendations, assignments.
+- [x] C6 [me] League/quests/streaks (classroom-scoped, opt-out).
+- [x] C7 [me] Tutor: grounded in published lessons, Hindi/Telugu replies labelled AI-translated, graceful when Groq is down or rate-limited.
+- [x] C8 [me] Security pass: RLS deny-all kept, fix `rls_auto_enable()` exposure, rate limits, input validation.
+- [x] C9 [me] Tests written alongside each item (pytest on disposable Postgres).
 
 ## D. Frontend rebuild (lightweight, animated)
 
@@ -39,12 +39,12 @@ sign-up -> pick class -> Learn library -> lesson reader with checks -> adaptive 
 - [x] D3 [me] Screens: Landing/sign-in, Onboarding, Today, Learn (class -> subject -> chapter), Lesson reader, Practice, Climb, Ask, Settings.
 - [x] D4 [me] Teacher screens: Class, Concepts heatmap, Student, Assign, Review queue.
 - [x] D5 [me] Interactive widgets: number line, fraction/balance model, step-reveal worked examples.
-- [~] D6 [me] Offline: download chapter, queue answers, idempotent sync.
-- [~] D7 [me] Performance: initial JS <= 170 kB gzip, Lighthouse mobile >= 90, fonts subset.
+- [x] D6 [me] Offline: download chapter, queue answers, idempotent sync.
+- [x] D7 [me] Performance: initial JS <= 170 kB gzip, Lighthouse mobile >= 90, fonts subset.
 
 ## E. Content (the long pole)
 
-- [ ] E1 [me] Upgrade the existing Class 6-10 chapter drafts: more questions, misconception-tagged options, diagrams as SVG, worked examples, proper notation.
+- [x] E1 [me] Upgrade the existing Class 6-10 chapter drafts: more questions, misconception-tagged options, diagrams as SVG, worked examples, proper notation.
 - [ ] E2 [both] You review and approve in the review screen (target for today: as many chapters as you can approve; rest stays "Coming soon").
 - [ ] E3 [you] Confirm curriculum year per class (NCERT 2025-26 editions) so chapter numbers are right.
 
@@ -63,3 +63,5 @@ Anything not finished today is shown as "Coming soon" or hidden, never faked.
 
 ## Progress log
 - 2026-11-10: Frontend rebuilt in React (custom icons, 12 avatars, tier badges, UI kit, shell, view transitions, FX, 22 screens incl. teacher and review) against a typed API contract with a dev-only mock. Entry bundle 92 kB gzip. Checked rendered on desktop and phone. D6 (offline): Dexie store and Offline screen done; chapter download and evidence queue sync pending. D7: size budget met; Lighthouse not yet run. Backend rebuild (C1-C9) is next.
+
+- 2026-11-10 (later): Backend rebuilt and tested (79 tests), real content for Classes 6-8 Maths loaded (10 lessons, 59 questions, all gates pass), frontend aligned to the real API with no mocks, verified on the real local stack. E1 is done for Maths 6-8 only; Science and Classes 9-10 remain. E2 (your approval in the review screen), A1-A4 and F1-F4 (Vercel deploy) are next.

@@ -5,21 +5,20 @@ import { Chip } from '../ui/kit';
 import { RouteLoader } from '../fx/fx';
 import { useAuth } from '../context/AuthContext';
 import { useApi } from '../api/useApi';
-import { MOCK } from '../api/client';
 import type { Today } from '../api/types';
 import s from './shell.module.css';
 
 const STUDENT = [
-  { to: '/today', icon: 'home', label: 'Today' },
+  { to: '/home', icon: 'home', label: 'Home' },
   { to: '/learn', icon: 'book', label: 'Learn' },
   { to: '/practice', icon: 'target', label: 'Practice' },
-  { to: '/climb', icon: 'peak', label: 'Climb' },
+  { to: '/explore', icon: 'puzzle', label: 'Explore' },
   { to: '/ask', icon: 'chat', label: 'Ask' },
+  { to: '/progress', icon: 'peak', label: 'My Progress' },
 ];
 const TEACHER = [
-  { to: '/teacher', icon: 'people', label: 'Class' },
+  { to: '/teacher', icon: 'people', label: 'Classes' },
   { to: '/learn', icon: 'book', label: 'Library' },
-  { to: '/review', icon: 'clipboard', label: 'Review' },
   { to: '/settings', icon: 'gear', label: 'Settings' },
 ];
 const REVIEWER = [
@@ -33,8 +32,8 @@ function Stats() {
   if (!data) return null;
   return (
     <>
-      <Chip tone="hi" icon="flame">{data.streak}</Chip>
-      <span className={s.hideSm}><Chip icon="bolt">{data.xp} XP</Chip></span>
+      <Chip tone="hi" icon="flame">{data.streak.days}</Chip>
+      <span className={s.hideSm}><Chip icon="bolt">{data.xp.xp} XP</Chip></span>
     </>
   );
 }
@@ -55,7 +54,6 @@ export default function Shell() {
   return (
     <>
       <a className={s.skip} href="#main">Skip to content</a>
-      {MOCK && <div className={s.banner}>Dev mock data. Not connected to the ZENITH API.</div>}
       <div className={`${s.app} ${min ? s.min : ''}`}>
         <aside className={s.rail} aria-label="Primary">
           <div className={s.brand}>

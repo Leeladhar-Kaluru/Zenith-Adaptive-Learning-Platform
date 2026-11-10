@@ -1,0 +1,19 @@
+slug: 6-maths-integers
+board: cbse
+curriculum: NCERT current editions (to be confirmed by a reviewer)
+grade: 6
+subject: maths
+title: Integers
+summary: 'Numbers on both sides of zero: place them on the number line, compare them, and add and subtract them.'
+concepts:
+- id: integers-number-line
+- id: integers-compare
+- id: integers-add
+- id: integers-subtract
+- id: whole-number-ops
+  role: foundation
+lessons:
+- number-line
+- compare-order
+- add-integers
+- subtract-integers

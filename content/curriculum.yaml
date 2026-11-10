@@ -1,0 +1,11 @@
+boards:
+  - {id: cbse, name: CBSE}
+subjects:
+  - {id: maths, name: Mathematics}
+  - {id: science, name: Science}
+versions:
+  - board: cbse
+    label: NCERT current editions (to be confirmed by a reviewer)
+    effective_year: 2025
+    verified: false
+    note: Chapter placement must be checked against the current NCERT textbook for each class before approval.

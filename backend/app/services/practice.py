@@ -187,7 +187,9 @@ def create_assessment(db: Session, profile: Profile, kind: str, *, chapter: str 
 
 
 def session_view(db: Session, s: AssessmentSession) -> dict:
-    base = {"id": str(s.id), "kind": s.kind, "status": s.status, "timeLimitS": s.time_limit_s, "startedAt": s.started_at.isoformat(), "total": len(s.item_ids)}
+    ch = db.get(Chapter, s.chapter_id) if s.chapter_id else None
+    base = {"id": str(s.id), "kind": s.kind, "status": s.status, "timeLimitS": s.time_limit_s, "startedAt": s.started_at.isoformat(), "total": len(s.item_ids),
+            "chapter": ch.slug if ch else None, "conceptId": (s.concept_ids[0] if s.kind == "topic_test" and s.concept_ids else None)}
     if s.status == "active":
         items = {str(i.id): i for i in db.scalars(select(Item).where(Item.id.in_([uuid.UUID(x) for x in s.item_ids])))}
         answered = {str(i) for (i,) in db.execute(select(EvidenceEvent.item_id).where(EvidenceEvent.session_id == s.id))}

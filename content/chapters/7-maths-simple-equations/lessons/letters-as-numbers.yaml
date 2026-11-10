@@ -1,0 +1,140 @@
+slug: letters-as-numbers
+title: Letters as numbers
+minutes: 12
+objectives:
+- Use a letter to stand for an unknown number
+- Write simple expressions from words
+concepts:
+- expressions-variables
+origin: ai_assisted
+blocks:
+- kind: text
+  heading: A letter for a number
+  html: <p>A letter can stand for a number we do not know yet. If one pencil costs <strong>x</strong> rupees, then 3 pencils
+    cost <strong>3x</strong> rupees. Here 3x means 3 times x.</p>
+- kind: example
+  heading: Worked example
+  prompt: Tanvi is 5 years older than her brother. Her brother's age is b. Write Tanvi's age and find it when b = 8.
+  steps:
+  - Tanvi's age is the brother's age plus 5, so it is b + 5.
+  - When b = 8, Tanvi's age is 8 + 5 = 13.
+- kind: callout
+  tone: watch
+  html: <strong>3x</strong> means 3 times x. It does not mean 3 and x written side by side.
+- kind: check
+  item: q-var-1
+- kind: summary
+  points:
+  - A letter stands for a number that can change.
+  - 3x means 3 times x.
+  - Put in a number for the letter to find the value of an expression.
+items:
+- key: q-var-1
+  kind: mcq
+  stem: A notebook costs n rupees. What is the cost of 4 notebooks?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: expressions-variables
+    weight: 1.0
+  explanation: 4 notebooks cost 4 times n, which is 4n.
+  hints:
+  - Cost of many items is a multiplication.
+  correct: B
+  options:
+  - key: A
+    text: n + 4
+    misconception: adds-instead-of-multiplies
+  - key: B
+    text: 4n
+  - key: C
+    text: n - 4
+  - key: D
+    text: n/4
+- key: q-var-2
+  kind: numeric
+  stem: If x = 6, what is the value of 3x + 2?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: expressions-variables
+  explanation: 3 times 6 is 18, and 18 + 2 = 20.
+  hints:
+  - Replace x with 6 first.
+  value: 20
+  tolerance: 0.0
+  verify: 3*6+2
+- key: q-var-3
+  kind: mcq
+  stem: Which expression means 'a number y increased by 7'?
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: expressions-variables
+    weight: 1.0
+  explanation: Increased by 7 means add 7, so y + 7.
+  hints:
+  - Increased means more.
+  correct: C
+  options:
+  - key: A
+    text: 7y
+  - key: B
+    text: y - 7
+  - key: C
+    text: y + 7
+  - key: D
+    text: 7 - y
+- key: q-var-4
+  kind: truefalse
+  stem: In 5a, the letter a can only be the number 5.
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: expressions-variables
+  explanation: The letter a can be any number. It is not tied to 5.
+  hints:
+  - A letter can stand for different numbers.
+  correct: false
+- key: q-var-5
+  kind: fill
+  stem: 'Write ''twice a number m'' as an expression: ____'
+  difficulty: intro
+  purpose: practice
+  concepts:
+  - id: expressions-variables
+  explanation: Twice means 2 times, so 2m.
+  hints:
+  - Twice means two times.
+  accepted:
+  - 2m
+  - 2*m
+  - 2 m
+  - m*2
+  - 2 x m
+- key: q-var-6
+  kind: numeric
+  stem: If p = 4, what is p + 9?
+  difficulty: intro
+  purpose: practice
+  concepts:
+  - id: expressions-variables
+  explanation: 4 + 9 = 13.
+  hints:
+  - Put 4 in place of p.
+  value: 13
+  tolerance: 0.0
+  verify: 4+9
+misconceptions:
+- code: adds-instead-of-multiplies
+  concept: expressions-variables
+  description: Writes 4 notebooks at n rupees each as n + 4.
+cards:
+- key: letters-as-numbers-card-1
+  concept: expressions-variables
+  front: What does 3x mean?
+  back: 3 times x.
+- key: letters-as-numbers-card-2
+  concept: expressions-variables
+  front: What does a letter stand for in an expression?
+  back: A number that is unknown or can change.

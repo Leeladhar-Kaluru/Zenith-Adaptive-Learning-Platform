@@ -1,0 +1,151 @@
+slug: compare-order
+title: Which is greater?
+minutes: 12
+objectives:
+- Compare two integers using the number line
+- Arrange integers in order from smallest to largest
+concepts:
+- integers-compare
+origin: ai_assisted
+blocks:
+- kind: text
+  heading: Right is greater
+  html: <p>On a number line, the number further to the <strong>right</strong> is the greater number. So <strong>-1 is greater
+    than -4</strong>, even though 4 looks bigger than 1.</p>
+- kind: widget
+  widget: numberline
+  config:
+    start: 0
+    min: -6
+    max: 6
+- kind: callout
+  tone: watch
+  html: <strong>-7 is smaller than -2.</strong> After the minus sign, a bigger digit means the number is further to the left,
+    so it is smaller.
+- kind: example
+  heading: Worked example
+  prompt: Arrange -3, 2, -7 and 0 from smallest to largest.
+  steps:
+  - 'Place them on the line: -7 is furthest left, then -3, then 0, then 2.'
+  - 'Read from left to right: -7, -3, 0, 2.'
+- kind: check
+  item: q-int-cmp-1
+- kind: summary
+  points:
+  - The number on the right is always greater.
+  - Every negative number is smaller than zero and every positive number.
+  - Among negatives, the one closer to zero is greater.
+items:
+- key: q-int-cmp-1
+  kind: mcq
+  stem: 'Which is greater: -3 or -8?'
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: integers-compare
+    weight: 1.0
+  explanation: -3 is to the right of -8, so -3 is greater.
+  hints:
+  - Which one is closer to zero?
+  correct: B
+  options:
+  - key: A
+    text: '-8'
+    misconception: bigger-digit-bigger-number
+  - key: B
+    text: '-3'
+  - key: C
+    text: They are equal
+  - key: D
+    text: Cannot say
+- key: q-int-cmp-2
+  kind: mcq
+  stem: Which is the smallest of 0, -6, 4 and -1?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: integers-compare
+    weight: 1.0
+  explanation: -6 is furthest to the left.
+  hints:
+  - Find the one furthest left.
+  correct: B
+  options:
+  - key: A
+    text: '0'
+  - key: B
+    text: '-6'
+  - key: C
+    text: '4'
+  - key: D
+    text: '-1'
+- key: q-int-cmp-3
+  kind: numeric
+  stem: How many integers are there between -3 and 2? Do not count -3 or 2.
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: integers-compare
+  explanation: They are -2, -1, 0 and 1.
+  hints:
+  - List them from left to right.
+  value: 4
+  tolerance: 0.0
+- key: q-int-cmp-4
+  kind: truefalse
+  stem: Every negative number is smaller than every positive number.
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: integers-compare
+  explanation: Negatives are left of zero and positives are right of zero.
+  hints:
+  - Picture the number line.
+  correct: true
+- key: q-int-cmp-5
+  kind: fill
+  stem: 'Write the integer that comes just after -1 on the number line: ____'
+  difficulty: intro
+  purpose: practice
+  concepts:
+  - id: integers-compare
+  explanation: After -1 we reach zero.
+  hints:
+  - Move one step right from -1.
+  accepted:
+  - '0'
+  - zero
+- key: q-int-cmp-6
+  kind: mcq
+  stem: Arrange 3, -5, 0, -2 from smallest to largest.
+  difficulty: challenge
+  purpose: practice
+  concepts:
+  - id: integers-compare
+    weight: 1.0
+  explanation: 'From left to right on the line: -5, -2, 0, 3.'
+  hints:
+  - Put the negatives first, furthest left first.
+  correct: A
+  options:
+  - key: A
+    text: -5, -2, 0, 3
+  - key: B
+    text: -2, -5, 0, 3
+  - key: C
+    text: 3, 0, -2, -5
+  - key: D
+    text: 0, -2, -5, 3
+misconceptions:
+- code: bigger-digit-bigger-number
+  concept: integers-compare
+  description: Thinks -8 is greater than -3 because 8 is greater than 3.
+cards:
+- key: compare-order-card-1
+  concept: integers-compare
+  front: Which of two integers is greater?
+  back: The one further to the right on the number line.
+- key: compare-order-card-2
+  concept: integers-compare
+  front: Which is greater, -2 or -9?
+  back: -2, because it is closer to zero.

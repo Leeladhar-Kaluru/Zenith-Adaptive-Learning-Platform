@@ -1,0 +1,135 @@
+slug: one-step
+title: One-step equations
+minutes: 14
+objectives:
+- Solve an equation by doing the same thing to both sides
+- Choose the correct operation to undo
+concepts:
+- simple-equation-one-step
+origin: ai_assisted
+blocks:
+- kind: text
+  heading: A balanced scale
+  html: <p>An equation is like a balanced scale. Both sides are equal. If you take something off one side, you must take the
+    same off the other side to keep it balanced.</p>
+- kind: widget
+  widget: balance
+  config:
+    a: 3
+    b: 7
+- kind: example
+  heading: Worked example
+  prompt: Solve x + 5 = 9.
+  steps:
+  - To get x alone, undo the adding of 5 by subtracting 5 from both sides.
+  - x + 5 - 5 = 9 - 5, so x = 4.
+  - 'Check: 4 + 5 = 9. It works.'
+- kind: callout
+  tone: remember
+  html: Whatever you do to one side, <strong>do to the other side too</strong>.
+- kind: check
+  item: q-eq1-1
+- kind: summary
+  points:
+  - Undo addition with subtraction, and subtraction with addition.
+  - Undo multiplication with division, and division with multiplication.
+  - Always check by putting your answer back.
+items:
+- key: q-eq1-1
+  kind: numeric
+  stem: Solve x + 7 = 12. What is x?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: simple-equation-one-step
+  explanation: 'Subtract 7 from both sides: x = 12 - 7 = 5.'
+  hints:
+  - Undo + 7.
+  value: 5
+  tolerance: 0.0
+  verify: 12-7
+- key: q-eq1-2
+  kind: numeric
+  stem: Solve x - 4 = 9. What is x?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: simple-equation-one-step
+  explanation: 'Add 4 to both sides: x = 9 + 4 = 13.'
+  hints:
+  - Undo - 4.
+  value: 13
+  tolerance: 0.0
+  verify: 9+4
+- key: q-eq1-3
+  kind: numeric
+  stem: Solve 3x = 18. What is x?
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: simple-equation-one-step
+  explanation: 'Divide both sides by 3: x = 18 / 3 = 6.'
+  hints:
+  - Undo times 3.
+  value: 6
+  tolerance: 0.0
+  verify: 18/3
+- key: q-eq1-4
+  kind: mcq
+  stem: To solve x + 8 = 3, what do you do to both sides?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: simple-equation-one-step
+    weight: 1.0
+  explanation: Subtract 8 from both sides to get x = -5.
+  hints:
+  - Undo + 8 with the opposite.
+  correct: B
+  options:
+  - key: A
+    text: Add 8
+    misconception: wrong-inverse
+  - key: B
+    text: Subtract 8
+  - key: C
+    text: Multiply by 8
+  - key: D
+    text: Divide by 8
+- key: q-eq1-5
+  kind: numeric
+  stem: Solve x + 6 = 2. What is x?
+  difficulty: challenge
+  purpose: practice
+  concepts:
+  - id: simple-equation-one-step
+  explanation: 'Subtract 6 from both sides: x = 2 - 6 = -4.'
+  hints:
+  - The answer can be below zero.
+  value: -4
+  tolerance: 0.0
+  verify: 2-6
+- key: q-eq1-6
+  kind: truefalse
+  stem: If x / 5 = 3 then x = 15.
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: simple-equation-one-step
+  explanation: Multiply both sides by 5 to get x = 15.
+  hints:
+  - Undo dividing by 5.
+  correct: true
+misconceptions:
+- code: wrong-inverse
+  concept: simple-equation-one-step
+  description: Adds 8 to both sides of x + 8 = 3 instead of subtracting it.
+cards:
+- key: one-step-card-1
+  concept: simple-equation-one-step
+  front: How do you undo + 5?
+  back: Subtract 5 from both sides.
+- key: one-step-card-2
+  concept: simple-equation-one-step
+  front: What must you do to keep an equation balanced?
+  back: Do the same thing to both sides.

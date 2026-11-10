@@ -1,0 +1,131 @@
+slug: word-problems
+title: Equations from words
+minutes: 15
+objectives:
+- Turn a word problem into an equation
+- Solve it and check the answer makes sense
+concepts:
+- equation-word-problems
+origin: ai_assisted
+blocks:
+- kind: text
+  heading: Four steps
+  html: <p>1. Choose a letter for the unknown number. 2. Write an equation from the story. 3. Solve it. 4. Check the answer
+    in the story.</p>
+- kind: example
+  heading: Worked example
+  prompt: Meena had some marbles. After buying 7 more she has 19. How many did she start with?
+  steps:
+  - Let m be the number she started with. Then m + 7 = 19.
+  - 'Subtract 7 from both sides: m = 12.'
+  - 'Check: 12 + 7 = 19. She started with 12 marbles.'
+- kind: callout
+  tone: real
+  html: A shopkeeper in Hyderabad adds a Rs 5 packing charge to every bill. Equations like <strong>12n + 5 = 65</strong> help
+    find how many items were bought.
+- kind: check
+  item: q-eqw-1
+- kind: summary
+  points:
+  - Name the unknown with a letter.
+  - The story tells you the equation.
+  - Check the answer in the story, not only in the equation.
+items:
+- key: q-eqw-1
+  kind: numeric
+  stem: A number plus 9 equals 21. Find the number.
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: equation-word-problems
+  explanation: Let the number be n. n + 9 = 21, so n = 12.
+  hints:
+  - Write n + 9 = 21.
+  value: 12
+  tolerance: 0.0
+  verify: 21-9
+- key: q-eqw-2
+  kind: numeric
+  stem: Three times a number, minus 4, is 14. Find the number.
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: equation-word-problems
+  explanation: 3n - 4 = 14, so 3n = 18 and n = 6.
+  hints:
+  - Write 3n - 4 = 14.
+  value: 6
+  tolerance: 0.0
+  verify: (14+4)/3
+- key: q-eqw-3
+  kind: mcq
+  stem: Ravi is 4 years older than twice his sister's age s. Ravi is 14. Which equation is right?
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: equation-word-problems
+    weight: 1.0
+  explanation: Twice the sister's age is 2s, and 4 more makes 2s + 4, which equals 14.
+  hints:
+  - 'Build it in order: twice s, then plus 4.'
+  correct: A
+  options:
+  - key: A
+    text: 2s + 4 = 14
+  - key: B
+    text: 2(s + 4) = 14
+    misconception: brackets-misplaced
+  - key: C
+    text: s + 4 = 28
+  - key: D
+    text: 2s - 4 = 14
+- key: q-eqw-4
+  kind: numeric
+  stem: Each notebook costs Rs 12. Asha buys n notebooks and a Rs 5 pen and pays Rs 65. How many notebooks did she buy?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: equation-word-problems
+  explanation: 12n + 5 = 65, so 12n = 60 and n = 5.
+  hints:
+  - Write 12n + 5 = 65.
+  value: 5
+  tolerance: 0.0
+  verify: (65-5)/12
+- key: q-eqw-5
+  kind: truefalse
+  stem: After solving, we should put the answer back into the story to check it.
+  difficulty: intro
+  purpose: practice
+  concepts:
+  - id: equation-word-problems
+  explanation: Checking in the story catches mistakes in forming the equation.
+  hints:
+  - Does the answer fit the story?
+  correct: true
+- key: q-eqw-6
+  kind: numeric
+  stem: The sum of three consecutive numbers is 42. What is the smallest of them?
+  difficulty: challenge
+  purpose: practice
+  concepts:
+  - id: equation-word-problems
+  explanation: x + (x+1) + (x+2) = 42, so 3x + 3 = 42 and x = 13.
+  hints:
+  - Call the numbers x, x + 1, x + 2.
+  value: 13
+  tolerance: 0.0
+  verify: (42-3)/3
+misconceptions:
+- code: brackets-misplaced
+  concept: equation-word-problems
+  description: Writes 2(s + 4) instead of 2s + 4, doubling the extra 4.
+cards:
+- key: word-problems-card-1
+  concept: equation-word-problems
+  front: What are the four steps for word problems?
+  back: Choose a letter, write the equation, solve it, check in the story.
+- key: word-problems-card-2
+  concept: equation-word-problems
+  front: What does 'twice a number plus 4' look like?
+  back: 2n + 4.

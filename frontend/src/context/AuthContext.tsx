@@ -8,7 +8,7 @@ interface Auth {
   profile: Profile | null;
   loading: boolean;
   login: (email: string, password: string) => Promise<Profile>;
-  signup: (input: { email: string; password: string; displayName: string; role: 'student' | 'teacher' }) => Promise<Profile>;
+  signup: (input: { email: string; password: string; displayName: string; role: 'student' | 'teacher'; consent: boolean }) => Promise<Profile | null>;
   logout: () => void;
   refresh: () => Promise<void>;
   setProfile: (p: Profile) => void;
@@ -46,7 +46,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const finish = useCallback((res: { token: string; profile: Profile }) => { token.set(res.token); clearApiCache(); setProfile(res.profile); return res.profile; }, []);
   const login = useCallback(async (email: string, password: string) => finish(await api('/auth/login', { method: 'POST', body: { email, password } })), [finish]);
-  const signup = useCallback(async (input: { email: string; password: string; displayName: string; role: 'student' | 'teacher' }) => finish(await api('/auth/signup', { method: 'POST', body: input })), [finish]);
+  const signup = useCallback(async (input: { email: string; password: string; displayName: string; role: 'student' | 'teacher'; consent: boolean }) => {
+    const res = await api<{ token?: string; profile?: Profile; needsEmailConfirmation?: boolean }>('/auth/signup', { method: 'POST', body: input });
+    return res.token && res.profile ? finish({ token: res.token, profile: res.profile }) : null;
+  }, [finish]);
   const logout = useCallback(() => { token.clear(); clearApiCache(); setProfile(null); }, []);
 
   const value = useMemo(() => ({ profile, loading, login, signup, logout, refresh, setProfile, theme, setTheme }), [profile, loading, login, signup, logout, refresh, theme, setTheme]);

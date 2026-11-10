@@ -1,0 +1,24 @@
+concepts:
+  - {id: whole-number-ops, title: Whole number operations, grade: 6, subject: maths, description: "Adding, subtracting, multiplying and dividing whole numbers.", keywords: [add, subtract, multiply, divide]}
+  - {id: integers-number-line, title: Integers on the number line, grade: 6, subject: maths, description: "Placing positive and negative numbers on a number line.", keywords: [integer, negative, number line, zero],
+     prerequisites: [{id: whole-number-ops, why: Integers extend the counting numbers to the left of zero.}]}
+  - {id: integers-compare, title: Comparing and ordering integers, grade: 6, subject: maths, description: "Deciding which integer is greater or smaller.", keywords: [greater, smaller, order],
+     prerequisites: [{id: integers-number-line}]}
+  - {id: integers-add, title: Adding integers, grade: 6, subject: maths, description: "Adding positive and negative numbers by moving on the number line.", keywords: [add, sum, negative],
+     prerequisites: [{id: integers-compare}]}
+  - {id: integers-subtract, title: Subtracting integers, grade: 6, subject: maths, description: "Subtracting integers as moving left or adding the opposite.", keywords: [subtract, difference, opposite],
+     prerequisites: [{id: integers-add, why: Subtraction is adding the opposite.}]}
+  - {id: expressions-variables, title: Letters as numbers, grade: 7, subject: maths, description: "Using a letter to stand for an unknown number.", keywords: [variable, expression, letter],
+     prerequisites: [{id: whole-number-ops}]}
+  - {id: simple-equation-one-step, title: One-step equations, grade: 7, subject: maths, description: "Solving equations like x + 5 = 9 by undoing one operation.", keywords: [equation, solve, balance],
+     prerequisites: [{id: expressions-variables}, {id: integers-subtract, why: "Undoing addition means subtracting, sometimes below zero."}]}
+  - {id: simple-equation-two-step, title: Two-step equations, grade: 7, subject: maths, description: "Solving equations like 2x + 3 = 11 by undoing two operations in order.", keywords: [equation, two-step],
+     prerequisites: [{id: simple-equation-one-step}]}
+  - {id: equation-word-problems, title: Equations from word problems, grade: 7, subject: maths, description: "Writing and solving an equation for a situation described in words.", keywords: [word problem, form an equation],
+     prerequisites: [{id: simple-equation-two-step}]}
+  - {id: linear-eq-both-sides, title: Variables on both sides, grade: 8, subject: maths, description: "Solving linear equations with the variable on both sides by collecting terms.", keywords: [linear equation, both sides, transposition],
+     prerequisites: [{id: simple-equation-two-step}, {id: integers-subtract}]}
+  - {id: linear-eq-fractions, title: Linear equations with fractions, grade: 8, subject: maths, description: "Clearing fractions by multiplying both sides by the common denominator.", keywords: [fraction, cross multiply, denominator],
+     prerequisites: [{id: linear-eq-both-sides}]}
+  - {id: linear-eq-two-variables-intro, title: Two unknowns in one equation, grade: 8, subject: maths, enrichment: true, description: "Extension - an equation like x + y = 10 has many solutions.", keywords: [two variables, extension],
+     prerequisites: [{id: linear-eq-both-sides}]}

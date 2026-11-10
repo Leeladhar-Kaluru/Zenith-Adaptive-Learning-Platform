@@ -28,7 +28,7 @@
   .top { padding: 10px 14px; gap: 8px; }
   .menu { right: 14px; }
   .bottom { display: flex; position: fixed; bottom: 0; left: 0; right: 0; z-index: 30; background: var(--surface); border-top: 2px solid var(--ink); padding: 4px 4px calc(4px + env(safe-area-inset-bottom)); }
-  .bottom a { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 2px; min-height: 58px; justify-content: center; font-size: .7rem; font-weight: 800; color: var(--ink-3); }
+  .bottom a { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 2px; min-height: 58px; justify-content: center; font-size: .64rem; font-weight: 800; color: var(--ink-3); white-space: nowrap; }
   .bottom a svg { transition: transform .3s var(--spring); }
   .bottom a[aria-current='page'] { color: var(--brand); }
   .bottom a[aria-current='page'] svg { transform: translateY(-3px) scale(1.14); }

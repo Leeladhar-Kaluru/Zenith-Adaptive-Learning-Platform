@@ -57,3 +57,7 @@
 .summary { list-style: none; display: grid; gap: 10px; margin-top: 10px; }
 .summary li { display: flex; gap: 12px; align-items: flex-start; font-weight: 700; }
 @media (max-width: 899px) { .bar { left: 0; bottom: 62px; padding: 10px 14px; } .dots { display: none; } .progressTop { margin-bottom: 12px; } }
+.answer { min-height: 52px; padding: 0 16px; border-radius: 12px; border: 2px solid var(--ink); background: var(--surface); font: inherit; font-weight: 700; font-size: 1.1rem; color: var(--ink); width: 100%; max-width: 360px; }
+.answer:focus { outline: none; box-shadow: var(--hard-sm); border-color: var(--brand); }
+.matchRow { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: center; }
+.fbHint { background: var(--hi); color: var(--hi-ink); display: flex; gap: 8px; align-items: flex-start; }

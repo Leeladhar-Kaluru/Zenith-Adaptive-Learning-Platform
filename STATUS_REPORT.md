@@ -1,75 +1,61 @@
 # ZENITH Status Report
 
-Visible product name: ZENITH. Plan and decisions: [docs/ZENITH_TRANSFORMATION_ASSESSMENT.md](docs/ZENITH_TRANSFORMATION_ASSESSMENT.md).
+Plan and decisions: [docs/ZENITH_TRANSFORMATION_ASSESSMENT.md](docs/ZENITH_TRANSFORMATION_ASSESSMENT.md) · working list: [docs/TODO.md](docs/TODO.md) · design: [docs/design/](docs/design/)
 
-## Session 2026-11-10 — Phase 0 baseline and Phase 1 removal
+## Session 2026-11-10 — full rebuild on a real backend
 
-### Changes
+### What exists now (all backed by the database, no mock or hardcoded data)
 
-**Baseline**
-- Branch `baseline/pre-zenith-transform` and tag `pre-zenith-transform` hold all prior work (commit `4e87a73`). Not pushed.
-- Work continues on `zenith/transform`.
+**Backend (FastAPI, SQLAlchemy 2, Alembic, PostgreSQL)**
+- New baseline migration `001_zenith_baseline` (39 tables, deny-all row level security, full-text indexes). Old SETU migrations and the pgvector dependency are gone.
+- **Content system:** content-as-code (`content/*.yaml`), validated by a strict schema, imported idempotently by content hash. Lessons and questions are versioned and immutable once published. Review states: draft, in review, changes requested, approved, published, archived. The database refuses published content without a named reviewer.
+- **Automated gates** (inform the reviewer, never approve): structure, distinct options, **SymPy answer verification**, reading level for the class, notation, figure alt text, questions mapped to concepts, mistakes tagged, enough practice, acyclic prerequisite graph, and a manual "curriculum placement confirmed" check the reviewer must tick.
+- **Learner model:** immutable evidence log → Bayesian Knowledge Tracing per concept (item-type guess, difficulty slip, hints count as weak evidence, repeats barely count) → honest bands with evidence counts and confidence. Rasch (Elo) ratings choose question difficulty. Challenge questions unlock only with evidence.
+- **Concept graph:** DAG validated on import; gap investigation traces a struggle to the deepest weak prerequisite; one wrong answer never creates a gap.
+- **Decisions:** transparent rules for the next step, each with a reason and evidence count: assigned work, prerequisite refresher, diagnostic, spaced revision, continue, practise, next lesson, challenge.
+- **Engagement:** XP only for first-try correct answers on new questions (daily cap), streaks with one free rest day, daily goals, badges, weekly classroom leagues (nickname and character only, teacher can turn off, students can opt out).
+- **Teacher:** classes with join codes, heatmap, students who may need help, suggestions only when several students show repeated difficulty (cites answers), assignments, interventions with before/after, accept/dismiss.
+- **Ask (tutor):** grounded in the current lesson, Hindi/Telugu replies labelled AI-translated, rate-limited, never sends identity to the AI, falls back to the lesson text and says so when AI is unavailable.
+- **Tests:** diagnostic, chapter, topic and revision tests, timed or untimed, concept-level results, mistake review, retakes.
 
-**Backend removed (document/RAG stack)**
-- API: `api/v1/documents.py`.
-- Services: `ingestion`, `extraction`, `chunking`, `retrieval`, `lesson_generator`, `pipeline_runner`, `generation_queue`.
-- Runtime and storage: `worker.py`, `core/storage.py`, `models/documents.py`, `models/jobs.py`, `tessdata/`.
-- The embedding methods in `ai_provider`, the embedding/pipeline/storage settings in `config`, and the dependencies PyMuPDF, python-docx, python-pptx and python-multipart.
-- Docker/Render files: `Dockerfile`, `.dockerignore`, `entrypoint.sh`, `render.yaml` (hosting is now Vercel).
+**Frontend (React 19, Vite, TypeScript, CSS Modules)**
+- Navigation: Home, Learn, Practice, Explore, Ask, My Progress. Teacher and reviewer have their own.
+- Custom duotone icons, 12 avatars, league badges, route transitions, XP and confetti effects.
+- Every question type (multiple choice, multi-select, true/false, numeric, fill in, match) with real hints; offline queue with idempotent sync; offline chapters.
+- No mock layer. Every screen talks to the real API.
 
-**Backend refactored**
-- `main.py` no longer starts a background loop; the app is a plain FastAPI instance.
-- `/health` is now liveness only; the new `/health/ready` checks the database and reports the AI provider.
-- Learning paths are read-only legacy endpoints.
-- Attempts no longer enqueue remediation lessons or coach notes.
-- The doubt (tutor) sync is grounded in curriculum lessons via `library_retrieval`, otherwise general knowledge, labelled as such. Prompts contain no student identity.
-- `coach_service` no longer reads document chunks; `study_plan` no longer reads documents.
-- `learning_paths.document_id` is kept as a plain legacy column (no foreign key) until the approved legacy-table drop.
-- `library_validator` now loads schemas from `backend/app/content/library/schemas/`. The two JSON schemas were restored from git history, because the validator silently skipped them after the research pack was deleted. A missing schema is now an error.
+**Content loaded:** 3 chapters, 10 lessons, 59 questions (Class 6 Integers, Class 7 Simple Equations, Class 8 Linear Equations in One Variable) with a 12-concept prerequisite graph across the three classes. All pass every automated gate. **All AI-assisted drafts are unpublished until a reviewer approves them in the Review screen.**
 
-**Frontend removed or renamed**
-- Removed: Sources page, `AddSourcePanel`, `PlanReviewDialog`, `StudyRecordPanel`, `DynamicActivityIndicator`, upload and document API code, the `/sources` route and nav link, the duplicate `/lesson/:id` route, `setu-logo.svg`.
-- Renamed: `AskSetu` → `AskZenith`; Dexie DB `SetuDeskDB` → `ZenithDB`; localStorage keys `setu_*` → `zenith_*`.
-- Existing browsers lose their old local offline data and session on first load (acceptable: all existing accounts are test data).
+### Verification (exact commands and results)
 
-**Repo cleanup**
-- Deleted old SETU reports, audits, acceptance files, test-infrastructure notes, the three `setu-v2-*` skills, the `agents/` scratch, one-off scripts, and tests that only covered removed code.
-- `.gitignore` now tracks `.env.*.example` files and ignores `tsconfig.tsbuildinfo`.
-- Rewrote `README.md`, `AGENTS.md` and both production env examples.
+- Backend: `pytest` against a disposable Docker PostgreSQL → **79 passed** (engines 22, streaks 8, CMS 12, API journeys 37).
+- Frontend: `npx tsc -b && npx vite build` → passes. Entry bundle **126 kB gzip** (budget 170 kB).
+- Real stack, no mocks: backend on :8000 with the local database, frontend on :5180 through the Vite proxy.
+  - Review screen showed real gate results; approving through the real UI published a lesson; a chapter stayed closed until all its lessons were published.
+  - Real onboarding created a profile; Home showed 0 XP, 0-day streak, goals 0/5 and a diagnostic suggestion with its reason.
+  - After repeated misses on two-step equations, Home pointed to one-step equations with "1 of 4 right (based on 4 answers)".
+  - Checked on desktop (1440) and phone (390): no horizontal overflow.
+- Local-only note: to test the student side on the throwaway local database, the 9 remaining lessons were published through the reviewer API. Nothing was published anywhere else.
 
-**Not touched (needs your approval)**
-- Production database, storage bucket and Supabase auth users.
-- Alembic migrations 001–009 (008 is live; 009 was never applied).
+### Not done yet
 
-### Verification (commands and results)
+1. **Production:** Supabase still has the old SETU schema (migration 008). Deploying needs your approval to back up, drop the legacy tables and apply `001`. No Vercel project exists yet (Vercel access needs authorising).
+2. **Content review:** nothing is live for real students until you approve it. The curriculum placement (chapter numbers against the current NCERT editions) is yours to confirm.
+3. **Science and Classes 9 and 10:** no chapters yet (shown as Coming soon, not faked).
+4. **Not built:** Explore labs (physics, chemistry, biology, maps), parent view, voice, in-app content editor (content is edited as files, reviewed in the app), coins (no use for them yet), Lighthouse run, Playwright browser tests.
+5. Hindi/Telugu **lesson text** is not translated; only Ask replies are AI-translated and labelled.
 
-- `backend`: `pytest -q` against a disposable Docker Postgres (`pgvector/pgvector:pg16`, with `anon` and `authenticated` roles created to mimic Supabase) → **262 passed**.
-- `e2e_tests`: `pytest -q e2e_tests` → **170 passed**. These run against a mock API client, so they do not exercise a real server.
-- `frontend`: `npm run build` (`tsc -b && vite build`) → passes; PWA precache 79 entries, 1,304 KiB.
-- `python -m compileall -q app tests` → clean.
-- OpenAPI route groups: attempts, auth, catalogue, classroom, diagnostics, doubts, health, learning-paths, library, practice, profile, rewards, study, sync, teacher, tutor. No `documents` routes.
+### Run it locally
 
-### Tests changed on purpose
-
-- Deleted about 25 test files and test functions that covered only the removed pipeline.
-- Rewrote `test_doubt_truth.py` for the curriculum-grounded flow.
-- Updated the coaching and remediation tests: remediation lessons are no longer injected, and source cards no longer exist.
-- The tutor-prompt branding test now asserts ZENITH.
-
-### Known issues carried forward
-
-- `learning_paths.is_library`/`library_status` overload and `library_access` still allow `draft` content to be read (to be replaced in phase P2).
-- Two disconnected learner models (`concept_evidence` and `bkt_states`) remain until P3.
-- Library tutor retrieval and practice questions still read JSON from disk and only cover `cbse-10-math` (to be replaced in P2/P3).
-- `pgvector` is still imported by historical migration 001, and the live database still has the `vector` extension and legacy document tables.
-- The root-level and `docs/superpowers/` ZENITH plan and spec documents are from the earlier rebuild attempt and are superseded by the assessment.
-- Not run: the Playwright browser tests in `frontend/e2e/` (they need a running stack).
+```powershell
+cd backend; docker compose -f docker-compose.test.yml up -d
+$env:DATABASE_URL="postgresql+psycopg://setu:setu_test@localhost:55432/setu_test"; $env:APP_ENV="local"; $env:ZENITH_DEV_AUTH="true"
+python -m alembic upgrade head; python -m app.cli import ../content
+python -m uvicorn app.main:app --port 8000
+cd ../frontend; npm run dev        # proxies /api to :8000
+python -m app.cli promote <email> reviewer   # then approve lessons at /review
+```
 
 ### Tools used
 
-Git, pytest, Docker (test Postgres), npm/tsc/vite, Supabase MCP (read-only), web fetch/search. Stitch MCP is unavailable.
-
-### Next steps
-
-1. Phase D (design research and system) and Phase 2 (content core + review engine).
-2. Approval needed later for: production DB backup and legacy-table drop, deleting the 8 test auth users, and the weekly encrypted backup job.
+pytest, Docker (disposable PostgreSQL), Alembic, SymPy, npm/tsc/vite, Playwright (screenshots), Supabase MCP (read-only), `skills` CLI (five vetted skills installed). Stitch MCP unavailable.

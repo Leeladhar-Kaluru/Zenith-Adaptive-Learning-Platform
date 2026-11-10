@@ -1,0 +1,132 @@
+slug: with-fractions
+title: Equations with fractions
+minutes: 15
+objectives:
+- Clear fractions by multiplying both sides by the common denominator
+- Solve linear equations that contain fractions
+concepts:
+- linear-eq-fractions
+origin: ai_assisted
+blocks:
+- kind: text
+  heading: Clear the fractions first
+  html: <p>To remove fractions, multiply <strong>both sides</strong> by the smallest number that every denominator divides
+    into. This is the lowest common multiple (LCM).</p>
+- kind: example
+  heading: Worked example
+  prompt: Solve x/2 + x/3 = 5.
+  steps:
+  - 'The LCM of 2 and 3 is 6. Multiply both sides by 6: 3x + 2x = 30.'
+  - 'Combine: 5x = 30.'
+  - 'Divide by 5: x = 6. Check: 6/2 + 6/3 = 3 + 2 = 5.'
+- kind: callout
+  tone: watch
+  html: Multiply <strong>every</strong> term by the LCM, including the number on the other side.
+- kind: check
+  item: q-frac-1
+- kind: summary
+  points:
+  - Find the LCM of the denominators.
+  - Multiply every term on both sides by it.
+  - Then solve the equation without fractions.
+items:
+- key: q-frac-1
+  kind: numeric
+  stem: Solve x/2 + x/3 = 5. What is x?
+  difficulty: standard
+  purpose: check
+  concepts:
+  - id: linear-eq-fractions
+  explanation: 'Multiply by 6: 5x = 30, so x = 6.'
+  hints:
+  - Multiply every term by 6.
+  value: 6
+  tolerance: 0.0
+  verify: 30/5
+- key: q-frac-2
+  kind: numeric
+  stem: Solve x/4 = 3. What is x?
+  difficulty: intro
+  purpose: practice
+  concepts:
+  - id: linear-eq-fractions
+  explanation: 'Multiply both sides by 4: x = 12.'
+  hints:
+  - Undo dividing by 4.
+  value: 12
+  tolerance: 0.0
+  verify: 3*4
+- key: q-frac-3
+  kind: numeric
+  stem: Solve 2x/3 = 8. What is x?
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: linear-eq-fractions
+  explanation: 'Multiply by 3: 2x = 24, so x = 12.'
+  hints:
+  - Multiply by 3 first, then divide by 2.
+  value: 12
+  tolerance: 0.0
+  verify: 8*3/2
+- key: q-frac-4
+  kind: mcq
+  stem: 'To clear the fractions in x/4 + x/6 = 10, multiply both sides by:'
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: linear-eq-fractions
+    weight: 1.0
+  explanation: The LCM of 4 and 6 is 12, so multiply by 12.
+  hints:
+  - Find the smallest number both 4 and 6 divide into.
+  correct: B
+  options:
+  - key: A
+    text: '10'
+  - key: B
+    text: '12'
+  - key: C
+    text: '24'
+    misconception: uses-product-not-lcm
+  - key: D
+    text: '6'
+- key: q-frac-5
+  kind: numeric
+  stem: Solve (x + 1)/2 = 5. What is x?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: linear-eq-fractions
+  explanation: 'Multiply by 2: x + 1 = 10, so x = 9.'
+  hints:
+  - Undo dividing by 2 first.
+  value: 9
+  tolerance: 0.0
+  verify: 5*2-1
+- key: q-frac-6
+  kind: numeric
+  stem: Solve x/3 - 1 = x/6 + 1. What is x?
+  difficulty: challenge
+  purpose: practice
+  concepts:
+  - id: linear-eq-fractions
+  explanation: 'Multiply by 6: 2x - 6 = x + 6, so x = 12.'
+  hints:
+  - The LCM of 3 and 6 is 6.
+  value: 12
+  tolerance: 0.0
+  verify: '12'
+misconceptions:
+- code: uses-product-not-lcm
+  concept: linear-eq-fractions
+  description: Multiplies by 24 (4 times 6) instead of the smaller common multiple 12.
+cards:
+- key: with-fractions-card-1
+  concept: linear-eq-fractions
+  front: How do you clear fractions in an equation?
+  back: Multiply every term on both sides by the LCM of the denominators.
+- key: with-fractions-card-2
+  concept: linear-eq-fractions
+  front: What is the LCM of 4 and 6?
+  back: '12.'

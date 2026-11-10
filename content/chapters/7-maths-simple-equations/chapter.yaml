@@ -1,0 +1,19 @@
+slug: 7-maths-simple-equations
+board: cbse
+curriculum: NCERT current editions (to be confirmed by a reviewer)
+grade: 7
+subject: maths
+title: Simple Equations
+summary: Use letters for unknown numbers, then solve equations step by step and use them to answer word problems.
+concepts:
+- id: expressions-variables
+- id: simple-equation-one-step
+- id: simple-equation-two-step
+- id: equation-word-problems
+- id: integers-subtract
+  role: foundation
+lessons:
+- letters-as-numbers
+- one-step
+- two-step
+- word-problems

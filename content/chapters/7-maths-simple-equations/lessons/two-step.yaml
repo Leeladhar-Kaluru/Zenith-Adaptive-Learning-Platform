@@ -1,0 +1,130 @@
+slug: two-step
+title: Two-step equations
+minutes: 14
+objectives:
+- Solve equations that need two steps in the right order
+- Check a solution by substituting it back
+concepts:
+- simple-equation-two-step
+origin: ai_assisted
+blocks:
+- kind: text
+  heading: Undo in reverse order
+  html: <p>To solve 2x + 3 = 11, undo the steps in <strong>reverse order</strong>. First undo the adding of 3, then undo the
+    multiplying by 2.</p>
+- kind: example
+  heading: Worked example
+  prompt: Solve 2x + 3 = 11.
+  steps:
+  - 'Subtract 3 from both sides: 2x = 8.'
+  - 'Divide both sides by 2: x = 4.'
+  - 'Check: 2 times 4 plus 3 is 11. Correct.'
+- kind: callout
+  tone: watch
+  html: Do not divide first unless you divide <strong>every</strong> term. Undo the adding or subtracting first.
+- kind: check
+  item: q-eq2-1
+- kind: summary
+  points:
+  - Undo adding or subtracting first.
+  - Then undo multiplying or dividing.
+  - Check by putting the answer back in.
+items:
+- key: q-eq2-1
+  kind: numeric
+  stem: Solve 2x + 3 = 11. What is x?
+  difficulty: standard
+  purpose: check
+  concepts:
+  - id: simple-equation-two-step
+  explanation: Subtract 3 to get 2x = 8, then divide by 2 to get x = 4.
+  hints:
+  - Undo + 3 first.
+  value: 4
+  tolerance: 0.0
+  verify: (11-3)/2
+- key: q-eq2-2
+  kind: numeric
+  stem: Solve 3x - 5 = 10. What is x?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: simple-equation-two-step
+  explanation: Add 5 to get 3x = 15, then divide by 3 to get x = 5.
+  hints:
+  - Undo - 5 first.
+  value: 5
+  tolerance: 0.0
+  verify: (10+5)/3
+- key: q-eq2-3
+  kind: numeric
+  stem: Solve 5x + 2 = -8. What is x?
+  difficulty: challenge
+  purpose: practice
+  concepts:
+  - id: simple-equation-two-step
+  explanation: Subtract 2 to get 5x = -10, then divide by 5 to get x = -2.
+  hints:
+  - The right side is below zero.
+  value: -2
+  tolerance: 0.0
+  verify: (-8-2)/5
+- key: q-eq2-4
+  kind: mcq
+  stem: What is the first step to solve 4x + 7 = 27?
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: simple-equation-two-step
+    weight: 1.0
+  explanation: Subtract 7 from both sides first. That leaves 4x = 20.
+  hints:
+  - Which operation is applied last to x?
+  correct: B
+  options:
+  - key: A
+    text: Divide both sides by 4
+    misconception: divides-before-undoing-addition
+  - key: B
+    text: Subtract 7 from both sides
+  - key: C
+    text: Add 7 to both sides
+  - key: D
+    text: Multiply both sides by 4
+- key: q-eq2-5
+  kind: truefalse
+  stem: x = 3 is the solution of 2x + 1 = 7.
+  difficulty: intro
+  purpose: practice
+  concepts:
+  - id: simple-equation-two-step
+  explanation: 2 times 3 plus 1 is 7, so it works.
+  hints:
+  - Put 3 in place of x.
+  correct: true
+- key: q-eq2-6
+  kind: numeric
+  stem: Solve x/2 + 1 = 4. What is x?
+  difficulty: intro
+  purpose: practice
+  concepts:
+  - id: simple-equation-two-step
+  explanation: Subtract 1 to get x/2 = 3, then multiply by 2 to get x = 6.
+  hints:
+  - Undo + 1, then undo dividing by 2.
+  value: 6
+  tolerance: 0.0
+  verify: (4-1)*2
+misconceptions:
+- code: divides-before-undoing-addition
+  concept: simple-equation-two-step
+  description: Divides only the first term by 4 before removing + 7.
+cards:
+- key: two-step-card-1
+  concept: simple-equation-two-step
+  front: In which order do you undo steps?
+  back: 'In reverse: undo adding or subtracting first, then multiplying or dividing.'
+- key: two-step-card-2
+  concept: simple-equation-two-step
+  front: How do you check a solution?
+  back: Put it back into the original equation.

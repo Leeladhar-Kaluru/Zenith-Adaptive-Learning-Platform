@@ -26,7 +26,8 @@ export default function Auth({ mode }: { mode: 'signin' | 'signup' }) {
     if (up && pw.length < 8) { setErr('Use a password with at least 8 characters.'); return; }
     setBusy(true);
     try {
-      const p = up ? await signup({ email, password: pw, displayName: name.trim(), role }) : await login(email, pw);
+      const p = up ? await signup({ email, password: pw, displayName: name.trim(), role, consent: agree }) : await login(email, pw);
+      if (!p) { setErr('Check your email to confirm your account, then sign in.'); return; }
       nav(p.onboardingCompleted ? from ?? '/' : '/onboarding', { replace: true });
     } catch (x) {
       setErr(x instanceof ApiError ? x.message : 'Something went wrong. Please try again.');

@@ -1,0 +1,133 @@
+slug: both-sides
+title: Variables on both sides
+minutes: 15
+objectives:
+- Solve linear equations with the variable on both sides
+- Explain why a term changes sign when it moves across the equal sign
+concepts:
+- linear-eq-both-sides
+origin: ai_assisted
+blocks:
+- kind: text
+  heading: Collect like terms
+  html: <p>Collect the variable on one side and the plain numbers on the other. Moving a term to the other side of the equal
+    sign <strong>changes its sign</strong>, because you are adding or subtracting the same thing on both sides.</p>
+- kind: example
+  heading: Worked example
+  prompt: Solve 5x - 3 = 2x + 9.
+  steps:
+  - 'Subtract 2x from both sides: 3x - 3 = 9.'
+  - 'Add 3 to both sides: 3x = 12.'
+  - 'Divide by 3: x = 4. Check: 5(4) - 3 = 17 and 2(4) + 9 = 17.'
+- kind: callout
+  tone: watch
+  html: Moving <strong>+3x</strong> across the equal sign gives <strong>-3x</strong>. If the sign does not change, the equation
+    is no longer balanced.
+- kind: check
+  item: q-lin-1
+- kind: summary
+  points:
+  - Put x terms on one side and numbers on the other.
+  - A term changes sign when it crosses the equal sign.
+  - Check in the original equation.
+items:
+- key: q-lin-1
+  kind: numeric
+  stem: Solve 5x - 3 = 2x + 9. What is x?
+  difficulty: standard
+  purpose: check
+  concepts:
+  - id: linear-eq-both-sides
+  explanation: 3x = 12, so x = 4.
+  hints:
+  - Subtract 2x from both sides first.
+  value: 4
+  tolerance: 0.0
+  verify: 12/3
+- key: q-lin-2
+  kind: numeric
+  stem: Solve 7x + 4 = 3x + 20. What is x?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: linear-eq-both-sides
+  explanation: 4x = 16, so x = 4.
+  hints:
+  - Subtract 3x and subtract 4.
+  value: 4
+  tolerance: 0.0
+  verify: (20-4)/(7-3)
+- key: q-lin-3
+  kind: numeric
+  stem: Solve 4x - 7 = x + 5. What is x?
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: linear-eq-both-sides
+  explanation: 3x = 12, so x = 4.
+  hints:
+  - Move x to the left and 7 to the right.
+  value: 4
+  tolerance: 0.0
+  verify: 12/3
+- key: q-lin-4
+  kind: mcq
+  stem: 'When 3x is moved from the right side to the left side of an equation it becomes:'
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: linear-eq-both-sides
+    weight: 1.0
+  explanation: It changes sign and becomes -3x.
+  hints:
+  - Think of subtracting 3x from both sides.
+  correct: B
+  options:
+  - key: A
+    text: +3x
+    misconception: sign-does-not-change
+  - key: B
+    text: -3x
+  - key: C
+    text: 3x
+  - key: D
+    text: x/3
+- key: q-lin-5
+  kind: numeric
+  stem: Solve 2x + 9 = 5x - 3. What is x?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: linear-eq-both-sides
+  explanation: 12 = 3x, so x = 4.
+  hints:
+  - Collect x terms on the right.
+  value: 4
+  tolerance: 0.0
+  verify: 12/3
+- key: q-lin-6
+  kind: numeric
+  stem: Solve 3(x - 2) = x + 6. What is x?
+  difficulty: challenge
+  purpose: practice
+  concepts:
+  - id: linear-eq-both-sides
+  explanation: 3x - 6 = x + 6, so 2x = 12 and x = 6.
+  hints:
+  - Open the bracket first.
+  value: 6
+  tolerance: 0.0
+  verify: 12/2
+misconceptions:
+- code: sign-does-not-change
+  concept: linear-eq-both-sides
+  description: Moves a term across the equal sign but keeps its sign.
+cards:
+- key: both-sides-card-1
+  concept: linear-eq-both-sides
+  front: What happens to a term that crosses the equal sign?
+  back: Its sign changes.
+- key: both-sides-card-2
+  concept: linear-eq-both-sides
+  front: How do you solve ax + b = cx + d?
+  back: Collect x terms on one side and numbers on the other, then divide.

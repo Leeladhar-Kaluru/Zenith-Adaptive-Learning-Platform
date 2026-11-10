@@ -1,6 +1,7 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useApi } from '../api/useApi';
-import type { Chapter, Subject } from '../api/types';
+import type { Boards, Chapter, SearchResults, Subject } from '../api/types';
 import { useAuth } from '../context/AuthContext';
 import { Icon } from '../icons/Icon';
 import { Button, Card, Chip, EmptyState, Progress, Reveal, Segmented, Skeleton } from '../ui/kit';
@@ -35,7 +36,10 @@ export function ChapterCard({ c, delay = 0 }: { c: Chapter; delay?: number }) {
 export default function Learn() {
   const { profile } = useAuth();
   const [grade, setGrade] = useState<number>(profile?.grade ?? 7);
+  const boards = useApi<Boards>('/library/boards');
   const [subject, setSubject] = useState<Subject>('maths');
+  const [q, setQ] = useState('');
+  const search = useApi<SearchResults>(q.trim().length >= 2 ? `/library/search?q=${encodeURIComponent(q.trim())}` : null);
   const { data, error, loading, reload } = useApi<Chapter[]>(`/library/chapters?grade=${grade}&subject=${subject}`);
 
   return (
@@ -44,8 +48,18 @@ export default function Learn() {
       <p className={s.lead}>Pick your class. A chapter opens once a teacher has reviewed it.</p>
       <div className={s.filters}>
         <Segmented label="Class" value={grade} onChange={setGrade} options={[6, 7, 8, 9, 10].map((g) => ({ value: g, label: String(g) }))} />
-        <Segmented label="Subject" value={subject} onChange={setSubject} options={[{ value: 'maths', label: 'Maths' }, { value: 'science', label: 'Science' }]} />
+        <Segmented label="Subject" value={subject} onChange={setSubject} options={(boards.data?.subjects ?? []).map((x) => ({ value: x.id, label: x.name }))} />
+        <input className={s.input} style={{ maxWidth: 280 }} type="search" value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search chapters and topics" aria-label="Search chapters and topics" />
       </div>
+      {q.trim().length >= 2 && search.data && (
+        <Card flat style={{ marginBottom: 22 }}><h3>Search results</h3>
+          {search.data.chapters.length + search.data.lessons.length + search.data.concepts.length === 0 && <p className="muted">Nothing matched in your class. Try a different word.</p>}
+          <div className={s.stack} style={{ marginTop: 10 }}>
+            {search.data.chapters.map((c) => <Link key={c.id} to={`/learn/${c.slug}`} className={s.lrow}><div style={{ flex: 1 }}><strong>{c.title}</strong><div className="sm muted">Chapter · Class {c.grade}{c.status !== 'published' ? ' · coming soon' : ''}</div></div></Link>)}
+            {search.data.lessons.map((l) => <Link key={l.id} to={`/lesson/${l.id}`} className={s.lrow}><div style={{ flex: 1 }}><strong>{l.title}</strong><div className="sm muted">Lesson · {l.chapter}</div></div></Link>)}
+            {search.data.concepts.filter((c) => c.lessonId).map((c) => <Link key={c.id} to={`/lesson/${c.lessonId}`} className={s.lrow}><div style={{ flex: 1 }}><strong>{c.title}</strong><div className="sm muted">Topic · Class {c.grade}</div></div></Link>)}
+          </div></Card>
+      )}
       {loading && !data && <div className={s.grid}>{[0, 1, 2].map((i) => <Skeleton key={i} h={250} r={16} />)}</div>}
       {error && !data && <EmptyState icon="wifiOff" title="Could not load chapters" text={error.message} action={<Button onClick={reload} icon="refresh">Try again</Button>} />}
       {data && data.length === 0 && <EmptyState icon="book" title="Nothing here yet" text={`Class ${grade} ${subject} chapters are on the way.`} />}

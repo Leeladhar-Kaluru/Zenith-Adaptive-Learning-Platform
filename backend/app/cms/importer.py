@@ -248,7 +248,7 @@ def import_tree(db: Session, tree: Tree, actor_id: uuid.UUID | None = None) -> d
             report["items_created"] += (db.scalar(select(func.count(Item.id))) or 0) - (before or 0)
 
             # an unused figure `asset` key is dropped so lessons that never use imported images keep their existing content hash
-            blocks = [{k: v for k, v in b.model_dump(mode="json").items() if not (k == "asset" and v is None)} for b in les.blocks]
+            blocks = [{k: v for k, v in b.model_dump(mode="json").items() if not (k in ("asset", "diagram") and v is None)} for b in les.blocks]
             sig = {"t": les.title, "m": les.minutes, "o": les.objectives, "b": blocks, "i": [r.content_hash for r in item_rows],
                    "c": sorted(les.concepts), "l": les.language, "cards": [c.model_dump() for c in les.cards]}
             if les.sources:

@@ -67,11 +67,25 @@ class FigureBlock(Strict):
     kind: Literal["figure"]
     svg: str = ""                    # our own drawing, inline
     asset: Optional[str] = None      # or an approved imported image (source asset id), which must be credited in the lesson's `sources`
-    alt: str
+    diagram: Optional[dict] = None   # or a diagram spec drawn by ZENITH (see app/services/diagrams.py)
+    alt: str = ""
     caption: str = ""
 
     @model_validator(mode="after")
     def _one_picture(self):
+        if self.diagram is not None:
+            from app.services.diagrams import DiagramError, render
+            if self.svg.strip() or self.asset:
+                raise ValueError("a figure with a diagram cannot also have svg or asset")
+            try:
+                self.svg, auto_alt = render(self.diagram)
+            except DiagramError as e:
+                raise ValueError(f"diagram: {e}")
+            if len(self.alt.strip()) < 8:
+                self.alt = auto_alt
+            return self
+        if not self.alt.strip():
+            raise ValueError("a figure needs alt text")
         if bool(self.svg.strip()) == bool(self.asset):
             raise ValueError("a figure needs exactly one of svg or asset")
         return self

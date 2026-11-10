@@ -30,19 +30,71 @@ def profile_view(db: Session, p: Profile) -> dict:
             "consentStatus": p.consent_status, "classroomIds": classes, "leagueOptOut": p.league_opt_out}
 
 
-async def _supabase(path: str, body: dict, params: dict | None = None) -> dict:
+async def _call(method: str, path: str, body: dict | None = None, params: dict | None = None, admin: bool = False) -> tuple[int, dict]:
+    """One call to Supabase Auth. `admin` uses the server-side secret key (never sent to the browser)."""
     url = f"{settings.SUPABASE_URL.rstrip('/')}/auth/v1/{path}"
-    key = settings.SUPABASE_PUBLISHABLE_KEY or settings.SUPABASE_SECRET_KEY
+    key = settings.SUPABASE_SECRET_KEY if admin else (settings.SUPABASE_PUBLISHABLE_KEY or settings.SUPABASE_SECRET_KEY)
+    headers = {"apikey": key}
+    if admin:
+        headers["Authorization"] = f"Bearer {key}"
     try:
         async with httpx.AsyncClient(timeout=10) as c:
-            r = await c.post(url, json=body, params=params, headers={"apikey": key})
+            r = await c.request(method, url, json=body, params=params, headers=headers)
     except httpx.HTTPError:
         raise AccountError("ZENITH could not reach the sign-in service. Try again in a moment.", 503)
-    data = r.json() if r.content else {}
-    if r.status_code >= 400:
-        msg = data.get("msg") or data.get("error_description") or data.get("message") or "Sign-in failed."
-        raise AccountError("Email or password is not correct." if r.status_code in (400, 401) and "invalid" in msg.lower() else msg, 400 if r.status_code < 500 else 503)
-    return data
+    try:
+        data = r.json() if r.content else {}
+    except ValueError:
+        data = {}
+    return r.status_code, data
+
+
+def _code(data: dict) -> str:
+    return str(data.get("error_code") or data.get("code") or "")
+
+
+def _message(data: dict) -> str:
+    return str(data.get("msg") or data.get("error_description") or data.get("message") or "")
+
+
+def signup_error(status: int, data: dict) -> AccountError:
+    """Say what actually went wrong, instead of one vague message."""
+    code, msg = _code(data), _message(data).lower()
+    if code in ("user_already_exists", "email_exists") or "already" in msg and "regist" in msg:
+        return AccountError("An account with this email already exists. Sign in instead.", 409)
+    if code in ("email_address_invalid", "validation_failed") or "email address" in msg and "invalid" in msg:
+        return AccountError("That email address was not accepted. Use a real email address, for example one that ends in @gmail.com.", 422)
+    if code == "weak_password" or "password" in msg:
+        return AccountError("That password is too easy to guess. Use at least 8 characters with letters and numbers, and avoid common passwords.", 422)
+    if status == 429 or "rate" in code:
+        return AccountError("Too many attempts. Wait a few minutes and try again.", 429)
+    if status >= 500:
+        return AccountError("The sign-in service had a problem. Try again in a moment.", 503)
+    return AccountError("Could not create your account. Check your details and try again.", 422)
+
+
+async def _login_call(email: str, password: str) -> dict:
+    """Password sign-in. An account made while email confirmation was on is confirmed here, but only after the correct password was given."""
+    status, data = await _call("POST", "token", {"email": email, "password": password}, {"grant_type": "password"})
+    if status < 400:
+        return data
+    code = _code(data)
+    if code == "email_not_confirmed" and settings.SUPABASE_SECRET_KEY:
+        # Supabase only reports this after checking the password, so this person knows it.
+        st, users = await _call("GET", "admin/users", params={"per_page": 1000}, admin=True)
+        found = next((u for u in (users.get("users") or []) if (u.get("email") or "").lower() == email), None)
+        if st < 400 and found:
+            await _call("PUT", f"admin/users/{found['id']}", {"email_confirm": True}, admin=True)
+            status, data = await _call("POST", "token", {"email": email, "password": password}, {"grant_type": "password"})
+            if status < 400:
+                return data
+    if code in ("invalid_credentials", "invalid_grant") or status in (400, 401) and "invalid" in _message(data).lower():
+        raise AccountError("Email or password is not correct.", 401)
+    if status == 429 or "rate" in code:
+        raise AccountError("Too many attempts. Wait a few minutes and try again.", 429)
+    if status >= 500:
+        raise AccountError("The sign-in service had a problem. Try again in a moment.", 503)
+    raise AccountError("Could not sign you in. Check your email and password.", 401)
 
 
 async def signup(db: Session, *, email: str, password: str, display_name: str, role: str, consent: bool) -> dict:
@@ -51,8 +103,8 @@ async def signup(db: Session, *, email: str, password: str, display_name: str, r
         raise AccountError("Choose student or teacher.")
     if not consent:
         raise AccountError("Please confirm the consent statement to continue.")
-    if len(password) < 8:
-        raise AccountError("Use a password with at least 8 characters.")
+    if len(password) < 8 or not any(ch.isalpha() for ch in password) or not any(ch.isdigit() for ch in password):
+        raise AccountError("Use a password with at least 8 characters, including a letter and a number.")
     if not display_name.strip():
         raise AccountError("Enter your name.")
     if dev_auth_enabled():
@@ -61,10 +113,20 @@ async def signup(db: Session, *, email: str, password: str, display_name: str, r
             raise AccountError("An account with this email already exists.", 409)
         token = dev_token(uid)
     else:
-        data = await _supabase("signup", {"email": email, "password": password})
-        user = data.get("user") or data
-        uid = uuid.UUID(user["id"])
-        token = data.get("access_token")
+        if settings.SUPABASE_SECRET_KEY:
+            # Create the account already confirmed, on the server: no confirmation email, no email rate limit. ZENITH sign-in is by password.
+            status, data = await _call("POST", "admin/users", {"email": email, "password": password, "email_confirm": True}, admin=True)
+            if status >= 400:
+                raise signup_error(status, data)
+            uid = uuid.UUID(data["id"])
+            token = (await _login_call(email, password))["access_token"]
+        else:
+            status, data = await _call("POST", "signup", {"email": email, "password": password})
+            if status >= 400:
+                raise signup_error(status, data)
+            user = data.get("user") or data
+            uid = uuid.UUID(user["id"])
+            token = data.get("access_token")
     p = db.get(Profile, uid) or Profile(id=uid, email=email, role=role, display_name=display_name.strip()[:120], language="en", consent_status="granted",
                                         consent_at=datetime.now(timezone.utc), board_id=db.scalar(select(Board.id).where(Board.active.is_(True)).order_by(Board.id).limit(1)))
     db.add(p)
@@ -83,7 +145,7 @@ async def login(db: Session, *, email: str, password: str) -> dict:
         if p is None:
             raise AccountError("Email or password is not correct.", 401)
         return {"token": dev_token(p.id), "profile": profile_view(db, p)}
-    data = await _supabase("token", {"email": email, "password": password}, {"grant_type": "password"})
+    data = await _login_call(email, password)
     uid = uuid.UUID(data["user"]["id"])
     p = db.get(Profile, uid)
     if p is None:

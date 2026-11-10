@@ -126,3 +126,40 @@ class Intervention(Base):
     started_at = now_col()
     closed_at = Column(DateTime(timezone=True))
     __table_args__ = (CheckConstraint("status in ('open','closed')", name="ck_intervention_status"),)
+
+
+class ConceptLevel(Base):
+    """Where this student is on the 1-5 difficulty ladder for a concept, and why it last moved."""
+    __tablename__ = "concept_levels"
+    student_id = Column(UUID(as_uuid=True), ForeignKey("profiles.id", ondelete="CASCADE"), primary_key=True)
+    concept_id = Column(String(120), ForeignKey("concepts.id", ondelete="CASCADE"), primary_key=True)
+    level = Column(Integer, nullable=False, default=1)
+    streak_up = Column(Integer, nullable=False, default=0)
+    streak_down = Column(Integer, nullable=False, default=0)
+    reason = Column(Text, nullable=False, default="")
+    updated_at = now_col()
+    __table_args__ = (CheckConstraint("level between 1 and 5", name="ck_level_range"),)
+
+
+INTERACTION_KINDS = ("lesson_open", "section_view", "dwell", "hint_open", "answer_change", "sim_change", "sim_reset", "skip", "tutor_open")
+
+
+class InteractionEvent(Base):
+    """Every move a student makes while learning: reading, hints, answer edits, simulation changes."""
+    __tablename__ = "interaction_events"
+    id = uuid_pk()
+    student_id = Column(UUID(as_uuid=True), ForeignKey("profiles.id", ondelete="CASCADE"), nullable=False)
+    client_event_id = Column(String(64), nullable=False)
+    kind = Column(String(16), nullable=False)
+    target_type = Column(String(16), nullable=False)
+    target_id = Column(String(120), nullable=False)
+    value = Column(JSONB, nullable=False, default=dict)
+    ms = Column(Integer, nullable=False, default=0)
+    occurred_at = Column(DateTime(timezone=True), nullable=False)
+    received_at = now_col()
+    __table_args__ = (
+        UniqueConstraint("student_id", "client_event_id", name="uq_interaction_client_event"),
+        CheckConstraint("kind in (" + ",".join(f"'{k}'" for k in INTERACTION_KINDS) + ")", name="ck_interaction_kind"),
+        Index("ix_interaction_student_time", "student_id", "occurred_at"),
+        Index("ix_interaction_target", "student_id", "target_id"),
+    )

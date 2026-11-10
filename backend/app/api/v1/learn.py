@@ -14,7 +14,7 @@ from app.core.database import get_db
 from app.core.security import get_profile, student_only
 from app.engine import graph
 from app.models import AssessmentSession, Board, Chapter, ChapterConcept, Concept, Item, LessonProgress, Profile, Subject
-from app.services import assign, engage, evidence, home, library, practice
+from app.services import assign, engage, evidence, home, interactions, library, practice
 from app.services import states as st_svc
 
 router = APIRouter()
@@ -177,10 +177,30 @@ def post_batch(body: BatchIn, p: Profile = Depends(learner), db: Session = Depen
     return {"results": out}
 
 
+class InteractionIn(BaseModel):
+    clientEventId: str = Field(min_length=8, max_length=64)
+    kind: str = Field(max_length=16)
+    targetType: str = Field(min_length=1, max_length=16)
+    targetId: str = Field(min_length=1, max_length=120)
+    value: dict[str, Any] = Field(default_factory=dict)
+    ms: int = Field(0, ge=0, le=3_600_000)
+    occurredAt: Optional[datetime] = None
+
+
+class InteractionBatch(BaseModel):
+    events: list[InteractionIn] = Field(max_length=interactions.MAX_PER_REQUEST)
+
+
+@router.post("/interactions/batch")
+def post_interactions(body: InteractionBatch, p: Profile = Depends(learner), db: Session = Depends(get_db)):
+    """Everything the student does while learning (reading time, hints, answer edits, simulation changes). Idempotent."""
+    return interactions.store(db, p.id, [e.model_dump() for e in body.events])
+
+
 @router.get("/items/{item_id}/hint")
 def hint(item_id: uuid.UUID, n: int = Query(1, ge=1, le=5), p: Profile = Depends(learner), db: Session = Depends(get_db)):
     item = db.get(Item, item_id)
-    if item is None or item.status != "published":
+    if item is None or item.status not in ("published", "generated"):
         raise HTTPException(404, "Question not found.")
     hs = item.hints or []
     if not hs:

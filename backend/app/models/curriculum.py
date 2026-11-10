@@ -144,13 +144,20 @@ class Item(Base):
     reviewer_id = Column(UUID(as_uuid=True))
     reviewed_at = Column(DateTime(timezone=True))
     content_hash = Column(String(64), nullable=False)
+    # Generated questions: template id/version/seed/level fully determine the item, so it can be replayed and audited.
+    template_id = Column(String(60))
+    template_version = Column(Integer)
+    template_seed = Column(Integer)
+    level = Column(Integer)
     created_at = now_col()
     __table_args__ = (
+        Index("uq_item_generated", "template_id", "template_version", "template_seed", "level", unique=True, postgresql_where=text("origin = 'generated'")),
+        CheckConstraint("level is null or level between 1 and 5", name="ck_item_level"),
         UniqueConstraint("key", "version", name="uq_item_key_version"),
         CheckConstraint("kind in ('mcq','multi','truefalse','numeric','fill','match')", name="ck_item_kind"),
         CheckConstraint("difficulty in ('intro','standard','challenge')", name="ck_item_difficulty"),
         CheckConstraint("purpose in ('check','practice','test','probe')", name="ck_item_purpose"),
-        CheckConstraint(f"status in ({_cs})", name="ck_item_status"),
+        CheckConstraint(f"status in ({_cs},'generated')", name="ck_item_status"),
         CheckConstraint("status not in ('approved','published') or (reviewer_id is not null and reviewed_at is not null)", name="ck_item_reviewed"),
     )
 

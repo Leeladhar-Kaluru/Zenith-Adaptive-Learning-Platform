@@ -53,7 +53,7 @@ def test_dump_and_unpack_a_real_schema(db):
     archive, manifest = bk.dump()
     meta, files = bk._unpack(archive)
     rows = {t["name"]: t["rows"] for t in meta["tables"]}
-    assert rows["profiles"] == 1 and rows["boards"] == 1 and manifest["alembic_revision"] == "001"
+    assert rows["profiles"] == 1 and rows["boards"] == 1 and manifest["alembic_revision"] == "002"
     assert "profiles.bin" in files
     flipped = bytearray(archive)
     with pytest.raises(Exception):

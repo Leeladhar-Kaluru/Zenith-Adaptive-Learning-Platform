@@ -9,11 +9,16 @@ from sqlalchemy import and_, func, select
 from sqlalchemy.orm import Session
 
 from app.engine import bkt, graph, selector
+from app.engine.templates import templates_for
 from app.models import (AssessmentSession, Chapter, ChapterConcept, Concept, EvidenceEvent, Item, ItemConcept, Lesson, LessonVersion,
                         LessonVersionItem, Misconception, Profile, RevisionSchedule)
+from app.services import generator
 from app.services import items as item_svc
 from app.services import library
 from app.services import states as st_svc
+
+
+GENERATED_SHARE = 0.7
 
 
 class PracticeError(ValueError):
@@ -77,13 +82,25 @@ def scope_concepts(db: Session, profile: Profile, chapter: str | None, concept: 
 def next_item(db: Session, profile: Profile, *, chapter=None, concept=None, weak=False, review=False, harder=False) -> dict:
     ids, scope = scope_concepts(db, profile, chapter, concept, weak, review)
     cands = pool(db, ids, ("check", "practice", "probe", "test"))
+    stt = st_svc.states(db, profile.id)
+    rng = random.Random()
+    # Concepts with question templates get a fresh question at the student's own level most of the time.
+    if any(templates_for(c) for c in ids) and (not cands or rng.random() < GENERATED_SHARE):
+        got = generator.next_generated(db, profile, ids, stt, harder=harder, recent=_recent(db, profile.id), rng=rng)
+        if got:
+            item, level, reason = got
+            db.commit()
+            primary = max(item_svc.item_concepts(db, item.id), key=lambda cw: cw[1])[0]
+            st = stt.get(primary)
+            return {"item": item_svc.public_item(item), "scope": scope, "generated": True,
+                    "concept": {"id": primary, "title": db.get(Concept, primary).title, "level": level, "band": st_svc.band(st)},
+                    "why": reason or f"A fresh question at level {level} of 5, matched to how you are doing.", "ladderLevel": level}
     if not cands:
         raise PracticeError("No questions are available for this yet. A teacher is still reviewing them.", 409)
-    stt = st_svc.states(db, profile.id)
     c0 = db.get(Concept, ids[0])
     theta = st_svc.theta(db, profile.id, c0.subject_id)
     mode = "challenge" if harder else ("repair" if scope == "weak" else "practice")
-    pick = selector.choose_item(cands, theta, stt, _recent(db, profile.id), mode, random.Random())
+    pick = selector.choose_item(cands, theta, stt, _recent(db, profile.id), mode, rng)
     item = pick["obj"]
     primary = max(pick["concepts"], key=lambda cw: cw[1])[0]
     st = stt.get(primary)

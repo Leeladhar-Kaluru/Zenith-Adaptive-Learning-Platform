@@ -1,0 +1,271 @@
+.........E.............................................................. [ 59%]
+..................................................                       [100%]
+=================================== ERRORS ====================================
+___ ERROR at setup of test_repeating_a_question_does_not_farm_xp_or_mastery ___
+
+self = <sqlalchemy.engine.base.Connection object at 0x000001B035C26E10>
+dialect = <sqlalchemy.dialects.postgresql.psycopg.PGDialect_psycopg object at 0x000001B0328C42F0>
+context = <sqlalchemy.dialects.postgresql.psycopg.PGExecutionContext_psycopg object at 0x000001B035B6B130>
+statement = <sqlalchemy.dialects.postgresql.psycopg.PGCompiler_psycopg object at 0x000001B035C142D0>
+parameters = [{'actor_id': None, 'action': 'content.import', 'entity': 'lesson_version', 'entity_id': '60237071-2c81-4b63-8a77-8338013e3950', ...}]
+
+    def _exec_single_context(
+        self,
+        dialect: Dialect,
+        context: ExecutionContext,
+        statement: Union[str, Compiled],
+        parameters: Optional[_AnyMultiExecuteParams],
+    ) -> CursorResult[Unpack[TupleAny]]:
+        """continue the _execute_context() method for a single DBAPI
+        cursor.execute() or cursor.executemany() call.
+    
+        """
+        if dialect.bind_typing is BindTyping.SETINPUTSIZES:
+            generic_setinputsizes = context._prepare_set_input_sizes()
+    
+            if generic_setinputsizes:
+                try:
+                    dialect.do_set_input_sizes(
+                        context.cursor, generic_setinputsizes, context
+                    )
+                except BaseException as e:
+                    self._handle_dbapi_exception(
+                        e, str(statement), parameters, None, context
+                    )
+    
+        cursor, str_statement, parameters = (
+            context.cursor,
+            context.statement,
+            context.parameters,
+        )
+    
+        effective_parameters: Optional[_AnyExecuteParams]
+    
+        if not context.executemany:
+            effective_parameters = parameters[0]
+        else:
+            effective_parameters = parameters
+    
+        evt_handled: bool = False
+        try:
+            if self._has_events or self.engine._has_events:
+                for fn in self.dispatch.before_cursor_execute:
+                    str_statement, effective_parameters = fn(
+                        self,
+                        cursor,
+                        str_statement,
+                        effective_parameters,
+                        context,
+                        context.executemany,
+                    )
+    
+            if self._echo:
+                self._log_info(str_statement)
+    
+                stats = context._get_cache_stats()
+    
+                if not self.engine.hide_parameters:
+                    self._log_info(
+                        "[%s] %r",
+                        stats,
+                        sql_util._repr_params(
+                            effective_parameters,
+                            batches=10,
+                            ismulti=context.executemany,
+                        ),
+                    )
+                else:
+                    self._log_info(
+                        "[%s] [SQL parameters hidden due to "
+                        "hide_parameters=True]",
+                        stats,
+                    )
+            if context.execute_style is ExecuteStyle.EXECUTEMANY:
+                effective_parameters = cast(
+                    "_CoreMultiExecuteParams", effective_parameters
+                )
+                if self.dialect._has_events:
+                    for fn in self.dialect.dispatch.do_executemany:
+                        if fn(
+                            cursor,
+                            str_statement,
+                            effective_parameters,
+                            context,
+                        ):
+                            evt_handled = True
+                            break
+                if not evt_handled:
+                    self.dialect.do_executemany(
+                        cursor,
+                        str_statement,
+                        effective_parameters,
+                        context,
+                    )
+            elif not effective_parameters and context.no_parameters:
+                if self.dialect._has_events:
+                    for fn in self.dialect.dispatch.do_execute_no_params:
+                        if fn(cursor, str_statement, context):
+                            evt_handled = True
+                            break
+                if not evt_handled:
+                    self.dialect.do_execute_no_params(
+                        cursor, str_statement, context
+                    )
+            else:
+                effective_parameters = cast(
+                    "_CoreSingleExecuteParams", effective_parameters
+                )
+                if self.dialect._has_events:
+                    for fn in self.dialect.dispatch.do_execute:
+                        if fn(
+                            cursor,
+                            str_statement,
+                            effective_parameters,
+                            context,
+                        ):
+                            evt_handled = True
+                            break
+                if not evt_handled:
+>                   self.dialect.do_execute(
+                        cursor, str_statement, effective_parameters, context
+                    )
+
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1958: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+.venv\Lib\site-packages\sqlalchemy\engine\default.py:1192: in do_execute
+    cursor.execute(statement, parameters)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <psycopg.Cursor [closed] [IDLE] (host=aws-0-ap-south-1.pooler.supabase.com user=postgres.mevbffduofdpalzimfye database=postgres) at 0x1b035c24110>
+query = 'INSERT INTO zenith_test.audit_log (actor_id, action, entity, entity_id, detail) VALUES (%(actor_id)s::UUID, %(action)...ty)s::VARCHAR, %(entity_id)s::VARCHAR, %(detail)s::JSONB) RETURNING zenith_test.audit_log.id, zenith_test.audit_log.at'
+params = {'actor_id': None, 'action': 'content.import', 'entity': 'lesson_version', 'entity_id': '60237071-2c81-4b63-8a77-8338013e3950', ...}
+prepare = None, binary = None
+
+    def execute(
+        self,
+        query: Query,
+        params: Params | None = None,
+        *,
+        prepare: bool | None = None,
+        binary: bool | None = None,
+    ) -> Self:
+        """
+        Execute a query or command to the database.
+        """
+        try:
+            with self._conn.lock:
+                self._conn.wait(
+                    self._execute_gen(query, params, prepare=prepare, binary=binary)
+                )
+        except e._NO_TRACEBACK as ex:
+>           raise ex.with_traceback(None)
+E           psycopg.errors.DeadlockDetected: deadlock detected
+E           LINE 1: INSERT INTO zenith_test.audit_log (actor_id, action, entity,...
+E                               ^
+E           DETAIL:  Process 1605518 waits for RowExclusiveLock on relation 33482 of database 5; blocked by process 1605586.
+E           Process 1605586 waits for AccessExclusiveLock on relation 33492 of database 5; blocked by process 1605518.
+E           HINT:  See server log for query details.
+
+.venv\Lib\site-packages\psycopg\cursor.py:117: DeadlockDetected
+
+The above exception was the direct cause of the following exception:
+
+db = <sqlalchemy.orm.session.Session object at 0x000001B035D5A120>
+client = <starlette.testclient.TestClient object at 0x000001B035BCF950>
+tmp_path = WindowsPath('C:/Users/LEELADHAR/AppData/Local/Temp/pytest-of-LEELADHAR/pytest-119/test_repeating_a_question_does0')
+
+    @pytest.fixture()
+    def world(db, client, tmp_path):
+        reviewer = make_profile(db, "reviewer")
+>       publish_all(db, tmp_path, reviewer)
+
+tests\test_api.py:27: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\test_api.py:17: in publish_all
+    importer.import_tree(db, importer.load_tree(build(tmp_path / "content")))
+app\cms\importer.py:226: in import_tree
+    db.flush()
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:4543: in flush
+    self._flush(objects)
+<sqlalchemy generated warned() wrapper for sqlalchemy.orm.session.Session._flush>:2: in _flush
+    return target(fn, self, objects=objects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\sqlalchemy\util\deprecations.py:281: in warned
+    return fn(*args, **kwargs)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:4686: in _flush
+    with util.safe_reraise():
+         ^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py:166: in __exit__
+    raise exc_value.with_traceback(exc_tb)
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:4647: in _flush
+    flush_context.execute()
+.venv\Lib\site-packages\sqlalchemy\orm\unitofwork.py:467: in execute
+    rec.execute(self)
+.venv\Lib\site-packages\sqlalchemy\orm\unitofwork.py:643: in execute
+    util.preloaded.orm_persistence._save_obj(
+.venv\Lib\site-packages\sqlalchemy\orm\persistence.py:92: in _save_obj
+    _emit_insert_statements(
+.venv\Lib\site-packages\sqlalchemy\orm\persistence.py:1237: in _emit_insert_statements
+    result = connection.execute(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1463: in execute
+    return meth(
+.venv\Lib\site-packages\sqlalchemy\sql\elements.py:533: in _execute_on_connection
+    return connection._execute_clauseelement(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1683: in _execute_clauseelement
+    ret = self._execute_context(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1837: in _execute_context
+    return self._exec_single_context(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1977: in _exec_single_context
+    self._handle_dbapi_exception(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:2347: in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1958: in _exec_single_context
+    self.dialect.do_execute(
+.venv\Lib\site-packages\sqlalchemy\engine\default.py:1192: in do_execute
+    cursor.execute(statement, parameters)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <psycopg.Cursor [closed] [IDLE] (host=aws-0-ap-south-1.pooler.supabase.com user=postgres.mevbffduofdpalzimfye database=postgres) at 0x1b035c24110>
+query = 'INSERT INTO zenith_test.audit_log (actor_id, action, entity, entity_id, detail) VALUES (%(actor_id)s::UUID, %(action)...ty)s::VARCHAR, %(entity_id)s::VARCHAR, %(detail)s::JSONB) RETURNING zenith_test.audit_log.id, zenith_test.audit_log.at'
+params = {'actor_id': None, 'action': 'content.import', 'entity': 'lesson_version', 'entity_id': '60237071-2c81-4b63-8a77-8338013e3950', ...}
+prepare = None, binary = None
+
+    def execute(
+        self,
+        query: Query,
+        params: Params | None = None,
+        *,
+        prepare: bool | None = None,
+        binary: bool | None = None,
+    ) -> Self:
+        """
+        Execute a query or command to the database.
+        """
+        try:
+            with self._conn.lock:
+                self._conn.wait(
+                    self._execute_gen(query, params, prepare=prepare, binary=binary)
+                )
+        except e._NO_TRACEBACK as ex:
+>           raise ex.with_traceback(None)
+E           sqlalchemy.exc.OperationalError: (psycopg.errors.DeadlockDetected) deadlock detected
+E           LINE 1: INSERT INTO zenith_test.audit_log (actor_id, action, entity,...
+E                               ^
+E           DETAIL:  Process 1605518 waits for RowExclusiveLock on relation 33482 of database 5; blocked by process 1605586.
+E           Process 1605586 waits for AccessExclusiveLock on relation 33492 of database 5; blocked by process 1605518.
+E           HINT:  See server log for query details.
+E           [SQL: INSERT INTO zenith_test.audit_log (actor_id, action, entity, entity_id, detail) VALUES (%(actor_id)s::UUID, %(action)s::VARCHAR, %(entity)s::VARCHAR, %(entity_id)s::VARCHAR, %(detail)s::JSONB) RETURNING zenith_test.audit_log.id, zenith_test.audit_log.at]
+E           [parameters: {'actor_id': None, 'action': 'content.import', 'entity': 'lesson_version', 'entity_id': '60237071-2c81-4b63-8a77-8338013e3950', 'detail': Jsonb({'lesson': '7-maths-integers/line', ... (72 chars))}]
+E           (Background on this error at: https://sqlalche.me/e/21/e3q8)
+
+.venv\Lib\site-packages\psycopg\cursor.py:117: OperationalError
+============================== warnings summary ===============================
+.venv\Lib\site-packages\fastapi\testclient.py:1
+  C:\projects\setu - V2\backend\.venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+ERROR tests/test_api.py::test_repeating_a_question_does_not_farm_xp_or_mastery
+121 passed, 1 warning, 1 error in 244.74s (0:04:04)

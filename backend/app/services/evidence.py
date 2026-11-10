@@ -8,8 +8,8 @@ from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
 from app.core.config import settings
-from app.engine import bkt, elo, grading
-from app.models import (AssessmentSession, Concept, ConceptState, DailyActivity, EvidenceEvent, Intervention, Item, LearnerRating,
+from app.engine import bkt, elo, grading, ladder, signals
+from app.models import (AssessmentSession, Concept, ConceptLevel, ConceptState, InteractionEvent, DailyActivity, EvidenceEvent, Intervention, Item, LearnerRating,
                         RevisionSchedule, XpEvent)
 from app.services import items as item_svc
 
@@ -53,7 +53,7 @@ def _result(db: Session, item: Item, g: grading.Grade, concepts: list[dict], mis
 def record(db: Session, student_id: uuid.UUID, *, item_id: uuid.UUID, response: dict, hints_used: int, ms: int, context: str,
            client_event_id: str, session_id: uuid.UUID | None = None, occurred_at: datetime | None = None) -> dict:
     item = db.get(Item, item_id)
-    if item is None or item.status != "published":
+    if item is None or item.status not in ("published", "generated"):
         raise EvidenceError("That question is not available.", 404)
 
     existing = db.scalar(select(EvidenceEvent).where(EvidenceEvent.student_id == student_id, EvidenceEvent.client_event_id == client_event_id))
@@ -134,14 +134,47 @@ def record(db: Session, student_id: uuid.UUID, *, item_id: uuid.UUID, response: 
                        misconception_id=mis.id if mis else None, param_version=bkt.PARAM_VERSION, occurred_at=occurred_at or now)
     db.add(ev)
     db.flush()
+    level_change = _move_ladder(db, student_id, item, links, g.correct, hints, max(0, ms), now)
 
     xp = _award_xp(db, student_id, ev, item, g.correct, hints, attempt_no, changed, now)
     _daily(db, student_id, now.date(), g.correct, xp)
     db.commit()
-    return {**_result(db, item, g, concept_rows, mis, xp, hints, changed), "alreadyRecorded": False}
+    return {**_result(db, item, g, concept_rows, mis, xp, hints, changed), "levelChange": level_change, "alreadyRecorded": False}
 
 
 # ---- helpers -----------------------------------------------------------------------------------
+def _median_ms(db: Session, student_id, concept_id: str) -> float:
+    """The student's own typical time on correct answers for this concept (0 until there are enough to judge)."""
+    rows = [ms for (ms,) in db.execute(select(EvidenceEvent.ms).where(EvidenceEvent.student_id == student_id, EvidenceEvent.correct.is_(True),
+                                                                      EvidenceEvent.ms > 0, EvidenceEvent.concepts.contains([{"id": concept_id}]))
+                                       .order_by(EvidenceEvent.occurred_at.desc()).limit(30))]
+    if len(rows) < 5:
+        return 0.0
+    rows.sort()
+    return float(rows[len(rows) // 2])
+
+
+def _move_ladder(db: Session, student_id, item: Item, links, correct: bool, hints: int, ms: int, now: datetime) -> dict | None:
+    """Move this student up or down the 1-5 ladder for the item's main concept, using hints, edits and speed as well as correctness."""
+    if not links:
+        return None
+    concept_id = max(links, key=lambda cw: cw[1])[0]
+    row = db.get(ConceptLevel, (student_id, concept_id))
+    start = item.level if item.level else 1
+    if row is None:
+        row = ConceptLevel(student_id=student_id, concept_id=concept_id, level=start, streak_up=0, streak_down=0, reason="")
+        db.add(row)
+    since = now - timedelta(minutes=15)
+    events = [{"kind": k} for (k,) in db.execute(select(InteractionEvent.kind).where(
+        InteractionEvent.student_id == student_id, InteractionEvent.target_id == str(item.id), InteractionEvent.occurred_at >= since))]
+    sig = signals.classify(events, ms, correct, _median_ms(db, student_id, concept_id))
+    before = row.level or start
+    lvl, up, down, why = ladder.step(before, row.streak_up or 0, row.streak_down or 0, correct=correct, hints_used=hints,
+                                     fluent=sig["fluent"], struggling=sig["struggling"], guessing=sig["guessing"])
+    row.level, row.streak_up, row.streak_down, row.reason, row.updated_at = lvl, up, down, why, now
+    return {"concept": concept_id, "from": before, "to": lvl, "reason": why, "signal": sig["reason"]} if lvl != before else None
+
+
 def _schedule_revision(db: Session, student_id, concept_id: str, status: str, correct: bool, now: datetime):
     row = db.get(RevisionSchedule, (student_id, concept_id))
     if status == "secure" and correct:

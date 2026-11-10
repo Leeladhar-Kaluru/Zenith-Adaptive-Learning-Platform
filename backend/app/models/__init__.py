@@ -3,7 +3,7 @@ from app.models.identity import AuditLog, Board, ConsentEvent, Profile
 from app.models.curriculum import (Card, Chapter, ChapterConcept, Concept, ConceptEdge, CurriculumVersion, GateResult, Item,
                                    ItemConcept, Lesson, LessonConcept, LessonVersion, LessonVersionItem, Misconception,
                                    OptionMisconception, Subject)
-from app.models.learning import (AssessmentSession, ConceptState, EvidenceEvent, Intervention, LearnerRating, LessonProgress,
+from app.models.learning import (AssessmentSession, ConceptLevel, ConceptState, InteractionEvent, EvidenceEvent, Intervention, LearnerRating, LessonProgress,
                                  Recommendation, RevisionSchedule)
 from app.models.classroom import (Assignment, ClassMember, Classroom, DailyActivity, LeagueMembership, StudentBadge,
                                   TeacherDecision, TutorMessage, TutorThread, XpEvent)

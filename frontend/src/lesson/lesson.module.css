@@ -67,3 +67,4 @@
 .credits ul { margin: 0; padding-left: 1.1em; display: grid; gap: 4px; }
 .credits a { color: var(--brand); font-weight: 700; }
 .figure img { max-width: 100%; height: auto; display: block; margin: 0 auto; border-radius: 12px; }
+.figure svg { max-width: 440px; width: 100%; height: auto; display: block; margin: 0 auto; }

@@ -102,6 +102,8 @@ export interface StudentDetail {
   concepts: Array<{ id: string; title: string; band: Band; evidence: number; correct: number; confidence: string }>;
   timeline: Array<{ at: string; text: string; context: string }>; interventions: Array<{ concept: string; before: number; after: number | null; status: 'open' | 'closed'; startedAt: string }>;
   mistakes: Mistake[]; assignments: Assigned[];
+  levels: Array<{ concept: string; title: string; level: number; reason: string; updatedAt: string }>;
+  activity: { days: number; readingMinutes: number; lessonsOpened: number; hintsOpened: number; answerChanges: number; simulationMoves: number };
 }
 export interface CatalogChapter { slug: string; title: string; lessons: Array<{ id: string; title: string }> }
 

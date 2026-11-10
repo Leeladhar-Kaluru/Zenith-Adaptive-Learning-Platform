@@ -33,6 +33,22 @@ export default function StudentView() {
           <div style={{ marginTop: 16 }}><Button to={`/teacher/assign?class=${cid}`} size="sm" icon="clipboard">Assign a refresher</Button></div>
         </Card>
       </div>
+      <div className={s.cols}>
+        <Card><h3>Difficulty level by topic</h3>
+          {data.levels.length === 0 ? <p className="muted sm" style={{ marginTop: 10 }}>No adaptive practice yet.</p> : (
+            <div className={s.stack} style={{ marginTop: 12 }}>{data.levels.map((l) => <div key={l.concept}><div className={s.between}><strong>{l.title}</strong><Chip tone="soft">Level {l.level} of 5</Chip></div>{l.reason && <div className="sm muted">{l.reason}</div>}</div>)}</div>
+          )}
+        </Card>
+        <Card><h3>What they did in the last {data.activity.days} days</h3>
+          <div className={s.stack} style={{ marginTop: 12 }}>
+            <div className={s.between}><span>Reading time</span><strong>{data.activity.readingMinutes} min</strong></div>
+            <div className={s.between}><span>Lessons opened</span><strong>{data.activity.lessonsOpened}</strong></div>
+            <div className={s.between}><span>Hints opened</span><strong>{data.activity.hintsOpened}</strong></div>
+            <div className={s.between}><span>Answers changed</span><strong>{data.activity.answerChanges}</strong></div>
+            <div className={s.between}><span>Simulation moves</span><strong>{data.activity.simulationMoves}</strong></div>
+          </div>
+        </Card>
+      </div>
       {data.mistakes.length > 0 && <Card><h3>Repeated mistakes</h3><div className={s.stack} style={{ marginTop: 12 }}>{data.mistakes.map((m) => <div key={m.itemId}><strong>{m.stem}</strong>{m.misconception && <div className="sm">Common mistake: {m.misconception}</div>}<div className="sm muted">Missed {m.missedTimes} time{m.missedTimes === 1 ? '' : 's'}</div></div>)}</div></Card>}
       <Card><h3>Recent activity</h3>
         {data.timeline.length === 0 ? <p className="muted sm" style={{ marginTop: 10 }}>No activity yet.</p> : (

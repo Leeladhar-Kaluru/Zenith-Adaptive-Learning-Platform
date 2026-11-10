@@ -93,7 +93,8 @@ def dump(schema: str | None = None) -> tuple[bytes, dict]:
     with psycopg.connect(_dsn(), autocommit=False) as conn, tarfile.open(fileobj=tar_buf, mode="w") as tar:
         conn.execute("SET TRANSACTION ISOLATION LEVEL REPEATABLE READ READ ONLY")
         revision = conn.execute(sql.SQL("SELECT version_num FROM {}.alembic_version").format(sql.Identifier(schema))).fetchone()[0]
-        for name in _tables():
+        present = {r[0] for r in conn.execute("SELECT tablename FROM pg_tables WHERE schemaname = %s", (schema,)).fetchall()}
+        for name in (t for t in _tables() if t in present):      # a schema one migration behind the code is still backed up
             ident = sql.SQL("{}.{}").format(sql.Identifier(schema), sql.Identifier(name))
             rows = conn.execute(sql.SQL("SELECT count(*) FROM {}").format(ident)).fetchone()[0]
             buf = io.BytesIO()

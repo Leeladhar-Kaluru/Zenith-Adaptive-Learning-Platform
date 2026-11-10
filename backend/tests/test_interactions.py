@@ -82,3 +82,24 @@ def test_struggle_signals_change_the_ladder(db, client):
     r = client.post(f"{API}/evidence", headers=auth(p), json={"itemId": str(item.id), "response": {"choice": wrong}, "hintsUsed": 2, "ms": 20000,
                                                               "context": "solve", "clientEventId": uuid.uuid4().hex}).json()
     assert r["levelChange"]["to"] == 2 and "hint" in r["levelChange"]["reason"].lower()
+
+
+def test_teacher_sees_levels_and_activity_for_own_student_only(db, client):
+    from app.models import ClassMember, Classroom, Concept, ConceptLevel
+    t = make_profile(db, "teacher")
+    other = make_profile(db, "teacher")
+    st = make_profile(db, "student", grade=6)
+    c = Classroom(teacher_id=t.id, name="6A", grade=6, subject_id="maths", board_id="cbse", join_code="ZEN-TEST")
+    db.add(c)
+    db.add(Concept(id="integers-add", title="Adding integers", grade=6, subject_id="maths"))
+    db.commit()
+    db.add(ClassMember(classroom_id=c.id, student_id=st.id))
+    db.add(ConceptLevel(student_id=st.id, concept_id="integers-add", level=3, streak_up=0, streak_down=0, reason="2 correct answers in a row without hints, so questions get harder."))
+    db.commit()
+    client.post(f"{API}/interactions/batch", headers=auth(st), json={"events": [ev("hint_open"), ev("sim_change"), ev("dwell", ms=120000)]})
+    r = client.get(f"{API}/teacher/classes/{c.id}/students/{st.id}", headers=auth(t))
+    assert r.status_code == 200
+    body = r.json()
+    assert body["levels"][0]["level"] == 3 and "harder" in body["levels"][0]["reason"]
+    assert body["activity"]["hintsOpened"] == 1 and body["activity"]["simulationMoves"] == 1 and body["activity"]["readingMinutes"] == 2.0
+    assert client.get(f"{API}/teacher/classes/{c.id}/students/{st.id}", headers=auth(other)).status_code in (403, 404)

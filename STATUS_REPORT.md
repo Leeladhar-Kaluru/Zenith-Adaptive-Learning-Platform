@@ -60,3 +60,21 @@ See [README.md](README.md). In short: put your Supabase `DATABASE_URL` in `backe
 ### Tools used
 
 pytest, Alembic, SymPy, npm/tsc/vite, Playwright (screenshots), Supabase MCP (read-only), `skills` CLI (five vetted skills installed). Stitch MCP unavailable.
+
+## Session 2026-11-10 (adaptive engine v2)
+
+Built and tested locally (not yet deployed; production database still at migration 001):
+- Question templates (8 families: integer add/subtract/compare/hops, one-step, two-step, word and both-sides equations). Every generated question is checked by the real grader and, for equations, re-solved with SymPy over 600+ seeds per family.
+- Difficulty ladder (levels 1 to 5 per topic) driven by correctness, hints, answer changes and speed; guessing never raises the level; every move stores a plain-language reason. Practice serves a fresh generated question at the student's own level about 70 percent of the time.
+- Interaction log: lesson opens, section views, reading time, hints, answer changes and simulation moves are batched on the device, sent idempotently, capped at 200 per request and 2000 per day.
+- Simulations: balance/equation, line graph (slope and intercept) and spinner (probability), lazy loaded, keyboard accessible, bounds checked at import. Equation simulation checked in a real browser; line graph and spinner not yet looked at in a browser.
+- New lessons (AI-assisted, in review): The balance lab (Class 7), Slope and intercept (Class 8), How likely is it? (Class 7). They pass the automated gates; they need your approval after import.
+- Teacher student view now shows difficulty level per topic with reasons and a 14-day activity summary.
+- Auth: confirm password, show/hide, live rules. Bug fixed: starting a lesson twice at once returned a 500.
+- Tests: 135 backend tests pass; frontend builds.
+
+Commands run: `pytest` (134 passed before the teacher view, 8 passed in test_interactions after), `npm run build`, `python -m app.cli backup` (39 tables, verified), `python -m app.cli import ../content` against the test schema only.
+
+Blocked: applying migration 002 to the production `zenith` schema was refused by the permission system. It is additive (two new tables, four nullable item columns, one extra allowed item status). It must run before this code is deployed: `cd backend && DB_SCHEMA=zenith python -m alembic upgrade head`.
+
+Not done yet: mistake notebook and chapter boss quiz, more lessons (Science, Classes 9-10, most Maths chapters), end-to-end run on the live site, Resend email and password recovery, monitoring.

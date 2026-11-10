@@ -9,7 +9,7 @@ from sqlalchemy import Integer, cast, func, select
 from sqlalchemy.orm import Session
 
 from app.engine import bkt, graph
-from app.models import (Assignment, AuditLog, Chapter, ChapterConcept, ClassMember, Classroom, Concept, ConceptState, EvidenceEvent,
+from app.models import (Assignment, AuditLog, Chapter, ChapterConcept, ClassMember, Classroom, Concept, ConceptLevel, ConceptState, EvidenceEvent, InteractionEvent,
                         Intervention, Item, Lesson, LessonProgress, LessonVersion, Profile, TeacherDecision)
 from app.services import assign, home, library
 from app.services import items as item_svc
@@ -147,6 +147,26 @@ def assignments(db: Session, c: Classroom, members: list[Profile]) -> list[dict]
     return out
 
 
+def learning_activity(db: Session, student_id: uuid.UUID, days: int = 14) -> dict:
+    """What the student actually did in the last `days` days, counted from their recorded moves (no free text)."""
+    since = _now() - timedelta(days=days)
+    counts = dict(db.execute(select(InteractionEvent.kind, func.count()).where(InteractionEvent.student_id == student_id, InteractionEvent.occurred_at >= since)
+                             .group_by(InteractionEvent.kind)).all())
+    reading_ms = db.scalar(select(func.coalesce(func.sum(InteractionEvent.ms), 0)).where(InteractionEvent.student_id == student_id, InteractionEvent.kind == "dwell",
+                                                                                       InteractionEvent.occurred_at >= since)) or 0
+    return {"days": days, "readingMinutes": round(int(reading_ms) / 60000, 1), "lessonsOpened": counts.get("lesson_open", 0), "hintsOpened": counts.get("hint_open", 0),
+            "answerChanges": counts.get("answer_change", 0), "simulationMoves": counts.get("sim_change", 0) + counts.get("sim_reset", 0)}
+
+
+def levels(db: Session, student_id: uuid.UUID) -> list[dict]:
+    """Where the student is on the 1-5 difficulty ladder per topic, with the stored reason for the last move."""
+    out = []
+    for lv in db.scalars(select(ConceptLevel).where(ConceptLevel.student_id == student_id).order_by(ConceptLevel.updated_at.desc())):
+        c = db.get(Concept, lv.concept_id)
+        out.append({"concept": lv.concept_id, "title": c.title if c else lv.concept_id, "level": lv.level, "reason": lv.reason, "updatedAt": lv.updated_at.isoformat()})
+    return out
+
+
 def student_detail(db: Session, teacher: Profile, class_id: uuid.UUID, student_id: uuid.UUID) -> dict:
     c = owned(db, teacher, class_id)
     if db.get(ClassMember, (c.id, student_id)) is None:
@@ -166,7 +186,7 @@ def student_detail(db: Session, teacher: Profile, class_id: uuid.UUID, student_i
         ivs.append({"concept": db.get(Concept, iv.concept_id).title, "before": round(iv.pre_p, 2), "after": round(iv.post_p, 2) if iv.post_p is not None else None, "status": iv.status,
                     "startedAt": iv.started_at.isoformat()})
     return {"id": str(s.id), "nickname": s.nickname or s.display_name, "name": s.display_name, "avatar": s.avatar, "grade": s.grade, "concepts": concepts,
-            "timeline": timeline, "interventions": ivs, "mistakes": home.mistakes(db, student_id, unresolved_only=True)[:8], "assignments": assign.for_student(db, student_id)}
+            "timeline": timeline, "interventions": ivs, "levels": levels(db, student_id), "activity": learning_activity(db, student_id), "mistakes": home.mistakes(db, student_id, unresolved_only=True)[:8], "assignments": assign.for_student(db, student_id)}
 
 
 def create_assignment(db: Session, teacher: Profile, class_id: uuid.UUID, *, kind: str, chapter: str | None, lesson_id: uuid.UUID | None,

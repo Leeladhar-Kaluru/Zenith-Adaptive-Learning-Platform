@@ -6,7 +6,7 @@ from app.models.base import Base, now_col, uuid_pk
 
 CONTENT_STATUS = ("draft", "in_review", "changes_requested", "approved", "published", "archived")
 CHAPTER_STATUS = ("listed", "in_production", "published", "archived")
-ITEM_KINDS = ("mcq", "multi", "truefalse", "numeric", "fill", "match", "find_error")
+ITEM_KINDS = ("mcq", "multi", "truefalse", "numeric", "fill", "match", "find_error", "label_diagram")
 _cs = ",".join(f"'{s}'" for s in CONTENT_STATUS)
 
 
@@ -129,7 +129,7 @@ class Item(Base):
     id = uuid_pk()
     key = Column(String(160), nullable=False)
     version = Column(Integer, nullable=False, default=1)
-    kind = Column(String(12), nullable=False)
+    kind = Column(String(24), nullable=False)
     stem = Column(Text, nullable=False)
     payload = Column(JSONB, nullable=False, default=dict)       # options / pairs / unit / placeholder (public)
     answer_spec = Column(JSONB, nullable=False)                 # correct answer + tolerance (private)
@@ -154,7 +154,7 @@ class Item(Base):
         Index("uq_item_generated", "template_id", "template_version", "template_seed", "level", unique=True, postgresql_where=text("origin = 'generated'")),
         CheckConstraint("level is null or level between 1 and 5", name="ck_item_level"),
         UniqueConstraint("key", "version", name="uq_item_key_version"),
-        CheckConstraint("kind in ('mcq','multi','truefalse','numeric','fill','match','find_error')", name="ck_item_kind"),
+        CheckConstraint("kind in ('mcq','multi','truefalse','numeric','fill','match','find_error','label_diagram')", name="ck_item_kind"),
         CheckConstraint("difficulty in ('intro','standard','challenge')", name="ck_item_difficulty"),
         CheckConstraint("purpose in ('check','practice','test','probe')", name="ck_item_purpose"),
         CheckConstraint(f"status in ({_cs},'generated')", name="ck_item_status"),

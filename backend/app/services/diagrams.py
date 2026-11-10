@@ -73,6 +73,19 @@ def _labelled(spec: dict) -> tuple[str, str]:
             parts.append(f'<line x1="{_f(x1)}" y1="{_f(y1)}" x2="{_f(x2)}" y2="{_f(y2)}" stroke="{stroke}" stroke-width="2"/>')
         else:
             raise DiagramError(f"unknown shape type '{t}'")
+    if spec.get("numbered"):
+        # numbered regions for a labelling question: a badge per region, and no label text anywhere
+        for sh in spec.get("shapes", []):
+            num = sh.get("region")
+            if num is None:
+                continue
+            ax, ay = anchors.get(sh.get("id", ""), (None, None))
+            if ax is None:
+                raise DiagramError("a numbered region needs a shape with an id")
+            parts.append(f'<circle cx="{_f(ax)}" cy="{_f(ay)}" r="10" fill="#ffffff" stroke="#14193a" stroke-width="2"/>'
+                         f'<text x="{_f(ax)}" y="{_f(ay + 4)}" text-anchor="middle" font-size="13" font-weight="800" fill="#14193a">{_t(str(num), 3)}</text>')
+        parts.append("</svg>")
+        return "".join(parts), "A diagram with numbered parts to label."
     names = []
     for lb in spec.get("labels", []):
         x, y, text = _n(lb.get("x"), "x"), _n(lb.get("y"), "y"), _t(lb.get("text"))

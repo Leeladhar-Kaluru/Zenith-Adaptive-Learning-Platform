@@ -26,7 +26,7 @@ function reveal(item: PublicItem, r: unknown): string {
   if (item.kind === 'multi') return (r as string[]).map((k) => item.options?.find((o) => o.key === k)?.text ?? k).join(', ');
   if (item.kind === 'truefalse') return r ? 'True' : 'False';
   if (item.kind === 'find_error') return `Line ${Number(r) + 1}`;
-  if (item.kind === 'match') return Object.entries(r as Record<string, string>).map(([a, b]) => `${a} → ${b}`).join('; ');
+  if (item.kind === 'match' || item.kind === 'label_diagram') return Object.entries(r as Record<string, string>).map(([a, b]) => `${a} → ${b}`).join('; ');
   return String(r);
 }
 
@@ -69,6 +69,7 @@ export function Question({ item, context = 'learn_check', sessionId, deferFeedba
       case 'numeric': return text.trim() ? { value: text.trim() } : null;
       case 'fill': return text.trim() ? { text: text.trim() } : null;
       case 'match': return item.left && item.left.every((l) => pairs[l]) ? { pairs } : null;
+      case 'label_diagram': return item.regions && item.regions.every((r) => pairs[r]) ? { pairs } : null;
     }
   };
 
@@ -155,6 +156,19 @@ export function Question({ item, context = 'learn_check', sessionId, deferFeedba
           <input className={s.answer} value={text} onChange={(e) => setText(e.target.value)} disabled={done} inputMode={item.kind === 'numeric' ? 'decimal' : 'text'} autoComplete="off"
             aria-label="Your answer" placeholder={item.kind === 'numeric' ? 'Type a number' : 'Type your answer'} onKeyDown={(e) => e.key === 'Enter' && void submit()} />
           {item.unit && <span className="muted" style={{ fontWeight: 700 }}>{item.unit}</span>}
+        </div>
+      )}
+      {item.kind === 'label_diagram' && (
+        <div>
+          <div className={s.figure} role="img" aria-label={`Diagram with ${item.regions?.length ?? 0} numbered parts`} dangerouslySetInnerHTML={{ __html: item.svg ?? '' }} />
+          <div className={s.opts}>
+            {item.regions?.map((r) => (
+              <label key={r} className={s.matchRow}><span style={{ fontWeight: 700 }}>Part {r}</span>
+                <select className={s.answer} value={pairs[r] ?? ''} disabled={done} onChange={(e) => setPairs({ ...pairs, [r]: e.target.value })} aria-label={`Name for part ${r}`}>
+                  <option value="">Choose…</option>{item.labels?.map((l) => <option key={l} value={l}>{l}</option>)}
+                </select></label>
+            ))}
+          </div>
         </div>
       )}
       {item.kind === 'match' && (

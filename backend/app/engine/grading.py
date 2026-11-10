@@ -83,7 +83,7 @@ def grade(kind: str, spec: dict, response: dict) -> Grade:
         ok = step == int(spec["wrong_step"])
         return Grade(ok, 1.0 if ok else 0.0, int(spec["wrong_step"]), step)
 
-    if kind == "match":
+    if kind in ("match", "label_diagram"):
         want: dict = spec["pairs"]
         got = response.get("pairs", {}) or {}
         right = sum(1 for k, v in want.items() if got.get(k) == v)
@@ -97,6 +97,8 @@ def public_payload(kind: str, payload: dict) -> dict:
     """Strip anything that could leak the answer before an item is sent to a student."""
     p = dict(payload)
     p.pop("correct", None)
+    if kind == "label_diagram":
+        p["labels"] = sorted(p.get("labels", []))
     if kind == "match":
         # shuffle-safe: send the left items in order and the right items sorted so position does not reveal the pairing
         p["right"] = sorted(p.get("right", []))

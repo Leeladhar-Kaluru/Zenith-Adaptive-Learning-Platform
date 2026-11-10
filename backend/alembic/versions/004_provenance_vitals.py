@@ -100,14 +100,16 @@ def upgrade() -> None:
     )
     _rls("web_vitals", "sources", "source_assets", "content_provenance")
     # new question kinds: find_error (Mistake Detective)
+    op.alter_column("items", "kind", type_=sa.String(24), existing_type=sa.String(12), existing_nullable=False)
     op.drop_constraint("ck_item_kind", "items", type_="check")
-    op.create_check_constraint("ck_item_kind", "items", "kind in ('mcq','multi','truefalse','numeric','fill','match','find_error')")
+    op.create_check_constraint("ck_item_kind", "items", "kind in ('mcq','multi','truefalse','numeric','fill','match','find_error','label_diagram')")
 
 
 def downgrade() -> None:
-    op.execute("DELETE FROM items WHERE kind = 'find_error'")
+    op.execute("DELETE FROM items WHERE kind IN ('find_error','label_diagram')")
     op.drop_constraint("ck_item_kind", "items", type_="check")
     op.create_check_constraint("ck_item_kind", "items", "kind in ('mcq','multi','truefalse','numeric','fill','match')")
+    op.alter_column("items", "kind", type_=sa.String(12), existing_type=sa.String(24), existing_nullable=False)
     op.drop_table("content_provenance")
     op.drop_table("source_assets")
     op.drop_table("sources")

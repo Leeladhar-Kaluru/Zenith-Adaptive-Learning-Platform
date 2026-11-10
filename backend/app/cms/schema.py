@@ -181,7 +181,7 @@ class ItemConceptRef(Strict):
 
 class ItemDef(Strict):
     key: str
-    kind: Literal["mcq", "multi", "truefalse", "numeric", "fill", "match", "find_error"]
+    kind: Literal["mcq", "multi", "truefalse", "numeric", "fill", "match", "find_error", "label_diagram"]
     stem: str
     purpose: Literal["check", "practice", "test", "probe"] = "practice"
     difficulty: Literal["intro", "standard", "challenge"] = "standard"
@@ -196,6 +196,7 @@ class ItemDef(Strict):
     unit: Optional[str] = None
     accepted: list[str] = []                # fill
     pairs: dict[str, str] = {}              # match
+    diagram: Optional[dict] = None          # label_diagram: a labelled-diagram spec whose shapes carry a numbered `region`
     steps: list[str] = []                   # find_error: a worked solution, one line per step
     wrong_step: Optional[int] = None        # find_error: index of the one wrong line (never 0, the given problem)
     verify: Optional[str] = None            # SymPy expression that must evaluate to the correct numeric answer
@@ -224,6 +225,21 @@ class ItemDef(Strict):
         elif k == "match":
             if len(self.pairs) < 3:
                 raise ValueError("match needs at least 3 pairs")
+        elif k == "label_diagram":
+            if self.diagram is None:
+                raise ValueError("label_diagram needs a diagram")
+            if len(self.pairs) < 3:
+                raise ValueError("label_diagram needs at least 3 labelled regions")
+            if len(set(self.pairs.values())) != len(self.pairs):
+                raise ValueError("label_diagram labels must all be different")
+            regions = {str(sh.get("region")) for sh in self.diagram.get("shapes", []) if sh.get("region") is not None}
+            if set(self.pairs) != regions:
+                raise ValueError(f"label_diagram pairs must match the diagram's numbered regions {sorted(regions)}")
+            from app.services.diagrams import DiagramError, render
+            try:
+                render({**self.diagram, "numbered": True})
+            except DiagramError as e:
+                raise ValueError(f"diagram: {e}")
         elif k == "find_error":
             if len(self.steps) < 3:
                 raise ValueError("find_error needs at least 3 steps")

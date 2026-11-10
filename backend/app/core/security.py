@@ -13,8 +13,7 @@ from sqlalchemy.orm import Session
 
 from app.core.config import settings
 from app.core.database import get_db
-from app.models.classroom import Classroom
-from app.models.profiles import UserProfile
+from app.models.identity import Profile
 
 logger = logging.getLogger(__name__)
 
@@ -134,92 +133,60 @@ async def verify_supabase_token(token: str) -> Optional[Dict[str, Any]]:
     return await task
 
 
-def _test_auth_enabled() -> bool:
-    """X-User-Id is a test-harness credential, never a production one."""
-    return settings.APP_ENV == "test" and settings.SETU_TEST_AUTH is True
+def dev_auth_enabled() -> bool:
+    """Local development and tests only: tokens of the form `dev:<uuid>` stand in for Supabase sessions.
 
-
-async def get_current_user_id(
-    authorization: Optional[str] = Header(None),
-    x_user_id: Optional[str] = Header(None)
-) -> uuid.UUID:
+    Real database, real logic, real permissions. Refused in any other environment.
     """
-    Resolves the authenticated user UUID from a Bearer JWT or, in the isolated
-    test harness only, from X-User-Id. Returns HTTP 401 if no valid credential
-    is present.
-    """
-    if x_user_id and _test_auth_enabled():
-        try:
-            return uuid.UUID(x_user_id)
-        except ValueError:
-            raise HTTPException(
-                status_code=status.HTTP_401_UNAUTHORIZED,
-                detail="Invalid user ID format in request header",
-            )
+    return settings.ZENITH_DEV_AUTH is True and settings.APP_ENV in ("local", "test")
 
+
+def dev_token(user_id: uuid.UUID) -> str:
+    return f"dev:{user_id}"
+
+
+async def get_current_user_id(authorization: Optional[str] = Header(None)) -> uuid.UUID:
+    """Resolve the authenticated user id from a Bearer token (Supabase JWT, or `dev:<uuid>` in dev/test)."""
     if authorization and authorization.startswith("Bearer "):
         token = authorization.split("Bearer ", 1)[1].strip()
-        try:
-            user_info = await verify_supabase_token(token)
-        except AuthUpstreamError:
-            logger.warning("Supabase auth verification unavailable")
-            raise HTTPException(
-                status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
-                detail="ZENITH could not verify your session right now. Please retry in a moment.",
-                headers={"Retry-After": "2"},
-            )
-        if user_info and "id" in user_info:
+        if token.startswith("dev:") and dev_auth_enabled():
             try:
-                return uuid.UUID(user_info["id"])
+                return uuid.UUID(token[4:])
             except ValueError:
                 pass
-
-    raise HTTPException(
-        status_code=status.HTTP_401_UNAUTHORIZED,
-        detail="Authentication required. Please sign in to continue.",
-        headers={"WWW-Authenticate": "Bearer"},
-    )
-
-
-async def get_current_teacher_id(
-    user_id: uuid.UUID = Depends(get_current_user_id),
-    db: Session = Depends(get_db),
-) -> uuid.UUID:
-    """Resolves a teacher (or admin) user UUID; 403 for every other role."""
-    profile = db.query(UserProfile).filter(UserProfile.id == user_id).first()
-    if not profile or profile.role not in ("teacher", "admin"):
-        raise HTTPException(
-            status_code=status.HTTP_403_FORBIDDEN,
-            detail="A teacher account is required for this action.",
-        )
-    return user_id
+        else:
+            try:
+                user_info = await verify_supabase_token(token)
+            except AuthUpstreamError:
+                logger.warning("Supabase auth verification unavailable")
+                raise HTTPException(status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+                                    detail="ZENITH could not verify your session right now. Please retry in a moment.",
+                                    headers={"Retry-After": "2"})
+            if user_info and "id" in user_info:
+                try:
+                    return uuid.UUID(user_info["id"])
+                except ValueError:
+                    pass
+    raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Please sign in to continue.",
+                        headers={"WWW-Authenticate": "Bearer"})
 
 
-async def get_current_educator_id(
-    user_id: uuid.UUID = Depends(get_current_user_id),
-    db: Session = Depends(get_db),
-) -> uuid.UUID:
-    """Resolve a teacher/admin, or the recorded owner of a real classroom.
+def get_profile(user_id: uuid.UUID = Depends(get_current_user_id), db: Session = Depends(get_db)) -> Profile:
+    profile = db.get(Profile, user_id)
+    if profile is None:
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Finish creating your ZENITH profile first.")
+    return profile
 
-    A profile whose role is still `student` but which owns classrooms is a
-    data-entry conflict, not a security boundary. Ownership is checked against
-    the classroom rows themselves and every teacher endpoint still scopes its
-    query to `owner_teacher_id == this id`, so an owner can only read or change
-    classrooms they actually own. This avoids mutating production roles just to
-    unblock a legitimate classroom owner.
-    """
-    profile = db.query(UserProfile).filter(UserProfile.id == user_id).first()
-    if profile and profile.role in ("teacher", "admin"):
-        return user_id
-    owns_classroom = (
-        db.query(Classroom.id)
-        .filter(Classroom.owner_teacher_id == user_id)
-        .first()
-        is not None
-    )
-    if owns_classroom:
-        return user_id
-    raise HTTPException(
-        status_code=status.HTTP_403_FORBIDDEN,
-        detail="A teacher account or classroom ownership is required for this action.",
-    )
+
+def require_roles(*roles: str):
+    """Dependency factory: the caller must have one of the roles. Admin passes every role check."""
+    def dep(profile: Profile = Depends(get_profile)) -> Profile:
+        if profile.role != "admin" and profile.role not in roles:
+            raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="You do not have access to this.")
+        return profile
+    return dep
+
+
+student_only = require_roles("student")
+teacher_only = require_roles("teacher")
+reviewer_only = require_roles("teacher", "reviewer")

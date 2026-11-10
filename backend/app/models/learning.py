@@ -1,154 +1,128 @@
-import uuid
-import datetime
-from sqlalchemy import Column, String, Integer, Float, Boolean, DateTime, ForeignKey, JSON, Text, UniqueConstraint, Index, text
-from sqlalchemy.dialects.postgresql import UUID
-from app.models.base import Base
+from sqlalchemy import (Boolean, CheckConstraint, Column, Date, DateTime, Float, ForeignKey, Index, Integer, String, Text,
+                        UniqueConstraint)
+from sqlalchemy.dialects.postgresql import JSONB, UUID
 
-class LearningPath(Base):
-    __tablename__ = "learning_paths"
+from app.models.base import Base, now_col, uuid_pk
 
-    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    owner_id = Column(UUID(as_uuid=True), nullable=False, index=True)
-    # Legacy column from the removed document pipeline; kept until the approved legacy-table drop.
-    document_id = Column(UUID(as_uuid=True), nullable=True)
-    path_version = Column(Integer, default=1)
-    grade = Column(Integer, nullable=False)
-    subject_id = Column(String(50), nullable=False)
-    language_tag = Column(String(20), default="en-IN")
-    goal = Column(String(100), default="concept_understanding")
-    status = Column(String(50), default="active")
-    outline_json = Column(JSON, nullable=False)
-    rationale = Column(String(500), nullable=True)
-    is_library = Column(Boolean, default=False, nullable=False)
-    library_slug = Column(String(120), nullable=True)
-    library_status = Column(String(50), default="draft")  # draft, published, archived
-    board_id = Column(String(50), ForeignKey("curriculum_boards.id", ondelete="SET NULL"), nullable=True)
-    created_at = Column(DateTime, default=datetime.datetime.utcnow)
+BANDS = ("unassessed", "learning", "secure", "gap_suspected", "gap_confirmed")
 
+
+class EvidenceEvent(Base):
+    """Immutable raw evidence. Mastery is always derived from these rows, never edited by hand."""
+    __tablename__ = "evidence_events"
+    id = uuid_pk()
+    student_id = Column(UUID(as_uuid=True), ForeignKey("profiles.id", ondelete="CASCADE"), nullable=False)
+    item_id = Column(UUID(as_uuid=True), ForeignKey("items.id"), nullable=False)
+    session_id = Column(UUID(as_uuid=True), ForeignKey("assessment_sessions.id", ondelete="SET NULL"))
+    client_event_id = Column(String(64), nullable=False)
+    context = Column(String(12), nullable=False)
+    response = Column(JSONB, nullable=False)
+    correct = Column(Boolean, nullable=False)
+    score = Column(Float, nullable=False)
+    hints_used = Column(Integer, nullable=False, default=0)
+    ms = Column(Integer, nullable=False, default=0)
+    attempt_no = Column(Integer, nullable=False, default=1)
+    concepts = Column(JSONB, nullable=False, default=list)       # [{id, w, p_before, p_after}]
+    misconception_id = Column(UUID(as_uuid=True), ForeignKey("misconceptions.id"))
+    param_version = Column(String(20), nullable=False)
+    occurred_at = Column(DateTime(timezone=True), nullable=False)
+    received_at = now_col()
     __table_args__ = (
-        Index(
-            "ix_learning_paths_library_slug",
-            "library_slug",
-            unique=True,
-            postgresql_where=text("is_library IS TRUE"),
-        ),
+        UniqueConstraint("student_id", "client_event_id", name="uq_evidence_client_event"),
+        CheckConstraint("context in ('learn_check','solve','test','probe')", name="ck_evidence_context"),
+        Index("ix_evidence_student_time", "student_id", "occurred_at"),
+        Index("ix_evidence_student_item", "student_id", "item_id"),
     )
 
-class PathLesson(Base):
-    __tablename__ = "path_lessons"
 
-    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    path_id = Column(UUID(as_uuid=True), ForeignKey("learning_paths.id", ondelete="CASCADE"), nullable=False, index=True)
-    lesson_key = Column(String(100), nullable=False)
-    title = Column(String(200), nullable=False)
-    sequence = Column(Integer, nullable=False)
-    status = Column(String(50), default="queued")  # queued, generating, ready, failed
+class ConceptState(Base):
+    __tablename__ = "concept_states"
+    student_id = Column(UUID(as_uuid=True), ForeignKey("profiles.id", ondelete="CASCADE"), primary_key=True)
+    concept_id = Column(String(120), ForeignKey("concepts.id", ondelete="CASCADE"), primary_key=True)
+    p_known = Column(Float, nullable=False)
+    n_obs = Column(Integer, nullable=False, default=0)
+    n_correct = Column(Integer, nullable=False, default=0)
+    streak = Column(Integer, nullable=False, default=0)
+    last_obs_at = Column(DateTime(timezone=True))
+    status = Column(String(16), nullable=False, default="unassessed")
+    param_version = Column(String(20), nullable=False)
+    updated_at = now_col()
+    __table_args__ = (CheckConstraint("p_known > 0 and p_known < 1", name="ck_state_p"),)
 
-class LessonVersion(Base):
-    __tablename__ = "lesson_versions"
 
-    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    path_lesson_id = Column(UUID(as_uuid=True), ForeignKey("path_lessons.id", ondelete="CASCADE"), nullable=False, index=True)
-    version_number = Column(Integer, default=1)
-    lesson_package_json = Column(JSON, nullable=False)
-    source_version_ids = Column(JSON, nullable=True)
-    validation_status = Column(String(50), default="draft")  # draft, validating, ready, rejected
-    estimated_bytes = Column(Integer, default=15000)
-    created_at = Column(DateTime, default=datetime.datetime.utcnow)
+class LearnerRating(Base):
+    __tablename__ = "learner_ratings"
+    student_id = Column(UUID(as_uuid=True), ForeignKey("profiles.id", ondelete="CASCADE"), primary_key=True)
+    subject_id = Column(String(30), ForeignKey("subjects.id"), primary_key=True)
+    theta = Column(Float, nullable=False, default=0.0)
+    n = Column(Integer, nullable=False, default=0)
 
-class Question(Base):
-    __tablename__ = "questions"
 
-    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    lesson_version_id = Column(UUID(as_uuid=True), ForeignKey("lesson_versions.id", ondelete="CASCADE"), nullable=False, index=True)
-    question_key = Column(String(100), nullable=False)
-    type = Column(String(50), nullable=False)  # multiple_choice, short_text, numeric, diagram_label
-    prompt_json = Column(JSON, nullable=False)
-    answer_key_json = Column(JSON, nullable=False)
-    rubric_json = Column(JSON, nullable=True)
-    concept_ids = Column(JSON, nullable=False)  # List[str]
-    difficulty = Column(String(50), default="standard")
-    validation_status = Column(String(50), default="ready")
+class LessonProgress(Base):
+    __tablename__ = "lesson_progress"
+    student_id = Column(UUID(as_uuid=True), ForeignKey("profiles.id", ondelete="CASCADE"), primary_key=True)
+    lesson_id = Column(UUID(as_uuid=True), ForeignKey("lessons.id", ondelete="CASCADE"), primary_key=True)
+    status = Column(String(12), nullable=False, default="started")
+    last_block = Column(Integer, nullable=False, default=0)
+    started_at = now_col()
+    completed_at = Column(DateTime(timezone=True))
+    updated_at = Column(DateTime(timezone=True))
+    __table_args__ = (CheckConstraint("status in ('started','completed')", name="ck_progress_status"),)
 
-class QuizAttempt(Base):
-    __tablename__ = "quiz_attempts"
 
-    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    owner_id = Column(UUID(as_uuid=True), nullable=False, index=True)
-    question_id = Column(UUID(as_uuid=True), ForeignKey("questions.id", ondelete="CASCADE"), nullable=False)
-    lesson_version_id = Column(UUID(as_uuid=True), ForeignKey("lesson_versions.id", ondelete="CASCADE"), nullable=False)
-    response_json = Column(JSON, nullable=False)
-    score = Column(Float, default=0.0)
-    is_correct = Column(Boolean, default=False)
-    hint_level = Column(Integer, default=0)
-    hints_used = Column(JSON, nullable=True)
-    elapsed_seconds = Column(Integer, default=0)
-    feedback_json = Column(JSON, nullable=True)
-    sync_idempotency_key = Column(String(100), nullable=True)
-    attempt_kind = Column(String(20), default="practice")
-    occurred_at = Column(DateTime, default=datetime.datetime.utcnow)
-
+class AssessmentSession(Base):
+    __tablename__ = "assessment_sessions"
+    id = uuid_pk()
+    student_id = Column(UUID(as_uuid=True), ForeignKey("profiles.id", ondelete="CASCADE"), nullable=False, index=True)
+    kind = Column(String(12), nullable=False)
+    chapter_id = Column(UUID(as_uuid=True), ForeignKey("chapters.id"))
+    assignment_id = Column(UUID(as_uuid=True), ForeignKey("assignments.id", ondelete="SET NULL"))
+    concept_ids = Column(JSONB, nullable=False, default=list)
+    item_ids = Column(JSONB, nullable=False, default=list)
+    time_limit_s = Column(Integer)
+    status = Column(String(12), nullable=False, default="active")
+    started_at = now_col()
+    submitted_at = Column(DateTime(timezone=True))
+    summary = Column(JSONB)
     __table_args__ = (
-        UniqueConstraint("owner_id", "sync_idempotency_key", name="uq_quiz_attempt_owner_sync"),
+        CheckConstraint("kind in ('diagnostic','chapter_test','topic_test','revision','practice')", name="ck_session_kind"),
+        CheckConstraint("status in ('active','submitted','expired')", name="ck_session_status"),
     )
 
-class ConceptEvidence(Base):
-    __tablename__ = "concept_evidence"
 
-    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    owner_id = Column(UUID(as_uuid=True), nullable=False, index=True)
-    concept_id = Column(String(100), nullable=False, index=True)
-    source_attempt_id = Column(UUID(as_uuid=True), ForeignKey("quiz_attempts.id", ondelete="CASCADE"), nullable=True)
-    evidence_type = Column(String(50), default="practice_attempt")
-    outcome = Column(String(50), nullable=False)  # correct, incorrect, partially_correct
-    weight = Column(Float, default=1.0)
-    rationale = Column(String(300), nullable=True)
-    hints_used = Column(Integer, default=0)
-    occurred_at = Column(DateTime, default=datetime.datetime.utcnow)
-
-class ConceptMasterySnapshot(Base):
-    __tablename__ = "concept_mastery_snapshots"
-
-    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    owner_id = Column(UUID(as_uuid=True), nullable=False, index=True)
-    concept_id = Column(String(100), nullable=False, index=True)
-    estimate_band = Column(String(50), default="not_enough_evidence")  # not_enough_evidence, developing, approaching, demonstrated
-    numeric_estimate = Column(Float, nullable=True)
-    evidence_count = Column(Integer, default=0)
-    freshness = Column(String(50), default="current")
-    explanation_json = Column(JSON, nullable=True)
-    calculated_at = Column(DateTime, default=datetime.datetime.utcnow)
+class Recommendation(Base):
+    """What ZENITH suggested and why, kept for audit and for measuring whether suggestions helped."""
+    __tablename__ = "recommendations"
+    id = uuid_pk()
+    student_id = Column(UUID(as_uuid=True), ForeignKey("profiles.id", ondelete="CASCADE"), nullable=False, index=True)
+    kind = Column(String(16), nullable=False)
+    concept_id = Column(String(120))
+    payload = Column(JSONB, nullable=False, default=dict)
+    reason = Column(JSONB, nullable=False, default=dict)
+    model_version = Column(String(20), nullable=False)
+    created_at = now_col()
 
 
-class StudyEvent(Base):
-    __tablename__ = "study_events"
-
-    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    owner_id = Column(UUID(as_uuid=True), nullable=False, index=True)
-    path_id = Column(UUID(as_uuid=True), nullable=True)
-    lesson_id = Column(String(80), nullable=True)
-    lesson_title = Column(String(200), nullable=True)
-    event_type = Column(String(40), nullable=False)
-    seconds = Column(Integer, default=0)
-    score = Column(Float, nullable=True)
-    occurred_at = Column(DateTime, default=datetime.datetime.utcnow, index=True)
+class RevisionSchedule(Base):
+    __tablename__ = "revision_schedule"
+    student_id = Column(UUID(as_uuid=True), ForeignKey("profiles.id", ondelete="CASCADE"), primary_key=True)
+    concept_id = Column(String(120), ForeignKey("concepts.id", ondelete="CASCADE"), primary_key=True)
+    due_at = Column(DateTime(timezone=True), nullable=False)
+    interval_days = Column(Integer, nullable=False, default=1)
+    reps = Column(Integer, nullable=False, default=0)
+    last_reviewed_at = Column(DateTime(timezone=True))
 
 
-class CoachNote(Base):
-    """Queued LLM analysis of a student's real attempts for one concept."""
-
-    __tablename__ = "coach_notes"
-
-    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    owner_id = Column(UUID(as_uuid=True), nullable=False, index=True)
-    concept_id = Column(String(100), nullable=False, index=True)
-    status = Column(String(50), default="queued")  # queued, claimed, ready, failed
-    request_json = Column(JSON, nullable=False)
-    content_json = Column(JSON, nullable=True)
-    lease_owner = Column(String(100), nullable=True)
-    lease_expires_at = Column(DateTime, nullable=True)
-    attempt_count = Column(Integer, nullable=False, default=0)
-    safe_error_message = Column(String(300), nullable=True)
-    created_at = Column(DateTime, default=datetime.datetime.utcnow)
-    completed_at = Column(DateTime, nullable=True)
-
+class Intervention(Base):
+    __tablename__ = "interventions"
+    id = uuid_pk()
+    student_id = Column(UUID(as_uuid=True), ForeignKey("profiles.id", ondelete="CASCADE"), nullable=False, index=True)
+    concept_id = Column(String(120), ForeignKey("concepts.id"), nullable=False)
+    created_by = Column(UUID(as_uuid=True))
+    kind = Column(String(16), nullable=False)
+    pre_p = Column(Float, nullable=False)
+    post_p = Column(Float)
+    status = Column(String(8), nullable=False, default="open")
+    started_at = now_col()
+    closed_at = Column(DateTime(timezone=True))
+    __table_args__ = (CheckConstraint("status in ('open','closed')", name="ck_intervention_status"),)

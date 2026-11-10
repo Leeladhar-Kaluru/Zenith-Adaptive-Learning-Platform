@@ -1,63 +1,11 @@
 from app.models.base import Base
-from app.models.curriculum import CurriculumBoard, Subject, Language, ResourceSource, Resource, ResourceRight
-from app.models.learning import LearningPath, PathLesson, LessonVersion, Question, QuizAttempt, ConceptEvidence, ConceptMasterySnapshot, StudyEvent
-from app.models.doubts import Doubt, SyncEvent
-from app.models.classroom import Classroom, ClassroomMembership, TeacherAction
-from app.models.profiles import UserProfile
-from app.models.library import (
-    Concept,
-    ConceptEdge,
-    ConceptChapter,
-    LibraryEnrollment,
-    ResourceProgress,
-    ContentRequest,
-    LibraryPublicationEvent,
-)
-from app.models.mastery import BktState, BktEvent
-from app.models.rewards import StudentReward, RewardEvent, Badge, StudentBadge
-from app.models.diagnostics import DiagnosticSession, DiagnosticItem
-from app.models.tutor import TutorThread, TutorMessage
+from app.models.identity import AuditLog, Board, ConsentEvent, Profile
+from app.models.curriculum import (Card, Chapter, ChapterConcept, Concept, ConceptEdge, CurriculumVersion, GateResult, Item,
+                                   ItemConcept, Lesson, LessonConcept, LessonItem, LessonVersion, Misconception,
+                                   OptionMisconception, Subject)
+from app.models.learning import (AssessmentSession, ConceptState, EvidenceEvent, Intervention, LearnerRating, LessonProgress,
+                                 Recommendation, RevisionSchedule)
+from app.models.classroom import (Assignment, ClassMember, Classroom, DailyActivity, LeagueMembership, StudentBadge,
+                                  TeacherDecision, TutorMessage, TutorThread, XpEvent)
 
-__all__ = [
-    "Base",
-    "CurriculumBoard",
-    "Subject",
-    "Language",
-    "ResourceSource",
-    "Resource",
-    "ResourceRight",
-    "LearningPath",
-    "PathLesson",
-    "LessonVersion",
-    "Question",
-    "QuizAttempt",
-    "ConceptEvidence",
-    "ConceptMasterySnapshot",
-    "StudyEvent",
-    "Doubt",
-    "SyncEvent",
-    "Classroom",
-    "ClassroomMembership",
-    "TeacherAction",
-    "UserProfile",
-    # Zenith additions
-    "Concept",
-    "ConceptEdge",
-    "ConceptChapter",
-    "LibraryEnrollment",
-    "ResourceProgress",
-    "ContentRequest",
-    "LibraryPublicationEvent",
-    "BktState",
-    "BktEvent",
-    "StudentReward",
-    "RewardEvent",
-    "Badge",
-    "StudentBadge",
-    "DiagnosticSession",
-    "DiagnosticItem",
-    "TutorThread",
-    "TutorMessage",
-]
-
-
+__all__ = [n for n in dir() if not n.startswith("_")]

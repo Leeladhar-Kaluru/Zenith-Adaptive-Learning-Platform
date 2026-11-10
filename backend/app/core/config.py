@@ -5,7 +5,7 @@ from pydantic import Field
 
 class Settings(BaseSettings):
     APP_ENV: str = "local"
-    SETU_TEST_AUTH: bool = False
+    ZENITH_DEV_AUTH: bool = False  # local/test only; ignored elsewhere
     LOG_LEVEL: str = "INFO"
     API_V1_PREFIX: str = "/api/v1"
     FRONTEND_ORIGINS: str = "http://localhost:5173,http://127.0.0.1:5173"
@@ -27,6 +27,8 @@ class Settings(BaseSettings):
     LLM_BASE_URL: str = "https://api.groq.com/openai/v1"
     LLM_MODEL: str = "openai/gpt-oss-120b"
     LLM_FALLBACK_MODEL: Optional[str] = None
+    TUTOR_DAILY_LIMIT: int = 40
+    XP_DAILY_CAP: int = 300
 
     model_config = SettingsConfigDict(
         env_file=os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), ".env"),

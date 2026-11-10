@@ -1,36 +1,6 @@
 from fastapi import APIRouter
-from app.api.v1.health import router as health_router
-from app.api.v1.catalogue import router as catalogue_router
-from app.api.v1.learning_paths import router as paths_router
-from app.api.v1.attempts import router as attempts_router
-from app.api.v1.doubts import router as doubts_router
-from app.api.v1.sync import router as sync_router
-from app.api.v1.auth import router as auth_router
-from app.api.v1.profile import router as profile_router
-from app.api.v1.teacher import router as teacher_router
-from app.api.v1.study import router as study_router
-from app.api.v1.classroom import router as classroom_router
-from app.api.v1.library import router as library_router
-from app.api.v1.rewards import router as rewards_router
-from app.api.v1.tutor import router as tutor_router
-from app.api.v1.diagnostics import router as diagnostics_router
-from app.api.v1.practice import router as practice_router
+
+from app.api.v1 import health
 
 api_router = APIRouter()
-api_router.include_router(health_router, tags=["Health"])
-api_router.include_router(auth_router, prefix="/auth", tags=["Auth"])
-api_router.include_router(profile_router, prefix="/profile", tags=["Profile"])
-api_router.include_router(catalogue_router, prefix="/catalogue", tags=["Catalogue"])
-api_router.include_router(paths_router, prefix="/learning-paths", tags=["Learning Paths"])
-api_router.include_router(attempts_router, prefix="/attempts", tags=["Attempts"])
-api_router.include_router(doubts_router, prefix="/doubts", tags=["Doubts"])
-api_router.include_router(sync_router, prefix="/sync", tags=["Sync"])
-api_router.include_router(teacher_router, prefix="/teacher", tags=["Teacher"])
-api_router.include_router(study_router, prefix="/study", tags=["Study"])
-api_router.include_router(classroom_router, prefix="/classroom", tags=["Classroom"])
-api_router.include_router(library_router, prefix="/library", tags=["Library"])
-api_router.include_router(rewards_router, prefix="/rewards", tags=["Rewards"])
-api_router.include_router(tutor_router, prefix="/tutor", tags=["Tutor"])
-api_router.include_router(diagnostics_router, prefix="/diagnostics", tags=["Diagnostics"])
-api_router.include_router(practice_router, prefix="/practice", tags=["Practice"])
-
+api_router.include_router(health.router, tags=["Health"])

@@ -15,22 +15,10 @@ def liveness():
 
 @router.get("/health/ready")
 async def readiness(response: Response):
-    """Readiness probe: database reachable; AI provider status reported.
-
-    The AI provider is optional for readiness: ZENITH degrades gracefully when
-    it is unavailable. Never exposes keys or secrets.
-    """
+    """Readiness: database reachable; AI provider status reported but optional. Never exposes keys."""
     db_ok = check_db_health()
-    ai_status = await ai_provider.check_health()
+    ai = await ai_provider.check_health()
     if not db_ok:
         response.status_code = 503
-    return {
-        "status": "ready" if db_ok else "unavailable",
-        "components": {
-            "database": {"connected": db_ok},
-            "ai_provider": {
-                "provider": ai_status.get("provider"),
-                "chat_ready": ai_status.get("chat_ready", False),
-            },
-        },
-    }
+    return {"status": "ready" if db_ok else "unavailable",
+            "components": {"database": {"connected": db_ok}, "ai_provider": {"provider": ai.get("provider"), "chat_ready": ai.get("chat_ready", False)}}}

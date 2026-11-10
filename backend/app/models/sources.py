@@ -1,6 +1,6 @@
 """Where every imported asset came from, under which licence, and who must be credited. Nothing is shown to students without this."""
 from sqlalchemy import BigInteger, Boolean, CheckConstraint, Column, DateTime, ForeignKey, Index, String, Text, UniqueConstraint
-from sqlalchemy.dialects.postgresql import UUID
+from sqlalchemy.dialects.postgresql import JSONB, UUID
 
 from app.models.base import Base, now_col, uuid_pk
 
@@ -32,6 +32,7 @@ class SourceAsset(Base):
     sha256 = Column(String(64), nullable=False, default="")
     bytes = Column(BigInteger, nullable=False, default=0)
     storage_path = Column(String(300))
+    data = Column(JSONB)                                      # small derived datasets (fields and rows) live here
     status = Column(String(10), nullable=False, default="pending")
     retrieved_at = Column(DateTime(timezone=True), nullable=False)
     recheck_at = Column(DateTime(timezone=True), nullable=False)

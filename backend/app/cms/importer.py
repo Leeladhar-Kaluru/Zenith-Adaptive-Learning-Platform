@@ -276,7 +276,7 @@ def import_tree(db: Session, tree: Tree, actor_id: uuid.UUID | None = None) -> d
                 db.add(Card(lesson_version_id=lv.id, key=cd.key, concept_id=cd.concept, front=cd.front, back=cd.back))
 
             asset_rows = {}
-            for sid in set(les.sources) | {b["asset"] for b in blocks if b["kind"] == "figure" and b.get("asset")}:
+            for sid in set(les.sources) | {b["asset"] for b in blocks if b["kind"] == "figure" and b.get("asset")} | {b["config"]["dataset"] for b in blocks if b["kind"] == "widget" and (b.get("config") or {}).get("dataset")}:
                 try:
                     row = db.get(SourceAsset, uuid.UUID(sid))
                 except ValueError:

@@ -134,7 +134,7 @@ def _state_label(prog: dict, lesson_id) -> str:
 
 def lesson_credits(db: Session, lv: LessonVersion) -> list[dict]:
     """The credit lines students see for every imported asset the lesson uses (no query for lessons that use none)."""
-    if not any(b.get("asset") or b.get("dataset") for b in (lv.blocks or [])):
+    if not any(b.get("asset") or (b.get("config") or {}).get("dataset") for b in (lv.blocks or [])):
         return []
     rows = db.execute(select(SourceAsset).join(ContentProvenance, ContentProvenance.asset_id == SourceAsset.id)
                       .where(ContentProvenance.lesson_version_id == lv.id).order_by(SourceAsset.external_id)).scalars()

@@ -129,7 +129,8 @@ def lesson_gates(*, title: str, grade: int, objectives: list[str], blocks: list[
 
     sources, assets = sources or [], assets or {}
     used = {b["asset"] for b in blocks if b["kind"] == "figure" and b.get("asset")}
-    problems = [f"{a} is used in a figure but not listed in sources" for a in sorted(used - set(sources))]
+    used |= {b["config"]["dataset"] for b in blocks if b["kind"] == "widget" and (b.get("config") or {}).get("dataset")}
+    problems = [f"{a} is used in the lesson but not listed in sources" for a in sorted(used - set(sources))]
     for a in sources:
         info = assets.get(a)
         if info is None:

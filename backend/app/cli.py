@@ -10,6 +10,7 @@
   restore <file|latest> <new_schema>   load a backup into an empty, migrated schema
   retention <days>        set how long B2 keeps backups before deleting them
   backup-key              create BACKUP_KEY and append it to backend/.env (never printed)
+  dataset worldbank <indicator> <country> "<Title>"   import a World Bank indicator (CC BY 4.0), left pending for approval
   assets-due              imported assets whose licence re-check date has passed
   new-lesson <content-dir> <chapter-slug> <lesson-slug> "<Title>" <concept,concept>   start a lesson from a TODO skeleton
   asset commons <File:Title>   import one Wikimedia Commons file (licence checked, left pending)
@@ -84,6 +85,19 @@ def main(argv: list[str]) -> int:
                     return 1
                 print("approved")
                 return 0
+        if cmd == "dataset" and argv[2] == "worldbank":
+            from sqlalchemy import select
+            from app.models import Profile
+            from app.ingest import worldbank
+            from app.ingest.datasets import DatasetError
+            who = db.scalar(select(Profile).where(Profile.role.in_(("reviewer", "admin"))))
+            try:
+                a = worldbank.import_indicator(db, argv[3], argv[4], argv[5], who.id if who else None)
+            except DatasetError as e:
+                print("Not imported:", e)
+                return 1
+            print(f"{a.status}: {a.external_id} [{a.licence_id}] {len(a.data['rows'])} rows  (id {a.id})")
+            return 0
         if cmd == "assets-due":
             from app.ingest.recheck import due_for_recheck
             rows = due_for_recheck(db)

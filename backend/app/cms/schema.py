@@ -103,12 +103,21 @@ SIM_CHOICES: dict[str, dict[str, set[str]]] = {"sim_density": {"goal": {"float",
 
 class WidgetBlock(Strict):
     kind: Literal["widget"]
-    widget: Literal["numberline", "balance", "fraction", "sim_linegraph", "sim_equation", "sim_spinner", "sim_density"]
+    widget: Literal["numberline", "balance", "fraction", "sim_linegraph", "sim_equation", "sim_spinner", "sim_density", "data_chart"]
     config: dict[str, Union[int, float, str]] = {}
     task: str = ""
 
     @model_validator(mode="after")
     def _sim_rules(self):
+        if self.widget == "data_chart":
+            for k in ("dataset", "x", "y"):
+                if not isinstance(self.config.get(k), str) or not str(self.config[k]).strip():
+                    raise ValueError(f"data_chart needs '{k}' in config")
+            if self.config.get("chart", "line") not in ("line", "bar"):
+                raise ValueError("data_chart chart must be line or bar")
+            if not self.task.strip():
+                raise ValueError("data_chart needs a plain-language task (what to look for or work out).")
+            return self
         bounds = SIM_BOUNDS.get(self.widget)
         if bounds is None:
             return self

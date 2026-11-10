@@ -5,6 +5,7 @@ Revises: 003
 """
 import sqlalchemy as sa
 from alembic import op
+from sqlalchemy.dialects import postgresql
 
 revision = "004"
 down_revision = "003"
@@ -74,6 +75,7 @@ def upgrade() -> None:
         sa.Column("sha256", sa.String(64), nullable=False, server_default=""),
         sa.Column("bytes", sa.BigInteger(), nullable=False, server_default="0"),
         sa.Column("storage_path", sa.String(300)),
+        sa.Column("data", postgresql.JSONB(astext_type=sa.Text())),
         sa.Column("status", sa.String(10), nullable=False, server_default="pending"),
         sa.Column("retrieved_at", sa.DateTime(timezone=True), nullable=False),
         sa.Column("recheck_at", sa.DateTime(timezone=True), nullable=False),

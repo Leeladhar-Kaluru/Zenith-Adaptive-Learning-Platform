@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import uuid
 
+from app.core.memo import per_request
 from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
@@ -36,6 +37,7 @@ def progress(db: Session, student_id: uuid.UUID, a: Assignment) -> dict:
     return {"done": min(PRACTICE_TARGET, n), "total": PRACTICE_TARGET, "href": href}
 
 
+@per_request
 def for_student(db: Session, student_id: uuid.UUID) -> list[dict]:
     rows = db.scalars(select(Assignment).join(ClassMember, ClassMember.classroom_id == Assignment.classroom_id)
                       .where(ClassMember.student_id == student_id, ClassMember.status == "active")

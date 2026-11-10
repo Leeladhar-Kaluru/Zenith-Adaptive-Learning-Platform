@@ -1,3 +1,4 @@
+import os
 from typing import Generator
 from sqlalchemy import create_engine, text
 from sqlalchemy.orm import sessionmaker, Session
@@ -16,7 +17,9 @@ engine = create_engine(
         "prepare_threshold": None,
         "options": "-c idle_in_transaction_session_timeout=15000",
     },
-    pool_pre_ping=True,
+    # A liveness query before every checkout costs one database round trip per request. On Vercel (short-lived, same-region
+    # functions) pool_recycle already retires old connections, so skip it there and keep it elsewhere.
+    pool_pre_ping=not bool(os.environ.get("VERCEL")),
     pool_recycle=60,
     pool_size=settings.POOL_SIZE,
     max_overflow=settings.MAX_OVERFLOW,

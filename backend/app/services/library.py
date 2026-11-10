@@ -4,6 +4,7 @@ from __future__ import annotations
 import uuid
 from datetime import datetime, timezone
 
+from app.core.memo import memo
 from sqlalchemy import and_, func, or_, select
 from sqlalchemy.orm import Session
 
@@ -18,11 +19,29 @@ class NotFound(LookupError):
     pass
 
 
+def _all_published_lessons(db: Session) -> dict[uuid.UUID, list[tuple[Lesson, LessonVersion]]]:
+    """Every published lesson of every chapter in one query, in lesson order (shared by all chapter cards in a request)."""
+    def load():
+        out: dict[uuid.UUID, list[tuple[Lesson, LessonVersion]]] = {}
+        for l, v in db.execute(select(Lesson, LessonVersion).join(LessonVersion, LessonVersion.lesson_id == Lesson.id)
+                               .where(LessonVersion.status == "published", LessonVersion.language == "en").order_by(Lesson.position)):
+            out.setdefault(l.chapter_id, []).append((l, v))
+        return out
+    return memo(db, "published_lessons", load)
+
+
 def _published_lessons(db: Session, chapter_id: uuid.UUID, language: str = "en") -> list[tuple[Lesson, LessonVersion]]:
-    rows = db.execute(select(Lesson, LessonVersion).join(LessonVersion, LessonVersion.lesson_id == Lesson.id)
-                      .where(Lesson.chapter_id == chapter_id, LessonVersion.status == "published", LessonVersion.language == "en")
-                      .order_by(Lesson.position)).all()
-    return [(l, v) for l, v in rows]
+    return list(_all_published_lessons(db).get(chapter_id, []))
+
+
+def chapter_concept_ids(db: Session, chapter_id: uuid.UUID) -> list[str]:
+    """Topic ids of a chapter. All chapters are loaded in one query the first time, then served from memory for the request."""
+    def load():
+        out: dict[uuid.UUID, list[str]] = {}
+        for cid, concept in db.execute(select(ChapterConcept.chapter_id, ChapterConcept.concept_id)):
+            out.setdefault(cid, []).append(concept)
+        return out
+    return list(memo(db, "chapter_concepts", load).get(chapter_id, []))
 
 
 def _progress_map(db: Session, student_id: uuid.UUID) -> dict[uuid.UUID, str]:
@@ -33,7 +52,7 @@ def chapter_card(db: Session, ch: Chapter, student_id: uuid.UUID | None, prog: d
     lessons = _published_lessons(db, ch.id)
     published = ch.status == "published"
     done = sum(1 for l, _ in lessons if prog.get(l.id) == "completed")
-    concepts = db.scalar(select(func.count(ChapterConcept.concept_id)).where(ChapterConcept.chapter_id == ch.id)) or 0
+    concepts = len(chapter_concept_ids(db, ch.id))
     return {"id": str(ch.id), "slug": ch.slug, "grade": ch.grade, "subject": ch.subject_id, "number": ch.number, "title": ch.title,
             "status": "published" if published else "coming_soon", "lessonCount": len(lessons) if published else 0,
             "conceptCount": concepts if published else 0,
@@ -93,7 +112,7 @@ def chapter_detail(db: Session, profile: Profile, slug: str) -> dict:
             if lo["state"] == "todo":
                 lo["state"] = "current"
                 break
-    cids = [c for (c,) in db.execute(select(ChapterConcept.concept_id).where(ChapterConcept.chapter_id == ch.id))]
+    cids = chapter_concept_ids(db, ch.id)
     stt = st_svc.states(db, profile.id, cids)
     concepts = [{"id": c.id, "title": c.title, "band": st_svc.band(stt.get(c.id)), "evidence": stt.get(c.id, {}).get("n", 0)}
                 for c in db.scalars(select(Concept).where(Concept.id.in_(cids)).order_by(Concept.title))]

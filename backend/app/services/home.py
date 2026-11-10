@@ -4,6 +4,7 @@ from __future__ import annotations
 import uuid
 from datetime import datetime, timedelta, timezone
 
+from app.core.memo import per_request
 from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
@@ -25,6 +26,7 @@ def _chapters_for(db: Session, profile: Profile) -> list[Chapter]:
                            .order_by(Chapter.subject_id, Chapter.sort_order, Chapter.number.nulls_last(), Chapter.title)))
 
 
+@per_request
 def due_revision(db: Session, student_id: uuid.UUID) -> list[dict]:
     rows = db.execute(select(RevisionSchedule, Concept).join(Concept, Concept.id == RevisionSchedule.concept_id)
                       .where(RevisionSchedule.student_id == student_id, RevisionSchedule.due_at <= _now()).order_by(RevisionSchedule.due_at)).all()
@@ -86,7 +88,7 @@ def next_steps(db: Session, profile: Profile) -> list[dict]:
             cands.append(policy.step("next_lesson", "lesson", v.title, f"Next in {ch.title}.", f"/lesson/{l.id}", v.minutes))
             break
 
-    ids = [c for ch in chapters for (c,) in db.execute(select(ChapterConcept.concept_id).where(ChapterConcept.chapter_id == ch.id))]
+    ids = [c for ch in chapters for c in library.chapter_concept_ids(db, ch.id)]
     if ids and all(stt.get(c, {}).get("status") == "secure" for c in ids):
         cands.append(policy.step("challenge", "challenge", "Try harder questions", "You are secure on everything here, so harder questions will keep you growing.", "/practice?harder=1", 10, len(ids)))
     for e in practice.unlocks(db, profile)["enrichment"][:1]:
@@ -104,7 +106,7 @@ def today(db: Session, profile: Profile) -> dict:
     if top:
         db.add(Recommendation(student_id=sid, kind=top["kind"], concept_id=top.get("conceptId"), payload={"title": top["title"], "href": top["href"]},
                               reason={"text": top["reason"], "evidence": top["evidenceCount"], "rule": top["rule"]}, model_version=policy.MODEL_VERSION))
-        db.commit()
+        # committed once at the end of the request, so the per-request memo stays valid while the page is built
     xp = engage.total_xp(db, sid)
     row = engage.today_row(db, sid)
     q = engage.quests(db, sid)
@@ -115,13 +117,15 @@ def today(db: Session, profile: Profile) -> dict:
         if v:
             les = db.get(Lesson, lid)
             recent_out.append({"lessonId": str(lid), "title": v.title, "chapter": db.get(Chapter, les.chapter_id).title, "status": status})
-    return {"nextStep": {k: v for k, v in top.items() if k != "rule"} if top else None,
+    result = {"nextStep": {k: v for k, v in top.items() if k != "rule"} if top else None,
             "alternatives": [{k: v for k, v in s.items() if k != "rule"} for s in steps[1:4]],
             "streak": engage.streak_info(db, sid), "xp": streaks.level(xp), "todayXp": row.xp if row else 0,
             "goals": q, "assigned": [a for a in assign.for_student(db, sid) if not a["complete"]],
             "revision": due_revision(db, sid)[:5], "recent": recent_out,
             "badges": [b for b in engage.badge_catalog(db, sid) if b["earned"]][:3],
             "milestones": milestones(db, sid)}
+    db.commit()
+    return result
 
 
 def milestones(db: Session, sid: uuid.UUID) -> list[dict]:
@@ -150,7 +154,7 @@ def overview(db: Session, profile: Profile) -> dict:
     chapters = []
     for ch in _chapters_for(db, profile):
         lessons = library._published_lessons(db, ch.id)
-        cids = [c for (c,) in db.execute(select(ChapterConcept.concept_id).where(ChapterConcept.chapter_id == ch.id))]
+        cids = library.chapter_concept_ids(db, ch.id)
         counts = {}
         for c in cids:
             b = st_svc.band(stt.get(c))

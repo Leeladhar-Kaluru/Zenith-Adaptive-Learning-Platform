@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import uuid
 
+from app.core.memo import memo
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
@@ -15,11 +16,13 @@ def edges(db: Session) -> list[tuple[str, str]]:
 
 
 def states(db: Session, student_id: uuid.UUID, concept_ids: list[str] | None = None) -> dict[str, dict]:
-    q = select(ConceptState).where(ConceptState.student_id == student_id)
-    if concept_ids is not None:
-        q = q.where(ConceptState.concept_id.in_(concept_ids))
-    return {s.concept_id: {"p": s.p_known, "n": s.n_obs, "c": s.n_correct, "status": s.status, "streak": s.streak, "last": s.last_obs_at}
-            for s in db.scalars(q)}
+    """The student's topic states. Loaded once per request (it is small), then filtered; callers get their own copy."""
+    def load():
+        return {s.concept_id: {"p": s.p_known, "n": s.n_obs, "c": s.n_correct, "status": s.status, "streak": s.streak, "last": s.last_obs_at}
+                for s in db.scalars(select(ConceptState).where(ConceptState.student_id == student_id))}
+    full = memo(db, ("states", student_id), load)
+    wanted = None if concept_ids is None else set(concept_ids)
+    return {c: dict(v) for c, v in full.items() if wanted is None or c in wanted}
 
 
 def band(st: dict | None) -> str:

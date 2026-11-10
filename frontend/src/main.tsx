@@ -17,10 +17,14 @@ import { IconDefs } from './icons/Icon';
 import { startSync } from './offline/sync';
 import { startTracker } from './track/tracker';
 import { startVitals } from './lib/vitals';
+import { prefetch } from './api/useApi';
+import { TOKEN_KEY } from './api/client';
 
 startSync();
 startTracker();
 startVitals();
+// A returning student lands on /home: ask for their day at the same time as their profile instead of after it.
+if (localStorage.getItem(TOKEN_KEY) && ['/', '/home'].includes(location.pathname)) prefetch('/today');
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

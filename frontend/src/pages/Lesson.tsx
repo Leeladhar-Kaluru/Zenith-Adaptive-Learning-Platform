@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { track } from '../track/tracker';
+import { prefetch } from '../api/useApi';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { api } from '../api/client';
 import { clearApiCache, useApi } from '../api/useApi';
@@ -40,6 +41,10 @@ export default function LessonPage() {
     els.forEach((e) => io.observe(e));
     return () => { io.disconnect(); [...entered.keys()].forEach(leave); };
   }, [data, id]);
+
+  useEffect(() => {
+    if (data?.nextId && data.blocks.length && seen / data.blocks.length >= 0.7) prefetch(`/library/lessons/${data.nextId}`);
+  }, [data, seen]);
 
   const heads = useMemo(() => (data?.blocks ?? []).filter((b) => 'heading' in b && b.heading || b.kind === 'check' || b.kind === 'summary'), [data]);
   const remember = useMemo(() => data?.blocks.find((b) => b.kind === 'callout' && b.tone === 'remember') ?? null, [data]);

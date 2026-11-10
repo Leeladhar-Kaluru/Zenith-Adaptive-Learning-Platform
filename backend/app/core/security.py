@@ -109,10 +109,69 @@ async def _fetch_and_cache(token: str, key: str) -> Optional[Dict[str, Any]]:
         _inflight_checks.pop(key, None)
 
 
+# ---- local verification --------------------------------------------------------------------------
+# Supabase signs access tokens with an asymmetric key (ES256) and publishes the public keys. Checking the signature here
+# costs microseconds instead of a network round trip to Supabase on every cold instance. Anything we cannot verify locally
+# (legacy tokens, keys unreachable) still goes to Supabase, which stays the authority.
+_JWKS_TTL = 3600.0
+_JWKS_RETRY_AFTER = 60.0
+_jwks_cache: Dict[str, Any] = {"at": 0.0, "keys": {}, "tried": 0.0}
+
+
+class _LocalUnavailable(Exception):
+    """This token cannot be judged locally; ask Supabase."""
+
+
+async def _fetch_jwks() -> Dict[str, Any]:
+    resp = await _auth_client().get(f"{settings.SUPABASE_URL.rstrip('/')}/auth/v1/.well-known/jwks.json")
+    resp.raise_for_status()
+    return resp.json()
+
+
+async def _signing_key(kid: str):
+    import jwt
+    now = time.time()
+    keys = _jwks_cache["keys"]
+    stale = now - _jwks_cache["at"] > _JWKS_TTL
+    if (kid not in keys or stale) and now - _jwks_cache["tried"] > _JWKS_RETRY_AFTER:
+        _jwks_cache["tried"] = now
+        try:
+            fetched = await _fetch_jwks()
+            keys = {k["kid"]: jwt.algorithms.ECAlgorithm.from_jwk(json.dumps(k)) for k in fetched.get("keys", []) if k.get("kty") == "EC" and k.get("kid")}
+            _jwks_cache.update(at=now, keys=keys)
+        except Exception as exc:  # noqa: BLE001 - keys unreachable: fall back to the network check
+            logger.warning("could not refresh Supabase signing keys: %s", exc)
+    if kid not in keys:
+        raise _LocalUnavailable()
+    return keys[kid]
+
+
+async def _verify_local(token: str) -> Optional[Dict[str, Any]]:
+    """Return {"id": ...} for a valid token, None for a definitely invalid one, raise _LocalUnavailable when unsure."""
+    try:
+        import jwt
+        header = jwt.get_unverified_header(token)
+    except Exception:  # noqa: BLE001
+        raise _LocalUnavailable()
+    if header.get("alg") != "ES256" or not header.get("kid"):
+        raise _LocalUnavailable()
+    key = await _signing_key(header["kid"])
+    try:
+        claims = jwt.decode(token, key, algorithms=["ES256"], audience="authenticated",
+                            issuer=f"{settings.SUPABASE_URL.rstrip('/')}/auth/v1", options={"require": ["exp", "sub"]})
+    except jwt.PyJWTError:
+        return None
+    return {"id": claims["sub"]}
+
+
 async def verify_supabase_token(token: str) -> Optional[Dict[str, Any]]:
-    """Verify a Supabase Bearer token, with a short cache and single-flight."""
+    """Verify a Supabase Bearer token: locally when possible, else through Supabase, with a short cache and single-flight."""
     if not settings.SUPABASE_URL or not token:
         return None
+    try:
+        return await _verify_local(token)
+    except _LocalUnavailable:
+        pass
 
     expires_at = _token_expiry(token)
     now = time.time()

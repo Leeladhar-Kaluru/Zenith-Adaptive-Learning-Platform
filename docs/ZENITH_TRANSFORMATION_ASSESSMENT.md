@@ -380,3 +380,106 @@ Critical path: P0 → P1 → P2 → P3 → P4 → P5; P6/P7 after P3; **P8 is th
 **Explicitly out of v1:** voice, video, document upload, parent app, leaderboards, non-CBSE boards, fitted model parameters (collected, not yet fitted).
 
 Honest scale note: 12 genuinely reviewed chapters is ~50–70 lessons and ~400 items. With AI-assisted drafting and one reviewer at ~10 h/week, expect 6–10 weeks of content work. Engineering P0–P7 is roughly 4–6 weeks for one engineer-agent with you reviewing. The engineering will be ready before the content is.
+
+---
+
+## 16. Decisions recorded (2026-11-10) and plan changes
+
+| # | Decision | Effect on the plan |
+|---|---|---|
+| D1 | Visible name **ZENITH** | `AGENTS.md` rewritten (rule 1). All user-visible "SETU" removed in P1. Repo and Supabase names stay internal. |
+| D2 | **CBSE only** for v1 (current NCERT editions) | Schema stays board-agnostic; only CBSE curriculum versions are seeded. |
+| D3 | Explanations in **English + Hindi + Telugu** | Lessons are authored in English. The tutor can explain in Hindi or Telugu, labelled "AI-translated, not reviewed". Reviewed translations become `lesson_versions` with `language=hi/te` later. UI strings get i18n keys from day one. |
+| D4 | **School-led first, independent sign-up allowed** | Teacher classrooms with join codes. Independent students go through a guardian-consent step before any evidence is stored. |
+| D5 | **Baseline** | Done: branch `baseline/pre-zenith-transform`, tag `pre-zenith-transform` (commit `4e87a73`, not pushed). Work continues on `zenith/transform`. |
+| D6 | Existing 8 accounts are **test data → archive** | During the approved DB reset: back up, then clear application rows. Deleting the 8 `auth.users` is a separate step that needs approval. |
+| D7 | **Build our own review engine; teachers approve** | New phase P2b (below). Nothing auto-publishes. |
+| D8 | **Delete all SETU files** | P1 widens: remove the whole document product, SETU branding assets (`setu-logo.svg`, `AskSetu*`), and old SETU reports and audits in `context/`, `TEST_INFRA.md`, `TEST_READY.md`, `agents/`. Git history keeps them. |
+| D9 | **Entirely free hosting, no credit card** | Revised in 16.1. |
+| D10 | **Very interactive and competitive, all features** | Revised in 16.2, with child-safety guardrails. |
+| D11 | **Research popular edtech sites, take the best of each, blazingly fast frontend** | New phase D (16.3) before UI implementation. |
+
+### 16.1 Hosting revised: everything on free tiers, no card
+
+- **Vercel Hobby** for both the frontend (static PWA) and the API (FastAPI as a Python serverless function under `/api`). One origin means no CORS; the Vercel connector is already linked. Hobby needs no card. Hobby is limited to **non-commercial** use, which fits a free product.
+  - **Function constraints:**
+    - Per-request time limit: confirm the current Hobby maximum. Tutor calls must stream or finish within it.
+    - Bundle size limit (~250 MB unzipped): fine once PyMuPDF and friends are gone.
+    - No background loops or long-lived workers.
+    - Cron jobs are limited on Hobby: at most daily.
+  - **Database connections:** Supabase transaction pooler (port 6543) with `NullPool` and prepared statements disabled.
+- **Supabase free:** no card, but the project pauses after 7 days without activity.
+  - Keep-alive: a daily Vercel cron (or GitHub Actions schedule) calls `/api/v1/health/ready`, which runs a trivial query.
+  - Backups: none on free. Proposal: a weekly GitHub Actions `pg_dump`, encrypted before upload and kept for 7 days. This needs your approval, because the backup contains student data.
+- **Groq free:** no card. Per-model RPM/RPD caps.
+  - The tutor has a per-student daily quota.
+  - Answers are cached per (lesson block, language, prompt type), so common explanations are generated once and reused.
+  - If Groq is unavailable or rate-limited, the tutor falls back to the reviewed lesson content.
+- **Media:** original SVG diagrams ship with the frontend (CDN cached, offline friendly). The 1 GB Supabase Storage is used only if raster images grow large. **No Render, no Cloudflare, no B2.**
+- **Migrations:** run from your machine or a GitHub Action with the session pooler URL, never on function boot.
+- **Honest limits:**
+  - No SLA.
+  - Groq's free caps may throttle a large class at peak.
+  - Without paid backups, data durability relies on the weekly encrypted dump.
+
+### 16.2 Gamification revised: competitive, with guardrails
+
+**Build:**
+- **XP** earned for learning actions, weighted toward mastery gained rather than raw clicks, plus **levels**.
+- **Daily streak** with one free "rest day" per week, so no streak shaming.
+- **Daily and weekly quests** ("Fix one weak concept", "3 correct in a row on a challenge item").
+- **Badges** for mastery, comebacks, helping classmates and consistency.
+- **Classroom leaderboard / weekly league:**
+  - Ranks by **weekly XP and improvement**, so it doesn't just reward students who were already strong.
+  - Shows nickname and avatar only.
+  - The teacher can switch it on or off per class; students can hide themselves.
+- **Class challenges:** the whole class works toward a goal, such as "80% of us secure on Integers by Friday".
+- **Asynchronous concept duels:** two classmates get the same adaptive item set and results are compared later.
+- **Timed "speed rounds"** for revision, as an optional mode.
+- **Chapter mastery trophies** and visible progress on the concept map.
+- **Teacher-set rewards** ("Top improvers this week") and **celebration moments** with lightweight animation, respecting reduced motion.
+
+**Guardrails (children 11–16):**
+- No public or global leaderboard with names; leaderboards are only within a classroom.
+- No purchasable items, no loot boxes, no real money.
+- Competitive XP never affects mastery or teacher evidence.
+- Tests and reassessments are never timed competitively.
+- Every competitive feature is opt-out.
+
+### 16.3 Phase D: design research and system (before UI build)
+
+- **Survey** the public pages of: Canvas Classes (already fetched), Khan Academy, Brilliant, Duolingo, Quizlet, Seneca Learning, Physics Wallah, BYJU'S, Vedantu and Toppr.
+- **Capture** their information architecture, lesson anatomy, feedback moments, gamification, mobile navigation and performance (Lighthouse on mobile).
+- **Output:**
+  - A design brief: what to take from each and what to avoid.
+  - ZENITH tokens: colour, type scale, spacing, radii, motion and subject palettes.
+  - Component inventory.
+  - Key screen mockups (Today, Learn browse, Lesson reader, Practice, Concept map, League, Teacher class view, Review queue), presented for your sign-off.
+- **Performance budget:**
+  - Initial JS ≤ 170 kB gzip.
+  - LCP < 2.5 s on a mid-range Android over 4G.
+  - Interaction latency < 100 ms.
+  - Fonts self-hosted and subset (Latin + Devanagari + Telugu, loaded on demand).
+  - Images as SVG/WebP.
+
+### 16.4 Phase P2b: review engine
+
+- **Automated gates:**
+  - JSON schema validation.
+  - SymPy verification of every maths answer and worked-example step.
+  - Distractor sanity checks (exactly one correct answer, no duplicate options).
+  - Readability scored against grade level.
+  - KaTeX parse.
+  - Alt text and licence present on every image.
+  - Prerequisite DAG acyclic.
+  - Curriculum mapping present.
+  - AI reviewer pass: a rubric covering factual accuracy, age-appropriateness, misconception coverage and clarity, which produces **flags only, never approval**.
+- **Teacher review UI:**
+  - The queue shows each lesson exactly as a student sees it, with gate results and AI flags inline.
+  - Teachers can comment per block.
+  - Actions: approve, request changes, or edit then approve.
+- **Publishing rule:** publish requires all gates passing plus an approval from a user with the `reviewer` role, enforced by a DB constraint.
+
+### 16.5 Revised phase order
+
+P0 done (baseline) → **P1** remove SETU/document stack → **D** design research and system (in parallel with P2) → **P2** content core + **P2b** review engine → **P3** evidence and model → **P4** adaptivity → **P5** teacher → **P5b** gamification and competition → **P6** tutor (multilingual) → **P7** offline → **P8** content production (parallel from P2) → **P9** hardening and Vercel deploy.

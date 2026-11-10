@@ -1,4 +1,4 @@
-"""Package and question redaction service for student payloads in SETU.
+"""Package and question redaction service for student payloads in ZENITH.
 
 Strips answer keys, solutions, explanations, and steps from quiz and diagnostic questions
 while strictly preserving educational worked examples, reading blocks, and visual specifications.

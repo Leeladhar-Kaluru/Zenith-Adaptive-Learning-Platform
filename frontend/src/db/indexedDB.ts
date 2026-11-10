@@ -76,7 +76,7 @@ export interface OfflineSyncEvent {
   synced: boolean;
 }
 
-export class SetuDatabase extends Dexie {
+export class ZenithDatabase extends Dexie {
   lessons!: Table<OfflineLesson, string>;
   offline_resources!: Table<OfflineLesson, string>;
   offlineVisuals!: Table<OfflineVisual, string>;
@@ -86,7 +86,7 @@ export class SetuDatabase extends Dexie {
   syncEvents!: Table<OfflineSyncEvent, string>;
 
   constructor() {
-    super('SetuDeskDB');
+    super('ZenithDB');
     this.version(1).stores({
       lessons: 'lessonId, pathId, grade, subjectId, downloadedAt, lastAccessedAt',
       offlineVisuals: 'visualId, lessonId, type',
@@ -125,7 +125,7 @@ export class SetuDatabase extends Dexie {
   }
 }
 
-export const db = new SetuDatabase();
+export const db = new ZenithDatabase();
 
 function requireOwnerId(ownerId: string): string {
   if (!ownerId) throw new Error('Sign in before using offline data.');

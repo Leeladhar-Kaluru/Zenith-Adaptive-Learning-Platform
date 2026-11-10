@@ -12,7 +12,6 @@ import uuid
 import pytest
 
 from app.models.classroom import Classroom
-from app.models.documents import Document, DocumentChunk
 from app.models.learning import (
     ConceptEvidence,
     ConceptMasterySnapshot,
@@ -63,35 +62,8 @@ def _book(
         "Robert Hooke first observed cells in cork more than three hundred years ago."
     ),
 ):
-    document = Document(
-        owner_id=owner_id,
-        original_filename=f"{subject_id}.pdf",
-        storage_key=f"tests/{uuid.uuid4().hex}.pdf",
-        mime_type="application/pdf",
-        size_bytes=1024,
-        grade=9,
-        subject_id=subject_id,
-        status="ready",
-        page_count=6,
-    )
-    db.add(document)
-    db.flush()
-    chunk = DocumentChunk(
-        document_id=document.id,
-        page_start=4,
-        page_end=4,
-        heading_path=["Chapter 1"],
-        chunk_index=0,
-        text=source_text,
-        text_hash=uuid.uuid4().hex,
-        language_tag="en-IN",
-    )
-    db.add(chunk)
-    db.flush()
-
     path = LearningPath(
         owner_id=owner_id,
-        document_id=document.id,
         grade=9,
         subject_id=subject_id,
         outline_json={"title": title},
@@ -116,7 +88,6 @@ def _book(
         package = valid_lesson_package(
             lesson_id=str(lesson.id), path_id=str(path.id), title=lesson_title
         )
-        package["sourceRefs"][0]["chunkId"] = str(chunk.id)
         package["sourceRefs"][0]["pageStart"] = 4
         package["sourceRefs"][0]["pageEnd"] = 4
         package["takeaways"] = [
@@ -150,8 +121,6 @@ def _book(
         questions.append(question)
     db.commit()
     return {
-        "document": document,
-        "chunk": chunk,
         "path": path,
         "lessons": lessons,
         "versions": versions,
@@ -275,7 +244,7 @@ def test_cross_book_plan_reorders_after_mastery_changes(db):
     assert adapted["books"][0]["mastery"]["demonstrated"] >= 1
 
 
-def test_root_gap_and_attempt_coaching_use_real_source_and_evidence(client, db):
+def test_root_gap_and_attempt_coaching_use_real_evidence(client, db):
     student_id = _profile(db, name="Chen")
     book = _book(db, student_id)
     _snapshot(db, student_id, "concept-cell-1", "developing", 0.3, evidence=2)
@@ -298,11 +267,8 @@ def test_root_gap_and_attempt_coaching_use_real_source_and_evidence(client, db):
     assert coaching and coaching["tone"] == "retry"
     assert coaching["rootGap"]["conceptId"] == "concept-cell-1"
     assert coaching["rootGap"]["lessonTitle"] == "Cell structure"
-    assert coaching["source"]["page"] == 4
-    assert coaching["source"]["excerpt"] in (
-        "The cell is the structural and functional unit of life.",
-        "Robert Hooke first observed cells in cork more than three hundred years ago.",
-    )
+    # Uploaded-document excerpts no longer exist, so no source card is invented.
+    assert not coaching.get("source")
     assert coaching["keyPoint"]["body"]
     assert coaching["evidence"]["isCorrect"] is False
     assert "B" in coaching["body"]
@@ -484,10 +450,7 @@ def test_attempt_coaching_key_point_is_never_random(client, db):
     coaching = wrong.json()["coaching"]
     package = book["versions"][0].lesson_package_json
     assert coaching["keyPoint"]["body"] in package["takeaways"]
-    assert coaching["source"]["excerpt"] in (
-        "The cell is the structural and functional unit of life.",
-        "Robert Hooke first observed cells in cork more than three hundred years ago.",
-    )
+    assert not coaching.get("source")
 
 
 def test_plan_continue_task_requires_real_in_progress_evidence(db):

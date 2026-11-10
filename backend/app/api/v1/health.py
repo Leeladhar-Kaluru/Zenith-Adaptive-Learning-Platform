@@ -1,33 +1,36 @@
-from fastapi import APIRouter
-from app.core.database import check_db_health
-from app.core.storage import storage_service
+from fastapi import APIRouter, Response
+
 from app.core.ai_provider import ai_provider
+from app.core.config import settings
+from app.core.database import check_db_health
 
 router = APIRouter()
 
+
 @router.get("/health")
-async def get_system_health():
-    """
-    Observable health check endpoint probing DB, Storage, and AI provider.
-    Never exposes keys or secrets.
+def liveness():
+    """Liveness probe: the process is up. Never touches external services."""
+    return {"status": "ok", "product": settings.APP_NAME}
+
+
+@router.get("/health/ready")
+async def readiness(response: Response):
+    """Readiness probe: database reachable; AI provider status reported.
+
+    The AI provider is optional for readiness: ZENITH degrades gracefully when
+    it is unavailable. Never exposes keys or secrets.
     """
     db_ok = check_db_health()
-    storage_ok = await storage_service.check_health()
     ai_status = await ai_provider.check_health()
-
-    embed_ok = (
-        ai_status.get("embed_ready", False)
-        or "decoupled" in str(ai_status.get("embed_note", "")).lower()
-        or ai_status.get("provider") == "groq"
-    )
-    all_healthy = db_ok and storage_ok and ai_status.get("chat_ready", False) and embed_ok
-
+    if not db_ok:
+        response.status_code = 503
     return {
-        "status": "healthy" if all_healthy else "degraded",
+        "status": "ready" if db_ok else "unavailable",
         "components": {
-            "database": {"connected": db_ok, "engine": "PostgreSQL 17 (pgvector 768d)"},
-            "storage": {"connected": storage_ok, "bucket": "setu-documents"},
-            "ai_provider": ai_status
-        }
+            "database": {"connected": db_ok},
+            "ai_provider": {
+                "provider": ai_status.get("provider"),
+                "chat_ready": ai_status.get("chat_ready", False),
+            },
+        },
     }
-

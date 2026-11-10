@@ -1,4 +1,4 @@
-"""Idempotent Curriculum Library Database Seeder for SETU.
+"""Idempotent Curriculum Library Database Seeder for ZENITH.
 
 Seeds CBSE Class 10 Mathematics curriculum under immutable system owner:
 SYSTEM_OWNER_ID = uuid.UUID("00000000-0000-0000-0000-000000000001")
@@ -339,7 +339,7 @@ class LibrarySeeder:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="SETU Curriculum Library Idempotent Seeder")
+    parser = argparse.ArgumentParser(description="ZENITH Curriculum Library Idempotent Seeder")
     parser.add_argument("--manifest", type=str, default=None, help="Path to manifest.json")
     parser.add_argument("--validate-only", action="store_true", help="Run schema and DAG validation only without database writes")
     parser.add_argument("--force", action="store_true", help="Bypass validation during seeding")
@@ -348,7 +348,7 @@ def main() -> int:
     seeder = LibrarySeeder(manifest_path=args.manifest)
 
     print("=" * 80)
-    print("SETU CURRICULUM LIBRARY SEEDER")
+    print("ZENITH CURRICULUM LIBRARY SEEDER")
     print(f"Manifest: {seeder.manifest_path}")
     print("=" * 80)
 

@@ -1,4 +1,4 @@
-"""Bayesian Knowledge Tracing (BKT) Engine for SETU.
+"""Bayesian Knowledge Tracing (BKT) Engine for ZENITH.
 
 100% deterministic mathematical model tracking learner concept mastery.
 Pure math calculations with zero LLM dependencies (Requirement 11).

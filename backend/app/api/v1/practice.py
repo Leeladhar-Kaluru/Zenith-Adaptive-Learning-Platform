@@ -1,4 +1,4 @@
-"""Adaptive Practice Arena API Router for SETU.
+"""Adaptive Practice Arena API Router for ZENITH.
 
 Exposes smart concept recommendations, question serving with safe student redaction,
 and deterministic attempt submission grading with BKT and rewards updates.

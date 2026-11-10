@@ -17,7 +17,6 @@ from typing import Any, Dict, List, Optional
 
 from sqlalchemy.orm import Session
 
-from app.models.documents import Document, DocumentChunk
 from app.models.learning import ConceptMasterySnapshot, LessonVersion, PathLesson, Question
 from app.services.learner_insights import build_learner_insights, concept_label
 
@@ -89,47 +88,8 @@ def _key_point(package: Dict[str, Any], seed: int, concept_id: Optional[str]) ->
 
 
 def _source_material(db: Session, package: Dict[str, Any], seed: int) -> List[Dict[str, Any]]:
-    refs = [ref for ref in (package.get("sourceRefs") or []) if isinstance(ref, dict)]
-    chunk_ids = []
-    for ref in refs:
-        raw = ref.get("chunkId")
-        if not raw:
-            continue
-        try:
-            chunk_ids.append(uuid.UUID(str(raw)))
-        except (ValueError, TypeError):
-            continue
-    if not chunk_ids:
-        return []
-
-    chunks = db.query(DocumentChunk).filter(DocumentChunk.id.in_(chunk_ids)).all()
-    doc_ids = {chunk.document_id for chunk in chunks}
-    documents = {
-        doc.id: doc
-        for doc in db.query(Document).filter(Document.id.in_(doc_ids)).all()
-    } if doc_ids else {}
-
-    material: List[Dict[str, Any]] = []
-    for chunk in chunks:
-        body = _clean_sentence(chunk.text)
-        if not body:
-            continue
-        document = documents.get(chunk.document_id)
-        sentences = _sentences(body)
-        if not sentences:
-            sentences = [body[:240]]
-        for sentence in sentences:
-            material.append(
-                {
-                    "text": sentence,
-                    "page": chunk.page_start,
-                    "sourceTitle": (
-                        document.original_filename if document else "Uploaded document"
-                    ),
-                    "chunkId": str(chunk.id),
-                }
-            )
-    return material
+    """Source excerpts came from uploaded documents, which are no longer supported."""
+    return []
 
 
 def _source_spotlight(material: List[Dict[str, Any]], seed: int) -> Optional[Dict[str, Any]]:
@@ -193,7 +153,7 @@ def _study_tip(insights: Dict[str, Any], *, is_correct: Optional[bool] = None) -
             "title": "Build a second data point",
             "body": (
                 "There are not enough timed sessions yet for a pace baseline. "
-                "Complete one more practice set so SETU can compare your next attempt."
+                "Complete one more practice set so ZENITH can compare your next attempt."
             ),
         }
     return None
@@ -208,7 +168,7 @@ def diagnose_root_gap(
 ) -> Optional[Dict[str, Any]]:
     """Find the earliest weak prerequisite concept behind a wrong answer.
 
-    SETU does not have a hand-authored prerequisite graph, so this uses the
+    The legacy path model does not have a hand-authored prerequisite graph, so this uses the
     real structure of the uploaded book: concepts taught in earlier units of
     the same path, ordered by lesson sequence and then by their recorded
     mastery. The result names the earliest concept whose evidence is weaker

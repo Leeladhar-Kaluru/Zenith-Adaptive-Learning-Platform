@@ -12,14 +12,13 @@ import {
   Network,
   Sparkles,
   Target,
-  Trophy,
-  UploadCloud
+  Trophy
 } from 'lucide-react';
 import { syncManager } from '../services/syncManager';
 import { useAuth } from '../context/AuthContext';
 import { AuthModal } from './AuthModal';
 import { api } from '../services/api';
-import { openAskSetu } from './AskSetu';
+import { openAskZenith } from './AskZenith';
 import styles from './Navigation.module.css';
 
 const initialsFor = (name: string) =>
@@ -72,7 +71,7 @@ export const Navigation: React.FC = () => {
         const path = paths[0];
         const ready = path?.lessons?.find((lesson) => lesson.status === 'ready');
         const target = ready?.id || path?.firstLessonId;
-        setLessonHref(target ? `/lesson/${target}?pathId=${path.id}` : '/');
+        setLessonHref(target ? `/learn/${target}?pathId=${path.id}` : '/');
       })
       .catch(() => {
         if (!cancelled) setLessonHref('/');
@@ -131,10 +130,6 @@ export const Navigation: React.FC = () => {
             </NavLink>
           )}
 
-          <NavLink to="/sources" className={linkClass}>
-            <UploadCloud size={16} aria-hidden="true" /> Textbooks
-          </NavLink>
-
           {user && (
             <>
               <NavLink to="/dashboard" className={linkClass}>
@@ -161,7 +156,7 @@ export const Navigation: React.FC = () => {
           <button
             type="button"
             className={styles.navButton}
-            onClick={openAskSetu}
+            onClick={openAskZenith}
             title="Ask the ZENITH AI tutor a question"
           >
             <Sparkles size={16} aria-hidden="true" /> Quick Ask

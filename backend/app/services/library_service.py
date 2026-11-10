@@ -1,4 +1,4 @@
-"""Curriculum Library Service for SETU.
+"""Curriculum Library Service for ZENITH.
 
 Provides access to curriculum chapters, concepts, resource packages,
 learning map DAGs, and progress tracking.

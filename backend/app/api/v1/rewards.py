@@ -1,4 +1,4 @@
-"""Gamification and Rewards API Router for SETU.
+"""Gamification and Rewards API Router for ZENITH.
 
 Exposes student XP, Zenith Coins, level progress, Asia/Kolkata calendar streaks,
 and milestone badges.

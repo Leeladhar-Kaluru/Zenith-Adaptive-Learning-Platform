@@ -1,4 +1,4 @@
-"""Gamification, Rewards, Streaks and Badges Service for SETU.
+"""Gamification, Rewards, Streaks and Badges Service for ZENITH.
 
 100% deterministic rules engine managing student XP, Zenith Coins, levels,
 Asia/Kolkata calendar streaks, and canonical milestone badges.

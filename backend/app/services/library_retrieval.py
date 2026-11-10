@@ -1,4 +1,4 @@
-"""Deterministic Keyword/BM25 Curriculum Retrieval Service for SETU.
+"""Deterministic Keyword/BM25 Curriculum Retrieval Service for ZENITH.
 
 Retrieves relevant curriculum content snippets (reading blocks, definitions,
 and worked examples) from CBSE Class 10 Mathematics packages to ground the Socratic Tutor.

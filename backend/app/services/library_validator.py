@@ -1,4 +1,4 @@
-"""Curriculum Library Content Validator for SETU.
+"""Curriculum Library Content Validator for ZENITH.
 
 Validates:
 1. Manifest JSON structure and curriculum metadata.
@@ -62,25 +62,13 @@ class LibraryValidator:
         self.visual_schema = self._load_json_schema("visual-spec.schema.json")
 
     def _find_schemas_dir(self) -> str:
-        candidates = [
-            os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "..", "SETU_V2_Research_Pack", "schemas")),
-            os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "SETU_V2_Research_Pack", "schemas")),
-            os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "content", "library", "schemas")),
-        ]
-        for c in candidates:
-            if os.path.isdir(c):
-                return c
-        return candidates[0]
+        return os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "content", "library", "schemas"))
 
-    def _load_json_schema(self, filename: str) -> Optional[Dict[str, Any]]:
+    def _load_json_schema(self, filename: str) -> Dict[str, Any]:
+        """Loads a required JSON schema. A missing schema is an error, never a silent skip."""
         path = os.path.join(self.schemas_dir, filename)
-        if os.path.exists(path):
-            try:
-                with open(path, "r", encoding="utf-8") as f:
-                    return json.load(f)
-            except Exception:
-                return None
-        return None
+        with open(path, "r", encoding="utf-8") as f:
+            return json.load(f)
 
     def validate_dag_kahns_algorithm(
         self, concept_ids: List[str], edges: List[Dict[str, Any]]
@@ -504,7 +492,7 @@ class LibraryValidator:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="SETU Curriculum Library Content Validator")
+    parser = argparse.ArgumentParser(description="ZENITH Curriculum Library Content Validator")
     parser.add_argument("--manifest", type=str, default=None, help="Path to manifest.json or content directory")
     args = parser.parse_args()
 
@@ -517,7 +505,7 @@ def main() -> int:
 
     validator = LibraryValidator()
     print("=" * 80)
-    print("SETU CURRICULUM LIBRARY CONTENT VALIDATION PIPELINE")
+    print("ZENITH CURRICULUM LIBRARY CONTENT VALIDATION PIPELINE")
     print(f"Target Directory: {content_dir}")
     print("=" * 80)
 

@@ -1,4 +1,4 @@
-"""Diagnostic Assessment API Router for SETU.
+"""Diagnostic Assessment API Router for ZENITH.
 
 Exposes 8-probe diagnostic sessions, submission grading,
 BKT mastery updates, prerequisite gap synthesis, and completion rewards.

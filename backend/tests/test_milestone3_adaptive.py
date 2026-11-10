@@ -853,10 +853,11 @@ class TestSocraticTutor:
             mock_gen.assert_awaited_once()
 
     def test_socratic_prompt_template_rule_1_compliance(self):
-        """Socratic prompt strictly uses product name SETU (never SETU V2)."""
-        assert "SETU Academic Tutor" in SOCRATIC_SYSTEM_PROMPT
-        assert "SETU V2" not in SOCRATIC_SYSTEM_PROMPT
-        assert "SETU 2.0" not in SOCRATIC_SYSTEM_PROMPT
+        """Socratic prompt uses the visible product name ZENITH, never a SETU name or version suffix."""
+        assert "ZENITH Academic Tutor" in SOCRATIC_SYSTEM_PROMPT
+        assert "SETU" not in SOCRATIC_SYSTEM_PROMPT
+        assert "ZENITH V2" not in SOCRATIC_SYSTEM_PROMPT
+        assert "ZENITH 2.0" not in SOCRATIC_SYSTEM_PROMPT
 
 
 # ==============================================================================

@@ -1,4 +1,4 @@
-"""Curriculum Library API Router for SETU.
+"""Curriculum Library API Router for ZENITH.
 
 Exposes catalogue, chapter details, sanitized resource packages,
 interactive concept DAG maps, student enrollment, and progress tracking.

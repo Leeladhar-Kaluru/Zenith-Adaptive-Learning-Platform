@@ -18,7 +18,7 @@ from app.models.rewards import StudentReward, RewardEvent, Badge, StudentBadge
 from app.models.diagnostics import DiagnosticSession, DiagnosticItem
 from app.models.tutor import TutorThread, TutorMessage
 from app.core.config import settings
-from app.core.ai_provider import AIProviderService, EmbeddingUnavailableError, LLMUnavailableError
+from app.core.ai_provider import AIProviderService, LLMUnavailableError
 
 
 def _step_coro(coro):
@@ -172,49 +172,36 @@ def test_tutor_thread_and_messages():
     assert msg.status == "delivered"
 
 
-def test_ai_provider_groq_auth_and_decoupling(monkeypatch):
-    """Verify AIProviderService injects Bearer auth for Groq and decouples embeddings."""
+def test_ai_provider_groq_auth(monkeypatch):
+    """AIProviderService injects Bearer auth for Groq and keeps the configured model."""
     monkeypatch.setattr(settings, "LLM_PROVIDER", "groq")
     monkeypatch.setattr(settings, "LLM_BASE_URL", "https://api.groq.com/openai/v1")
+    monkeypatch.setattr(settings, "LLM_MODEL", "openai/gpt-oss-120b")
+    monkeypatch.setattr(settings, "LLM_FALLBACK_MODEL", None)
     monkeypatch.setattr(settings, "GROQ_API_KEY", "test_groq_key_secret_123")
-    monkeypatch.setattr(settings, "EMBEDDING_BASE_URL", None)
 
     provider = AIProviderService()
     assert provider.provider == "groq"
     assert provider.chat_base_url == "https://api.groq.com/openai/v1"
     assert provider.chat_model == "openai/gpt-oss-120b"
-    assert provider.fallback_model == "qwen/qwen3.8-27b"
-    assert provider.embed_base_url is None
+    assert provider.fallback_model is None
+    assert not hasattr(provider, "get_embeddings_batch")
 
     headers = provider._auth_headers()
     assert headers["Authorization"] == "Bearer test_groq_key_secret_123"
     assert headers["Content-Type"] == "application/json"
 
 
-def test_ai_provider_groq_rejects_embedding_without_embed_url(monkeypatch):
-    """Verify Groq provider refuses to send embedding requests to Groq endpoint."""
-    monkeypatch.setattr(settings, "LLM_PROVIDER", "groq")
-    monkeypatch.setattr(settings, "LLM_BASE_URL", "https://api.groq.com/openai/v1")
-    monkeypatch.setattr(settings, "EMBEDDING_BASE_URL", None)
-
-    provider = AIProviderService()
-    coro = provider.get_embeddings_batch(["Sample text chunk"])
-    with pytest.raises(EmbeddingUnavailableError, match="not supported on Groq"):
-        _step_coro(coro)
-
-
 def test_ai_provider_lmstudio_preservation(monkeypatch):
-    """Verify local LM Studio configuration remains intact."""
+    """Local LM Studio configuration remains intact."""
     monkeypatch.setattr(settings, "LLM_PROVIDER", "lmstudio")
     monkeypatch.setattr(settings, "LLM_BASE_URL", "http://127.0.0.1:1234/v1")
     monkeypatch.setattr(settings, "LLM_MODEL", "google/gemma-4-e4b")
-    monkeypatch.setattr(settings, "EMBEDDING_BASE_URL", None)
 
     provider = AIProviderService()
     assert provider.provider == "lmstudio"
     assert provider.chat_base_url == "http://127.0.0.1:1234/v1"
     assert provider.chat_model == "google/gemma-4-e4b"
-    assert provider.embed_base_url == "http://127.0.0.1:1234/v1"
 
 
 def test_ai_provider_fallback_on_429(monkeypatch):

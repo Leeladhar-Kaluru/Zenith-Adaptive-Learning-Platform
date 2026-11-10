@@ -1,4 +1,4 @@
-export const ACTIVE_USER_KEY = 'setu_active_user_id';
+export const ACTIVE_USER_KEY = 'zenith_active_user_id';
 
 export function getActiveUserId(): string | null {
   return localStorage.getItem(ACTIVE_USER_KEY);

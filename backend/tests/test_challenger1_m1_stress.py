@@ -34,7 +34,6 @@ if backend_dir not in sys.path:
 
 from app.models.base import Base
 from app.models.learning import LearningPath
-from app.models.documents import Document, DocumentChunk
 from app.models.doubts import Doubt
 from app.services.sync_service import sync_service
 from app.core.config import settings
@@ -145,128 +144,6 @@ def test_sync_service_settings_in_globals():
     """Verify settings is imported in sync_service module globals."""
     from app.services import sync_service as sync_mod
     assert "settings" in sync_mod.__dict__, "'settings' must be present in sync_service module globals"
-
-
-def test_sync_doubt_all_4_branches_never_raise_name_error():
-    """
-    Stress-test sync_doubt across all 4 tutor branches with varied student queries:
-    Branch 1: No document uploaded (General academic tutoring)
-    Branch 2: Document uploaded + summary request (Overview & chapter citations)
-    Branch 3: Document uploaded + insufficient evidence (General knowledge fallback)
-    Branch 4: Document uploaded + grounded evidence found (Passage citations)
-    Verifies that 'settings' resolves in prompt templates without NameError.
-    """
-    engine = create_engine("sqlite:///:memory:")
-    Base.metadata.create_all(engine)
-    TestingSession = sessionmaker(bind=engine)
-    db = TestingSession()
-
-    student_id = uuid.uuid4()
-    captured_prompts = []
-
-    async def mock_generate_chat(messages, **kwargs):
-        prompt = messages[0]["content"]
-        captured_prompts.append(prompt)
-        app_name = getattr(settings, "APP_NAME", "SETU")
-        assert f"You are the {app_name} Academic Tutor" in prompt, "Prompt must include rendered APP_NAME"
-        return "Academic response explaining the concept clearly and concisely."
-
-    # --- Branch 1: No document uploaded ---
-    with patch("app.services.sync_service.ai_provider.generate_chat", side_effect=mock_generate_chat):
-        res1 = _step_coro(sync_service.sync_doubt(
-            db=db,
-            owner_id=student_id,
-            client_doubt_id="branch-1-doubt",
-            question_text="What is a rational number?",
-        ))
-    assert res1["status"] == "answered"
-    assert res1["answerJson"]["limitations"] == "general_knowledge"
-    assert res1["answerJson"]["citations"] == []
-
-    # Setup document and path for branches 2, 3, 4
-    doc = Document(
-        id=uuid.uuid4(),
-        owner_id=student_id,
-        original_filename="class10_math.pdf",
-        storage_key="docs/test.pdf",
-        mime_type="application/pdf",
-        size_bytes=10240,
-        status="ready",
-    )
-    db.add(doc)
-    db.commit()
-
-    path = LearningPath(
-        owner_id=student_id,
-        document_id=doc.id,
-        grade=10,
-        subject_id="math",
-        outline_json={"chapters": [{"title": "Real Numbers", "pageStart": 1, "pageEnd": 12}]},
-        is_library=False,
-    )
-    db.add(path)
-    db.commit()
-
-    # --- Branch 2: Document uploaded + summary request ---
-    summary_queries = [
-        "Can you summarize this book?",
-        "Give me an overview of the uploaded document",
-        "What is this book about and what is the outline?",
-    ]
-    for idx, sq in enumerate(summary_queries):
-        with patch("app.services.sync_service.ai_provider.generate_chat", side_effect=mock_generate_chat):
-            res2 = _step_coro(sync_service.sync_doubt(
-                db=db,
-                owner_id=student_id,
-                client_doubt_id=f"branch-2-summary-{idx}",
-                question_text=sq,
-            ))
-        assert res2["status"] == "answered"
-        assert len(res2["answerJson"]["citations"]) >= 1
-
-    # --- Branch 3: Document uploaded + insufficient evidence ---
-    async def mock_hybrid_empty(**kwargs):
-        return {"results": [], "insufficient_evidence": True}
-
-    with patch("app.services.sync_service.ai_provider.generate_chat", side_effect=mock_generate_chat), \
-         patch("app.services.sync_service.retrieval_service.hybrid_search", side_effect=mock_hybrid_empty):
-        res3 = _step_coro(sync_service.sync_doubt(
-            db=db,
-            owner_id=student_id,
-            client_doubt_id="branch-3-insufficient",
-            question_text="What is the speed of light in vacuum?",
-        ))
-    assert res3["status"] == "answered"
-    assert res3["answerJson"]["limitations"] == "general_knowledge"
-
-    # --- Branch 4: Document uploaded + grounded evidence ---
-    async def mock_hybrid_found(**kwargs):
-        return {
-            "results": [{
-                "citationId": "cite_euclid_01",
-                "documentVersionId": str(doc.id),
-                "pageStart": 4,
-                "pageEnd": 5,
-                "headingPath": ["Real Numbers", "Euclid Lemma"],
-                "text": "For given positive integers a and b, there exist unique integers q and r such that a = bq + r, 0 <= r < b.",
-            }],
-            "insufficient_evidence": False,
-        }
-
-    with patch("app.services.sync_service.ai_provider.generate_chat", side_effect=mock_generate_chat), \
-         patch("app.services.sync_service.retrieval_service.hybrid_search", side_effect=mock_hybrid_found):
-        res4 = _step_coro(sync_service.sync_doubt(
-            db=db,
-            owner_id=student_id,
-            client_doubt_id="branch-4-grounded",
-            question_text="State Euclid's division lemma for integers a and b",
-        ))
-    assert res4["status"] == "answered"
-    assert len(res4["answerJson"]["citations"]) == 1
-    assert res4["answerJson"]["citations"][0]["citationId"] == "cite_euclid_01"
-
-    # All branches were executed without any NameError
-    assert len(captured_prompts) == 6
 
 
 def test_sync_doubt_preserves_session_lifecycle():

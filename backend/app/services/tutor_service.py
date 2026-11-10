@@ -1,11 +1,11 @@
-"""Grounded Socratic AI Tutor Service for SETU.
+"""Grounded Socratic AI Tutor Service for ZENITH.
 
 Provides patient, encouraging Socratic guidance grounded in curriculum content.
 Follows Socratic rules (never reveals final answers directly; guides step-by-step).
 Extracts numbered citations [1], [2] referencing curriculum context.
 Implements graceful degradation with honest 503 fallback when LLM is unavailable.
 Enforces a 50 messages/day quota in Asia/Kolkata timezone.
-Rule 1 Compliant: Product name is strictly SETU.
+Visible product name is ZENITH (AGENTS.md rule 1).
 """
 from __future__ import annotations
 

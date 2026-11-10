@@ -59,26 +59,6 @@ def submit_attempt(
         raise HTTPException(status_code=422, detail=str(exc))
 
     personal_coach: Optional[str] = None
-    if outcome.concept_ids and not outcome.already_recorded:
-        from app.services.coach_notes import enqueue_coach_note
-        from app.services.pipeline_runner import notify_pipeline
-
-        try:
-            enqueue_coach_note(
-                db,
-                owner_id=owner_id,
-                concept_id=str(outcome.concept_ids[0]),
-                lesson_version_id=req.lesson_version_id,
-                question_key=req.question_key,
-                response=req.response,
-                is_correct=outcome.is_correct,
-                hints_used=len(req.hints_used or []) or req.hint_level,
-                elapsed_seconds=req.elapsed_seconds,
-            )
-            personal_coach = "queued"
-            notify_pipeline()
-        except Exception:
-            personal_coach = None
 
     return {
         "attemptId": str(outcome.attempt_id),

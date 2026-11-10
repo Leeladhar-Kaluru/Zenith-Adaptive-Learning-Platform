@@ -1,18 +1,19 @@
+"""Read-only access to a student's existing learning paths.
+
+Path creation from uploaded documents was removed with the document stack.
+The curriculum Learn library replaces it; these endpoints keep previously
+created paths readable until the legacy data is archived.
+"""
 import copy
 import uuid
-from fastapi import APIRouter, Depends, HTTPException, status
-from pydantic import BaseModel, ConfigDict, Field
 from typing import Optional
+
+from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
-from app.core.config import settings
+
 from app.core.database import get_db
 from app.core.security import get_current_user_id
-from app.models.curriculum import Subject
-from app.models.documents import Document, DocumentChunk, DocumentPage
 from app.models.learning import LearningPath, PathLesson, LessonVersion
-from app.services.generation_queue import enqueue_lesson_generation, requeue_failed_lessons
-from app.services.lesson_generator import lesson_generator_service
-from app.services.pipeline_runner import notify_pipeline
 from app.services.text_sanitize import sanitize_tree
 
 router = APIRouter()
@@ -25,207 +26,6 @@ def _redact_answer_keys(package: dict) -> dict:
             question.pop("answerKey", None)
     return sanitized
 
-
-def _document_page_payload(db: Session, doc: Document) -> list[dict]:
-    """Return page-shaped text for outline building.
-
-    Documents ingested before page-level extraction existed only have chunks.
-    Their chunk text is still real extracted source, so group it by source page
-    instead of rejecting the document.
-    """
-    pages = (
-        db.query(DocumentPage)
-        .filter(DocumentPage.document_id == doc.id)
-        .order_by(DocumentPage.page_number.asc())
-        .all()
-    )
-    if pages:
-        return [{"page_number": page.page_number, "text": page.extracted_text} for page in pages]
-
-    chunks = (
-        db.query(DocumentChunk)
-        .filter(
-            DocumentChunk.document_id == doc.id,
-            DocumentChunk.embedding.isnot(None),
-        )
-        .order_by(DocumentChunk.page_start.asc(), DocumentChunk.chunk_index.asc())
-        .all()
-    )
-    grouped: dict[int, list[str]] = {}
-    for chunk in chunks:
-        text = (chunk.text or "").strip()
-        if not text:
-            continue
-        page_number = int(chunk.page_start or chunk.chunk_index + 1)
-        grouped.setdefault(page_number, []).append(text)
-    return [
-        {"page_number": page_number, "text": "\n".join(grouped[page_number])}
-        for page_number in sorted(grouped)
-    ]
-
-
-class OutlineRequest(BaseModel):
-    model_config = ConfigDict(populate_by_name=True)
-    document_id: uuid.UUID = Field(alias="documentId")
-    grade: int = Field(ge=6, le=10)
-    subject_id: str = Field(alias="subjectId", min_length=3)
-    language_tag: Optional[str] = None
-
-class CreatePathRequest(BaseModel):
-    model_config = ConfigDict(populate_by_name=True)
-    document_id: uuid.UUID = Field(alias="documentId")
-    grade: int = Field(ge=6, le=10)
-    subject_id: str = Field(alias="subjectId", min_length=3)
-    title: Optional[str] = None
-    language_tag: Optional[str] = None
-    goal: str = "concept_understanding"
-
-@router.post("/outline")
-async def generate_path_outline(
-    req: OutlineRequest,
-    owner_id: uuid.UUID = Depends(get_current_user_id),
-    db: Session = Depends(get_db)
-):
-    doc = db.query(Document).filter(Document.id == req.document_id, Document.owner_id == owner_id).first()
-    if not doc:
-        raise HTTPException(status_code=404, detail="Document not found")
-
-    subject = db.query(Subject).filter(
-        Subject.id == req.subject_id, Subject.active == True
-    ).first()
-    if not subject:
-        raise HTTPException(status_code=422, detail="Choose a subject from the curriculum catalogue.")
-
-    pages = _document_page_payload(db, doc)
-    p_data = pages
-
-    outline = await lesson_generator_service.generate_outline(
-        document_title=doc.original_filename,
-        extracted_pages=p_data,
-        grade=req.grade,
-        subject=req.subject_id,
-    )
-    return outline
-
-@router.post("")
-@router.post("/create")
-def create_learning_path(
-    req: CreatePathRequest,
-    owner_id: uuid.UUID = Depends(get_current_user_id),
-    db: Session = Depends(get_db)
-):
-    """
-    Creates learning path from document outline or curriculum unit.
-    Generates the first validated lesson with priority, enqueuing subsequent lessons
-    on the durable PostgreSQL background queue.
-    """
-    doc = db.query(Document).filter(Document.id == req.document_id, Document.owner_id == owner_id).first()
-    if not doc:
-        raise HTTPException(status_code=404, detail="Document not found")
-    if doc.status in ("failed", "needs_ocr"):
-        raise HTTPException(status_code=409, detail=doc.safe_error_message or "Document processing did not finish.")
-    if doc.status not in ("awaiting_review", "ready"):
-        raise HTTPException(
-            status_code=409,
-            detail=f"Document is not ready for a learning path (status: {doc.status}).",
-        )
-
-    subject = db.query(Subject).filter(
-        Subject.id == req.subject_id, Subject.active == True
-    ).first()
-    if not subject:
-        raise HTTPException(status_code=422, detail="Choose a subject from the curriculum catalogue.")
-
-    indexed_chunks = db.query(DocumentChunk).filter(
-        DocumentChunk.document_id == doc.id,
-        DocumentChunk.embedding.isnot(None),
-        DocumentChunk.embedding_dimension == settings.EMBEDDING_DIMENSION,
-    ).count()
-    if indexed_chunks == 0:
-        raise HTTPException(
-            status_code=409,
-            detail="This document has no indexed text yet. Wait for processing to finish or retry it.",
-        )
-
-    existing = db.query(LearningPath).filter(
-        LearningPath.owner_id == owner_id,
-        LearningPath.document_id == doc.id,
-        LearningPath.grade == req.grade,
-        LearningPath.subject_id == req.subject_id,
-        LearningPath.status.in_(["active", "generating"]),
-    ).first()
-    if existing:
-        raise HTTPException(
-            status_code=409,
-            detail={"code": "path_exists", "pathId": str(existing.id), "message": "A learning path already exists for this document and class."},
-        )
-
-    pages = _document_page_payload(db, doc)
-    page_payload = pages
-    try:
-        outline_data = lesson_generator_service.build_outline_from_pages(
-            document_title=doc.original_filename,
-            extracted_pages=page_payload,
-            grade=req.grade,
-            subject=req.subject_id,
-        )
-    except ValueError as exc:
-        raise HTTPException(status_code=400, detail=str(exc)) from exc
-
-    path = LearningPath(
-        owner_id=owner_id,
-        document_id=doc.id,
-        grade=req.grade,
-        subject_id=req.subject_id,
-        language_tag=req.language_tag or doc.language_tag,
-        goal=req.goal,
-        status="generating",
-        outline_json=outline_data,
-        rationale="Outline built from extracted headings and page ranges",
-    )
-    db.add(path)
-    db.flush()
-
-    chapters = outline_data.get("chapters", [])
-    seq = 1
-    created_lessons = []
-    for chapter in chapters:
-        lesson_title = (
-            chapter.get("title")
-            or chapter.get("chapterTitle")
-            or chapter.get("name")
-            or chapter.get("heading")
-            or f"Lesson {seq}"
-        )
-        plesson = PathLesson(
-            path_id=path.id,
-            lesson_key=f"lesson_{seq}",
-            title=lesson_title,
-            sequence=seq,
-            status="queued",
-        )
-        db.add(plesson)
-        db.flush()
-        created_lessons.append(plesson)
-        seq += 1
-
-    if not created_lessons:
-        db.rollback()
-        raise HTTPException(status_code=400, detail="No sections could be read from this document.")
-
-    first_lesson = created_lessons[0]
-    enqueue_lesson_generation(db, owner_id=owner_id, path=path, lessons=created_lessons)
-    notify_pipeline()
-
-    return {
-        "pathId": str(path.id),
-        "id": str(path.id),
-        "firstLessonId": str(first_lesson.id),
-        "lessonKey": first_lesson.lesson_key,
-        "totalLessons": len(created_lessons),
-        "title": outline_data.get("title", doc.original_filename),
-        "status": path.status,
-    }
 
 @router.get("")
 def list_learning_paths(
@@ -248,7 +48,6 @@ def list_learning_paths(
         first_l = lessons[0] if lessons else None
         results.append({
             "id": str(p.id),
-            "documentId": str(p.document_id) if p.document_id else None,
             "title": p.outline_json.get("title", f"Class {p.grade} {p.subject_id}"),
             "grade": p.grade,
             "subjectId": p.subject_id,
@@ -269,23 +68,6 @@ def list_learning_paths(
             "createdAt": p.created_at.isoformat()
         })
     return results
-
-@router.post("/{path_id}/requeue-failed")
-def requeue_failed_path_lessons(
-    path_id: uuid.UUID,
-    owner_id: uuid.UUID = Depends(get_current_user_id),
-    db: Session = Depends(get_db)
-):
-    path = db.query(LearningPath).filter(LearningPath.id == path_id, LearningPath.owner_id == owner_id).first()
-    if not path:
-        raise HTTPException(status_code=404, detail="Learning path not found")
-    requeued = requeue_failed_lessons(db, owner_id=owner_id, path=path)
-    if requeued > 0:
-        notify_pipeline()
-    return {
-        "pathId": str(path.id),
-        "requeuedJobs": requeued,
-    }
 
 @router.get("/{path_id}")
 def get_learning_path_detail(

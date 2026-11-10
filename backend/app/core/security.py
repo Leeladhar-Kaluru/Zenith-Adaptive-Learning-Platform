@@ -165,7 +165,7 @@ async def get_current_user_id(
             logger.warning("Supabase auth verification unavailable")
             raise HTTPException(
                 status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
-                detail="SETU could not verify your session right now. Please retry in a moment.",
+                detail="ZENITH could not verify your session right now. Please retry in a moment.",
                 headers={"Retry-After": "2"},
             )
         if user_info and "id" in user_info:

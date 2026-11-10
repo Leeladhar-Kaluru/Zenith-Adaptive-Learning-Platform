@@ -154,7 +154,7 @@ export const OfflineLibraryPage: React.FC = () => {
                   <button
                     type="button"
                     className={styles.openButton}
-                    onClick={() => navigate(`/lesson/${lesson.lessonId}?pathId=${lesson.pathId}`)}
+                    onClick={() => navigate(`/learn/${lesson.lessonId}?pathId=${lesson.pathId}`)}
                   >
                     <BookOpen size={14} /> Open saved copy
                   </button>

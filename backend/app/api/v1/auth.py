@@ -40,7 +40,7 @@ class LoginRequest(BaseModel):
 
 @router.post("/signup")
 async def signup(req: SignupRequest, db: Session = Depends(get_db)):
-    """Creates user in Supabase Auth and initializes their SETU profile."""
+    """Creates user in Supabase Auth and initializes their ZENITH profile."""
     if req.role not in (None, "student", "teacher"):
         raise HTTPException(status_code=422, detail="Choose a valid account role.")
     if req.grade is not None and not 6 <= req.grade <= 10:

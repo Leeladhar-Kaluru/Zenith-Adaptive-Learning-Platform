@@ -23,7 +23,6 @@ import httpx
 from app.core.config import settings
 from app.core.ai_provider import (
     AIProviderService,
-    EmbeddingUnavailableError,
     LLMUnavailableError,
 )
 
@@ -170,59 +169,6 @@ async def test_token_capping():
         httpx.AsyncClient.post = original_post
 
 
-async def test_embeddings_isolation():
-    print("\n--- [TEST 4] Decoupled Embeddings Isolation from Groq ---")
-    provider = AIProviderService()
-
-    print(f"  Provider: {provider.provider}")
-    print(f"  Chat Base URL: {provider.chat_base_url}")
-    print(f"  Embed Base URL: {provider.embed_base_url}")
-
-    # Case A: Default Groq configuration should have embed_base_url as None
-    assert provider.embed_base_url is None or "groq.com" not in provider.embed_base_url, (
-        f"embed_base_url must not point to groq.com: {provider.embed_base_url}"
-    )
-
-    # Calling get_embeddings_batch must raise EmbeddingUnavailableError without contacting Groq
-    groq_contacted = False
-    original_post = httpx.AsyncClient.post
-
-    async def mock_post(self, url, *args, **kwargs):
-        nonlocal groq_contacted
-        if "groq.com" in str(url):
-            groq_contacted = True
-        return httpx.Response(status_code=404)
-
-    httpx.AsyncClient.post = mock_post
-    try:
-        try:
-            await provider.get_embeddings_batch(["What is algebra?"])
-            assert False, "Should have raised EmbeddingUnavailableError"
-        except EmbeddingUnavailableError as e:
-            print(f"  Captured expected EmbeddingUnavailableError: {e}")
-            assert not groq_contacted, "CRITICAL BUG: Attempted to call Groq for embeddings!"
-
-        # Case B: Even if someone sets embed_base_url to Groq explicitly:
-        provider.embed_base_url = "https://api.groq.com/openai/v1"
-        try:
-            await provider.get_embeddings_batch(["Another text"])
-            assert False, "Should have blocked Groq embedding URL"
-        except EmbeddingUnavailableError:
-            print("  Captured expected block when embed_base_url is explicitly set to groq.com")
-            assert not groq_contacted, "CRITICAL BUG: Called Groq when embed_base_url pointed to groq!"
-
-        # Case C: Health check reports embed_ready=False and FTS fallback note without throwing
-        health = await provider.check_health()
-        print(f"  Health probe result: embed_ready={health['embed_ready']}, embed_note='{health.get('embed_note')}'")
-        assert health["embed_ready"] is False
-        assert "decoupled" in health.get("embed_note", "").lower()
-
-        print("  -> PASS: Embeddings isolation verified; Groq is never targeted for embeddings.")
-        results["test_embeddings_isolation"] = "PASS"
-    finally:
-        httpx.AsyncClient.post = original_post
-
-
 async def test_live_groq_request():
     print("\n--- [TEST 5] Live End-to-End Request to Groq openai/gpt-oss-120b ---")
     api_key = settings.GROQ_API_KEY
@@ -309,7 +255,6 @@ async def main():
     await test_429_backoff_and_retry()
     await test_primary_model_failure_fallback()
     await test_token_capping()
-    await test_embeddings_isolation()
     await test_live_groq_request()
 
     print("\n================================================================")

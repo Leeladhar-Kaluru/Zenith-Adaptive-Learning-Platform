@@ -80,42 +80,8 @@ export interface CatalogueResource {
   };
 }
 
-export interface IngestionStatus {
-  documentId: string;
-  status: 'selected' | 'uploading' | 'stored' | 'extracting' | 'extracted' | 'indexing' | 'indexed' | 'analysing' | 'awaiting_review' | 'generating' | 'ready' | 'failed' | 'needs_ocr';
-  filename: string;
-  pageCount?: number;
-  chunkCount?: number;
-  pagesRead?: number;
-  pagesNeedingOcr?: number;
-  errorMessage?: string;
-  progressMessage?: string;
-  deduplicated?: boolean;
-  canBuildPath?: boolean;
-  outlineMessage?: string;
-  chapters?: Array<{ title: string; pageStart: number; pageEnd: number }>;
-}
-
-export interface UserDocument {
-  id: string;
-  documentId: string;
-  filename: string;
-  status: string;
-  pageCount?: number;
-  chunkCount?: number;
-  pagesRead?: number;
-  pagesNeedingOcr?: number;
-  sizeBytes?: number;
-  errorMessage?: string;
-  progressMessage?: string;
-  deduplicated?: boolean;
-  createdAt?: string;
-  chapters?: Array<{ title: string; pageStart: number; pageEnd: number }>;
-}
-
 export interface LearningPathItem {
   id: string;
-  documentId?: string | null;
   title: string;
   grade: number;
   subjectId: string;
@@ -617,7 +583,7 @@ export class ApiError extends Error {
 }
 
 export function authHeaders(): Record<string, string> {
-  const token = localStorage.getItem('setu_auth_token');
+  const token = localStorage.getItem('zenith_auth_token');
   return token ? { Authorization: `Bearer ${token}` } : {};
 }
 
@@ -1032,75 +998,10 @@ export const api = {
     return Array.isArray(res) ? res : res.resources || [];
   },
 
-  // Documents
-  uploadDocument(
-    file: File,
-    onProgress?: (percent: number) => void,
-    requestRef?: { current: XMLHttpRequest | null }
-  ): Promise<{ documentId: string; filename: string; pageCount: number; chunkCount: number; status: string; errorMessage?: string; progressMessage?: string; deduplicated?: boolean }> {
-    return new Promise((resolve, reject) => {
-      const xhr = new XMLHttpRequest();
-      if (requestRef) requestRef.current = xhr;
-      xhr.open('POST', `${API_BASE}/documents/upload`);
-      const token = localStorage.getItem('setu_auth_token');
-      if (token) xhr.setRequestHeader('Authorization', `Bearer ${token}`);
-      xhr.upload.onprogress = (event) => {
-        if (event.lengthComputable && onProgress) {
-          onProgress(Math.round((event.loaded / event.total) * 100));
-        }
-      };
-      xhr.onload = () => {
-        let body: any = {};
-        try {
-          body = JSON.parse(xhr.responseText || '{}');
-        } catch {
-          body = {};
-        }
-        if (xhr.status >= 200 && xhr.status < 300) {
-          resolve(body);
-          return;
-        }
-        const detail = body.detail || xhr.statusText || 'Upload failed.';
-        reject(new Error(typeof detail === 'string' ? detail : JSON.stringify(detail)));
-      };
-      xhr.onerror = () => reject(new TypeError('Upload failed before the server stored the file.'));
-      xhr.onabort = () => reject(new Error('Upload cancelled.'));
-      const formData = new FormData();
-      formData.append('file', file);
-      xhr.send(formData);
-    });
-  },
-
-  async listDocuments(): Promise<UserDocument[]> {
-    const res = await request<UserDocument[] | { documents: UserDocument[] }>('/documents');
-    return Array.isArray(res) ? res : res.documents || [];
-  },
-
-  async retryDocument(documentId: string): Promise<UserDocument> {
-    return request<UserDocument>(`/documents/${documentId}/retry`, { method: 'POST' });
-  },
-
-  async getDocumentStatus(documentId: string): Promise<IngestionStatus> {
-    return request<IngestionStatus>(`/documents/${documentId}/status`);
-  },
-
-  async deleteDocument(documentId: string): Promise<{ success: boolean; documentId: string }> {
-    return request<{ success: boolean; documentId: string }>(`/documents/${documentId}`, {
-      method: 'DELETE'
-    });
-  },
-
   // Learning Paths
   async getLearningPaths(): Promise<LearningPathItem[]> {
     const res = await request<LearningPathItem[] | { paths: LearningPathItem[] }>('/learning-paths');
     return Array.isArray(res) ? res : res.paths || [];
-  },
-
-  async createLearningPath(data: { documentId: string; grade: number; subjectId: string }): Promise<any> {
-    return request<any>('/learning-paths', {
-      method: 'POST',
-      body: JSON.stringify(data)
-    });
   },
 
   async getLesson(lessonId: string): Promise<any> {

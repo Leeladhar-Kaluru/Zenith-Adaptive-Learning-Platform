@@ -1,4 +1,4 @@
-"""Prerequisite DAG Gap Traversal Service for SETU.
+"""Prerequisite DAG Gap Traversal Service for ZENITH.
 
 Navigates curriculum dependency graphs backward to isolate root foundation gaps.
 Backward DAG BFS up to depth 3 isolates root unmastered foundation bridge concepts (grade < 10).

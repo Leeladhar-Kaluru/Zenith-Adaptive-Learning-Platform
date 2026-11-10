@@ -1,4 +1,4 @@
-"""Learner understanding derived exclusively from recorded SETU activity.
+"""Learner understanding derived exclusively from recorded ZENITH activity.
 
 Every number in this module comes from a stored study event, quiz attempt,
 concept evidence row, mastery snapshot or learning path. Nothing here guesses
@@ -451,7 +451,7 @@ def _routine_block(
         "consistencyLabel": consistency_label,
         "weekdayMinutes": round(weekday_minutes, 1),
         "weekendMinutes": round(weekend_minutes, 1),
-        "timezoneNote": "Windows use the timestamps stored by SETU (UTC).",
+        "timezoneNote": "Windows use the timestamps stored by ZENITH (UTC).",
         "detail": detail,
     }
 
@@ -654,7 +654,7 @@ def build_learner_insights(db: Session, owner_id: uuid.UUID) -> Dict[str, Any]:
         confidence_detail = "No study event or graded answer exists yet."
         summary = (
             "No learning activity is recorded yet. Open a ready lesson, read a section "
-            "or answer a question, and SETU will start building your study profile."
+            "or answer a question, and ZENITH will start building your study profile."
         )
     else:
         if len(attempts) >= 10 and len(mastery["concepts"]) >= 3:

@@ -30,9 +30,7 @@ spec.loader.exec_module(migration_009)
 
 from app.models.base import Base
 from app.models.learning import LearningPath, PathLesson
-from app.models.jobs import GenerationJob
 from app.models.doubts import Doubt
-from app.services.pipeline_runner import process_job
 from app.services.sync_service import sync_service
 from app.core.ai_provider import LLMUnavailableError
 
@@ -246,84 +244,6 @@ def test_alembic_009_rls_coverage():
 # =============================================================================
 # 3. Pipeline Runner Session Management (No premature close leaks)
 # =============================================================================
-
-def test_pipeline_runner_session_not_closed():
-    """
-    Stress test: pipeline_runner.process_job must NOT call db.close() on caller's session.
-    Caller's session must remain active, queryable, and healthy.
-    """
-    engine = create_engine("sqlite:///:memory:")
-    Base.metadata.create_all(engine)
-    TestingSession = sessionmaker(bind=engine)
-    caller_db = TestingSession()
-
-    close_call_count = 0
-    orig_close = caller_db.close
-    def mock_close():
-        nonlocal close_call_count
-        close_call_count += 1
-        orig_close()
-    caller_db.close = mock_close
-
-    job = GenerationJob(
-        id=uuid.uuid4(),
-        owner_id=uuid.uuid4(),
-        idempotency_key="pipe-test-1",
-        path_id=uuid.uuid4(),
-        lesson_id=uuid.uuid4(),
-        status="claimed",
-        attempt_count=1,
-        max_attempts=3,
-        priority=1,
-    )
-    caller_db.add(job)
-    caller_db.commit()
-
-    success = _step_coro(process_job(caller_db, job))
-
-    assert success is False
-    assert close_call_count == 0, "CRITICAL: process_job called caller_db.close()!"
-    assert caller_db.is_active, "caller_db must remain active"
-
-    queried_job = caller_db.query(GenerationJob).filter(GenerationJob.id == job.id).first()
-    assert queried_job is not None
-    assert queried_job.status == "failed"
-    assert queried_job.safe_error_message == "Lesson or Path record not found"
-
-
-def test_pipeline_runner_session_reusable_across_multiple_jobs():
-    """Stress test: caller can process multiple jobs in succession with a single session."""
-    engine = create_engine("sqlite:///:memory:")
-    Base.metadata.create_all(engine)
-    TestingSession = sessionmaker(bind=engine)
-    db = TestingSession()
-
-    jobs = []
-    for i in range(5):
-        j = GenerationJob(
-            id=uuid.uuid4(),
-            owner_id=uuid.uuid4(),
-            idempotency_key=f"pipe-test-multi-{i}",
-            path_id=uuid.uuid4(),
-            lesson_id=uuid.uuid4(),
-            status="claimed",
-            attempt_count=1,
-            max_attempts=3,
-            priority=i,
-        )
-        db.add(j)
-        jobs.append(j)
-    db.commit()
-
-    for j in jobs:
-        res = _step_coro(process_job(db, j))
-        assert res is False
-        assert db.is_active
-
-    all_jobs = db.query(GenerationJob).all()
-    assert len(all_jobs) == 5
-    for aj in all_jobs:
-        assert aj.status == "failed"
 
 
 # =============================================================================

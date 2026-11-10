@@ -1,4 +1,4 @@
-"""Diagnostic Assessment Session Service for SETU.
+"""Diagnostic Assessment Session Service for ZENITH.
 
 Manages 8-probe calibrated diagnostic sit-ins (4 foundation bridge + 4 chapter core).
 Pure math and deterministic graph evaluation:

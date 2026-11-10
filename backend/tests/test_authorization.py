@@ -1,7 +1,6 @@
 import uuid
 from pathlib import Path
 
-from app.models.documents import Document
 from app.models.learning import LearningPath, PathLesson, LessonVersion
 from app.models.profiles import UserProfile
 
@@ -63,28 +62,3 @@ def test_lesson_is_not_readable_by_another_user(client, db, tmp_path):
     assert other_response.status_code == 404
 
 
-def test_diagram_requires_document_owner(client, db):
-    owner_id = _profile(db)
-    other_id = _profile(db)
-    doc = Document(
-        owner_id=owner_id, original_filename="book.pdf", storage_key="documents/book.pdf",
-        mime_type="application/pdf", size_bytes=10, status="awaiting_review",
-    )
-    db.add(doc)
-    db.commit()
-
-    diagram_dir = Path(__file__).resolve().parents[1] / "diagrams" / str(doc.id)
-    diagram_dir.mkdir(parents=True, exist_ok=True)
-    diagram = diagram_dir / "page_1_d0.png"
-    diagram.write_bytes(b"\x89PNG\r\n\x1a\n")
-
-    assert client.get(
-        f"/api/v1/documents/{doc.id}/diagrams/page_1_d0.png",
-        headers={"X-User-Id": str(other_id)},
-    ).status_code == 404
-    assert client.get(
-        f"/api/v1/documents/{doc.id}/diagrams/page_1_d0.png",
-        headers={"X-User-Id": str(owner_id)},
-    ).status_code == 200
-    diagram.unlink()
-    diagram_dir.rmdir()

@@ -160,7 +160,7 @@ def test_left_navigation_rail_structure():
     assert "Adaptive Companion" in nav_tsx, "Brand tag must display Adaptive Companion"
     
     # 3. Core study routes presence
-    core_study_routes = ["/", "/explore", "/practice", "/map", "/achievements", "/ask", "/sources"]
+    core_study_routes = ["/", "/explore", "/practice", "/map", "/achievements", "/ask"]
     for route in core_study_routes:
         assert f'to="{route}"' in nav_tsx or f"to='{route}'" in nav_tsx, (
             f"Navigation.tsx must contain NavLink target for {route}"

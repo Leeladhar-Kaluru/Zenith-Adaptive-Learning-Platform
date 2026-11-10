@@ -9,7 +9,8 @@ class LearningPath(Base):
 
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     owner_id = Column(UUID(as_uuid=True), nullable=False, index=True)
-    document_id = Column(UUID(as_uuid=True), ForeignKey("documents.id", ondelete="SET NULL"), nullable=True)
+    # Legacy column from the removed document pipeline; kept until the approved legacy-table drop.
+    document_id = Column(UUID(as_uuid=True), nullable=True)
     path_version = Column(Integer, default=1)
     grade = Column(Integer, nullable=False)
     subject_id = Column(String(50), nullable=False)

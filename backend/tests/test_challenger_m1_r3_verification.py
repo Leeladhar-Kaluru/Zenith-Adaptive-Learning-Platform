@@ -14,7 +14,7 @@ import pytest
 import httpx
 from typing import List, Dict, Any
 
-from app.core.ai_provider import ai_provider, EmbeddingUnavailableError, LLMUnavailableError
+from app.core.ai_provider import ai_provider, LLMUnavailableError
 
 
 @pytest.mark.asyncio
@@ -137,71 +137,3 @@ async def test_http_404_fallback_exhaustion_raises_runtime_error(monkeypatch):
         await ai_provider.generate_chat([{"role": "user", "content": "Hi"}])
 
 
-def test_decoupling_latency_and_zero_http_connections():
-    """Empirically measure get_embedding() and get_embeddings_batch() latency (<0.001s)
-
-    and assert exactly 0 HTTP connection attempts.
-    """
-    http_attempts = 0
-
-    orig_init = httpx.AsyncClient.__init__
-    def spy_init(self, *args, **kwargs):
-        nonlocal http_attempts
-        http_attempts += 1
-        return orig_init(self, *args, **kwargs)
-
-    httpx.AsyncClient.__init__ = spy_init
-
-    try:
-        # Ensure Groq configuration with decoupled embeddings (embed_base_url is None)
-        assert ai_provider.embed_base_url is None or "groq.com" in ai_provider.embed_base_url
-
-        # Benchmark single get_embedding
-        single_latencies = []
-        for _ in range(100):
-            t0 = time.perf_counter()
-            coro = ai_provider.get_embedding("What is cell division?")
-            try:
-                coro.send(None)
-            except EmbeddingUnavailableError:
-                elapsed = time.perf_counter() - t0
-                single_latencies.append(elapsed)
-            except StopIteration:
-                pytest.fail("Expected EmbeddingUnavailableError, but coroutine finished normally")
-
-        # Benchmark batch get_embeddings_batch
-        batch_latencies = []
-        for _ in range(100):
-            t0 = time.perf_counter()
-            coro = ai_provider.get_embeddings_batch(["chunk 1", "chunk 2", "chunk 3"])
-            try:
-                coro.send(None)
-            except EmbeddingUnavailableError:
-                elapsed = time.perf_counter() - t0
-                batch_latencies.append(elapsed)
-            except StopIteration:
-                pytest.fail("Expected EmbeddingUnavailableError, but coroutine finished normally")
-
-        # Assertions
-        assert len(single_latencies) == 100
-        assert len(batch_latencies) == 100
-
-        max_single = max(single_latencies)
-        avg_single = sum(single_latencies) / len(single_latencies)
-        max_batch = max(batch_latencies)
-        avg_batch = sum(batch_latencies) / len(batch_latencies)
-
-        print(f"\n[LATENCY BENCHMARK RESULTS]")
-        print(f"Single get_embedding: max={max_single*1000:.4f}ms, avg={avg_single*1000:.4f}ms")
-        print(f"Batch get_embeddings_batch: max={max_batch*1000:.4f}ms, avg={avg_batch*1000:.4f}ms")
-        print(f"HTTP connections attempted: {http_attempts}")
-
-        # Mandated SLA: Latency < 0.001s (1.0ms)
-        assert max_single < 0.001, f"Single latency exceeded 1ms: {max_single*1000:.4f}ms"
-        assert max_batch < 0.001, f"Batch latency exceeded 1ms: {max_batch*1000:.4f}ms"
-
-        # Mandated SLA: Exactly 0 HTTP connection attempts
-        assert http_attempts == 0, f"Expected 0 HTTP connections, but observed {http_attempts}"
-
-    finally:
-        httpx.AsyncClient.__init__ = orig_init

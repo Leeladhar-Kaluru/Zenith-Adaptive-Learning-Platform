@@ -18,7 +18,6 @@ from app.models.learning import (
 )
 from app.services.adaptive_engine import adaptive_engine
 from app.services.coach_service import build_attempt_coaching
-from app.services.generation_queue import enqueue_lesson_generation
 
 
 class AttemptNotFoundError(Exception):
@@ -307,59 +306,7 @@ def grade_and_record_attempt(
 
     next_action = adaptive_engine.determine_next_action(mastery)
 
-    remediation_injected = False
-    if concept_ids and mastery.get("band") == "developing" and attempt_kind == "checkpoint":
-        first_concept = str(concept_ids[0])
-        safe_rem_key = f"rem_{lesson.sequence}_{first_concept[:16]}"
-        existing_rem = (
-            db.query(PathLesson)
-            .filter(
-                PathLesson.path_id == path.id,
-                PathLesson.lesson_key == safe_rem_key,
-            )
-            .first()
-        )
-        if existing_rem is None:
-            later_lessons = (
-                db.query(PathLesson)
-                .filter(
-                    PathLesson.path_id == path.id,
-                    PathLesson.sequence > lesson.sequence,
-                )
-                .all()
-            )
-            for later_lesson in later_lessons:
-                later_lesson.sequence += 1
-
-            remediation_title = f"Foundations & Guided Refresher: {lesson.title}"
-            new_lesson = PathLesson(
-                path_id=path.id,
-                lesson_key=safe_rem_key,
-                title=remediation_title,
-                sequence=lesson.sequence + 1,
-                status="queued",
-            )
-            db.add(new_lesson)
-            db.flush()
-
-            enqueue_lesson_generation(
-                db, owner_id=owner_id, path=path, lessons=[new_lesson]
-            )
-            from app.services.pipeline_runner import notify_pipeline
-            notify_pipeline()
-            remediation_injected = True
-
-            next_action["remediationInjected"] = True
-            next_action["remediationLessonId"] = str(new_lesson.id)
-            next_action["remediationTitle"] = remediation_title
-            next_action["title"] = f"Adaptive Refresher: {remediation_title}"
-            next_action["reason"] = (
-                f"Detected foundational misconceptions on {first_concept}. "
-                "We added a guided refresher unit to your Learning Path."
-            )
-
-    if not remediation_injected:
-        db.commit()
+    db.commit()
 
     coaching = build_attempt_coaching(
         db,

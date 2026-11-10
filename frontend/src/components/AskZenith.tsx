@@ -17,11 +17,11 @@ import { db, getAllDoubts, queueDoubtOffline, type OfflineDoubt } from '../db/in
 import { syncManager } from '../services/syncManager';
 import { useDialogFocus } from '../hooks/useDialogFocus';
 import { AuthModal } from './AuthModal';
-import styles from './AskSetu.module.css';
+import styles from './AskZenith.module.css';
 
-export function openAskSetu(): void {
+export function openAskZenith(): void {
   if (typeof window !== 'undefined') {
-    window.dispatchEvent(new CustomEvent('open-ask-setu'));
+    window.dispatchEvent(new CustomEvent('open-ask-zenith'));
   }
 }
 
@@ -73,7 +73,7 @@ const toEntry = (row: OfflineDoubt): ChatEntry => {
   };
 };
 
-export const AskSetu: React.FC = () => {
+export const AskZenith: React.FC = () => {
   const { user } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
@@ -165,8 +165,8 @@ export const AskSetu: React.FC = () => {
         setIsOpen(true);
       }
     };
-    window.addEventListener('open-ask-setu', handleOpen);
-    return () => window.removeEventListener('open-ask-setu', handleOpen);
+    window.addEventListener('open-ask-zenith', handleOpen);
+    return () => window.removeEventListener('open-ask-zenith', handleOpen);
   }, [user]);
 
   if (user?.role === 'teacher') return null;

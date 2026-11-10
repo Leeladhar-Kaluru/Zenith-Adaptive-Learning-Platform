@@ -115,14 +115,7 @@ class E2EApiClient:
 
         # Health
         if path == "/api/v1/health" and method == "GET":
-            return E2EResponse(200, {
-                "status": "healthy",
-                "components": {
-                    "database": {"connected": True, "engine": "PostgreSQL 17 (pgvector 768d)"},
-                    "storage": {"connected": True, "bucket": "setu-documents"},
-                    "ai_provider": {"chat_ready": True, "embed_ready": True, "provider": "groq"}
-                }
-            })
+            return E2EResponse(200, {"status": "ok", "product": "ZENITH"})
 
         # Catalogue
         if path == "/api/v1/library/catalogue" and method == "GET":

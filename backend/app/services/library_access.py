@@ -1,4 +1,4 @@
-"""Access control policy for curriculum library assets in SETU.
+"""Access control policy for curriculum library assets in ZENITH.
 
 Curriculum library paths and resources are publicly readable by all students
 when published, while private user documents and paths require ownership verification.

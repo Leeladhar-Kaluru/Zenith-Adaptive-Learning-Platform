@@ -15,7 +15,6 @@ const PracticePage = lazy(() => import('./pages/PracticePage'));
 const LearningMapPage = lazy(() => import('./pages/LearningMapPage'));
 const AchievementsPage = lazy(() => import('./pages/AchievementsPage'));
 const AskZenithPage = lazy(() => import('./pages/AskZenithPage'));
-const SourcesPage = lazy(() => import('./pages/SourcesPage'));
 const OfflineLibraryPage = lazy(() => import('./pages/OfflineLibraryPage').then(m => ({ default: m.OfflineLibraryPage })));
 const DoubtQueuePage = lazy(() => import('./pages/DoubtQueuePage').then(m => ({ default: m.DoubtQueuePage })));
 const StudentDashboardPage = lazy(() => import('./pages/StudentDashboardPage').then(m => ({ default: m.StudentDashboardPage })));
@@ -77,13 +76,11 @@ const AppContent: React.FC = () => {
             <Route path="/explore" element={<StudentOnly><ExplorePage /></StudentOnly>} />
             <Route path="/chapter/:slug" element={<StudentOnly><ChapterPage /></StudentOnly>} />
             <Route path="/learn/:lessonId" element={<StudentOnly><LessonReaderPage /></StudentOnly>} />
-            <Route path="/lesson/:lessonId" element={<StudentOnly><LessonReaderPage /></StudentOnly>} />
             <Route path="/practice" element={<StudentOnly><PracticePage /></StudentOnly>} />
             <Route path="/map" element={<StudentOnly><LearningMapPage /></StudentOnly>} />
             <Route path="/map/:slug" element={<StudentOnly><LearningMapPage /></StudentOnly>} />
             <Route path="/achievements" element={<StudentOnly><AchievementsPage /></StudentOnly>} />
             <Route path="/ask" element={<StudentOnly><AskZenithPage /></StudentOnly>} />
-            <Route path="/sources" element={<StudentOnly><SourcesPage /></StudentOnly>} />
             <Route
               path="/dashboard"
               element={

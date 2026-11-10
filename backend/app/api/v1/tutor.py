@@ -1,4 +1,4 @@
-"""Grounded Socratic AI Tutor API Router for SETU.
+"""Grounded Socratic AI Tutor API Router for ZENITH.
 
 Exposes conversational AI tutoring grounded in curriculum content,
 with citation extraction, daily quota enforcement, and graceful degradation.

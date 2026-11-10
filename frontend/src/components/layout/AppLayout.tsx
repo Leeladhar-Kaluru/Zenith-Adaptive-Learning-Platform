@@ -2,7 +2,7 @@ import React from 'react';
 import { Navigation } from '../Navigation';
 import { Header } from './Header';
 import { BottomNav } from './BottomNav';
-import { AskSetu } from '../AskSetu';
+import { AskZenith } from '../AskZenith';
 import { OnboardingTour } from '../OnboardingTour';
 import { useAuth } from '../../context/AuthContext';
 import styles from './AppLayout.module.css';
@@ -30,7 +30,7 @@ export const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
       </div>
 
       <BottomNav />
-      <AskSetu />
+      <AskZenith />
       <OnboardingTour isOpen={isTourOpen} onClose={closeTour} />
     </div>
   );

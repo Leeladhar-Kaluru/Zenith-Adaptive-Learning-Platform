@@ -30,7 +30,7 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<UserProfileData | null>(null);
-  const [token, setToken] = useState<string | null>(() => localStorage.getItem('setu_auth_token'));
+  const [token, setToken] = useState<string | null>(() => localStorage.getItem('zenith_auth_token'));
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [sessionError, setSessionError] = useState<string | null>(null);
   const [isTourOpen, setIsTourOpen] = useState<boolean>(false);
@@ -40,7 +40,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     if (loadInFlight.current) return loadInFlight.current;
 
     const run = (async () => {
-      const storedToken = localStorage.getItem('setu_auth_token');
+      const storedToken = localStorage.getItem('zenith_auth_token');
       if (!storedToken) {
         setToken(null);
         setUser(null);
@@ -71,7 +71,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         } catch (err) {
           const rejected = err instanceof ApiError && (err.status === 401 || err.status === 403);
           if (rejected) {
-            localStorage.removeItem('setu_auth_token');
+            localStorage.removeItem('zenith_auth_token');
             setToken(null);
             setUser(null);
             setSessionError(null);
@@ -107,7 +107,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     if (previous && previous !== profile.id) {
       await clearOfflineData();
     }
-    localStorage.setItem('setu_auth_token', accessToken);
+    localStorage.setItem('zenith_auth_token', accessToken);
     setActiveUserId(profile.id);
     setToken(accessToken);
     setUser(profile);
@@ -139,7 +139,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 
   const logout = async () => {
     await clearOfflineData();
-    localStorage.removeItem('setu_auth_token');
+    localStorage.removeItem('zenith_auth_token');
     clearActiveUserId();
     setToken(null);
     setUser(null);

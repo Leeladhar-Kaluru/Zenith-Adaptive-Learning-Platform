@@ -153,13 +153,11 @@ def test_frontend_production_env_example():
             k, v = stripped.split("=", 1)
             env_vars[k.strip()] = v.strip()
 
-    required_keys = ["VITE_API_BASE_URL", "VITE_SUPABASE_URL", "VITE_SUPABASE_ANON_KEY"]
+    # The browser only talks to the ZENITH API (same origin by default); auth goes through it.
+    required_keys = ["VITE_API_BASE_URL"]
     for key in required_keys:
         assert key in env_vars, (
             f"Required key '{key}' missing from frontend/.env.production.example"
-        )
-        assert len(env_vars[key]) > 0, (
-            f"Env key '{key}' must have a placeholder value in frontend/.env.production.example"
         )
         assert key.startswith("VITE_"), (
             f"Frontend variable '{key}' must have 'VITE_' prefix for client bundling"

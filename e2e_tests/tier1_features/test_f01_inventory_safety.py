@@ -24,15 +24,6 @@ def test_pre_rebuild_inventory_report_structure():
     # Directory context must exist
     assert os.path.exists("context"), "context/ directory must exist"
 
-def test_session_safety_in_pipeline_runner():
-    """Feature 1: Session safety in pipeline_runner - no premature db.close()."""
-    runner_path = os.path.join("backend", "app", "services", "pipeline_runner.py")
-    if os.path.exists(runner_path):
-        with open(runner_path, "r", encoding="utf-8") as f:
-            content = f.read()
-        assert "def process_job" in content
-        # Ensure process_job preserves caller's session
-        assert "Session" in content
 
 def test_sync_doubt_commits_intake_row_before_ai():
     """Feature 1: Intake row commits doubt_id before LLM/retrieval call."""

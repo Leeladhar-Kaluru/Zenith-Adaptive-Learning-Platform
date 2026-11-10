@@ -28,7 +28,6 @@ def test_a_fresh_student_and_teacher_start_empty(client, db):
     student_headers = auth_headers(student_id)
     teacher_headers = auth_headers(teacher_id)
 
-    assert client.get("/api/v1/documents", headers=student_headers).json() == []
     assert client.get("/api/v1/learning-paths", headers=student_headers).json() == []
     assert client.get("/api/v1/doubts", headers=student_headers).json() == []
     assert client.get("/api/v1/teacher/classrooms", headers=teacher_headers).json() == []

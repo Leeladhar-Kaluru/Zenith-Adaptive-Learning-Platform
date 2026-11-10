@@ -12,7 +12,6 @@ from typing import Any, Dict, List, Optional, Tuple
 
 from sqlalchemy.orm import Session
 
-from app.models.documents import Document
 from app.models.curriculum import Subject
 from app.models.learning import (
     ConceptMasterySnapshot,
@@ -143,7 +142,6 @@ def _latest_snapshot_map(db: Session, owner_id: uuid.UUID) -> Dict[str, ConceptM
 
 def _book_summary(
     path: LearningPath,
-    document: Optional[Document],
     lessons: List[Dict[str, Any]],
     snapshots: Dict[str, ConceptMasterySnapshot],
     path_concepts: List[str],
@@ -188,7 +186,6 @@ def _book_summary(
     return {
         "pathId": str(path.id),
         "title": _path_title(path, labels),
-        "documentTitle": document.original_filename if document else None,
         "grade": path.grade,
         "subjectId": path.subject_id,
         "subjectLabel": _subject_label(path.subject_id, labels),
@@ -221,10 +218,6 @@ def build_study_plan(db: Session, owner_id: uuid.UUID) -> Dict[str, Any]:
         .order_by(LearningPath.created_at.asc())
         .all()
     )
-    documents = {
-        doc.id: doc
-        for doc in db.query(Document).filter(Document.owner_id == owner_id).all()
-    }
     labels = _subject_labels(db)
     snapshots = _latest_snapshot_map(db, owner_id)
     attempts = (
@@ -563,7 +556,6 @@ def build_study_plan(db: Session, owner_id: uuid.UUID) -> Dict[str, Any]:
         books.append(
             _book_summary(
                 path,
-                documents.get(path.document_id) if path.document_id else None,
                 lesson_rows,
                 snapshots,
                 path_concepts,

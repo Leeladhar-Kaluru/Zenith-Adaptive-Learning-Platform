@@ -21,9 +21,8 @@ def test_provider_selection_logic(client):
     """Feature 3: Provider selection and health reporting."""
     res = client.get("/api/v1/health")
     assert res.status_code == 200
-    data = res.json()
-    assert "components" in data
-    assert "ai_provider" in data["components"]
+    # Liveness never touches external services; readiness reports provider status.
+    assert res.json()["status"] == "ok"
 
 def test_timeout_and_token_cap_contract():
     """Feature 3: Request timeout and max token limits."""

@@ -1,4 +1,4 @@
-"""Adaptive Practice Arena Service for SETU.
+"""Adaptive Practice Arena Service for ZENITH.
 
 Selects calibrated problems, evaluates student submissions deterministically,
 updates BKT mastery probabilities, and awards gamification rewards.

@@ -10,6 +10,10 @@ os.environ["DATABASE_URL"] = _url
 os.environ["APP_ENV"] = "test"
 os.environ["ZENITH_DEV_AUTH"] = "true"
 os.environ["ENABLE_REMOTE_AI"] = "false"
+os.environ["SUPABASE_URL"] = ""
+os.environ["SUPABASE_SECRET_KEY"] = ""
+os.environ["SUPABASE_PUBLISHABLE_KEY"] = ""
+os.environ["GROQ_API_KEY"] = ""
 
 from alembic import command  # noqa: E402
 from alembic.config import Config  # noqa: E402

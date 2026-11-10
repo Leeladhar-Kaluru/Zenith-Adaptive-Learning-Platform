@@ -2,7 +2,7 @@
 
 Revision ID: 001
 Revises: 
-Create Date: 2026-11-10 16:40:34.013169
+Create Date: 2026-11-10 16:44:19.902238
 
 """
 from typing import Sequence, Union
@@ -40,6 +40,7 @@ def upgrade() -> None:
     op.create_table('items',
     sa.Column('id', sa.UUID(), nullable=False),
     sa.Column('key', sa.String(length=160), nullable=False),
+    sa.Column('version', sa.Integer(), nullable=False),
     sa.Column('kind', sa.String(length=12), nullable=False),
     sa.Column('stem', sa.Text(), nullable=False),
     sa.Column('payload', postgresql.JSONB(astext_type=sa.Text()), nullable=False),
@@ -62,7 +63,7 @@ def upgrade() -> None:
     sa.CheckConstraint("status in ('draft','in_review','changes_requested','approved','published','archived')", name='ck_item_status'),
     sa.CheckConstraint("status not in ('approved','published') or (reviewer_id is not null and reviewed_at is not null)", name='ck_item_reviewed'),
     sa.PrimaryKeyConstraint('id'),
-    sa.UniqueConstraint('key')
+    sa.UniqueConstraint('key', 'version', name='uq_item_key_version')
     )
     op.create_table('subjects',
     sa.Column('id', sa.String(length=30), nullable=False),
@@ -118,21 +119,6 @@ def upgrade() -> None:
     sa.PrimaryKeyConstraint('id')
     )
     op.create_index(op.f('ix_profiles_role'), 'profiles', ['role'], unique=False)
-    op.create_table('cards',
-    sa.Column('id', sa.UUID(), nullable=False),
-    sa.Column('key', sa.String(length=160), nullable=False),
-    sa.Column('concept_id', sa.String(length=120), nullable=False),
-    sa.Column('front', sa.Text(), nullable=False),
-    sa.Column('back', sa.Text(), nullable=False),
-    sa.Column('status', sa.String(length=20), nullable=False),
-    sa.Column('reviewer_id', sa.UUID(), nullable=True),
-    sa.Column('reviewed_at', sa.DateTime(timezone=True), nullable=True),
-    sa.CheckConstraint("status in ('draft','in_review','changes_requested','approved','published','archived')", name='ck_card_status'),
-    sa.ForeignKeyConstraint(['concept_id'], ['concepts.id'], ondelete='CASCADE'),
-    sa.PrimaryKeyConstraint('id'),
-    sa.UniqueConstraint('key')
-    )
-    op.create_index(op.f('ix_cards_concept_id'), 'cards', ['concept_id'], unique=False)
     op.create_table('chapters',
     sa.Column('id', sa.UUID(), nullable=False),
     sa.Column('version_id', sa.UUID(), nullable=False),
@@ -398,14 +384,6 @@ def upgrade() -> None:
     sa.ForeignKeyConstraint(['lesson_id'], ['lessons.id'], ondelete='CASCADE'),
     sa.PrimaryKeyConstraint('lesson_id', 'concept_id')
     )
-    op.create_table('lesson_items',
-    sa.Column('lesson_id', sa.UUID(), nullable=False),
-    sa.Column('item_id', sa.UUID(), nullable=False),
-    sa.Column('position', sa.Integer(), nullable=False),
-    sa.ForeignKeyConstraint(['item_id'], ['items.id'], ondelete='CASCADE'),
-    sa.ForeignKeyConstraint(['lesson_id'], ['lessons.id'], ondelete='CASCADE'),
-    sa.PrimaryKeyConstraint('lesson_id', 'item_id')
-    )
     op.create_table('lesson_progress',
     sa.Column('student_id', sa.UUID(), nullable=False),
     sa.Column('lesson_id', sa.UUID(), nullable=False),
@@ -436,7 +414,7 @@ def upgrade() -> None:
     sa.Column('reviewed_at', sa.DateTime(timezone=True), nullable=True),
     sa.Column('published_at', sa.DateTime(timezone=True), nullable=True),
     sa.Column('review_note', sa.Text(), nullable=True),
-    sa.Column('ai_flags', postgresql.JSONB(astext_type=sa.Text()), server_default='[]', nullable=False),
+    sa.Column('ai_flags', postgresql.JSONB(astext_type=sa.Text()), nullable=False),
     sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=False),
     sa.CheckConstraint("origin in ('human','ai_assisted')", name='ck_lv_origin'),
     sa.CheckConstraint("status in ('draft','in_review','changes_requested','approved','published','archived')", name='ck_lv_status'),
@@ -478,6 +456,20 @@ def upgrade() -> None:
     sa.PrimaryKeyConstraint('id')
     )
     op.create_index(op.f('ix_assessment_sessions_student_id'), 'assessment_sessions', ['student_id'], unique=False)
+    op.create_table('cards',
+    sa.Column('id', sa.UUID(), nullable=False),
+    sa.Column('lesson_version_id', sa.UUID(), nullable=False),
+    sa.Column('key', sa.String(length=160), nullable=False),
+    sa.Column('concept_id', sa.String(length=120), nullable=False),
+    sa.Column('front', sa.Text(), nullable=False),
+    sa.Column('back', sa.Text(), nullable=False),
+    sa.ForeignKeyConstraint(['concept_id'], ['concepts.id'], ondelete='CASCADE'),
+    sa.ForeignKeyConstraint(['lesson_version_id'], ['lesson_versions.id'], ondelete='CASCADE'),
+    sa.PrimaryKeyConstraint('id'),
+    sa.UniqueConstraint('lesson_version_id', 'key', name='uq_card_key')
+    )
+    op.create_index(op.f('ix_cards_concept_id'), 'cards', ['concept_id'], unique=False)
+    op.create_index(op.f('ix_cards_lesson_version_id'), 'cards', ['lesson_version_id'], unique=False)
     op.create_table('gate_results',
     sa.Column('lesson_version_id', sa.UUID(), nullable=False),
     sa.Column('name', sa.String(length=80), nullable=False),
@@ -489,6 +481,15 @@ def upgrade() -> None:
     sa.ForeignKeyConstraint(['lesson_version_id'], ['lesson_versions.id'], ondelete='CASCADE'),
     sa.PrimaryKeyConstraint('lesson_version_id', 'name')
     )
+    op.create_table('lesson_version_items',
+    sa.Column('lesson_version_id', sa.UUID(), nullable=False),
+    sa.Column('item_id', sa.UUID(), nullable=False),
+    sa.Column('position', sa.Integer(), nullable=False),
+    sa.ForeignKeyConstraint(['item_id'], ['items.id'], ondelete='CASCADE'),
+    sa.ForeignKeyConstraint(['lesson_version_id'], ['lesson_versions.id'], ondelete='CASCADE'),
+    sa.PrimaryKeyConstraint('lesson_version_id', 'item_id')
+    )
+    op.create_index(op.f('ix_lesson_version_items_item_id'), 'lesson_version_items', ['item_id'], unique=False)
     op.create_table('tutor_messages',
     sa.Column('id', sa.UUID(), nullable=False),
     sa.Column('thread_id', sa.UUID(), nullable=False),
@@ -559,7 +560,12 @@ def downgrade() -> None:
     op.drop_table('evidence_events')
     op.drop_index(op.f('ix_tutor_messages_thread_id'), table_name='tutor_messages')
     op.drop_table('tutor_messages')
+    op.drop_index(op.f('ix_lesson_version_items_item_id'), table_name='lesson_version_items')
+    op.drop_table('lesson_version_items')
     op.drop_table('gate_results')
+    op.drop_index(op.f('ix_cards_lesson_version_id'), table_name='cards')
+    op.drop_index(op.f('ix_cards_concept_id'), table_name='cards')
+    op.drop_table('cards')
     op.drop_index(op.f('ix_assessment_sessions_student_id'), table_name='assessment_sessions')
     op.drop_table('assessment_sessions')
     op.drop_index(op.f('ix_tutor_threads_student_id'), table_name='tutor_threads')
@@ -568,7 +574,6 @@ def downgrade() -> None:
     op.drop_index(op.f('ix_lesson_versions_lesson_id'), table_name='lesson_versions')
     op.drop_table('lesson_versions')
     op.drop_table('lesson_progress')
-    op.drop_table('lesson_items')
     op.drop_table('lesson_concepts')
     op.drop_index(op.f('ix_assignments_classroom_id'), table_name='assignments')
     op.drop_table('assignments')
@@ -604,8 +609,6 @@ def downgrade() -> None:
     op.drop_index(op.f('ix_chapters_version_id'), table_name='chapters')
     op.drop_index('ix_chapters_grade_subject', table_name='chapters')
     op.drop_table('chapters')
-    op.drop_index(op.f('ix_cards_concept_id'), table_name='cards')
-    op.drop_table('cards')
     op.drop_index(op.f('ix_profiles_role'), table_name='profiles')
     op.drop_table('profiles')
     op.drop_table('curriculum_versions')

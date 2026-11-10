@@ -189,4 +189,4 @@ def require_roles(*roles: str):
 
 student_only = require_roles("student")
 teacher_only = require_roles("teacher")
-reviewer_only = require_roles("teacher", "reviewer")
+reviewer_only = require_roles("reviewer")   # only an explicitly promoted reviewer (or admin) can approve content

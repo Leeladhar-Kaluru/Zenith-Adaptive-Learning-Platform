@@ -127,7 +127,8 @@ class Item(Base):
     """A question. `answer_spec` is server-only and never serialised to students before they answer."""
     __tablename__ = "items"
     id = uuid_pk()
-    key = Column(String(160), nullable=False, unique=True)
+    key = Column(String(160), nullable=False)
+    version = Column(Integer, nullable=False, default=1)
     kind = Column(String(12), nullable=False)
     stem = Column(Text, nullable=False)
     payload = Column(JSONB, nullable=False, default=dict)       # options / pairs / unit / placeholder (public)
@@ -145,6 +146,7 @@ class Item(Base):
     content_hash = Column(String(64), nullable=False)
     created_at = now_col()
     __table_args__ = (
+        UniqueConstraint("key", "version", name="uq_item_key_version"),
         CheckConstraint("kind in ('mcq','multi','truefalse','numeric','fill','match')", name="ck_item_kind"),
         CheckConstraint("difficulty in ('intro','standard','challenge')", name="ck_item_difficulty"),
         CheckConstraint("purpose in ('check','practice','test','probe')", name="ck_item_purpose"),
@@ -176,25 +178,24 @@ class OptionMisconception(Base):
     misconception_id = Column(UUID(as_uuid=True), ForeignKey("misconceptions.id", ondelete="CASCADE"), nullable=False)
 
 
-class LessonItem(Base):
-    __tablename__ = "lesson_items"
-    lesson_id = Column(UUID(as_uuid=True), ForeignKey("lessons.id", ondelete="CASCADE"), primary_key=True)
-    item_id = Column(UUID(as_uuid=True), ForeignKey("items.id", ondelete="CASCADE"), primary_key=True)
+class LessonVersionItem(Base):
+    """Pins the exact item rows a lesson version uses, so published content can never change under students."""
+    __tablename__ = "lesson_version_items"
+    lesson_version_id = Column(UUID(as_uuid=True), ForeignKey("lesson_versions.id", ondelete="CASCADE"), primary_key=True)
+    item_id = Column(UUID(as_uuid=True), ForeignKey("items.id", ondelete="CASCADE"), primary_key=True, index=True)
     position = Column(Integer, nullable=False, default=0)
 
 
 class Card(Base):
-    """Flashcard for spaced revision. Reviewed like other content."""
+    """Flashcard belonging to a lesson version; visible only while that version is published."""
     __tablename__ = "cards"
     id = uuid_pk()
-    key = Column(String(160), nullable=False, unique=True)
+    lesson_version_id = Column(UUID(as_uuid=True), ForeignKey("lesson_versions.id", ondelete="CASCADE"), nullable=False, index=True)
+    key = Column(String(160), nullable=False)
     concept_id = Column(String(120), ForeignKey("concepts.id", ondelete="CASCADE"), nullable=False, index=True)
     front = Column(Text, nullable=False)
     back = Column(Text, nullable=False)
-    status = Column(String(20), nullable=False, default="draft")
-    reviewer_id = Column(UUID(as_uuid=True))
-    reviewed_at = Column(DateTime(timezone=True))
-    __table_args__ = (CheckConstraint(f"status in ({_cs})", name="ck_card_status"),)
+    __table_args__ = (UniqueConstraint("lesson_version_id", "key", name="uq_card_key"),)
 
 
 class GateResult(Base):

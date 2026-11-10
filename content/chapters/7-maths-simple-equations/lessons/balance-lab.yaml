@@ -1,0 +1,237 @@
+slug: balance-lab
+title: The balance lab
+minutes: 15
+objectives:
+- See why an equation stays true when you do the same thing to both sides
+- Choose the right operation to get x alone
+- Spot a move that keeps the balance but does not help
+concepts:
+- simple-equation-one-step
+- simple-equation-two-step
+origin: ai_assisted
+blocks:
+- kind: text
+  heading: An equation is a balanced scale
+  html: <p>An equation like <strong>2x + 3 = 11</strong> says two things weigh the same. The left side and the right side are
+    equal. If you add, take away, multiply or divide on one side, the scale tips. To keep it level, do the <strong>same
+    thing to both sides</strong>.</p>
+- kind: widget
+  widget: sim_equation
+  config: {a: 2, b: 3, c: 11}
+  task: Get x on its own. Try to use only two moves.
+- kind: text
+  heading: What did you notice?
+  html: <p>Some moves kept the scale level but did not help. For example, adding 3 to both sides of 2x + 3 = 11 gives 2x + 6 = 14.
+    It is still true, but x is no closer to being alone. A good move removes whatever is stuck to x.</p>
+- kind: example
+  heading: Worked example
+  prompt: Solve 3x - 4 = 14 using the balance idea.
+  steps:
+  - 'Look at what is stuck to x. There is a minus 4 and a times 3.'
+  - 'Undo the minus 4 first. Add 4 to both sides: 3x = 18.'
+  - 'Now undo the times 3. Divide both sides by 3: x = 6.'
+  - 'Check: 3 times 6 minus 4 is 14. The scale balances.'
+- kind: callout
+  tone: watch
+  html: Doing something to only one side is the most common mistake. If you add 4 on the left, add 4 on the right as well.
+- kind: callout
+  tone: real
+  html: A shopkeeper uses a real balance. If she takes one weight off the left pan, she must take the same weight off the right pan
+    to keep the scale level.
+- kind: check
+  item: q-bal-1
+- kind: check
+  item: q-bal-2
+- kind: summary
+  points:
+  - An equation is a balance. Do the same to both sides.
+  - Remove what is stuck to x, one step at a time.
+  - Moves that keep the balance but do not isolate x are allowed, but they do not help.
+  - Always check by putting your answer back in.
+items:
+- key: q-bal-1
+  kind: numeric
+  stem: A scale shows x + 9 = 15. What is x?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: simple-equation-one-step
+  explanation: Take 9 from both sides. 15 minus 9 is 6, so x = 6.
+  hints:
+  - What single move removes the + 9?
+  value: 6
+  tolerance: 0.0
+  verify: 15-9
+- key: q-bal-2
+  kind: mcq
+  stem: You have 2x + 3 = 11. You add 3 to both sides. What is true?
+  difficulty: standard
+  purpose: check
+  concepts:
+  - id: simple-equation-two-step
+    weight: 1.0
+  explanation: Adding 3 to both sides keeps the scale balanced (2x + 6 = 14) but does not remove the + 3 from x. You needed to subtract 3.
+  hints:
+  - Did the move remove the + 3, or add more?
+  correct: C
+  options:
+  - key: A
+    text: The scale is no longer balanced
+    misconception: thinks-any-move-breaks-balance
+  - key: B
+    text: x is now alone
+  - key: C
+    text: It is still balanced but x is not alone
+  - key: D
+    text: The equation is now false
+- key: q-bal-3
+  kind: numeric
+  stem: Solve 4x - 6 = 18. What is x?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: simple-equation-two-step
+  explanation: Add 6 to both sides to get 4x = 24. Divide both sides by 4 to get x = 6.
+  hints:
+  - Undo the minus 6 first.
+  value: 6
+  tolerance: 0.0
+  verify: (18+6)/4
+- key: q-bal-4
+  kind: numeric
+  stem: Solve 5x + 4 = 29. What is x?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: simple-equation-two-step
+  explanation: Subtract 4 from both sides to get 5x = 25. Divide by 5 to get x = 5.
+  hints:
+  - What is stuck to 5x?
+  value: 5
+  tolerance: 0.0
+  verify: (29-4)/5
+- key: q-bal-5
+  kind: mcq
+  stem: To solve x/3 = 7, which move on both sides gets x alone?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: simple-equation-one-step
+    weight: 1.0
+  explanation: x is divided by 3, so multiply both sides by 3. That gives x = 21.
+  hints:
+  - Which operation undoes dividing by 3?
+  correct: B
+  options:
+  - key: A
+    text: Divide both sides by 3
+    misconception: same-operation-instead-of-opposite
+  - key: B
+    text: Multiply both sides by 3
+  - key: C
+    text: Subtract 3 from both sides
+    misconception: same-operation-instead-of-opposite
+  - key: D
+    text: Add 3 to both sides
+- key: q-bal-6
+  kind: truefalse
+  stem: If you subtract 5 from the left side of an equation, you must subtract 5 from the right side too.
+  difficulty: intro
+  purpose: practice
+  concepts:
+  - id: simple-equation-one-step
+  explanation: Yes. Doing the same to both sides is what keeps the equation true.
+  hints:
+  - Think of the scale.
+  correct: true
+- key: q-bal-7
+  kind: numeric
+  stem: Solve 6x + 5 = -13. What is x?
+  difficulty: challenge
+  purpose: practice
+  concepts:
+  - id: simple-equation-two-step
+  explanation: Subtract 5 from both sides to get 6x = -18. Divide by 6 to get x = -3.
+  hints:
+  - The right side is below zero. That is fine.
+  value: -3
+  tolerance: 0.0
+  verify: (-13-5)/6
+- key: q-bal-8
+  kind: numeric
+  stem: Solve x/4 - 2 = 3. What is x?
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: simple-equation-two-step
+  explanation: Add 2 to both sides to get x/4 = 5. Multiply both sides by 4 to get x = 20.
+  hints:
+  - Undo the minus 2 first, then the divide by 4.
+  value: 20
+  tolerance: 0.0
+  verify: (3+2)*4
+- key: q-bal-9
+  kind: mcq
+  stem: Riya solved 2x + 6 = 14 and wrote x = 14 - 6 = 8. What did she forget?
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: simple-equation-two-step
+    weight: 1.0
+  explanation: After subtracting 6 she had 2x = 8. She must divide by 2 as well, so x = 4.
+  hints:
+  - After 14 minus 6, what is 8 equal to?
+  correct: A
+  options:
+  - key: A
+    text: To divide 8 by 2 to undo the times 2
+  - key: B
+    text: To add 6 back
+    misconception: same-operation-instead-of-opposite
+  - key: C
+    text: To subtract 6 from the left only
+    misconception: one-side-only
+  - key: D
+    text: Nothing. Her answer is right
+- key: q-bal-10
+  kind: mcq
+  stem: Which move keeps 3x + 2 = 20 balanced AND helps most?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: simple-equation-two-step
+    weight: 1.0
+  explanation: Subtracting 2 from both sides removes the + 2 and leaves 3x = 18.
+  hints:
+  - Remove what is stuck to 3x.
+  correct: D
+  options:
+  - key: A
+    text: Add 2 to both sides
+    misconception: same-operation-instead-of-opposite
+  - key: B
+    text: Subtract 2 from the left side only
+    misconception: one-side-only
+  - key: C
+    text: Multiply both sides by 2
+  - key: D
+    text: Subtract 2 from both sides
+misconceptions:
+- code: same-operation-instead-of-opposite
+  concept: simple-equation-one-step
+  description: Uses the same operation instead of the opposite one, so the number grows instead of disappearing.
+- code: one-side-only
+  concept: simple-equation-two-step
+  description: Changes only one side of the equation.
+- code: thinks-any-move-breaks-balance
+  concept: simple-equation-one-step
+  description: Believes that any extra move makes the equation false, even if both sides are changed equally.
+cards:
+- key: balance-lab-card-1
+  concept: simple-equation-one-step
+  front: What keeps an equation balanced?
+  back: Doing the same thing to both sides.
+- key: balance-lab-card-2
+  concept: simple-equation-two-step
+  front: What is a good first move for 3x + 2 = 20?
+  back: Subtract 2 from both sides, then divide by 3.

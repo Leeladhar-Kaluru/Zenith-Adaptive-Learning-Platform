@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { Suspense, lazy, useEffect, useRef, useState } from 'react';
 import type { Block } from '../api/types';
 import { Icon } from '../icons/Icon';
 import { Button } from '../ui/kit';
@@ -34,13 +34,26 @@ function Example({ b }: { b: Extract<Block, { kind: 'example' }> }) {
   );
 }
 
+const LineGraphSim = lazy(() => import('./sims/LineGraphSim').then((m) => ({ default: m.LineGraphSim })));
+const EquationSim = lazy(() => import('./sims/EquationSim').then((m) => ({ default: m.EquationSim })));
+const SpinnerSim = lazy(() => import('./sims/SpinnerSim').then((m) => ({ default: m.SpinnerSim })));
+
+function Sim({ b }: { b: Extract<Block, { kind: 'widget' }> }) {
+  const n = (k: string) => (b.config[k] === undefined ? undefined : Number(b.config[k]));
+  const task = b.task ?? '';
+  if (b.widget === 'sim_linegraph') return <LineGraphSim blockId={b.id} m0={n('m0')} c0={n('c0')} goal_m={n('goal_m')} goal_c={n('goal_c')} task={task} />;
+  if (b.widget === 'sim_equation') return <EquationSim blockId={b.id} a={n('a')} b={n('b')} c={n('c')} task={task} />;
+  return <SpinnerSim blockId={b.id} parts={n('parts')} hit={n('hit')} task={task} />;
+}
+
 const CALLOUT = { watch: ['Watch out', 'warn'], remember: ['Remember', 'bookmark'], real: ['In real life', 'globe'] } as const;
 
 export function RenderBlock({ b }: { b: Block }) {
   switch (b.kind) {
     case 'text': return <div className={s.text}>{b.heading && <h2 id={b.id}>{b.heading}</h2>}<Html html={b.html} /></div>;
     case 'figure': return <figure className={s.figure} role="img" aria-label={b.alt}><div dangerouslySetInnerHTML={{ __html: b.svg }} />{b.caption && <figcaption>{b.caption}</figcaption>}</figure>;
-    case 'widget': return b.widget === 'numberline' ? <NumberLine start={Number(b.config.start ?? 0)} min={Number(b.config.min ?? -6)} max={Number(b.config.max ?? 6)} />
+    case 'widget': if (b.widget.startsWith('sim_')) return <Suspense fallback={<div className={s.widget}>Loading the simulation…</div>}><Sim b={b} /></Suspense>;
+      return b.widget === 'numberline' ? <NumberLine start={Number(b.config.start ?? 0)} min={Number(b.config.min ?? -6)} max={Number(b.config.max ?? 6)} />
       : b.widget === 'balance' ? <Balance a={Number(b.config.a ?? 3)} b={Number(b.config.b ?? 7)} /> : <Fraction num={Number(b.config.num ?? 1)} den={Number(b.config.den ?? 4)} />;
     case 'example': return <Example b={b} />;
     case 'callout': { const [label, icon] = CALLOUT[b.tone]; return <div className={`${s.callout} ${b.tone === 'remember' ? s.remember : b.tone === 'real' ? s.real : ''}`}><span className={s.tagc}><Icon name={icon} size={16} />{label}</span><Html html={b.html} /></div>; }

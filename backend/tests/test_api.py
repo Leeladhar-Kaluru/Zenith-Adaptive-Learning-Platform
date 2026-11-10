@@ -475,3 +475,11 @@ def test_my_progress_reflects_only_real_evidence(client, db, world):
 def test_explore_is_honest_about_what_exists(client, db, world):
     e = client.get(f"{API}/explore", headers=world["h"]).json()
     assert [a["key"] for a in e["available"]] == ["flashcards"] and e["planned"]
+
+
+def test_lesson_start_is_idempotent_when_sent_twice(db, client, world):
+    lesson = db.scalar(select(Lesson).limit(1))
+    h = world["h"]
+    for _ in range(3):
+        r = client.post(f"{API}/progress", json={"lessonId": str(lesson.id), "action": "start"}, headers=h)
+        assert r.status_code == 200 and r.json() == {"ok": True}

@@ -104,10 +104,11 @@ class ProgressIn(BaseModel):
 def progress(body: ProgressIn, p: Profile = Depends(learner), db: Session = Depends(get_db)):
     from datetime import timezone
     if body.action == "start":
+        # Two tabs, a retry or a double effect can send "start" twice at once: the insert must be idempotent.
+        from sqlalchemy.dialects.postgresql import insert
+        db.execute(insert(LessonProgress).values(student_id=p.id, lesson_id=body.lessonId).on_conflict_do_nothing())
         row = db.get(LessonProgress, (p.id, body.lessonId))
-        if row is None:
-            db.add(LessonProgress(student_id=p.id, lesson_id=body.lessonId))
-        elif row.status != "completed":
+        if row is not None and row.status != "completed" and body.lastBlock:
             row.last_block, row.updated_at = body.lastBlock, datetime.now(timezone.utc)
         db.commit()
         return {"ok": True}

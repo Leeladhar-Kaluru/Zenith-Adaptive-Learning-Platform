@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "zenith-api-test",
+      "runtimeExecutable": "C:/projects/setu - V2/backend/.venv/Scripts/python.exe",
+      "runtimeArgs": ["C:/Users/LEELAD~1/AppData/Local/Temp/claude/e33b83b2173da288/bdcf1414-f8d1-4452-b7f5-5feaeefd80b2/scratchpad/run_api.py"],
+      "port": 8010
+    },
+    {
+      "name": "zenith-web",
+      "runtimeExecutable": "cmd",
+      "runtimeArgs": ["/c", "set VITE_API_BASE_URL=http://127.0.0.1:8010&& set VITE_BACKEND_URL=http://localhost:8010&& cd frontend && npm run dev -- --port 5173"],
+      "port": 5173
+    }
+  ]
+}

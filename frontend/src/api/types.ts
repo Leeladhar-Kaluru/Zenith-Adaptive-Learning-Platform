@@ -28,7 +28,7 @@ export interface PublicItem {
 export type Block =
   | { id: string; kind: 'text'; heading?: string; html: string }
   | { id: string; kind: 'figure'; svg: string; alt: string; caption?: string }
-  | { id: string; kind: 'widget'; widget: 'numberline' | 'balance' | 'fraction'; config: Record<string, number | string> }
+  | { id: string; kind: 'widget'; widget: 'numberline' | 'balance' | 'fraction' | 'sim_linegraph' | 'sim_equation' | 'sim_spinner'; config: Record<string, number | string>; task?: string }
   | { id: string; kind: 'example'; heading: string; prompt: string; steps: string[] }
   | { id: string; kind: 'callout'; tone: 'watch' | 'remember' | 'real'; html: string }
   | { id: string; kind: 'check'; item: PublicItem }

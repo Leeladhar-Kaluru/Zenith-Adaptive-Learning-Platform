@@ -1,0 +1,223 @@
+slug: slope-and-intercept
+title: Slope and intercept
+minutes: 16
+objectives:
+- Read the slope and the intercept from an equation y = mx + c
+- Predict how a line changes when m or c changes
+- Find where a line crosses the x-axis
+concepts:
+- linear-graph-slope
+origin: ai_assisted
+blocks:
+- kind: text
+  heading: One equation, one straight line
+  html: <p>The equation <strong>y = mx + c</strong> draws a straight line. The number <strong>m</strong> is the <strong>slope</strong>.
+    It tells you how steep the line is. The number <strong>c</strong> is the <strong>intercept</strong>. It tells you where the
+    line crosses the y-axis.</p>
+- kind: widget
+  widget: sim_linegraph
+  config: {m0: 1, c0: 0, goal_m: 2, goal_c: -3}
+  task: Match the dashed red line. Which two numbers do you need to change?
+- kind: text
+  heading: What the sliders showed
+  html: <p>When you make <strong>m</strong> bigger, the line gets steeper. When m is negative, the line goes down as you move right.
+    When m is 0, the line is flat. When you change <strong>c</strong>, the whole line slides up or down but keeps the same steepness.</p>
+- kind: example
+  heading: Worked example
+  prompt: Find the slope, the intercept, and where y = 2x - 4 crosses the x-axis.
+  steps:
+  - 'Compare with y = mx + c. The slope m is 2 and the intercept c is -4.'
+  - 'The line crosses the y-axis at -4.'
+  - 'It crosses the x-axis where y = 0. Solve 0 = 2x - 4. Add 4 to both sides: 4 = 2x.'
+  - 'Divide by 2: x = 2. The line crosses the x-axis at x = 2.'
+- kind: callout
+  tone: watch
+  html: The slope is the number multiplying x. In y = 3 + 2x, the slope is 2 and the intercept is 3, even though 3 is written first.
+- kind: callout
+  tone: real
+  html: A ramp with slope 0 is flat. A steeper ramp has a larger slope. Engineers choose the slope so a wheelchair can climb safely.
+- kind: check
+  item: q-lg-1
+- kind: check
+  item: q-lg-2
+- kind: summary
+  points:
+  - In y = mx + c, m is the slope and c is the y-intercept.
+  - A bigger m means a steeper line. A negative m means the line goes down.
+  - Changing c slides the line up or down without changing its steepness.
+  - To find where the line crosses the x-axis, put y = 0 and solve.
+items:
+- key: q-lg-1
+  kind: numeric
+  stem: What is the slope of y = 5x + 2?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: linear-graph-slope
+  explanation: The slope is the number multiplying x. Here it is 5.
+  hints:
+  - Which number is next to x?
+  value: 5
+  tolerance: 0.0
+  verify: "5"
+- key: q-lg-2
+  kind: mcq
+  stem: What happens to the line y = x when you change it to y = x + 3?
+  difficulty: standard
+  purpose: check
+  concepts:
+  - id: linear-graph-slope
+    weight: 1.0
+  explanation: Only c changed. The line keeps the same steepness and slides up by 3.
+  hints:
+  - Which number changed, m or c?
+  correct: B
+  options:
+  - key: A
+    text: It becomes steeper
+    misconception: confuses-slope-and-intercept
+  - key: B
+    text: It slides up by 3
+  - key: C
+    text: It slides to the right by 3
+    misconception: confuses-slope-and-intercept
+  - key: D
+    text: It becomes flat
+- key: q-lg-3
+  kind: numeric
+  stem: What is the y-intercept of y = 3x - 7?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: linear-graph-slope
+  explanation: The intercept is the number added on its own. Here it is -7.
+  hints:
+  - The line crosses the y-axis where x = 0. What is y then?
+  value: -7
+  tolerance: 0.0
+  verify: 3*0-7
+- key: q-lg-4
+  kind: numeric
+  stem: Where does y = 2x - 6 cross the x-axis? Give x.
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: linear-graph-slope
+  explanation: Put y = 0. Then 2x - 6 = 0, so 2x = 6 and x = 3.
+  hints:
+  - On the x-axis y is 0.
+  value: 3
+  tolerance: 0.0
+  verify: 6/2
+- key: q-lg-5
+  kind: mcq
+  stem: Which line is the steepest going upwards?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: linear-graph-slope
+    weight: 1.0
+  explanation: The largest positive slope is steepest going up. y = 4x has slope 4.
+  hints:
+  - Compare the numbers multiplying x.
+  correct: C
+  options:
+  - key: A
+    text: y = x + 10
+    misconception: confuses-slope-and-intercept
+  - key: B
+    text: y = 2x
+  - key: C
+    text: y = 4x
+  - key: D
+    text: y = -5x
+    misconception: ignores-sign-of-slope
+- key: q-lg-6
+  kind: truefalse
+  stem: The line y = -2x + 1 goes downwards as you move to the right.
+  difficulty: intro
+  purpose: practice
+  concepts:
+  - id: linear-graph-slope
+  explanation: The slope is -2, which is negative, so y gets smaller as x gets bigger.
+  hints:
+  - Is the slope positive or negative?
+  correct: true
+- key: q-lg-7
+  kind: numeric
+  stem: A line has slope 3 and passes through (0, 2). What is y when x = 4?
+  difficulty: challenge
+  purpose: practice
+  concepts:
+  - id: linear-graph-slope
+  explanation: The line is y = 3x + 2. When x = 4, y = 3 times 4 plus 2 = 14.
+  hints:
+  - First write the equation with m = 3 and c = 2.
+  value: 14
+  tolerance: 0.0
+  verify: 3*4+2
+- key: q-lg-8
+  kind: numeric
+  stem: Where does y = -3x + 12 cross the x-axis? Give x.
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: linear-graph-slope
+  explanation: Put y = 0. Then -3x + 12 = 0, so 12 = 3x and x = 4.
+  hints:
+  - Move the -3x to the other side, or add 3x to both sides.
+  value: 4
+  tolerance: 0.0
+  verify: 12/3
+- key: q-lg-9
+  kind: mcq
+  stem: Two lines are y = 2x + 1 and y = 2x + 5. How are they related?
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: linear-graph-slope
+    weight: 1.0
+  explanation: They have the same slope, so they are equally steep. They never meet because one is always 4 above the other.
+  hints:
+  - Compare the slopes first.
+  correct: A
+  options:
+  - key: A
+    text: Same steepness, one is higher than the other
+  - key: B
+    text: They cross at the origin
+    misconception: confuses-slope-and-intercept
+  - key: C
+    text: One is steeper
+    misconception: confuses-slope-and-intercept
+  - key: D
+    text: They are the same line
+- key: q-lg-10
+  kind: numeric
+  stem: What is the slope of y = 3 + 2x?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: linear-graph-slope
+  explanation: The slope is the number multiplying x, which is 2. The 3 is the intercept.
+  hints:
+  - Which number is next to x?
+  value: 2
+  tolerance: 0.0
+  verify: "2"
+misconceptions:
+- code: confuses-slope-and-intercept
+  concept: linear-graph-slope
+  description: Mixes up the slope (steepness) with the intercept (where the line crosses the y-axis).
+- code: ignores-sign-of-slope
+  concept: linear-graph-slope
+  description: Treats a negative slope as if it made the line steep upwards.
+cards:
+- key: slope-card-1
+  concept: linear-graph-slope
+  front: In y = mx + c, what does m tell you?
+  back: How steep the line is. Bigger m means steeper.
+- key: slope-card-2
+  concept: linear-graph-slope
+  front: How do you find where a line crosses the x-axis?
+  back: Put y = 0 and solve the equation for x.

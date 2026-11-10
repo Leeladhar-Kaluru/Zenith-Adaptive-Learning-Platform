@@ -22,3 +22,7 @@ concepts:
      prerequisites: [{id: linear-eq-both-sides}]}
   - {id: linear-eq-two-variables-intro, title: Two unknowns in one equation, grade: 8, subject: maths, enrichment: true, description: "Extension - an equation like x + y = 10 has many solutions.", keywords: [two variables, extension],
      prerequisites: [{id: linear-eq-both-sides}]}
+  - {id: linear-graph-slope, title: Slope and intercept of a line, grade: 8, subject: maths, description: "How the numbers m and c in y = mx + c change a straight line.", keywords: [slope, intercept, graph, straight line],
+     prerequisites: [{id: simple-equation-one-step, why: "Finding where a line crosses the x-axis means solving an equation."}]}
+  - {id: chance-basic, title: Chance and equally likely outcomes, grade: 7, subject: maths, description: "Measuring how likely something is as a fraction of equally likely outcomes.", keywords: [probability, chance, likely, outcome],
+     prerequisites: [{id: whole-number-ops}]}

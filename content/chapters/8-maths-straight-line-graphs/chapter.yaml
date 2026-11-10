@@ -1,0 +1,13 @@
+slug: 8-maths-straight-line-graphs
+board: cbse
+curriculum: NCERT current editions (to be confirmed by a reviewer)
+grade: 8
+subject: maths
+title: Straight-Line Graphs
+summary: Draw and read straight lines. See how the slope and the intercept change a line, then use a graph to solve an equation.
+concepts:
+- id: linear-graph-slope
+- id: simple-equation-one-step
+  role: foundation
+lessons:
+- slope-and-intercept

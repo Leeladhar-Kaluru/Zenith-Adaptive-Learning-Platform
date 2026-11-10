@@ -1,0 +1,13 @@
+slug: 7-maths-chance
+board: cbse
+curriculum: NCERT current editions (to be confirmed by a reviewer)
+grade: 7
+subject: maths
+title: Chance and Probability
+summary: Measure how likely something is, then spin a spinner many times and compare the experiment with the maths.
+concepts:
+- id: chance-basic
+- id: whole-number-ops
+  role: foundation
+lessons:
+- how-likely

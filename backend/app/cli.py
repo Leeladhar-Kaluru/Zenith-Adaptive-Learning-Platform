@@ -10,6 +10,7 @@
   restore <file|latest> <new_schema>   load a backup into an empty, migrated schema
   retention <days>        set how long B2 keeps backups before deleting them
   backup-key              create BACKUP_KEY and append it to backend/.env (never printed)
+  assets-due              imported assets whose licence re-check date has passed
 """
 import sys
 from pathlib import Path
@@ -43,6 +44,13 @@ def main(argv: list[str]) -> int:
                 print(f"lesson versions {st}: {n}")
             for ch in db.scalars(select(Chapter).order_by(Chapter.grade, Chapter.slug)):
                 print(f"class {ch.grade} {ch.subject_id} {ch.slug}: {ch.status}")
+            return 0
+        if cmd == "assets-due":
+            from app.ingest.recheck import due_for_recheck
+            rows = due_for_recheck(db)
+            for a in rows:
+                print(f"{a.recheck_at.date()}  {a.licence_id:12} {a.external_id}  {a.url}")
+            print(f"{len(rows)} asset(s) due for a licence re-check")
             return 0
         if cmd == "promote":
             from sqlalchemy import select

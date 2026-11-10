@@ -5,6 +5,7 @@ from app.models.curriculum import (Card, Chapter, ChapterConcept, Concept, Conce
                                    OptionMisconception, Subject)
 from app.models.learning import (AssessmentSession, ConceptLevel, ConceptState, InteractionEvent, EvidenceEvent, Intervention, LearnerRating, LessonProgress,
                                  Recommendation, RevisionSchedule)
+from app.models.sources import ASSET_STATUS, ContentProvenance, Source, SourceAsset
 from app.models.ops import VITAL_NAMES, WebVital
 from app.models.classroom import (Assignment, ClassMember, Classroom, DailyActivity, LeagueMembership, StudentBadge,
                                   TeacherDecision, TutorMessage, TutorThread, XpEvent)

@@ -48,8 +48,59 @@ def upgrade() -> None:
         sa.PrimaryKeyConstraint("id"),
     )
     op.create_index("ix_vital_route_name", "web_vitals", ["route", "name"])
-    _rls("web_vitals")
+    op.create_table(
+        "sources",
+        sa.Column("id", sa.UUID(), server_default=sa.text("gen_random_uuid()"), nullable=False),
+        sa.Column("name", sa.String(120), nullable=False),
+        sa.Column("homepage", sa.String(300), nullable=False),
+        sa.Column("licence_terms_url", sa.String(300), nullable=False, server_default=""),
+        sa.Column("api_terms_url", sa.String(300), nullable=False, server_default=""),
+        sa.Column("robots_ok", sa.Boolean(), nullable=False, server_default=sa.true()),
+        sa.Column("notes", sa.Text(), nullable=False, server_default=""),
+        sa.Column("created_at", sa.DateTime(timezone=True), server_default=sa.text("now()"), nullable=False),
+        sa.PrimaryKeyConstraint("id"),
+        sa.UniqueConstraint("name"),
+    )
+    op.create_table(
+        "source_assets",
+        sa.Column("id", sa.UUID(), server_default=sa.text("gen_random_uuid()"), nullable=False),
+        sa.Column("source_id", sa.UUID(), nullable=False),
+        sa.Column("external_id", sa.String(300), nullable=False),
+        sa.Column("url", sa.String(600), nullable=False),
+        sa.Column("kind", sa.String(16), nullable=False),
+        sa.Column("licence_id", sa.String(40), nullable=False),
+        sa.Column("attribution_text", sa.Text(), nullable=False, server_default=""),
+        sa.Column("author", sa.String(300), nullable=False, server_default=""),
+        sa.Column("sha256", sa.String(64), nullable=False, server_default=""),
+        sa.Column("bytes", sa.BigInteger(), nullable=False, server_default="0"),
+        sa.Column("storage_path", sa.String(300)),
+        sa.Column("status", sa.String(10), nullable=False, server_default="pending"),
+        sa.Column("retrieved_at", sa.DateTime(timezone=True), nullable=False),
+        sa.Column("recheck_at", sa.DateTime(timezone=True), nullable=False),
+        sa.Column("reviewer_id", sa.UUID()),
+        sa.Column("created_at", sa.DateTime(timezone=True), server_default=sa.text("now()"), nullable=False),
+        sa.ForeignKeyConstraint(["source_id"], ["sources.id"], ondelete="RESTRICT"),
+        sa.PrimaryKeyConstraint("id"),
+        sa.UniqueConstraint("source_id", "external_id", name="uq_asset_source_external"),
+        sa.CheckConstraint("length(licence_id) > 0", name="ck_asset_licence"),
+        sa.CheckConstraint("status in ('pending','approved','rejected','retired')", name="ck_asset_status"),
+        sa.CheckConstraint("status <> 'approved' or length(attribution_text) > 0", name="ck_asset_attribution"),
+    )
+    op.create_index("ix_source_assets_source_id", "source_assets", ["source_id"])
+    op.create_index("ix_asset_recheck", "source_assets", ["recheck_at"])
+    op.create_table(
+        "content_provenance",
+        sa.Column("lesson_version_id", sa.UUID(), nullable=False),
+        sa.Column("asset_id", sa.UUID(), nullable=False),
+        sa.ForeignKeyConstraint(["lesson_version_id"], ["lesson_versions.id"], ondelete="CASCADE"),
+        sa.ForeignKeyConstraint(["asset_id"], ["source_assets.id"], ondelete="RESTRICT"),
+        sa.PrimaryKeyConstraint("lesson_version_id", "asset_id"),
+    )
+    _rls("web_vitals", "sources", "source_assets", "content_provenance")
 
 
 def downgrade() -> None:
+    op.drop_table("content_provenance")
+    op.drop_table("source_assets")
+    op.drop_table("sources")
     op.drop_table("web_vitals")

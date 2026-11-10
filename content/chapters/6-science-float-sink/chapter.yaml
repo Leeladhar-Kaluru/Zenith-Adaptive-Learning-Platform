@@ -1,0 +1,11 @@
+slug: 6-science-float-sink
+board: cbse
+curriculum: NCERT current editions (to be confirmed by a reviewer)
+grade: 6
+subject: science
+title: Float or Sink
+summary: Find out why things float or sink using mass, volume and density.
+concepts:
+- id: float-sink
+lessons:
+- float-or-sink

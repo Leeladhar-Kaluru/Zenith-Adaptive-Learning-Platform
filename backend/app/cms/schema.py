@@ -75,12 +75,14 @@ SIM_BOUNDS: dict[str, dict[str, tuple[float, float]]] = {
     "sim_linegraph": {"m0": (-5, 5), "c0": (-10, 10), "goal_m": (-5, 5), "goal_c": (-10, 10)},
     "sim_equation": {"a": (1, 12), "b": (-20, 20), "c": (-60, 60)},
     "sim_spinner": {"parts": (2, 12), "hit": (1, 11)},
+    "sim_density": {"mass0": (1, 500), "vol0": (1, 200)},
 }
+SIM_CHOICES: dict[str, dict[str, set[str]]] = {"sim_density": {"goal": {"float", "sink"}}}
 
 
 class WidgetBlock(Strict):
     kind: Literal["widget"]
-    widget: Literal["numberline", "balance", "fraction", "sim_linegraph", "sim_equation", "sim_spinner"]
+    widget: Literal["numberline", "balance", "fraction", "sim_linegraph", "sim_equation", "sim_spinner", "sim_density"]
     config: dict[str, Union[int, float, str]] = {}
     task: str = ""
 
@@ -91,9 +93,14 @@ class WidgetBlock(Strict):
             return self
         if not self.task.strip():
             raise ValueError(f"{self.widget} needs a plain-language task (what the student should try).")
+        choices = SIM_CHOICES.get(self.widget, {})
         for k, v in self.config.items():
+            if k in choices:
+                if v not in choices[k]:
+                    raise ValueError(f"{self.widget} parameter '{k}' must be one of: {', '.join(sorted(choices[k]))}.")
+                continue
             if k not in bounds:
-                raise ValueError(f"{self.widget} has no parameter '{k}'. Allowed: {', '.join(bounds)}.")
+                raise ValueError(f"{self.widget} has no parameter '{k}'. Allowed: {', '.join([*bounds, *choices])}.")
             lo, hi = bounds[k]
             if not isinstance(v, (int, float)) or isinstance(v, bool) or not lo <= v <= hi:
                 raise ValueError(f"{self.widget} parameter '{k}' must be a number from {lo} to {hi}.")

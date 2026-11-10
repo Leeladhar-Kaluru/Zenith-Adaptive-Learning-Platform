@@ -1,0 +1,11 @@
+slug: 7-science-heat
+board: cbse
+curriculum: NCERT current editions (to be confirmed by a reviewer)
+grade: 7
+subject: science
+title: Heat
+summary: Learn how heat moves by conduction, convection and radiation, and why it always moves from hot to cold.
+concepts:
+- id: heat-transfer
+lessons:
+- how-heat-travels

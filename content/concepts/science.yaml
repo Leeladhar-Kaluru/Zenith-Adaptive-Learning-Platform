@@ -1,0 +1,6 @@
+concepts:
+  - {id: float-sink, title: Density and floating, grade: 6, subject: science, description: "Why some objects float and others sink, using mass and volume.", keywords: [density, float, sink, mass, volume]}
+  - {id: heat-transfer, title: How heat travels, grade: 7, subject: science, description: "Conduction, convection and radiation as the three ways heat moves.", keywords: [heat, conduction, convection, radiation]}
+  - {id: acids-bases, title: "Acids, bases and indicators", grade: 7, subject: science, description: "Telling acids and bases apart with litmus and safe everyday examples.", keywords: [acid, base, indicator, litmus]}
+  - {id: pressure-force-area, title: "Force, area and pressure", grade: 8, subject: science, description: "Pressure as force on each unit of area, and why a small area gives a large pressure.", keywords: [pressure, force, area, pascal],
+     prerequisites: []}

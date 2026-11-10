@@ -1,0 +1,221 @@
+slug: acids-and-bases
+title: Acids, bases and indicators
+minutes: 15
+objectives:
+- Describe acids and bases with everyday examples
+- Use litmus paper to tell them apart
+- Explain why we never taste unknown substances
+concepts:
+- acids-bases
+origin: ai_assisted
+blocks:
+- kind: text
+  heading: Sour and slippery
+  html: <p><strong>Acids</strong> taste sour. Lemon juice, vinegar and tamarind contain acids. <strong>Bases</strong> feel
+    soapy or slippery and taste bitter. Soap and baking soda solution are bases. Never taste or touch an unknown chemical
+    to find out. Scientists use <strong>indicators</strong> instead.</p>
+- kind: text
+  heading: Litmus paper
+  html: <p>An indicator is a substance that changes colour. <strong>Litmus</strong> comes in two colours. <strong>Acids turn
+    blue litmus red.</strong> <strong>Bases turn red litmus blue.</strong> A <strong>neutral</strong> substance, such as pure
+    water, changes neither colour.</p>
+- kind: example
+  heading: Worked example
+  prompt: A solution turns red litmus paper blue. What is it?
+  steps:
+  - Bases turn red litmus blue.
+  - The solution did what a base does.
+  - So the solution is a base.
+- kind: callout
+  tone: watch
+  html: 'Do not mix up the colours. A good memory trick is: acid makes blue go red, base makes red go blue.'
+- kind: callout
+  tone: real
+  html: An ant bite stings because of an acid. A paste of baking soda, a mild base, can help calm it.
+- kind: figure
+  svg: '<svg viewBox="0 0 320 90" role="img"><rect x="20" y="20" width="60" height="40" fill="#4f7cff" stroke="#14193a" stroke-width="3"/><rect
+    x="130" y="20" width="60" height="40" fill="#ff5a5a" stroke="#14193a" stroke-width="3"/><g font-size="13" font-weight="700"
+    text-anchor="middle" fill="currentColor"><text x="50" y="80">blue litmus</text><text x="160" y="80">in acid: red</text><text
+    x="270" y="40">Base: red turns blue</text></g></svg>'
+  alt: Blue litmus paper turns red in an acid. A note says that in a base, red litmus turns blue.
+  caption: Litmus is an indicator.
+- kind: check
+  item: q-ab-1
+- kind: check
+  item: q-ab-2
+- kind: summary
+  points:
+  - Acids taste sour. Bases feel soapy.
+  - Acids turn blue litmus red. Bases turn red litmus blue.
+  - Neutral substances change neither.
+  - Never taste or touch unknown chemicals.
+items:
+- key: q-ab-1
+  kind: mcq
+  stem: Blue litmus paper turns red in a solution. What is the solution?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: acids-bases
+    weight: 1.0
+  explanation: Acids turn blue litmus red.
+  hints:
+  - Which type turns blue litmus red?
+  correct: B
+  options:
+  - key: A
+    text: A base
+    misconception: mixes-litmus-colours
+  - key: B
+    text: An acid
+  - key: C
+    text: Neutral
+  - key: D
+    text: Cannot tell
+- key: q-ab-2
+  kind: mcq
+  stem: Which of these contains an acid?
+  difficulty: standard
+  purpose: check
+  concepts:
+  - id: acids-bases
+    weight: 1.0
+  explanation: Lemon juice is sour because it contains an acid.
+  hints:
+  - Which one tastes sour?
+  correct: B
+  options:
+  - key: A
+    text: Soap
+    misconception: all-bitter-things-are-acids
+  - key: B
+    text: Lemon juice
+  - key: C
+    text: Baking soda solution
+  - key: D
+    text: Pure water
+- key: q-ab-3
+  kind: mcq
+  stem: A solution turns red litmus blue. What is it?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: acids-bases
+    weight: 1.0
+  explanation: Bases turn red litmus blue.
+  hints:
+  - Which type turns red litmus blue?
+  correct: B
+  options:
+  - key: A
+    text: An acid
+    misconception: mixes-litmus-colours
+  - key: B
+    text: A base
+  - key: C
+    text: Neutral
+  - key: D
+    text: Cannot tell
+- key: q-ab-4
+  kind: mcq
+  stem: Pure water does not change blue or red litmus. What is it?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: acids-bases
+    weight: 1.0
+  explanation: A substance that changes neither colour is neutral.
+  hints:
+  - Did the colour change?
+  correct: C
+  options:
+  - key: A
+    text: An acid
+  - key: B
+    text: A base
+  - key: C
+    text: Neutral
+  - key: D
+    text: A strong acid
+- key: q-ab-5
+  kind: truefalse
+  stem: It is safe to taste an unknown liquid to check if it is an acid.
+  difficulty: intro
+  purpose: practice
+  concepts:
+  - id: acids-bases
+  explanation: No. Some chemicals are poisonous. Always use an indicator instead.
+  hints:
+  - How do scientists test safely?
+  correct: false
+- key: q-ab-6
+  kind: truefalse
+  stem: Soap feels slippery because it is a base.
+  difficulty: intro
+  purpose: practice
+  concepts:
+  - id: acids-bases
+  explanation: Yes. Bases feel soapy or slippery.
+  hints:
+  - Think about how soap feels.
+  correct: true
+- key: q-ab-7
+  kind: mcq
+  stem: Which pair is correct?
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: acids-bases
+    weight: 1.0
+  explanation: Vinegar is sour, so it is an acid. Soap is slippery, so it is a base.
+  hints:
+  - Which is sour and which is slippery?
+  correct: A
+  options:
+  - key: A
+    text: 'Vinegar: acid. Soap: base.'
+  - key: B
+    text: 'Vinegar: base. Soap: acid.'
+    misconception: mixes-litmus-colours
+  - key: C
+    text: 'Vinegar: neutral. Soap: acid.'
+  - key: D
+    text: 'Vinegar and soap: both bases.'
+- key: q-ab-8
+  kind: mcq
+  stem: 'A student says: ''Anything bitter is an acid.'' What is the best reply?'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: acids-bases
+    weight: 1.0
+  explanation: Bases are bitter, not acids. And we test with indicators instead of tasting.
+  hints:
+  - Which taste goes with acids?
+  correct: B
+  options:
+  - key: A
+    text: That is right
+    misconception: all-bitter-things-are-acids
+  - key: B
+    text: No. Acids taste sour and bases taste bitter, but we should test with an indicator, not taste
+  - key: C
+    text: No. Only water is bitter
+  - key: D
+    text: It depends on the colour of the container
+misconceptions:
+- code: mixes-litmus-colours
+  concept: acids-bases
+  description: Swaps what acids and bases do to litmus paper.
+- code: all-bitter-things-are-acids
+  concept: acids-bases
+  description: Thinks that bitter substances are acids, when acids are sour and bases are bitter.
+cards:
+- key: acids-and-bases-card-1
+  concept: acids-bases
+  front: What does an acid do to blue litmus?
+  back: Turns it red.
+- key: acids-and-bases-card-2
+  concept: acids-bases
+  front: What does a base do to red litmus?
+  back: Turns it blue.

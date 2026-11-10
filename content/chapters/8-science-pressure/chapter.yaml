@@ -1,0 +1,11 @@
+slug: 8-science-pressure
+board: cbse
+curriculum: NCERT current editions (to be confirmed by a reviewer)
+grade: 8
+subject: science
+title: Force and Pressure
+summary: Understand pressure as force on an area, and calculate it.
+concepts:
+- id: pressure-force-area
+lessons:
+- force-and-pressure

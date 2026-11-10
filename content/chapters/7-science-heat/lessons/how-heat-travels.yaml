@@ -1,0 +1,225 @@
+slug: how-heat-travels
+title: How heat travels
+minutes: 15
+objectives:
+- Name the three ways heat travels
+- Match each way to an everyday example
+- Explain why a hot object cools down
+concepts:
+- heat-transfer
+origin: ai_assisted
+blocks:
+- kind: text
+  heading: Heat always moves from hot to cold
+  html: '<p>Heat moves from a hotter place to a colder place until both are at the same temperature. It can travel in three
+    ways: <strong>conduction</strong>, <strong>convection</strong> and <strong>radiation</strong>.</p>'
+- kind: figure
+  svg: <svg viewBox="0 0 300 100" role="img"><rect x="30" y="40" width="240" height="20" rx="4" fill="#c97b3f" stroke="#14193a"
+    stroke-width="3"/><circle cx="30" cy="50" r="16" fill="#ff7a59"/><g fill="none" stroke="#14193a" stroke-width="3"><path
+    d="M70 28 L130 28"/><path d="M122 22 L130 28 L122 34"/></g><text x="150" y="86" text-anchor="middle" font-size="14" font-weight="700"
+    fill="currentColor">heat moves along the rod</text></svg>
+  alt: A metal rod heated at the left end. An arrow points along the rod to the right to show heat moving along it.
+  caption: 'Conduction: heat moves through a solid from the hot end to the cold end.'
+- kind: text
+  heading: Three ways
+  html: <p><strong>Conduction</strong> is heat moving through a solid when particles pass the energy on. A metal spoon in
+    hot tea becomes hot. <strong>Convection</strong> is heat moving in a liquid or gas as the warm part rises and the cooler
+    part sinks. <strong>Radiation</strong> is heat travelling as waves. It needs nothing to travel through. This is how the
+    Sun warms the Earth.</p>
+- kind: example
+  heading: Worked example
+  prompt: Which way does heat travel from a campfire to your hands when you hold them beside it?
+  steps:
+  - Your hands do not touch the fire, so it is not conduction.
+  - The heat reaches you sideways, not by rising air, so it is not mainly convection.
+  - Heat reaches you as waves through the air. This is radiation.
+- kind: callout
+  tone: watch
+  html: Cold does not flow into a warm object. Heat flows out of the warm object, and that is why it feels colder.
+- kind: callout
+  tone: real
+  html: A room heater near the ceiling works poorly because warm air rises. Heaters are placed low so the warm air can rise
+    and spread.
+- kind: check
+  item: q-ht-1
+- kind: check
+  item: q-ht-2
+- kind: summary
+  points:
+  - Heat moves from hot to cold.
+  - 'Conduction: through solids that touch.'
+  - 'Convection: in liquids and gases, warm rises and cool sinks.'
+  - 'Radiation: as waves, with nothing needed in between.'
+items:
+- key: q-ht-1
+  kind: mcq
+  stem: A metal spoon is left in hot soup. The handle becomes warm. Which way did heat travel?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: heat-transfer
+    weight: 1.0
+  explanation: Heat moved through the solid metal from the hot end to the cold end. That is conduction.
+  hints:
+  - Is the heat moving through a solid?
+  correct: B
+  options:
+  - key: A
+    text: Radiation
+    misconception: radiation-for-everything
+  - key: B
+    text: Conduction
+  - key: C
+    text: Convection
+  - key: D
+    text: It did not travel
+- key: q-ht-2
+  kind: mcq
+  stem: Why does warm air rise?
+  difficulty: standard
+  purpose: check
+  concepts:
+  - id: heat-transfer
+    weight: 1.0
+  explanation: Warm air spreads out and becomes less dense, so cooler, denser air pushes it up.
+  hints:
+  - Think about density.
+  correct: B
+  options:
+  - key: A
+    text: Warm air is heavier
+    misconception: warm-things-are-heavier
+  - key: B
+    text: Warm air is less dense than the cooler air around it
+  - key: C
+    text: Cold air pushes it up for no reason
+  - key: D
+    text: It is attracted to the ceiling
+- key: q-ht-3
+  kind: mcq
+  stem: How does the Sun's heat reach the Earth through empty space?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: heat-transfer
+    weight: 1.0
+  explanation: Space is almost empty, so heat cannot travel by conduction or convection. It travels by radiation.
+  hints:
+  - Is there any air in space?
+  correct: C
+  options:
+  - key: A
+    text: Conduction
+    misconception: radiation-for-everything
+  - key: B
+    text: Convection
+  - key: C
+    text: Radiation
+  - key: D
+    text: It does not
+- key: q-ht-4
+  kind: mcq
+  stem: Water at the bottom of a pot is heated. What happens next?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: heat-transfer
+    weight: 1.0
+  explanation: Hot water is less dense and rises. Cool water sinks to take its place. This is convection.
+  hints:
+  - Where does the hot water go?
+  correct: A
+  options:
+  - key: A
+    text: The hot water rises and cooler water sinks, making a circle
+  - key: B
+    text: The hot water stays at the bottom
+  - key: C
+    text: Only the water that touches the side gets hot
+  - key: D
+    text: The water does not move
+- key: q-ht-5
+  kind: truefalse
+  stem: Heat travels from a colder object to a warmer object.
+  difficulty: intro
+  purpose: practice
+  concepts:
+  - id: heat-transfer
+  explanation: No. Heat travels from the warmer object to the colder one.
+  hints:
+  - Which direction does an ice cube warm up?
+  correct: false
+- key: q-ht-6
+  kind: truefalse
+  stem: Radiation needs a solid, liquid or gas to travel through.
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: heat-transfer
+  explanation: No. Radiation can travel through empty space.
+  hints:
+  - Think about the Sun.
+  correct: false
+- key: q-ht-7
+  kind: mcq
+  stem: Why are cooking pots often made of metal with a plastic handle?
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: heat-transfer
+    weight: 1.0
+  explanation: Metal conducts heat well to the food. Plastic conducts poorly, so the handle stays cooler to hold.
+  hints:
+  - Which material lets heat pass easily?
+  correct: A
+  options:
+  - key: A
+    text: Metal is a good conductor and plastic is a poor conductor
+  - key: B
+    text: Plastic is a better conductor than metal
+    misconception: warm-things-are-heavier
+  - key: C
+    text: Metal is cheaper
+  - key: D
+    text: Plastic gets hotter
+- key: q-ht-8
+  kind: mcq
+  stem: A cold drink warms up on a table. What is really happening?
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: heat-transfer
+    weight: 1.0
+  explanation: Heat moves from the warmer surroundings to the colder drink until they match.
+  hints:
+  - Which one is warmer, the drink or the room?
+  correct: B
+  options:
+  - key: A
+    text: Cold flows out of the drink
+    misconception: cold-flows-in
+  - key: B
+    text: Heat flows from the warmer air into the drink
+  - key: C
+    text: The drink makes its own heat
+  - key: D
+    text: Nothing moves
+misconceptions:
+- code: radiation-for-everything
+  concept: heat-transfer
+  description: Says every kind of heat movement is radiation, without checking whether solids, fluids or empty space are involved.
+- code: warm-things-are-heavier
+  concept: heat-transfer
+  description: Believes warm air or water is heavier, instead of less dense.
+- code: cold-flows-in
+  concept: heat-transfer
+  description: Thinks cold flows into objects, when it is heat that flows out.
+cards:
+- key: how-heat-travels-card-1
+  concept: heat-transfer
+  front: Name the three ways heat travels.
+  back: Conduction, convection and radiation.
+- key: how-heat-travels-card-2
+  concept: heat-transfer
+  front: Which way needs no material to travel through?
+  back: Radiation.

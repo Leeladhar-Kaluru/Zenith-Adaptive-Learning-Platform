@@ -1,0 +1,195 @@
+slug: force-and-pressure
+title: Force and pressure
+minutes: 16
+objectives:
+- Define pressure as force on each unit of area
+- Calculate pressure from force and area
+- Explain why a sharp knife cuts better than a blunt one
+concepts:
+- pressure-force-area
+origin: ai_assisted
+blocks:
+- kind: text
+  heading: Spreading a force
+  html: <p>When you push on something, you apply a <strong>force</strong>, measured in newtons (N). How much the push affects
+    the surface depends on the <strong>area</strong> it is spread over. <strong>Pressure</strong> is the force on each unit
+    of area.</p><p>Pressure = force divided by area. With force in N and area in m², pressure is in N/m², also called pascals
+    (Pa).</p>
+- kind: figure
+  svg: '<svg viewBox="0 0 300 120" role="img"><rect x="30" y="30" width="90" height="60" fill="#e6e8ff" stroke="#14193a" stroke-width="3"/><rect
+    x="170" y="50" width="30" height="40" fill="#e6e8ff" stroke="#14193a" stroke-width="3"/><g font-size="13" font-weight="700"
+    text-anchor="middle" fill="currentColor"><text x="75" y="20">wide: low pressure</text><text x="185" y="40">narrow: high</text></g></svg>'
+  alt: Two blocks of the same weight. The wide block spreads its weight over a large area. The narrow block puts the same
+    weight on a small area.
+  caption: The same force over a smaller area gives a higher pressure.
+- kind: example
+  heading: Worked example
+  prompt: A force of 200 N acts on an area of 4 m². What is the pressure?
+  steps:
+  - Pressure = force divided by area.
+  - 200 divided by 4 = 50.
+  - The pressure is 50 N/m², which is 50 Pa.
+- kind: text
+  heading: Why it matters
+  html: <p>A sharp knife has a tiny edge, so your push is on a very small area. That gives a large pressure and the knife
+    cuts easily. A camel has wide, flat feet, so its weight spreads over a large area and it does not sink into sand.</p>
+- kind: callout
+  tone: watch
+  html: A larger force does not always mean a larger pressure. If the area also gets much larger, the pressure can go down.
+- kind: callout
+  tone: real
+  html: Drawing pins have a sharp point on one side and a wide head on the other. The wide head spreads your thumb's push
+    and the sharp point concentrates it.
+- kind: check
+  item: q-pr-1
+- kind: check
+  item: q-pr-2
+- kind: summary
+  points:
+  - Pressure = force divided by area.
+  - 'Unit: N/m² or pascal (Pa).'
+  - 'Same force, smaller area: higher pressure.'
+  - 'Same force, larger area: lower pressure.'
+items:
+- key: q-pr-1
+  kind: numeric
+  stem: A force of 100 N acts on an area of 2 m². What is the pressure in Pa?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: pressure-force-area
+  explanation: Pressure = 100 divided by 2 = 50 Pa.
+  hints:
+  - Divide force by area.
+  value: 50
+  tolerance: 0.0
+  verify: 100/2
+- key: q-pr-2
+  kind: mcq
+  stem: Why does a sharp knife cut better than a blunt one?
+  difficulty: standard
+  purpose: check
+  concepts:
+  - id: pressure-force-area
+    weight: 1.0
+  explanation: The sharp edge has a tiny area. The same push on a small area gives a large pressure.
+  hints:
+  - Think about the area of the edge.
+  correct: B
+  options:
+  - key: A
+    text: A sharp knife gives a larger force
+    misconception: force-not-area
+  - key: B
+    text: A sharp edge has a smaller area, so the same force gives more pressure
+  - key: C
+    text: A sharp knife is heavier
+  - key: D
+    text: Blunt knives have less pressure for no reason
+- key: q-pr-3
+  kind: numeric
+  stem: A force of 300 N acts on an area of 6 m². What is the pressure in Pa?
+  difficulty: intro
+  purpose: practice
+  concepts:
+  - id: pressure-force-area
+  explanation: 300 divided by 6 = 50 Pa.
+  hints:
+  - Force divided by area.
+  value: 50
+  tolerance: 0.0
+  verify: 300/6
+- key: q-pr-4
+  kind: numeric
+  stem: A force of 500 N acts on an area of 0.5 m². What is the pressure in Pa?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: pressure-force-area
+  explanation: 500 divided by 0.5 = 1000 Pa.
+  hints:
+  - Dividing by 0.5 doubles the number.
+  value: 1000
+  tolerance: 0.0
+  verify: 500/0.5
+- key: q-pr-5
+  kind: truefalse
+  stem: If the same force acts on a smaller area, the pressure is higher.
+  difficulty: intro
+  purpose: practice
+  concepts:
+  - id: pressure-force-area
+  explanation: Yes. Pressure = force divided by area, so a smaller area gives a bigger number.
+  hints:
+  - Think about the knife.
+  correct: true
+- key: q-pr-6
+  kind: mcq
+  stem: Why do camels have wide, flat feet?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: pressure-force-area
+    weight: 1.0
+  explanation: A large area gives a low pressure, so the camel does not sink.
+  hints:
+  - Which gives low pressure, a large area or a small area?
+  correct: A
+  options:
+  - key: A
+    text: To spread the weight over a large area so they do not sink in sand
+  - key: B
+    text: To run faster
+    misconception: force-not-area
+  - key: C
+    text: To make their weight bigger
+  - key: D
+    text: Wide feet have no use
+- key: q-pr-7
+  kind: mcq
+  stem: Two people of the same weight stand on snow. One wears skis and one wears boots. Who sinks less?
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: pressure-force-area
+    weight: 1.0
+  explanation: Skis spread the same weight over a much larger area, so the pressure is lower and they sink less.
+  hints:
+  - Which one has the larger area?
+  correct: B
+  options:
+  - key: A
+    text: The person in boots
+    misconception: force-not-area
+  - key: B
+    text: The person on skis
+  - key: C
+    text: Both the same
+  - key: D
+    text: Neither
+- key: q-pr-8
+  kind: numeric
+  stem: A pressure of 40 Pa acts on an area of 5 m². What is the force in N?
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: pressure-force-area
+  explanation: Force = pressure times area = 40 times 5 = 200 N.
+  hints:
+  - 'Undo the division: multiply pressure by area.'
+  value: 200
+  tolerance: 0.0
+  verify: 40*5
+misconceptions:
+- code: force-not-area
+  concept: pressure-force-area
+  description: Thinks that only the size of the force matters, and ignores the area it acts on.
+cards:
+- key: force-and-pressure-card-1
+  concept: pressure-force-area
+  front: What is the formula for pressure?
+  back: Pressure = force divided by area.
+- key: force-and-pressure-card-2
+  concept: pressure-force-area
+  front: What is the unit of pressure?
+  back: N/m², also called pascal (Pa).

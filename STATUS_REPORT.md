@@ -78,3 +78,12 @@ Commands run: `pytest` (134 passed before the teacher view, 8 passed in test_int
 Blocked: applying migration 002 to the production `zenith` schema was refused by the permission system. It is additive (two new tables, four nullable item columns, one extra allowed item status). It must run before this code is deployed: `cd backend && DB_SCHEMA=zenith python -m alembic upgrade head`.
 
 Not done yet: mistake notebook and chapter boss quiz, more lessons (Science, Classes 9-10, most Maths chapters), end-to-end run on the live site, Resend email and password recovery, monitoring.
+
+## Maths batch 2 and Science batch (2026-11-10, later)
+
+- Maths: Class 6 Fractions (2 lessons), Class 7 Perimeter and Area, Class 8 Squares and Square Roots, with 5 more adaptive question types.
+- Science (first Science content): Class 6 Float or Sink (new density simulation), Class 7 How Heat Travels, Class 7 Acids, Bases and Indicators, Class 8 Force and Pressure, with 3 adaptive question types (density, float decision, pressure).
+- All new lessons are AI-assisted, pass the automated gates, and are imported in review. None is visible to students until the reviewer approves it and confirms the chapter placement against the current NCERT book.
+- All four simulations (equation, line graph, spinner, density) were exercised in a real browser against the local test stack.
+- Tests: 146 backend tests pass. An independent physics check caught and fixed a rounding bug in the density and pressure templates.
+- Still missing: Science for Classes 9-10 and more chapters, mistake notebook, boss quiz, signed-in walkthrough of the live site, monitoring.

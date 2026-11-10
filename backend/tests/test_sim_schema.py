@@ -34,3 +34,11 @@ def test_goal_pairs_and_spinner_relation():
         w("sim_linegraph", goal_m=1)
     with pytest.raises(ValidationError, match="smaller than"):
         w("sim_spinner", parts=4, hit=4)
+
+
+def test_density_simulation_rules():
+    w("sim_density", mass0=60, vol0=50, goal="float")
+    with pytest.raises(ValidationError, match="one of"):
+        w("sim_density", goal="fly")
+    with pytest.raises(ValidationError, match="from 1 to 200"):
+        w("sim_density", vol0=0)

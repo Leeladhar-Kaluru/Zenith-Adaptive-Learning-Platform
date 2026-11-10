@@ -1,0 +1,206 @@
+slug: float-or-sink
+title: Float or sink?
+minutes: 15
+objectives:
+- Explain density as how much mass is packed into a volume
+- Work out density from mass and volume
+- Predict whether an object floats or sinks in water
+concepts:
+- float-sink
+origin: ai_assisted
+blocks:
+- kind: text
+  heading: Heavy for its size
+  html: <p>Some things float and some sink. It is not only about how heavy they are. A huge ship floats and a tiny pebble
+    sinks. What matters is how much <strong>mass is packed into the space</strong> the object takes up. We call this <strong>density</strong>.</p><p>Density
+    = mass divided by volume. If mass is in grams and volume in cubic centimetres, density is in grams per cubic centimetre
+    (g/cm³).</p>
+- kind: widget
+  widget: sim_density
+  config:
+    mass0: 120
+    vol0: 50
+    goal: float
+  task: Make the block float in water by changing only the mass and the volume.
+- kind: text
+  heading: What the lab showed
+  html: <p>Water has a density of about 1 g/cm³. An object with a density <strong>less than</strong> the liquid floats. An
+    object with a density <strong>more than</strong> the liquid sinks. A ship floats because its steel is shaped to enclose
+    a lot of air, so the whole ship is less dense than water.</p>
+- kind: example
+  heading: Worked example
+  prompt: A block has a mass of 90 g and a volume of 30 cm³. Will it float in water?
+  steps:
+  - Density = mass divided by volume = 90 divided by 30 = 3 g/cm³.
+  - Water has a density of 1 g/cm³.
+  - 3 is more than 1, so the block is denser than water.
+  - The block sinks.
+- kind: callout
+  tone: watch
+  html: Heavy does not always mean sinks. A big log is heavy but floats. Compare density, not just mass.
+- kind: callout
+  tone: real
+  html: People float more easily in the sea than in a swimming pool because salty water is denser than fresh water.
+- kind: check
+  item: q-fs-1
+- kind: check
+  item: q-fs-2
+- kind: summary
+  points:
+  - Density = mass divided by volume.
+  - 'Less dense than the liquid: it floats.'
+  - 'More dense than the liquid: it sinks.'
+  - Water has a density of about 1 g/cm³.
+items:
+- key: q-fs-1
+  kind: numeric
+  stem: A block has mass 60 g and volume 20 cm³. What is its density in g/cm³?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: float-sink
+  explanation: Density = 60 divided by 20 = 3 g/cm³.
+  hints:
+  - Divide the mass by the volume.
+  value: 3
+  tolerance: 0.0
+  verify: 60/20
+- key: q-fs-2
+  kind: mcq
+  stem: A cube has density 0.6 g/cm³. What happens in water?
+  difficulty: standard
+  purpose: check
+  concepts:
+  - id: float-sink
+    weight: 1.0
+  explanation: Its density is less than water, which is 1 g/cm³, so it floats.
+  hints:
+  - Compare with 1 g/cm³.
+  correct: B
+  options:
+  - key: A
+    text: It sinks
+    misconception: heavier-number-sinks
+  - key: B
+    text: It floats
+  - key: C
+    text: It hovers
+  - key: D
+    text: It dissolves
+- key: q-fs-3
+  kind: numeric
+  stem: A stone has mass 150 g and volume 50 cm³. What is its density in g/cm³?
+  difficulty: intro
+  purpose: practice
+  concepts:
+  - id: float-sink
+  explanation: 150 divided by 50 = 3 g/cm³.
+  hints:
+  - Mass divided by volume.
+  value: 3
+  tolerance: 0.0
+  verify: 150/50
+- key: q-fs-4
+  kind: numeric
+  stem: A wooden block has mass 40 g and volume 80 cm³. What is its density in g/cm³?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: float-sink
+  explanation: 40 divided by 80 = 0.5 g/cm³.
+  hints:
+  - Mass divided by volume.
+  value: 0.5
+  tolerance: 0.0
+  verify: 40/80
+- key: q-fs-5
+  kind: mcq
+  stem: Which object sinks in water?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: float-sink
+    weight: 1.0
+  explanation: Only the object with density more than 1 g/cm³ sinks. 2.5 is more than 1.
+  hints:
+  - Which density is more than water?
+  correct: C
+  options:
+  - key: A
+    text: Density 0.9 g/cm³
+  - key: B
+    text: Density 0.3 g/cm³
+  - key: C
+    text: Density 2.5 g/cm³
+  - key: D
+    text: Density 0.5 g/cm³
+- key: q-fs-6
+  kind: truefalse
+  stem: A very heavy object always sinks in water.
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: float-sink
+  explanation: No. What matters is density. A heavy log still floats because its density is less than water.
+  hints:
+  - Think about a large wooden log.
+  correct: false
+- key: q-fs-7
+  kind: truefalse
+  stem: Salt water is denser than fresh water, so objects float more easily in it.
+  difficulty: intro
+  purpose: practice
+  concepts:
+  - id: float-sink
+  explanation: Yes. A denser liquid pushes up harder, so more objects float in it.
+  hints:
+  - Think about floating in the sea.
+  correct: true
+- key: q-fs-8
+  kind: mcq
+  stem: A ship is made of steel, which is denser than water, but it floats. Why?
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: float-sink
+    weight: 1.0
+  explanation: The ship encloses a lot of air, so its total mass divided by its total volume is less than the density of water.
+  hints:
+  - Think about the whole ship, air included.
+  correct: B
+  options:
+  - key: A
+    text: Steel floats when it is large
+    misconception: heavier-number-sinks
+  - key: B
+    text: The ship holds so much air that the whole ship is less dense than water
+  - key: C
+    text: Water is thicker near ships
+  - key: D
+    text: Ships are not affected by density
+- key: q-fs-9
+  kind: numeric
+  stem: An object has density 4 g/cm³ and volume 25 cm³. What is its mass in g?
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: float-sink
+  explanation: Mass = density times volume = 4 times 25 = 100 g.
+  hints:
+  - 'Undo the division: multiply density by volume.'
+  value: 100
+  tolerance: 0.0
+  verify: 4*25
+misconceptions:
+- code: heavier-number-sinks
+  concept: float-sink
+  description: Believes that heavy or large objects always sink, without comparing density.
+cards:
+- key: float-or-sink-card-1
+  concept: float-sink
+  front: What is density?
+  back: Mass divided by volume.
+- key: float-or-sink-card-2
+  concept: float-sink
+  front: When does an object float in water?
+  back: When its density is less than 1 g/cm³.

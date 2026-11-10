@@ -6,7 +6,7 @@ from sympy import Eq, solve, symbols, sympify
 from app.engine import grading
 from app.engine.templates import REGISTRY, InvalidInstance, base, generate, templates_for
 
-FAMILIES = {"area_rect", "perimeter_rect", "square_of", "square_root", "frac_compare", "int_add", "int_subtract", "int_compare", "int_hops", "eq_one_step", "eq_two_step", "eq_word", "eq_both_sides"}
+FAMILIES = {"density_calc", "float_decision", "pressure_calc", "area_rect", "perimeter_rect", "square_of", "square_root", "frac_compare", "int_add", "int_subtract", "int_compare", "int_hops", "eq_one_step", "eq_two_step", "eq_word", "eq_both_sides"}
 
 
 def test_all_families_registered():
@@ -76,3 +76,20 @@ def test_bad_template_is_rejected():
             generate("bad_t", 1, 1)
     finally:
         del REGISTRY["bad_t"]
+
+
+def test_science_answers_match_the_physics():
+    for seed in range(80):
+        for level in range(1, 6):
+            i = generate("density_calc", seed, level)
+            mass, vol = (float(x) for x in re.findall(r"[\d.]+(?= g| cm)", i.stem)[:2])
+            shown = next(o["text"] for o in i.payload["options"] if o["key"] == i.answer_spec["correct"])
+            assert abs(float(shown) - mass / vol) < 1e-9
+            p = generate("pressure_calc", seed, level)
+            force, area = (float(x) for x in re.findall(r"[\d.]+(?= N| m)", p.stem)[:2])
+            shown = next(o["text"] for o in p.payload["options"] if o["key"] == p.answer_spec["correct"])
+            assert abs(float(shown) - force / area) < 1e-9
+            f = generate("float_decision", seed, level)
+            nums = [float(x) for x in re.findall(r"(\d+(?:\.\d+)?) g/cm", f.stem)]
+            right = next(o["text"] for o in f.payload["options"] if o["key"] == f.answer_spec["correct"])
+            assert (right == "It floats") == (nums[0] < nums[1])

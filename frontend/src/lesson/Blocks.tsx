@@ -36,6 +36,7 @@ function Example({ b }: { b: Extract<Block, { kind: 'example' }> }) {
 
 const LineGraphSim = lazy(() => import('./sims/LineGraphSim').then((m) => ({ default: m.LineGraphSim })));
 const EquationSim = lazy(() => import('./sims/EquationSim').then((m) => ({ default: m.EquationSim })));
+const DensitySim = lazy(() => import('./sims/DensitySim').then((m) => ({ default: m.DensitySim })));
 const SpinnerSim = lazy(() => import('./sims/SpinnerSim').then((m) => ({ default: m.SpinnerSim })));
 
 function Sim({ b }: { b: Extract<Block, { kind: 'widget' }> }) {
@@ -43,6 +44,7 @@ function Sim({ b }: { b: Extract<Block, { kind: 'widget' }> }) {
   const task = b.task ?? '';
   if (b.widget === 'sim_linegraph') return <LineGraphSim blockId={b.id} m0={n('m0')} c0={n('c0')} goal_m={n('goal_m')} goal_c={n('goal_c')} task={task} />;
   if (b.widget === 'sim_equation') return <EquationSim blockId={b.id} a={n('a')} b={n('b')} c={n('c')} task={task} />;
+  if (b.widget === 'sim_density') return <DensitySim blockId={b.id} mass0={n('mass0')} vol0={n('vol0')} goal={b.config.goal === undefined ? undefined : String(b.config.goal)} task={task} />;
   return <SpinnerSim blockId={b.id} parts={n('parts')} hit={n('hit')} task={task} />;
 }
 

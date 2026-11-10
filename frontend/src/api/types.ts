@@ -61,7 +61,9 @@ export interface Today {
   nextStep: NextStep | null; alternatives: NextStep[]; streak: StreakInfo; xp: LevelInfo; todayXp: number; goals: Quest[]; assigned: Assigned[];
   revision: Array<{ conceptId: string; title: string; dueAt: string }>; recent: Array<{ lessonId: string; title: string; chapter: string; status: string }>;
   badges: Badge[]; milestones: Milestone[];
+  mission?: Mission;
 }
+export interface Mission { items: Array<{ slot: 'revision' | 'new' | 'challenge'; title: string; reason: string; minutes: number; evidenceCount: number; href: string; kind: string }>; totalMinutes: number; reason: string; href: string }
 
 export interface Overview {
   concepts: Array<{ id: string; title: string; grade: number; subject: string; band: Band; pKnown: number; evidence: number; correct: number; confidence: 'low' | 'medium' | 'high'; level: number; lastAt: string | null }>;
@@ -92,7 +94,7 @@ export interface Explore { available: Array<{ key: string; title: string; text: 
 export interface SearchResults {
   chapters: Chapter[]; lessons: Array<{ id: string; title: string; chapter: string; grade: number }>; concepts: Array<{ id: string; title: string; grade: number; lessonId: string | null }>;
 }
-export interface MapGraph { chapterSlug: string; nodes: Array<{ id: string; title: string; grade: number; band: Band; inChapter: boolean; x: number; y: number; lessonId: string | null }>; edges: Array<[string, string]> }
+export interface MapGraph { chapterSlug: string; nodes: Array<{ id: string; title: string; grade: number; band: Band; inChapter: boolean; x: number; y: number; lessonId: string | null; mastery: number; nextUnlock: boolean }>; edges: Array<[string, string]> }
 export interface TutorReply { reply: string; citations: Array<{ title: string; heading: string }>; language: string; aiTranslated: boolean; degraded: boolean }
 
 export interface ClassSummary { id: string; name: string; grade: number; subject: string; students: number; joinCode: string; leaguesEnabled: boolean }

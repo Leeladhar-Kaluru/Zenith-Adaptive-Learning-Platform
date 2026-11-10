@@ -125,6 +125,8 @@ def today(db: Session, profile: Profile) -> dict:
             "revision": due_revision(db, sid)[:5], "recent": recent_out,
             "badges": [b for b in engage.badge_catalog(db, sid) if b["earned"]][:3],
             "milestones": milestones(db, sid)}
+    from app.services import mission as mission_svc          # local import: mission builds on this module
+    result["mission"] = mission_svc.mission(db, profile, steps)
     db.commit()
     return result
 

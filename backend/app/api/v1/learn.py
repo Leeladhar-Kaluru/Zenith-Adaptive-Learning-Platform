@@ -14,7 +14,7 @@ from app.core.database import get_db
 from app.core.security import get_profile, student_only
 from app.engine import graph
 from app.models import AssessmentSession, Board, Chapter, ChapterConcept, Concept, Item, LessonProgress, Profile, Subject
-from app.services import assign, engage, evidence, home, interactions, library, notebook as notebook_svc, practice
+from app.services import assign, engage, evidence, home, interactions, library, mission as mission_svc, notebook as notebook_svc, practice
 from app.services import states as st_svc
 
 router = APIRouter()
@@ -89,7 +89,10 @@ def concept_map(slug: str, p: Profile = Depends(get_profile), db: Session = Depe
     nodes = []
     for c in db.scalars(select(Concept).where(Concept.id.in_(ids))):
         col = rows[layer[c.id]]
+        parents = [a for a, b in edges if b == c.id]
+        secure = lambda cid: st_svc.band(stt.get(cid)) == "secure"
         nodes.append({"id": c.id, "title": c.title, "grade": c.grade, "band": st_svc.band(stt.get(c.id)), "inChapter": c.id in own,
+                      "mastery": round(stt.get(c.id, {}).get("p", 0.0), 3), "nextUnlock": (c.id in own) and not secure(c.id) and all(secure(a) for a in parents),
                       "x": 10 + 80 * layer[c.id] / top, "y": 12 + 76 * (col.index(c.id) + 0.5) / len(col), "lessonId": (library._lesson_for_concept(db, c.id) or {}).get("lessonId")})
     return {"chapterSlug": slug, "nodes": nodes, "edges": [[a, b] for a, b in edges]}
 
@@ -254,6 +257,12 @@ def submit_assessment(sid: uuid.UUID, p: Profile = Depends(learner), db: Session
 
 
 # ---- Home, progress, revision, engagement -------------------------------------------------------
+@router.get("/mission")
+def daily_mission(p: Profile = Depends(learner), db: Session = Depends(get_db)):
+    """Up to three short steps for today (revise, learn, stretch), each with its reason; at most 12 minutes."""
+    return mission_svc.mission(db, p)
+
+
 @router.get("/today")
 def today(p: Profile = Depends(learner), db: Session = Depends(get_db)):
     return home.today(db, p)

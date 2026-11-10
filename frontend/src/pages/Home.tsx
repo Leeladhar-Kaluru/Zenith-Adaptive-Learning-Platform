@@ -36,6 +36,21 @@ export default function Home() {
         <Card><EmptyState icon="book" title="Nothing to suggest yet" text="Chapters for your class appear in Learn once a teacher has reviewed them. As soon as one is open, ZENITH will suggest where to start." action={<Button to="/learn" iconRight="arrowR">Open Learn</Button>} /></Card>
       )}
 
+      {data.mission && data.mission.items.length > 0 && (
+        <Reveal><Card>
+          <div className={s.between}><div><h2 style={{ fontSize: '1.3rem' }}>Today’s mission</h2><p className="muted sm">{data.mission.totalMinutes} minutes, chosen from your own answers</p></div><Icon name="target" size={28} /></div>
+          <ol style={{ listStyle: 'none', padding: 0, margin: '12px 0 0', display: 'grid', gap: 10 }}>
+            {data.mission.items.map((m) => (
+              <li key={m.slot} className={s.between} style={{ gap: 12, alignItems: 'flex-start' }}>
+                <div><Chip tone="soft">{m.slot === 'revision' ? 'Revise' : m.slot === 'new' ? 'Learn' : 'Stretch'} · {m.minutes} min</Chip>
+                  <div style={{ fontWeight: 800, marginTop: 4 }}>{m.title}</div><div className="sm muted">{m.reason}</div></div>
+                <Button to={m.href} size="sm" variant="ghost" iconRight="arrowR">Go</Button>
+              </li>
+            ))}
+          </ol>
+        </Card></Reveal>
+      )}
+
       <div className={s.cols}>
         <Reveal><Card>
           <div className={s.row}><div className={s.ring} style={{ ['--p' as string]: data.xp.progress } as React.CSSProperties}><span>{data.xp.level}</span></div>

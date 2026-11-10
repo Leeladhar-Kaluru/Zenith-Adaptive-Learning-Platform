@@ -66,7 +66,7 @@ export default function Practice() {
     <div className={s.q}>
       <div className={s.between}>
         <div><span className="eyebrow">Practice{cur ? ` · ${cur.concept.title}` : ''}</span><div className="muted sm">Question {n + 1} of {ROUND}</div></div>
-        <div className={s.row}>{results.length > 0 && <Chip icon="check" tone="ok">{right} right</Chip>}{cur && <Chip tone="soft">{LEVEL[cur.concept.level]} · {cur.item.difficulty === 'intro' ? 'Warm-up' : cur.item.difficulty === 'challenge' ? 'Challenge' : 'Standard'}</Chip>}</div>
+        <div className={s.row}>{results.length > 0 && <Chip icon="check" tone="ok">{right} right</Chip>}{cur && <Chip tone="soft">{cur.generated ? `Level ${cur.ladderLevel} of 5` : LEVEL[cur.concept.level]} · {cur.item.difficulty === 'intro' ? 'Warm-up' : cur.item.difficulty === 'challenge' ? 'Challenge' : 'Standard'}</Chip>}</div>
       </div>
       <div className={s.steps} aria-hidden="true">{Array.from({ length: ROUND }, (_, i) => <i key={i} className={i < n ? s.on : ''} />)}</div>
       {!cur ? <div className={s.stack}><Skeleton h={40} w="70%" /><Skeleton h={60} r={14} /><Skeleton h={60} r={14} /><Skeleton h={60} r={14} /></div> : (

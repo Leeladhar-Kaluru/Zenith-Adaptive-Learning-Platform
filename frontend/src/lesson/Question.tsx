@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { track } from '../track/tracker';
 import { api, ApiError } from '../api/client';
 import { clearApiCache } from '../api/useApi';
 import type { EvidenceResult, PublicItem, Response } from '../api/types';
@@ -43,8 +44,19 @@ export function Question({ item, context = 'learn_check', sessionId, deferFeedba
   const toast = useToast();
 
   useEffect(() => {
-    setChoice(null); setMulti([]); setTf(null); setText(''); setPairs({}); setHints([]); setRes(null); setSaved(false); t0.current = Date.now();
+    setChoice(null); setMulti([]); setTf(null); setText(''); setPairs({}); setHints([]); setRes(null); setSaved(false); t0.current = Date.now(); picked.current = false;
   }, [item.id, resetKey]);
+
+  // Changing a picked answer (not the first pick) is a signal the student was unsure.
+  const picked = useRef(false);
+  const sig = JSON.stringify([choice, multi, tf, pairs]);
+  useEffect(() => {
+    if (item.kind === 'numeric' || item.kind === 'fill' || res || saved) return;
+    if (choice === null && !multi.length && tf === null && !Object.keys(pairs).length) return;
+    if (picked.current) track('answer_change', 'item', item.id, {}, Date.now() - t0.current);
+    picked.current = true;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [sig]);
 
   const response = (): Response | null => {
     switch (item.kind) {
@@ -70,6 +82,7 @@ export function Question({ item, context = 'learn_check', sessionId, deferFeedba
       if (out.correct && out.xp > 0) fx.xp(out.xp);
       const up = out.changes.find((c) => c.to === 'secure');
       if (up) toast(`${up.title} is now secure`, 'ok');
+      if (out.levelChange) toast(`Level ${out.levelChange.from} to ${out.levelChange.to}. ${out.levelChange.reason}`, 'ok');
       if (out.newBadges.length) fx.celebrate({ title: 'New badge', text: out.newBadges.map(prettyBadge).join(', '), icon: 'medal' });
       onResult?.(out);
     } catch (e) {
@@ -86,6 +99,7 @@ export function Question({ item, context = 'learn_check', sessionId, deferFeedba
     try {
       const h = await api<{ hint: string }>(`/items/${item.id}/hint?n=${hints.length + 1}`);
       setHints((x) => [...x, h.hint]);
+      track('hint_open', 'item', item.id, { n: hints.length + 1 }, Date.now() - t0.current);
     } catch (e) { toast((e as Error).message, 'err'); }
   }
 

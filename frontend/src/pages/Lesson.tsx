@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
+import { track } from '../track/tracker';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { api } from '../api/client';
 import { clearApiCache, useApi } from '../api/useApi';
@@ -21,14 +22,24 @@ export default function LessonPage() {
   const [busy, setBusy] = useState(false);
   const [seen, setSeen] = useState(0);
 
-  useEffect(() => { setSeen(0); void api('/progress', { method: 'POST', body: { lessonId: id, action: 'start' } }).catch(() => undefined); }, [id]);
+  useEffect(() => { setSeen(0); track('lesson_open', 'lesson', id); void api('/progress', { method: 'POST', body: { lessonId: id, action: 'start' } }).catch(() => undefined); }, [id]);
   useEffect(() => {
     if (!data) return;
     const els = Array.from(document.querySelectorAll('[data-blk]'));
-    const io = new IntersectionObserver((es) => es.forEach((e) => e.isIntersecting && setSeen((x) => Math.max(x, Number((e.target as HTMLElement).dataset.blk) + 1))), { threshold: 0.4 });
+    const entered = new Map<string, number>();
+    const viewed = new Set<string>();
+    const leave = (blk: string) => { const t = entered.get(blk); if (t) { entered.delete(blk); track('dwell', 'lesson', id, { block: blk }, Date.now() - t); } };
+    const io = new IntersectionObserver((es) => es.forEach((e) => {
+      const el = e.target as HTMLElement;
+      if (e.isIntersecting) {
+        setSeen((x) => Math.max(x, Number(el.dataset.blk) + 1));
+        if (!entered.has(el.id)) entered.set(el.id, Date.now());
+        if (!viewed.has(el.id)) { viewed.add(el.id); track('section_view', 'lesson', id, { block: el.id }); }
+      } else leave(el.id);
+    }), { threshold: 0.4 });
     els.forEach((e) => io.observe(e));
-    return () => io.disconnect();
-  }, [data]);
+    return () => { io.disconnect(); [...entered.keys()].forEach(leave); };
+  }, [data, id]);
 
   const heads = useMemo(() => (data?.blocks ?? []).filter((b) => 'heading' in b && b.heading || b.kind === 'check' || b.kind === 'summary'), [data]);
   const remember = useMemo(() => data?.blocks.find((b) => b.kind === 'callout' && b.tone === 'remember') ?? null, [data]);

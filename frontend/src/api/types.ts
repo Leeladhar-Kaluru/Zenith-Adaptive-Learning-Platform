@@ -45,8 +45,9 @@ export interface EvidenceResult {
   correct: boolean; score: number; reveal: unknown; feedback: string; misconception: string | null; xp: number; alreadyRecorded: boolean; newBadges: string[];
   concepts: Array<{ id: string; title: string; band: Band; pKnown: number; evidence: number; confidence: 'low' | 'medium' | 'high' }>;
   changes: Array<{ concept: string; title: string; from: Band; to: Band; level: number }>;
+  levelChange?: { concept: string; from: number; to: number; reason: string; signal: string } | null;
 }
-export interface NextPractice { item: PublicItem; scope: string; concept: { id: string; title: string; level: number; band: Band }; why: string }
+export interface NextPractice { item: PublicItem; scope: string; generated?: boolean; ladderLevel?: number; concept: { id: string; title: string; level: number; band: Band }; why: string }
 
 export interface NextStep { kind: string; title: string; reason: string; href: string; minutes: number; evidenceCount: number; conceptId?: string; assignment?: string }
 export interface Assigned { id: string; kind: string; title: string; note: string | null; due: string | null; done: number; total: number; href: string; complete: boolean }

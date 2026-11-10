@@ -15,8 +15,10 @@ import { ToastProvider } from './ui/kit';
 import { FxProvider } from './fx/fx';
 import { IconDefs } from './icons/Icon';
 import { startSync } from './offline/sync';
+import { startTracker } from './track/tracker';
 
 startSync();
+startTracker();
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

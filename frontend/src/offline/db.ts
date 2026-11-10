@@ -1,5 +1,6 @@
 import Dexie, { type Table } from 'dexie';
 import type { EvidenceRequest, Lesson } from '../api/types';
+import type { Move } from '../track/tracker';
 
 export interface OfflinePackRow { chapterSlug: string; title: string; savedAt: string; bytes: number; lessons: Lesson[] }
 export interface QueuedEvidence extends EvidenceRequest { queuedAt: string }
@@ -7,9 +8,11 @@ export interface QueuedEvidence extends EvidenceRequest { queuedAt: string }
 class ZenithDB extends Dexie {
   packs!: Table<OfflinePackRow, string>;
   queue!: Table<QueuedEvidence, string>;
+  moves!: Table<Move, string>;
   constructor() {
     super('ZenithDB');
     this.version(1).stores({ packs: 'chapterSlug', queue: 'clientEventId' });
+    this.version(2).stores({ packs: 'chapterSlug', queue: 'clientEventId', moves: 'clientEventId' });
   }
 }
 export const db = new ZenithDB();

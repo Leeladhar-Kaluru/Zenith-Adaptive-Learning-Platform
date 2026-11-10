@@ -102,3 +102,16 @@ Measured and fixed (no features changed): API moved to Mumbai next to the databa
 Not measured: authenticated endpoints on the live site (no student login), cold start after the change, Lighthouse on a throttled phone. Remaining speed tasks are Phase 0 of the new plan.
 
 Research and plan delivered, nothing implemented from them yet: `docs/CONTENT_SOURCES.md` (ranked sources with licences, verified vs check-before-ingest) and `docs/superpowers/plans/2026-11-10-content-intelligence.md`. Key finding: NCERT books are copyrighted and may not be copied or hosted, so NCERT is used only as a hand-entered curriculum reference. Waiting for approval before building the provenance pipeline.
+
+## Content intelligence plan, executed (2026-11-11)
+
+All 17 tasks of `docs/superpowers/plans/2026-11-10-content-intelligence.md` were worked in order, test first. 289 backend tests pass; frontend builds; budget script passes (entry JS 128.0 kB gzip of 130; first-visit precache 557.7 kB in 13 files of 650).
+
+Built: anonymous real-user speed metrics and a CI size budget; local ES256 token verification; shared per-request loads (today 29 to 16 queries on the test fixture, lesson 12 to 10); `/today` starting alongside `/profile` (Home data ready 479 ms vs 814-1185 ms measured in a real browser); source, asset and provenance tables with licence and attribution constraints; a licence policy that refuses NC, ND, unknown and missing licences; a robots.txt-respecting fetcher; Wikimedia Commons, World Bank and Natural Earth importers; credits on lessons with a publish gate; TODO lesson skeletons; a depth gate (14 of the 21 live lessons would fail it; they stay live, listed as the depth backlog); diagram specs to safe SVG; Mistake Detective; credited data charts; daily mission and a mastery-aware map; diagram labelling; a world Atlas.
+
+NOT done / waiting:
+- Migration 004 (web_vitals, sources, source_assets, content_provenance, two new item kinds, wider items.kind) is not applied to production: it needs the owner's approval, and so does a deploy. Until then none of this is live.
+- No real data imported (World Bank, Natural Earth, Commons): importing writes to the production database. The Atlas and Data Stories show nothing until someone runs the import CLIs after deploy.
+- Timelines not built (need sourced events; Social Science wave not started). Atlas has countries only, no Indian states.
+- Not measured: live latency of logged-in pages; cold start after the PyJWT addition (import measured at 0.85 s, JWT libraries load on first authenticated request).
+- Looked at in a real browser: detective question (answered end to end), Atlas (wrong then right), chart, labelling dropdowns, credits, diagram figure, mission and map. Not looked at on a phone-width screen.

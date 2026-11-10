@@ -1,0 +1,214 @@
+slug: comparing-fractions
+title: Comparing fractions
+minutes: 14
+objectives:
+- Compare fractions with the same denominator
+- Compare fractions with the same numerator
+- Explain why a bigger denominator can mean smaller pieces
+concepts:
+- fractions-compare
+origin: ai_assisted
+blocks:
+- kind: text
+  heading: Same size pieces
+  html: <p>When two fractions have the <strong>same denominator</strong>, the pieces are the same size. So the fraction with
+    more pieces is greater. 5/8 is greater than 3/8 because 5 pieces is more than 3 pieces.</p>
+- kind: widget
+  widget: fraction
+  config:
+    num: 2
+    den: 6
+- kind: text
+  heading: Same number of pieces
+  html: <p>When two fractions have the <strong>same numerator</strong>, you take the same number of pieces. The fraction with
+    the bigger denominator has smaller pieces. So 1/8 is smaller than 1/4.</p>
+- kind: example
+  heading: Worked example
+  prompt: Which is greater, 3/5 or 3/8?
+  steps:
+  - Both fractions have the same numerator, 3.
+  - The denominators are 5 and 8. A bigger denominator means smaller pieces.
+  - 8 is bigger than 5, so 3/8 is made of smaller pieces.
+  - So 3/5 is greater than 3/8.
+- kind: callout
+  tone: watch
+  html: A bigger denominator does not make a bigger fraction. 1/10 is much smaller than 1/2.
+- kind: callout
+  tone: real
+  html: If two friends share the same chocolate, 1/2 of it is a bigger share than 1/4 of it.
+- kind: check
+  item: q-fc-1
+- kind: check
+  item: q-fc-2
+- kind: summary
+  points:
+  - 'Same denominator: the bigger numerator is the greater fraction.'
+  - 'Same numerator: the smaller denominator is the greater fraction.'
+  - A bigger denominator means smaller pieces.
+items:
+- key: q-fc-1
+  kind: mcq
+  stem: 'Which is greater: 5/9 or 2/9?'
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: fractions-compare
+    weight: 1.0
+  explanation: Same denominator, so compare the numerators. 5 is more than 2, so 5/9 is greater.
+  hints:
+  - The pieces are the same size.
+  correct: B
+  options:
+  - key: A
+    text: 2/9
+    misconception: bigger-bottom-bigger-fraction
+  - key: B
+    text: 5/9
+  - key: C
+    text: They are equal
+  - key: D
+    text: Cannot tell
+- key: q-fc-2
+  kind: mcq
+  stem: 'Which is greater: 1/3 or 1/6?'
+  difficulty: standard
+  purpose: check
+  concepts:
+  - id: fractions-compare
+    weight: 1.0
+  explanation: Same numerator. 3 is smaller than 6, so thirds are bigger pieces than sixths. 1/3 is greater.
+  hints:
+  - Which pieces are bigger, thirds or sixths?
+  correct: B
+  options:
+  - key: A
+    text: 1/6
+    misconception: bigger-bottom-bigger-fraction
+  - key: B
+    text: 1/3
+  - key: C
+    text: They are equal
+  - key: D
+    text: Cannot tell
+- key: q-fc-3
+  kind: mcq
+  stem: Which fraction is the smallest?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: fractions-compare
+    weight: 1.0
+  explanation: All have the numerator 3. The biggest denominator, 10, gives the smallest pieces. So 3/10 is smallest.
+  hints:
+  - Look at the denominators.
+  correct: C
+  options:
+  - key: A
+    text: 3/4
+  - key: B
+    text: 3/5
+  - key: C
+    text: 3/10
+  - key: D
+    text: 3/7
+- key: q-fc-4
+  kind: mcq
+  stem: Which fraction is the greatest?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: fractions-compare
+    weight: 1.0
+  explanation: Same denominator, so the biggest numerator is greatest. 7/11 is greatest.
+  hints:
+  - Compare the numerators.
+  correct: B
+  options:
+  - key: A
+    text: 2/11
+    misconception: bigger-bottom-bigger-fraction
+  - key: B
+    text: 7/11
+  - key: C
+    text: 5/11
+  - key: D
+    text: 4/11
+- key: q-fc-5
+  kind: truefalse
+  stem: 1/2 is greater than 1/4.
+  difficulty: intro
+  purpose: practice
+  concepts:
+  - id: fractions-compare
+  explanation: Same numerator, smaller denominator, so 1/2 is greater.
+  hints:
+  - Halves are bigger pieces than quarters.
+  correct: true
+- key: q-fc-6
+  kind: truefalse
+  stem: 1/10 is greater than 1/3 because 10 is greater than 3.
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: fractions-compare
+  explanation: No. A bigger denominator means smaller pieces, so 1/10 is smaller than 1/3.
+  hints:
+  - Think of pizza slices.
+  correct: false
+- key: q-fc-7
+  kind: mcq
+  stem: 'Put in order from smallest to greatest: 4/7, 1/7, 6/7'
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: fractions-compare
+    weight: 1.0
+  explanation: 'Same denominator, so order the numerators: 1, 4, 6.'
+  hints:
+  - Order the top numbers.
+  correct: B
+  options:
+  - key: A
+    text: 6/7, 4/7, 1/7
+    misconception: bigger-bottom-bigger-fraction
+  - key: B
+    text: 1/7, 4/7, 6/7
+  - key: C
+    text: 4/7, 1/7, 6/7
+  - key: D
+    text: 1/7, 6/7, 4/7
+- key: q-fc-8
+  kind: mcq
+  stem: Maya ate 2/5 of a cake and Ravi ate 2/9 of an identical cake. Who ate more?
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: fractions-compare
+    weight: 1.0
+  explanation: Same numerator. Fifths are bigger pieces than ninths, so 2/5 is more than 2/9. Maya ate more.
+  hints:
+  - Which pieces are bigger, fifths or ninths?
+  correct: B
+  options:
+  - key: A
+    text: Ravi, because 9 is bigger
+    misconception: bigger-bottom-bigger-fraction
+  - key: B
+    text: Maya
+  - key: C
+    text: They ate the same
+  - key: D
+    text: Cannot tell
+misconceptions:
+- code: bigger-bottom-bigger-fraction
+  concept: fractions-compare
+  description: Thinks a bigger denominator makes a bigger fraction.
+cards:
+- key: comparing-fractions-card-1
+  concept: fractions-compare
+  front: 'Same denominator: which fraction is greater?'
+  back: The one with the bigger numerator.
+- key: comparing-fractions-card-2
+  concept: fractions-compare
+  front: 'Same numerator: which fraction is greater?'
+  back: The one with the smaller denominator.

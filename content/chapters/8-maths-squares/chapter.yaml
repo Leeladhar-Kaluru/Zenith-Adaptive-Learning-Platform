@@ -1,0 +1,13 @@
+slug: 8-maths-squares
+board: cbse
+curriculum: NCERT current editions (to be confirmed by a reviewer)
+grade: 8
+subject: maths
+title: Squares and Square Roots
+summary: Square numbers, spot perfect squares and use square roots to undo squaring.
+concepts:
+- id: squares-roots
+- id: whole-number-ops
+  role: foundation
+lessons:
+- squares-and-roots

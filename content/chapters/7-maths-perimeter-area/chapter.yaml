@@ -1,0 +1,14 @@
+slug: 7-maths-perimeter-area
+board: cbse
+curriculum: NCERT current editions (to be confirmed by a reviewer)
+grade: 7
+subject: maths
+title: Perimeter and Area
+summary: Measure the distance around and the space inside rectangles and squares, and choose the right measure for a real
+  problem.
+concepts:
+- id: area-perimeter-rect
+- id: whole-number-ops
+  role: foundation
+lessons:
+- rectangle-measures

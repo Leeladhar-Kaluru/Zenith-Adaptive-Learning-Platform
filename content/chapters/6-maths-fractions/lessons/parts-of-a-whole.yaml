@@ -1,0 +1,227 @@
+slug: parts-of-a-whole
+title: Fractions as parts of a whole
+minutes: 14
+objectives:
+- Name a fraction from a picture of equal parts
+- Say what the numerator and the denominator tell you
+- Show a fraction on a fraction bar
+concepts:
+- fractions-parts
+origin: ai_assisted
+blocks:
+- kind: text
+  heading: Equal parts make fractions
+  html: <p>A <strong>fraction</strong> names part of a whole. The whole must be cut into <strong>equal</strong> parts. If
+    a roti is cut into 4 equal pieces and you eat 1, you ate <strong>1/4</strong> of the roti.</p>
+- kind: widget
+  widget: fraction
+  config:
+    num: 3
+    den: 4
+- kind: text
+  heading: Top and bottom
+  html: <p>The bottom number is the <strong>denominator</strong>. It tells how many equal parts make the whole. The top number
+    is the <strong>numerator</strong>. It tells how many parts you take.</p>
+- kind: example
+  heading: Worked example
+  prompt: A pizza is cut into 8 equal slices. Asha eats 3 slices. What fraction did she eat?
+  steps:
+  - Count all the equal slices. There are 8, so the denominator is 8.
+  - Count the slices she ate. There are 3, so the numerator is 3.
+  - She ate 3/8 of the pizza.
+  - The slices left are 8 minus 3, which is 5, so 5/8 is left.
+- kind: callout
+  tone: watch
+  html: The parts must be <strong>equal</strong>. A bar cut into one big piece and two small pieces is not cut into thirds.
+- kind: callout
+  tone: real
+  html: In a cricket match, if a team has played 3 of its 10 overs, it has bowled 3/10 of its overs.
+- kind: check
+  item: q-fp-1
+- kind: check
+  item: q-fp-2
+- kind: summary
+  points:
+  - A fraction names equal parts of a whole.
+  - The denominator is the number of equal parts in the whole.
+  - The numerator is the number of parts you take.
+  - The parts taken and the parts left add up to the whole.
+items:
+- key: q-fp-1
+  kind: numeric
+  stem: A bar is cut into 5 equal parts. What is the denominator?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: fractions-parts
+  explanation: The denominator is the number of equal parts in the whole, which is 5.
+  hints:
+  - How many equal parts make the whole?
+  value: 5
+  tolerance: 0.0
+  verify: '5'
+- key: q-fp-2
+  kind: mcq
+  stem: A roti is cut into 6 equal pieces. You eat 1 piece. What fraction did you eat?
+  difficulty: standard
+  purpose: check
+  concepts:
+  - id: fractions-parts
+    weight: 1.0
+  explanation: There are 6 equal pieces and you ate 1, so you ate 1/6.
+  hints:
+  - 'Bottom number: all equal parts. Top number: parts you take.'
+  correct: B
+  options:
+  - key: A
+    text: 6/1
+    misconception: swaps-numerator-denominator
+  - key: B
+    text: 1/6
+  - key: C
+    text: 1/5
+    misconception: counts-parts-left-as-total
+  - key: D
+    text: 6/6
+  verify: 1/6
+- key: q-fp-3
+  kind: numeric
+  stem: A chocolate bar has 10 equal pieces. You eat 4. How many pieces are left?
+  difficulty: intro
+  purpose: practice
+  concepts:
+  - id: fractions-parts
+  explanation: 10 minus 4 is 6 pieces left.
+  hints:
+  - Take the pieces you ate away from all the pieces.
+  value: 6
+  tolerance: 0.0
+  verify: 10-4
+- key: q-fp-4
+  kind: mcq
+  stem: A pizza has 8 equal slices. 3 are eaten. What fraction is left?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: fractions-parts
+    weight: 1.0
+  explanation: 8 minus 3 is 5 slices left out of 8, so 5/8.
+  hints:
+  - First find how many slices are left.
+  correct: B
+  options:
+  - key: A
+    text: 3/8
+    misconception: names-eaten-not-left
+  - key: B
+    text: 5/8
+  - key: C
+    text: 5/3
+    misconception: swaps-numerator-denominator
+  - key: D
+    text: 8/5
+    misconception: swaps-numerator-denominator
+  verify: 5/8
+- key: q-fp-5
+  kind: truefalse
+  stem: In the fraction 3/7, the number 7 tells how many equal parts make the whole.
+  difficulty: intro
+  purpose: practice
+  concepts:
+  - id: fractions-parts
+  explanation: Yes. The denominator 7 is the number of equal parts in the whole.
+  hints:
+  - Which number is the denominator?
+  correct: true
+- key: q-fp-6
+  kind: truefalse
+  stem: A circle cut into one large piece and two small pieces is cut into thirds.
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: fractions-parts
+  explanation: No. Thirds must be equal parts. These parts are not equal.
+  hints:
+  - Are all the parts the same size?
+  correct: false
+- key: q-fp-7
+  kind: numeric
+  stem: Riya has read 7 pages of a 10 page story. The numerator of the fraction she has read is?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: fractions-parts
+  explanation: She read 7 pages, so the numerator is 7. The denominator is 10.
+  hints:
+  - The numerator counts the parts you take.
+  value: 7
+  tolerance: 0.0
+  verify: '7'
+- key: q-fp-8
+  kind: mcq
+  stem: Which fraction means 2 parts out of 9 equal parts?
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: fractions-parts
+    weight: 1.0
+  explanation: 2 parts taken out of 9 equal parts is 2/9.
+  hints:
+  - Put the parts you take on top.
+  correct: B
+  options:
+  - key: A
+    text: 9/2
+    misconception: swaps-numerator-denominator
+  - key: B
+    text: 2/9
+  - key: C
+    text: 2/7
+    misconception: counts-parts-left-as-total
+  - key: D
+    text: 7/9
+  verify: 2/9
+- key: q-fp-9
+  kind: mcq
+  stem: A ribbon is cut into 4 equal pieces. You use 3 pieces. What fraction is still not used?
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: fractions-parts
+    weight: 1.0
+  explanation: 4 minus 3 is 1 piece not used out of 4, so 1/4.
+  hints:
+  - How many pieces are not used?
+  correct: B
+  options:
+  - key: A
+    text: 3/4
+    misconception: names-eaten-not-left
+  - key: B
+    text: 1/4
+  - key: C
+    text: 4/3
+    misconception: swaps-numerator-denominator
+  - key: D
+    text: 1/3
+    misconception: counts-parts-left-as-total
+  verify: 1/4
+misconceptions:
+- code: swaps-numerator-denominator
+  concept: fractions-parts
+  description: Writes the denominator on top and the numerator on the bottom.
+- code: counts-parts-left-as-total
+  concept: fractions-parts
+  description: Uses the number of parts left as the total number of equal parts.
+- code: names-eaten-not-left
+  concept: fractions-parts
+  description: Gives the fraction that was taken when the question asks for the fraction left.
+cards:
+- key: parts-of-a-whole-card-1
+  concept: fractions-parts
+  front: What does the denominator tell you?
+  back: How many equal parts make the whole.
+- key: parts-of-a-whole-card-2
+  concept: fractions-parts
+  front: What does the numerator tell you?
+  back: How many of those parts you take.

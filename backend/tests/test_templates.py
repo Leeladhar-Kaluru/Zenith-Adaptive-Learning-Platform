@@ -6,7 +6,7 @@ from sympy import Eq, solve, symbols, sympify
 from app.engine import grading
 from app.engine.templates import REGISTRY, InvalidInstance, base, generate, templates_for
 
-FAMILIES = {"int_add", "int_subtract", "int_compare", "int_hops", "eq_one_step", "eq_two_step", "eq_word", "eq_both_sides"}
+FAMILIES = {"area_rect", "perimeter_rect", "square_of", "square_root", "frac_compare", "int_add", "int_subtract", "int_compare", "int_hops", "eq_one_step", "eq_two_step", "eq_word", "eq_both_sides"}
 
 
 def test_all_families_registered():

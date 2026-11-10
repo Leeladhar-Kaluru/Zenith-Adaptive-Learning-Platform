@@ -1,0 +1,15 @@
+slug: 6-maths-fractions
+board: cbse
+curriculum: NCERT current editions (to be confirmed by a reviewer)
+grade: 6
+subject: maths
+title: Fractions
+summary: Name fractions from equal parts, then compare them and explain why a bigger denominator means smaller pieces.
+concepts:
+- id: fractions-parts
+- id: fractions-compare
+- id: whole-number-ops
+  role: foundation
+lessons:
+- parts-of-a-whole
+- comparing-fractions

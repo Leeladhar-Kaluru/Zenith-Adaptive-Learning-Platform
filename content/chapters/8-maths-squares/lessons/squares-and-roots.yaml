@@ -1,0 +1,202 @@
+slug: squares-and-roots
+title: Squares and square roots
+minutes: 15
+objectives:
+- Find the square of a number
+- Recognise perfect squares
+- Find the square root of a perfect square
+concepts:
+- squares-roots
+origin: ai_assisted
+blocks:
+- kind: text
+  heading: Squaring a number
+  html: <p>The <strong>square</strong> of a number is the number multiplied by itself. The square of 5 is 5 times 5 = 25.
+    We write it as 5 squared. A number like 25 is a <strong>perfect square</strong> because it is a whole number times itself.</p>
+- kind: text
+  heading: Going backwards
+  html: <p>The <strong>square root</strong> undoes squaring. The square root of 25 is 5, because 5 times 5 is 25. Squaring
+    and taking the square root are opposite steps, just like adding and subtracting.</p>
+- kind: example
+  heading: Worked example
+  prompt: Find the square root of 144.
+  steps:
+  - 'Think: which number times itself is 144?'
+  - 'Try 10: 10 times 10 is 100. Too small.'
+  - 'Try 12: 12 times 12 is 144.'
+  - So the square root of 144 is 12.
+- kind: callout
+  tone: watch
+  html: The square of 6 is 6 times 6 = 36. It is not 6 times 2 = 12.
+- kind: callout
+  tone: real
+  html: A square floor with side 7 m has an area of 7 times 7 = 49 square metres. The side is the square root of the area.
+- kind: check
+  item: q-sq-1
+- kind: check
+  item: q-sq-2
+- kind: summary
+  points:
+  - The square of a number is the number times itself.
+  - A perfect square is a whole number times itself, like 1, 4, 9, 16, 25.
+  - The square root undoes squaring.
+  - The square root of a perfect square is a whole number.
+items:
+- key: q-sq-1
+  kind: numeric
+  stem: What is the square of 9?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: squares-roots
+  explanation: 9 times 9 is 81.
+  hints:
+  - Multiply 9 by itself.
+  value: 81
+  tolerance: 0.0
+  verify: 9*9
+- key: q-sq-2
+  kind: numeric
+  stem: What is the square root of 49?
+  difficulty: standard
+  purpose: check
+  concepts:
+  - id: squares-roots
+  explanation: 7 times 7 is 49, so the square root of 49 is 7.
+  hints:
+  - Which number times itself is 49?
+  value: 7
+  tolerance: 0.0
+  verify: '7'
+- key: q-sq-3
+  kind: numeric
+  stem: What is the square of 12?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: squares-roots
+  explanation: 12 times 12 is 144.
+  hints:
+  - 12 times 12.
+  value: 144
+  tolerance: 0.0
+  verify: 12*12
+- key: q-sq-4
+  kind: numeric
+  stem: What is the square root of 100?
+  difficulty: intro
+  purpose: practice
+  concepts:
+  - id: squares-roots
+  explanation: 10 times 10 is 100.
+  hints:
+  - Which number times itself is 100?
+  value: 10
+  tolerance: 0.0
+  verify: '10'
+- key: q-sq-5
+  kind: mcq
+  stem: Which of these is a perfect square?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: squares-roots
+    weight: 1.0
+  explanation: 6 times 6 is 36, so 36 is a perfect square. The others are not a whole number times itself.
+  hints:
+  - Try to write each number as a whole number times itself.
+  correct: B
+  options:
+  - key: A
+    text: '20'
+  - key: B
+    text: '36'
+  - key: C
+    text: '45'
+  - key: D
+    text: '50'
+- key: q-sq-6
+  kind: mcq
+  stem: What is 7 squared?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: squares-roots
+    weight: 1.0
+  explanation: 7 squared is 7 times 7 = 49, not 7 times 2.
+  hints:
+  - Multiply the number by itself.
+  correct: B
+  options:
+  - key: A
+    text: '14'
+    misconception: doubles-instead-of-squares
+  - key: B
+    text: '49'
+  - key: C
+    text: '77'
+  - key: D
+    text: '56'
+  verify: '49'
+- key: q-sq-7
+  kind: truefalse
+  stem: The square root of 64 is 8.
+  difficulty: intro
+  purpose: practice
+  concepts:
+  - id: squares-roots
+  explanation: 8 times 8 is 64.
+  hints:
+  - 8 times 8.
+  correct: true
+- key: q-sq-8
+  kind: numeric
+  stem: A square garden has an area of 169 square m. What is the length of one side in m?
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: squares-roots
+  explanation: The side is the square root of the area. 13 times 13 is 169, so each side is 13 m.
+  hints:
+  - Which number times itself is 169?
+  value: 13
+  tolerance: 0.0
+  verify: '13'
+- key: q-sq-9
+  kind: mcq
+  stem: Between which two whole numbers is the square root of 50?
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: squares-roots
+    weight: 1.0
+  explanation: 7 times 7 is 49 and 8 times 8 is 64. 50 lies between 49 and 64, so its square root is between 7 and 8.
+  hints:
+  - Find the perfect squares just below and above 50.
+  correct: B
+  options:
+  - key: A
+    text: 5 and 6
+    misconception: tests-wrong-squares
+  - key: B
+    text: 7 and 8
+  - key: C
+    text: 6 and 7
+  - key: D
+    text: 8 and 9
+misconceptions:
+- code: doubles-instead-of-squares
+  concept: squares-roots
+  description: Multiplies the number by 2 instead of by itself.
+- code: tests-wrong-squares
+  concept: squares-roots
+  description: Picks the wrong perfect squares when estimating a square root.
+cards:
+- key: squares-and-roots-card-1
+  concept: squares-roots
+  front: What is a perfect square?
+  back: A whole number times itself, like 25 = 5 times 5.
+- key: squares-and-roots-card-2
+  concept: squares-roots
+  front: What does a square root do?
+  back: It undoes squaring.

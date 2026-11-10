@@ -26,3 +26,11 @@ concepts:
      prerequisites: [{id: simple-equation-one-step, why: "Finding where a line crosses the x-axis means solving an equation."}]}
   - {id: chance-basic, title: Chance and equally likely outcomes, grade: 7, subject: maths, description: "Measuring how likely something is as a fraction of equally likely outcomes.", keywords: [probability, chance, likely, outcome],
      prerequisites: [{id: whole-number-ops}]}
+  - {id: fractions-parts, title: Fractions as parts of a whole, grade: 6, subject: maths, description: "Naming a fraction from equal parts, and reading numerator and denominator.", keywords: [fraction, numerator, denominator, equal parts],
+     prerequisites: [{id: whole-number-ops}]}
+  - {id: fractions-compare, title: Comparing fractions, grade: 6, subject: maths, description: "Deciding which of two fractions is greater using equal denominators or equal numerators.", keywords: [compare, greater, fraction],
+     prerequisites: [{id: fractions-parts}]}
+  - {id: area-perimeter-rect, title: Area and perimeter of rectangles, grade: 7, subject: maths, description: "Finding the distance around and the space inside a rectangle or square.", keywords: [area, perimeter, rectangle, square],
+     prerequisites: [{id: whole-number-ops}]}
+  - {id: squares-roots, title: Squares and square roots, grade: 8, subject: maths, description: "Squaring a number and finding the square root of a perfect square.", keywords: [square, square root, perfect square],
+     prerequisites: [{id: whole-number-ops}]}

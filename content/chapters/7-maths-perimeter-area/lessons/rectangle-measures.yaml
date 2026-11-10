@@ -1,0 +1,195 @@
+slug: rectangle-measures
+title: Perimeter and area of a rectangle
+minutes: 15
+objectives:
+- Find the perimeter of a rectangle
+- Find the area of a rectangle
+- Tell perimeter and area apart and use the right unit
+concepts:
+- area-perimeter-rect
+origin: ai_assisted
+blocks:
+- kind: text
+  heading: Around and inside
+  html: <p>The <strong>perimeter</strong> is the distance all the way around a shape. The <strong>area</strong> is the space
+    inside it. To find the perimeter of a rectangle, add all four sides. To find the area, multiply the length by the width.</p>
+- kind: figure
+  svg: <svg viewBox="0 0 260 150" role="img"><rect x="30" y="25" width="180" height="90" fill="#e6e8ff" stroke="#14193a" stroke-width="3"/><g
+    font-size="15" font-weight="700" text-anchor="middle" fill="currentColor"><text x="120" y="15">8 cm</text><text x="236"
+    y="75">4 cm</text></g></svg>
+  alt: A rectangle with length 8 centimetres and width 4 centimetres.
+  caption: A rectangle that is 8 cm long and 4 cm wide.
+- kind: example
+  heading: Worked example
+  prompt: Find the perimeter and the area of a rectangle 8 cm long and 4 cm wide.
+  steps:
+  - 'Perimeter: add all four sides. 8 + 4 + 8 + 4 = 24, so the perimeter is 24 cm.'
+  - 'Area: multiply length by width. 8 times 4 = 32.'
+  - The area is 32 square centimetres (cm squared).
+  - Perimeter is a length, so its unit is cm. Area is a surface, so its unit is cm squared.
+- kind: callout
+  tone: watch
+  html: Do not mix them up. Perimeter adds the sides. Area multiplies two sides. Area is measured in square units.
+- kind: callout
+  tone: real
+  html: A fence around a field needs the perimeter. Tiles for the floor of a room need the area.
+- kind: check
+  item: q-rm-1
+- kind: check
+  item: q-rm-2
+- kind: summary
+  points:
+  - Perimeter of a rectangle = add all four sides = 2 times (length + width).
+  - Area of a rectangle = length times width.
+  - Perimeter uses cm, m. Area uses square units such as cm squared.
+items:
+- key: q-rm-1
+  kind: numeric
+  stem: A rectangle is 6 cm long and 3 cm wide. What is its area in square cm?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: area-perimeter-rect
+  explanation: Area is length times width. 6 times 3 is 18.
+  hints:
+  - Multiply the two sides.
+  value: 18
+  tolerance: 0.0
+  verify: 6*3
+- key: q-rm-2
+  kind: mcq
+  stem: A rectangle is 7 m long and 2 m wide. What is its perimeter?
+  difficulty: standard
+  purpose: check
+  concepts:
+  - id: area-perimeter-rect
+    weight: 1.0
+  explanation: 'Add all four sides: 7 + 2 + 7 + 2 = 18 m.'
+  hints:
+  - There are four sides.
+  correct: B
+  options:
+  - key: A
+    text: 14 m
+    misconception: area-instead-of-perimeter
+  - key: B
+    text: 18 m
+  - key: C
+    text: 9 m
+    misconception: adds-only-two-sides
+  - key: D
+    text: 16 m
+- key: q-rm-3
+  kind: numeric
+  stem: A square has sides of 5 cm. What is its perimeter in cm?
+  difficulty: intro
+  purpose: practice
+  concepts:
+  - id: area-perimeter-rect
+  explanation: A square has four equal sides. 4 times 5 is 20.
+  hints:
+  - Four equal sides.
+  value: 20
+  tolerance: 0.0
+  verify: 4*5
+- key: q-rm-4
+  kind: numeric
+  stem: A rectangle is 9 cm long and 4 cm wide. What is its area in square cm?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: area-perimeter-rect
+  explanation: 9 times 4 is 36.
+  hints:
+  - Length times width.
+  value: 36
+  tolerance: 0.0
+  verify: 9*4
+- key: q-rm-5
+  kind: numeric
+  stem: A rectangle is 12 m long and 5 m wide. What is its perimeter in m?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: area-perimeter-rect
+  explanation: 2 times (12 + 5) = 2 times 17 = 34.
+  hints:
+  - Add length and width, then double.
+  value: 34
+  tolerance: 0.0
+  verify: 2*(12+5)
+- key: q-rm-6
+  kind: truefalse
+  stem: Area is measured in square units such as cm squared.
+  difficulty: intro
+  purpose: practice
+  concepts:
+  - id: area-perimeter-rect
+  explanation: Yes. Area counts squares that cover a surface.
+  hints:
+  - Think of covering a floor with square tiles.
+  correct: true
+- key: q-rm-7
+  kind: mcq
+  stem: A farmer wants to put a fence around a field. Which measure does she need?
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: area-perimeter-rect
+    weight: 1.0
+  explanation: A fence goes around the edge, so she needs the perimeter.
+  hints:
+  - Does the fence go around or cover the inside?
+  correct: B
+  options:
+  - key: A
+    text: Area
+    misconception: area-instead-of-perimeter
+  - key: B
+    text: Perimeter
+  - key: C
+    text: Neither
+  - key: D
+    text: Both are the same
+- key: q-rm-8
+  kind: numeric
+  stem: A rectangle has area 40 square cm and length 8 cm. What is its width in cm?
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: area-perimeter-rect
+  explanation: Area = length times width, so width = 40 divided by 8 = 5.
+  hints:
+  - Undo the multiplying.
+  value: 5
+  tolerance: 0.0
+  verify: 40/8
+- key: q-rm-9
+  kind: numeric
+  stem: A rectangle has perimeter 30 cm and length 9 cm. What is its width in cm?
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: area-perimeter-rect
+  explanation: Length plus width is half the perimeter, which is 15. So width = 15 - 9 = 6.
+  hints:
+  - Half the perimeter is length plus width.
+  value: 6
+  tolerance: 0.0
+  verify: 30/2-9
+misconceptions:
+- code: area-instead-of-perimeter
+  concept: area-perimeter-rect
+  description: Multiplies the sides when asked for the distance around.
+- code: adds-only-two-sides
+  concept: area-perimeter-rect
+  description: Adds only the length and the width instead of all four sides.
+cards:
+- key: rectangle-measures-card-1
+  concept: area-perimeter-rect
+  front: How do you find the area of a rectangle?
+  back: Multiply length by width.
+- key: rectangle-measures-card-2
+  concept: area-perimeter-rect
+  front: How do you find the perimeter of a rectangle?
+  back: Add all four sides.

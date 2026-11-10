@@ -38,7 +38,7 @@ export default defineConfig({
       workbox: {
         // Install only the app shell up front. Lesson chunks, KaTeX and the Hindi/Telugu/handwriting fonts are cached the first
         // time they are used, so a first visit on a slow connection is not competing with a 2 MB background download.
-        globPatterns: ['index.html', 'assets/index-*.{js,css}', '*.{ico,png,svg}', 'assets/*-latin-wght-normal-*.woff2'],
+        globPatterns: ['index.html', 'assets/index-*.{js,css}', '*.{ico,png,svg}', 'assets/bricolage-grotesque-latin-wght-normal-*.woff2', 'assets/plus-jakarta-sans-latin-wght-normal-*.woff2'],
         navigateFallbackDenylist: [/^\/api\//],
         runtimeCaching: [
           { urlPattern: ({ url }) => /\/assets\/.+\.(?:js|css)$/.test(url.pathname), handler: 'CacheFirst',

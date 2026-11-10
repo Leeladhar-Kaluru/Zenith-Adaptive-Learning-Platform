@@ -16,9 +16,11 @@ import { FxProvider } from './fx/fx';
 import { IconDefs } from './icons/Icon';
 import { startSync } from './offline/sync';
 import { startTracker } from './track/tracker';
+import { startVitals } from './lib/vitals';
 
 startSync();
 startTracker();
+startVitals();
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

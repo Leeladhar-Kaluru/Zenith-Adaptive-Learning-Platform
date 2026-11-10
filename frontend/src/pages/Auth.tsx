@@ -4,6 +4,7 @@ import { useAuth } from '../context/AuthContext';
 import { Button, Card, Segmented } from '../ui/kit';
 import { PublicBar } from './Landing';
 import { ApiError } from '../api/client';
+import { passwordProblems } from '../lib/password';
 import s from './pages.module.css';
 
 export default function Auth({ mode }: { mode: 'signin' | 'signup' }) {
@@ -14,6 +15,8 @@ export default function Auth({ mode }: { mode: 'signin' | 'signup' }) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [pw, setPw] = useState('');
+  const [pw2, setPw2] = useState('');
+  const [show, setShow] = useState(false);
   const [agree, setAgree] = useState(false);
   const [busy, setBusy] = useState(false);
   const [err, setErr] = useState('');
@@ -23,7 +26,8 @@ export default function Auth({ mode }: { mode: 'signin' | 'signup' }) {
     e.preventDefault();
     setErr('');
     if (up && !agree) { setErr('Please confirm the consent statement to continue.'); return; }
-    if (up && pw.length < 8) { setErr('Use a password with at least 8 characters.'); return; }
+    if (up && passwordProblems(pw).length) { setErr('Please choose a stronger password: ' + passwordProblems(pw).join(', ').toLowerCase() + '.'); return; }
+    if (up && pw !== pw2) { setErr('The two passwords do not match.'); return; }
     setBusy(true);
     try {
       const p = up ? await signup({ email, password: pw, displayName: name.trim(), role, consent: agree }) : await login(email, pw);
@@ -54,8 +58,24 @@ export default function Auth({ mode }: { mode: 'signin' | 'signup' }) {
               <input className={s.input} type="email" value={email} onChange={(e) => setEmail(e.target.value)} required autoComplete="email" inputMode="email" />
             </label>
             <label className={s.field}>Password
-              <input className={s.input} type="password" value={pw} onChange={(e) => setPw(e.target.value)} required autoComplete={up ? 'new-password' : 'current-password'} />
+              <span className={s.pwRow}>
+                <input className={s.input} type={show ? 'text' : 'password'} value={pw} onChange={(e) => setPw(e.target.value)} required autoComplete={up ? 'new-password' : 'current-password'} />
+                <button type="button" className={s.pwToggle} aria-pressed={show} onClick={() => setShow((v) => !v)}>{show ? 'Hide' : 'Show'}<span className="sr-only"> password</span></button>
+              </span>
             </label>
+            {up && (
+              <>
+                <label className={s.field}>Confirm password
+                  <input className={s.input} type={show ? 'text' : 'password'} value={pw2} onChange={(e) => setPw2(e.target.value)} required autoComplete="new-password" aria-invalid={pw2.length > 0 && pw !== pw2} />
+                </label>
+                <ul className={`sm ${s.rules}`} aria-live="polite">
+                  {['At least 8 characters', 'At least one letter', 'At least one number'].map((r) => (
+                    <li key={r} className={passwordProblems(pw).includes(r) ? '' : s.ok}>{r}</li>
+                  ))}
+                  <li className={pw2 && pw === pw2 ? s.ok : ''}>Both passwords match</li>
+                </ul>
+              </>
+            )}
             {up && (
               <label className="sm muted" style={{ display: 'flex', gap: 10, alignItems: 'flex-start' }}>
                 <input type="checkbox" checked={agree} onChange={(e) => setAgree(e.target.checked)} style={{ width: 22, height: 22, marginTop: 2, accentColor: 'var(--brand)' }} />

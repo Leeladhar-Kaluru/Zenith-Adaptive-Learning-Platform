@@ -125,3 +125,11 @@ a.lrow:hover { transform: translate(-2px, -2px); box-shadow: var(--hard); }
 
 .decide { position: sticky; bottom: 16px; background: var(--surface); box-shadow: var(--hard); z-index: 6; }
 @media (max-width: 899px) { .decide { bottom: 74px; } }
+
+.pwRow { position: relative; display: block; }
+.pwRow .input { padding-right: 76px; }
+.pwToggle { position: absolute; right: 8px; top: 50%; transform: translateY(-50%); min-height: 36px; padding: 0 12px; border: 0; border-radius: 10px; background: transparent; font: inherit; font-weight: 800; color: var(--brand); cursor: pointer; }
+.rules { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; color: var(--muted, #667); }
+.rules li::before { content: "CB"; margin-right: 8px; }
+.rules li.ok { color: var(--ink); font-weight: 700; }
+.rules li.ok::before { content: "¹3"; color: var(--brand); }

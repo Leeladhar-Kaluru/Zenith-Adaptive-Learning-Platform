@@ -1,0 +1,144 @@
+{
+  "schemaVersion": "1.0.0",
+  "lessonId": "number-systems-practice-set",
+  "lessonVersion": 1,
+  "pathId": "number-systems",
+  "pathVersion": 1,
+  "title": "Chapter Practice: Number Systems & Surds MCQs",
+  "grade": 9,
+  "subjectId": "subject-math",
+  "languageTag": "en-IN",
+  "translationStatus": "original",
+  "estimatedMinutes": 25,
+  "sourceRefs": [],
+  "objectives": [
+    "Assess precision in surd simplification, rationalising denominators, and exponent problems"
+  ],
+  "blocks": [
+    {
+      "blockId": "c9-num-pr-blk-01",
+      "kind": "explanation",
+      "heading": "Practice Instructions",
+      "content": "Solve each problem carefully. Use conjugate pairs to rationalize fractions."
+    }
+  ],
+  "workedExamples": [],
+  "practice": [
+    {
+      "questionId": "q-c9-prac-01",
+      "type": "multiple_choice",
+      "prompt": "If x = 2 + sqrt(3), what is the value of x + 1/x?",
+      "options": [
+        "4",
+        "2*sqrt(3)",
+        "2",
+        "sqrt(3)"
+      ],
+      "conceptIds": [
+        "cbse-09-math-number-systems-rationalising"
+      ],
+      "difficulty": "challenge",
+      "answerKey": 0,
+      "hints": [
+        "1/x = 1 / (2 + sqrt(3)) = (2 - sqrt(3)) / (4 - 3) = 2 - sqrt(3).",
+        "Then x + 1/x = (2 + sqrt(3)) + (2 - sqrt(3))."
+      ],
+      "feedback": "1/x = 2 - sqrt(3). Therefore, x + 1/x = (2 + sqrt(3)) + (2 - sqrt(3)) = 4.",
+      "rubric": {
+        "math_verification": {
+          "domain": "number_systems",
+          "subdomain": "surd_sum",
+          "inputs": {
+            "x": "2 + sqrt(3)"
+          },
+          "expected": {
+            "target_val": "4"
+          }
+        }
+      }
+    },
+    {
+      "questionId": "q-c9-prac-02",
+      "type": "multiple_choice",
+      "prompt": "The decimal representation of 329 / 400 is:",
+      "options": [
+        "0.8225",
+        "0.822",
+        "0.825",
+        "0.82"
+      ],
+      "conceptIds": [
+        "cbse-09-math-number-systems-decimal-expansions"
+      ],
+      "difficulty": "standard",
+      "answerKey": 0,
+      "hints": [
+        "400 = 2^4 * 5^2. Multiply numerator and denominator by 5^2 = 25."
+      ],
+      "feedback": "329 * 25 / (400 * 25) = 8225 / 10000 = 0.8225 (terminating).",
+      "rubric": {
+        "math_verification": {
+          "domain": "real_numbers",
+          "subdomain": "terminating_decimal",
+          "inputs": {
+            "p": 329,
+            "q": 400
+          },
+          "expected": {
+            "target_val": "0.8225"
+          }
+        }
+      }
+    },
+    {
+      "questionId": "q-c9-prac-03",
+      "type": "multiple_choice",
+      "prompt": "Simplify: [ (625)^(-1/2) ]^(-1/4)",
+      "options": [
+        "sqrt(5)",
+        "5",
+        "25",
+        "1/5"
+      ],
+      "conceptIds": [
+        "cbse-09-math-number-systems-laws-of-exponents"
+      ],
+      "difficulty": "challenge",
+      "answerKey": 0,
+      "hints": [
+        "Multiply exponents: (-1/2) * (-1/4) = +1/8.",
+        "625 = 5^4. So (5^4)^(1/8) = 5^(4/8) = 5^(1/2) = sqrt(5)."
+      ],
+      "feedback": "Power of a power: (-1/2) * (-1/4) = 1/8. (625)^(1/8) = (5^4)^(1/8) = 5^(1/2) = sqrt(5).",
+      "rubric": {
+        "math_verification": {
+          "domain": "number_systems",
+          "subdomain": "nested_exponents",
+          "inputs": {
+            "base": 625,
+            "e1": "-1/2",
+            "e2": "-1/4"
+          },
+          "expected": {
+            "target_val": "sqrt(5)"
+          }
+        }
+      }
+    }
+  ],
+  "checkpointTest": [],
+  "takeaways": [
+    "If x = a + sqrt(b) with a^2 - b = 1, then 1/x = a - sqrt(b).",
+    "Nested powers multiply: ((a^m)^n)^p = a^(mnp)."
+  ],
+  "validation": {
+    "status": "ready",
+    "checks": [
+      {
+        "name": "practice_soundness",
+        "passed": true,
+        "details": "All items verified via SymPy"
+      }
+    ]
+  }
+}

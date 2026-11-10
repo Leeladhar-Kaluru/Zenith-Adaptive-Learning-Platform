@@ -1,10 +1,9 @@
 import os
-from typing import List
+from typing import List, Optional
 from pydantic_settings import BaseSettings, SettingsConfigDict
 from pydantic import Field
 
 class Settings(BaseSettings):
-    APP_NAME: str = "SETU"
     APP_ENV: str = "local"
     SETU_TEST_AUTH: bool = False
     LOG_LEVEL: str = "INFO"
@@ -29,9 +28,14 @@ class Settings(BaseSettings):
     ALLOWED_EXTENSIONS: List[str] = ["pdf", "docx", "pptx", "txt", "md", "jpg", "jpeg", "png"]
     
     # AI and Embeddings configuration
+    APP_NAME: str = "ZENITH"
     ENABLE_REMOTE_AI: bool = False
-    LLM_BASE_URL: str = "http://127.0.0.1:1234/v1"
-    LLM_MODEL: str = "google/gemma-4-e4b"
+    LLM_PROVIDER: str = "groq"  # "groq", "lmstudio", "openai"
+    GROQ_API_KEY: Optional[str] = None
+    LLM_BASE_URL: str = "https://api.groq.com/openai/v1"
+    LLM_MODEL: str = "openai/gpt-oss-120b"
+    LLM_FALLBACK_MODEL: str = "qwen/qwen3.8-27b"
+    EMBEDDING_BASE_URL: Optional[str] = None
     EMBEDDING_MODEL: str = "text-embedding-nomic-embed-text-v1.5"
     EMBEDDING_DIMENSION: int = 768
 

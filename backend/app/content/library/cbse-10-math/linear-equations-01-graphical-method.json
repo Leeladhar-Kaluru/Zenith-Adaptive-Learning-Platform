@@ -1,0 +1,199 @@
+{
+  "schemaVersion": "1.0.0",
+  "lessonId": "linear-equations-lesson",
+  "lessonVersion": 1,
+  "pathId": "linear-equations",
+  "pathVersion": 1,
+  "title": "Graphical Method & Consistency Conditions",
+  "grade": 10,
+  "subjectId": "subject-math",
+  "languageTag": "en-IN",
+  "translationStatus": "original",
+  "estimatedMinutes": 25,
+  "sourceRefs": [],
+  "objectives": [
+    "Plot pairs of linear equations in two variables on the Cartesian plane",
+    "Classify intersecting, parallel, and coincident lines algebraically using coefficient ratios"
+  ],
+  "blocks": [
+    {
+      "blockId": "lin-geo-blk-1",
+      "kind": "explanation",
+      "heading": "Algebraic Conditions for Consistency",
+      "content": "For system $a_1 x + b_1 y + c_1 = 0$ and $a_2 x + b_2 y + c_2 = 0$:\n1. $a_1/a_2 \\ne b_1/b_2$: Intersecting lines, unique solution (consistent).\n2. $a_1/a_2 = b_1/b_2 = c_1/c_2$: Coincident lines, infinitely many solutions (dependent consistent).\n3. $a_1/a_2 = b_1/b_2 \\ne c_1/c_2$: Parallel lines, no solution (inconsistent)."
+    }
+  ],
+  "workedExamples": [
+    {
+      "prompt": "Check whether the pair of equations x + 3y = 6 and 2x - 3y = 12 is consistent.",
+      "steps": [
+        "Step 1: Write in standard form: x + 3y - 6 = 0 and 2x - 3y - 12 = 0.",
+        "Step 2: a1/a2 = 1/2, b1/b2 = 3/(-3) = -1.",
+        "Step 3: Since a1/a2 != b1/b2, the system has a unique solution and is consistent.",
+        "Step 4: Adding the equations: 3x = 18 => x = 6. Then 6 + 3y = 6 => y = 0. Solution is (6, 0)."
+      ],
+      "answer": "Consistent with unique solution (6, 0)"
+    }
+  ],
+  "practice": [
+    {
+      "questionId": "q-lin-geo-1",
+      "type": "multiple_choice",
+      "prompt": "The lines x + 2y - 4 = 0 and 2x + 4y - 12 = 0 are:",
+      "options": [
+        "Parallel (no solution)",
+        "Intersecting (unique solution)",
+        "Coincident (infinitely many)",
+        "Perpendicular"
+      ],
+      "conceptIds": [
+        "cbse-10-math-linear-consistency"
+      ],
+      "difficulty": "introductory",
+      "answerKey": 0,
+      "hints": [
+        "Compare ratios: a1/a2 = 1/2, b1/b2 = 2/4 = 1/2, c1/c2 = -4/(-12) = 1/3."
+      ],
+      "feedback": "a1/a2 = b1/b2 != c1/c2. The lines are parallel with no solution.",
+      "rubric": {
+        "math_verification": {
+          "domain": "linear_equations",
+          "subdomain": "consistency",
+          "inputs": {
+            "eq1": "x + 2*y - 4",
+            "eq2": "2*x + 4*y - 12"
+          },
+          "expected": {
+            "target_val": "Parallel (no solution)"
+          }
+        }
+      }
+    },
+    {
+      "questionId": "q-lin-geo-2",
+      "type": "multiple_choice",
+      "prompt": "The lines 2x + 3y - 9 = 0 and 4x + 6y - 18 = 0 are:",
+      "options": [
+        "Coincident (infinitely many)",
+        "Parallel (no solution)",
+        "Intersecting (unique)",
+        "None"
+      ],
+      "conceptIds": [
+        "cbse-10-math-linear-consistency"
+      ],
+      "difficulty": "introductory",
+      "answerKey": 0,
+      "hints": [
+        "a1/a2 = 2/4 = 1/2, b1/b2 = 3/6 = 1/2, c1/c2 = -9/(-18) = 1/2."
+      ],
+      "feedback": "All ratios are equal (1/2), representing coincident lines with infinitely many solutions.",
+      "rubric": {
+        "math_verification": {
+          "domain": "linear_equations",
+          "subdomain": "consistency",
+          "inputs": {
+            "eq1": "2*x + 3*y - 9",
+            "eq2": "4*x + 6*y - 18"
+          },
+          "expected": {
+            "target_val": "Coincident (infinitely many)"
+          }
+        }
+      }
+    }
+  ],
+  "checkpointTest": [
+    {
+      "questionId": "q-lin-geo-3",
+      "type": "multiple_choice",
+      "prompt": "Solve the system graphically: x - 2y = 0 and 3x + 4y - 20 = 0.",
+      "options": [
+        "x = 4, y = 2",
+        "x = 2, y = 4",
+        "x = 1, y = 2",
+        "x = 3, y = 5"
+      ],
+      "conceptIds": [
+        "cbse-10-math-linear-graphical"
+      ],
+      "difficulty": "standard",
+      "answerKey": 0,
+      "hints": [
+        "Substitute x = 2y into second: 3(2y) + 4y = 20 => 10y = 20 => y = 2."
+      ],
+      "feedback": "y = 2 and x = 2(2) = 4. Solution is (4, 2).",
+      "rubric": {
+        "math_verification": {
+          "domain": "linear_equations",
+          "subdomain": "unique_solution",
+          "inputs": {
+            "eq1": "x - 2*y",
+            "eq2": "3*x + 4*y - 20"
+          },
+          "expected": {
+            "solution": [
+              "4",
+              "2"
+            ],
+            "target_val": "x = 4, y = 2"
+          }
+        }
+      }
+    },
+    {
+      "questionId": "q-lin-geo-4",
+      "type": "multiple_choice",
+      "prompt": "For what value of k do 3x - y + 8 = 0 and 6x - k*y + 16 = 0 represent coincident lines?",
+      "options": [
+        "2",
+        "-2",
+        "1/2",
+        "3"
+      ],
+      "conceptIds": [
+        "cbse-10-math-linear-consistency"
+      ],
+      "difficulty": "standard",
+      "answerKey": 0,
+      "hints": [
+        "3/6 = -1/(-k) = 8/16 = 1/2 => 1/k = 1/2 => k = 2."
+      ],
+      "feedback": "k = 2 produces coincident lines.",
+      "rubric": {
+        "math_verification": {
+          "domain": "linear_equations",
+          "subdomain": "parallel_no_solution_parameter",
+          "inputs": {
+            "eq1": "3*x - y + 8",
+            "eq2": "6*x - k*y + 16",
+            "condition": "no_solution"
+          },
+          "expected": {
+            "k": 2,
+            "target_val": "2"
+          }
+        }
+      }
+    }
+  ],
+  "takeaways": [
+    "Ratio comparisons determine whether solutions exist before graphing.",
+    "Parallel lines yield inconsistent systems with 0 intersections."
+  ],
+  "validation": {
+    "status": "ready",
+    "checks": [
+      {
+        "name": "schema_conformance",
+        "passed": true,
+        "details": "Conforms to lesson-package.schema.json"
+      },
+      {
+        "name": "math_verification",
+        "passed": true,
+        "details": "Verified via Sympy symbolic solver"
+      }
+    ]
+  }
+}

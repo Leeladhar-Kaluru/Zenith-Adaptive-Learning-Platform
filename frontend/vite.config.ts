@@ -7,13 +7,13 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'setu-logo.svg'],
+      includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'zenith-logo.svg', 'zenith-mark.svg'],
       manifest: {
-        name: 'SETU',
-        short_name: 'SETU',
-        description: 'Source-grounded adaptive learning desk for school students',
-        theme_color: '#FBF7F0',
-        background_color: '#FBF7F0',
+        name: 'ZENITH',
+        short_name: 'ZENITH',
+        description: 'Curriculum-aware adaptive learning companion for school students',
+        theme_color: '#FDFBF7',
+        background_color: '#FDFBF7',
         display: 'standalone',
         orientation: 'portrait',
         icons: [
@@ -44,7 +44,7 @@ export default defineConfig({
     port: 5173,
     proxy: {
       '/api': {
-        target: process.env.VITE_BACKEND_URL || 'http://localhost:8001',
+        target: process.env.VITE_BACKEND_URL || 'http://localhost:8000',
         changeOrigin: true
       }
     }
@@ -53,7 +53,7 @@ export default defineConfig({
     port: 5173,
     proxy: {
       '/api': {
-        target: process.env.VITE_BACKEND_URL || 'http://localhost:8001',
+        target: process.env.VITE_BACKEND_URL || 'http://localhost:8000',
         changeOrigin: true
       }
     }

@@ -26,6 +26,8 @@ export interface OfflineAttempt {
   lessonId: string;
   lessonVersionId: string;
   questionKey: string;
+  conceptId?: string;
+  endpoint?: 'attempts' | 'practice';
   response: unknown;
   hintLevel: number;
   hintsUsed: string[];
@@ -76,6 +78,7 @@ export interface OfflineSyncEvent {
 
 export class SetuDatabase extends Dexie {
   lessons!: Table<OfflineLesson, string>;
+  offline_resources!: Table<OfflineLesson, string>;
   offlineVisuals!: Table<OfflineVisual, string>;
   offlineAttempts!: Table<OfflineAttempt, string>;
   doubtOutbox!: Table<OfflineDoubt, string>;
@@ -108,6 +111,16 @@ export class SetuDatabase extends Dexie {
       await tx.table('doubtOutbox').clear();
       await tx.table('cachedAnswers').clear();
       await tx.table('syncEvents').clear();
+    });
+
+    this.version(3).stores({
+      lessons: 'lessonId, ownerId, pathId, grade, subjectId, downloadedAt, lastAccessedAt',
+      offline_resources: 'lessonId, ownerId, pathId, grade, subjectId, downloadedAt, lastAccessedAt',
+      offlineVisuals: 'visualId, lessonId, type',
+      offlineAttempts: 'clientAttemptId, ownerId, lessonId, questionKey, synced, submittedAt',
+      doubtOutbox: 'clientDoubtId, ownerId, pathId, status, synced, submittedAt',
+      cachedAnswers: 'clientDoubtId, ownerId, doubtId, cachedAt',
+      syncEvents: 'eventId, eventType, synced, timestamp'
     });
   }
 }
@@ -269,6 +282,36 @@ export async function queueAttemptOffline(params: {
   requireOwnerId(params.ownerId);
   const attemptRecord: OfflineAttempt = {
     ...params,
+    synced: false,
+    submittedAt: new Date().toISOString()
+  };
+  await db.offlineAttempts.put(attemptRecord);
+}
+
+export async function queuePracticeAttemptOffline(params: {
+  clientAttemptId: string;
+  ownerId: string;
+  questionId: string;
+  conceptId: string;
+  response: unknown;
+  hintLevel?: number;
+  hintsUsed?: string[];
+  elapsedSeconds?: number;
+}): Promise<void> {
+  requireOwnerId(params.ownerId);
+  const attemptRecord: OfflineAttempt = {
+    clientAttemptId: params.clientAttemptId,
+    ownerId: params.ownerId,
+    lessonId: 'practice',
+    lessonVersionId: 'v1',
+    questionKey: params.questionId,
+    conceptId: params.conceptId,
+    endpoint: 'practice',
+    response: params.response,
+    hintLevel: params.hintLevel ?? 0,
+    hintsUsed: params.hintsUsed ?? [],
+    attemptKind: 'practice',
+    elapsedSeconds: params.elapsedSeconds ?? 0,
     synced: false,
     submittedAt: new Date().toISOString()
   };

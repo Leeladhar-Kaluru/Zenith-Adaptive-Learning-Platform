@@ -105,7 +105,7 @@ export const TeacherDashboardPage: React.FC = () => {
     } catch (err: unknown) {
       setClassrooms([]);
       setClassroomError(
-        err instanceof Error ? err.message : 'Classrooms could not be loaded from SETU.'
+        err instanceof Error ? err.message : 'Classrooms could not be loaded from ZENITH.'
       );
     } finally {
       setIsLoadingClassrooms(false);
@@ -129,7 +129,7 @@ export const TeacherDashboardPage: React.FC = () => {
       setClassGaps([]);
       setActions([]);
       setMatrixError(
-        err instanceof Error ? err.message : 'The roster could not be loaded from SETU.'
+        err instanceof Error ? err.message : 'The roster could not be loaded from ZENITH.'
       );
     } finally {
       setIsLoadingMatrix(false);
@@ -145,7 +145,7 @@ export const TeacherDashboardPage: React.FC = () => {
     } catch (err: unknown) {
       setRoster([]);
       setRosterError(
-        err instanceof Error ? err.message : 'The membership list could not be loaded from SETU.'
+        err instanceof Error ? err.message : 'The membership list could not be loaded from ZENITH.'
       );
     } finally {
       setIsLoadingRoster(false);
@@ -229,7 +229,7 @@ export const TeacherDashboardPage: React.FC = () => {
       setNewClassSubject('');
     } catch (err: unknown) {
       setCreateError(
-        err instanceof Error ? err.message : 'SETU could not create the classroom.'
+        err instanceof Error ? err.message : 'ZENITH could not create the classroom.'
       );
     } finally {
       setIsSubmittingClass(false);
@@ -310,7 +310,7 @@ export const TeacherDashboardPage: React.FC = () => {
     } catch (err: unknown) {
       setRecFeedback({
         kind: 'error',
-        message: err instanceof Error ? err.message : 'SETU could not send the suggestion.',
+        message: err instanceof Error ? err.message : 'ZENITH could not send the suggestion.',
       });
     } finally {
       setIsSubmittingRec(false);
@@ -342,7 +342,7 @@ export const TeacherDashboardPage: React.FC = () => {
       setRosterFeedback({
         kind: 'error',
         message:
-          err instanceof Error ? err.message : 'SETU could not rotate the classroom code.',
+          err instanceof Error ? err.message : 'ZENITH could not rotate the classroom code.',
       });
     } finally {
       setIsRotatingCode(false);
@@ -376,7 +376,7 @@ export const TeacherDashboardPage: React.FC = () => {
       setRosterFeedback({
         kind: 'error',
         message:
-          err instanceof Error ? err.message : 'SETU could not update that membership.',
+          err instanceof Error ? err.message : 'ZENITH could not update that membership.',
       });
     } finally {
       setMemberBusyId(null);
@@ -415,7 +415,7 @@ export const TeacherDashboardPage: React.FC = () => {
       setActionFeedback({
         kind: 'error',
         message:
-          err instanceof Error ? err.message : 'SETU could not update that suggestion.',
+          err instanceof Error ? err.message : 'ZENITH could not update that suggestion.',
       });
     } finally {
       setDecidingActionId(null);
@@ -492,7 +492,7 @@ export const TeacherDashboardPage: React.FC = () => {
 
       {classroomError && (
         <div className={styles.errorBox} role="alert">
-          <strong>SETU could not load your classrooms.</strong> {classroomError}
+          <strong>ZENITH could not load your classrooms.</strong> {classroomError}
           <button type="button" className={styles.inlineRetry} onClick={() => void fetchClassrooms()}>
             Retry
           </button>

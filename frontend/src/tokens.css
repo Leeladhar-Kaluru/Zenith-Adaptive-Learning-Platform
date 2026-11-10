@@ -1,105 +1,129 @@
 :root {
   color-scheme: light;
 
-  /* Surface & Canvas — sunlit study desk */
-  --bg-canvas: #fbf7f0;
-  --bg-sidebar: rgba(255, 255, 255, 0.86);
-  --bg-surface: #ffffff;
-  --bg-surface-hover: #fffaf2;
-  --bg-subtle: #f5efe4;
-  --bg-accent-subtle: #eeedff;
-  --bg-overlay: rgba(23, 35, 61, 0.42);
+  /* =========================================================================
+     1. KITE & CHALK CANONICAL NEO-BRUTALIST PALETTE
+     ========================================================================= */
+  --canvas-parchment: #FDFBF7;
+  --surface-paper: #FFFFFF;
+  --ink-charcoal: #1E1E1E;
+  --ink-body: #2D2D2D;
+  --ink-secondary: #525252;
+  --ink-muted: #737373;
+  --ink-inverted: #FFFFFF;
 
-  /* Text & Ink — deep ink navy */
-  --ink-primary: #17233d;
-  --ink-secondary: #4c5875;
-  --ink-muted: #7c88a3;
-  --ink-inverted: #ffffff;
+  /* Accents */
+  --accent-saffron: #FF9933;
+  --accent-saffron-hover: #E68524;
+  --accent-terracotta: #C84B31;
+  --accent-ultramarine: #1B4965;
+  --accent-olive: #588157;
+  --accent-peach: #EA580C;
 
-  /* Brand / Action — confident indigo-violet */
-  --brand-primary: #5747e8;
-  --brand-primary-hover: #4a3ad4;
-  --brand-primary-active: #3c2fba;
-  --brand-subtle: #eeedff;
-  --brand-accent: #8b5cf6;
+  /* Pastel Tile Fills */
+  --pastel-saffron: #FEF3C7;
+  --pastel-saffron-hover: #FDE68A;
+  --pastel-terracotta: #FFE4E6;
+  --pastel-ultramarine: #E0F2FE;
+  --pastel-olive: #DCFCE7;
+  --pastel-peach: #FFEDD5;
+  --pastel-parchment-dark: #F5EFE4;
 
-  /* Accent — sunshine */
-  --accent-warm: #f5a524;
-  --accent-warm-strong: #df8a00;
-  --accent-warm-subtle: #fff4dc;
+  /* Neo-Brutalist Heavy Borders */
+  --border-heavy: 2px solid var(--ink-charcoal);
+  --border-medium: 1.5px solid var(--ink-charcoal);
+  --border-hairline: 1px solid var(--ink-charcoal);
+  --border-subtle-rule: rgba(30, 30, 30, 0.15);
 
-  /* Status Colors */
-  --color-success: #0f7b57;
-  --color-success-subtle: #e2f7ee;
-  --color-success-border: #a7e3cd;
+  /* Hard-Edged Solid Offset Drop Shadows */
+  --shadow-brutal-xs: 1px 1px 0px var(--ink-charcoal);
+  --shadow-brutal-sm: 2px 2px 0px var(--ink-charcoal);
+  --shadow-brutal-md: 4px 4px 0px var(--ink-charcoal);
+  --shadow-brutal-lg: 6px 6px 0px var(--ink-charcoal);
+  --shadow-brutal-none: 0px 0px 0px transparent;
 
-  --color-warning: #a35800;
-  --color-warning-subtle: #fff3e0;
-  --color-warning-border: #f1c894;
+  /* Tactile Press Offset */
+  --press-offset: translate(2px, 2px);
+  --press-offset-sm: translate(1px, 1px);
 
-  --color-error: #b3352b;
-  --color-error-subtle: #fdecea;
-  --color-error-border: #f3b4ad;
+  /* Corner Radii */
+  --radius-sharp: 0px;
+  --radius-micro: 2px;
+  --radius-box: 4px;
+  --radius-pill: 9999px;
 
-  --color-info: #1d5fd6;
-  --color-info-subtle: #e9f1ff;
-  --color-info-border: #b6d0f8;
+  /* Typography Families */
+  --font-display: 'Space Grotesk', 'Bricolage Grotesque', system-ui, sans-serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --font-reading: 'Literata', Georgia, serif;
 
-  /* Borders & rules */
-  --border-subtle: #eae2d4;
-  --border-medium: #d9cdbb;
-  --border-strong: #b7aa95;
-  --rule: #efe8db;
+  /* =========================================================================
+     2. BACKWARDS COMPATIBILITY LAYER FOR EXISTING MODULES
+     ========================================================================= */
+  --bg-canvas: var(--canvas-parchment);
+  --bg-sidebar: var(--canvas-parchment);
+  --bg-surface: var(--surface-paper);
+  --bg-surface-hover: var(--pastel-saffron);
+  --bg-subtle: var(--pastel-parchment-dark);
+  --bg-accent-subtle: var(--pastel-ultramarine);
+  --bg-overlay: rgba(30, 30, 30, 0.55);
 
-  /* Radii — friendly and soft */
-  --radius-xs: 8px;
-  --radius-sm: 12px;
-  --radius-md: 16px;
-  --radius-lg: 22px;
-  --radius-xl: 30px;
+  --ink-primary: var(--ink-charcoal);
+
+  --brand-primary: var(--accent-saffron);
+  --brand-primary-hover: var(--accent-saffron-hover);
+  --brand-primary-active: var(--accent-saffron-hover);
+  --brand-subtle: var(--pastel-saffron);
+  --brand-accent: var(--accent-ultramarine);
+
+  --accent-warm: var(--accent-saffron);
+  --accent-warm-strong: var(--accent-saffron-hover);
+  --accent-warm-subtle: var(--pastel-saffron);
+
+  --color-success: var(--accent-olive);
+  --color-success-subtle: var(--pastel-olive);
+  --color-success-border: var(--ink-charcoal);
+
+  --color-warning: #D97706;
+  --color-warning-subtle: var(--pastel-peach);
+  --color-warning-border: var(--ink-charcoal);
+
+  --color-error: var(--accent-terracotta);
+  --color-error-subtle: var(--pastel-terracotta);
+  --color-error-border: var(--ink-charcoal);
+
+  --color-info: var(--accent-ultramarine);
+  --color-info-subtle: var(--pastel-ultramarine);
+  --color-info-border: var(--ink-charcoal);
+
+  --border-subtle: rgba(30, 30, 30, 0.2);
+  --border-medium: var(--ink-charcoal);
+  --border-strong: var(--ink-charcoal);
+  --rule: rgba(30, 30, 30, 0.12);
+
+  --radius-xs: 2px;
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 4px;
+  --radius-xl: 6px;
   --radius-full: 9999px;
 
-  /* Typography */
-  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-display: 'Bricolage Grotesque', 'Plus Jakarta Sans', system-ui, sans-serif;
-  --font-reading: 'Literata', Georgia, 'Times New Roman', serif;
-  --font-mono: 'JetBrains Mono', SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --shadow-xs: var(--shadow-brutal-xs);
+  --shadow-sm: var(--shadow-brutal-sm);
+  --shadow-md: var(--shadow-brutal-md);
+  --shadow-lg: var(--shadow-brutal-lg);
+  --shadow-lift: var(--shadow-brutal-md);
+  --shadow-drawer: -4px 0 0px var(--ink-charcoal);
 
-  /* Gradients */
-  --grad-primary: linear-gradient(135deg, #4b3fd6 0%, #6d4bf0 52%, #a855f7 100%);
-  --grad-sunrise: linear-gradient(135deg, #ffd66b 0%, #ff9a62 58%, #f472b6 100%);
-  --grad-sky: linear-gradient(135deg, #67e8f9 0%, #60a5fa 55%, #6366f1 100%);
-  --grad-mint: linear-gradient(135deg, #b9f6d9 0%, #5eead4 60%, #2dd4bf 100%);
-  --grad-blush: linear-gradient(135deg, #fecdd3 0%, #fda4af 55%, #f472b6 100%);
-  --grad-paper: linear-gradient(160deg, #fffdf9 0%, #fbf4e8 100%);
+  --card-bg: var(--surface-paper);
+  --card-border: var(--border-heavy);
+  --card-radius: var(--radius-micro);
+  --card-shadow: var(--shadow-brutal-sm);
+  --card-shadow-hover: var(--shadow-brutal-md);
+  --hairline: 1px solid var(--ink-charcoal);
 
-  /* Elevations — warm, layered, never muddy */
-  --shadow-xs: 0 1px 2px rgba(23, 35, 61, 0.06);
-  --shadow-sm: 0 2px 6px rgba(23, 35, 61, 0.07), 0 1px 2px rgba(23, 35, 61, 0.05);
-  --shadow-md: 0 14px 30px -14px rgba(23, 35, 61, 0.22), 0 3px 8px rgba(23, 35, 61, 0.05);
-  --shadow-lg: 0 26px 60px -24px rgba(23, 35, 61, 0.32), 0 8px 20px -8px rgba(23, 35, 61, 0.12);
-  --shadow-drawer: -10px 0 48px rgba(23, 35, 61, 0.2);
-  --shadow-lift: 0 20px 40px -18px rgba(87, 71, 232, 0.38);
-
-  /* Subject colours (paired with labels, never alone) */
-  --subject-math: #e08a00;
-  --subject-math-soft: #fff0d2;
-  --subject-science: #0f8a63;
-  --subject-science-soft: #dff7ed;
-  --subject-social: #cf5a3c;
-  --subject-social-soft: #ffebe4;
-  --subject-english: #7b4fd6;
-  --subject-english-soft: #f0e9ff;
-  --subject-hindi: #c2416f;
-  --subject-hindi-soft: #ffe9f1;
-  --subject-it: #1d5fd6;
-  --subject-it-soft: #e6f0ff;
-
-  /* Transitions */
-  --transition-fast: 150ms ease;
-  --transition-normal: 220ms cubic-bezier(0.22, 1, 0.36, 1);
-
-  /* Spacing scale */
+  /* Spacing Scale */
   --space-1: 4px;
   --space-2: 8px;
   --space-3: 12px;
@@ -110,7 +134,7 @@
   --space-10: 40px;
   --space-12: 48px;
 
-  /* Type scale */
+  /* Type Scale */
   --text-xs: 11.5px;
   --text-sm: 13px;
   --text-base: 15px;
@@ -120,22 +144,23 @@
   --text-2xl: 32px;
   --text-3xl: 42px;
 
-  /* Cards & hairlines */
-  --card-bg: var(--bg-surface);
-  --card-border: 1px solid var(--border-subtle);
-  --card-radius: var(--radius-lg);
-  --card-shadow: var(--shadow-sm);
-  --card-shadow-hover: var(--shadow-md);
-  --hairline: 1px solid var(--rule);
+  /* Subject Colours */
+  --subject-math: #D97706;
+  --subject-math-soft: var(--pastel-saffron);
+  --subject-science: var(--accent-olive);
+  --subject-science-soft: var(--pastel-olive);
+  --subject-social: var(--accent-terracotta);
+  --subject-social-soft: var(--pastel-terracotta);
+  --subject-english: #6D28D9;
+  --subject-english-soft: #EDE9FE;
+  --subject-hindi: #BE185D;
+  --subject-hindi-soft: #FCE7F3;
+  --subject-it: var(--accent-ultramarine);
+  --subject-it-soft: var(--pastel-ultramarine);
 
-  /* Per-subject gradients — mid-tone starts so white text stays readable.
-     Used for rails, chips and identity accents; never for tiny text alone. */
-  --grad-subject-math: linear-gradient(135deg, #a85f00 0%, #d97f00 58%, #f5a524 100%);
-  --grad-subject-science: linear-gradient(135deg, #0a6f4f 0%, #0f8a63 58%, #23a97e 100%);
-  --grad-subject-social: linear-gradient(135deg, #a84327 0%, #cf5a3c 58%, #e0795a 100%);
-  --grad-subject-english: linear-gradient(135deg, #5f3bc4 0%, #7b4fd6 58%, #9a73ea 100%);
-  --grad-subject-hindi: linear-gradient(135deg, #9c2d58 0%, #c2416f 58%, #d96a90 100%);
-  --grad-subject-it: linear-gradient(135deg, #14479b 0%, #1d5fd6 58%, #4b82ea 100%);
+  /* Transitions */
+  --transition-fast: 120ms ease;
+  --transition-normal: 180ms ease;
 }
 
 *, *::before, *::after {
@@ -151,8 +176,8 @@ html {
 
 html, body {
   min-height: 100%;
-  background-color: var(--bg-canvas);
-  color: var(--ink-primary);
+  background-color: var(--canvas-parchment);
+  color: var(--ink-charcoal);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -160,10 +185,8 @@ html, body {
 
 body {
   background-image:
-    radial-gradient(46% 38% at 100% 0%, rgba(139, 92, 246, 0.1), transparent 70%),
-    radial-gradient(42% 34% at 0% 100%, rgba(245, 165, 36, 0.12), transparent 72%),
-    radial-gradient(rgba(23, 35, 61, 0.045) 1px, transparent 1px);
-  background-size: auto, auto, 22px 22px;
+    radial-gradient(rgba(30, 30, 30, 0.04) 1px, transparent 1px);
+  background-size: 20px 20px;
   background-attachment: fixed;
 }
 
@@ -173,19 +196,19 @@ body {
   flex-direction: column;
 }
 
-h1, h2, h3, h4 {
+h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
   font-weight: 700;
-  letter-spacing: -0.025em;
+  letter-spacing: -0.02em;
+  color: var(--ink-charcoal);
 }
 
 a {
-  color: var(--brand-primary);
+  color: var(--accent-ultramarine);
   text-decoration: none;
 }
 
 a:hover {
-  color: var(--brand-primary-hover);
   text-decoration: underline;
 }
 
@@ -206,43 +229,33 @@ code, pre {
   opacity: 1;
 }
 
-/* Keyboard focus is never removed. The !important is deliberate: several
-   legacy module inputs set outline:none, and focus must survive that. */
 :focus-visible {
-  outline: 3px solid rgba(87, 71, 232, 0.55) !important;
-  outline-offset: 2px !important;
+  outline: 2px dashed var(--ink-charcoal) !important;
+  outline-offset: 3px !important;
 }
 
 ::selection {
-  background: #ddd8ff;
-  color: #2a2280;
+  background: var(--pastel-saffron);
+  color: var(--ink-charcoal);
 }
 
 select, option, input, textarea {
   color-scheme: light;
 }
 
-/* Slim, warm scrollbars that match the desk. */
 * {
   scrollbar-width: thin;
-  scrollbar-color: #d8cdbb transparent;
+  scrollbar-color: var(--ink-charcoal) transparent;
 }
 
 *::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
 }
 
 *::-webkit-scrollbar-thumb {
-  background: #d8cdbb;
-  border-radius: 999px;
-  border: 3px solid transparent;
-  background-clip: content-box;
-}
-
-*::-webkit-scrollbar-thumb:hover {
-  background: #c1b39c;
-  background-clip: content-box;
+  background: var(--ink-charcoal);
+  border-radius: 0px;
 }
 
 @media (prefers-reduced-motion: reduce) {

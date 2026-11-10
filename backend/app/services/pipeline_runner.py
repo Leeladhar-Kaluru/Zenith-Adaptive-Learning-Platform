@@ -237,8 +237,6 @@ async def process_job(db: Session, job: GenerationJob) -> bool:
             for c in c_rows
         ]
 
-    # Release DB connection back to the pool while the LLM network request runs
-    db.close()
 
     try:
         package = await lesson_generator_service.generate_lesson_package(

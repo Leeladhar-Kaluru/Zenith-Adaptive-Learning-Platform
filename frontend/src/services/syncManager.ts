@@ -1,5 +1,5 @@
 import { db } from '../db/indexedDB';
-import { authHeaders } from './api';
+import { authHeaders, API_BASE } from './api';
 import { getActiveUserId } from './session';
 
 export type SyncStatusListener = (
@@ -90,7 +90,7 @@ class SyncManager {
         );
         await this.notify();
         try {
-          const res = await fetch('/api/v1/sync/doubts', {
+          const res = await fetch(`${API_BASE}/sync/doubts`, {
             method: 'POST',
             headers,
             body: JSON.stringify({
@@ -158,7 +158,7 @@ class SyncManager {
               },
             })),
           );
-          console.warn('[SETU SyncManager] Doubt sync error:', err);
+          console.warn('[ZENITH SyncManager] Doubt sync error:', err);
         }
       }
 
@@ -170,19 +170,36 @@ class SyncManager {
         .toArray();
       for (const attempt of pendingAttempts) {
         try {
-          const response = await fetch('/api/v1/attempts', {
+          const isPractice = attempt.endpoint === 'practice';
+          const targetUrl = isPractice
+            ? `${API_BASE}/practice/submit`
+            : `${API_BASE}/attempts`;
+
+          const body = isPractice
+            ? {
+                question_id: attempt.questionKey,
+                concept_id: attempt.conceptId || '',
+                response: attempt.response,
+                hint_level: attempt.hintLevel,
+                hints_used: Array.isArray(attempt.hintsUsed) ? attempt.hintsUsed : [],
+                elapsed_seconds: attempt.elapsedSeconds,
+                sync_idempotency_key: attempt.clientAttemptId,
+              }
+            : {
+                lessonVersionId: attempt.lessonVersionId,
+                questionKey: attempt.questionKey,
+                response: attempt.response,
+                hintLevel: attempt.hintLevel,
+                hintsUsed: attempt.hintsUsed,
+                elapsedSeconds: attempt.elapsedSeconds,
+                attemptKind: attempt.attemptKind,
+                syncIdempotencyKey: attempt.clientAttemptId,
+              };
+
+          const response = await fetch(targetUrl, {
             method: 'POST',
             headers,
-            body: JSON.stringify({
-              lessonVersionId: attempt.lessonVersionId,
-              questionKey: attempt.questionKey,
-              response: attempt.response,
-              hintLevel: attempt.hintLevel,
-              hintsUsed: attempt.hintsUsed,
-              elapsedSeconds: attempt.elapsedSeconds,
-              attemptKind: attempt.attemptKind,
-              syncIdempotencyKey: attempt.clientAttemptId,
-            }),
+            body: JSON.stringify(body),
           });
 
           if (response.ok) {
@@ -209,7 +226,7 @@ class SyncManager {
           await db.offlineAttempts.update(attempt.clientAttemptId, {
             syncError: 'Network error — will retry on the next sync.',
           });
-          console.warn('[SETU SyncManager] Attempt sync error:', err);
+          console.warn('[ZENITH SyncManager] Attempt sync error:', err);
         }
       }
     } finally {

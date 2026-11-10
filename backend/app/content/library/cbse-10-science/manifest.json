@@ -1,0 +1,211 @@
+{
+  "schemaVersion": "1.0.0",
+  "curriculumId": "cbse-10-science",
+  "board": {
+    "id": "board-cbse",
+    "code": "CBSE",
+    "name": "Central Board of Secondary Education"
+  },
+  "grade": 10,
+  "subject": {
+    "id": "subject-science",
+    "code": "SCI",
+    "name": "Science"
+  },
+  "chapters": [
+    {
+      "id": "cbse-10-science-chemical-reactions",
+      "slug": "chemical-reactions-and-equations",
+      "chapterNumber": 1,
+      "title": "Chemical Reactions & Equations",
+      "description": "Understanding chemical changes, writing and balancing chemical equations, exploring combination, decomposition, displacement, double displacement, redox reactions, corrosion, and rancidity.",
+      "concepts": [
+        {
+          "id": "cbse-09-science-atoms-molecules-valency",
+          "slug": "valency-conservation-of-mass",
+          "title": "Valency & Law of Conservation of Mass",
+          "description": "Foundation bridge concept reviewing atoms, valency, writing chemical formulae, and Lavoisier's Law of Conservation of Mass.",
+          "grade": 9,
+          "subjectId": "subject-science",
+          "keywords": [
+            "valency",
+            "conservation of mass",
+            "chemical formula"
+          ],
+          "bktParams": {
+            "pL0": 0.25,
+            "pT": 0.15,
+            "pG": 0.2,
+            "pS": 0.1
+          }
+        },
+        {
+          "id": "cbse-10-science-chemical-equation-balancing",
+          "slug": "writing-balancing-equations",
+          "title": "Writing and Balancing Chemical Equations",
+          "description": "A chemical equation has equal numbers of atoms of each element on both reactant and product sides (hit-and-trial method).",
+          "grade": 10,
+          "subjectId": "subject-science",
+          "keywords": [
+            "balanced equation",
+            "stoichiometry",
+            "hit and trial"
+          ],
+          "bktParams": {
+            "pL0": 0.25,
+            "pT": 0.15,
+            "pG": 0.2,
+            "pS": 0.1
+          }
+        },
+        {
+          "id": "cbse-10-science-combination-reactions",
+          "slug": "combination-reactions",
+          "title": "Combination Reactions (Exothermic)",
+          "description": "Two or more substances combine to form a single product: A + B -> AB. E.g. CaO + H2O -> Ca(OH)2 + Heat (slaking of lime).",
+          "grade": 10,
+          "subjectId": "subject-science",
+          "keywords": [
+            "combination",
+            "exothermic",
+            "quicklime",
+            "slaked lime"
+          ],
+          "bktParams": {
+            "pL0": 0.25,
+            "pT": 0.15,
+            "pG": 0.2,
+            "pS": 0.1
+          }
+        },
+        {
+          "id": "cbse-10-science-decomposition-reactions",
+          "slug": "decomposition-reactions",
+          "title": "Decomposition Reactions (Thermal, Electrolytic, Photochemical)",
+          "description": "A single reactant breaks down into two or more simpler products: AB -> A + B. Thermal (FeSO4, CaCO3), electrolytic (H2O), photochemical (AgCl).",
+          "grade": 10,
+          "subjectId": "subject-science",
+          "keywords": [
+            "decomposition",
+            "endothermic",
+            "electrolysis",
+            "photochemical"
+          ],
+          "bktParams": {
+            "pL0": 0.25,
+            "pT": 0.15,
+            "pG": 0.2,
+            "pS": 0.1
+          }
+        },
+        {
+          "id": "cbse-10-science-displacement-reactions",
+          "slug": "displacement-double-displacement",
+          "title": "Displacement & Double Displacement Reactions",
+          "description": "More reactive element displaces less reactive: Fe + CuSO4 -> FeSO4 + Cu. Double displacement exchanges ions to form an insoluble precipitate (BaSO4).",
+          "grade": 10,
+          "subjectId": "subject-science",
+          "keywords": [
+            "displacement",
+            "precipitation",
+            "reactivity series",
+            "barium sulphate"
+          ],
+          "bktParams": {
+            "pL0": 0.25,
+            "pT": 0.15,
+            "pG": 0.2,
+            "pS": 0.1
+          }
+        },
+        {
+          "id": "cbse-10-science-redox-corrosion",
+          "slug": "redox-corrosion-rancidity",
+          "title": "Oxidation, Reduction, Corrosion & Rancidity",
+          "description": "Oxidation: gain of oxygen / loss of hydrogen. Reduction: loss of oxygen / gain of hydrogen. Corrosion of metals and oxidation of fats (rancidity).",
+          "grade": 10,
+          "subjectId": "subject-science",
+          "keywords": [
+            "oxidation",
+            "reduction",
+            "redox",
+            "corrosion",
+            "rancidity"
+          ],
+          "bktParams": {
+            "pL0": 0.25,
+            "pT": 0.15,
+            "pG": 0.2,
+            "pS": 0.1
+          }
+        }
+      ],
+      "resources": [
+        {
+          "key": "chemical-reactions-lesson",
+          "resourceKind": "lesson",
+          "title": "Concept Notes: The Science of Chemical Change & Balancing Equations",
+          "file": "cbse-10-science/chemical-reactions-01-introduction.json",
+          "sequence": 1,
+          "estimatedMinutes": 20
+        },
+        {
+          "key": "chemical-reactions-worked-examples",
+          "resourceKind": "worked_examples",
+          "title": "Worked Examples: Balancing Equations & Reaction Classification",
+          "file": "cbse-10-science/chemical-reactions-02-worked-examples.json",
+          "sequence": 2,
+          "estimatedMinutes": 20
+        },
+        {
+          "key": "chemical-reactions-cheat-sheet",
+          "resourceKind": "cheat_sheet",
+          "title": "Formula Sheet & Chemical Reactions Cheat Sheet",
+          "file": "cbse-10-science/chemical-reactions-03-cheat-sheet.json",
+          "sequence": 3,
+          "estimatedMinutes": 15
+        },
+        {
+          "key": "chemical-reactions-practice-set",
+          "resourceKind": "practice_set",
+          "title": "Chapter Practice: Chemical Reactions & Equations MCQs",
+          "file": "cbse-10-science/chemical-reactions-04-practice-set.json",
+          "sequence": 4,
+          "estimatedMinutes": 25
+        }
+      ]
+    }
+  ],
+  "dagEdges": [
+    {
+      "fromConceptId": "cbse-09-science-atoms-molecules-valency",
+      "toConceptId": "cbse-10-science-chemical-equation-balancing",
+      "relationship": "prerequisite",
+      "weight": 1.0
+    },
+    {
+      "fromConceptId": "cbse-10-science-chemical-equation-balancing",
+      "toConceptId": "cbse-10-science-combination-reactions",
+      "relationship": "prerequisite",
+      "weight": 1.0
+    },
+    {
+      "fromConceptId": "cbse-10-science-combination-reactions",
+      "toConceptId": "cbse-10-science-decomposition-reactions",
+      "relationship": "prerequisite",
+      "weight": 1.0
+    },
+    {
+      "fromConceptId": "cbse-10-science-decomposition-reactions",
+      "toConceptId": "cbse-10-science-displacement-reactions",
+      "relationship": "prerequisite",
+      "weight": 1.0
+    },
+    {
+      "fromConceptId": "cbse-10-science-displacement-reactions",
+      "toConceptId": "cbse-10-science-redox-corrosion",
+      "relationship": "prerequisite",
+      "weight": 1.0
+    }
+  ]
+}

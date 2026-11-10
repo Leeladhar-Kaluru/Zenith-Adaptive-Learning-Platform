@@ -1,0 +1,337 @@
+{
+  "schemaVersion": "1.0.0",
+  "lessonId": "quadratic-equations-practice-set",
+  "lessonVersion": 1,
+  "pathId": "quadratic-equations",
+  "pathVersion": 1,
+  "title": "Quadratic Equations: Practice & Challenge Arena",
+  "grade": 10,
+  "subjectId": "subject-math",
+  "languageTag": "en-IN",
+  "translationStatus": "original",
+  "estimatedMinutes": 25,
+  "sourceRefs": [],
+  "objectives": [
+    "Demonstrate mastery in quadratic formula, factorisation, and nature of roots",
+    "Solve complex parametric quadratic problems"
+  ],
+  "blocks": [
+    {
+      "blockId": "quad-ps-blk-1",
+      "kind": "summary",
+      "heading": "Practice Set Overview",
+      "content": "8 graded problems covering discriminant evaluation, root finding, and parameter solving."
+    }
+  ],
+  "workedExamples": [],
+  "practice": [
+    {
+      "questionId": "q-quad-ps-1",
+      "type": "multiple_choice",
+      "prompt": "What is the discriminant of x^2 - 5x + 6 = 0?",
+      "options": [
+        "1",
+        "0",
+        "25",
+        "49"
+      ],
+      "conceptIds": [
+        "cbse-10-math-quad-discriminant"
+      ],
+      "difficulty": "introductory",
+      "answerKey": 0,
+      "hints": [
+        "D = (-5)^2 - 4(1)(6) = 25 - 24 = 1."
+      ],
+      "feedback": "D = 1.",
+      "rubric": {
+        "math_verification": {
+          "domain": "quadratic_equations",
+          "subdomain": "discriminant_and_nature",
+          "inputs": {
+            "a": 1,
+            "b": -5,
+            "c": 6
+          },
+          "expected": {
+            "discriminant": 1,
+            "nature": "two_distinct_real_roots",
+            "target_val": "1"
+          }
+        }
+      }
+    },
+    {
+      "questionId": "q-quad-ps-2",
+      "type": "multiple_choice",
+      "prompt": "What are the roots of x^2 - 5x + 6 = 0?",
+      "options": [
+        "[2, 3]",
+        "[-2, -3]",
+        "[1, 6]",
+        "[-1, -6]"
+      ],
+      "conceptIds": [
+        "cbse-10-math-quad-formula"
+      ],
+      "difficulty": "introductory",
+      "answerKey": 0,
+      "hints": [
+        "(x - 2)(x - 3) = 0."
+      ],
+      "feedback": "Roots are 2 and 3.",
+      "rubric": {
+        "math_verification": {
+          "domain": "quadratic_equations",
+          "subdomain": "quadratic_formula",
+          "inputs": {
+            "a": 1,
+            "b": -5,
+            "c": 6
+          },
+          "expected": {
+            "target_val": "[2, 3]"
+          }
+        }
+      }
+    },
+    {
+      "questionId": "q-quad-ps-3",
+      "type": "multiple_choice",
+      "prompt": "What is the discriminant of x^2 - 4x + 4 = 0?",
+      "options": [
+        "0",
+        "4",
+        "16",
+        "-16"
+      ],
+      "conceptIds": [
+        "cbse-10-math-quad-discriminant"
+      ],
+      "difficulty": "introductory",
+      "answerKey": 0,
+      "hints": [
+        "D = 16 - 16 = 0."
+      ],
+      "feedback": "D = 0.",
+      "rubric": {
+        "math_verification": {
+          "domain": "quadratic_equations",
+          "subdomain": "discriminant_and_nature",
+          "inputs": {
+            "a": 1,
+            "b": -4,
+            "c": 4
+          },
+          "expected": {
+            "discriminant": 0,
+            "nature": "two_equal_real_roots",
+            "target_val": "0"
+          }
+        }
+      }
+    },
+    {
+      "questionId": "q-quad-ps-4",
+      "type": "multiple_choice",
+      "prompt": "For what value of k does kx(x - 2) + 6 = 0 have equal roots (k != 0)?",
+      "options": [
+        "6",
+        "0",
+        "-6",
+        "4"
+      ],
+      "conceptIds": [
+        "cbse-10-math-quad-discriminant"
+      ],
+      "difficulty": "standard",
+      "answerKey": 0,
+      "hints": [
+        "kx^2 - 2kx + 6 = 0 => D = 4k^2 - 24k = 0 => 4k(k - 6) = 0. Since k != 0, k = 6."
+      ],
+      "feedback": "k = 6.",
+      "rubric": {
+        "math_verification": {
+          "domain": "quadratic_equations",
+          "subdomain": "equal_roots_parameter",
+          "inputs": {
+            "a": "k",
+            "b": "-2*k",
+            "c": 6
+          },
+          "expected": {
+            "k_values": [
+              0,
+              6
+            ],
+            "target_val": "6"
+          }
+        }
+      }
+    }
+  ],
+  "checkpointTest": [
+    {
+      "questionId": "q-quad-ps-5",
+      "type": "multiple_choice",
+      "prompt": "What is the nature of the roots of x^2 + 4x + 5 = 0?",
+      "options": [
+        "no_real_roots",
+        "two_distinct_real_roots",
+        "two_equal_real_roots",
+        "infinite_roots"
+      ],
+      "conceptIds": [
+        "cbse-10-math-quad-discriminant"
+      ],
+      "difficulty": "standard",
+      "answerKey": 0,
+      "hints": [
+        "D = 16 - 20 = -4 < 0."
+      ],
+      "feedback": "D = -4 < 0 => no real roots.",
+      "rubric": {
+        "math_verification": {
+          "domain": "quadratic_equations",
+          "subdomain": "nature_of_roots",
+          "inputs": {
+            "a": 1,
+            "b": 4,
+            "c": 5
+          },
+          "expected": {
+            "discriminant": -4,
+            "nature": "no_real_roots",
+            "target_val": "no_real_roots"
+          }
+        }
+      }
+    },
+    {
+      "questionId": "q-quad-ps-6",
+      "type": "multiple_choice",
+      "prompt": "For what values of k does x^2 - kx + 9 = 0 have equal roots?",
+      "options": [
+        "[-6, 6]",
+        "[6]",
+        "[-3, 3]",
+        "[9]"
+      ],
+      "conceptIds": [
+        "cbse-10-math-quad-discriminant"
+      ],
+      "difficulty": "standard",
+      "answerKey": 0,
+      "hints": [
+        "D = k^2 - 36 = 0 => k = +-6."
+      ],
+      "feedback": "k = +-6.",
+      "rubric": {
+        "math_verification": {
+          "domain": "quadratic_equations",
+          "subdomain": "equal_roots_parameter",
+          "inputs": {
+            "a": 1,
+            "b": "-k",
+            "c": 9
+          },
+          "expected": {
+            "k_values": [
+              -6,
+              6
+            ],
+            "target_val": "[-6, 6]"
+          }
+        }
+      }
+    },
+    {
+      "questionId": "q-quad-ps-7",
+      "type": "multiple_choice",
+      "prompt": "What are the roots of x^2 - 7x + 12 = 0?",
+      "options": [
+        "[3, 4]",
+        "[-3, -4]",
+        "[2, 6]",
+        "[-2, -6]"
+      ],
+      "conceptIds": [
+        "cbse-10-math-quad-factorisation"
+      ],
+      "difficulty": "introductory",
+      "answerKey": 0,
+      "hints": [
+        "(x - 3)(x - 4) = 0."
+      ],
+      "feedback": "x = 3, 4.",
+      "rubric": {
+        "math_verification": {
+          "domain": "quadratic_equations",
+          "subdomain": "factorisation",
+          "inputs": {
+            "a": 1,
+            "b": -7,
+            "c": 12
+          },
+          "expected": {
+            "target_val": "[3, 4]"
+          }
+        }
+      }
+    },
+    {
+      "questionId": "q-quad-ps-8",
+      "type": "multiple_choice",
+      "prompt": "What is the discriminant of 2x^2 - 3x + 5 = 0?",
+      "options": [
+        "-31",
+        "31",
+        "49",
+        "-49"
+      ],
+      "conceptIds": [
+        "cbse-10-math-quad-discriminant"
+      ],
+      "difficulty": "standard",
+      "answerKey": 0,
+      "hints": [
+        "D = (-3)^2 - 4(2)(5) = 9 - 40 = -31."
+      ],
+      "feedback": "D = -31.",
+      "rubric": {
+        "math_verification": {
+          "domain": "quadratic_equations",
+          "subdomain": "discriminant_and_nature",
+          "inputs": {
+            "a": 2,
+            "b": -3,
+            "c": 5
+          },
+          "expected": {
+            "discriminant": -31,
+            "nature": "no_real_roots",
+            "target_val": "-31"
+          }
+        }
+      }
+    }
+  ],
+  "takeaways": [
+    "Mastery over the quadratic formula equips learners to solve any degree-2 equation systematically."
+  ],
+  "validation": {
+    "status": "ready",
+    "checks": [
+      {
+        "name": "schema_conformance",
+        "passed": true,
+        "details": "Conforms to lesson-package.schema.json"
+      },
+      {
+        "name": "math_verification",
+        "passed": true,
+        "details": "Verified via Sympy symbolic solver"
+      }
+    ]
+  }
+}

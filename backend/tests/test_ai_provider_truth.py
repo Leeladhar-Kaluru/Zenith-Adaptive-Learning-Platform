@@ -12,6 +12,7 @@ async def test_empty_text_is_rejected():
 
 @pytest.mark.asyncio
 async def test_wrong_dimension_is_rejected(monkeypatch):
+    monkeypatch.setattr(ai_provider, "embed_base_url", "http://test-embedding-server")
     class FakeResponse:
         status_code = 200
         def json(self):
@@ -100,6 +101,7 @@ async def test_chat_cleans_corrupt_bytes_without_failing(monkeypatch):
 
 @pytest.mark.asyncio
 async def test_batch_count_mismatch_is_rejected(monkeypatch):
+    monkeypatch.setattr(ai_provider, "embed_base_url", "http://test-embedding-server")
     class FakeResponse:
         status_code = 200
         def json(self):

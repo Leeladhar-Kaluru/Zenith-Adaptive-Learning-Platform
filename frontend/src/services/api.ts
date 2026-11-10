@@ -1,6 +1,11 @@
-// SETU API Service Client - Typed contracts connecting frontend to backend
+// ZENITH API Service Client - Typed contracts connecting frontend to backend
 
-const API_BASE = '/api/v1';
+const rawBase = (import.meta.env.VITE_API_BASE_URL || '').trim().replace(/\/+$/, '');
+export const API_BASE = rawBase
+  ? rawBase.endsWith('/api/v1')
+    ? rawBase
+    : `${rawBase}/api/v1`
+  : '/api/v1';
 
 export interface UserProfileData {
   id: string;
@@ -670,6 +675,307 @@ async function request<T>(endpoint: string, options: RequestInit = {}): Promise<
   return response.json();
 }
 
+// -------------------------------------------------------------
+// ZENITH Curriculum, Rewards, Practice & Tutor Types
+// -------------------------------------------------------------
+
+export interface LibraryChapterItem {
+  id: string;
+  slug: string;
+  chapterNumber: number;
+  title: string;
+  description: string;
+  conceptCount: number;
+  resourceCount: number;
+  estimatedMinutes: number;
+  isEnrolled: boolean;
+  completionPct: number;
+}
+
+export interface LibraryCatalogueResponse {
+  curriculumId?: string;
+  board?: { id: string; code: string; name: string };
+  boards?: string[];
+  grade: number;
+  subject?: { id: string; code: string; name: string };
+  subjects?: Array<{ id: string; name: string; code: string }> | string[];
+  totalChapters?: number;
+  totalConcepts?: number;
+  totalLessons?: number;
+  chapters: LibraryChapterItem[];
+}
+
+export interface ChapterConcept {
+  id: string;
+  slug: string;
+  title: string;
+  description: string;
+  grade: number;
+  order: number;
+  pL0?: number;
+  pT?: number;
+  pG?: number;
+  pS?: number;
+}
+
+export interface ChapterResource {
+  id: string;
+  resourceId?: string;
+  lessonKey: string;
+  resourceKind?: 'lesson' | 'worked_examples' | 'quick_revision' | 'formula_sheet' | 'practice_set';
+  title: string;
+  sequence: number;
+  estimatedMinutes: number;
+  status?: string;
+  file?: string;
+  isCompleted?: boolean;
+}
+
+export interface ChapterDetailResponse {
+  id: string;
+  slug: string;
+  chapterNumber: number;
+  title: string;
+  description: string;
+  grade: number;
+  subjectId: string;
+  boardId: string;
+  estimatedMinutes: number;
+  concepts: ChapterConcept[];
+  resources: ChapterResource[];
+  isEnrolled: boolean;
+  completionPct: number;
+  prerequisites?: Array<{ id: string; title: string }>;
+}
+
+export interface ResourcePackageResponse {
+  id: string;
+  resourceId: string;
+  lessonKey: string;
+  title: string;
+  sequence: number;
+  package: {
+    schemaVersion?: string;
+    lessonId?: string;
+    title: string;
+    grade?: number;
+    subjectId?: string;
+    estimatedMinutes?: number;
+    objectives?: string[];
+    blocks?: Array<{
+      blockId?: string;
+      kind: 'explanation' | 'definition' | 'summary' | 'callout';
+      heading?: string;
+      content: string;
+    }>;
+    workedExamples?: Array<{
+      prompt: string;
+      steps: string[];
+      answer: string;
+    }>;
+    practice?: Array<{
+      questionId: string;
+      type?: 'multiple_choice';
+      prompt: string;
+      options: string[];
+      conceptIds?: string[];
+      difficulty?: string;
+      hints?: string[];
+      feedback?: string;
+    }>;
+  };
+}
+
+export interface ConceptDagNode {
+  id: string;
+  title?: string;
+  name?: string;
+  description?: string;
+  grade?: number;
+  order?: number;
+  pKnow?: number;
+  masteryScore?: number;
+  masteryBand?: 'mastered' | 'approaching' | 'developing' | 'not_started' | 'demonstrated' | 'not_enough_evidence';
+  isGap?: boolean;
+  x?: number;
+  y?: number;
+}
+
+export interface ConceptDagEdge {
+  from: string;
+  to: string;
+  relationship?: 'prerequisite' | 'corequisite';
+  weight?: number;
+  prerequisiteId?: string;
+  dependentId?: string;
+}
+
+export interface ConceptDagMapResponse {
+  chapterSlug: string;
+  chapterTitle?: string;
+  nodes: ConceptDagNode[];
+  edges: ConceptDagEdge[];
+}
+
+export interface StudentRewardsSummary {
+  studentId: string;
+  totalXp: number;
+  xp?: number;
+  coins?: number;
+  zenithCoins: number;
+  currentLevel: number;
+  currentLevelProgressXp: number;
+  xpToNextLevel: number;
+  currentStreakDays: number;
+  streak?: number;
+  longestStreakDays?: number;
+  lastActiveDate?: string | null;
+  streakActiveToday?: boolean;
+  timezone?: string;
+  badges: Array<{
+    id: string;
+    name: string;
+    description: string;
+    category: string;
+    iconUrl: string;
+    awardedAt: string | null;
+  }>;
+  recentEvents?: Array<{
+    eventType: string;
+    xpAwarded: number;
+    coinsAwarded: number;
+    createdAt: string;
+  }>;
+}
+
+export interface BadgeCatalogItem {
+  id: string;
+  name: string;
+  description: string;
+  category: string;
+  iconUrl: string;
+  xpBonus: number;
+  isUnlocked: boolean;
+  awardedAt: string | null;
+}
+
+export interface PracticeQuestion {
+  questionId: string;
+  conceptId: string;
+  conceptTitle?: string;
+  type?: string;
+  prompt: string;
+  options: string[];
+  hints: string[];
+  difficulty?: string;
+}
+
+export interface PracticeSessionResponse {
+  chapterSlug: string;
+  conceptId?: string | null;
+  totalQuestions: number;
+  questions: PracticeQuestion[];
+}
+
+export interface PracticeSubmitResponse {
+  questionId: string;
+  conceptId: string;
+  isCorrect: boolean;
+  feedback: string;
+  explanation: string;
+  pKnow: number;
+  masteryBand: string;
+  isGap: boolean;
+  rewards: {
+    awarded: boolean;
+    xpAwarded: number;
+    coinsAwarded: number;
+    totalXp: number;
+    currentStreak: number;
+  };
+}
+
+export interface PracticeRecommendationResponse {
+  conceptId: string;
+  conceptTitle: string;
+  pKnow: number;
+  masteryBand: string;
+  isGap: boolean;
+  reason: string;
+  chapterSlug: string;
+}
+
+export interface DiagnosticSessionItem {
+  itemIndex: number;
+  itemId: string;
+  conceptId: string;
+  probeType: 'chapter_core' | 'prerequisite_bridge';
+  prompt: string;
+  options: string[];
+  difficulty?: string;
+}
+
+export interface DiagnosticSessionResponse {
+  sessionId: string;
+  chapterSlug: string;
+  totalProbes: number;
+  items: DiagnosticSessionItem[];
+}
+
+export interface DiagnosticSubmitResponse {
+  sessionId: string;
+  totalProbes: number;
+  correctCount: number;
+  accuracyPct: number;
+  masteryUpdates: Record<string, { pKnow: number; masteryBand: string; isGap: boolean }>;
+  gapSummary: {
+    confirmedGaps: string[];
+    gapCount: number;
+  };
+  recommendedPractice: {
+    conceptId: string;
+    conceptTitle: string;
+    reason: string;
+  };
+  rewards: {
+    xpAwarded: number;
+    coinsAwarded: number;
+    totalXp: number;
+  };
+}
+
+export interface TutorCitation {
+  id: number;
+  source: string;
+  excerpt: string;
+}
+
+export interface TutorMessageResponse {
+  threadId: string;
+  messageId: string;
+  reply: string;
+  citations: TutorCitation[];
+  isDegraded: boolean;
+  quotaExceeded: boolean;
+}
+
+export interface TutorThreadItem {
+  id: string;
+  title: string;
+  conceptId?: string | null;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface TutorMessageItem {
+  id: string;
+  sender: 'student' | 'assistant';
+  content: string;
+  citations: TutorCitation[];
+  isDegraded: boolean;
+  createdAt: string;
+}
+
 export const api = {
   // Auth
   async signup(data: { email: string; password: string; displayName: string; role?: string; grade?: number; boardId?: string; preferredLanguage?: string }): Promise<AuthResponse> {
@@ -1013,5 +1319,161 @@ export const api = {
       method: 'POST',
       body: JSON.stringify(data)
     });
+  },
+
+  // -----------------------------------------------------------
+  // ZENITH Curriculum, Rewards, Practice, Diagnostics & Tutor
+  // -----------------------------------------------------------
+
+  async getLibraryCatalogue(grade: number = 10, subjectId: string = 'subject-math'): Promise<LibraryCatalogueResponse> {
+    return request<LibraryCatalogueResponse>(`/library/catalogue?grade=${grade}&subject_id=${encodeURIComponent(subjectId)}`);
+  },
+
+  async getChapter(slug: string): Promise<ChapterDetailResponse> {
+    return request<ChapterDetailResponse>(`/library/chapters/${encodeURIComponent(slug)}`);
+  },
+
+  async getResource(resourceId: string): Promise<ResourcePackageResponse> {
+    return request<ResourcePackageResponse>(`/library/resources/${encodeURIComponent(resourceId)}`);
+  },
+
+  async getConceptMap(slug: string): Promise<ConceptDagMapResponse> {
+    return request<ConceptDagMapResponse>(`/library/map/${encodeURIComponent(slug)}`);
+  },
+
+  async enrollChapter(chapterSlug: string): Promise<{ success: boolean; chapterSlug: string }> {
+    return request('/library/enroll', {
+      method: 'POST',
+      body: JSON.stringify({ chapter_slug: chapterSlug })
+    });
+  },
+
+  async getMyLearning(): Promise<{ totalEnrolledChapters: number; totalCompletedResources: number; enrolledChapters: any[] }> {
+    return request('/library/my');
+  },
+
+  async updateResourceProgress(payload: {
+    pathLessonId: string;
+    status: string;
+    completionPct: number;
+    timeSpentSeconds: number;
+    lastPosition?: string;
+  }): Promise<any> {
+    return request('/library/progress', {
+      method: 'POST',
+      body: JSON.stringify({
+        path_lesson_id: payload.pathLessonId,
+        status: payload.status,
+        completion_pct: payload.completionPct,
+        time_spent_seconds: payload.timeSpentSeconds,
+        last_position: payload.lastPosition
+      })
+    });
+  },
+
+  async getRewards(): Promise<StudentRewardsSummary> {
+    return request<StudentRewardsSummary>('/rewards/me');
+  },
+
+  async getBadges(): Promise<{ badges: BadgeCatalogItem[] }> {
+    return request<{ badges: BadgeCatalogItem[] }>('/rewards/badges');
+  },
+
+  async claimDailyLogin(): Promise<any> {
+    return request('/rewards/claim-daily', { method: 'POST' });
+  },
+
+  async getPracticeRecommendation(chapterSlug: string): Promise<PracticeRecommendationResponse> {
+    return request<PracticeRecommendationResponse>(`/practice/recommendation?chapter_slug=${encodeURIComponent(chapterSlug)}`);
+  },
+
+  async createPracticeSession(chapterSlug: string, conceptId?: string, count: number = 5): Promise<PracticeSessionResponse> {
+    return request<PracticeSessionResponse>('/practice/session', {
+      method: 'POST',
+      body: JSON.stringify({
+        chapter_slug: chapterSlug,
+        concept_id: conceptId || null,
+        count
+      })
+    });
+  },
+
+  async submitPracticeAttempt(payload: {
+    questionId: string;
+    conceptId: string;
+    response: unknown;
+    hintLevel?: number;
+    hintsUsed?: string[] | number;
+    elapsedSeconds?: number;
+    syncIdempotencyKey?: string;
+  }): Promise<PracticeSubmitResponse> {
+    const hintsUsedList: string[] = Array.isArray(payload.hintsUsed)
+      ? payload.hintsUsed
+      : typeof payload.hintsUsed === 'number' && payload.hintsUsed > 0
+      ? Array.from({ length: payload.hintsUsed }, (_, i) => `hint_${i + 1}`)
+      : [];
+
+    return request<PracticeSubmitResponse>('/practice/submit', {
+      method: 'POST',
+      body: JSON.stringify({
+        question_id: payload.questionId,
+        concept_id: payload.conceptId,
+        response: payload.response,
+        hint_level: payload.hintLevel ?? 0,
+        hints_used: hintsUsedList,
+        elapsed_seconds: payload.elapsedSeconds ?? 0,
+        sync_idempotency_key: payload.syncIdempotencyKey
+      })
+    });
+  },
+
+  async startDiagnosticSession(chapterSlug: string): Promise<DiagnosticSessionResponse> {
+    return request<DiagnosticSessionResponse>('/diagnostics/session', {
+      method: 'POST',
+      body: JSON.stringify({ chapter_slug: chapterSlug })
+    });
+  },
+
+  async getDiagnosticSession(sessionId: string): Promise<DiagnosticSessionResponse> {
+    return request<DiagnosticSessionResponse>(`/diagnostics/session/${encodeURIComponent(sessionId)}`);
+  },
+
+  async submitDiagnostic(sessionId: string, responses: any[]): Promise<DiagnosticSubmitResponse> {
+    return request<DiagnosticSubmitResponse>('/diagnostics/submit', {
+      method: 'POST',
+      body: JSON.stringify({
+        sessionId,
+        responses
+      })
+    });
+  },
+
+  async sendTutorMessage(payload: {
+    message: string;
+    threadId?: string;
+    chapterSlug?: string;
+    resourceKey?: string;
+    conceptId?: string;
+    simulateProviderOffline?: boolean;
+  }): Promise<TutorMessageResponse> {
+    return request<TutorMessageResponse>('/tutor/message', {
+      method: 'POST',
+      body: JSON.stringify({
+        message: payload.message,
+        thread_id: payload.threadId || null,
+        chapter_slug: payload.chapterSlug || null,
+        resource_key: payload.resourceKey || null,
+        concept_id: payload.conceptId || null,
+        simulate_provider_offline: payload.simulateProviderOffline || false
+      })
+    });
+  },
+
+  async listTutorThreads(): Promise<TutorThreadItem[]> {
+    return request<TutorThreadItem[]>('/tutor/threads');
+  },
+
+  async getTutorThreadMessages(threadId: string): Promise<TutorMessageItem[]> {
+    return request<TutorMessageItem[]>(`/tutor/threads/${encodeURIComponent(threadId)}/messages`);
   }
 };

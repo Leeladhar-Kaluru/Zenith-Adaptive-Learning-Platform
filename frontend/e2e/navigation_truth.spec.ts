@@ -3,7 +3,7 @@ import { test, expect } from '@playwright/test';
 test('an unknown route renders a real not-found page', async ({ page }) => {
   await page.goto('/this-route-does-not-exist');
   await expect(page.getByRole('heading', { name: 'Page not found' })).toBeVisible();
-  await expect(page.getByRole('link', { name: 'Back to SETU' })).toHaveAttribute('href', '/');
+  await expect(page.getByRole('link', { name: 'Back to ZENITH' })).toHaveAttribute('href', '/');
 });
 
 test('a guest sees only real navigation and protected routes ask for sign-in', async ({ page }) => {

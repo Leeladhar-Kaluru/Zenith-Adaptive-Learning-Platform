@@ -12,7 +12,7 @@ export const AuthGate: React.FC<AuthGateProps> = ({ children, teacherOnly = fals
   const { user, isLoading } = useAuth();
   const [isAuthOpen, setIsAuthOpen] = useState(false);
 
-  if (isLoading) return <p className={styles.loading}>Loading SETU…</p>;
+  if (isLoading) return <p className={styles.loading}>Loading ZENITH…</p>;
 
   if (!user) {
     return (

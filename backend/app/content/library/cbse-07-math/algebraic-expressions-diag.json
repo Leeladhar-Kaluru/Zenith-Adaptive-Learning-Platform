@@ -1,0 +1,257 @@
+{
+  "schemaVersion": "1.0.0",
+  "chapterId": "cbse-07-math-algebraic-expressions",
+  "totalItems": 8,
+  "items": [
+    {
+      "questionId": "diag-c7-01",
+      "itemIndex": 1,
+      "itemType": "foundation_bridge",
+      "conceptId": "cbse-06-math-integers-addition",
+      "isPrerequisiteProbe": true,
+      "type": "multiple_choice",
+      "prompt": "Evaluate the signed sum: (-7) + (-13)",
+      "options": [
+        "-20",
+        "-6",
+        "6",
+        "20"
+      ],
+      "answerKey": 0,
+      "difficulty": "introductory",
+      "hints": [
+        "Both negative: add magnitudes and keep sign."
+      ],
+      "explanation": "(-7) + (-13) = -(7 + 13) = -20.",
+      "math_verification": {
+        "domain": "integers",
+        "subdomain": "addition",
+        "inputs": {
+          "a": -7,
+          "b": -13
+        },
+        "expected": {
+          "target_val": "-20"
+        }
+      }
+    },
+    {
+      "questionId": "diag-c7-02",
+      "itemIndex": 2,
+      "itemType": "foundation_bridge",
+      "conceptId": "cbse-06-math-integers-addition",
+      "isPrerequisiteProbe": true,
+      "type": "multiple_choice",
+      "prompt": "Evaluate: 14 - (-6)",
+      "options": [
+        "8",
+        "-8",
+        "20",
+        "-20"
+      ],
+      "answerKey": 2,
+      "difficulty": "introductory",
+      "hints": [
+        "Double minus becomes plus: 14 + 6."
+      ],
+      "explanation": "14 - (-6) = 14 + 6 = 20.",
+      "math_verification": {
+        "domain": "integers",
+        "subdomain": "subtraction",
+        "inputs": {
+          "a": 14,
+          "b": -6
+        },
+        "expected": {
+          "target_val": "20"
+        }
+      }
+    },
+    {
+      "questionId": "diag-c7-03",
+      "itemIndex": 3,
+      "itemType": "foundation_bridge",
+      "conceptId": "cbse-07-math-algebra-variables-constants",
+      "isPrerequisiteProbe": true,
+      "type": "multiple_choice",
+      "prompt": "How many terms are in the expression 3x^2 - 5x + 7y - 9?",
+      "options": [
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "answerKey": 2,
+      "difficulty": "introductory",
+      "hints": [
+        "Count components separated by + or - signs."
+      ],
+      "explanation": "The terms are 3x^2, -5x, 7y, and -9 (total of 4 terms).",
+      "math_verification": {
+        "domain": "algebraic_expressions",
+        "subdomain": "term_count",
+        "inputs": {
+          "expr": "3*x**2 - 5*x + 7*y - 9"
+        },
+        "expected": {
+          "target_val": "4"
+        }
+      }
+    },
+    {
+      "questionId": "diag-c7-04",
+      "itemIndex": 4,
+      "itemType": "foundation_bridge",
+      "conceptId": "cbse-07-math-algebra-coefficients",
+      "isPrerequisiteProbe": true,
+      "type": "multiple_choice",
+      "prompt": "What is the numerical coefficient of the term -y?",
+      "options": [
+        "0",
+        "1",
+        "-1",
+        "y"
+      ],
+      "answerKey": 2,
+      "difficulty": "introductory",
+      "hints": [
+        "-y is equivalent to -1 * y."
+      ],
+      "explanation": "The numerical multiplier of -y is -1.",
+      "math_verification": {
+        "domain": "algebraic_expressions",
+        "subdomain": "coefficient",
+        "inputs": {
+          "term": "-y"
+        },
+        "expected": {
+          "target_val": "-1"
+        }
+      }
+    },
+    {
+      "questionId": "diag-c7-05",
+      "itemIndex": 5,
+      "itemType": "chapter_core",
+      "conceptId": "cbse-07-math-algebra-like-unlike-terms",
+      "isPrerequisiteProbe": false,
+      "type": "multiple_choice",
+      "prompt": "Which of the following is a pair of LIKE terms?",
+      "options": [
+        "-7x and 7y",
+        "-29x and -29x^2",
+        "14xy and 42yx",
+        "100x and 100y"
+      ],
+      "answerKey": 2,
+      "difficulty": "standard",
+      "hints": [
+        "xy = yx due to commutativity of multiplication."
+      ],
+      "explanation": "14xy and 42yx have identical algebraic factors (x and y).",
+      "math_verification": {
+        "domain": "algebraic_expressions",
+        "subdomain": "like_terms",
+        "inputs": {},
+        "expected": {
+          "target_val": "14xy and 42yx"
+        }
+      }
+    },
+    {
+      "questionId": "diag-c7-06",
+      "itemIndex": 6,
+      "itemType": "chapter_core",
+      "conceptId": "cbse-07-math-algebra-operations",
+      "isPrerequisiteProbe": false,
+      "type": "multiple_choice",
+      "prompt": "Simplify: 12m^2 - 9m + 5m - 4m^2 - 7m + 10",
+      "options": [
+        "8m^2 - 11m + 10",
+        "8m^2 + 11m + 10",
+        "16m^2 - 11m + 10",
+        "8m^2 - 7m + 10"
+      ],
+      "answerKey": 0,
+      "difficulty": "standard",
+      "hints": [
+        "Group m^2: (12 - 4)m^2 = 8m^2.",
+        "Group m: (-9 + 5 - 7)m = -11m."
+      ],
+      "explanation": "(12 - 4)m^2 + (-9 + 5 - 7)m + 10 = 8m^2 - 11m + 10.",
+      "math_verification": {
+        "domain": "algebraic_expressions",
+        "subdomain": "simplification",
+        "inputs": {
+          "expr": "12*m**2 - 9*m + 5*m - 4*m**2 - 7*m + 10"
+        },
+        "expected": {
+          "target_val": "8m^2 - 11m + 10"
+        }
+      }
+    },
+    {
+      "questionId": "diag-c7-07",
+      "itemIndex": 7,
+      "itemType": "chapter_core",
+      "conceptId": "cbse-07-math-algebra-operations",
+      "isPrerequisiteProbe": false,
+      "type": "multiple_choice",
+      "prompt": "What is the result when -(3a - 2b) is subtracted from (5a + 4b)?",
+      "options": [
+        "8a + 2b",
+        "2a + 6b",
+        "8a + 6b",
+        "2a + 2b"
+      ],
+      "answerKey": 0,
+      "difficulty": "challenge",
+      "hints": [
+        "(5a + 4b) - (-(3a - 2b)) = (5a + 4b) + (3a - 2b)."
+      ],
+      "explanation": "(5a + 4b) + (3a - 2b) = (5 + 3)a + (4 - 2)b = 8a + 2b.",
+      "math_verification": {
+        "domain": "algebraic_expressions",
+        "subdomain": "double_negative",
+        "inputs": {
+          "expr": "(5*a + 4*b) - (-(3*a - 2*b))"
+        },
+        "expected": {
+          "target_val": "8a + 2b"
+        }
+      }
+    },
+    {
+      "questionId": "diag-c7-08",
+      "itemIndex": 8,
+      "itemType": "chapter_core",
+      "conceptId": "cbse-07-math-algebra-evaluating-values",
+      "isPrerequisiteProbe": false,
+      "type": "multiple_choice",
+      "prompt": "If m = 2, what is the value of 3m^2 - 2m - 7?",
+      "options": [
+        "1",
+        "-1",
+        "9",
+        "-7"
+      ],
+      "answerKey": 0,
+      "difficulty": "challenge",
+      "hints": [
+        "3(2)^2 - 2(2) - 7 = 3(4) - 4 - 7."
+      ],
+      "explanation": "12 - 4 - 7 = 12 - 11 = 1.",
+      "math_verification": {
+        "domain": "algebraic_expressions",
+        "subdomain": "evaluation",
+        "inputs": {
+          "expr": "3*m**2 - 2*m - 7",
+          "m": 2
+        },
+        "expected": {
+          "target_val": "1"
+        }
+      }
+    }
+  ]
+}

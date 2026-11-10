@@ -3,12 +3,17 @@ import { NavLink } from 'react-router-dom';
 import {
   AlertTriangle,
   BookOpen,
+  Compass,
   Download,
   GraduationCap,
   Home,
   LayoutDashboard,
   MessageCircleQuestion,
+  Network,
   Sparkles,
+  Target,
+  Trophy,
+  UploadCloud
 } from 'lucide-react';
 import { syncManager } from '../services/syncManager';
 import { useAuth } from '../context/AuthContext';
@@ -23,7 +28,7 @@ const initialsFor = (name: string) =>
     .filter(Boolean)
     .slice(0, 2)
     .map((part) => part[0]?.toUpperCase())
-    .join('') || 'S';
+    .join('') || 'Z';
 
 export const Navigation: React.FC = () => {
   const { user, logout, openTour } = useAuth();
@@ -83,71 +88,84 @@ export const Navigation: React.FC = () => {
   return (
     <>
       <aside className={styles.sidebar}>
-        <NavLink to={user?.role === 'teacher' ? '/teacher' : '/'} className={styles.brand} title="SETU home">
+        <NavLink to={user?.role === 'teacher' ? '/teacher' : '/'} className={styles.brand} title="ZENITH home">
           <span className={styles.brandMark} aria-hidden="true">
-            <img src="/setu-logo.svg" alt="" width={34} height={34} />
+            <img src="/zenith-mark.svg" alt="ZENITH" width={34} height={34} />
           </span>
           <span className={styles.brandText}>
-            <span className={styles.brandName}>SETU</span>
-            <span className={styles.brandTag}>Learning desk</span>
+            <span className={styles.brandName}>ZENITH</span>
+            <span className={styles.brandTag}>Adaptive Companion</span>
           </span>
         </NavLink>
 
-        <nav className={styles.navLinks} aria-label="Primary">
-          <span className={styles.navLabel} aria-hidden="true">Your desk</span>
-          {!user ? (
-            <>
-              <NavLink to="/" end className={linkClass}>
-                <Home size={16} aria-hidden="true" /> Home
-              </NavLink>
-              <button
-                type="button"
-                className={styles.navButton}
-                onClick={openAskSetu}
-                title="Ask the SETU AI tutor a question"
-              >
-                <Sparkles size={16} aria-hidden="true" /> Ask SETU
-              </button>
-            </>
-          ) : user.role === 'teacher' ? (
-            <NavLink to="/teacher" className={linkClass}>
-              <GraduationCap size={16} aria-hidden="true" /> Classroom
+        <nav className={styles.navLinks} aria-label="Primary Navigation">
+          <span className={styles.navLabel} aria-hidden="true">Study Desk</span>
+          
+          <NavLink to="/" end className={linkClass}>
+            <Home size={16} aria-hidden="true" /> Home
+          </NavLink>
+
+          <NavLink to="/explore" className={linkClass}>
+            <Compass size={16} aria-hidden="true" /> Explore
+          </NavLink>
+
+          <NavLink to="/practice" className={linkClass}>
+            <Target size={16} aria-hidden="true" /> Practice
+          </NavLink>
+
+          <NavLink to="/map" className={linkClass}>
+            <Network size={16} aria-hidden="true" /> Concept Map
+          </NavLink>
+
+          <NavLink to="/achievements" className={linkClass}>
+            <Trophy size={16} aria-hidden="true" /> Badges & XP
+          </NavLink>
+
+          <NavLink to="/ask" className={linkClass}>
+            <Sparkles size={16} aria-hidden="true" /> Socratic Tutor
+          </NavLink>
+
+          {lessonHref !== '/' && (
+            <NavLink to={lessonHref} className={linkClass}>
+              <BookOpen size={16} aria-hidden="true" /> Active Lesson
             </NavLink>
-          ) : (
+          )}
+
+          <NavLink to="/sources" className={linkClass}>
+            <UploadCloud size={16} aria-hidden="true" /> Textbooks
+          </NavLink>
+
+          {user && (
             <>
-              <NavLink to="/" end className={linkClass}>
-                <Home size={16} aria-hidden="true" /> Home
-              </NavLink>
               <NavLink to="/dashboard" className={linkClass}>
                 <LayoutDashboard size={16} aria-hidden="true" /> Dashboard
               </NavLink>
-              {lessonHref !== '/' && (
-                <NavLink to={lessonHref} className={linkClass}>
-                  <BookOpen size={16} aria-hidden="true" /> Lesson
-                </NavLink>
-              )}
-              {user.canTeach && (
-                <NavLink to="/teacher" className={linkClass}>
-                  <GraduationCap size={16} aria-hidden="true" /> Classroom
-                </NavLink>
-              )}
-              <button
-                type="button"
-                className={styles.navButton}
-                onClick={openAskSetu}
-                title="Ask the SETU AI tutor a question"
-              >
-                <Sparkles size={16} aria-hidden="true" /> Ask SETU
-              </button>
+
+              <NavLink to="/library" className={linkClass}>
+                <Download size={16} aria-hidden="true" /> Downloads
+              </NavLink>
+
               <NavLink to="/doubts" className={linkClass}>
                 <MessageCircleQuestion size={16} aria-hidden="true" /> Doubts
                 {pendingCount > 0 ? <span className={styles.countBadge}>{pendingCount}</span> : null}
               </NavLink>
-              <NavLink to="/library" className={linkClass}>
-                <Download size={16} aria-hidden="true" /> Downloads
-              </NavLink>
             </>
           )}
+
+          {user?.canTeach && (
+            <NavLink to="/teacher" className={linkClass}>
+              <GraduationCap size={16} aria-hidden="true" /> Classroom
+            </NavLink>
+          )}
+
+          <button
+            type="button"
+            className={styles.navButton}
+            onClick={openAskSetu}
+            title="Ask the ZENITH AI tutor a question"
+          >
+            <Sparkles size={16} aria-hidden="true" /> Quick Ask
+          </button>
         </nav>
 
         <div className={styles.sidebarFoot}>
@@ -175,7 +193,7 @@ export const Navigation: React.FC = () => {
           )}
           <button type="button" className={styles.tourTriggerButton} onClick={openTour}>
             <Sparkles size={14} aria-hidden="true" />
-            {user ? 'How SETU works' : 'Get started'}
+            {user ? 'How ZENITH works' : 'Get started'}
           </button>
           {user ? (
             <div className={styles.userBlock}>

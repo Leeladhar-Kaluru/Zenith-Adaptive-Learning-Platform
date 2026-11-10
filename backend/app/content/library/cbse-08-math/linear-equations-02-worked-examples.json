@@ -1,0 +1,99 @@
+{
+  "schemaVersion": "1.0.0",
+  "lessonId": "linear-equations-worked-examples",
+  "lessonVersion": 1,
+  "pathId": "linear-equations-in-one-variable",
+  "pathVersion": 1,
+  "title": "Worked Examples: Variables on Both Sides & Word Problems",
+  "grade": 8,
+  "subjectId": "subject-math",
+  "languageTag": "en-IN",
+  "translationStatus": "original",
+  "estimatedMinutes": 20,
+  "sourceRefs": [],
+  "objectives": [
+    "Solve equations containing fractional denominators using cross multiplication",
+    "Model word problems (ages, consecutive numbers) into algebraic equations"
+  ],
+  "blocks": [
+    {
+      "blockId": "c8-lin-we-blk-01",
+      "kind": "explanation",
+      "heading": "Equations Reducible to Linear Form",
+      "content": "When an equation is in the form (ax + b) / (cx + d) = p / q:\n1. Apply cross-multiplication: q * (ax + b) = p * (cx + d).\n2. Expand both sides and group terms.\n3. Note: The denominator cx + d cannot equal 0 (domain restriction)."
+    }
+  ],
+  "workedExamples": [
+    {
+      "prompt": "Solve: (x - 5) / 3 = (x - 3) / 5",
+      "steps": [
+        "Step 1: Cross-multiply: 5 * (x - 5) = 3 * (x - 3).",
+        "Step 2: Expand brackets: 5x - 25 = 3x - 9.",
+        "Step 3: Transpose 3x to LHS and -25 to RHS: 5x - 3x = -9 + 25.",
+        "Step 4: Combine like terms: 2x = 16.",
+        "Step 5: Divide by 2: x = 8."
+      ],
+      "answer": "x = 8"
+    },
+    {
+      "prompt": "Word Problem: The perimeter of a rectangle is 13 cm and its width is 2(3/4) cm = 11/4 cm. Find its length.",
+      "steps": [
+        "Step 1: Let length be L. Perimeter formula: P = 2(L + W).",
+        "Step 2: Substitute given values: 13 = 2(L + 11/4).",
+        "Step 3: Divide by 2: 13/2 = L + 11/4.",
+        "Step 4: Transpose 11/4: L = 13/2 - 11/4 = 26/4 - 11/4 = 15/4 = 3(3/4) cm."
+      ],
+      "answer": "15/4 cm (or 3.75 cm)"
+    }
+  ],
+  "practice": [
+    {
+      "questionId": "q-c8-lin-we-01",
+      "type": "multiple_choice",
+      "prompt": "Solve: 8x + 4 = 3(x - 1) + 7",
+      "options": [
+        "x = 0",
+        "x = 1",
+        "x = -1",
+        "x = 2"
+      ],
+      "conceptIds": [
+        "cbse-08-math-linear-eq-both-sides"
+      ],
+      "difficulty": "standard",
+      "answerKey": 0,
+      "hints": [
+        "Expand RHS: 3x - 3 + 7 = 3x + 4.",
+        "Then 8x + 4 = 3x + 4."
+      ],
+      "feedback": "8x + 4 = 3x + 4 => 8x - 3x = 4 - 4 => 5x = 0 => x = 0.",
+      "rubric": {
+        "math_verification": {
+          "domain": "linear_equations_one_var",
+          "subdomain": "solve",
+          "inputs": {
+            "eq": "8*x + 4 - (3*(x - 1) + 7)"
+          },
+          "expected": {
+            "target_val": "x = 0"
+          }
+        }
+      }
+    }
+  ],
+  "checkpointTest": [],
+  "takeaways": [
+    "Cross-multiplication converts fractional rational equations into simple linear equations.",
+    "x = 0 is a completely valid and normal solution!"
+  ],
+  "validation": {
+    "status": "ready",
+    "checks": [
+      {
+        "name": "numerical_verification",
+        "passed": true,
+        "details": "All steps verified"
+      }
+    ]
+  }
+}

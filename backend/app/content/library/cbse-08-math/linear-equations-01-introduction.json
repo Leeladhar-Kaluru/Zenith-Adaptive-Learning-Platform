@@ -1,0 +1,103 @@
+{
+  "schemaVersion": "1.0.0",
+  "lessonId": "linear-equations-lesson",
+  "lessonVersion": 1,
+  "pathId": "linear-equations-in-one-variable",
+  "pathVersion": 1,
+  "title": "Concept Notes: Balancing Equations & The Transposition Principle",
+  "grade": 8,
+  "subjectId": "subject-math",
+  "languageTag": "en-IN",
+  "translationStatus": "original",
+  "estimatedMinutes": 20,
+  "sourceRefs": [],
+  "objectives": [
+    "Distinguish an equation from an algebraic expression",
+    "Apply the transposition method with strict sign preservation",
+    "Solve linear equations with variables appearing on both sides of the equality"
+  ],
+  "blocks": [
+    {
+      "blockId": "c8-lin-blk-01",
+      "kind": "definition",
+      "heading": "What is a Linear Equation in One Variable?",
+      "content": "An algebraic equation is an equality involving variables and constants. It has an equality sign (=). The expression to the left of the '=' is the LHS (Left Hand Side) and to the right is the RHS (Right Hand Side).\n\nAn equation is linear if the **highest power of the variable is 1**. For example:\n- 2x + 5 = 13 is a linear equation in one variable (x).\n- x^2 + 1 = 5 is NOT linear (degree 2).\n- 2x + 3y = 7 is linear, but in TWO variables."
+    },
+    {
+      "blockId": "c8-lin-blk-02",
+      "kind": "explanation",
+      "heading": "The Balance Scale & Transposition Principle",
+      "content": "Think of an equation as a balanced weighing scale:\n1. If we add or subtract the same quantity on both sides, the balance is preserved.\n2. If we multiply or divide both sides by the same non-zero quantity, the balance is preserved.\n\nTransposition is simply a shortcut for this balance rule:\n- Moving a + term across = makes it -.\n- Moving a - term across = makes it +.\n- Moving a * factor across = makes it /.\n- Moving a / divisor across = makes it *."
+    },
+    {
+      "blockId": "c8-lin-blk-03",
+      "kind": "summary",
+      "heading": "Standard Algorithm for Solving",
+      "content": "1. Clear brackets using the distributive property: a(x + b) = ax + ab.\n2. Clear fractions by multiplying every term by the LCM of all denominators.\n3. Transpose all variable terms to the LHS and all constant numbers to the RHS.\n4. Combine like terms to get ax = b.\n5. Divide by the coefficient of x: x = b / a."
+    }
+  ],
+  "workedExamples": [
+    {
+      "prompt": "Solve: 5x + 9 = 5 + 3x",
+      "steps": [
+        "Step 1: Transpose 3x to LHS: 5x - 3x + 9 = 5.",
+        "Step 2: Transpose 9 to RHS: 2x = 5 - 9.",
+        "Step 3: Simplify RHS: 2x = -4.",
+        "Step 4: Divide by 2: x = -4 / 2 = -2.",
+        "Step 5: Check: LHS = 5(-2) + 9 = -10 + 9 = -1. RHS = 5 + 3(-2) = 5 - 6 = -1. LHS = RHS verified."
+      ],
+      "answer": "x = -2"
+    }
+  ],
+  "practice": [
+    {
+      "questionId": "q-c8-lin-01",
+      "type": "multiple_choice",
+      "prompt": "Solve for y: 2y + 9/3 = 13",
+      "options": [
+        "y = 3",
+        "y = 5",
+        "y = -5",
+        "y = 8"
+      ],
+      "conceptIds": [
+        "cbse-08-math-linear-eq-transposition"
+      ],
+      "difficulty": "introductory",
+      "answerKey": 1,
+      "hints": [
+        "9/3 = 3, so 2y + 3 = 13.",
+        "Transpose 3: 2y = 10."
+      ],
+      "feedback": "2y + 3 = 13 => 2y = 13 - 3 = 10 => y = 10/2 = 5.",
+      "rubric": {
+        "math_verification": {
+          "domain": "linear_equations_one_var",
+          "subdomain": "solve",
+          "inputs": {
+            "eq": "2*y + 3 - 13"
+          },
+          "expected": {
+            "target_val": "y = 5"
+          }
+        }
+      }
+    }
+  ],
+  "checkpointTest": [],
+  "takeaways": [
+    "An equation is a balance: whatever operation is done on LHS must be done on RHS.",
+    "Transposing a term flips its sign (+ <-> -).",
+    "Always verify your answer by substituting back into original LHS and RHS."
+  ],
+  "validation": {
+    "status": "ready",
+    "checks": [
+      {
+        "name": "cbse_alignment",
+        "passed": true,
+        "details": "Aligned to CBSE Class 8 Chapter 2"
+      }
+    ]
+  }
+}

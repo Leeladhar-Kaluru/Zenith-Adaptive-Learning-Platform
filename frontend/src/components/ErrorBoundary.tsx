@@ -21,7 +21,7 @@ export class ErrorBoundary extends Component<Props, State> {
   }
 
   public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    console.error('SETU Uncaught render error:', error, errorInfo);
+    console.error('ZENITH Uncaught render error:', error, errorInfo);
   }
 
   public render() {
@@ -45,7 +45,7 @@ export class ErrorBoundary extends Component<Props, State> {
             Display refreshed
           </h2>
           <p style={{ color: '#64748B', fontSize: '0.95rem', marginBottom: '1.5rem', lineHeight: '1.5' }}>
-            SETU encountered a display issue loading this section. Your progress and study records are completely safe.
+            ZENITH encountered a display issue loading this section. Your progress and study records are completely safe.
           </p>
           <button
             type="button"

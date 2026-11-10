@@ -1,0 +1,40 @@
+.mathContainer {
+  font-family: inherit;
+  line-height: inherit;
+}
+
+.inlineContainer {
+  display: inline;
+}
+
+.inlineMath {
+  display: inline-block;
+  vertical-align: -0.15em;
+  margin: 0 2px;
+  line-height: 1;
+}
+
+.displayMath {
+  display: block;
+  text-align: center;
+  padding: var(--space-3) var(--space-4);
+  margin: var(--space-3) 0;
+  background-color: var(--pastel-parchment-dark);
+  border: var(--border-medium);
+  border-radius: var(--radius-micro);
+  box-shadow: var(--shadow-brutal-xs);
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.fallbackMath {
+  font-family: var(--font-mono);
+  font-size: 0.88em;
+  padding: 1px 4px;
+  background-color: var(--pastel-parchment-dark);
+  border: 1px solid rgba(30, 30, 30, 0.2);
+  border-radius: var(--radius-micro);
+  color: var(--accent-ultramarine);
+  white-space: pre-wrap;
+  word-break: break-all;
+}

@@ -1,0 +1,85 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  width: 100%;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-display);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  color: var(--ink-charcoal);
+}
+
+.label {
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.value {
+  font-family: var(--font-mono);
+}
+
+.track {
+  height: 12px;
+  background-color: var(--surface-paper);
+  border: var(--border-heavy);
+  border-radius: var(--radius-micro);
+  box-shadow: var(--shadow-brutal-xs);
+  overflow: hidden;
+  position: relative;
+  display: flex;
+}
+
+.bar {
+  height: 100%;
+  background-color: var(--accent-saffron);
+  border-right: 1.5px solid var(--ink-charcoal);
+  transition: width 0.3s ease;
+}
+
+/* Segments mode */
+.segmentsContainer {
+  display: flex;
+  gap: 3px;
+  width: 100%;
+}
+
+.segment {
+  flex: 1;
+  height: 12px;
+  background-color: var(--surface-paper);
+  border: var(--border-medium);
+  border-radius: var(--radius-micro);
+  box-shadow: 1px 1px 0px var(--ink-charcoal);
+  transition: background-color 0.2s ease;
+}
+
+.segmentCompleted {
+  background-color: var(--accent-olive);
+}
+
+.segmentCurrent {
+  background-color: var(--accent-saffron);
+}
+
+/* Color variants */
+.saffron .bar {
+  background-color: var(--accent-saffron);
+}
+
+.ultramarine .bar {
+  background-color: var(--accent-ultramarine);
+}
+
+.olive .bar {
+  background-color: var(--accent-olive);
+}
+
+.terracotta .bar {
+  background-color: var(--accent-terracotta);
+}

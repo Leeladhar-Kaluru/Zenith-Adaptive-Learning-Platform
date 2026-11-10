@@ -6,6 +6,19 @@ from app.models.doubts import Doubt, SyncEvent
 from app.models.jobs import GenerationJob
 from app.models.classroom import Classroom, ClassroomMembership, TeacherAction
 from app.models.profiles import UserProfile
+from app.models.library import (
+    Concept,
+    ConceptEdge,
+    ConceptChapter,
+    LibraryEnrollment,
+    ResourceProgress,
+    ContentRequest,
+    LibraryPublicationEvent,
+)
+from app.models.mastery import BktState, BktEvent
+from app.models.rewards import StudentReward, RewardEvent, Badge, StudentBadge
+from app.models.diagnostics import DiagnosticSession, DiagnosticItem
+from app.models.tutor import TutorThread, TutorMessage
 
 __all__ = [
     "Base",
@@ -33,5 +46,24 @@ __all__ = [
     "ClassroomMembership",
     "TeacherAction",
     "UserProfile",
+    # Zenith additions
+    "Concept",
+    "ConceptEdge",
+    "ConceptChapter",
+    "LibraryEnrollment",
+    "ResourceProgress",
+    "ContentRequest",
+    "LibraryPublicationEvent",
+    "BktState",
+    "BktEvent",
+    "StudentReward",
+    "RewardEvent",
+    "Badge",
+    "StudentBadge",
+    "DiagnosticSession",
+    "DiagnosticItem",
+    "TutorThread",
+    "TutorMessage",
 ]
+
 

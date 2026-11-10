@@ -1,0 +1,242 @@
+{
+  "schemaVersion": "1.0.0",
+  "lessonId": "real-numbers-worked-examples",
+  "lessonVersion": 1,
+  "pathId": "real-numbers",
+  "pathVersion": 1,
+  "title": "HCF and LCM Masterclass: Worked Examples",
+  "grade": 10,
+  "subjectId": "subject-math",
+  "languageTag": "en-IN",
+  "translationStatus": "original",
+  "estimatedMinutes": 25,
+  "sourceRefs": [],
+  "objectives": [
+    "Calculate HCF and LCM of multi-digit numbers using prime factor decomposition",
+    "Verify HCF * LCM = a * b identity across varied numeric pairs",
+    "Solve practical word problems requiring HCF and LCM concepts"
+  ],
+  "blocks": [
+    {
+      "blockId": "rn-we-blk-1",
+      "kind": "explanation",
+      "heading": "Standard Problem Archetypes",
+      "content": "This package presents step-by-step worked solutions for 5 standard curriculum problem archetypes involving the Fundamental Theorem of Arithmetic, factor trees, and greatest common divisor calculations."
+    }
+  ],
+  "workedExamples": [
+    {
+      "prompt": "Find the HCF and LCM of 6 and 20 by the prime factorisation method.",
+      "steps": [
+        "Step 1: Write prime factors: 6 = 2^1 * 3^1 and 20 = 2^2 * 5^1.",
+        "Step 2: HCF is product of smallest powers of common prime factors: HCF = 2^1 = 2.",
+        "Step 3: LCM is product of highest powers of all prime factors: LCM = 2^2 * 3^1 * 5^1 = 60.",
+        "Step 4: Check identity: 2 * 60 = 120 and 6 * 20 = 120. Verified."
+      ],
+      "answer": "HCF = 2, LCM = 60"
+    },
+    {
+      "prompt": "Verify that HCF(26, 91) * LCM(26, 91) = 26 * 91.",
+      "steps": [
+        "Step 1: 26 = 2 * 13 and 91 = 7 * 13.",
+        "Step 2: HCF(26, 91) = 13.",
+        "Step 3: LCM(26, 91) = 2 * 7 * 13 = 182.",
+        "Step 4: Product of HCF and LCM: 13 * 182 = 2366.",
+        "Step 5: Product of numbers: 26 * 91 = 2366. Both sides equal 2366."
+      ],
+      "answer": "Verified: HCF * LCM = 2366 = 26 * 91"
+    },
+    {
+      "prompt": "Find the HCF and LCM of 12, 15 and 21 using prime factorisation.",
+      "steps": [
+        "Step 1: 12 = 2^2 * 3, 15 = 3 * 5, 21 = 3 * 7.",
+        "Step 2: Common prime factor is 3 with lowest power 1. So HCF = 3.",
+        "Step 3: LCM is 2^2 * 3 * 5 * 7 = 4 * 3 * 5 * 7 = 420."
+      ],
+      "answer": "HCF = 3, LCM = 420"
+    },
+    {
+      "prompt": "An army contingent of 616 members is to march behind an army band of 32 members in a parade. What is the maximum number of columns in which they can march?",
+      "steps": [
+        "Step 1: The maximum number of columns is the HCF(616, 32).",
+        "Step 2: 616 = 32 * 19 + 8.",
+        "Step 3: 32 = 8 * 4 + 0.",
+        "Step 4: The HCF is 8. Hence, the maximum number of columns is 8."
+      ],
+      "answer": "8 columns"
+    },
+    {
+      "prompt": "Find the largest number that divides 245 and 1029 leaving a remainder of 5 in each case.",
+      "steps": [
+        "Step 1: Subtract remainder 5 from both numbers: 245 - 5 = 240 and 1029 - 5 = 1024.",
+        "Step 2: Required number is HCF(240, 1024).",
+        "Step 3: 1024 = 240 * 4 + 64.",
+        "Step 4: 240 = 64 * 3 + 48; 64 = 48 * 1 + 16; 48 = 16 * 3 + 0.",
+        "Step 5: HCF is 16."
+      ],
+      "answer": "16"
+    }
+  ],
+  "practice": [
+    {
+      "questionId": "q-rn-hl-1",
+      "type": "multiple_choice",
+      "prompt": "What is the HCF of 96 and 404?",
+      "options": [
+        "4",
+        "8",
+        "2",
+        "12"
+      ],
+      "conceptIds": [
+        "cbse-10-math-real-numbers-fta"
+      ],
+      "difficulty": "standard",
+      "answerKey": 0,
+      "hints": [
+        "Factorise: 96 = 2^5 * 3, 404 = 2^2 * 101.",
+        "Lowest common power of 2 is 2^2 = 4."
+      ],
+      "feedback": "96 = 2^5 * 3 and 404 = 2^2 * 101. HCF = 2^2 = 4.",
+      "rubric": {
+        "math_verification": {
+          "domain": "real_numbers",
+          "subdomain": "hcf_lcm",
+          "inputs": {
+            "a": 96,
+            "b": 404
+          },
+          "expected": {
+            "hcf": 4,
+            "target_val": "4"
+          }
+        }
+      }
+    },
+    {
+      "questionId": "q-rn-hl-2",
+      "type": "multiple_choice",
+      "prompt": "What is the LCM of 96 and 404?",
+      "options": [
+        "9696",
+        "9966",
+        "9640",
+        "8696"
+      ],
+      "conceptIds": [
+        "cbse-10-math-real-numbers-fta"
+      ],
+      "difficulty": "standard",
+      "answerKey": 0,
+      "hints": [
+        "Use the identity LCM = (a * b) / HCF.",
+        "LCM = (96 * 404) / 4 = 24 * 404 = 9696."
+      ],
+      "feedback": "LCM(96, 404) = (96 * 404) / 4 = 9696.",
+      "rubric": {
+        "math_verification": {
+          "domain": "real_numbers",
+          "subdomain": "hcf_lcm",
+          "inputs": {
+            "a": 96,
+            "b": 404
+          },
+          "expected": {
+            "lcm": 9696,
+            "target_val": "9696"
+          }
+        }
+      }
+    }
+  ],
+  "checkpointTest": [
+    {
+      "questionId": "q-rn-hl-3",
+      "type": "multiple_choice",
+      "prompt": "For positive integers a = 18 and b = 45, what is the product HCF(a, b) * LCM(a, b)?",
+      "options": [
+        "810",
+        "405",
+        "1620",
+        "90"
+      ],
+      "conceptIds": [
+        "cbse-10-math-real-numbers-fta"
+      ],
+      "difficulty": "introductory",
+      "answerKey": 0,
+      "hints": [
+        "HCF * LCM is simply equal to the product of the two numbers.",
+        "18 * 45 = 810."
+      ],
+      "feedback": "HCF(a, b) * LCM(a, b) = a * b = 18 * 45 = 810.",
+      "rubric": {
+        "math_verification": {
+          "domain": "real_numbers",
+          "subdomain": "hcf_lcm",
+          "inputs": {
+            "a": 18,
+            "b": 45
+          },
+          "expected": {
+            "target_val": "810"
+          }
+        }
+      }
+    },
+    {
+      "questionId": "q-rn-hl-4",
+      "type": "multiple_choice",
+      "prompt": "What is the HCF of 510 and 92?",
+      "options": [
+        "2",
+        "4",
+        "6",
+        "1"
+      ],
+      "conceptIds": [
+        "cbse-10-math-real-numbers-fta"
+      ],
+      "difficulty": "standard",
+      "answerKey": 0,
+      "hints": [
+        "510 = 2 * 3 * 5 * 17.",
+        "92 = 2^2 * 23. Only prime factor 2 is shared."
+      ],
+      "feedback": "510 = 2 * 3 * 5 * 17 and 92 = 2^2 * 23. The only common factor is 2^1 = 2.",
+      "rubric": {
+        "math_verification": {
+          "domain": "real_numbers",
+          "subdomain": "hcf_lcm",
+          "inputs": {
+            "a": 510,
+            "b": 92
+          },
+          "expected": {
+            "hcf": 2,
+            "target_val": "2"
+          }
+        }
+      }
+    }
+  ],
+  "takeaways": [
+    "Prime factorisation provides a direct algebraic method for finding common divisors.",
+    "The product of HCF and LCM of two integers equals the product of the integers."
+  ],
+  "validation": {
+    "status": "ready",
+    "checks": [
+      {
+        "name": "schema_conformance",
+        "passed": true,
+        "details": "Conforms to lesson-package.schema.json"
+      },
+      {
+        "name": "math_verification",
+        "passed": true,
+        "details": "Verified via Sympy symbolic solver"
+      }
+    ]
+  }
+}

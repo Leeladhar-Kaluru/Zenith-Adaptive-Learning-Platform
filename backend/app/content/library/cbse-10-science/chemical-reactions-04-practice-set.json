@@ -1,0 +1,139 @@
+{
+  "schemaVersion": "1.0.0",
+  "lessonId": "chemical-reactions-practice-set",
+  "lessonVersion": 1,
+  "pathId": "chemical-reactions-and-equations",
+  "pathVersion": 1,
+  "title": "Chapter Practice: Chemical Reactions & Equations MCQs",
+  "grade": 10,
+  "subjectId": "subject-science",
+  "languageTag": "en-IN",
+  "translationStatus": "original",
+  "estimatedMinutes": 25,
+  "sourceRefs": [],
+  "objectives": [
+    "Evaluate student mastery of balanced equations, redox identification, and corrosion prevention"
+  ],
+  "blocks": [
+    {
+      "blockId": "c10-sci-pr-blk-01",
+      "kind": "explanation",
+      "heading": "Practice Instructions",
+      "content": "Analyze chemical equations for stoichiometry, oxidation numbers, and displacement rules."
+    }
+  ],
+  "workedExamples": [],
+  "practice": [
+    {
+      "questionId": "q-c10-sci-prac-01",
+      "type": "multiple_choice",
+      "prompt": "Which of the following statements about the reaction below are INCORRECT?\n2PbO(s) + C(s) -> 2Pb(s) + CO2(g)\n(i) Lead is getting reduced.\n(ii) Carbon dioxide is getting oxidised.\n(iii) Carbon is getting oxidised.\n(iv) Lead oxide is getting reduced.",
+      "options": [
+        "(i) and (ii)",
+        "(i) and (iii)",
+        "(i), (ii) and (iii)",
+        "All of the above"
+      ],
+      "conceptIds": [
+        "cbse-10-science-redox-corrosion"
+      ],
+      "difficulty": "challenge",
+      "answerKey": 0,
+      "hints": [
+        "Statements (i) and (ii) refer to products (Lead, CO2). Oxidation and reduction occur on REACTANTS!",
+        "Lead oxide (PbO) is reduced to Pb; Carbon (C) is oxidised to CO2."
+      ],
+      "feedback": "PbO is reduced (not lead), and Carbon is oxidised (not carbon dioxide). Therefore statements (i) and (ii) are incorrect.",
+      "rubric": {
+        "math_verification": {
+          "domain": "science",
+          "subdomain": "redox_statements",
+          "inputs": {
+            "reaction": "2PbO + C -> 2Pb + CO2"
+          },
+          "expected": {
+            "target_val": "(i) and (ii)"
+          }
+        }
+      }
+    },
+    {
+      "questionId": "q-c10-sci-prac-02",
+      "type": "multiple_choice",
+      "prompt": "A shiny brown coloured element 'X' on heating in air becomes black in colour. Name the element 'X' and the black coloured compound formed:",
+      "options": [
+        "X = Cu, Black compound = CuO",
+        "X = Fe, Black compound = Fe3O4",
+        "X = Ag, Black compound = Ag2O",
+        "X = Al, Black compound = Al2O3"
+      ],
+      "conceptIds": [
+        "cbse-10-science-combination-reactions"
+      ],
+      "difficulty": "standard",
+      "answerKey": 0,
+      "hints": [
+        "Copper is shiny reddish brown. When heated in oxygen, it forms black copper(II) oxide."
+      ],
+      "feedback": "2Cu + O2 -> 2CuO (black copper oxide).",
+      "rubric": {
+        "math_verification": {
+          "domain": "science",
+          "subdomain": "element_identification",
+          "inputs": {
+            "color": "shiny brown",
+            "product_color": "black"
+          },
+          "expected": {
+            "target_val": "X = Cu, Black compound = CuO"
+          }
+        }
+      }
+    },
+    {
+      "questionId": "q-c10-sci-prac-03",
+      "type": "multiple_choice",
+      "prompt": "Which gas is flushed into potato chip packets to prevent rancidity?",
+      "options": [
+        "Nitrogen",
+        "Oxygen",
+        "Hydrogen",
+        "Chlorine"
+      ],
+      "conceptIds": [
+        "cbse-10-science-redox-corrosion"
+      ],
+      "difficulty": "introductory",
+      "answerKey": 0,
+      "hints": [
+        "An unreactive inert gas is used to prevent oxidation of oils and fats."
+      ],
+      "feedback": "Nitrogen is an inert antioxidant gas that displaces oxygen and prevents oxidative rancidity of fats.",
+      "rubric": {
+        "math_verification": {
+          "domain": "science",
+          "subdomain": "rancidity_prevention",
+          "inputs": {},
+          "expected": {
+            "target_val": "Nitrogen"
+          }
+        }
+      }
+    }
+  ],
+  "checkpointTest": [],
+  "takeaways": [
+    "Always check whether oxidation/reduction statements describe reactants or products.",
+    "Copper oxide (CuO) is black; copper metal is reddish brown."
+  ],
+  "validation": {
+    "status": "ready",
+    "checks": [
+      {
+        "name": "practice_soundness",
+        "passed": true,
+        "details": "All items verified against CBSE standard keys"
+      }
+    ]
+  }
+}

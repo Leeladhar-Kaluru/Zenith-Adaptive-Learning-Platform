@@ -1,0 +1,203 @@
+{
+  "schemaVersion": "1.0.0",
+  "lessonId": "linear-equations-formula-sheet",
+  "lessonVersion": 1,
+  "pathId": "linear-equations",
+  "pathVersion": 1,
+  "title": "Consistency Ratios & Cross-Multiplication Formulas",
+  "grade": 10,
+  "subjectId": "subject-math",
+  "languageTag": "en-IN",
+  "translationStatus": "original",
+  "estimatedMinutes": 25,
+  "sourceRefs": [],
+  "objectives": [
+    "State cross-multiplication formula: x/(b1c2 - b2c1) = y/(c1a2 - c2a1) = 1/(a1b2 - a2b1)",
+    "Identify parameter values for unique and singular systems"
+  ],
+  "blocks": [
+    {
+      "blockId": "lin-crm-blk-1",
+      "kind": "definition",
+      "heading": "Cross-Multiplication Formula",
+      "content": "For $a_1 x + b_1 y + c_1 = 0$ and $a_2 x + b_2 y + c_2 = 0$, when $a_1 b_2 - a_2 b_1 \\ne 0$:\n$$x = \\frac{b_1 c_2 - b_2 c_1}{a_1 b_2 - a_2 b_1}, \\quad y = \\frac{c_1 a_2 - c_2 a_1}{a_1 b_2 - a_2 b_1}$$"
+    }
+  ],
+  "workedExamples": [
+    {
+      "prompt": "Solve 2x + 3y = 46 and 3x + 5y = 74 by cross-multiplication.",
+      "steps": [
+        "Step 1: Write as 2x + 3y - 46 = 0 and 3x + 5y - 74 = 0.",
+        "Step 2: a1=2, b1=3, c1=-46; a2=3, b2=5, c2=-74.",
+        "Step 3: Denominator = a1*b2 - a2*b1 = 2(5) - 3(3) = 10 - 9 = 1.",
+        "Step 4: x = (3*(-74) - 5*(-46)) / 1 = (-222 + 230) / 1 = 8.",
+        "Step 5: y = (-46*3 - (-74)*2) / 1 = (-138 + 148) / 1 = 10."
+      ],
+      "answer": "x = 8, y = 10"
+    }
+  ],
+  "practice": [
+    {
+      "questionId": "q-lin-crm-1",
+      "type": "multiple_choice",
+      "prompt": "Solve 2x + y = 5 and 3x + 2y = 8.",
+      "options": [
+        "x = 2, y = 1",
+        "x = 1, y = 2",
+        "x = 3, y = -1",
+        "x = 0, y = 5"
+      ],
+      "conceptIds": [
+        "cbse-10-math-linear-cross-multiplication"
+      ],
+      "difficulty": "introductory",
+      "answerKey": 0,
+      "hints": [
+        "2x + y - 5 = 0, 3x + 2y - 8 = 0. Denominator = 2*2 - 3*1 = 1."
+      ],
+      "feedback": "x = (1*(-8) - 2*(-5))/1 = 2, y = (-5*3 - (-8)*2)/1 = 1.",
+      "rubric": {
+        "math_verification": {
+          "domain": "linear_equations",
+          "subdomain": "unique_solution",
+          "inputs": {
+            "eq1": "2*x + y - 5",
+            "eq2": "3*x + 2*y - 8"
+          },
+          "expected": {
+            "solution": [
+              "2",
+              "1"
+            ],
+            "target_val": "x = 2, y = 1"
+          }
+        }
+      }
+    },
+    {
+      "questionId": "q-lin-crm-2",
+      "type": "multiple_choice",
+      "prompt": "Solve x - 3y - 7 = 0 and 3x - 3y - 15 = 0.",
+      "options": [
+        "x = 4, y = -1",
+        "x = -4, y = 1",
+        "x = 2, y = -3",
+        "x = 5, y = 0"
+      ],
+      "conceptIds": [
+        "cbse-10-math-linear-cross-multiplication"
+      ],
+      "difficulty": "standard",
+      "answerKey": 0,
+      "hints": [
+        "Denominator = 1*(-3) - 3*(-3) = -3 + 9 = 6."
+      ],
+      "feedback": "x = 4, y = -1.",
+      "rubric": {
+        "math_verification": {
+          "domain": "linear_equations",
+          "subdomain": "unique_solution",
+          "inputs": {
+            "eq1": "x - 3*y - 7",
+            "eq2": "3*x - 3*y - 15"
+          },
+          "expected": {
+            "solution": [
+              "4",
+              "-1"
+            ],
+            "target_val": "x = 4, y = -1"
+          }
+        }
+      }
+    }
+  ],
+  "checkpointTest": [
+    {
+      "questionId": "q-lin-crm-3",
+      "type": "multiple_choice",
+      "prompt": "In the system a1*x + b1*y + c1 = 0 and a2*x + b2*y + c2 = 0, if a1/a2 != b1/b2, the lines:",
+      "options": [
+        "Intersect at a unique point",
+        "Are parallel",
+        "Are coincident",
+        "Are skewed"
+      ],
+      "conceptIds": [
+        "cbse-10-math-linear-consistency"
+      ],
+      "difficulty": "introductory",
+      "answerKey": 0,
+      "hints": [
+        "Unequal slopes mean the lines must intersect at exactly one point."
+      ],
+      "feedback": "a1/a2 != b1/b2 guarantees a unique intersection point.",
+      "rubric": {
+        "math_verification": {
+          "domain": "linear_equations",
+          "subdomain": "consistency",
+          "inputs": {
+            "eq1": "x + 2*y - 3",
+            "eq2": "2*x + y - 3"
+          },
+          "expected": {
+            "target_val": "Intersect at a unique point"
+          }
+        }
+      }
+    },
+    {
+      "questionId": "q-lin-crm-4",
+      "type": "multiple_choice",
+      "prompt": "If 2x + ky = 1 and 3x - 5y = 7 has a unique solution, what value must k NOT take?",
+      "options": [
+        "-10/3",
+        "10/3",
+        "-5/2",
+        "3/2"
+      ],
+      "conceptIds": [
+        "cbse-10-math-linear-consistency"
+      ],
+      "difficulty": "standard",
+      "answerKey": 0,
+      "hints": [
+        "2/3 != k / (-5) => k != -10/3."
+      ],
+      "feedback": "k != -10/3 ensures a unique solution.",
+      "rubric": {
+        "math_verification": {
+          "domain": "linear_equations",
+          "subdomain": "parallel_no_solution_parameter",
+          "inputs": {
+            "eq1": "2*x + k*y - 1",
+            "eq2": "3*x - 5*y - 7",
+            "condition": "no_solution"
+          },
+          "expected": {
+            "k": "-10/3",
+            "target_val": "-10/3"
+          }
+        }
+      }
+    }
+  ],
+  "takeaways": [
+    "Determinant a1*b2 - a2*b1 != 0 is the hallmark of a non-singular unique linear system."
+  ],
+  "validation": {
+    "status": "ready",
+    "checks": [
+      {
+        "name": "schema_conformance",
+        "passed": true,
+        "details": "Conforms to lesson-package.schema.json"
+      },
+      {
+        "name": "math_verification",
+        "passed": true,
+        "details": "Verified via Sympy symbolic solver"
+      }
+    ]
+  }
+}

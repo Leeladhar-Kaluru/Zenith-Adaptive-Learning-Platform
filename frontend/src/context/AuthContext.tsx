@@ -84,9 +84,9 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         }
       }
 
-      console.warn('SETU could not refresh the saved session after retries.');
+      console.warn('ZENITH could not refresh the saved session after retries.');
       setUser(null);
-      setSessionError('SETU could not reach your desk. Your session is still saved.');
+      setSessionError('ZENITH could not reach your desk. Your session is still saved.');
       setIsLoading(false);
     })();
 

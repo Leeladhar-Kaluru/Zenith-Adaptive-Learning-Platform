@@ -87,7 +87,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
       <div className={styles.modal} ref={modalRef} tabIndex={-1}>
         <div className={styles.header}>
           <h2 id="auth-modal-title" className={styles.title}>
-            {tab === 'login' ? 'Sign in to SETU' : 'Create SETU Account'}
+            {tab === 'login' ? 'Sign in to ZENITH' : 'Create ZENITH Account'}
           </h2>
           <button type="button" className={styles.closeButton} onClick={onClose} aria-label="Close dialog">
             ×

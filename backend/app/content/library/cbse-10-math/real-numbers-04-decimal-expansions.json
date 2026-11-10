@@ -1,0 +1,207 @@
+{
+  "schemaVersion": "1.0.0",
+  "lessonId": "real-numbers-formula-sheet",
+  "lessonVersion": 1,
+  "pathId": "real-numbers",
+  "pathVersion": 1,
+  "title": "Decimal Expansion Rules & Number Theory Formulas",
+  "grade": 10,
+  "subjectId": "subject-math",
+  "languageTag": "en-IN",
+  "translationStatus": "original",
+  "estimatedMinutes": 25,
+  "sourceRefs": [],
+  "objectives": [
+    "Determine terminating vs non-terminating decimal character from prime factors of denominator",
+    "Calculate number of decimal places before termination"
+  ],
+  "blocks": [
+    {
+      "blockId": "rn-dec-blk-1",
+      "kind": "definition",
+      "heading": "Terminating Decimal Condition",
+      "content": "Let $x = p/q$ be a rational number in simplest form (p and q co-prime). Then $x$ has a terminating decimal expansion if and only if the prime factorisation of $q$ is of the form $2^n 5^m$, where $n$ and $m$ are non-negative integers."
+    },
+    {
+      "blockId": "rn-dec-blk-2",
+      "kind": "callout",
+      "heading": "Decimal Places to Termination",
+      "content": "The number of decimal places after which $p / (2^n 5^m)$ terminates is equal to $\\max(n, m)$."
+    }
+  ],
+  "workedExamples": [
+    {
+      "prompt": "Determine without division whether 13/125 has a terminating decimal expansion and find after how many places it terminates.",
+      "steps": [
+        "Step 1: Simplify fraction: 13 and 125 are co-prime.",
+        "Step 2: Factorise denominator: 125 = 5^3 = 2^0 * 5^3.",
+        "Step 3: Since prime factors are only 5 (of form 2^n * 5^m), it terminates.",
+        "Step 4: max(n, m) = max(0, 3) = 3 decimal places."
+      ],
+      "answer": "Terminating after 3 decimal places"
+    }
+  ],
+  "practice": [
+    {
+      "questionId": "q-rn-dec-1",
+      "type": "multiple_choice",
+      "prompt": "What type of decimal expansion does the rational number 17/8 have?",
+      "options": [
+        "Terminating",
+        "Non-terminating repeating",
+        "Non-terminating non-repeating",
+        "Undetermined"
+      ],
+      "conceptIds": [
+        "cbse-10-math-real-numbers-decimal-expansions"
+      ],
+      "difficulty": "introductory",
+      "answerKey": 0,
+      "hints": [
+        "Factorise denominator: 8 = 2^3.",
+        "Denominator has only factor 2."
+      ],
+      "feedback": "8 = 2^3 * 5^0. The denominator has prime factors only of form 2^n * 5^m, so 17/8 terminates.",
+      "rubric": {
+        "math_verification": {
+          "domain": "real_numbers",
+          "subdomain": "terminating_decimal",
+          "inputs": {
+            "p": 17,
+            "q": 8
+          },
+          "expected": {
+            "terminating": true,
+            "target_val": "Terminating"
+          }
+        }
+      }
+    },
+    {
+      "questionId": "q-rn-dec-2",
+      "type": "multiple_choice",
+      "prompt": "The decimal expansion of 13/3125 is:",
+      "options": [
+        "Terminating",
+        "Non-terminating repeating",
+        "Non-terminating non-repeating",
+        "Integer"
+      ],
+      "conceptIds": [
+        "cbse-10-math-real-numbers-decimal-expansions"
+      ],
+      "difficulty": "introductory",
+      "answerKey": 0,
+      "hints": [
+        "3125 = 5^5.",
+        "Denominator contains exclusively powers of 5."
+      ],
+      "feedback": "3125 = 5^5 = 2^0 * 5^5. Therefore, 13/3125 has a terminating decimal expansion.",
+      "rubric": {
+        "math_verification": {
+          "domain": "real_numbers",
+          "subdomain": "terminating_decimal",
+          "inputs": {
+            "p": 13,
+            "q": 3125
+          },
+          "expected": {
+            "terminating": true,
+            "target_val": "Terminating"
+          }
+        }
+      }
+    }
+  ],
+  "checkpointTest": [
+    {
+      "questionId": "q-rn-dec-3",
+      "type": "multiple_choice",
+      "prompt": "The decimal expansion of 64/455 is:",
+      "options": [
+        "Non-terminating repeating",
+        "Terminating",
+        "Terminating after 3 places",
+        "Integer"
+      ],
+      "conceptIds": [
+        "cbse-10-math-real-numbers-decimal-expansions"
+      ],
+      "difficulty": "standard",
+      "answerKey": 0,
+      "hints": [
+        "Factorise 455: 455 = 5 * 7 * 13.",
+        "Contains prime factors 7 and 13 other than 2 and 5."
+      ],
+      "feedback": "455 = 5 * 7 * 13. Because prime factors other than 2 and 5 exist, the decimal is non-terminating repeating.",
+      "rubric": {
+        "math_verification": {
+          "domain": "real_numbers",
+          "subdomain": "terminating_decimal",
+          "inputs": {
+            "p": 64,
+            "q": 455
+          },
+          "expected": {
+            "terminating": false,
+            "target_val": "Non-terminating repeating"
+          }
+        }
+      }
+    },
+    {
+      "questionId": "q-rn-dec-4",
+      "type": "multiple_choice",
+      "prompt": "After how many decimal places will the decimal expansion of 23 / (2^3 * 5^2) terminate?",
+      "options": [
+        "3",
+        "2",
+        "5",
+        "1"
+      ],
+      "conceptIds": [
+        "cbse-10-math-real-numbers-decimal-expansions"
+      ],
+      "difficulty": "standard",
+      "answerKey": 0,
+      "hints": [
+        "Termination index is max(n, m) for denominator 2^n * 5^m.",
+        "max(3, 2) = 3."
+      ],
+      "feedback": "For denominator 2^3 * 5^2, the highest power is 3. Hence, it terminates after 3 places.",
+      "rubric": {
+        "math_verification": {
+          "domain": "real_numbers",
+          "subdomain": "terminating_decimal",
+          "inputs": {
+            "p": 23,
+            "q": 200
+          },
+          "expected": {
+            "terminating": true,
+            "target_val": "3"
+          }
+        }
+      }
+    }
+  ],
+  "takeaways": [
+    "A rational number p/q terminates iff q = 2^n * 5^m.",
+    "Number of terminating decimal digits is max(n, m)."
+  ],
+  "validation": {
+    "status": "ready",
+    "checks": [
+      {
+        "name": "schema_conformance",
+        "passed": true,
+        "details": "Conforms to lesson-package.schema.json"
+      },
+      {
+        "name": "math_verification",
+        "passed": true,
+        "details": "Verified via Sympy symbolic solver"
+      }
+    ]
+  }
+}

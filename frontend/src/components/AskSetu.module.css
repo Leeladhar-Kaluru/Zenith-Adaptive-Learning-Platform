@@ -48,7 +48,7 @@
 .overlay {
   position: fixed;
   inset: 0;
-  z-index: 80;
+  z-index: 200;
   display: flex;
   justify-content: flex-end;
   background: rgba(23, 35, 61, 0.34);
@@ -480,13 +480,14 @@
   box-shadow: 0 0 0 3px var(--color-warning-subtle);
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .launcher {
     right: 16px;
-    bottom: 16px;
+    bottom: calc(60px + 16px);
     min-height: 48px;
     padding: 0 18px 0 15px;
     font-size: 13px;
+    z-index: 90;
   }
 
   .overlay {

@@ -175,7 +175,7 @@ export const OnboardingTour: React.FC<OnboardingTourProps> = ({ isOpen, onClose 
       onClose();
     } catch (err: unknown) {
       setPreferencesError(
-        err instanceof Error ? err.message : 'SETU could not save your setup. Try again.'
+        err instanceof Error ? err.message : 'ZENITH could not save your setup. Try again.'
       );
     } finally {
       setIsSubmitting(false);
@@ -199,7 +199,7 @@ export const OnboardingTour: React.FC<OnboardingTourProps> = ({ isOpen, onClose 
     <div className={styles.backdrop} role="dialog" aria-modal="true" aria-labelledby="onboarding-title">
       <div className={styles.modal}>
         <div className={styles.header}>
-          <span className={styles.brandBadge}>Getting Started with SETU</span>
+          <span className={styles.brandBadge}>Getting Started with ZENITH</span>
           <button
             className={styles.closeButton}
             onClick={handleClose}
@@ -222,7 +222,7 @@ export const OnboardingTour: React.FC<OnboardingTourProps> = ({ isOpen, onClose 
           {step === 0 && (
             <div>
               <h2 id="onboarding-title" className={styles.title}>
-                Welcome to SETU
+                Welcome to ZENITH
               </h2>
               <p className={styles.subtitle}>
                 The purpose-built, source-grounded adaptive learning desk for school students. Learn concepts directly from the sources you add, ask doubts with page citations, and study offline anytime.
@@ -233,7 +233,7 @@ export const OnboardingTour: React.FC<OnboardingTourProps> = ({ isOpen, onClose 
                   <div>
                     <div className={styles.featureTitle}>Source-Grounded Learning</div>
                     <div className={styles.featureText}>
-                      Every explanation and citation is checked against the document you upload. If the source does not contain enough evidence, SETU says so instead of inventing an answer.
+                      Every explanation and citation is checked against the document you upload. If the source does not contain enough evidence, ZENITH says so instead of inventing an answer.
                     </div>
                   </div>
                 </div>
@@ -259,11 +259,11 @@ export const OnboardingTour: React.FC<OnboardingTourProps> = ({ isOpen, onClose 
             </div>
           )}
 
-          {/* STEP 1: How SETU Works */}
+          {/* STEP 1: How ZENITH Works */}
           {step === 1 && (
             <div>
               <h2 id="onboarding-title" className={styles.title}>
-                How SETU Works
+                How ZENITH Works
               </h2>
               <p className={styles.subtitle}>
                 Built for Indian school curriculum standards.
@@ -285,7 +285,7 @@ export const OnboardingTour: React.FC<OnboardingTourProps> = ({ isOpen, onClose 
                   <div>
                     <div className={styles.featureTitle}>Adaptive Difficulty & Diagnostic Evidence</div>
                     <div className={styles.featureText}>
-                      Your responses generate an evidence profile. As you master concepts, SETU advances difficulty or provides targeted remediation for misconceptions.
+                      Your responses generate an evidence profile. As you master concepts, ZENITH advances difficulty or provides targeted remediation for misconceptions.
                     </div>
                   </div>
                 </div>
@@ -307,11 +307,11 @@ export const OnboardingTour: React.FC<OnboardingTourProps> = ({ isOpen, onClose 
           {step === 2 && !user && (
             <div>
               <h2 id="onboarding-title" className={styles.title}>
-                {authMode === 'register' ? 'Create Your SETU Account' : 'Sign in to Your Account'}
+                {authMode === 'register' ? 'Create Your ZENITH Account' : 'Sign in to Your Account'}
               </h2>
               <p className={styles.subtitle}>
                 {authMode === 'register'
-                  ? 'Join SETU to start your personalized, source-grounded learning journey.'
+                  ? 'Join ZENITH to start your personalized, source-grounded learning journey.'
                   : 'Enter your credentials to return to your Learning Desk.'}
               </p>
 
@@ -501,7 +501,7 @@ export const OnboardingTour: React.FC<OnboardingTourProps> = ({ isOpen, onClose 
                   {isSubmitting
                     ? 'Processing...'
                     : authMode === 'register'
-                    ? 'Create SETU Account'
+                    ? 'Create ZENITH Account'
                     : 'Sign in to Desk'}
                 </button>
 
@@ -793,7 +793,7 @@ export const OnboardingTour: React.FC<OnboardingTourProps> = ({ isOpen, onClose 
                 disabled={isSubmitting}
                 type="button"
               >
-                {isSubmitting ? 'Saving...' : 'Enter SETU Desk'}
+                {isSubmitting ? 'Saving...' : 'Enter ZENITH Desk'}
               </button>
             ) : null}
           </div>

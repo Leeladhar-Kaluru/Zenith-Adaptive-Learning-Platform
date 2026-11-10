@@ -1,0 +1,305 @@
+{
+  "schemaVersion": "1.0.0",
+  "lessonId": "polynomials-practice-set",
+  "lessonVersion": 1,
+  "pathId": "polynomials",
+  "pathVersion": 1,
+  "title": "Polynomials: Comprehensive Practice & Challenge Arena",
+  "grade": 10,
+  "subjectId": "subject-math",
+  "languageTag": "en-IN",
+  "translationStatus": "original",
+  "estimatedMinutes": 25,
+  "sourceRefs": [],
+  "objectives": [
+    "Demonstrate mastery in computing zeroes and relations with coefficients",
+    "Solve higher-order thinking problems on polynomial algebra"
+  ],
+  "blocks": [
+    {
+      "blockId": "poly-ps-blk-1",
+      "kind": "summary",
+      "heading": "Practice Set Overview",
+      "content": "8 graded questions covering zeroes, Vieta's formulas, and polynomial division."
+    }
+  ],
+  "workedExamples": [],
+  "practice": [
+    {
+      "questionId": "q-poly-ps-1",
+      "type": "multiple_choice",
+      "prompt": "What are the zeroes of the quadratic polynomial x^2 - 3?",
+      "options": [
+        "[-sqrt(3), sqrt(3)]",
+        "[3, -3]",
+        "[sqrt(3)]",
+        "[1, 3]"
+      ],
+      "conceptIds": [
+        "cbse-10-math-poly-coefficients-zeros"
+      ],
+      "difficulty": "introductory",
+      "answerKey": 0,
+      "hints": [
+        "x^2 = 3 => x = +-sqrt(3)."
+      ],
+      "feedback": "x^2 - 3 = (x - sqrt(3))(x + sqrt(3)) = 0 => x = +-sqrt(3).",
+      "rubric": {
+        "math_verification": {
+          "domain": "polynomials",
+          "subdomain": "quadratic_zeroes",
+          "inputs": {
+            "poly": "x**2 - 3"
+          },
+          "expected": {
+            "target_val": "[-sqrt(3), sqrt(3)]"
+          }
+        }
+      }
+    },
+    {
+      "questionId": "q-poly-ps-2",
+      "type": "multiple_choice",
+      "prompt": "Find the sum of zeroes of x^2 - 2x - 8.",
+      "options": [
+        "2",
+        "-2",
+        "8",
+        "-8"
+      ],
+      "conceptIds": [
+        "cbse-10-math-poly-coefficients-zeros"
+      ],
+      "difficulty": "introductory",
+      "answerKey": 0,
+      "hints": [
+        "-b/a = -(-2)/1 = 2."
+      ],
+      "feedback": "-b/a = 2.",
+      "rubric": {
+        "math_verification": {
+          "domain": "polynomials",
+          "subdomain": "coeff_relations",
+          "inputs": {
+            "poly": "x**2 - 2*x - 8"
+          },
+          "expected": {
+            "target_val": "2"
+          }
+        }
+      }
+    },
+    {
+      "questionId": "q-poly-ps-3",
+      "type": "multiple_choice",
+      "prompt": "Find the product of zeroes of x^2 - 2x - 8.",
+      "options": [
+        "-8",
+        "8",
+        "2",
+        "-2"
+      ],
+      "conceptIds": [
+        "cbse-10-math-poly-coefficients-zeros"
+      ],
+      "difficulty": "introductory",
+      "answerKey": 0,
+      "hints": [
+        "c/a = -8/1 = -8."
+      ],
+      "feedback": "c/a = -8.",
+      "rubric": {
+        "math_verification": {
+          "domain": "polynomials",
+          "subdomain": "coeff_relations",
+          "inputs": {
+            "poly": "x**2 - 2*x - 8"
+          },
+          "expected": {
+            "target_val": "-8"
+          }
+        }
+      }
+    },
+    {
+      "questionId": "q-poly-ps-4",
+      "type": "multiple_choice",
+      "prompt": "A cubic polynomial can have at most how many real zeroes?",
+      "options": [
+        "3",
+        "2",
+        "4",
+        "1"
+      ],
+      "conceptIds": [
+        "cbse-10-math-poly-cubic"
+      ],
+      "difficulty": "introductory",
+      "answerKey": 0,
+      "hints": [
+        "The maximum number of real zeroes of a polynomial of degree n is n."
+      ],
+      "feedback": "Degree 3 polynomial has at most 3 zeroes.",
+      "rubric": {
+        "math_verification": {
+          "domain": "polynomials",
+          "subdomain": "cubic_relations",
+          "inputs": {
+            "poly": "x**3 - x"
+          },
+          "expected": {
+            "target_val": "3"
+          }
+        }
+      }
+    }
+  ],
+  "checkpointTest": [
+    {
+      "questionId": "q-poly-ps-5",
+      "type": "multiple_choice",
+      "prompt": "What are the zeroes of x^2 + 7x + 12?",
+      "options": [
+        "[-4, -3]",
+        "[3, 4]",
+        "[-3, 4]",
+        "[3, -4]"
+      ],
+      "conceptIds": [
+        "cbse-10-math-poly-coefficients-zeros"
+      ],
+      "difficulty": "standard",
+      "answerKey": 0,
+      "hints": [
+        "x^2 + 7x + 12 = (x + 3)(x + 4) = 0."
+      ],
+      "feedback": "Zeroes are -3, -4.",
+      "rubric": {
+        "math_verification": {
+          "domain": "polynomials",
+          "subdomain": "quadratic_zeroes",
+          "inputs": {
+            "poly": "x**2 + 7*x + 12"
+          },
+          "expected": {
+            "target_val": "[-4, -3]"
+          }
+        }
+      }
+    },
+    {
+      "questionId": "q-poly-ps-6",
+      "type": "multiple_choice",
+      "prompt": "Find the sum of zeroes of 5x^2 - 10x + 15.",
+      "options": [
+        "2",
+        "-2",
+        "3",
+        "5"
+      ],
+      "conceptIds": [
+        "cbse-10-math-poly-coefficients-zeros"
+      ],
+      "difficulty": "standard",
+      "answerKey": 0,
+      "hints": [
+        "-b/a = -(-10)/5 = 2."
+      ],
+      "feedback": "Sum = 10/5 = 2.",
+      "rubric": {
+        "math_verification": {
+          "domain": "polynomials",
+          "subdomain": "coeff_relations",
+          "inputs": {
+            "poly": "5*x**2 - 10*x + 15"
+          },
+          "expected": {
+            "target_val": "2"
+          }
+        }
+      }
+    },
+    {
+      "questionId": "q-poly-ps-7",
+      "type": "multiple_choice",
+      "prompt": "Find the product of zeroes of 5x^2 - 10x + 15.",
+      "options": [
+        "3",
+        "-3",
+        "2",
+        "15"
+      ],
+      "conceptIds": [
+        "cbse-10-math-poly-coefficients-zeros"
+      ],
+      "difficulty": "standard",
+      "answerKey": 0,
+      "hints": [
+        "c/a = 15/5 = 3."
+      ],
+      "feedback": "Product = 15/5 = 3.",
+      "rubric": {
+        "math_verification": {
+          "domain": "polynomials",
+          "subdomain": "coeff_relations",
+          "inputs": {
+            "poly": "5*x**2 - 10*x + 15"
+          },
+          "expected": {
+            "target_val": "3"
+          }
+        }
+      }
+    },
+    {
+      "questionId": "q-poly-ps-8",
+      "type": "multiple_choice",
+      "prompt": "If alpha and beta are zeroes of x^2 + 5x + 6, what is alpha*beta?",
+      "options": [
+        "6",
+        "-6",
+        "5",
+        "-5"
+      ],
+      "conceptIds": [
+        "cbse-10-math-poly-coefficients-zeros"
+      ],
+      "difficulty": "introductory",
+      "answerKey": 0,
+      "hints": [
+        "c/a = 6/1 = 6."
+      ],
+      "feedback": "Product = 6.",
+      "rubric": {
+        "math_verification": {
+          "domain": "polynomials",
+          "subdomain": "coeff_relations",
+          "inputs": {
+            "poly": "x**2 + 5*x + 6"
+          },
+          "expected": {
+            "target_val": "6"
+          }
+        }
+      }
+    }
+  ],
+  "takeaways": [
+    "Vieta's identities link roots and polynomial coefficients directly without explicit factorisation."
+  ],
+  "validation": {
+    "status": "ready",
+    "checks": [
+      {
+        "name": "schema_conformance",
+        "passed": true,
+        "details": "Conforms to lesson-package.schema.json"
+      },
+      {
+        "name": "math_verification",
+        "passed": true,
+        "details": "Verified via Sympy symbolic solver"
+      }
+    ]
+  }
+}

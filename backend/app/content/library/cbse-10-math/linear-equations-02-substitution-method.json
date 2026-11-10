@@ -1,0 +1,208 @@
+{
+  "schemaVersion": "1.0.0",
+  "lessonId": "linear-equations-worked-examples",
+  "lessonVersion": 1,
+  "pathId": "linear-equations",
+  "pathVersion": 1,
+  "title": "Substitution Method: Worked Examples",
+  "grade": 10,
+  "subjectId": "subject-math",
+  "languageTag": "en-IN",
+  "translationStatus": "original",
+  "estimatedMinutes": 25,
+  "sourceRefs": [],
+  "objectives": [
+    "Master algebraic substitution to solve systems of linear equations",
+    "Formulate and solve real-world word problems"
+  ],
+  "blocks": [
+    {
+      "blockId": "lin-sub-blk-1",
+      "kind": "explanation",
+      "heading": "Substitution Method Steps",
+      "content": "Step 1: Express one variable in terms of the other from one equation.\nStep 2: Substitute this value into the other equation to get an equation in one variable.\nStep 3: Solve for the single variable.\nStep 4: Substitute back to obtain the second variable."
+    }
+  ],
+  "workedExamples": [
+    {
+      "prompt": "Solve the pair of equations 7x - 15y = 2 and x + 2y = 3 by substitution.",
+      "steps": [
+        "Step 1: From eq 2: x = 3 - 2y.",
+        "Step 2: Substitute into eq 1: 7(3 - 2y) - 15y = 2 => 21 - 14y - 15y = 2.",
+        "Step 3: 21 - 29y = 2 => -29y = -19 => y = 19/29.",
+        "Step 4: x = 3 - 2(19/29) = 3 - 38/29 = (87 - 38)/29 = 49/29."
+      ],
+      "answer": "x = 49/29, y = 19/29"
+    }
+  ],
+  "practice": [
+    {
+      "questionId": "q-lin-sub-1",
+      "type": "multiple_choice",
+      "prompt": "Solve x + y = 14 and x - y = 4 by the substitution method.",
+      "options": [
+        "x = 9, y = 5",
+        "x = 8, y = 6",
+        "x = 10, y = 4",
+        "x = 7, y = 7"
+      ],
+      "conceptIds": [
+        "cbse-10-math-linear-substitution"
+      ],
+      "difficulty": "introductory",
+      "answerKey": 0,
+      "hints": [
+        "x = 14 - y. Substitute into second: (14 - y) - y = 4 => 14 - 2y = 4 => 2y = 10."
+      ],
+      "feedback": "y = 5, x = 14 - 5 = 9.",
+      "rubric": {
+        "math_verification": {
+          "domain": "linear_equations",
+          "subdomain": "unique_solution",
+          "inputs": {
+            "eq1": "x + y - 14",
+            "eq2": "x - y - 4"
+          },
+          "expected": {
+            "solution": [
+              "9",
+              "5"
+            ],
+            "target_val": "x = 9, y = 5"
+          }
+        }
+      }
+    },
+    {
+      "questionId": "q-lin-sub-2",
+      "type": "multiple_choice",
+      "prompt": "Solve s - t = 3 and 2s + 3t = 36.",
+      "options": [
+        "x = 9, y = 6",
+        "x = 6, y = 9",
+        "x = 8, y = 5",
+        "x = 7, y = 4"
+      ],
+      "conceptIds": [
+        "cbse-10-math-linear-substitution"
+      ],
+      "difficulty": "standard",
+      "answerKey": 0,
+      "hints": [
+        "s = 3 + t => 2(3 + t) + 3t = 36 => 6 + 5t = 36 => 5t = 30."
+      ],
+      "feedback": "t = 6, s = 3 + 6 = 9.",
+      "rubric": {
+        "math_verification": {
+          "domain": "linear_equations",
+          "subdomain": "unique_solution",
+          "inputs": {
+            "eq1": "x - y - 3",
+            "eq2": "2*x + 3*y - 36"
+          },
+          "expected": {
+            "solution": [
+              "9",
+              "6"
+            ],
+            "target_val": "x = 9, y = 6"
+          }
+        }
+      }
+    }
+  ],
+  "checkpointTest": [
+    {
+      "questionId": "q-lin-sub-3",
+      "type": "multiple_choice",
+      "prompt": "Solve 2x + 3y = 11 and 2x - 4y = -24.",
+      "options": [
+        "x = -2, y = 5",
+        "x = 2, y = -5",
+        "x = -1, y = 4",
+        "x = 3, y = 2"
+      ],
+      "conceptIds": [
+        "cbse-10-math-linear-substitution"
+      ],
+      "difficulty": "standard",
+      "answerKey": 0,
+      "hints": [
+        "Subtract equations: 3y - (-4y) = 11 - (-24) => 7y = 35 => y = 5."
+      ],
+      "feedback": "y = 5, 2x = 11 - 15 = -4 => x = -2.",
+      "rubric": {
+        "math_verification": {
+          "domain": "linear_equations",
+          "subdomain": "unique_solution",
+          "inputs": {
+            "eq1": "2*x + 3*y - 11",
+            "eq2": "2*x - 4*y + 24"
+          },
+          "expected": {
+            "solution": [
+              "-2",
+              "5"
+            ],
+            "target_val": "x = -2, y = 5"
+          }
+        }
+      }
+    },
+    {
+      "questionId": "q-lin-sub-4",
+      "type": "multiple_choice",
+      "prompt": "Solve 3x - 5y - 4 = 0 and 9x - 2y - 7 = 0.",
+      "options": [
+        "x = 9/13, y = -5/13",
+        "x = -9/13, y = 5/13",
+        "x = 1, y = 1",
+        "x = 2, y = 3"
+      ],
+      "conceptIds": [
+        "cbse-10-math-linear-substitution"
+      ],
+      "difficulty": "challenge",
+      "answerKey": 0,
+      "hints": [
+        "Multiply eq 1 by 3: 9x - 15y - 12 = 0. Subtract from eq 2: 13y + 5 = 0."
+      ],
+      "feedback": "y = -5/13, x = 9/13.",
+      "rubric": {
+        "math_verification": {
+          "domain": "linear_equations",
+          "subdomain": "unique_solution",
+          "inputs": {
+            "eq1": "3*x - 5*y - 4",
+            "eq2": "9*x - 2*y - 7"
+          },
+          "expected": {
+            "solution": [
+              "9/13",
+              "-5/13"
+            ],
+            "target_val": "x = 9/13, y = -5/13"
+          }
+        }
+      }
+    }
+  ],
+  "takeaways": [
+    "Substitution converts a 2-variable system into an elementary single-variable equation."
+  ],
+  "validation": {
+    "status": "ready",
+    "checks": [
+      {
+        "name": "schema_conformance",
+        "passed": true,
+        "details": "Conforms to lesson-package.schema.json"
+      },
+      {
+        "name": "math_verification",
+        "passed": true,
+        "details": "Verified via Sympy symbolic solver"
+      }
+    ]
+  }
+}

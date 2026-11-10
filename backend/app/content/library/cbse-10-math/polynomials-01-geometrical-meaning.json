@@ -1,0 +1,192 @@
+{
+  "schemaVersion": "1.0.0",
+  "lessonId": "polynomials-lesson",
+  "lessonVersion": 1,
+  "pathId": "polynomials",
+  "pathVersion": 1,
+  "title": "Geometrical Meaning of Zeroes & Graph Interpretations",
+  "grade": 10,
+  "subjectId": "subject-math",
+  "languageTag": "en-IN",
+  "translationStatus": "original",
+  "estimatedMinutes": 25,
+  "sourceRefs": [],
+  "objectives": [
+    "Identify geometrical zeroes of linear, quadratic, and cubic polynomials from coordinate graphs",
+    "Understand that the zeroes of p(x) correspond to x-intercepts of y = p(x)"
+  ],
+  "blocks": [
+    {
+      "blockId": "poly-geo-blk-1",
+      "kind": "explanation",
+      "heading": "Geometrical Meaning of Zeroes",
+      "content": "For any polynomial $y = p(x)$, the zeroes of $p(x)$ are precisely the $x$-coordinates of the points where the graph of $y = p(x)$ intersects the $x$-axis. A linear polynomial $ax + b$ ($a \\ne 0$) intersects at exactly one point $(-b/a, 0)$. A quadratic polynomial $ax^2 + bx + c$ ($a \\ne 0$) forms a parabola that intersects the $x$-axis at 2 points, 1 point, or does not intersect it at all."
+    }
+  ],
+  "workedExamples": [
+    {
+      "prompt": "Find the zeroes of the quadratic polynomial x^2 - 2x - 8 graphically and verify algebraically.",
+      "steps": [
+        "Step 1: Set p(x) = 0: x^2 - 2x - 8 = 0.",
+        "Step 2: Factorise: (x - 4)(x + 2) = 0.",
+        "Step 3: Roots are x = 4 and x = -2.",
+        "Step 4: The parabola y = x^2 - 2x - 8 opens upwards and cuts the x-axis at (-2, 0) and (4, 0)."
+      ],
+      "answer": "x = -2, x = 4"
+    }
+  ],
+  "practice": [
+    {
+      "questionId": "q-poly-geo-1",
+      "type": "multiple_choice",
+      "prompt": "If the graph of a quadratic polynomial intersects the x-axis at 2 distinct points, how many real zeroes does it have?",
+      "options": [
+        "2",
+        "1",
+        "0",
+        "3"
+      ],
+      "conceptIds": [
+        "cbse-10-math-poly-geometrical-zeros"
+      ],
+      "difficulty": "introductory",
+      "answerKey": 0,
+      "hints": [
+        "Each x-intercept corresponds to one real zero."
+      ],
+      "feedback": "Two x-intercepts correspond to two distinct real zeroes.",
+      "rubric": {
+        "math_verification": {
+          "domain": "polynomials",
+          "subdomain": "geometrical_zeroes",
+          "inputs": {
+            "x_intercepts": 2
+          },
+          "expected": {
+            "num_zeroes": 2,
+            "target_val": "2"
+          }
+        }
+      }
+    },
+    {
+      "questionId": "q-poly-geo-2",
+      "type": "multiple_choice",
+      "prompt": "A parabola touches the x-axis at exactly one point. What is the number of real zeroes?",
+      "options": [
+        "1",
+        "2 distinct zeroes",
+        "0",
+        "Infinite"
+      ],
+      "conceptIds": [
+        "cbse-10-math-poly-geometrical-zeros"
+      ],
+      "difficulty": "introductory",
+      "answerKey": 0,
+      "hints": [
+        "Touching at one point corresponds to two coincident (equal) zeroes."
+      ],
+      "feedback": "When the parabola touches the x-axis at one point, it has one distinct real zero (two equal zeroes).",
+      "rubric": {
+        "math_verification": {
+          "domain": "polynomials",
+          "subdomain": "geometrical_zeroes",
+          "inputs": {
+            "x_intercepts": 1
+          },
+          "expected": {
+            "num_zeroes": 1,
+            "target_val": "1"
+          }
+        }
+      }
+    }
+  ],
+  "checkpointTest": [
+    {
+      "questionId": "q-poly-geo-3",
+      "type": "multiple_choice",
+      "prompt": "What are the zeroes of the polynomial x^2 - 2x - 8?",
+      "options": [
+        "[-2, 4]",
+        "[2, -4]",
+        "[2, 4]",
+        "[-2, -4]"
+      ],
+      "conceptIds": [
+        "cbse-10-math-poly-geometrical-zeros"
+      ],
+      "difficulty": "standard",
+      "answerKey": 0,
+      "hints": [
+        "(x - 4)(x + 2) = 0."
+      ],
+      "feedback": "x^2 - 2x - 8 = (x - 4)(x + 2) = 0 => x = 4, x = -2.",
+      "rubric": {
+        "math_verification": {
+          "domain": "polynomials",
+          "subdomain": "quadratic_zeroes",
+          "inputs": {
+            "poly": "x**2 - 2*x - 8"
+          },
+          "expected": {
+            "target_val": "[-2, 4]"
+          }
+        }
+      }
+    },
+    {
+      "questionId": "q-poly-geo-4",
+      "type": "multiple_choice",
+      "prompt": "If a polynomial graph y = p(x) lies entirely above the x-axis and never touches it, the number of real zeroes is:",
+      "options": [
+        "0",
+        "1",
+        "2",
+        "Undefined"
+      ],
+      "conceptIds": [
+        "cbse-10-math-poly-geometrical-zeros"
+      ],
+      "difficulty": "introductory",
+      "answerKey": 0,
+      "hints": [
+        "No intersection with the x-axis means no real values satisfy p(x) = 0."
+      ],
+      "feedback": "The number of real zeroes is 0 since there are no x-intercepts.",
+      "rubric": {
+        "math_verification": {
+          "domain": "polynomials",
+          "subdomain": "geometrical_zeroes",
+          "inputs": {
+            "x_intercepts": 0
+          },
+          "expected": {
+            "num_zeroes": 0,
+            "target_val": "0"
+          }
+        }
+      }
+    }
+  ],
+  "takeaways": [
+    "Zeroes of p(x) are the x-coordinates of its graph's intersection with the x-axis.",
+    "A degree n polynomial has at most n real zeroes."
+  ],
+  "validation": {
+    "status": "ready",
+    "checks": [
+      {
+        "name": "schema_conformance",
+        "passed": true,
+        "details": "Conforms to lesson-package.schema.json"
+      },
+      {
+        "name": "math_verification",
+        "passed": true,
+        "details": "Verified via Sympy symbolic solver"
+      }
+    ]
+  }
+}

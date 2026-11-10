@@ -1,0 +1,199 @@
+{
+  "schemaVersion": "1.0.0",
+  "lessonId": "quadratic-equations-worked-examples",
+  "lessonVersion": 1,
+  "pathId": "quadratic-equations",
+  "pathVersion": 1,
+  "title": "Factorisation & Splitting Middle Term Worked Examples",
+  "grade": 10,
+  "subjectId": "subject-math",
+  "languageTag": "en-IN",
+  "translationStatus": "original",
+  "estimatedMinutes": 25,
+  "sourceRefs": [],
+  "objectives": [
+    "Solve quadratic equations by splitting the middle term",
+    "Handle square root and fractional coefficients"
+  ],
+  "blocks": [
+    {
+      "blockId": "quad-fac-blk-1",
+      "kind": "explanation",
+      "heading": "Factorisation by Splitting the Middle Term",
+      "content": "To solve $ax^2 + bx + c = 0$, find two numbers $p$ and $q$ such that $p + q = b$ and $pq = ac$. Rewrite the middle term as $px + qx$ and factor by grouping."
+    }
+  ],
+  "workedExamples": [
+    {
+      "prompt": "Find the roots of 2x^2 - 5x + 3 = 0 by factorisation.",
+      "steps": [
+        "Step 1: ac = 2 * 3 = 6, b = -5. Find p, q such that p + q = -5 and pq = 6: -2 and -3.",
+        "Step 2: 2x^2 - 2x - 3x + 3 = 0.",
+        "Step 3: 2x(x - 1) - 3(x - 1) = 0 => (2x - 3)(x - 1) = 0.",
+        "Step 4: x = 1 or x = 3/2."
+      ],
+      "answer": "x = 1, x = 3/2"
+    }
+  ],
+  "practice": [
+    {
+      "questionId": "q-quad-fac-1",
+      "type": "multiple_choice",
+      "prompt": "What are the roots of x^2 - 3x - 10 = 0?",
+      "options": [
+        "[-2, 5]",
+        "[2, -5]",
+        "[2, 5]",
+        "[-2, -5]"
+      ],
+      "conceptIds": [
+        "cbse-10-math-quad-factorisation"
+      ],
+      "difficulty": "introductory",
+      "answerKey": 0,
+      "hints": [
+        "ac = -10, b = -3. Numbers are -5 and 2.",
+        "(x - 5)(x + 2) = 0."
+      ],
+      "feedback": "x = 5 or x = -2.",
+      "rubric": {
+        "math_verification": {
+          "domain": "quadratic_equations",
+          "subdomain": "factorisation",
+          "inputs": {
+            "a": 1,
+            "b": -3,
+            "c": -10
+          },
+          "expected": {
+            "target_val": "[-2, 5]"
+          }
+        }
+      }
+    },
+    {
+      "questionId": "q-quad-fac-2",
+      "type": "multiple_choice",
+      "prompt": "What are the roots of 2x^2 + x - 6 = 0?",
+      "options": [
+        "[-2, 3/2]",
+        "[2, -3/2]",
+        "[-3/2, 2]",
+        "[1, -6]"
+      ],
+      "conceptIds": [
+        "cbse-10-math-quad-factorisation"
+      ],
+      "difficulty": "standard",
+      "answerKey": 0,
+      "hints": [
+        "ac = -12, b = 1. Numbers are 4 and -3.",
+        "2x^2 + 4x - 3x - 6 = 2x(x + 2) - 3(x + 2) = 0."
+      ],
+      "feedback": "(2x - 3)(x + 2) = 0 => x = 3/2, x = -2.",
+      "rubric": {
+        "math_verification": {
+          "domain": "quadratic_equations",
+          "subdomain": "factorisation",
+          "inputs": {
+            "a": 2,
+            "b": 1,
+            "c": -6
+          },
+          "expected": {
+            "target_val": "[-2, 3/2]"
+          }
+        }
+      }
+    }
+  ],
+  "checkpointTest": [
+    {
+      "questionId": "q-quad-fac-3",
+      "type": "multiple_choice",
+      "prompt": "What are the roots of 2x^2 - x + 1/8 = 0?",
+      "options": [
+        "[1/4]",
+        "[1/2]",
+        "[1/8]",
+        "[-1/4]"
+      ],
+      "conceptIds": [
+        "cbse-10-math-quad-factorisation"
+      ],
+      "difficulty": "standard",
+      "answerKey": 0,
+      "hints": [
+        "Multiply by 8: 16x^2 - 8x + 1 = 0.",
+        "(4x - 1)^2 = 0."
+      ],
+      "feedback": "(4x - 1)^2 = 0 => x = 1/4 (two equal roots).",
+      "rubric": {
+        "math_verification": {
+          "domain": "quadratic_equations",
+          "subdomain": "factorisation",
+          "inputs": {
+            "a": 2,
+            "b": -1,
+            "c": "1/8"
+          },
+          "expected": {
+            "target_val": "[1/4]"
+          }
+        }
+      }
+    },
+    {
+      "questionId": "q-quad-fac-4",
+      "type": "multiple_choice",
+      "prompt": "Find the roots of sqrt(2)x^2 + 7x + 5*sqrt(2) = 0.",
+      "options": [
+        "[-5*sqrt(2)/2, -sqrt(2)]",
+        "[sqrt(2), 5*sqrt(2)]",
+        "[-2, -5]",
+        "[1, 5]"
+      ],
+      "conceptIds": [
+        "cbse-10-math-quad-factorisation"
+      ],
+      "difficulty": "challenge",
+      "answerKey": 0,
+      "hints": [
+        "ac = sqrt(2) * 5*sqrt(2) = 10. Split 7 into 5 and 2."
+      ],
+      "feedback": "Roots are -sqrt(2) and -5/sqrt(2) = -5*sqrt(2)/2.",
+      "rubric": {
+        "math_verification": {
+          "domain": "quadratic_equations",
+          "subdomain": "factorisation",
+          "inputs": {
+            "a": "sqrt(2)",
+            "b": 7,
+            "c": "5*sqrt(2)"
+          },
+          "expected": {
+            "target_val": "[-5*sqrt(2)/2, -sqrt(2)]"
+          }
+        }
+      }
+    }
+  ],
+  "takeaways": [
+    "Splitting the middle term reduces quadratic equations into linear factors."
+  ],
+  "validation": {
+    "status": "ready",
+    "checks": [
+      {
+        "name": "schema_conformance",
+        "passed": true,
+        "details": "Conforms to lesson-package.schema.json"
+      },
+      {
+        "name": "math_verification",
+        "passed": true,
+        "details": "Verified via Sympy symbolic solver"
+      }
+    ]
+  }
+}

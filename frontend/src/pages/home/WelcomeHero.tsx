@@ -27,7 +27,7 @@ export const WelcomeHero: React.FC<WelcomeHeroProps> = ({
             <span className={styles.welcomeTitleAccent}>Your pace.</span> Your next step.
           </h1>
           <p className={styles.welcomeSubtitle}>
-            SETU turns the textbooks and notes you already own into lessons, practice and
+            ZENITH turns the textbooks and notes you already own into lessons, practice and
             grounded answers — then adapts to what you actually get right.
           </p>
           <div className={styles.welcomeActions}>
@@ -42,7 +42,7 @@ export const WelcomeHero: React.FC<WelcomeHeroProps> = ({
               I have an account
             </button>
           </div>
-          <ul className={styles.welcomeTrust} aria-label="What SETU offers">
+          <ul className={styles.welcomeTrust} aria-label="What ZENITH offers">
             <li>Source-grounded answers</li>
             <li>Works offline</li>
             <li>Adapts to your evidence</li>
@@ -69,7 +69,7 @@ export const WelcomeHero: React.FC<WelcomeHeroProps> = ({
         </div>
       </section>
 
-      <section className={styles.welcomeSteps} aria-label="How SETU works">
+      <section className={styles.welcomeSteps} aria-label="How ZENITH works">
         <div className={styles.stepsIntro}>
           <span className={styles.eyebrow}>The desk routine</span>
           <h2 className={styles.stepsTitle}>From a source you own to evidence you can see.</h2>
@@ -81,7 +81,7 @@ export const WelcomeHero: React.FC<WelcomeHeroProps> = ({
               <h3 className={styles.stepTitle}>Add a source</h3>
               <p className={styles.stepText}>
                 Upload a PDF, DOCX, PPTX, text file, or page image you have the right to use.
-                SETU keeps the original and indexes the pages it can read.
+                ZENITH keeps the original and indexes the pages it can read.
               </p>
             </div>
           </li>
@@ -120,7 +120,7 @@ export const WelcomeHero: React.FC<WelcomeHeroProps> = ({
           <span className={styles.deskNoteOrb} aria-hidden="true" />
           <h2 className={styles.deskNoteTitle}>No invented evidence</h2>
           <p className={styles.deskNoteText}>
-            Lessons cite the pages they came from. If a page cannot be read, SETU names it
+            Lessons cite the pages they came from. If a page cannot be read, ZENITH names it
             instead of filling the gap. If the source does not contain enough evidence,
             an answer says so.
           </p>

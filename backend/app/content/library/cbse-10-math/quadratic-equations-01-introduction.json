@@ -1,0 +1,205 @@
+{
+  "schemaVersion": "1.0.0",
+  "lessonId": "quadratic-equations-lesson",
+  "lessonVersion": 1,
+  "pathId": "quadratic-equations",
+  "pathVersion": 1,
+  "title": "Standard Form & Real-World Formulations",
+  "grade": 10,
+  "subjectId": "subject-math",
+  "languageTag": "en-IN",
+  "translationStatus": "original",
+  "estimatedMinutes": 25,
+  "sourceRefs": [],
+  "objectives": [
+    "Identify and write quadratic equations in standard form ax^2 + bx + c = 0 (a != 0)",
+    "Formulate quadratic equations from geometric and practical real-life situations"
+  ],
+  "blocks": [
+    {
+      "blockId": "quad-int-blk-1",
+      "kind": "definition",
+      "heading": "Standard Form of a Quadratic Equation",
+      "content": "A quadratic equation in the variable $x$ is an equation of the form $ax^2 + bx + c = 0$, where $a, b, c$ are real numbers and $a \\ne 0$. Any equation of degree 2 is a quadratic equation."
+    }
+  ],
+  "workedExamples": [
+    {
+      "prompt": "Check whether (x - 2)^2 + 1 = 2x - 3 is a quadratic equation.",
+      "steps": [
+        "Step 1: Expand LHS: (x - 2)^2 + 1 = x^2 - 4x + 4 + 1 = x^2 - 4x + 5.",
+        "Step 2: Equate to RHS: x^2 - 4x + 5 = 2x - 3.",
+        "Step 3: Rearrange: x^2 - 6x + 8 = 0.",
+        "Step 4: This is of the form ax^2 + bx + c = 0 with a = 1 != 0. Yes, it is quadratic."
+      ],
+      "answer": "Yes, x^2 - 6x + 8 = 0 is a quadratic equation"
+    }
+  ],
+  "practice": [
+    {
+      "questionId": "q-quad-int-1",
+      "type": "multiple_choice",
+      "prompt": "Which of the following is a quadratic equation?",
+      "options": [
+        "(x - 2)^2 + 1 = 2x - 3",
+        "x(x + 1) + 8 = (x + 2)(x - 2)",
+        "x(2x + 3) = x^2 + 1",
+        "x^3 - x^2 = (x - 1)^3"
+      ],
+      "conceptIds": [
+        "cbse-10-math-quad-standard-form"
+      ],
+      "difficulty": "introductory",
+      "answerKey": 0,
+      "hints": [
+        "Expand both sides and look for a non-zero coefficient of x^2."
+      ],
+      "feedback": "(x - 2)^2 + 1 = 2x - 3 simplifies to x^2 - 6x + 8 = 0, which is of degree 2.",
+      "rubric": {
+        "math_verification": {
+          "domain": "quadratic_equations",
+          "subdomain": "nature_of_roots",
+          "inputs": {
+            "a": 1,
+            "b": -6,
+            "c": 8
+          },
+          "expected": {
+            "discriminant": 4,
+            "nature": "two_distinct_real_roots",
+            "target_val": "(x - 2)^2 + 1 = 2x - 3"
+          }
+        }
+      }
+    },
+    {
+      "questionId": "q-quad-int-2",
+      "type": "multiple_choice",
+      "prompt": "What is the standard form of 2x(x - 3) = 5?",
+      "options": [
+        "2x^2 - 6x - 5 = 0",
+        "2x^2 - 6x + 5 = 0",
+        "2x^2 + 6x - 5 = 0",
+        "x^2 - 3x - 5 = 0"
+      ],
+      "conceptIds": [
+        "cbse-10-math-quad-standard-form"
+      ],
+      "difficulty": "introductory",
+      "answerKey": 0,
+      "hints": [
+        "2x^2 - 6x = 5 => 2x^2 - 6x - 5 = 0."
+      ],
+      "feedback": "2x^2 - 6x - 5 = 0.",
+      "rubric": {
+        "math_verification": {
+          "domain": "quadratic_equations",
+          "subdomain": "nature_of_roots",
+          "inputs": {
+            "a": 2,
+            "b": -6,
+            "c": -5
+          },
+          "expected": {
+            "discriminant": 76,
+            "nature": "two_distinct_real_roots",
+            "target_val": "2x^2 - 6x - 5 = 0"
+          }
+        }
+      }
+    }
+  ],
+  "checkpointTest": [
+    {
+      "questionId": "q-quad-int-3",
+      "type": "multiple_choice",
+      "prompt": "What is the discriminant of the quadratic equation x^2 - 4x + 4 = 0?",
+      "options": [
+        "0",
+        "4",
+        "16",
+        "-16"
+      ],
+      "conceptIds": [
+        "cbse-10-math-quad-discriminant"
+      ],
+      "difficulty": "introductory",
+      "answerKey": 0,
+      "hints": [
+        "D = b^2 - 4ac = (-4)^2 - 4(1)(4) = 16 - 16 = 0."
+      ],
+      "feedback": "D = (-4)^2 - 4(1)(4) = 0.",
+      "rubric": {
+        "math_verification": {
+          "domain": "quadratic_equations",
+          "subdomain": "discriminant_and_nature",
+          "inputs": {
+            "a": 1,
+            "b": -4,
+            "c": 4
+          },
+          "expected": {
+            "discriminant": 0,
+            "nature": "two_equal_real_roots",
+            "target_val": "0"
+          }
+        }
+      }
+    },
+    {
+      "questionId": "q-quad-int-4",
+      "type": "multiple_choice",
+      "prompt": "Discriminant of 2x^2 - 4x + 3 = 0 indicates that it has:",
+      "options": [
+        "no_real_roots",
+        "two_distinct_real_roots",
+        "two_equal_real_roots",
+        "infinite_roots"
+      ],
+      "conceptIds": [
+        "cbse-10-math-quad-discriminant"
+      ],
+      "difficulty": "standard",
+      "answerKey": 0,
+      "hints": [
+        "D = (-4)^2 - 4(2)(3) = 16 - 24 = -8 < 0."
+      ],
+      "feedback": "D < 0 means the equation has no real roots.",
+      "rubric": {
+        "math_verification": {
+          "domain": "quadratic_equations",
+          "subdomain": "nature_of_roots",
+          "inputs": {
+            "a": 2,
+            "b": -4,
+            "c": 3
+          },
+          "expected": {
+            "discriminant": -8,
+            "nature": "no_real_roots",
+            "target_val": "no_real_roots"
+          }
+        }
+      }
+    }
+  ],
+  "takeaways": [
+    "Every degree 2 equation can be written as ax^2 + bx + c = 0.",
+    "The discriminant D = b^2 - 4ac determines root nature."
+  ],
+  "validation": {
+    "status": "ready",
+    "checks": [
+      {
+        "name": "schema_conformance",
+        "passed": true,
+        "details": "Conforms to lesson-package.schema.json"
+      },
+      {
+        "name": "math_verification",
+        "passed": true,
+        "details": "Verified via Sympy symbolic solver"
+      }
+    ]
+  }
+}

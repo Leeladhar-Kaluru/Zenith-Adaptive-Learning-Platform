@@ -35,7 +35,7 @@ export const OfflineLibraryPage: React.FC = () => {
       setLessons([]);
       setUsage({ count: 0, totalBytes: 0 });
       setLoadError(
-        'This browser did not allow SETU to read its local storage. Downloads may be unavailable or blocked by private browsing.'
+        'This browser did not allow ZENITH to read its local storage. Downloads may be unavailable or blocked by private browsing.'
       );
     } finally {
       setLoading(false);
@@ -56,7 +56,7 @@ export const OfflineLibraryPage: React.FC = () => {
       await loadOfflineData();
     } catch {
       setDeleteError(
-        'This download could not be removed from local storage. Close other SETU tabs and try again.'
+        'This download could not be removed from local storage. Close other ZENITH tabs and try again.'
       );
     } finally {
       setDeletingId(null);

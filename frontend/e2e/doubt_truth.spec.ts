@@ -275,7 +275,7 @@ test('the doubts view says No doubts yet without inventing history', async ({ pa
   await expect(page.getByText('No doubts yet.')).toBeVisible();
 });
 
-test('Ask SETU answers a general question and labels it as general knowledge', async ({ page }) => {
+test('Ask ZENITH answers a general question and labels it as general knowledge', async ({ page }) => {
   await signIn(page);
   await page.route('**/api/v1/doubts', async (route) => {
     if (route.request().method() !== 'POST') return route.fallback();
@@ -294,7 +294,7 @@ test('Ask SETU answers a general question and labels it as general knowledge', a
   });
 
   await page.goto('/');
-  await page.getByRole('button', { name: 'Ask SETU a question' }).click();
+  await page.getByRole('button', { name: 'Ask ZENITH a question' }).click();
   await page.getByLabel('Your question').fill('What is photosynthesis?');
   await page.getByRole('button', { name: 'Send question' }).click();
 
@@ -308,7 +308,7 @@ test('Ask SETU answers a general question and labels it as general knowledge', a
   await expect(page.getByText('Citations', { exact: false })).toHaveCount(0);
 });
 
-test('an Ask SETU question asked offline shows its answer in the chat thread after reconnecting', async ({ page, context }) => {
+test('an Ask ZENITH question asked offline shows its answer in the chat thread after reconnecting', async ({ page, context }) => {
   await signIn(page);
   await page.route('**/api/v1/sync/doubts', async (route) => {
     const body = route.request().postDataJSON();
@@ -334,7 +334,7 @@ test('an Ask SETU question asked offline shows its answer in the chat thread aft
   });
 
   await page.goto('/');
-  await page.getByRole('button', { name: 'Ask SETU a question' }).click();
+  await page.getByRole('button', { name: 'Ask ZENITH a question' }).click();
   await context.setOffline(true);
   await page.getByLabel('Your question').fill('What does the nucleus do?');
   await page.getByRole('button', { name: 'Send question' }).click();

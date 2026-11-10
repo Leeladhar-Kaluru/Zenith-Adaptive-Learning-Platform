@@ -11,6 +11,7 @@ from app.models.profiles import UserProfile
 from app.services.retrieval import retrieval_service
 from app.services.text_sanitize import sanitize_prose
 from app.core.ai_provider import ai_provider
+from app.core.config import settings
 
 logger = logging.getLogger(__name__)
 
@@ -115,6 +116,8 @@ class SyncService:
             )
             db.add(doubt)
         db.flush()
+        doubt_id = doubt.id
+        db.commit()
 
         try:
             # 1. Resolve path and document context.
@@ -180,10 +183,11 @@ class SyncService:
             # If user has no documents uploaded at all, provide general academic tutoring
             if not document_id:
                 general_prompt = (
-                    "You are the SETU Academic Tutor for a school student.\n"
+                    f"You are the {getattr(settings, 'APP_NAME', 'SETU')} Academic Tutor for a school student.\n"
                     "Answer clearly, warmly, and concisely (under 130 words) in plain language, without a greeting.\n"
                     "Never write LaTeX, raw math symbols, or awkward formatting.\n"
-                    "The student has not uploaded any study material yet. Answer their question clearly from general academic knowledge.\n"
+                    "The student has not uploaded any study material yet. Answer their question clearly from general knowledge.\n"
+                    "Never invent a page reference.\n"
                     "If they are asking about an uploaded document, politely inform them that no textbook has been uploaded yet, and invite them to upload one on the dashboard to unlock page-grounded explanations.\n"
                     f"Reply in the student's preferred language (language code: {reply_language}).\n"
                     f"Student Question: {question_text}\n"
@@ -285,7 +289,7 @@ class SyncService:
                         })
 
                 summary_prompt = (
-                    f"You are the SETU Academic Tutor for a school student.\n"
+                    f"You are the {getattr(settings, 'APP_NAME', 'SETU')} Academic Tutor for a school student.\n"
                     f"The student asked for an overview/summary of their uploaded textbook: '{doc_title}'.\n"
                     f"Provide a clear, inspiring, well-structured summary (under 200 words) in plain language, without a greeting.\n"
                     f"Never write LaTeX, raw asterisks, or awkward symbols.\n"
@@ -376,12 +380,12 @@ class SyncService:
             # question, labeled general knowledge when it does not.
             if retrieval.get("insufficient_evidence") or not results:
                 prompt = (
-                    "You are the SETU Academic Tutor for a school student.\n"
+                    f"You are the {getattr(settings, 'APP_NAME', 'SETU')} Academic Tutor for a school student.\n"
                     "Answer in at most 130 words, in plain language, without a greeting.\n"
                     "Never write LaTeX, raw backslashes, or strange formatting.\n"
                     f"The student is studying '{doc_title}'. This specific question is not directly covered in the textbook excerpts, "
-                    f"so explain the answer accurately from your academic knowledge and mention that this extends beyond the current textbook passages.\n"
-                    "Never invent an inaccurate page reference.\n"
+                    f"so explain the answer accurately from your general knowledge and mention that this extends beyond the current textbook passages.\n"
+                    "Never invent a page reference.\n"
                     f"Reply in the student's preferred language (language code: {reply_language}).\n"
                     f"Student Question: {question_text}\n"
                 )
@@ -401,7 +405,7 @@ class SyncService:
                 }
             else:
                 prompt = (
-                    f"You are the SETU Academic Tutor for a school student.\n"
+                    f"You are the {getattr(settings, 'APP_NAME', 'SETU')} Academic Tutor for a school student.\n"
                     f"Answer in at most 140 words, in plain language, without a greeting.\n"
                     f"Never write LaTeX or raw formatting; write numbers and units in plain text.\n"
                     f"Explain clearly and directly using the source evidence below from '{doc_title}'. "
@@ -438,7 +442,7 @@ class SyncService:
             except Exception:
                 pass
             try:
-                doubt_rec = db.query(Doubt).filter(Doubt.id == doubt.id).first()
+                doubt_rec = db.query(Doubt).filter(Doubt.id == doubt_id).first()
                 if doubt_rec:
                     doubt_rec.status = "needs_retry"
                     doubt_rec.last_error_code = "tutor_unavailable"

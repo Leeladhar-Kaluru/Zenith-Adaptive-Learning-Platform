@@ -99,13 +99,21 @@ def _short_text_match(response: Any, accepted: list) -> bool:
 
 def grade_response(question: Question, response: Any) -> tuple[bool, float, str, Any]:
     answer_key = question.answer_key_json or {}
-    expected = answer_key.get("answer")
+    expected = answer_key.get("answerKey") if "answerKey" in answer_key else answer_key.get("answer")
     if expected is None or str(expected).strip() == "":
         raise InvalidAnswerKeyError("This question has no validated answer key.")
     feedback = str(answer_key.get("feedback") or "")
 
     if question.type == "multiple_choice":
-        correct = _normalize(response) == _normalize(expected)
+        options = (question.prompt_json or {}).get("options", [])
+        if str(response).strip().lower() == str(expected).strip().lower():
+            correct = True
+        elif isinstance(expected, int) and 0 <= expected < len(options) and str(response).strip().lower() == str(options[expected]).strip().lower():
+            correct = True
+        elif isinstance(response, int) and 0 <= response < len(options) and str(options[response]).strip().lower() == str(expected).strip().lower():
+            correct = True
+        else:
+            correct = _normalize(response) == _normalize(expected)
     elif question.type == "numeric":
         try:
             given_value = float(str(response).strip().replace(",", ""))
@@ -208,7 +216,7 @@ def grade_and_record_attempt(
         raise AttemptNotFoundError("Question not found for this lesson.")
     lesson = db.query(PathLesson).filter(PathLesson.id == lesson_version.path_lesson_id).first()
     path = db.query(LearningPath).filter(LearningPath.id == lesson.path_id).first() if lesson else None
-    if lesson is None or path is None or path.owner_id != owner_id:
+    if lesson is None or path is None or (path.owner_id != owner_id and not path.is_library):
         raise AttemptNotFoundError("Question not found for this lesson.")
 
     concept_ids = list(question.concept_ids or [])

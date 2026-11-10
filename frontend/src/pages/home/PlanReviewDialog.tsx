@@ -156,7 +156,7 @@ export const PlanReviewDialog: React.FC<PlanReviewDialogProps> = ({
               </ol>
             ) : (
               <p className={styles.dialogEmpty}>
-                No chapter headings were detected in this source. SETU will not invent an outline.
+                No chapter headings were detected in this source. ZENITH will not invent an outline.
               </p>
             )}
           </section>

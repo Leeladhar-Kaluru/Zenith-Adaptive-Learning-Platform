@@ -55,12 +55,12 @@ const toEntry = (row: OfflineDoubt): ChatEntry => {
   if (payload?.answer) {
     answer = payload.answer;
   } else if (row.status === 'syncing') {
-    answer = 'Sending your question to SETU…';
+    answer = 'Sending your question to ZENITH…';
   } else if (queued) {
     answer =
       'Saved on this device. Your question will be sent automatically when you are back online, and the answer will appear here.';
   } else {
-    answer = row.lastError || 'SETU could not answer that yet.';
+    answer = row.lastError || 'ZENITH could not answer that yet.';
   }
   return {
     id: row.clientDoubtId,
@@ -255,14 +255,14 @@ export const AskSetu: React.FC = () => {
           },
         ]);
       } else {
-        setError(payload.message || 'SETU could not answer that yet. Please try again.');
+        setError(payload.message || 'ZENITH could not answer that yet. Please try again.');
         setQuestion(text);
       }
     } catch (err: unknown) {
       if (err instanceof TypeError) {
-        setError('Could not reach SETU. Your question was not sent — try again when you reconnect.');
+        setError('Could not reach ZENITH. Your question was not sent — try again when you reconnect.');
       } else {
-        setError(err instanceof Error ? err.message : 'SETU could not answer that yet.');
+        setError(err instanceof Error ? err.message : 'ZENITH could not answer that yet.');
       }
       setQuestion(text);
     } finally {
@@ -283,11 +283,11 @@ export const AskSetu: React.FC = () => {
             setIsOpen(true);
           }
         }}
-        aria-label="Ask SETU a question"
+        aria-label="Ask ZENITH a question"
       >
         <span className={styles.launcherGlow} aria-hidden="true" />
         <MessageCircleQuestion size={19} />
-        <span>Ask SETU</span>
+        <span>Ask ZENITH</span>
       </button>
 
       {isAuthModalOpen && (
@@ -302,7 +302,7 @@ export const AskSetu: React.FC = () => {
             className={styles.drawer}
             role="dialog"
             aria-modal="true"
-            aria-labelledby="ask-setu-title"
+            aria-labelledby="ask-zenith-title"
             ref={dialogRef}
           >
             <header className={styles.header}>
@@ -310,7 +310,7 @@ export const AskSetu: React.FC = () => {
                 <span className={styles.kicker}>
                   <Sparkles size={12} /> Your study companion
                 </span>
-                <h2 id="ask-setu-title">Ask SETU</h2>
+                <h2 id="ask-zenith-title">Ask ZENITH</h2>
                 <p>
                   Answers from your books show the exact page. General questions are
                   answered honestly and labeled.
@@ -326,7 +326,7 @@ export const AskSetu: React.FC = () => {
                 type="button"
                 className={styles.close}
                 onClick={() => setIsOpen(false)}
-                aria-label="Close Ask SETU"
+                aria-label="Close Ask ZENITH"
               >
                 <X size={18} />
               </button>

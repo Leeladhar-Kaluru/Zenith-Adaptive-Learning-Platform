@@ -15,7 +15,12 @@ async def get_system_health():
     storage_ok = await storage_service.check_health()
     ai_status = await ai_provider.check_health()
 
-    all_healthy = db_ok and storage_ok and ai_status.get("chat_ready", False) and ai_status.get("embed_ready", False)
+    embed_ok = (
+        ai_status.get("embed_ready", False)
+        or "decoupled" in str(ai_status.get("embed_note", "")).lower()
+        or ai_status.get("provider") == "groq"
+    )
+    all_healthy = db_ok and storage_ok and ai_status.get("chat_ready", False) and embed_ok
 
     return {
         "status": "healthy" if all_healthy else "degraded",

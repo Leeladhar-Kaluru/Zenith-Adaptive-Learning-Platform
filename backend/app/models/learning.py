@@ -1,6 +1,6 @@
 import uuid
 import datetime
-from sqlalchemy import Column, String, Integer, Float, Boolean, DateTime, ForeignKey, JSON, Text, UniqueConstraint
+from sqlalchemy import Column, String, Integer, Float, Boolean, DateTime, ForeignKey, JSON, Text, UniqueConstraint, Index, text
 from sqlalchemy.dialects.postgresql import UUID
 from app.models.base import Base
 
@@ -18,7 +18,20 @@ class LearningPath(Base):
     status = Column(String(50), default="active")
     outline_json = Column(JSON, nullable=False)
     rationale = Column(String(500), nullable=True)
+    is_library = Column(Boolean, default=False, nullable=False)
+    library_slug = Column(String(120), nullable=True)
+    library_status = Column(String(50), default="draft")  # draft, published, archived
+    board_id = Column(String(50), ForeignKey("curriculum_boards.id", ondelete="SET NULL"), nullable=True)
     created_at = Column(DateTime, default=datetime.datetime.utcnow)
+
+    __table_args__ = (
+        Index(
+            "ix_learning_paths_library_slug",
+            "library_slug",
+            unique=True,
+            postgresql_where=text("is_library IS TRUE"),
+        ),
+    )
 
 class PathLesson(Base):
     __tablename__ = "path_lessons"

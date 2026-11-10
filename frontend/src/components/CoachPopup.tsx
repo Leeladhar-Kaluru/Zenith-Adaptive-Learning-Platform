@@ -47,14 +47,14 @@ export const CoachPopup: React.FC<CoachPopupProps> = ({
       className={`${styles.layer} ${isCelebrate ? styles.celebrate : styles.retry}`}
       role="status"
       aria-live="polite"
-      aria-label="SETU coach"
+      aria-label="ZENITH coach"
     >
       <div className={styles.card}>
         <span className={styles.accent} aria-hidden="true" />
         <header className={styles.head}>
           <span className={styles.kicker}>
             {isCelebrate ? <Sparkles size={14} /> : <Target size={14} />}
-            {isCelebrate ? 'Evidence updated' : 'SETU coach'}
+            {isCelebrate ? 'Evidence updated' : 'ZENITH coach'}
           </span>
           <button
             ref={closeRef}
@@ -117,7 +117,7 @@ export const CoachPopup: React.FC<CoachPopupProps> = ({
         {personalNotePending && !personalNote && (
           <div className={styles.personalNote}>
             <span className={styles.blockLabel}>
-              <Brain size={12} /> SETU is analyzing your last answers…
+              <Brain size={12} /> ZENITH is analyzing your last answers…
             </span>
             <p>This note is written from your real attempts, so it takes a few seconds.</p>
           </div>
@@ -139,7 +139,7 @@ export const CoachPopup: React.FC<CoachPopupProps> = ({
 
         {!hasEvidence && (
           <p className={styles.honestNote}>
-            No extra source sentence is stored for this answer, so SETU is not inventing one.
+            No extra source sentence is stored for this answer, so ZENITH is not inventing one.
           </p>
         )}
 

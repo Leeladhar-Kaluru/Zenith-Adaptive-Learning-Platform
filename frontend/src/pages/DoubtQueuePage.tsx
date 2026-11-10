@@ -102,7 +102,7 @@ export const DoubtQueuePage: React.FC = () => {
     } catch {
       setLocalDoubts([]);
       setLocalError(
-        'This browser did not allow SETU to read its local queue. Questions saved offline may not appear here.'
+        'This browser did not allow ZENITH to read its local queue. Questions saved offline may not appear here.'
       );
     }
   };
@@ -144,7 +144,7 @@ export const DoubtQueuePage: React.FC = () => {
     } catch (err: any) {
       setServerStatus({
         state: 'error',
-        message: err?.message || 'Doubt history could not be loaded from SETU.',
+        message: err?.message || 'Doubt history could not be loaded from ZENITH.',
       });
     }
   };
@@ -270,7 +270,7 @@ export const DoubtQueuePage: React.FC = () => {
           </button>
           <h1 className={styles.title}>Doubts</h1>
           <p className={styles.lede}>
-            Every question you asked SETU, with its real state. Questions asked while the device was
+            Every question you asked ZENITH, with its real state. Questions asked while the device was
             offline are stored here until they can be answered.
           </p>
         </div>
@@ -297,7 +297,7 @@ export const DoubtQueuePage: React.FC = () => {
 
       {serverStatus.state === 'error' && (
         <div className={styles.notice} role="status">
-          <strong>SETU could not be reached.</strong> Showing doubts stored on this device only.
+          <strong>ZENITH could not be reached.</strong> Showing doubts stored on this device only.
           <span className={styles.noticeDetail}>{serverStatus.message}</span>
           <button type="button" className={styles.noticeRetry} onClick={() => void loadServer()}>
             Retry
@@ -416,7 +416,7 @@ export const DoubtQueuePage: React.FC = () => {
                     disabled={retryingId === row.clientDoubtId || !isOnline}
                   >
                     {retryingId === row.clientDoubtId
-                      ? 'Asking SETU…'
+                      ? 'Asking ZENITH…'
                       : isOnline
                         ? 'Retry'
                         : 'Retry when online'}
@@ -426,13 +426,13 @@ export const DoubtQueuePage: React.FC = () => {
 
               {row.status === 'processing' && (
                 <p className={styles.waitingText}>
-                  SETU is answering this question now. Refresh this page to see the result.
+                  ZENITH is answering this question now. Refresh this page to see the result.
                 </p>
               )}
 
               {row.status === 'waiting' && (
                 <p className={styles.waitingText}>
-                  Saved on this device. It will be sent when SETU is reachable.
+                  Saved on this device. It will be sent when ZENITH is reachable.
                 </p>
               )}
 

@@ -11,6 +11,11 @@ from app.api.v1.profile import router as profile_router
 from app.api.v1.teacher import router as teacher_router
 from app.api.v1.study import router as study_router
 from app.api.v1.classroom import router as classroom_router
+from app.api.v1.library import router as library_router
+from app.api.v1.rewards import router as rewards_router
+from app.api.v1.tutor import router as tutor_router
+from app.api.v1.diagnostics import router as diagnostics_router
+from app.api.v1.practice import router as practice_router
 
 api_router = APIRouter()
 api_router.include_router(health_router, tags=["Health"])
@@ -25,4 +30,9 @@ api_router.include_router(sync_router, prefix="/sync", tags=["Sync"])
 api_router.include_router(teacher_router, prefix="/teacher", tags=["Teacher"])
 api_router.include_router(study_router, prefix="/study", tags=["Study"])
 api_router.include_router(classroom_router, prefix="/classroom", tags=["Classroom"])
+api_router.include_router(library_router, prefix="/library", tags=["Library"])
+api_router.include_router(rewards_router, prefix="/rewards", tags=["Rewards"])
+api_router.include_router(tutor_router, prefix="/tutor", tags=["Tutor"])
+api_router.include_router(diagnostics_router, prefix="/diagnostics", tags=["Diagnostics"])
+api_router.include_router(practice_router, prefix="/practice", tags=["Practice"])
 

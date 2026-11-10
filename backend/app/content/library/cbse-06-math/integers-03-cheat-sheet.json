@@ -1,0 +1,97 @@
+{
+  "schemaVersion": "1.0.0",
+  "lessonId": "integers-cheat-sheet",
+  "lessonVersion": 1,
+  "pathId": "integers-and-number-line",
+  "pathVersion": 1,
+  "title": "Formula Sheet & Sign Rules Cheat Sheet",
+  "grade": 6,
+  "subjectId": "subject-math",
+  "languageTag": "en-IN",
+  "translationStatus": "original",
+  "estimatedMinutes": 15,
+  "sourceRefs": [],
+  "objectives": [
+    "Quickly review all integer sign rules, absolute values, and comparison laws on a single sheet"
+  ],
+  "blocks": [
+    {
+      "blockId": "c6-int-cs-01",
+      "kind": "definition",
+      "heading": "Integer Hierarchy & Sets",
+      "content": "• **Natural Numbers (N):** $\\{1, 2, 3, 4, \\dots\\}$\n• **Whole Numbers (W):** $\\{0, 1, 2, 3, 4, \\dots\\} = \\mathbb{N} \\cup \\{0\\}$\n• **Integers (Z):** $\\{\\dots, -3, -2, -1, 0, 1, 2, 3, \\dots\\}$\n• Note: Zero ($0$) is neither positive nor negative."
+    },
+    {
+      "blockId": "c6-int-cs-02",
+      "kind": "summary",
+      "heading": "The Master Sign Matrix",
+      "content": "| Operation | Rule | Example |\n| :--- | :--- | :--- |\n| $(+) + (+)$ | Add magnitudes, keep $+$ | $4 + 7 = +11$ |\n| $(-) + (-)$ | Add magnitudes, keep $-$ | $(-3) + (-5) = -8$ |\n| $(+) + (-)$ | Subtract magnitudes, take larger sign | $8 + (-5) = +3$ |\n| $(-) + (+)$ | Subtract magnitudes, take larger sign | $(-9) + 4 = -5$ |\n| $-(-x)$ | Double negative becomes positive | $10 - (-3) = 10 + 3 = 13$ |\n| $+(-x)$ | Plus followed by minus is negative | $12 + (-4) = 12 - 4 = 8$ |"
+    },
+    {
+      "blockId": "c6-int-cs-03",
+      "kind": "callout",
+      "heading": "Top 3 Board & Exam Traps",
+      "content": "⚠️ **Trap 1: Confusing Addition with Multiplication.** In addition, $(-2) + (-3) = -5$ (debt increases). Do NOT say 'minus into minus is plus' here!\n\n⚠️ **Trap 2: Ordering Negative Numbers.** With negative numbers, larger absolute value means smaller number! E.g., $-100 < -1$, not $>$.\n\n⚠️ **Trap 3: Absolute Value.** $|x| \\ge 0$ always. $|-7| = 7$ and $|+7| = 7$."
+    }
+  ],
+  "workedExamples": [
+    {
+      "prompt": "Quick Revision Check: Which is greater: -18 or -11?",
+      "steps": [
+        "Step 1: On the number line, -11 is to the right of -18.",
+        "Step 2: Therefore, -11 > -18."
+      ],
+      "answer": "-11 is greater"
+    }
+  ],
+  "practice": [
+    {
+      "questionId": "q-c6-int-cs-01",
+      "type": "multiple_choice",
+      "prompt": "What is the additive inverse of -47?",
+      "options": [
+        "-47",
+        "0",
+        "47",
+        "1/47"
+      ],
+      "conceptIds": [
+        "cbse-06-math-integers-subtraction"
+      ],
+      "difficulty": "introductory",
+      "answerKey": 2,
+      "hints": [
+        "The additive inverse of a number x is -x such that x + (-x) = 0."
+      ],
+      "feedback": "The additive inverse of -47 is +47, because (-47) + 47 = 0.",
+      "rubric": {
+        "math_verification": {
+          "domain": "integers",
+          "subdomain": "additive_inverse",
+          "inputs": {
+            "n": -47
+          },
+          "expected": {
+            "target_val": "47"
+          }
+        }
+      }
+    }
+  ],
+  "checkpointTest": [],
+  "takeaways": [
+    "Keep this formula card handy for mental sign checks.",
+    "Additive inverse of x is -x.",
+    "Never apply multiplication sign rules to addition."
+  ],
+  "validation": {
+    "status": "ready",
+    "checks": [
+      {
+        "name": "concise_format",
+        "passed": true,
+        "details": "Canvas Classes style revision card verified"
+      }
+    ]
+  }
+}

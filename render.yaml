@@ -1,0 +1,73 @@
+# ==============================================================================
+# ZENITH Infrastructure-as-Code Blueprint — Render Web Service
+# Specification: Render Blueprint Specification (v1)
+# Service: FastAPI Containerized Backend on Python 3.12-slim
+# ==============================================================================
+
+services:
+  - type: web
+    name: zenith-backend
+    env: docker
+    plan: free
+    region: oregon
+    branch: main
+    dockerfilePath: backend/Dockerfile
+    dockerContext: backend
+    healthCheckPath: /api/v1/health
+    autoDeploy: true
+    envVars:
+      # Application Environment
+      - key: APP_ENV
+        value: production
+      - key: APP_NAME
+        value: ZENITH
+      - key: LOG_LEVEL
+        value: INFO
+      - key: API_V1_PREFIX
+        value: /api/v1
+
+      # Production Database (Supabase PostgreSQL with PgBouncer Session/Transaction Pooler)
+      - key: DATABASE_URL
+        sync: false
+      - key: POOL_SIZE
+        value: "5"
+      - key: MAX_OVERFLOW
+        value: "5"
+      - key: POOL_TIMEOUT
+        value: "30"
+
+      # Storage Backend & Buckets
+      - key: STORAGE_BACKEND
+        value: supabase
+      - key: STORAGE_BUCKET_DOCUMENTS
+        value: setu-documents
+      - key: EMBEDDED_PIPELINE
+        value: "true"
+
+      # Supabase Authentication & Storage Keys (Server-Side Only)
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_PUBLISHABLE_KEY
+        sync: false
+      - key: SUPABASE_SECRET_KEY
+        sync: false
+
+      # Multi-Provider AI Inference Layer (Production Groq API)
+      - key: LLM_PROVIDER
+        value: groq
+      - key: LLM_BASE_URL
+        value: https://api.groq.com/openai/v1
+      - key: LLM_MODEL
+        value: openai/gpt-oss-120b
+      - key: LLM_FALLBACK_MODEL
+        value: qwen/qwen3.8-27b
+      - key: GROQ_API_KEY
+        sync: false
+      - key: ENABLE_REMOTE_AI
+        value: "true"
+
+      # Security & CORS (Allow Frontend Vercel Deployments)
+      - key: SETU_TEST_AUTH
+        value: "false"
+      - key: FRONTEND_ORIGINS
+        sync: false

@@ -11,6 +11,8 @@
   retention <days>        set how long B2 keeps backups before deleting them
   backup-key              create BACKUP_KEY and append it to backend/.env (never printed)
   assets-due              imported assets whose licence re-check date has passed
+  asset commons <File:Title>   import one Wikimedia Commons file (licence checked, left pending)
+  asset approve <asset-id> <reviewer-email>   approve an imported asset for use in lessons
 """
 import sys
 from pathlib import Path
@@ -45,6 +47,33 @@ def main(argv: list[str]) -> int:
             for ch in db.scalars(select(Chapter).order_by(Chapter.grade, Chapter.slug)):
                 print(f"class {ch.grade} {ch.subject_id} {ch.slug}: {ch.status}")
             return 0
+        if cmd == "asset":
+            from sqlalchemy import select
+            from app.models import Profile
+            if argv[2] == "commons":
+                from app.ingest import commons
+                who = db.scalar(select(Profile).where(Profile.role.in_(("reviewer", "admin"))))
+                try:
+                    a = commons.import_file(db, argv[3], who.id if who else None)
+                except commons.CommonsError as e:
+                    print("Not imported:", e)
+                    return 1
+                print(f"{a.status}: {a.external_id} [{a.licence_id}] {a.attribution_text}  (id {a.id})")
+                return 0
+            if argv[2] == "approve":
+                import uuid as _uuid
+                from app.ingest.assets import AssetError, approve_asset
+                rv = db.scalar(select(Profile).where(Profile.email == argv[4].strip().lower(), Profile.role.in_(("reviewer", "admin"))))
+                if rv is None:
+                    print("That email is not a reviewer.")
+                    return 1
+                try:
+                    approve_asset(db, _uuid.UUID(argv[3]), rv.id)
+                except AssetError as e:
+                    print("Not approved:", e)
+                    return 1
+                print("approved")
+                return 0
         if cmd == "assets-due":
             from app.ingest.recheck import due_for_recheck
             rows = due_for_recheck(db)

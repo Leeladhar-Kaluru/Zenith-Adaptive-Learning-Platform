@@ -10,7 +10,7 @@ from sqlalchemy.orm import Session
 
 from app.engine import graph
 from app.models import (Card, Chapter, ChapterConcept, Concept, CurriculumVersion, EvidenceEvent, Item, Lesson, LessonConcept,
-                        LessonProgress, LessonVersion, LessonVersionItem, Profile)
+                        LessonProgress, LessonVersion, LessonVersionItem, Profile, ContentProvenance, SourceAsset)
 from app.services import items as item_svc
 from app.services import states as st_svc
 
@@ -132,6 +132,13 @@ def _state_label(prog: dict, lesson_id) -> str:
     return "done" if prog.get(lesson_id) == "completed" else "todo"
 
 
+def lesson_credits(db: Session, lv: LessonVersion) -> list[dict]:
+    """The credit lines students see for every imported asset the lesson uses."""
+    rows = db.execute(select(SourceAsset).join(ContentProvenance, ContentProvenance.asset_id == SourceAsset.id)
+                      .where(ContentProvenance.lesson_version_id == lv.id).order_by(SourceAsset.external_id)).scalars()
+    return [{"text": a.attribution_text, "url": a.url, "licence": a.licence_id} for a in rows]
+
+
 def _resolve_blocks(db: Session, lv: LessonVersion) -> list[dict]:
     items = {i.key: i for i in db.scalars(select(Item).join(LessonVersionItem, LessonVersionItem.item_id == Item.id)
                                           .where(LessonVersionItem.lesson_version_id == lv.id))}
@@ -139,6 +146,9 @@ def _resolve_blocks(db: Session, lv: LessonVersion) -> list[dict]:
     for n, b in enumerate(lv.blocks):
         b = dict(b)
         b["id"] = f"b{n + 1}"
+        if b["kind"] == "figure" and b.get("asset"):
+            a = db.get(SourceAsset, uuid.UUID(b["asset"]))
+            b["imageUrl"] = a.url if a is not None and a.status == "approved" else None
         if b["kind"] == "check":
             b["item"] = item_svc.public_item(items[b["item"]])
         out.append(b)
@@ -180,7 +190,7 @@ def lesson_payload(db: Session, profile: Profile, lesson_id: uuid.UUID, version_
             "title": lv.title, "order": lesson.position, "total": len(siblings), "minutes": lv.minutes, "objectives": lv.objectives,
             "prevId": prev_id, "nextId": next_id, "prereqGap": pre, "blocks": _resolve_blocks(db, lv),
             "siblings": [{"id": str(l.id), "title": v.title, "order": l.position, "minutes": v.minutes, "state": _state_label(prog, l.id)} for l, v in siblings],
-            "related": related[:4], "completed": prog.get(lesson.id) == "completed"}
+            "related": related[:4], "completed": prog.get(lesson.id) == "completed", "credits": lesson_credits(db, lv)}
 
 
 def complete_lesson(db: Session, profile: Profile, lesson_id: uuid.UUID) -> dict:

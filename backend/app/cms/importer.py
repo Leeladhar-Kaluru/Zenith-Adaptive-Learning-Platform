@@ -16,7 +16,7 @@ from app.cms.schema import ChapterFile, ConceptDef, ConceptsFile, CurriculumFile
 from app.engine import elo, graph
 from app.models import (AuditLog, Board, Card, Chapter, ChapterConcept, Concept, ConceptEdge, CurriculumVersion, GateResult, Item,
                         ItemConcept, Lesson, LessonConcept, LessonVersion, LessonVersionItem, Misconception, OptionMisconception,
-                        Subject)
+                        Subject, ContentProvenance, SourceAsset)
 
 
 class ContentError(ValueError):
@@ -242,9 +242,12 @@ def import_tree(db: Session, tree: Tree, actor_id: uuid.UUID | None = None) -> d
             item_rows = [_upsert_item(db, it, misc_ids, codes_to_concept) for it in les.items]
             report["items_created"] += (db.scalar(select(func.count(Item.id))) or 0) - (before or 0)
 
-            blocks = [b.model_dump(mode="json") for b in les.blocks]
+            # an unused figure `asset` key is dropped so lessons that never use imported images keep their existing content hash
+            blocks = [{k: v for k, v in b.model_dump(mode="json").items() if not (k == "asset" and v is None)} for b in les.blocks]
             sig = {"t": les.title, "m": les.minutes, "o": les.objectives, "b": blocks, "i": [r.content_hash for r in item_rows],
                    "c": sorted(les.concepts), "l": les.language, "cards": [c.model_dump() for c in les.cards]}
+            if les.sources:
+                sig["s"] = sorted(les.sources)
             h = _hash(sig)
             latest = db.scalar(select(LessonVersion).where(LessonVersion.lesson_id == lesson.id, LessonVersion.language == les.language)
                                .order_by(LessonVersion.version.desc()).limit(1))
@@ -265,10 +268,22 @@ def import_tree(db: Session, tree: Tree, actor_id: uuid.UUID | None = None) -> d
             for cd in les.cards:
                 db.add(Card(lesson_version_id=lv.id, key=cd.key, concept_id=cd.concept, front=cd.front, back=cd.back))
 
+            asset_rows = {}
+            for sid in set(les.sources) | {b["asset"] for b in blocks if b["kind"] == "figure" and b.get("asset")}:
+                try:
+                    row = db.get(SourceAsset, uuid.UUID(sid))
+                except ValueError:
+                    row = None
+                if row is not None:
+                    asset_rows[sid] = row
+            for sid in les.sources:
+                if sid in asset_rows:
+                    db.add(ContentProvenance(lesson_version_id=lv.id, asset_id=asset_rows[sid].id))
             gates = gate_lib.lesson_gates(
                 title=les.title, grade=ch.grade, objectives=les.objectives, blocks=blocks,
                 items=[it.model_dump(mode="json") for it in les.items], concept_ids=set(les.concepts), known_concepts=known,
-                graph_error=graph_error, curriculum_verified=cv.verified, misconception_codes=set(codes_to_concept))
+                graph_error=graph_error, curriculum_verified=cv.verified, misconception_codes=set(codes_to_concept),
+                sources=list(les.sources), assets={k: {"status": v.status, "attribution": v.attribution_text} for k, v in asset_rows.items()})
             for g in gates:
                 db.add(GateResult(lesson_version_id=lv.id, name=g.name, passed=g.passed, manual=g.manual, detail=g.detail))
             hard_ok = all(g.passed for g in gates if not g.manual)

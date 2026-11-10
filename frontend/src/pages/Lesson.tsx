@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { track } from '../track/tracker';
 import { prefetch } from '../api/useApi';
+import { Credits } from '../lesson/Credits';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { api } from '../api/client';
 import { clearApiCache, useApi } from '../api/useApi';
@@ -90,6 +91,7 @@ export default function LessonPage() {
             <span className="muted sm"><Icon name="clock" size={16} /> {data.minutes} min</span>
           </header>
           {data.blocks.map((b, i) => <section key={b.id} className={s.block} data-blk={i} id={b.id}><RenderBlock b={b} /></section>)}
+          <Credits credits={data.credits ?? []} />
           {data.objectives.length > 0 && <Card flat style={{ marginTop: 8 }}><strong>In this lesson you learned to</strong><ul style={{ margin: '8px 0 0 1.2em' }}>{data.objectives.map((o) => <li key={o}>{o}</li>)}</ul></Card>}
           {data.related.length > 0 && <Card flat style={{ marginTop: 16 }}><strong>Related lessons</strong><div className={p.stack} style={{ marginTop: 10 }}>{data.related.map((r) => <Link key={r.lessonId} to={`/lesson/${r.lessonId}`} className={p.lrow}><div style={{ flex: 1 }}><strong>{r.title}</strong><div className="sm muted">{r.why}</div></div><Icon name="chevR" size={20} /></Link>)}</div></Card>}
           <div className={s.notesBtn}><Button variant="ghost" icon="chat" onClick={() => setAsk(true)}>Ask ZENITH</Button></div>

@@ -53,7 +53,7 @@ const CALLOUT = { watch: ['Watch out', 'warn'], remember: ['Remember', 'bookmark
 export function RenderBlock({ b }: { b: Block }) {
   switch (b.kind) {
     case 'text': return <div className={s.text}>{b.heading && <h2 id={b.id}>{b.heading}</h2>}<Html html={b.html} /></div>;
-    case 'figure': return <figure className={s.figure} role="img" aria-label={b.alt}><div dangerouslySetInnerHTML={{ __html: b.svg }} />{b.caption && <figcaption>{b.caption}</figcaption>}</figure>;
+    case 'figure': return <figure className={s.figure}>{b.imageUrl ? <img src={b.imageUrl} alt={b.alt} loading="lazy" decoding="async" /> : <div role="img" aria-label={b.alt} dangerouslySetInnerHTML={{ __html: b.svg }} />}{b.caption && <figcaption>{b.caption}</figcaption>}</figure>;
     case 'widget': if (b.widget.startsWith('sim_')) return <Suspense fallback={<div className={s.widget}>Loading the simulation…</div>}><Sim b={b} /></Suspense>;
       return b.widget === 'numberline' ? <NumberLine start={Number(b.config.start ?? 0)} min={Number(b.config.min ?? -6)} max={Number(b.config.max ?? 6)} />
       : b.widget === 'balance' ? <Balance a={Number(b.config.a ?? 3)} b={Number(b.config.b ?? 7)} /> : <Fraction num={Number(b.config.num ?? 1)} den={Number(b.config.den ?? 4)} />;

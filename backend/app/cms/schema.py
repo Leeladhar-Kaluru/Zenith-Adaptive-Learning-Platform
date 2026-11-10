@@ -65,9 +65,16 @@ class TextBlock(Strict):
 
 class FigureBlock(Strict):
     kind: Literal["figure"]
-    svg: str
+    svg: str = ""                    # our own drawing, inline
+    asset: Optional[str] = None      # or an approved imported image (source asset id), which must be credited in the lesson's `sources`
     alt: str
     caption: str = ""
+
+    @model_validator(mode="after")
+    def _one_picture(self):
+        if bool(self.svg.strip()) == bool(self.asset):
+            raise ValueError("a figure needs exactly one of svg or asset")
+        return self
 
 
 # Interactive simulations: allowed parameters and their inclusive bounds. Anything outside is rejected at import.
@@ -217,6 +224,7 @@ class LessonFile(Strict):
     origin: Literal["human", "ai_assisted"] = "ai_assisted"
     language: Literal["en", "hi", "te"] = "en"
     blocks: list[Block] = Field(min_length=3)
+    sources: list[str] = []          # approved source-asset ids this lesson uses; each is credited to students
     items: list[ItemDef] = []
     cards: list[CardDef] = []
     misconceptions: list[MisconceptionDef] = []

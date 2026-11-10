@@ -61,3 +61,9 @@
 .answer:focus { outline: none; box-shadow: var(--hard-sm); border-color: var(--brand); }
 .matchRow { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: center; }
 .fbHint { background: var(--hi); color: var(--hi-ink); display: flex; gap: 8px; align-items: flex-start; }
+
+.credits { margin-top: 28px; padding: 14px 16px; border: 2px dashed var(--line); border-radius: var(--r); font-size: .85rem; color: var(--ink-2); }
+.credits h2 { font-size: .95rem; display: flex; gap: 6px; align-items: center; margin: 0 0 6px; }
+.credits ul { margin: 0; padding-left: 1.1em; display: grid; gap: 4px; }
+.credits a { color: var(--brand); font-weight: 700; }
+.figure img { max-width: 100%; height: auto; display: block; margin: 0 auto; border-radius: 12px; }

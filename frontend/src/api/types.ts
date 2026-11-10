@@ -27,7 +27,7 @@ export interface PublicItem {
 }
 export type Block =
   | { id: string; kind: 'text'; heading?: string; html: string }
-  | { id: string; kind: 'figure'; svg: string; alt: string; caption?: string }
+  | { id: string; kind: 'figure'; svg: string; asset?: string; imageUrl?: string | null; alt: string; caption?: string }
   | { id: string; kind: 'widget'; widget: 'numberline' | 'balance' | 'fraction' | 'sim_linegraph' | 'sim_equation' | 'sim_spinner' | 'sim_density'; config: Record<string, number | string>; task?: string }
   | { id: string; kind: 'example'; heading: string; prompt: string; steps: string[] }
   | { id: string; kind: 'callout'; tone: 'watch' | 'remember' | 'real'; html: string }
@@ -37,6 +37,7 @@ export interface Lesson {
   id: string; versionId: string; chapterSlug: string; chapterTitle: string; subject: Subject; title: string; order: number; total: number; minutes: number;
   objectives: string[]; prevId: string | null; nextId: string | null; prereqGap: PrereqGap | null; blocks: Block[]; siblings: LessonStub[];
   related: Array<{ lessonId: string; title: string; chapterSlug: string; why: string }>; completed: boolean;
+  credits: Array<{ text: string; url: string; licence: string }>;
 }
 
 export type Response = Record<string, unknown>;

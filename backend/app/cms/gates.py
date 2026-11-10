@@ -50,7 +50,8 @@ def sympy_value(expr: str) -> sympy.Expr:
 
 
 def lesson_gates(*, title: str, grade: int, objectives: list[str], blocks: list[dict], items: list[dict], concept_ids: set[str],
-                 known_concepts: set[str], graph_error: str | None, curriculum_verified: bool, misconception_codes: set[str]) -> list[Gate]:
+                 known_concepts: set[str], graph_error: str | None, curriculum_verified: bool, misconception_codes: set[str], sources: list[str] | None = None,
+                 assets: dict[str, dict] | None = None) -> list[Gate]:
     g: list[Gate] = []
     checks = [b for b in blocks if b["kind"] == "check"]
     g.append(Gate("Structure is complete", bool(objectives) and len(blocks) >= 3 and bool(checks),
@@ -125,6 +126,19 @@ def lesson_gates(*, title: str, grade: int, objectives: list[str], blocks: list[
 
     practice = [it for it in items if it["purpose"] in ("practice", "test", "probe")]
     g.append(Gate("Enough practice questions", len(items) >= 4 and len(practice) >= 2, f"{len(items)} questions ({len(practice)} for practice or tests)"))
+
+    sources, assets = sources or [], assets or {}
+    used = {b["asset"] for b in blocks if b["kind"] == "figure" and b.get("asset")}
+    problems = [f"{a} is used in a figure but not listed in sources" for a in sorted(used - set(sources))]
+    for a in sources:
+        info = assets.get(a)
+        if info is None:
+            problems.append(f"{a} is not a known source asset")
+        elif info.get("status") != "approved":
+            problems.append(f"{a} is {info.get('status')}, not approved")
+        elif not str(info.get("attribution", "")).strip():
+            problems.append(f"{a} has no attribution text")
+    g.append(Gate("Imported assets are credited", not problems, "; ".join(problems) if problems else (f"{len(sources)} imported asset(s), all approved and credited" if sources else "No imported assets")))
 
     g.append(Gate("Prerequisite graph is acyclic", graph_error is None, graph_error or "ok"))
     g.append(Gate("Curriculum mapping confirmed", curriculum_verified, "Chapter placement checked against the board's current textbook" if curriculum_verified else "Reviewer must confirm the chapter matches the current textbook", manual=True))

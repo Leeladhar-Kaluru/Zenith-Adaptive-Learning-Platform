@@ -55,6 +55,7 @@ def world(db, tmp_path):
     now = datetime.now(timezone.utc)
     asset = SourceAsset(source_id=src.id, external_id="File:Cell.png", url="https://upload.wikimedia.org/x/Cell.png", kind="image", licence_id="CC-BY-4.0",
                         attribution_text="Cell.png by Ann Lee, CC BY 4.0, via Wikimedia Commons", author="Ann Lee", status="approved", retrieved_at=now,
+                        storage_path="https://assets.zenith.example/cell.png",
                         recheck_at=now + timedelta(days=180), reviewer_id=reviewer.id)
     db.add(asset)
     db.commit()
@@ -80,7 +81,7 @@ def test_credited_lesson_imports_publishes_and_shows_its_credit(db, client, worl
     body = client.get(f"{API}/library/lessons/{lv.lesson_id}", headers=auth(student)).json()
     assert body["credits"] == [{"text": asset.attribution_text, "url": asset.url, "licence": "CC-BY-4.0"}]
     fig = next(b for b in body["blocks"] if b["kind"] == "figure" and b.get("asset"))
-    assert fig["imageUrl"] == asset.url
+    assert fig["imageUrl"] == asset.storage_path        # served from our own storage, never hotlinked
 
 
 def test_uncredited_use_is_kept_out_of_review(db, world):

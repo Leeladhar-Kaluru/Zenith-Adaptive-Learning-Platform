@@ -158,7 +158,7 @@ async def _verify_local(token: str) -> Optional[Dict[str, Any]]:
     key = await _signing_key(header["kid"])
     try:
         claims = jwt.decode(token, key, algorithms=["ES256"], audience="authenticated",
-                            issuer=f"{settings.SUPABASE_URL.rstrip('/')}/auth/v1", options={"require": ["exp", "sub"]})
+                            issuer=f"{settings.SUPABASE_URL.rstrip('/')}/auth/v1", leeway=30, options={"require": ["exp", "sub"]})
     except jwt.PyJWTError:
         return None
     return {"id": claims["sub"]}

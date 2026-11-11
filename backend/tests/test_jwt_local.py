@@ -58,7 +58,7 @@ def test_valid_token_verifies_without_network(setup):
 
 
 def test_expired_wrong_signature_and_wrong_audience_are_rejected_without_fallback(setup):
-    assert run(token(exp=int(time.time()) - 10)) is None
+    assert run(token(exp=int(time.time()) - 120)) is None            # beyond the 30 s clock-skew tolerance
     assert run(token(key=OTHER)) is None
     assert run(token(aud="anon")) is None
     assert run(token(iss="https://evil.example/auth/v1")) is None

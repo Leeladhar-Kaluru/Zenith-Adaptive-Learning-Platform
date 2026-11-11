@@ -49,6 +49,32 @@ def sympy_value(expr: str) -> sympy.Expr:
     return sympy.nsimplify(parse_expr(expr.replace("^", "**").replace("−", "-"), transformations=_TRANSFORMS, evaluate=True))
 
 
+_OUTSIDE = re.compile(r"(?i)<\s*(?:img|iframe|script|link|object|embed|image|use)\b|\b(?:src|href|xlink:href)\s*=|url\s*\(|https?://|(?<![:\w])//[a-z0-9-]+\.")
+
+
+def _strings(obj):
+    if isinstance(obj, str):
+        yield obj
+    elif isinstance(obj, dict):
+        for v in obj.values():
+            yield from _strings(v)
+    elif isinstance(obj, (list, tuple)):
+        for v in obj:
+            yield from _strings(v)
+
+
+def _outside_references(blocks: list[dict]) -> list[str]:
+    """Lesson text and drawings may not load or link to anything from another site: images come from reviewed, stored assets only."""
+    out = []
+    for i, b in enumerate(blocks):
+        for text in _strings(b):
+            m = _OUTSIDE.search(text)
+            if m:
+                out.append(f"block {i + 1} contains '{m.group(0).strip()[:30]}'")
+                break
+    return out
+
+
 def lesson_gates(*, title: str, grade: int, objectives: list[str], blocks: list[dict], items: list[dict], concept_ids: set[str],
                  known_concepts: set[str], graph_error: str | None, curriculum_verified: bool, misconception_codes: set[str], sources: list[str] | None = None,
                  assets: dict[str, dict] | None = None) -> list[Gate]:
@@ -139,6 +165,8 @@ def lesson_gates(*, title: str, grade: int, objectives: list[str], blocks: list[
             problems.append(f"{a} is {info.get('status')}, not approved")
         elif not str(info.get("attribution", "")).strip():
             problems.append(f"{a} has no attribution text")
+        elif info.get("kind") == "image" and a in used and not info.get("stored"):
+            problems.append(f"{a} is an image that is not stored on ZENITH yet; students' browsers must never load it from another site")
     g.append(Gate("Imported assets are credited", not problems, "; ".join(problems) if problems else (f"{len(sources)} imported asset(s), all approved and credited" if sources else "No imported assets")))
 
     # depth: a lesson must be a real lesson, not an outline
@@ -159,6 +187,9 @@ def lesson_gates(*, title: str, grade: int, objectives: list[str], blocks: list[
     if len(used_mis) < 2:
         need.append(f"at least 2 tagged misconceptions (has {len(used_mis)})")
     g.append(Gate("Lesson has enough depth", not need, ("Needs " + "; ".join(need)) if need else "Examples, visual, recap, questions and misconceptions are all present"))
+
+    outside = _outside_references(blocks)
+    g.append(Gate("No outside references in lesson markup", not outside, ("Pulls in outside content: " + "; ".join(outside[:3])) if outside else "No links, images or scripts from other sites"))
 
     g.append(Gate("Prerequisite graph is acyclic", graph_error is None, graph_error or "ok"))
     g.append(Gate("Curriculum mapping confirmed", curriculum_verified, "Chapter placement checked against the board's current textbook" if curriculum_verified else "Reviewer must confirm the chapter matches the current textbook", manual=True))

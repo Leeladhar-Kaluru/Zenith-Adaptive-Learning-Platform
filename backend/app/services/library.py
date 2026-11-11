@@ -150,7 +150,7 @@ def _resolve_blocks(db: Session, lv: LessonVersion) -> list[dict]:
         b["id"] = f"b{n + 1}"
         if b["kind"] == "figure" and b.get("asset"):
             a = db.get(SourceAsset, uuid.UUID(b["asset"]))
-            b["imageUrl"] = a.url if a is not None and a.status == "approved" else None
+            b["imageUrl"] = a.storage_path if a is not None and a.status == "approved" and a.storage_path else None   # never hotlinked from another site
         if b["kind"] == "check":
             b["item"] = item_svc.public_item(items[b["item"]])
         out.append(b)

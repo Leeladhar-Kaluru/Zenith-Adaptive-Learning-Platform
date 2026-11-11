@@ -12,13 +12,18 @@ from urllib.parse import quote, urlsplit
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
+from app.core.config import settings
 from app.ingest.assets import get_source
 from app.ingest.fetch import fetch
 from app.ingest.policy import evaluate
 from app.models import SourceAsset
 
 API = "https://commons.wikimedia.org/w/api.php"
-USER_AGENT = "ZenithEducationBot/1.0 (school learning platform; respects robots.txt)"
+
+
+def user_agent() -> str:
+    """Wikimedia's robot policy requires a contact in the User-Agent. The owner supplies it as BOT_CONTACT; it is never guessed."""
+    return f"ZenithEducationBot/1.0 (school learning platform; contact: {settings.BOT_CONTACT})"
 IMAGE_HOSTS = {"upload.wikimedia.org", "commons.wikimedia.org"}
 RECHECK_DAYS = 180
 
@@ -52,6 +57,8 @@ def _text(value: str) -> str:
 
 
 def import_file(db: Session, title: str, actor_id: uuid.UUID) -> SourceAsset:
+    if not settings.BOT_CONTACT.strip():
+        raise CommonsError("Set BOT_CONTACT (an email address or web page for Wikimedia to reach you) before importing from Commons; their robot policy requires it.")
     if not title.startswith("File:"):
         raise CommonsError("Give the file title as it appears on Commons, for example File:Example.jpg")
     source = get_source(db, "Wikimedia Commons", "https://commons.wikimedia.org", "https://commons.wikimedia.org/wiki/Commons:Licensing",
@@ -60,7 +67,7 @@ def import_file(db: Session, title: str, actor_id: uuid.UUID) -> SourceAsset:
     if existing:
         return existing
     url = f"{API}?action=query&format=json&prop=imageinfo&iiprop=url|size|extmetadata&titles={quote(title)}"
-    data = json.loads(fetch(url, user_agent=USER_AGENT))
+    data = json.loads(fetch(url, user_agent=user_agent()))
     pages = (data.get("query") or {}).get("pages") or {}
     info = next((p.get("imageinfo", [None])[0] for p in pages.values() if p.get("imageinfo")), None)
     if not info:
@@ -73,7 +80,7 @@ def import_file(db: Session, title: str, actor_id: uuid.UUID) -> SourceAsset:
     file_url = info["url"]
     if urlsplit(file_url).hostname not in IMAGE_HOSTS:
         raise CommonsError("The file is not on a Wikimedia host, so it is not imported.")
-    body = fetch(file_url, user_agent=USER_AGENT)
+    body = fetch(file_url, user_agent=user_agent())
     artist = _text((meta.get("Artist") or {}).get("value", "")) or "Unknown author"
     licence_name = _text((meta.get("LicenseShortName") or {}).get("value", ""))
     licence_link = _text((meta.get("LicenseUrl") or {}).get("value", ""))

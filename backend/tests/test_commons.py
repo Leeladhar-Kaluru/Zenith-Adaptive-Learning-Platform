@@ -20,6 +20,7 @@ def api_payload(licence="CC BY 4.0", artist='<a href="//commons.wikimedia.org/wi
 
 @pytest.fixture()
 def net(monkeypatch):
+    monkeypatch.setattr(commons.settings, "BOT_CONTACT", "owner@school.example")
     calls = []
     payload = {"api": api_payload()}
 

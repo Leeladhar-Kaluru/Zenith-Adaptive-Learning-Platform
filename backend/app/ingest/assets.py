@@ -28,11 +28,23 @@ def approve_asset(db: Session, asset_id: uuid.UUID, reviewer_id: uuid.UUID) -> S
     a = db.get(SourceAsset, asset_id)
     if a is None:
         raise AssetError("Asset not found.")
+    if a.status in ("rejected", "retired"):
+        raise AssetError(f"This asset is {a.status}. Import it again if it should be reconsidered.")
     decision = evaluate(a.licence_id)
     if not decision.allowed:
         raise AssetError(decision.reason)
     if not a.attribution_text.strip():
         raise AssetError("An asset needs attribution text before it can be approved.")
     a.status, a.reviewer_id = "approved", reviewer_id
+    db.commit()
+    return a
+
+
+def retire_asset(db: Session, asset_id: uuid.UUID, reviewer_id: uuid.UUID, reason: str) -> SourceAsset:
+    """Take an asset out of use (for example its licence changed upstream). Students stop seeing it at once; lessons that use it fail their gate on the next import."""
+    a = db.get(SourceAsset, asset_id)
+    if a is None:
+        raise AssetError("Asset not found.")
+    a.status, a.reviewer_id = "retired", reviewer_id
     db.commit()
     return a

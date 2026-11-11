@@ -15,6 +15,7 @@
   assets-due              imported assets whose licence re-check date has passed
   new-lesson <content-dir> <chapter-slug> <lesson-slug> "<Title>" <concept,concept>   start a lesson from a TODO skeleton
   asset commons <File:Title>   import one Wikimedia Commons file (licence checked, left pending)
+  asset retire <asset-id> <reviewer-email> "<reason>"   take an asset out of use at once (licence changed, removed upstream)
   asset approve <asset-id> <reviewer-email>   approve an imported asset for use in lessons
 """
 import sys
@@ -67,10 +68,24 @@ def main(argv: list[str]) -> int:
                 who = db.scalar(select(Profile).where(Profile.role.in_(("reviewer", "admin"))))
                 try:
                     a = commons.import_file(db, argv[3], who.id if who else None)
-                except commons.CommonsError as e:
+                except (commons.CommonsError, __import__("app.ingest.fetch", fromlist=["FetchError"]).FetchError) as e:
                     print("Not imported:", e)
                     return 1
                 print(f"{a.status}: {a.external_id} [{a.licence_id}] {a.attribution_text}  (id {a.id})")
+                return 0
+            if argv[2] == "retire":
+                import uuid as _uuid
+                from app.ingest.assets import AssetError, retire_asset
+                rv = db.scalar(select(Profile).where(Profile.email == argv[4].strip().lower(), Profile.role.in_(("reviewer", "admin"))))
+                if rv is None:
+                    print("That email is not a reviewer.")
+                    return 1
+                try:
+                    retire_asset(db, _uuid.UUID(argv[3]), rv.id, argv[5] if len(argv) > 5 else "")
+                except (AssetError, ValueError) as e:
+                    print("Not retired:", e)
+                    return 1
+                print("retired")
                 return 0
             if argv[2] == "approve":
                 import uuid as _uuid

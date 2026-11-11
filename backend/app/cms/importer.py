@@ -260,9 +260,40 @@ def import_tree(db: Session, tree: Tree, actor_id: uuid.UUID | None = None) -> d
             if les.sources:
                 sig["s"] = sorted(les.sources)
             h = _hash(sig)
+
+            def gate_version(lv, les=les, blocks=blocks, ch=ch, cv=cv, codes_to_concept=codes_to_concept):
+                """Run the automated gates for a version and set draft or in_review. Safe to repeat: earlier results are replaced."""
+                asset_rows = {}
+                wanted = set(les.sources) | {b["asset"] for b in blocks if b["kind"] == "figure" and b.get("asset")} | {b["config"]["dataset"] for b in blocks if b["kind"] == "widget" and (b.get("config") or {}).get("dataset")}
+                for sid in wanted:
+                    try:
+                        row = db.get(SourceAsset, uuid.UUID(sid))
+                    except ValueError:
+                        row = None
+                    if row is not None:
+                        asset_rows[sid] = row
+                have = {x for (x,) in db.execute(select(ContentProvenance.asset_id).where(ContentProvenance.lesson_version_id == lv.id))}
+                for sid in les.sources:
+                    if sid in asset_rows and asset_rows[sid].id not in have:
+                        db.add(ContentProvenance(lesson_version_id=lv.id, asset_id=asset_rows[sid].id))
+                gates = gate_lib.lesson_gates(
+                    title=les.title, grade=ch.grade, objectives=les.objectives, blocks=blocks,
+                    items=[it.model_dump(mode="json") for it in les.items], concept_ids=set(les.concepts), known_concepts=known,
+                    graph_error=graph_error, curriculum_verified=cv.verified, misconception_codes=set(codes_to_concept),
+                    sources=list(les.sources), assets={k: {"status": v.status, "attribution": v.attribution_text, "kind": v.kind, "stored": bool(v.storage_path)} for k, v in asset_rows.items()})
+                db.query(GateResult).filter(GateResult.lesson_version_id == lv.id).delete()
+                for g in gates:
+                    db.add(GateResult(lesson_version_id=lv.id, name=g.name, passed=g.passed, manual=g.manual, detail=g.detail))
+                lv.status = "in_review" if all(g.passed for g in gates if not g.manual) else "draft"
+
             latest = db.scalar(select(LessonVersion).where(LessonVersion.lesson_id == lesson.id, LessonVersion.language == les.language)
                                .order_by(LessonVersion.version.desc()).limit(1))
             if latest and latest.content_hash == h:
+                if latest.status in ("draft", "in_review"):         # an asset may have been approved since: look again. Published versions are never touched.
+                    before = latest.status
+                    gate_version(latest)
+                    if latest.status != before:
+                        report["regated"] = report.get("regated", 0) + 1
                 report["lesson_versions_unchanged"] += 1
                 continue
 
@@ -279,27 +310,8 @@ def import_tree(db: Session, tree: Tree, actor_id: uuid.UUID | None = None) -> d
             for cd in les.cards:
                 db.add(Card(lesson_version_id=lv.id, key=cd.key, concept_id=cd.concept, front=cd.front, back=cd.back))
 
-            asset_rows = {}
-            for sid in set(les.sources) | {b["asset"] for b in blocks if b["kind"] == "figure" and b.get("asset")} | {b["config"]["dataset"] for b in blocks if b["kind"] == "widget" and (b.get("config") or {}).get("dataset")}:
-                try:
-                    row = db.get(SourceAsset, uuid.UUID(sid))
-                except ValueError:
-                    row = None
-                if row is not None:
-                    asset_rows[sid] = row
-            for sid in les.sources:
-                if sid in asset_rows:
-                    db.add(ContentProvenance(lesson_version_id=lv.id, asset_id=asset_rows[sid].id))
-            gates = gate_lib.lesson_gates(
-                title=les.title, grade=ch.grade, objectives=les.objectives, blocks=blocks,
-                items=[it.model_dump(mode="json") for it in les.items], concept_ids=set(les.concepts), known_concepts=known,
-                graph_error=graph_error, curriculum_verified=cv.verified, misconception_codes=set(codes_to_concept),
-                sources=list(les.sources), assets={k: {"status": v.status, "attribution": v.attribution_text} for k, v in asset_rows.items()})
-            for g in gates:
-                db.add(GateResult(lesson_version_id=lv.id, name=g.name, passed=g.passed, manual=g.manual, detail=g.detail))
-            hard_ok = all(g.passed for g in gates if not g.manual)
-            lv.status = "in_review" if hard_ok else "draft"
-            report["in_review" if hard_ok else "draft"] += 1
+            gate_version(lv)
+            report["in_review" if lv.status == "in_review" else "draft"] += 1
             report["lesson_versions_created"] += 1
             db.add(AuditLog(actor_id=actor_id, action="content.import", entity="lesson_version", entity_id=str(lv.id),
                             detail={"lesson": f"{ch.slug}/{slug}", "version": lv.version, "status": lv.status}))

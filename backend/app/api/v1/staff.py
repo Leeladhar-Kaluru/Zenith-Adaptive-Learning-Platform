@@ -174,6 +174,13 @@ async def ai_review(version_id: uuid.UUID, r: Profile = Depends(reviewer_only), 
     return {"flags": flags}
 
 
+@router.get("/review/assets-due")
+def assets_due(r: Profile = Depends(reviewer_only), db: Session = Depends(get_db)):
+    """Imported assets whose licence re-check date has passed. Retire any whose terms changed."""
+    from app.ingest.recheck import due_for_recheck
+    return {"assets": [{"id": str(a.id), "externalId": a.external_id, "licence": a.licence_id, "url": a.url, "kind": a.kind, "recheckAt": a.recheck_at.isoformat()} for a in due_for_recheck(db)]}
+
+
 @router.get("/review/coverage")
 def coverage(r: Profile = Depends(reviewer_only), db: Session = Depends(get_db)):
     """What is live, what is waiting, per chapter: so nobody claims coverage that is not real."""

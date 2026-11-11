@@ -2,7 +2,7 @@
 from __future__ import annotations
 
 import time
-from urllib.parse import urlsplit
+from urllib.parse import urljoin, urlsplit
 from urllib.robotparser import RobotFileParser
 
 import httpx
@@ -41,9 +41,19 @@ def _space_out(host: str) -> None:
 def _robots_for(origin: str, host: str, user_agent: str, client: httpx.Client) -> RobotFileParser | None:
     if origin in _robots:
         return _robots[origin]
-    _space_out(host)
-    r = client.get(f"{origin}/robots.txt", headers={"User-Agent": user_agent})
-    if r.status_code >= 500:
+    url, r = f"{origin}/robots.txt", None
+    for _ in range(4):
+        _space_out(host)
+        r = client.get(url, headers={"User-Agent": user_agent})
+        if r.status_code not in (301, 302, 303, 307, 308):
+            break
+        nxt = urljoin(url, r.headers.get("Location", ""))
+        if urlsplit(nxt).hostname != host:       # a policy we cannot read from this host is not permission
+            raise Disallowed(f"{host} sends robots.txt to another host; not fetching.")
+        url = nxt
+    else:
+        raise Disallowed(f"{host} robots.txt redirects too many times; not fetching.")
+    if r.status_code >= 500 or r.status_code in (401, 403, 429):
         raise Disallowed(f"{host} robots.txt is unavailable ({r.status_code}); not fetching until it answers.")
     parser = None
     if r.status_code < 400:

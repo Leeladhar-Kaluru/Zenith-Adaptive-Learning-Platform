@@ -4,6 +4,7 @@ import { Icon } from '../icons/Icon';
 import { Button } from '../ui/kit';
 import { Question } from './Question';
 import { Balance, Fraction, NumberLine } from './widgets';
+import { pw, svgPowers } from '../ui/powers';
 import s from './lesson.module.css';
 
 /** Content HTML comes only from reviewed, server-sanitised lessons. Maths is `<span data-tex="...">`. */
@@ -27,8 +28,8 @@ function Example({ b }: { b: Extract<Block, { kind: 'example' }> }) {
   return (
     <div>
       <h2>{b.heading}</h2>
-      <p className={s.text}>{b.prompt}</p>
-      <ol className={s.steps}>{b.steps.slice(0, n).map((st, i) => <li key={i}><span>{st}</span></li>)}</ol>
+      <p className={s.text}>{pw(b.prompt)}</p>
+      <ol className={s.steps}>{b.steps.slice(0, n).map((st, i) => <li key={i}><span>{pw(st)}</span></li>)}</ol>
       {n < b.steps.length ? <Button variant="ghost" size="sm" iconRight="arrowR" onClick={() => setN(n + 1)}>Show next step</Button> : <p className="hand">that is the whole idea. now you try</p>}
     </div>
   );
@@ -64,7 +65,7 @@ const CALLOUT = { watch: ['Watch out', 'warn'], remember: ['Remember', 'bookmark
 export function RenderBlock({ b }: { b: Block }) {
   switch (b.kind) {
     case 'text': return <div className={s.text}>{b.heading && <h2 id={b.id}>{b.heading}</h2>}<Html html={b.html} /></div>;
-    case 'figure': return <figure className={s.figure}>{b.imageUrl ? <img src={b.imageUrl} alt={b.alt} loading="lazy" decoding="async" /> : <div role="img" aria-label={b.alt} dangerouslySetInnerHTML={{ __html: b.svg }} />}{b.caption && <figcaption>{b.caption}</figcaption>}</figure>;
+    case 'figure': return <figure className={s.figure}>{b.imageUrl ? <img src={b.imageUrl} alt={b.alt} loading="lazy" decoding="async" /> : <div role="img" aria-label={b.alt} dangerouslySetInnerHTML={{ __html: svgPowers(b.svg) }} />}{b.caption && <figcaption>{pw(b.caption)}</figcaption>}</figure>;
     case 'widget': if (b.widget === 'atlas') return <Suspense fallback={<div className={s.widget}>Loading the map…</div>}><Atlas dataset={String(b.config.dataset)} overlays={b.config.overlays === undefined ? undefined : String(b.config.overlays)} find={b.config.find === undefined ? undefined : String(b.config.find)} task={b.task} /></Suspense>;
       if (b.widget === 'data_chart') return <Suspense fallback={<div className={s.widget}>Loading the chart…</div>}><Chart dataset={String(b.config.dataset)} x={String(b.config.x)} y={String(b.config.y)} chart={String(b.config.chart ?? 'line')} task={b.task} /></Suspense>;
       if (b.widget.startsWith('sim_')) return <Suspense fallback={<div className={s.widget}>Loading the simulation…</div>}><Sim b={b} /></Suspense>;
@@ -73,6 +74,6 @@ export function RenderBlock({ b }: { b: Block }) {
     case 'example': return <Example b={b} />;
     case 'callout': { const [label, icon] = CALLOUT[b.tone]; return <div className={`${s.callout} ${b.tone === 'remember' ? s.remember : b.tone === 'real' ? s.real : ''}`}><span className={s.tagc}><Icon name={icon} size={16} />{label}</span><Html html={b.html} /></div>; }
     case 'check': return <div><h2 id={b.id}>Think first, then check</h2><Question item={b.item} /></div>;
-    case 'summary': return <div><h2 id={b.id}>Remember</h2><ul className={s.summary}>{b.points.map((p, i) => <li key={i}><Icon name="check" size={20} accent="var(--ok)" />{p}</li>)}</ul></div>;
+    case 'summary': return <div><h2 id={b.id}>Remember</h2><ul className={s.summary}>{b.points.map((p, i) => <li key={i}><Icon name="check" size={20} accent="var(--ok)" />{pw(p)}</li>)}</ul></div>;
   }
 }

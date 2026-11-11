@@ -45,7 +45,7 @@ blocks:
     y1="54" x2="265" y2="66" stroke="currentColor" stroke-width="2"/><text x="265" y="86">3</text><line x1="300" y1="54" x2="300"
     y2="66" stroke="currentColor" stroke-width="2"/><text x="300" y="86">4</text></g><circle cx="20" cy="60" r="8" fill="#ffd43b"
     stroke="#14193a" stroke-width="3"/><circle cx="125" cy="60" r="8" fill="#74c0fc" stroke="#14193a" stroke-width="3"/><text
-    x="20" y="34" font-size="13" font-weight="700" text-anchor="middle" fill="currentColor">smaller</text><text x="125" y="34"
+    x="30" y="34" font-size="13" font-weight="700" text-anchor="middle" fill="currentColor">smaller</text><text x="125" y="34"
     font-size="13" font-weight="700" text-anchor="middle" fill="currentColor">greater</text></svg>
   alt: A number line from minus 4 to 4. A dot at minus 4 is labelled smaller and a dot at minus 1 is labelled greater.
   caption: -4 is to the left of -1, so -4 is smaller.

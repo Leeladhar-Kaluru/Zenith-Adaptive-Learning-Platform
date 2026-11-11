@@ -70,7 +70,7 @@ export default function ClassRoom() {
 
       <div className={c.tabs}>
         <Segmented<Tab> label="Class sections" value={tab} onChange={setTab}
-          options={[{ value: 'chat', label: 'Chat' }, { value: 'news', label: `News (${data.announcements.length})` }, { value: 'work', label: `Work (${data.assignments.length})` }, { value: 'people', label: `People (${data.classmates.length})` }, ...(data.isTeacher ? [{ value: 'reports' as Tab, label: 'Reports' }] : [])]} />
+          options={[{ value: 'chat', label: 'Chat' }, { value: 'news', label: `News (${data.announcements.length})` }, { value: 'work', label: `Work (${data.assignments.length})` }, { value: 'people', label: `People (${data.classmates.length})` }, ...(data.isTeacher ? [{ value: 'reports' as Tab, label: data.openReports ? `Reports (${data.openReports})` : 'Reports' }] : [])]} />
       </div>
 
       {tab === 'chat' && <Suspense fallback={<Skeleton h={320} r={16} />}><Chat classId={id} isTeacher={data.isTeacher} /></Suspense>}

@@ -43,9 +43,14 @@ def owned(db: Session, teacher: Profile, class_id: uuid.UUID) -> Classroom:
     return c
 
 
+def _open_reports(db: Session, c: Classroom) -> int:
+    from app.models import ChatReport
+    return db.scalar(select(func.count(ChatReport.id)).where(ChatReport.classroom_id == c.id, ChatReport.status == "open")) or 0
+
+
 def summary(db: Session, c: Classroom) -> dict:
     n = db.scalar(select(func.count(ClassMember.student_id)).where(ClassMember.classroom_id == c.id, ClassMember.status == "active")) or 0
-    return {"id": str(c.id), "name": c.name, "grade": c.grade, "subject": c.subject_id, "students": n, "joinCode": c.join_code, "leaguesEnabled": c.leagues_enabled}
+    return {"id": str(c.id), "name": c.name, "grade": c.grade, "subject": c.subject_id, "students": n, "joinCode": c.join_code, "leaguesEnabled": c.leagues_enabled, "openReports": _open_reports(db, c)}
 
 
 def create_class(db: Session, teacher: Profile, name: str, grade: int, subject: str) -> Classroom:

@@ -78,7 +78,7 @@ def history(class_id: uuid.UUID, before: Optional[str] = None, limit: int = Quer
 
 @router.get("/classes/{class_id}/chat/unread")
 def unread(class_id: uuid.UUID, p: Profile = Depends(get_profile), db: Session = Depends(get_db)):
-    _run(svc.cls_svc.access, db, p, class_id)
+    _run(svc._access, db, p, class_id)
     return {"unread": svc.unread(db, p, class_id)}
 
 
@@ -109,7 +109,7 @@ def send_gif(class_id: uuid.UUID, body: GifIn, p: Profile = Depends(get_profile)
 
 @router.get("/classes/{class_id}/chat/gifs")
 def gifs(class_id: uuid.UUID, q: str = Query("", max_length=60), p: Profile = Depends(get_profile), db: Session = Depends(get_db)):
-    _run(svc.cls_svc.access, db, p, class_id)
+    _run(svc._access, db, p, class_id)
     return {"gifs": _run(chatfiles.gif_search, q), "credit": "Powered by GIPHY"}
 
 
@@ -117,7 +117,7 @@ def gifs(class_id: uuid.UUID, q: str = Query("", max_length=60), p: Profile = De
 async def upload(class_id: uuid.UUID, request: Request, name: str = Query("file", max_length=120), caption: str = Query("", max_length=200),
                  threadId: Optional[uuid.UUID] = None, p: Profile = Depends(get_profile), db: Session = Depends(get_db)):
     """The file is the request body (no multipart), so the browser can show real upload progress. Size is checked before reading it."""
-    _run(svc.cls_svc.access, db, p, class_id)
+    _run(svc._access, db, p, class_id)
     try:
         declared = int(request.headers.get("content-length", "0"))
     except ValueError:

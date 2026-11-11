@@ -100,7 +100,7 @@ export interface SearchResults {
 export interface MapGraph { chapterSlug: string; nodes: Array<{ id: string; title: string; grade: number; band: Band; inChapter: boolean; x: number; y: number; lessonId: string | null; mastery: number; nextUnlock: boolean }>; edges: Array<[string, string]> }
 export interface TutorReply { reply: string; citations: Array<{ title: string; heading: string }>; language: string; aiTranslated: boolean; degraded: boolean }
 
-export interface ClassSummary { id: string; name: string; grade: number; subject: string; students: number; joinCode: string; leaguesEnabled: boolean }
+export interface ClassSummary { id: string; name: string; grade: number; subject: string; students: number; joinCode: string; leaguesEnabled: boolean; openReports?: number }
 export interface Suggestion { key: string; text: string; evidence: string; students: number; studentIds: string[]; conceptId: string; lessonId: string | null; lessonTitle: string | null }
 export interface ClassOverview {
   cls: ClassSummary; concepts: Array<{ id: string; title: string }>;
@@ -134,7 +134,7 @@ export interface ClassCard {
 export interface ClassNotice { id: string; title: string; body: string; pinned: boolean; createdAt: string; author: string }
 export interface ClassDetail {
   id: string; name: string; grade: number; subject: string; teacher: { name: string; avatar: string | null }; isTeacher: boolean;
-  classmates: Array<{ nickname: string; avatar: string | null; me: boolean }>; assignments: ClassActivity[]; announcements: ClassNotice[];
+  classmates: Array<{ nickname: string; avatar: string | null; me: boolean }>; assignments: ClassActivity[]; announcements: ClassNotice[]; openReports?: number;
 }
 
 export interface ChatAuthor { nickname: string; avatar: string | null; teacher: boolean; me: boolean }

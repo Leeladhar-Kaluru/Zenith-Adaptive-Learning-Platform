@@ -7,6 +7,7 @@ import { useFx } from '../fx/fx';
 import { Icon } from '../icons/Icon';
 import { queueEvidence } from '../offline/sync';
 import { Button, useToast } from '../ui/kit';
+import { pw } from '../ui/powers';
 import s from './lesson.module.css';
 
 interface Props {
@@ -113,13 +114,13 @@ export function Question({ item, context = 'learn_check', sessionId, deferFeedba
 
   return (
     <div>
-      <p style={{ fontSize: '1.15rem', fontWeight: 700, marginBottom: 4 }}>{item.stem}</p>
+      <p style={{ fontSize: '1.15rem', fontWeight: 700, marginBottom: 4 }}>{pw(item.stem)}</p>
 
       {item.kind === 'mcq' && (
         <div className={s.opts} role="radiogroup" aria-label="Choose one answer">
           {item.options?.map((o) => (
             <button key={o.key} className={`${s.opt} ${optState(o.key)}`} role="radio" aria-checked={choice === o.key} disabled={done} onClick={() => setChoice(o.key)}>
-              <b>{o.key}</b>{o.text}{res && o.key === res.reveal && <Icon name="check" size={22} />}
+              <b>{o.key}</b>{pw(o.text)}{res && o.key === res.reveal && <Icon name="check" size={22} />}
             </button>
           ))}
         </div>
@@ -141,7 +142,7 @@ export function Question({ item, context = 'learn_check', sessionId, deferFeedba
         <div className={s.opts} role="group" aria-label="Choose all that apply">
           {item.options?.map((o) => {
             const on = multi.includes(o.key);
-            return <button key={o.key} className={s.opt} role="checkbox" aria-checked={on} disabled={done} onClick={() => setMulti(on ? multi.filter((k) => k !== o.key) : [...multi, o.key])}><b>{on ? <Icon name="check" size={16} /> : o.key}</b>{o.text}</button>;
+            return <button key={o.key} className={s.opt} role="checkbox" aria-checked={on} disabled={done} onClick={() => setMulti(on ? multi.filter((k) => k !== o.key) : [...multi, o.key])}><b>{on ? <Icon name="check" size={16} /> : o.key}</b>{pw(o.text)}</button>;
           })}
         </div>
       )}
@@ -184,10 +185,10 @@ export function Question({ item, context = 'learn_check', sessionId, deferFeedba
         </div>
       )}
 
-      {hints.map((h, i) => !res && <div key={i} className={`${s.fb} ${s.fbHint}`}><Icon name="bulb" size={18} /> Hint {i + 1}: {h}</div>)}
+      {hints.map((h, i) => !res && <div key={i} className={`${s.fb} ${s.fbHint}`}><Icon name="bulb" size={18} /> Hint {i + 1}: {pw(h)}</div>)}
       {res && (
         <div className={`${s.fb} ${res.correct ? s.fbOk : s.fbRetry}`} role="status">
-          <strong>{res.correct ? 'Correct. ' : `Not quite. The answer is ${reveal(item, res.reveal)}. `}</strong>{res.feedback}
+          <strong>{res.correct ? 'Correct. ' : `Not quite. The answer is ${reveal(item, res.reveal)}. `}</strong>{pw(res.feedback)}
           {res.concepts[0] && <div className="sm" style={{ marginTop: 6, opacity: .85 }}>{res.concepts[0].title}: {res.concepts[0].evidence} answer{res.concepts[0].evidence === 1 ? '' : 's'} so far, confidence {res.concepts[0].confidence}.</div>}
         </div>
       )}

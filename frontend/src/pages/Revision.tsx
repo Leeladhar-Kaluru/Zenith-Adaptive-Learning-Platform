@@ -3,6 +3,7 @@ import { api } from '../api/client';
 import { clearApiCache, useApi, emitProgress } from '../api/useApi';
 import type { Revision } from '../api/types';
 import { Button, Card, EmptyState, Skeleton, useToast } from '../ui/kit';
+import { pw } from '../ui/powers';
 import s from './pages.module.css';
 
 export default function RevisionPage() {
@@ -32,7 +33,7 @@ export default function RevisionPage() {
     <div className={s.q}>
       <div className={s.between}><h1 className={s.title}>Revision</h1><span className="muted">Card {i + 1} of {data.cards.length}</span></div>
       <button className={s.flash} onClick={() => setFlip(!flip)} aria-label={flip ? 'Show the question' : 'Show the answer'}>
-        <span className="eyebrow">{flip ? 'Answer' : 'Question'}</span><span className={s.flashText}>{flip ? card.back : card.front}</span><span className="hand">tap to {flip ? 'go back' : 'flip'}</span>
+        <span className="eyebrow">{flip ? 'Answer' : 'Question'}</span><span className={s.flashText}>{pw(flip ? card.back : card.front)}</span><span className="hand">tap to {flip ? 'go back' : 'flip'}</span>
       </button>
       {flip && <div className={s.row}><Button variant="brand" loading={busy} icon="check" onClick={() => void rate(true)}>I remembered</Button><Button variant="ghost" loading={busy} icon="refresh" onClick={() => void rate(false)}>Show again tomorrow</Button></div>}
     </div>

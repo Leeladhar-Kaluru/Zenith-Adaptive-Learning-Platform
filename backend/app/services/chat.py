@@ -41,6 +41,14 @@ def moderate(text: str) -> None:
         raise ClassError("Please keep class chat kind. That message was not sent.")
 
 
+def _access(db: Session, p: Profile, class_id: uuid.UUID):
+    """Class membership AND, for students, the guardian or school consent that every learning feature needs. Teachers are not asked."""
+    c = cls_svc.access(db, p, class_id)
+    if p.role == "student" and p.consent_status not in ("granted", "not_required"):
+        raise ClassError("A parent, guardian or school needs to agree before you can use class chat.", 403)
+    return c
+
+
 def _is_teacher(p: Profile) -> bool:
     return p.role in ("teacher", "admin")
 
@@ -115,7 +123,7 @@ def _message(db: Session, c, mid: uuid.UUID) -> ChatMessage:
 
 # ---- reading ---------------------------------------------------------------------------------------
 def history(db: Session, p: Profile, class_id: uuid.UUID, before: str | None = None, limit: int = 30, q: str | None = None, thread: uuid.UUID | None = None) -> dict:
-    c = cls_svc.access(db, p, class_id)
+    c = _access(db, p, class_id)
     limit = max(1, min(limit, 50))
     stmt = select(ChatMessage).where(ChatMessage.classroom_id == c.id)
     stmt = stmt.where(ChatMessage.parent_id == thread) if thread else stmt.where(ChatMessage.parent_id.is_(None))
@@ -140,7 +148,7 @@ def history(db: Session, p: Profile, class_id: uuid.UUID, before: str | None = N
 
 
 def thread(db: Session, p: Profile, class_id: uuid.UUID, root_id: uuid.UUID) -> dict:
-    c = cls_svc.access(db, p, class_id)
+    c = _access(db, p, class_id)
     root = _message(db, c, root_id)
     out = history(db, p, class_id, limit=50, thread=root.id)
     out["root"] = _present(db, [root], p)[0]
@@ -156,7 +164,7 @@ def unread(db: Session, p: Profile, class_id: uuid.UUID) -> int:
 
 
 def mark_read(db: Session, p: Profile, class_id: uuid.UUID) -> dict:
-    cls_svc.access(db, p, class_id)
+    _access(db, p, class_id)
     r = db.get(ChatRead, (class_id, p.id))
     if r is None:
         db.add(ChatRead(classroom_id=class_id, user_id=p.id, last_read_at=_now()))
@@ -169,7 +177,7 @@ def mark_read(db: Session, p: Profile, class_id: uuid.UUID) -> dict:
 # ---- writing ---------------------------------------------------------------------------------------
 def _post(db: Session, p: Profile, class_id: uuid.UUID, kind: str, body: str = "", reply_to: uuid.UUID | None = None, thread_id: uuid.UUID | None = None,
           attachment: dict | None = None, meta: dict | None = None) -> ChatMessage:
-    c = cls_svc.access(db, p, class_id)
+    c = _access(db, p, class_id)
     teacher = _is_teacher(p)
     if not teacher and _muted(db, c, p):
         raise ClassError("Your teacher has paused your chat for now.", 403)
@@ -221,7 +229,7 @@ def send_gif(db: Session, p: Profile, class_id: uuid.UUID, url: str, title: str,
 
 
 def send_file(db: Session, p: Profile, class_id: uuid.UUID, filename: str, data: bytes, caption: str = "", thread_id: uuid.UUID | None = None) -> dict:
-    c = cls_svc.access(db, p, class_id)
+    c = _access(db, p, class_id)
     if not _is_teacher(p) and _muted(db, c, p):
         raise ClassError("Your teacher has paused your chat for now.", 403)
     try:
@@ -238,7 +246,7 @@ def send_file(db: Session, p: Profile, class_id: uuid.UUID, filename: str, data:
 
 
 def file_link(db: Session, p: Profile, class_id: uuid.UUID, mid: uuid.UUID) -> dict:
-    c = cls_svc.access(db, p, class_id)
+    c = _access(db, p, class_id)
     m = _message(db, c, mid)
     if m.deleted_at or not m.attachment or "key" not in m.attachment:
         raise ClassError("File not found.", 404)
@@ -251,7 +259,7 @@ def file_link(db: Session, p: Profile, class_id: uuid.UUID, mid: uuid.UUID) -> d
 
 
 def react(db: Session, p: Profile, class_id: uuid.UUID, mid: uuid.UUID, emoji: str) -> dict:
-    c = cls_svc.access(db, p, class_id)
+    c = _access(db, p, class_id)
     m = _message(db, c, mid)
     if emoji not in EMOJI:
         raise ClassError("Pick a reaction from the list.")
@@ -267,7 +275,7 @@ def react(db: Session, p: Profile, class_id: uuid.UUID, mid: uuid.UUID, emoji: s
 
 
 def vote(db: Session, p: Profile, class_id: uuid.UUID, mid: uuid.UUID, option: int) -> dict:
-    c = cls_svc.access(db, p, class_id)
+    c = _access(db, p, class_id)
     m = _message(db, c, mid)
     if m.kind != "poll" or m.deleted_at:
         raise ClassError("That is not an open poll.")
@@ -291,7 +299,7 @@ def pin(db: Session, p: Profile, class_id: uuid.UUID, mid: uuid.UUID, pinned: bo
 
 
 def remove(db: Session, p: Profile, class_id: uuid.UUID, mid: uuid.UUID) -> dict:
-    c = cls_svc.access(db, p, class_id)
+    c = _access(db, p, class_id)
     m = _message(db, c, mid)
     if m.author_id != p.id and not _is_teacher(p):
         raise ClassError("You can only remove your own messages.", 403)
@@ -302,7 +310,7 @@ def remove(db: Session, p: Profile, class_id: uuid.UUID, mid: uuid.UUID) -> dict
 
 # ---- safety ----------------------------------------------------------------------------------------
 def report(db: Session, p: Profile, class_id: uuid.UUID, mid: uuid.UUID, reason: str) -> dict:
-    c = cls_svc.access(db, p, class_id)
+    c = _access(db, p, class_id)
     m = _message(db, c, mid)
     if m.author_id == p.id:
         raise ClassError("You cannot report your own message.")
@@ -375,7 +383,7 @@ def unmute_author(db: Session, p: Profile, class_id: uuid.UUID, mid: uuid.UUID) 
 
 
 def block_author(db: Session, p: Profile, class_id: uuid.UUID, mid: uuid.UUID) -> dict:
-    c = cls_svc.access(db, p, class_id)
+    c = _access(db, p, class_id)
     m = _message(db, c, mid)
     if m.author_id is None or m.author_id == p.id:
         raise ClassError("You cannot block that.")

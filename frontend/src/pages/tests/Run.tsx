@@ -7,6 +7,7 @@ import { useFx } from '../../fx/fx';
 import { Icon } from '../../icons/Icon';
 import { Question } from '../../lesson/Question';
 import { Button, Card, Chip, CountUp, EmptyState, Skeleton, useToast } from '../../ui/kit';
+import { pw } from '../../ui/powers';
 import s from '../pages.module.css';
 
 const TONE: Record<Band, 'ok' | 'hi' | 'gap' | 'soft'> = { secure: 'ok', learning: 'hi', gap_confirmed: 'gap', gap_suspected: 'hi', unassessed: 'soft' };
@@ -27,7 +28,7 @@ function Results({ r, session }: { r: TestSummary; session: TestSession }) {
         <div key={x.conceptId} className={s.between}><div><strong>{x.action === 'prerequisite' ? `Start with the basics under ${x.title}` : `Revisit ${x.title}`}</strong><div className="sm muted">{x.why}</div></div><Button to={x.href} size="sm" variant="ghost" iconRight="arrowR">Open</Button></div>
       ))}</div></Card>}
       {r.mistakes.length > 0 && <section><h2 style={{ marginBottom: 12 }}>Mistake review</h2><div className={s.stack}>{r.mistakes.map((m) => (
-        <Card key={m.itemId} flat><strong>{m.stem}</strong>{!m.answered && <Chip tone="soft">Not answered</Chip>}{m.misconception && <p className="sm" style={{ marginTop: 6 }}><strong>Common mistake:</strong> {m.misconception}</p>}<p className="sm muted" style={{ marginTop: 6 }}>{m.explanation}</p></Card>
+        <Card key={m.itemId} flat><strong>{pw(m.stem)}</strong>{!m.answered && <Chip tone="soft">Not answered</Chip>}{m.misconception && <p className="sm" style={{ marginTop: 6 }}><strong>Common mistake:</strong> {m.misconception}</p>}<p className="sm muted" style={{ marginTop: 6 }}>{m.explanation}</p></Card>
       ))}</div></section>}
       <div className={s.row}><Button variant="brand" icon="refresh" onClick={() => nav(`/tests/new?kind=${session.kind}${session.chapter ? `&chapter=${session.chapter}` : ''}${session.conceptId ? `&concept=${session.conceptId}` : ''}`)}>Retake with new questions</Button><Button to="/progress" variant="ghost">My Progress</Button></div>
     </div>

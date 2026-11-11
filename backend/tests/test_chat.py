@@ -254,3 +254,32 @@ def test_gifs_only_from_the_provider_and_search_is_off_without_a_key(client, roo
     r = client.get(f"{room['base']}/gifs", headers=auth(room["a"]), params={"q": "cat"}).json()
     assert r["gifs"][0]["url"] == good and r["credit"] == "Powered by GIPHY"
     assert client.get(f"{room['base']}/gifs", headers=auth(room["out"])).status_code == 404
+
+
+def test_a_student_without_guardian_or_school_consent_cannot_use_chat_but_the_teacher_and_class_page_are_unaffected(client, room, db, store):
+    room["c"].consent_status = "pending"
+    db.commit()
+    c = auth(room["c"])
+    assert client.get(room["base"], headers=c).status_code == 403
+    assert client.post(f"{room['base']}/messages", headers=c, json={"text": "hello"}).status_code == 403
+    assert client.post(f"{room['base']}/upload", headers=c, params={"name": "a.png"}, content=PNG).status_code == 403
+    assert client.get(f"{room['base']}/gifs", headers=c).status_code == 403
+    assert client.get(f"{room['base']}/unread", headers=c).status_code == 403
+    assert client.get(f"{API}/classes/{room['id']}", headers=c).status_code == 200            # teacher announcements hold no student data
+    assert client.get(room["base"], headers=auth(room["t"])).status_code == 200
+    room["c"].consent_status = "not_required"
+    db.commit()
+    assert client.get(room["base"], headers=c).status_code == 200
+
+
+def test_the_teacher_sees_how_many_reports_are_waiting(client, room):
+    m = say(client, room, "a", "you are slow").json()
+    assert client.get(f"{API}/classes/{room['id']}", headers=auth(room["t"])).json()["openReports"] == 0
+    client.post(f"{room['base']}/messages/{m['id']}/report", headers=auth(room["b"]), json={"reason": "unkind"})
+    client.post(f"{room['base']}/messages/{m['id']}/report", headers=auth(room["c"]), json={"reason": "also unkind"})
+    assert client.get(f"{API}/classes/{room['id']}", headers=auth(room["t"])).json()["openReports"] == 2
+    assert client.get(f"{API}/classes/{room['id']}", headers=auth(room["a"])).json()["openReports"] == 0       # students never see the count
+    assert client.get(f"{API}/teacher/classes", headers=auth(room["t"])).json()[0]["openReports"] == 2
+    rid = client.get(f"{room['base']}/reports", headers=auth(room["t"])).json()[0]["id"]
+    client.post(f"{room['base']}/reports/{rid}/resolve", headers=auth(room["t"]), json={})
+    assert client.get(f"{API}/classes/{room['id']}", headers=auth(room["t"])).json()["openReports"] == 0

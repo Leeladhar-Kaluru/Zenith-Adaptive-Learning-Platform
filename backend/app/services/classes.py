@@ -102,10 +102,16 @@ def _announcements(db: Session, c: Classroom) -> list[dict]:
     return [{"id": str(a.id), "title": a.title, "body": a.body, "pinned": a.pinned, "createdAt": a.created_at.isoformat(), "author": names.get(a.author_id, "Teacher")} for a in rows]
 
 
+def open_reports(db: Session, c: Classroom) -> int:
+    from app.models import ChatReport
+    return len(db.scalars(select(ChatReport.id).where(ChatReport.classroom_id == c.id, ChatReport.status == "open")).all())
+
+
 def detail(db: Session, viewer: Profile, class_id: uuid.UUID) -> dict:
     c = access(db, viewer, class_id)
     return {"id": str(c.id), "name": c.name, "grade": c.grade, "subject": c.subject_id, "teacher": _teacher(db, c), "isTeacher": _is_owner(viewer, c),
-            "classmates": _classmates(db, c, viewer), "assignments": _upcoming(db, c), "announcements": _announcements(db, c)}
+            "classmates": _classmates(db, c, viewer), "assignments": _upcoming(db, c), "announcements": _announcements(db, c),
+            "openReports": open_reports(db, c) if _is_owner(viewer, c) else 0}
 
 
 def leave(db: Session, student: Profile, class_id: uuid.UUID) -> dict:

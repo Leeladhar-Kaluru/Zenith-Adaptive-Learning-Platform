@@ -1,0 +1,303 @@
+slug: friction-on-a-ramp
+title: Friction on a ramp
+minutes: 16
+objectives:
+- Explain why a block on a ramp stays still until a certain angle
+- Say how the surface changes this angle
+- Explain why the mass does not change it
+concepts:
+- friction-critical-angle
+origin: ai_assisted
+blocks:
+- kind: text
+  heading: The slide in the park
+  html: '<p>A child sits on a steel slide and slips down at once. On a rough stone ramp, the same child stays put. Friction is the difference. Here we tilt a ramp slowly and watch when a block starts to slide.</p><p>On a ramp, the block''s weight pulls it down the slope. Static friction pulls it back up the slope. At a small angle, friction wins and the block stays at rest.</p>'
+- kind: text
+  heading: The critical angle
+  html: '<p>As you raise the ramp, the pull down the slope grows. At one angle, it becomes bigger than the most static friction. The block then starts to slide. This angle is the <strong>critical angle</strong>.</p><p>The critical angle depends on the <strong>surfaces</strong>. Ice gives very little friction, so a small tilt is enough. Wood needs a steeper tilt. Rubber needs a very steep tilt. Once the block slides, sliding friction is less than static friction, so it keeps sliding even if you lower the ramp a little.</p><p>The mass of the block does <strong>not</strong> change the critical angle. A heavier block pulls down harder, but it also presses harder on the ramp, so the friction grows in the same way.</p>'
+- kind: widget
+  widget: sim_friction
+  config: {mass0: 5, angle0: 10, mu0: 0.4, goal_angle: 25}
+  task: The block is on a wood ramp. Raise the ramp slowly and find the angle where the block just starts to slide. Then find a ramp angle of about 25 degrees where the wood block slides. Next, try ice and rubber and compare their critical angles.
+- kind: example
+  heading: Worked example
+  prompt: A wood block stays still on a ramp at 15 degrees and slides at 25 degrees. In between, the critical angle is about 22 degrees. What happens at 20 degrees and at 30 degrees?
+  steps:
+  - The block slides only when the ramp is steeper than the critical angle.
+  - 'At 20 degrees, which is less than 22 degrees, friction wins and the block stays at rest.'
+  - 'At 30 degrees, which is more than 22 degrees, the pull down the slope wins and the block slides.'
+  - 'Check: a heavier wood block would give the same 22 degrees, because the mass does not matter.'
+- kind: example
+  heading: Ranking surfaces
+  prompt: Ice, wood and rubber give the critical angles of about 3, 22 and 42 degrees. Which surface has the most friction? Which block slides first as you raise the ramp?
+  steps:
+  - A larger critical angle means the block holds on longer, so friction is larger.
+  - 'Rubber has the largest critical angle, 42 degrees, so rubber has the most friction.'
+  - 'Ice has the smallest critical angle, 3 degrees, so the ice block slides first.'
+  - 'Check: this agrees with daily life, since ice is slippery and rubber grips.'
+- kind: check
+  item: q-fo-1
+- kind: check
+  item: q-fo-3
+- kind: callout
+  tone: watch
+  html: A heavier block does not slide at a smaller angle. The critical angle depends on the two surfaces, not on the mass.
+- kind: callout
+  tone: real
+  html: Ramps for wheelchairs and for loading goods are given a rough surface, so people and sacks do not slip at the angles used. Hill roads are also made rough for the same reason.
+- kind: text
+  heading: For the curious
+  html: '<p>The pull down the slope grows with the angle, and the friction is the number <em>mu</em> times the press on the ramp. If you work this out, the block just slides when <strong>tan(angle) = mu</strong>. For wood, mu is 0.4, so the angle is the one whose tan is 0.4, about 22 degrees. You do not need this for exams at this stage. The idea is enough: rougher means a steeper critical angle.</p>'
+- kind: check
+  item: q-fo-4
+- kind: check
+  item: q-fo-8
+- kind: summary
+  points:
+  - A block on a ramp stays still until the ramp reaches the critical angle, then it slides.
+  - 'Rougher surfaces have a larger critical angle. Ice is small, wood is medium, rubber is large.'
+  - The mass of the block does not change the critical angle.
+  - 'Sliding friction is less than static friction, so a sliding block keeps sliding.'
+items:
+- key: q-fo-1
+  kind: mcq
+  stem: What is the critical angle of a ramp?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: friction-critical-angle
+    weight: 1.0
+  explanation: It is the angle at which the pull down the slope just beats the most static friction, so the block begins to slide.
+  hints:
+  - It is about when the block starts to move.
+  correct: B
+  options:
+  - key: A
+    text: The angle at which the block is heaviest
+    misconception: heavier-slides-sooner
+  - key: B
+    text: The angle at which the block just starts to slide
+  - key: C
+    text: The angle at which friction becomes zero
+  - key: D
+    text: The angle at which the block stops sliding
+- key: q-fo-2
+  kind: mcq
+  stem: Ice, wood and rubber are used for the ramp surface in turn. Which one needs the steepest ramp before the block slides?
+  difficulty: intro
+  purpose: practice
+  concepts:
+  - id: friction-critical-angle
+    weight: 1.0
+  explanation: Rubber has the most friction, so it holds the block to a very steep angle.
+  hints:
+  - Which surface grips best?
+  correct: C
+  options:
+  - key: A
+    text: Ice
+    misconception: slippery-needs-steep
+  - key: B
+    text: Wood
+  - key: C
+    text: Rubber
+  - key: D
+    text: All need the same angle
+- key: q-fo-3
+  kind: mcq
+  stem: A 2 kg wood block slides at the critical angle on a wood ramp. A 10 kg wood block is tried on the same ramp. At what angle does it slide?
+  difficulty: standard
+  purpose: check
+  concepts:
+  - id: friction-critical-angle
+    weight: 1.0
+  explanation: The mass does not matter. The pull down the slope and the friction both grow with the mass, so the critical angle is the same.
+  hints:
+  - Both the pull and the friction grow with mass.
+  correct: A
+  options:
+  - key: A
+    text: About the same angle
+  - key: B
+    text: A smaller angle, because it is heavier
+    misconception: heavier-slides-sooner
+  - key: C
+    text: A larger angle, because it is heavier
+    misconception: heavier-slides-sooner
+  - key: D
+    text: It never slides
+- key: q-fo-4
+  kind: truefalse
+  stem: Once a block is sliding down a ramp, sliding friction is less than the most static friction, so it can keep sliding even if the ramp is lowered a little.
+  difficulty: standard
+  purpose: check
+  concepts:
+  - id: friction-critical-angle
+  explanation: Sliding friction is smaller than the most static friction, so a moving block needs a smaller angle to keep going than to start.
+  hints:
+  - Compare sliding friction with static friction.
+  correct: true
+- key: q-fo-5
+  kind: numeric
+  stem: The most static friction on a block is 50 N. Sliding friction is 80% of this. What is the sliding friction in N?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: friction-critical-angle
+  explanation: 0.8 × 50 = 40 N.
+  hints:
+  - 80% means 0.8.
+  value: 40
+  tolerance: 0.0
+  verify: 50*4/5
+- key: q-fo-6
+  kind: numeric
+  stem: For the curious. A block just starts to slide at 45 degrees, so tan(45 degrees) equals mu. What is mu?
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: friction-critical-angle
+  explanation: tan(45 degrees) = 1, so mu = 1.
+  hints:
+  - Use tan(angle) = mu with angle = 45 degrees.
+  value: 1
+  tolerance: 0.0
+  verify: tan(pi/4)
+- key: q-fo-7
+  kind: mcq
+  stem: A wood block has a critical angle of about 22 degrees. What will happen at 15 degrees and at 25 degrees?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: friction-critical-angle
+    weight: 1.0
+  explanation: 15 degrees is below the critical angle, so it stays. 25 degrees is above it, so it slides.
+  hints:
+  - Compare each angle with 22 degrees.
+  correct: D
+  options:
+  - key: A
+    text: It slides at 15 degrees and stays at 25 degrees
+  - key: B
+    text: It slides at both angles
+  - key: C
+    text: It stays at both angles
+  - key: D
+    text: It stays at 15 degrees and slides at 25 degrees
+- key: q-fo-8
+  kind: mcq
+  stem: 'Assertion (A): A block on an ice ramp slides at a very small tilt. Reason (R): Ice gives very little friction.'
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: friction-critical-angle
+    weight: 1.0
+  explanation: Both are true. Little friction means the pull down the slope wins early. R explains A.
+  hints:
+  - Think about what holds the block still.
+  correct: A
+  options:
+  - key: A
+    text: Both A and R are true and R is the correct explanation of A.
+  - key: B
+    text: Both A and R are true but R is not the correct explanation of A.
+  - key: C
+    text: A is true but R is false.
+    misconception: slippery-needs-steep
+  - key: D
+    text: A is false but R is true.
+    misconception: slippery-needs-steep
+- key: q-fo-9
+  kind: mcq
+  stem: 'Assertion (A): A heavy box slides at a smaller ramp angle than a light box of the same wood. Reason (R): A heavier box has a larger pull down the slope.'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: friction-critical-angle
+    weight: 1.0
+  explanation: R is true, but the heavier box also presses harder on the ramp, so friction grows by the same amount. The critical angle is the same, so A is false.
+  hints:
+  - What else grows when the mass grows?
+  correct: D
+  options:
+  - key: A
+    text: Both A and R are true and R is the correct explanation of A.
+    misconception: heavier-slides-sooner
+  - key: B
+    text: Both A and R are true but R is not the correct explanation of A.
+    misconception: heavier-slides-sooner
+  - key: C
+    text: A is true but R is false.
+    misconception: heavier-slides-sooner
+  - key: D
+    text: A is false but R is true.
+- key: q-fo-10
+  pattern: case
+  kind: mcq
+  stem: 'Case. Meena makes a ramp from a wooden plank. A wooden box stays still at 10 degrees and slides at 30 degrees. She then fixes a rubber mat on the plank. Now the same box starts to slide only at about 40 degrees. What does the rubber mat do?'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: friction-critical-angle
+    weight: 1.0
+  explanation: The mat gives more friction, so the critical angle becomes larger. The box needs a steeper ramp before it slides.
+  hints:
+  - A larger critical angle means more friction.
+  correct: C
+  options:
+  - key: A
+    text: It makes the box heavier
+    misconception: heavier-slides-sooner
+  - key: B
+    text: It removes friction
+  - key: C
+    text: It increases the friction, so the critical angle is larger
+  - key: D
+    text: It makes the box slide at a smaller angle
+    misconception: slippery-needs-steep
+- key: q-fo-11
+  kind: mcq
+  stem: On the simulation, the critical angles are about 3 degrees for ice, 22 degrees for wood and 42 degrees for rubber. If a ramp is raised to 30 degrees, which blocks slide?
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: friction-critical-angle
+    weight: 1.0
+  explanation: 30 degrees is above 3 and 22 but below 42. So ice and wood slide, and rubber stays.
+  hints:
+  - Compare 30 with each critical angle.
+  correct: B
+  options:
+  - key: A
+    text: Only ice
+  - key: B
+    text: Ice and wood
+  - key: C
+    text: All three
+  - key: D
+    text: Only rubber
+    misconception: slippery-needs-steep
+misconceptions:
+- code: heavier-slides-sooner
+  concept: friction-critical-angle
+  description: Thinks a heavier block slides at a smaller angle, forgetting that friction grows with the mass too.
+- code: slippery-needs-steep
+  concept: friction-critical-angle
+  description: Thinks a slippery surface needs a steeper ramp, or mixes up which surface slides first.
+cards:
+- key: friction-on-a-ramp-card-1
+  concept: friction-critical-angle
+  front: What is the critical angle?
+  back: The ramp angle at which the block just starts to slide.
+- key: friction-on-a-ramp-card-2
+  concept: friction-critical-angle
+  front: Does the mass change the critical angle?
+  back: No. Pull and friction both grow with mass.
+- key: friction-on-a-ramp-card-3
+  concept: friction-critical-angle
+  front: Which has the larger critical angle, ice or rubber?
+  back: Rubber, because it has more friction.
+- key: friction-on-a-ramp-card-4
+  concept: friction-critical-angle
+  front: For the curious, what is the rule for the critical angle?
+  back: tan(angle) = mu.

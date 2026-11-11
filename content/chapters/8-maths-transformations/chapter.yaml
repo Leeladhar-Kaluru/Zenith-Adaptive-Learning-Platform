@@ -1,0 +1,15 @@
+slug: 8-maths-transformations
+board: cbse
+curriculum: NCERT current editions (to be confirmed by a reviewer)
+grade: 8
+subject: maths
+title: Transformations on the grid
+summary: Slide, flip and turn points and shapes on a coordinate grid, and see how each move changes the coordinates.
+concepts:
+- id: translation-grid
+- id: reflection-axes
+- id: rotation-quarter-turn
+- id: combining-moves
+lessons:
+- slide-and-flip
+- turn-and-combine

@@ -85,3 +85,38 @@ test('solids: every solid declares its controls, and nonsense sizes are clamped'
   assert.ok(s.volume > 0 && Number.isFinite(s.surface));
   assert.throws(() => solid('torus', {}), /Unknown solid/);
 });
+
+import { slope, image, applyMoves, samePoints } from '../src/lesson/sims/physics.ts';
+
+test('slope: a block stays put below the critical angle atan(mu) and slides above it', () => {
+  const still = slope({ mass: 2, angle: 20, mu: 0.5 });
+  assert.equal(still.slides, false); near(still.accel, 0); near(still.friction, still.along); near(still.critical, 26.565, 0.01);
+  const moving = slope({ mass: 2, angle: 40, mu: 0.5 });
+  assert.equal(moving.slides, true); assert.ok(moving.accel > 0 && moving.friction < moving.along);
+  near(slope({ mass: 2, angle: 40, mu: 0.5 }).accel, 9.8 * (Math.sin(40 * Math.PI / 180) - 0.4 * Math.cos(40 * Math.PI / 180)), 1e-9);
+  near(slope({ mass: 5, angle: 0, mu: 0.3 }).along, 0);            // flat: nothing pulls it along
+});
+
+test('image: convex lens at 2f gives a real, same-size, inverted image at 2f', () => {
+  const i = image({ f: 10, u: 20 });
+  near(i.v, 20); near(i.m, -1); assert.equal(i.real, true); assert.equal(i.upright, false); assert.equal(i.enlarged, false);
+});
+test('image: inside the focal length a converging lens makes a virtual, upright, bigger image', () => {
+  const i = image({ f: 10, u: 5 });
+  near(i.v, -10); near(i.m, 2); assert.equal(i.real, false); assert.equal(i.upright, true); assert.equal(i.enlarged, true);
+});
+test('image: a diverging element always gives a small virtual upright image, and u = f sends the image to infinity', () => {
+  const d = image({ f: -10, u: 30 });
+  assert.equal(d.real, false); assert.equal(d.upright, true); assert.ok(d.m > 0 && d.m < 1); near(d.v, -7.5);
+  assert.equal(image({ f: 10, u: 10 }).v, null);
+});
+
+test('moves: translate, reflect and rotate act on every vertex, and rotating four times returns home', () => {
+  const t = [[1, 1], [3, 1], [1, 2]];
+  assert.deepEqual(applyMoves(t, [{ op: 'move', dx: 2, dy: -1 }]), [[3, 0], [5, 0], [3, 1]]);
+  assert.deepEqual(applyMoves(t, [{ op: 'reflect', axis: 'x' }]), [[1, -1], [3, -1], [1, -2]]);
+  assert.deepEqual(applyMoves(t, [{ op: 'reflect', axis: 'y' }]), [[-1, 1], [-3, 1], [-1, 2]]);
+  assert.deepEqual(applyMoves(t, [{ op: 'rotate' }]), [[-1, 1], [-1, 3], [-2, 1]]);
+  assert.equal(samePoints(applyMoves(t, Array(4).fill({ op: 'rotate' })), t), true);
+  assert.equal(samePoints(applyMoves(t, [{ op: 'reflect', axis: 'x' }, { op: 'reflect', axis: 'x' }]), t), true);
+});

@@ -44,6 +44,9 @@ const ProjectileSim = lazy(() => import('./sims/ProjectileSim').then((m) => ({ d
 const RefractionSim = lazy(() => import('./sims/RefractionSim').then((m) => ({ default: m.RefractionSim })));
 const CircuitSim = lazy(() => import('./sims/CircuitSim').then((m) => ({ default: m.CircuitSim })));
 const SolidSim = lazy(() => import('./sims/SolidSim').then((m) => ({ default: m.SolidSim })));
+const FrictionSim = lazy(() => import('./sims/FrictionSim').then((m) => ({ default: m.FrictionSim })));
+const OpticsSim = lazy(() => import('./sims/OpticsSim').then((m) => ({ default: m.OpticsSim })));
+const TransformSim = lazy(() => import('./sims/TransformSim').then((m) => ({ default: m.TransformSim })));
 const SpinnerSim = lazy(() => import('./sims/SpinnerSim').then((m) => ({ default: m.SpinnerSim })));
 
 function Sim({ b }: { b: Extract<Block, { kind: 'widget' }> }) {
@@ -57,6 +60,9 @@ function Sim({ b }: { b: Extract<Block, { kind: 'widget' }> }) {
   if (b.widget === 'sim_refraction') return <RefractionSim blockId={b.id} n1={n('n1')} n2={n('n2')} angle0={n('angle0')} goal={str('goal')} goal_angle={n('goal_angle')} task={task} />;
   if (b.widget === 'sim_circuit') return <CircuitSim blockId={b.id} volts={n('volts')} r1={n('r1')} r2={n('r2')} mode={str('mode')} goal_current={n('goal_current')} task={task} />;
   if (b.widget === 'sim_solid') return <SolidSim blockId={b.id} shape={str('shape')} goal_volume={n('goal_volume')} a={n('a')} l={n('l')} w={n('w')} h={n('h')} r={n('r')} task={task} />;
+  if (b.widget === 'sim_friction') return <FrictionSim blockId={b.id} mass0={n('mass0')} angle0={n('angle0')} mu0={n('mu0')} goal_angle={n('goal_angle')} task={task} />;
+  if (b.widget === 'sim_optics') return <OpticsSim blockId={b.id} element0={str('element')} f0={n('f0')} u0={n('u0')} goal={str('goal')} task={task} />;
+  if (b.widget === 'sim_transform') return <TransformSim blockId={b.id} a1={n('a1')} a2={n('a2')} b1={n('b1')} b2={n('b2')} c1={n('c1')} c2={n('c2')} ta1={n('ta1')} ta2={n('ta2')} tb1={n('tb1')} tb2={n('tb2')} tc1={n('tc1')} tc2={n('tc2')} task={task} />;
   return <SpinnerSim blockId={b.id} parts={n('parts')} hit={n('hit')} task={task} />;
 }
 

@@ -1,0 +1,13 @@
+slug: 10-science-mirrors-lenses
+board: cbse
+curriculum: NCERT current editions (to be confirmed by a reviewer)
+grade: 10
+subject: science
+title: Mirrors and lenses
+summary: Find where mirrors and lenses form images, say whether an image is real or virtual, and work out magnification and lens power.
+concepts:
+- id: mirror-images
+- id: lens-images-power
+lessons:
+- mirrors-and-images
+- lenses-and-power

@@ -1,0 +1,5 @@
+concepts:
+  - {id: mirror-images, title: "Images formed by mirrors", grade: 10, subject: science, description: "Concave and convex mirrors, real and virtual images, and the mirror formula with magnification.", keywords: [concave mirror, convex mirror, real image, virtual image, mirror formula, magnification],
+     prerequisites: [{id: refraction-light, why: "Students should already know how light travels and changes direction at surfaces."}]}
+  - {id: lens-images-power, title: "Lenses, images and power", grade: 10, subject: science, description: "Convex and concave lenses, the lens formula, magnification and the power of a lens in dioptres.", keywords: [convex lens, concave lens, lens formula, magnification, power, dioptre],
+     prerequisites: [{id: refraction-light, why: "A lens works by refraction at its two curved surfaces."}, {id: mirror-images, why: "Real and virtual images and the magnification idea are introduced with mirrors."}]}

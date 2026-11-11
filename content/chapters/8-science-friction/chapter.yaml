@@ -1,0 +1,13 @@
+slug: 8-science-friction
+board: cbse
+curriculum: NCERT current editions (to be confirmed by a reviewer)
+grade: 8
+subject: science
+title: Friction
+summary: Learn why friction happens, its types, how it helps and harms us, and how a block behaves on a ramp.
+concepts:
+- id: friction-types
+- id: friction-critical-angle
+lessons:
+- what-is-friction
+- friction-on-a-ramp

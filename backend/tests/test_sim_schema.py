@@ -51,6 +51,9 @@ def test_physics_and_solid_simulations_accept_sensible_settings():
     w("sim_refraction", n1=1, n2=1.5, goal_angle=20)
     w("sim_circuit", volts=9, r1=10, r2=20, mode="parallel", goal_current=1.35)
     w("sim_solid", shape="cone", r=3, h=4, goal_volume=100)
+    w("sim_friction", mass0=5, angle0=20, mu0=0.4, goal_angle=30)
+    w("sim_optics", element="concave_mirror", f0=10, u0=25, goal="real")
+    w("sim_transform", a1=1, a2=1, b1=3, b2=1, c1=1, c2=3, ta1=-1, ta2=1, tb1=-3, tb2=1, tc1=-1, tc2=3)
 
 
 @pytest.mark.parametrize("widget,config,message", [
@@ -65,6 +68,11 @@ def test_physics_and_solid_simulations_accept_sensible_settings():
     ("sim_solid", {"shape": "torus"}, "must be one of"),
     ("sim_solid", {"r": 50}, "from 1 to 10"),
     ("sim_solid", {"colour": 1}, "no parameter"),
+    ("sim_transform", {"ta1": 1, "ta2": 2}, "all six target corners"),
+    ("sim_friction", {"mu0": 3}, "from 0.05 to 0.9"),
+    ("sim_optics", {"element": "prism"}, "must be one of"),
+    ("sim_optics", {"goal": "tiny"}, "must be one of"),
+    ("sim_transform", {"a1": 20}, "from -8 to 8"),
 ])
 def test_physics_and_solid_simulations_reject_unsafe_settings(widget, config, message):
     with pytest.raises(ValidationError, match=message):

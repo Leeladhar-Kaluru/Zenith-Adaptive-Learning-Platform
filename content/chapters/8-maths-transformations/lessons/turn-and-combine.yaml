@@ -1,0 +1,327 @@
+slug: turn-and-combine
+title: Turn and combine
+minutes: 30
+objectives:
+- Rotate a point 90 degrees anticlockwise about the origin using (x, y) to (−y, x)
+- Tell an anticlockwise turn from a clockwise turn
+- Do several moves one after another and track the coordinates at each step
+- See that the order of the moves can change the final place
+concepts:
+- rotation-quarter-turn
+- combining-moves
+origin: ai_assisted
+blocks:
+- kind: text
+  heading: Turning like a clock hand
+  html: '<p>The hands of a clock turn in one direction. We call it <strong>clockwise</strong>. The opposite direction is <strong>anticlockwise</strong>. A <strong>rotation</strong> turns a figure around a fixed point. Here the fixed point is the origin O, the spot where the axes cross.</p><p>A full turn is 360 degrees. A <strong>quarter turn</strong> is 90 degrees. Like slides and flips, a rotation keeps the size and shape of the figure.</p>'
+- kind: text
+  heading: The rule for a quarter turn
+  html: '<p>Take the point (3, 1). It is 3 units to the right of O and 1 unit up. Turn it 90 degrees anticlockwise about O. The point that was on the right now goes to the top. The point lands at (−1, 3).</p><p>The rule is <strong>(x, y) → (−y, x)</strong>. The new x is the old y with its sign changed. The new y is the old x. Two quarter turns make a half turn, and then (x, y) → (−x, −y).</p>'
+- kind: example
+  heading: Worked example
+  prompt: A triangle has corners P(1, 0), Q(3, 0) and R(1, 2). Turn it 90 degrees anticlockwise about the origin. Find the new corners.
+  steps:
+  - 'Use the rule (x, y) → (−y, x) on each corner.'
+  - 'P(1, 0) → (−0, 1) = (0, 1). Q(3, 0) → (0, 3). R(1, 2) → (−2, 1).'
+  - 'Check one length. PQ was 3 − 1 = 2 units, along the x-axis. The new side from (0, 1) to (0, 3) is 3 − 1 = 2 units, along the y-axis. The length is the same, and the side has turned from flat to upright.'
+  - 'The new corners are (0, 1), (0, 3) and (−2, 1).'
+- kind: text
+  heading: Doing moves one after another
+  html: '<p>A big move can be built from small ones. Do the first move on every corner. Write the new corners. Then do the second move on those new corners. Take it one step at a time.</p><p>The <strong>order matters</strong>. Start with the point (1, 2). Turn it a quarter turn anticlockwise and it goes to (−2, 1). Reflect that in the x-axis and you get (−2, −1). Now do it the other way. Reflect (1, 2) in the x-axis to get (1, −2). Turn it a quarter turn to get (2, 1). The two results are different.</p>'
+- kind: widget
+  widget: sim_transform
+  config:
+    a1: 2
+    a2: 1
+    b1: 4
+    b2: 1
+    c1: 2
+    c2: 3
+    ta1: 1
+    ta2: -1
+    tb1: 1
+    tb2: 1
+    tc1: 3
+    tc2: -1
+  task: Move the triangle so that it lands exactly on the target triangle. Use the Rotate button, the Reflect buttons and the Right, Left, Up and Down buttons. Work out the moves on paper first, then check them in the simulation. Use Undo if you go wrong.
+- kind: example
+  heading: Worked example
+  prompt: A point starts at (2, 1). It is turned 90 degrees anticlockwise about the origin, then reflected in the y-axis, then slid 3 units down. Find where it ends.
+  steps:
+  - 'Quarter turn: (x, y) → (−y, x). So (2, 1) → (−1, 2).'
+  - 'Reflect in the y-axis: (x, y) → (−x, y). So (−1, 2) → (1, 2).'
+  - 'Slide 3 down subtracts 3 from y. So (1, 2) → (1, −1).'
+  - 'The point ends at (1, −1). This is what happens to corner A in the simulation above, so the target there shows (1, −1) for A.'
+- kind: callout
+  tone: watch
+  html: Do not just swap the two numbers. For a quarter turn anticlockwise, (3, 1) goes to (−1, 3), not to (1, 3). Also check the direction. A clockwise turn would send (3, 1) to (1, −3). Picture the clock hands first.
+- kind: callout
+  tone: real
+  html: A ceiling fan, a steering wheel and a windmill all turn about a fixed point. A map app turns the picture when you turn your phone. Robots and games find new positions with rules just like (x, y) to (−y, x).
+- kind: check
+  item: q-tc-1
+- kind: check
+  item: q-tc-3
+- kind: check
+  item: q-tc-4
+- kind: summary
+  points:
+  - 'A rotation turns a figure about a fixed point. Anticlockwise is the opposite way to the hands of a clock.'
+  - 'A quarter turn anticlockwise about the origin: (x, y) → (−y, x). Two quarter turns: (x, y) → (−x, −y).'
+  - 'For several moves, apply them one at a time and write the new coordinates after each move.'
+  - 'The order of the moves can change the answer, so keep the order you are given.'
+items:
+- key: q-tc-1
+  kind: mcq
+  stem: The point (3, 1) is turned 90 degrees anticlockwise about the origin. What is the new point?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: rotation-quarter-turn
+  explanation: The rule is (x, y) → (−y, x). So (3, 1) → (−1, 3).
+  hints:
+  - Use (x, y) → (−y, x). The new x is the old y with its sign changed.
+  correct: A
+  options:
+  - key: A
+    text: (−1, 3)
+  - key: B
+    text: (1, −3)
+    misconception: turn-direction-mixup
+  - key: C
+    text: (1, 3)
+    misconception: rotate-swap-only
+  - key: D
+    text: (−3, −1)
+- key: q-tc-2
+  kind: numeric
+  stem: The point (5, 2) is turned 90 degrees anticlockwise about the origin. What is the new x value?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: rotation-quarter-turn
+  explanation: The new x is the old y with its sign changed. The old y is 2, so the new x is −2. The new point is (−2, 5).
+  hints:
+  - The new x comes from the old y, with the sign changed.
+  value: -2
+  tolerance: 0.0
+  verify: -(2)
+- key: q-tc-3
+  kind: mcq
+  stem: The point (0, 3) is turned 90 degrees anticlockwise about the origin. What is the new point?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: rotation-quarter-turn
+  explanation: The rule gives (−3, 0). The point was 3 units above O, and it turns to 3 units to the left of O.
+  hints:
+  - Picture a clock hand pointing up, turning anticlockwise a quarter. Where does it point?
+  correct: B
+  options:
+  - key: A
+    text: (3, 0)
+    misconception: turn-direction-mixup
+  - key: B
+    text: (−3, 0)
+  - key: C
+    text: (0, −3)
+  - key: D
+    text: (0, 3)
+    misconception: rotate-swap-only
+- key: q-tc-4
+  kind: mcq
+  stem: The point (−2, −4) is turned 90 degrees anticlockwise about the origin. What is the new point?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: rotation-quarter-turn
+  explanation: Use (x, y) → (−y, x). Here x = −2 and y = −4. So the new point is (−(−4), −2) = (4, −2).
+  hints:
+  - Take care with the signs. The new x is the old y with its sign changed, so −4 becomes 4.
+  correct: C
+  options:
+  - key: A
+    text: (−4, 2)
+    misconception: turn-direction-mixup
+  - key: B
+    text: (−4, −2)
+    misconception: rotate-swap-only
+  - key: C
+    text: (4, −2)
+  - key: D
+    text: (2, 4)
+- key: q-tc-5
+  kind: numeric
+  stem: The point (3, −2) is turned 90 degrees anticlockwise about the origin. Add the two coordinates of the new point together. What is the sum?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: rotation-quarter-turn
+  explanation: (x, y) → (−y, x) gives (2, 3). The sum is 2 + 3 = 5.
+  hints:
+  - Find the new point first. Then add its two coordinates.
+  value: 5
+  tolerance: 0.0
+  verify: 2 + 3
+- key: q-tc-6
+  kind: mcq
+  stem: A point (a, b) is turned 90 degrees anticlockwise about the origin twice. Where does it end?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: rotation-quarter-turn
+  explanation: The first turn gives (−b, a). The second turn gives (−a, −b). So two quarter turns send (a, b) to (−a, −b).
+  hints:
+  - Apply (x, y) → (−y, x) to (a, b), and then apply it again to the answer.
+  correct: A
+  options:
+  - key: A
+    text: (−a, −b)
+  - key: B
+    text: (a, −b)
+    misconception: reflect-wrong-coordinate
+  - key: C
+    text: (−a, b)
+    misconception: reflect-wrong-coordinate
+  - key: D
+    text: (b, a)
+    misconception: rotate-swap-only
+- key: q-tc-7
+  kind: numeric
+  stem: The point (2, −3) is reflected in the y-axis. Then the new point is turned 90 degrees anticlockwise about the origin. Add the two coordinates of the final point together. What is the sum?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: combining-moves
+  explanation: The reflection gives (−2, −3). The quarter turn gives (3, −2). The sum is 3 + (−2) = 1.
+  hints:
+  - Do the reflection first. Then turn the new point.
+  value: 1
+  tolerance: 0.0
+  verify: 3 + (-2)
+- key: q-tc-8
+  kind: mcq
+  stem: 'Assertion (A): Turning the point (2, 5) by 90 degrees anticlockwise about the origin gives (−5, 2). Reason (R): The point (2, 5) and the point (−5, 2) are the same distance from the origin.'
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: rotation-quarter-turn
+  explanation: A is true, since (x, y) → (−y, x) gives (−5, 2). R is also true, because both points are the same distance from O. But R only says that a rotation keeps the distance. It does not tell us how the coordinates change. So R does not explain A.
+  hints:
+  - Does R tell you why the numbers become −5 and 2?
+  correct: B
+  options:
+  - key: A
+    text: Both A and R are true, and R explains A
+  - key: B
+    text: Both A and R are true, but R does not explain A
+  - key: C
+    text: A is true, but R is false
+  - key: D
+    text: A is false, but R is true
+- key: q-tc-9
+  kind: mcq
+  stem: 'Assertion (A): The order of two moves can change where a point ends up. Reason (R): Turning (1, 2) a quarter turn anticlockwise and then reflecting in the x-axis gives (−2, −1), but reflecting first and then turning gives (2, 1).'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: combining-moves
+  explanation: Turning first gives (−2, 1), and reflecting that in the x-axis gives (−2, −1). Reflecting first gives (1, −2), and turning that gives (2, 1). So R is true, and it is an example that shows A is true. R explains A.
+  hints:
+  - Work out both orders for the point (1, 2) and compare.
+  correct: A
+  options:
+  - key: A
+    text: Both A and R are true, and R explains A
+  - key: B
+    text: Both A and R are true, but R does not explain A
+  - key: C
+    text: A is true, but R is false
+  - key: D
+    text: A is false, but R is true
+- key: q-tc-10
+  pattern: case
+  kind: mcq
+  stem: 'Read this. A toy robot on a floor grid stands at (3, 4). The origin is its charging spot. The robot is told to turn 90 degrees anticlockwise about the charging spot, keeping the same distance from it. Where does the robot stop?'
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: rotation-quarter-turn
+  explanation: Use (x, y) → (−y, x). So (3, 4) → (−4, 3). The robot ends 4 units left and 3 units up from the charging spot.
+  hints:
+  - Use the quarter-turn rule on (3, 4).
+  correct: C
+  options:
+  - key: A
+    text: (4, −3)
+    misconception: turn-direction-mixup
+  - key: B
+    text: (4, 3)
+    misconception: rotate-swap-only
+  - key: C
+    text: (−4, 3)
+  - key: D
+    text: (3, −4)
+- key: q-tc-11
+  kind: numeric
+  stem: A triangle has a corner at (2, 1). It is turned 90 degrees anticlockwise about the origin, then slid 5 units right and 1 unit up. Add the two coordinates of where that corner ends. What is the sum?
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: combining-moves
+  explanation: The turn gives (−1, 2). Sliding 5 right and 1 up gives (−1 + 5, 2 + 1) = (4, 3). The sum is 4 + 3 = 7.
+  hints:
+  - Turn first. Then slide the new point.
+  value: 7
+  tolerance: 0.0
+  verify: (-1 + 5) + (2 + 1)
+- key: q-tc-12
+  kind: mcq
+  stem: Which pair of moves, done one after the other, ends in the same place as two quarter turns anticlockwise about the origin?
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: combining-moves
+  explanation: Two quarter turns send (x, y) to (−x, −y). Reflecting in the x-axis gives (x, −y), and then reflecting in the y-axis gives (−x, −y). So these two flips match two quarter turns.
+  hints:
+  - Two quarter turns change the sign of both coordinates. Which two flips do that?
+  correct: D
+  options:
+  - key: A
+    text: Reflect in the x-axis, then slide 2 units left
+    misconception: reflect-wrong-coordinate
+  - key: B
+    text: Reflect in the y-axis twice
+    misconception: reflect-wrong-coordinate
+  - key: C
+    text: Reflect in the x-axis twice
+    misconception: reflect-wrong-coordinate
+  - key: D
+    text: Reflect in the x-axis, then reflect in the y-axis
+misconceptions:
+- code: rotate-swap-only
+  concept: rotation-quarter-turn
+  description: Swaps x and y for a quarter turn but forgets to change a sign, or keeps the point in the same place.
+- code: turn-direction-mixup
+  concept: rotation-quarter-turn
+  description: Turns clockwise when the question says anticlockwise, or the other way round.
+- code: reflect-wrong-coordinate
+  concept: combining-moves
+  description: Changes only one coordinate, or the wrong one, when a combined result needs both signs changed.
+cards:
+- key: turn-and-combine-card-1
+  concept: rotation-quarter-turn
+  front: What is the rule for a 90 degree anticlockwise turn about the origin?
+  back: (x, y) goes to (−y, x).
+- key: turn-and-combine-card-2
+  concept: rotation-quarter-turn
+  front: Where does (x, y) go after two quarter turns?
+  back: To (−x, −y). That is a half turn about the origin.
+- key: turn-and-combine-card-3
+  concept: combining-moves
+  front: How do you do two moves one after another?
+  back: Finish the first move and write the new coordinates. Then apply the second move to those new coordinates.
+- key: turn-and-combine-card-4
+  concept: combining-moves
+  front: Does the order of moves matter?
+  back: Often yes. A turn then a flip can end in a different place from the flip then the turn.

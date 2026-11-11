@@ -101,18 +101,22 @@ SIM_BOUNDS: dict[str, dict[str, tuple[float, float]]] = {
     "sim_refraction": {"n1": (1, 2.5), "n2": (1, 2.5), "angle0": (0, 89), "goal_angle": (1, 89)},
     "sim_circuit": {"volts": (1, 24), "r1": (1, 100), "r2": (1, 100), "goal_current": (0.05, 20)},
     "sim_solid": {"a": (1, 10), "l": (1, 10), "w": (1, 10), "h": (1, 10), "r": (1, 10), "goal_volume": (1, 2000)},
+    "sim_friction": {"mass0": (1, 50), "angle0": (0, 80), "mu0": (0.05, 0.9), "goal_angle": (1, 80)},
+    "sim_optics": {"f0": (5, 20), "u0": (3, 60)},
+    "sim_transform": {k: (-8, 8) for k in ("a1", "a2", "b1", "b2", "c1", "c2", "ta1", "ta2", "tb1", "tb2", "tc1", "tc2")},
 }
 SIM_CHOICES: dict[str, dict[str, set[str]]] = {
     "sim_density": {"goal": {"float", "sink"}},
     "sim_refraction": {"goal": {"tir"}},
     "sim_circuit": {"mode": {"series", "parallel"}},
     "sim_solid": {"shape": {"cube", "cuboid", "cylinder", "cone", "sphere"}},
+    "sim_optics": {"element": {"convex_lens", "concave_lens", "concave_mirror", "convex_mirror"}, "goal": {"real", "virtual", "enlarged"}},
 }
 
 
 class WidgetBlock(Strict):
     kind: Literal["widget"]
-    widget: Literal["numberline", "balance", "fraction", "sim_linegraph", "sim_equation", "sim_spinner", "sim_density", "sim_projectile", "sim_refraction", "sim_circuit", "sim_solid", "data_chart", "atlas"]
+    widget: Literal["numberline", "balance", "fraction", "sim_linegraph", "sim_equation", "sim_spinner", "sim_density", "sim_projectile", "sim_refraction", "sim_circuit", "sim_solid", "sim_friction", "sim_optics", "sim_transform", "data_chart", "atlas"]
     config: dict[str, Union[int, float, str]] = {}
     task: str = ""
 
@@ -157,6 +161,8 @@ class WidgetBlock(Strict):
                 raise ValueError(f"{self.widget} parameter '{k}' must be a number from {lo} to {hi}.")
         if self.widget == "sim_linegraph" and ("goal_m" in self.config) != ("goal_c" in self.config):
             raise ValueError("sim_linegraph needs both goal_m and goal_c, or neither.")
+        if self.widget == "sim_transform" and 0 < sum(k in self.config for k in ("ta1", "ta2", "tb1", "tb2", "tc1", "tc2")) < 6:
+            raise ValueError("sim_transform needs all six target corners (ta1..tc2), or none.")
         if self.widget == "sim_projectile" and ("target" in self.config) != ("tol" in self.config):
             raise ValueError("sim_projectile needs both target and tol, or neither.")
         if self.widget == "sim_refraction" and "goal" in self.config and "goal_angle" in self.config:

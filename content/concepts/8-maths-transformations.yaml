@@ -1,0 +1,9 @@
+concepts:
+  - {id: translation-grid, title: "Sliding a shape on the grid", grade: 8, subject: maths, description: "Moving a point or shape left, right, up or down by adding to or subtracting from its coordinates.", keywords: [translation, slide, coordinates, shift],
+     prerequisites: [{id: integers-add, why: "A slide adds a positive or negative number to a coordinate."}]}
+  - {id: reflection-axes, title: "Flipping a shape in an axis", grade: 8, subject: maths, description: "Reflecting a point or shape in the x-axis or the y-axis and seeing which coordinate changes sign.", keywords: [reflection, flip, mirror, x-axis, y-axis],
+     prerequisites: [{id: integers-number-line}]}
+  - {id: rotation-quarter-turn, title: "A quarter turn about the origin", grade: 8, subject: maths, description: "Rotating a point 90 degrees anticlockwise about the origin using (x, y) to (-y, x).", keywords: [rotation, turn, anticlockwise, origin],
+     prerequisites: [{id: reflection-axes}]}
+  - {id: combining-moves, title: "Combining slides, flips and turns", grade: 8, subject: maths, description: "Doing several moves one after another, tracking the coordinates, and seeing that the order can matter.", keywords: [combine, sequence, order, transformation],
+     prerequisites: [{id: translation-grid}, {id: reflection-axes}, {id: rotation-quarter-turn}]}

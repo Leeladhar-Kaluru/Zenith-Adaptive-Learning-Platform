@@ -1,0 +1,313 @@
+slug: mirrors-and-images
+title: Mirrors and the images they make
+minutes: 25
+objectives:
+- Tell a concave mirror from a convex mirror and say what each does to light
+- Decide whether an image is real or virtual, upright or inverted, bigger or smaller
+- Use 1/v = 1/f - 1/u and m = -v/u to find an image distance and magnification
+- Explain where each kind of mirror is used
+concepts:
+- mirror-images
+origin: ai_assisted
+blocks:
+- kind: text
+  heading: Curved mirrors
+  html: '<p>Look at your face in the inside of a steel spoon. It is upside down. Turn the spoon over and your face is upright
+    but small. A curved mirror gives these different pictures. The picture a mirror makes is called an <strong>image</strong>.</p><p>A
+    mirror that curves inward, like the inside of the spoon, is a <strong>concave mirror</strong>. It brings parallel rays
+    together at one point, the <strong>focus</strong>. A mirror that bulges outward is a <strong>convex mirror</strong>. It
+    spreads parallel rays apart. The distance from the mirror to the focus is the <strong>focal length</strong>, f.</p>'
+- kind: text
+  heading: Real and virtual images
+  html: '<p>In a <strong>real image</strong> the light rays really meet at a point. You can catch a real image on a paper
+    screen. It is always inverted (upside down). In a <strong>virtual image</strong> the rays only seem to come from a point
+    behind the mirror. You can see it, but you cannot catch it on a screen. It is upright.</p><p>A concave mirror can make
+    both kinds. If the object is far from the mirror, the image is real. If the object is very close, inside the focal length,
+    the image is virtual and bigger. A convex mirror always makes a virtual, upright, smaller image.</p>'
+- kind: text
+  heading: The sign convention used here
+  html: '<p>In ZENITH we use one simple rule. The object distance <strong>u</strong> is a positive number. The focal length
+    <strong>f</strong> is positive for a mirror that brings light together (concave) and negative for one that spreads it
+    (convex). The image distance <strong>v</strong> comes from <strong>1/v = 1/f − 1/u</strong>. A positive v means a real image.
+    A negative v means a virtual image. The magnification is <strong>m = −v/u</strong>. A negative m means inverted. A positive
+    m means upright. If m is bigger than 1 in size, the image is enlarged.</p><p>Many textbooks use the Cartesian sign convention.
+    There u is negative, a concave mirror has a negative f, and the formula is 1/v + 1/u = 1/f with m = −v/u. The size and kind
+    of image come out the same, but the signs differ. In an exam, use the convention your textbook uses.</p>'
+- kind: widget
+  widget: sim_optics
+  config: {element: concave_mirror, f0: 10, u0: 30, goal: enlarged}
+  task: A concave mirror has a focal length of 10 cm. Move the object until the image is enlarged. Then find a distance where the image is virtual. What do you notice about the object distance each time?
+- kind: example
+  heading: Worked example
+  prompt: An object is 30 cm from a concave mirror of focal length 10 cm. Find the image distance and the magnification.
+  steps:
+  - 'Here u = 30 and f = 10, both in centimetres. Write 1/v = 1/f − 1/u.'
+  - '1/v = 1/10 − 1/30 = 3/30 − 1/30 = 2/30, so v = 15 cm.'
+  - 'v is positive, so the image is real. m = −v/u = −15/30 = −0.5.'
+  - 'Check. The negative sign means inverted, and 0.5 means half the size. A real image should be inverted, so this agrees.'
+- kind: example
+  heading: Worked example
+  prompt: An object is 10 cm from a convex mirror. The sim gives the convex mirror f = −10 cm. Find the image distance and the magnification.
+  steps:
+  - 'Here u = 10 and f = −10. Write 1/v = 1/f − 1/u.'
+  - '1/v = −1/10 − 1/10 = −2/10, so v = −5 cm.'
+  - 'v is negative, so the image is virtual, 5 cm behind the mirror. m = −v/u = 5/10 = 0.5.'
+  - 'Check. m is positive and less than 1, so the image is upright and smaller. This is what a convex mirror always does.'
+- kind: callout
+  tone: watch
+  html: A virtual image is not "not there". You can see it, and it can be big and clear. It just cannot be caught on a screen, because no light really arrives at it.
+- kind: callout
+  tone: real
+  html: A convex mirror is used as a car's side mirror because it shows a wide view with a smaller image. A concave mirror is used as a shaving mirror and by dentists, because an object close to it looks bigger and upright.
+- kind: check
+  item: q-mi-1
+- kind: check
+  item: q-mi-2
+- kind: check
+  item: q-mi-3
+- kind: summary
+  points:
+  - 'A concave mirror brings light together and a convex mirror spreads it apart.'
+  - 'A real image forms where rays meet and is inverted. A virtual image forms where rays only seem to meet and is upright.'
+  - 'Here, 1/v = 1/f − 1/u and m = −v/u, with u positive, f positive for concave and negative for convex, and v positive for real. Textbooks often use the Cartesian convention with u negative.'
+  - 'A convex mirror always gives a virtual, upright, smaller image. A concave mirror gives a virtual enlarged image when the object is inside the focal length.'
+items:
+- key: q-mi-1
+  kind: mcq
+  stem: Which kind of mirror curves inward, like the inside of a spoon, and brings parallel rays together?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: mirror-images
+  explanation: A mirror that curves inward is a concave mirror. It brings parallel rays together at its focus.
+  hints:
+  - Think of a cave, which goes inward.
+  correct: A
+  options:
+  - key: A
+    text: Concave mirror
+  - key: B
+    text: Convex mirror
+    misconception: concave-convex-swap
+  - key: C
+    text: Plane mirror
+  - key: D
+    text: Every curved mirror
+- key: q-mi-2
+  kind: mcq
+  stem: What kind of image does a convex mirror always form?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: mirror-images
+  explanation: A convex mirror spreads light apart, so the rays never meet. The image is virtual, upright and smaller.
+  hints:
+  - Can a mirror that spreads light apart make rays meet at a point?
+  correct: C
+  options:
+  - key: A
+    text: Real, inverted and smaller
+    misconception: convex-real-image
+  - key: B
+    text: Real and enlarged
+    misconception: convex-real-image
+  - key: C
+    text: Virtual, upright and smaller
+  - key: D
+    text: Virtual, upright and enlarged
+- key: q-mi-3
+  kind: mcq
+  stem: Which statement about a virtual image is correct?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: mirror-images
+  explanation: In a virtual image the rays only seem to come from a point, so there is no real light there to fall on a screen. You can still see it.
+  hints:
+  - A screen needs real light to reach it.
+  correct: B
+  options:
+  - key: A
+    text: It can be caught on a paper screen
+    misconception: virtual-on-screen
+  - key: B
+    text: It can be seen but cannot be caught on a screen
+  - key: C
+    text: It cannot be seen at all
+    misconception: virtual-on-screen
+  - key: D
+    text: It is always inverted
+- key: q-mi-4
+  kind: numeric
+  stem: A concave mirror has f = 10 cm. An object is 30 cm from it. What is the image distance v, in cm? Use the convention in this lesson.
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: mirror-images
+  explanation: 1/v = 1/10 − 1/30 = 2/30, so v = 15 cm. It is positive, so the image is real.
+  hints:
+  - Use 1/v = 1/f − 1/u. Make both fractions have the bottom number 30.
+  value: 15
+  tolerance: 0.0
+  verify: 1/(1/10-1/30)
+- key: q-mi-5
+  kind: numeric
+  stem: A concave mirror has f = 10 cm. An object is 15 cm from it, so the image is 30 cm from it. What is the magnification m = −v/u?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: mirror-images
+  explanation: m = −v/u = −30/15 = −2. The minus sign means the image is inverted and the 2 means it is twice as big.
+  hints:
+  - Divide the image distance by the object distance and keep the minus sign.
+  value: -2
+  tolerance: 0.0
+  verify: -30/15
+- key: q-mi-6
+  kind: mcq
+  stem: An object is held 5 cm from a concave mirror of focal length 10 cm. What is the image like?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: mirror-images
+  explanation: The object is inside the focal length. 1/v = 1/10 − 1/5 = −1/10, so v = −10 cm. It is virtual, with m = 10/5 = 2, so it is upright and enlarged.
+  hints:
+  - Compare 5 cm with the focal length of 10 cm.
+  correct: D
+  options:
+  - key: A
+    text: Real, inverted and enlarged
+    misconception: concave-always-real
+  - key: B
+    text: Real, inverted and smaller
+    misconception: concave-always-real
+  - key: C
+    text: Virtual, upright and smaller
+  - key: D
+    text: Virtual, upright and enlarged
+- key: q-mi-7
+  kind: mcq
+  stem: 'Assertion (A): A convex mirror is used as the side mirror of a vehicle. Reason (R): A convex mirror forms a smaller, upright image, so it shows a wide area of the road behind.'
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: mirror-images
+  explanation: Both are true. The smaller upright image lets the driver see a wide view, and that is why the convex mirror is used.
+  hints:
+  - Does the reason say why the mirror is useful for a driver?
+  correct: A
+  options:
+  - key: A
+    text: Both A and R are true, and R explains A
+  - key: B
+    text: Both A and R are true, but R does not explain A
+    misconception: convex-real-image
+  - key: C
+    text: A is true, but R is false
+    misconception: convex-real-image
+  - key: D
+    text: A is false, but R is true
+    misconception: convex-real-image
+- key: q-mi-8
+  kind: mcq
+  stem: 'Assertion (A): A concave mirror always forms a real image. Reason (R): A concave mirror brings parallel rays of light together.'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: mirror-images
+  explanation: R is true. But A is false, because an object inside the focal length gives a virtual image. Bringing parallel rays together does not mean every image is real.
+  hints:
+  - Think of a shaving mirror. Is the face you see on a screen?
+  correct: D
+  options:
+  - key: A
+    text: Both A and R are true, and R explains A
+    misconception: concave-always-real
+  - key: B
+    text: Both A and R are true, but R does not explain A
+    misconception: concave-always-real
+  - key: C
+    text: A is true, but R is false
+    misconception: concave-always-real
+  - key: D
+    text: A is false, but R is true
+- key: q-mi-9
+  pattern: case
+  kind: mcq
+  stem: 'Read the passage. A boy stands in front of a large shop mirror that bulges outward at the corner of a narrow lane. He can see cars coming round the corner, and they look much smaller than they really are. The mirror always shows an upright picture. Which statement best explains the picture he sees?'
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: mirror-images
+  explanation: A mirror that bulges outward is convex. It always forms a virtual, upright, smaller image, and this lets it show a wide area.
+  hints:
+  - What kind of mirror bulges outward?
+  correct: B
+  options:
+  - key: A
+    text: A concave mirror forms a real, inverted image of the cars
+    misconception: concave-convex-swap
+  - key: B
+    text: A convex mirror forms a virtual, upright, smaller image of the cars
+  - key: C
+    text: A convex mirror forms a real, smaller image on the mirror
+    misconception: convex-real-image
+  - key: D
+    text: A concave mirror forms a virtual, enlarged image of the cars
+    misconception: concave-convex-swap
+- key: q-mi-10
+  kind: numeric
+  stem: A convex mirror has f = −10 cm in this lesson's convention. An object is 10 cm from it. How far is the image from the mirror, in cm? Give the size only, without a sign.
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: mirror-images
+  explanation: 1/v = −1/10 − 1/10 = −2/10, so v = −5 cm. The image is virtual, 5 cm behind the mirror.
+  hints:
+  - Both terms on the right are negative. Add them, then flip the fraction.
+  value: 5
+  tolerance: 0.0
+  verify: abs(1/(-1/10-1/10))
+- key: q-mi-11
+  kind: numeric
+  stem: A concave mirror has f = 10 cm. An object is 5 cm from it, which gives v = −10 cm. What is the magnification m = −v/u?
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: mirror-images
+  explanation: m = −v/u = −(−10)/5 = 2. The positive sign means upright, and 2 means twice as big.
+  hints:
+  - Minus a negative number is positive.
+  value: 2
+  tolerance: 0.0
+  verify: -(-10)/5
+misconceptions:
+- code: concave-convex-swap
+  concept: mirror-images
+  description: Mixes up concave and convex, and so gives a convex mirror the job of bringing light together or the reverse.
+- code: convex-real-image
+  concept: mirror-images
+  description: Thinks a convex mirror can make a real image, when its image is always virtual, upright and smaller.
+- code: virtual-on-screen
+  concept: mirror-images
+  description: Thinks a virtual image can be caught on a screen, or that it cannot be seen.
+- code: concave-always-real
+  concept: mirror-images
+  description: Thinks every image in a concave mirror is real and inverted, forgetting that an object inside the focal length gives a virtual one.
+cards:
+- key: mirrors-and-images-card-1
+  concept: mirror-images
+  front: What is the difference between a real and a virtual image?
+  back: A real image forms where rays really meet and can be caught on a screen. A virtual image only seems to come from a point and cannot be caught.
+- key: mirrors-and-images-card-2
+  concept: mirror-images
+  front: What image does a convex mirror always make?
+  back: Virtual, upright and smaller than the object.
+- key: mirrors-and-images-card-3
+  concept: mirror-images
+  front: Give the mirror formula and magnification used in ZENITH.
+  back: 1/v = 1/f − 1/u and m = −v/u, with u positive, f positive for concave, and v positive for a real image.
+- key: mirrors-and-images-card-4
+  concept: mirror-images
+  front: When does a concave mirror give a virtual image?
+  back: When the object is closer to the mirror than the focal length. The image is then upright and enlarged.

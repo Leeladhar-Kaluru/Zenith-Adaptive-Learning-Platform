@@ -1,0 +1,329 @@
+slug: slide-and-flip
+title: Slide and flip
+minutes: 30
+objectives:
+- Slide a point or a shape by adding to or subtracting from its coordinates
+- Reflect a point in the x-axis or the y-axis and say which coordinate changes sign
+- Know that slides and flips keep the size and shape of a figure
+- Use a slide and a flip together to move a triangle to a given place
+concepts:
+- translation-grid
+- reflection-axes
+origin: ai_assisted
+blocks:
+- kind: text
+  heading: Moving things on a screen
+  html: '<p>In a phone game, a character slides to the right when you press a button. A photo can be flipped to show its mirror picture. Each of these moves can be described exactly with the numbers (x, y) of a point on a grid.</p><p>A move of a figure on the grid is called a <strong>transformation</strong>. In this lesson we study two kinds. In both, the figure keeps its size and shape. Only its place or its facing changes.</p>'
+- kind: text
+  heading: Slide (translation)
+  html: '<p>A <strong>slide</strong>, also called a <strong>translation</strong>, moves every point the same distance in the same direction. Moving right adds to x. Moving left subtracts from x. Moving up adds to y. Moving down subtracts from y.</p><p>So the point (2, 3) moved 4 right and 1 down becomes (2 + 4, 3 − 1) = (6, 2). A figure slides when all its corners slide by the same amount.</p>'
+- kind: text
+  heading: Flip (reflection)
+  html: '<p>A <strong>flip</strong>, also called a <strong>reflection</strong>, turns a point into its mirror picture. The mirror is a line, here an axis. A point and its mirror picture are the same distance from the mirror, on opposite sides.</p><p>To reflect in the <strong>x-axis</strong>, the point goes to the other side of the x-axis. So y changes sign and x stays. The rule is (x, y) → (x, −y). To reflect in the <strong>y-axis</strong>, x changes sign and y stays. The rule is (x, y) → (−x, y).</p>'
+- kind: figure
+  svg: '<svg viewBox="0 0 300 300" role="img"><line x1="30" y1="150" x2="270" y2="150" stroke="#14193a" stroke-width="2.5"/><line x1="150" y1="30" x2="150" y2="270" stroke="#14193a" stroke-width="2.5"/><text x="274" y="145" font-size="13" font-weight="700" fill="currentColor">x</text><text x="156" y="26" font-size="13" font-weight="700" fill="currentColor">y</text><text x="140" y="165" font-size="11" text-anchor="end" fill="currentColor">O</text><polygon points="180,120 240,120 180,90" fill="#ffb800" fill-opacity=".6" stroke="#14193a" stroke-width="2"/><polygon points="180,180 240,180 180,210" fill="#6c8cff" fill-opacity=".6" stroke="#14193a" stroke-width="2"/><text x="186" y="112" font-size="12" font-weight="700" fill="currentColor">(1, 1)</text><text x="186" y="198" font-size="12" font-weight="700" fill="currentColor">(1, −1)</text><text x="200" y="80" font-size="12" fill="currentColor">original</text><text x="200" y="228" font-size="12" fill="currentColor">flipped</text></svg>'
+  alt: A triangle above the x-axis and its mirror picture below the x-axis, with matching corners at the same distance from the axis.
+  caption: The triangle with corners (1, 1), (3, 1) and (1, 2) is reflected in the x-axis. Each x stays the same and each y changes sign, so the corners become (1, −1), (3, −1) and (1, −2).
+- kind: example
+  heading: Worked example
+  prompt: The point P(−3, 4) is slid 5 units right and 6 units down. Then the new point is reflected in the y-axis. Find the final point.
+  steps:
+  - 'Slide right 5 adds 5 to x. Slide down 6 subtracts 6 from y. So (−3 + 5, 4 − 6) = (2, −2).'
+  - 'Now reflect in the y-axis. The rule is (x, y) → (−x, y). So (2, −2) becomes (−2, −2).'
+  - 'Check by thinking. (2, −2) is 2 units to the right of the y-axis. Its mirror picture is 2 units to the left, at the same height. That is (−2, −2).'
+  - 'The final point is (−2, −2).'
+- kind: widget
+  widget: sim_transform
+  config:
+    a1: 1
+    a2: 1
+    b1: 4
+    b2: 1
+    c1: 1
+    c2: 3
+    ta1: 3
+    ta2: -1
+    tb1: 6
+    tb2: -1
+    tc1: 3
+    tc2: -3
+  task: Move the triangle so that it lands exactly on the target triangle. Use the Reflect in x-axis button and the Right, Left, Up and Down buttons. Try to do it in three moves. Use Undo if you go wrong.
+- kind: example
+  heading: Worked example
+  prompt: A triangle has corners A(1, 1), B(4, 1) and C(1, 3). Reflect it in the x-axis, then slide it 2 units right. Find the new corners.
+  steps:
+  - 'Reflect in the x-axis: (x, y) → (x, −y). So A → (1, −1), B → (4, −1), C → (1, −3).'
+  - 'Slide 2 right adds 2 to each x. So A → (3, −1), B → (6, −1), C → (3, −3).'
+  - 'Check the size. Side AB was 4 − 1 = 3 units long. The new side is 6 − 3 = 3 units. The size did not change.'
+  - 'The new corners are (3, −1), (6, −1) and (3, −3). This is the target in the simulation above.'
+- kind: callout
+  tone: watch
+  html: Reflecting in the x-axis changes y, not x. Many students change the wrong coordinate. Think of the mirror. The x-axis is a flat line, so the point jumps up or down across it. Its left-right place does not change.
+- kind: callout
+  tone: real
+  html: Mirror writing on the front of an ambulance is a flip. A sliding door and a lift moving between floors are slides. Game makers use these moves, written as changes to x and y, to draw characters.
+- kind: check
+  item: q-sf-1
+- kind: check
+  item: q-sf-3
+- kind: check
+  item: q-sf-4
+- kind: summary
+  points:
+  - 'A slide adds the same numbers to every x and every y. Right and up are positive, left and down are negative.'
+  - 'Reflection in the x-axis: (x, y) → (x, −y). Reflection in the y-axis: (x, y) → (−x, y).'
+  - 'Slides and flips keep the lengths of the sides, so the size and shape do not change.'
+  - 'To do two moves, finish the first move completely, then apply the second move to the new coordinates.'
+items:
+- key: q-sf-1
+  kind: mcq
+  stem: The point (3, 2) is slid 4 units right and 5 units down. What is the new point?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: translation-grid
+  explanation: Right 4 adds 4 to x, giving 3 + 4 = 7. Down 5 subtracts 5 from y, giving 2 − 5 = −3. The new point is (7, −3).
+  hints:
+  - Right changes x. Down changes y, and it makes y smaller.
+  correct: A
+  options:
+  - key: A
+    text: (7, −3)
+  - key: B
+    text: (−1, −3)
+    misconception: direction-sign-slip
+  - key: C
+    text: (7, 7)
+    misconception: direction-sign-slip
+  - key: D
+    text: (−1, 7)
+    misconception: direction-sign-slip
+- key: q-sf-2
+  kind: numeric
+  stem: The point (−2, 5) is slid 6 units to the right. What is the new x value?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: translation-grid
+  explanation: Moving right adds to x. The new x value is −2 + 6 = 4.
+  hints:
+  - Right means add to x.
+  value: 4
+  tolerance: 0.0
+  verify: -2 + 6
+- key: q-sf-3
+  kind: mcq
+  stem: The point (4, 3) is reflected in the x-axis. What is the new point?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: reflection-axes
+  explanation: A flip in the x-axis moves the point across the x-axis. The x value stays 4 and the y value changes sign. The new point is (4, −3).
+  hints:
+  - The mirror is the x-axis. Which coordinate says how far the point is above or below it?
+  correct: B
+  options:
+  - key: A
+    text: (−4, 3)
+    misconception: reflect-wrong-coordinate
+  - key: B
+    text: (4, −3)
+  - key: C
+    text: (−4, −3)
+    misconception: reflect-wrong-coordinate
+  - key: D
+    text: (3, 4)
+- key: q-sf-4
+  kind: mcq
+  stem: The point (−5, 2) is reflected in the y-axis. What is the new point?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: reflection-axes
+  explanation: A flip in the y-axis moves the point across the y-axis. The y value stays 2 and the x value changes sign. The new point is (5, 2).
+  hints:
+  - The mirror is the y-axis, an upright line. The point jumps left or right across it.
+  correct: C
+  options:
+  - key: A
+    text: (−5, −2)
+    misconception: reflect-wrong-coordinate
+  - key: B
+    text: (5, −2)
+    misconception: reflect-wrong-coordinate
+  - key: C
+    text: (5, 2)
+  - key: D
+    text: (2, −5)
+- key: q-sf-5
+  kind: numeric
+  stem: A corner of a triangle is at (2, 3). The triangle is slid 3 units left and 4 units down. Add the two coordinates of the new corner together. What is the sum?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: translation-grid
+  explanation: Left 3 gives x = 2 − 3 = −1. Down 4 gives y = 3 − 4 = −1. The new corner is (−1, −1), and −1 + (−1) = −2.
+  hints:
+  - Find the new corner first. Then add its two coordinates.
+  value: -2
+  tolerance: 0.0
+  verify: (2 - 3) + (3 - 4)
+- key: q-sf-6
+  kind: mcq
+  stem: Which single move takes the point (2, 5) to the point (2, −5)?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: reflection-axes
+  explanation: The x value stays 2 and the y value changes sign. That is a reflection in the x-axis. A reflection in the y-axis would give (−2, 5).
+  hints:
+  - Which coordinate changed, and how?
+  correct: A
+  options:
+  - key: A
+    text: Reflect in the x-axis
+  - key: B
+    text: Reflect in the y-axis
+    misconception: reflect-wrong-coordinate
+  - key: C
+    text: Slide 5 units down
+    misconception: direction-sign-slip
+  - key: D
+    text: Slide 10 units left
+    misconception: direction-sign-slip
+- key: q-sf-7
+  kind: numeric
+  stem: The point (6, −4) is reflected in the x-axis. Then it is slid 2 units left. Add the two coordinates of the final point together. What is the sum?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: reflection-axes
+  - id: translation-grid
+  explanation: The reflection gives (6, 4). Sliding 2 left gives (4, 4). The sum is 4 + 4 = 8.
+  hints:
+  - Do the flip first. Then apply the slide to the new point.
+  value: 8
+  tolerance: 0.0
+  verify: (6 - 2) + 4
+- key: q-sf-8
+  kind: mcq
+  stem: 'Assertion (A): Reflecting the point (3, −2) in the y-axis gives (−3, −2). Reason (R): A reflection in the y-axis changes the sign of x and keeps y the same.'
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: reflection-axes
+  explanation: Both are true. The rule in R, (x, y) → (−x, y), turns (3, −2) into (−3, −2). So R explains A.
+  hints:
+  - Apply the rule in R to the point in A.
+  correct: A
+  options:
+  - key: A
+    text: Both A and R are true, and R explains A
+  - key: B
+    text: Both A and R are true, but R does not explain A
+  - key: C
+    text: A is true, but R is false
+  - key: D
+    text: A is false, but R is true
+- key: q-sf-9
+  kind: mcq
+  stem: 'Assertion (A): Sliding a triangle 5 units right makes its sides longer. Reason (R): A slide moves every corner the same distance in the same direction.'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: translation-grid
+  explanation: R is true. Because all corners move together, the sides keep their lengths. So A is false. A slide never changes the size.
+  hints:
+  - If every corner moves the same way, does the distance between two corners change?
+  correct: D
+  options:
+  - key: A
+    text: Both A and R are true, and R explains A
+  - key: B
+    text: Both A and R are true, but R does not explain A
+  - key: C
+    text: A is true, but R is false
+  - key: D
+    text: A is false, but R is true
+- key: q-sf-10
+  pattern: case
+  kind: mcq
+  stem: 'Read this. A game screen has a grid. A calm lake lies along the x-axis. The top of a tree on the bank is at (4, 5). The game draws the tree''s reflection in the lake, which is the reflection of every point in the x-axis. Where does the reflection of the tree top appear?'
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: reflection-axes
+  explanation: The lake is the x-axis, so this is a reflection in the x-axis. The x value stays 4 and the y value changes sign. The reflection of the tree top is at (4, −5).
+  hints:
+  - The water is along the x-axis. The picture in the water is below it.
+  correct: C
+  options:
+  - key: A
+    text: (−4, 5)
+    misconception: reflect-wrong-coordinate
+  - key: B
+    text: (−4, −5)
+    misconception: reflect-wrong-coordinate
+  - key: C
+    text: (4, −5)
+  - key: D
+    text: (5, 4)
+- key: q-sf-11
+  kind: numeric
+  stem: A triangle has a corner at (1, 2). After a slide this corner lands at (−3, 5). Another corner was at (4, 0). Add the two coordinates of where that other corner lands. What is the sum?
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: translation-grid
+  explanation: The slide changed x by −3 − 1 = −4 and y by 5 − 2 = 3. So (4, 0) lands at (4 − 4, 0 + 3) = (0, 3). The sum is 0 + 3 = 3.
+  hints:
+  - First find how far the slide moved x and how far it moved y. Then use the same slide on the other corner.
+  value: 3
+  tolerance: 0.0
+  verify: (4 + (-3 - 1)) + (0 + (5 - 2))
+- key: q-sf-12
+  kind: mcq
+  stem: A point is in quadrant I. It is reflected in the x-axis, and then the new point is reflected in the y-axis. Which quadrant is the final point in?
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: reflection-axes
+  explanation: Take (a, b) with a and b positive. The first flip gives (a, −b). The second flip gives (−a, −b). Both are negative, so the point is in quadrant III.
+  hints:
+  - Use a simple point such as (2, 3) and follow it through both flips.
+  correct: C
+  options:
+  - key: A
+    text: Quadrant I
+  - key: B
+    text: Quadrant II
+    misconception: reflect-wrong-coordinate
+  - key: C
+    text: Quadrant III
+  - key: D
+    text: Quadrant IV
+    misconception: reflect-wrong-coordinate
+misconceptions:
+- code: reflect-wrong-coordinate
+  concept: reflection-axes
+  description: Changes the wrong coordinate in a reflection, for example changes x when reflecting in the x-axis, or changes both.
+- code: direction-sign-slip
+  concept: translation-grid
+  description: Adds when the move is left or down, or changes the wrong coordinate in a slide.
+cards:
+- key: slide-and-flip-card-1
+  concept: translation-grid
+  front: How does a slide change the coordinates?
+  back: It adds the same number to every x and the same number to every y. Right and up are positive. Left and down are negative.
+- key: slide-and-flip-card-2
+  concept: reflection-axes
+  front: What is the rule for reflection in the x-axis?
+  back: (x, y) goes to (x, −y). The x value stays and the y value changes sign.
+- key: slide-and-flip-card-3
+  concept: reflection-axes
+  front: What is the rule for reflection in the y-axis?
+  back: (x, y) goes to (−x, y). The y value stays and the x value changes sign.
+- key: slide-and-flip-card-4
+  concept: translation-grid
+  front: Do slides and flips change the size of a figure?
+  back: No. Side lengths and angles stay the same. Only the place or the facing changes.

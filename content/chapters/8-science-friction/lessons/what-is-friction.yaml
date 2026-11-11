@@ -1,0 +1,313 @@
+slug: what-is-friction
+title: What is friction?
+minutes: 16
+objectives:
+- Explain what friction is and what causes it
+- Tell static, sliding and rolling friction apart
+- Give uses and harms of friction
+- Name ways to increase or reduce friction
+concepts:
+- friction-types
+origin: ai_assisted
+blocks:
+- kind: text
+  heading: Why does a rolling ball stop?
+  html: '<p>Roll a marble along a floor. It slows down and stops, even though nothing seems to touch it. The reason is <strong>friction</strong>. Friction is a force that acts where two surfaces touch. It <strong>opposes</strong> (acts against) the motion, or the push to move.</p><p>Friction is measured in newtons (N), like any force.</p>'
+- kind: text
+  heading: Where does friction come from?
+  html: '<p>No surface is perfectly smooth. Under a strong magnifying glass, even a polished steel plate has tiny bumps and dips. When two surfaces touch, these bumps <strong>lock into each other</strong>. To slide one surface, you must lift or break these bumps. That is the friction.</p><p>A rougher surface has bigger bumps, so it gives more friction. A very smooth surface gives less friction, but never zero. A harder press between the surfaces also pushes the bumps together more, so friction grows.</p>'
+- kind: figure
+  svg: '<svg viewBox="0 0 300 130" role="img"><path d="M20 70 L45 55 L70 70 L95 55 L120 70 L145 55 L170 70 L195 55 L220 70 L245 55 L270 70" fill="none" stroke="#14193a" stroke-width="3"/><path d="M20 70 L45 85 L70 70 L95 85 L120 70 L145 85 L170 70 L195 85 L220 70 L245 85 L270 70" fill="none" stroke="#14193a" stroke-width="3"/><path d="M130 30 H190 M182 24 L192 30 L182 36" fill="none" stroke="currentColor" stroke-width="3"/><path d="M130 112 H70 M78 106 L68 112 L78 118" fill="none" stroke="currentColor" stroke-width="3"/><g font-size="12" font-weight="700" fill="currentColor"><text x="196" y="34">push</text><text x="20" y="116">friction</text></g></svg>'
+  alt: Two rough surfaces with zigzag edges lock into each other. An arrow shows the push to the right and a longer arrow shows friction to the left.
+  caption: Tiny bumps on two surfaces lock together. Friction acts against the push.
+- kind: text
+  heading: Three kinds of friction
+  html: '<p><strong>Static friction</strong> acts on an object that is at rest. It stops the object from starting to move. It grows to match your push, up to a limit. Beyond that limit, the object starts to slide.</p><p><strong>Sliding friction</strong> acts on an object that is sliding over a surface. It is a little less than the most static friction. So it is harder to start a heavy almirah moving than to keep it moving.</p><p><strong>Rolling friction</strong> acts on a wheel or ball rolling over a surface. It is much smaller than sliding friction. This is why wheels, bullock carts and suitcases with wheels make moving loads easier.</p><p>Order: static (most), then sliding, then rolling (least).</p>'
+- kind: example
+  heading: Worked example
+  prompt: A box presses on the floor with a force of 100 N. The surface gives a friction force equal to 0.4 times this pressing force at most. What is the most static friction?
+  steps:
+  - The pressing force is 100 N.
+  - 'Most static friction = 0.4 × 100 = 40 N.'
+  - You must push with more than 40 N to start the box moving.
+  - 'Check: the answer is in newtons, and it is smaller than the pressing force, as 0.4 is less than 1.'
+- kind: example
+  heading: Sliding is easier than starting
+  prompt: The most static friction on a box is 40 N. Sliding friction is 80% of this. How much force keeps the box sliding at a steady speed?
+  steps:
+  - 'Sliding friction = 80% of 40 N.'
+  - '80% means 0.8, so 0.8 × 40 = 32 N.'
+  - To keep a steady speed, you push with 32 N, which equals the sliding friction.
+  - 'Check: 32 N is less than 40 N, so sliding is easier than starting.'
+- kind: check
+  item: q-fr-1
+- kind: check
+  item: q-fr-3
+- kind: callout
+  tone: watch
+  html: Friction is not always bad, and a smooth surface is not free of friction. Walking, writing and braking all need friction.
+- kind: text
+  heading: Good and bad friction
+  html: '<p><strong>Friction helps us.</strong> We walk because the ground grips our shoes. A match lights because rubbing makes heat. Brakes stop a cycle by rubbing on the wheel rim. Without friction, a nail would slip out of a wall.</p><p><strong>Friction also harms.</strong> It wears out shoe soles and machine parts. It wastes energy as heat. It makes it hard to move heavy things.</p><p>To <strong>increase</strong> friction, make surfaces rougher: grooves on tyres, studs on football shoes, sand on a slippery path. To <strong>reduce</strong> friction, use oil or grease (a lubricant), make surfaces smooth, or use wheels and ball bearings, which turn sliding into rolling.</p>'
+- kind: callout
+  tone: real
+  html: A bicycle chain is oiled to reduce friction. The brake pads are rough rubber to increase friction. The same bicycle uses both ideas.
+- kind: check
+  item: q-fr-5
+- kind: check
+  item: q-fr-6
+- kind: summary
+  points:
+  - Friction is a force that opposes sliding or the push to slide, caused by tiny bumps locking together.
+  - 'Static friction (at rest) is more than sliding friction, which is more than rolling friction.'
+  - Friction is useful for walking and braking, and harmful because it causes wear and heat.
+  - Rough surfaces increase friction. Oil, smooth surfaces and wheels reduce it.
+items:
+- key: q-fr-1
+  kind: mcq
+  stem: What is the main cause of friction between two touching surfaces?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: friction-types
+    weight: 1.0
+  explanation: Tiny bumps on both surfaces lock into each other. Sliding needs these bumps to be lifted or broken.
+  hints:
+  - Think about the surfaces under a magnifying glass.
+  correct: C
+  options:
+  - key: A
+    text: Surfaces are perfectly smooth and stick together
+    misconception: smooth-no-friction
+  - key: B
+    text: The air between the surfaces pushes them
+  - key: C
+    text: Tiny bumps on the surfaces lock into each other
+  - key: D
+    text: Only the colour of the surfaces
+- key: q-fr-2
+  kind: truefalse
+  stem: Friction acts in the same direction as the motion of a sliding object.
+  difficulty: intro
+  purpose: practice
+  concepts:
+  - id: friction-types
+  explanation: Friction opposes the motion. It acts in the direction opposite to the sliding.
+  hints:
+  - Friction slows moving things down.
+  correct: false
+- key: q-fr-3
+  kind: mcq
+  stem: Which list puts the frictions from the largest to the smallest for the same two surfaces?
+  difficulty: standard
+  purpose: check
+  concepts:
+  - id: friction-types
+    weight: 1.0
+  explanation: Most static friction is the largest, sliding friction is a little less, and rolling friction is the smallest.
+  hints:
+  - Rolling is the easiest way to move a load.
+  correct: A
+  options:
+  - key: A
+    text: static, sliding, rolling
+  - key: B
+    text: sliding, static, rolling
+    misconception: sliding-bigger-static
+  - key: C
+    text: rolling, sliding, static
+    misconception: sliding-bigger-static
+  - key: D
+    text: rolling, static, sliding
+    misconception: sliding-bigger-static
+- key: q-fr-4
+  kind: numeric
+  stem: A box presses on the floor with a force of 100 N. The most static friction is 0.4 times this force. What is the most static friction in N?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: friction-types
+  explanation: 0.4 × 100 = 40 N.
+  hints:
+  - Multiply 0.4 by 100.
+  value: 40
+  tolerance: 0.0
+  verify: 4*100/10
+- key: q-fr-5
+  kind: mcq
+  stem: Which of these is a harm caused by friction?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: friction-types
+    weight: 1.0
+  explanation: Friction wears away shoe soles. Walking, braking and lighting a match are uses of friction.
+  hints:
+  - Which one is a loss, not a help?
+  correct: D
+  options:
+  - key: A
+    text: It lets us walk without slipping
+    misconception: friction-always-bad
+  - key: B
+    text: It helps brakes stop a cycle
+    misconception: friction-always-bad
+  - key: C
+    text: It lights a match
+  - key: D
+    text: It wears out the soles of shoes
+- key: q-fr-6
+  kind: mcq
+  stem: A shopkeeper wants to move a heavy sack more easily. Which is the best way to reduce the friction?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: friction-types
+    weight: 1.0
+  explanation: Wheels change sliding into rolling, and rolling friction is the smallest.
+  hints:
+  - Which kind of friction is the smallest?
+  correct: B
+  options:
+  - key: A
+    text: Drag it over a rough floor
+  - key: B
+    text: Put it on a trolley with wheels
+  - key: C
+    text: Put more weight on it
+  - key: D
+    text: Remove all friction by making the floor smooth
+    misconception: smooth-no-friction
+- key: q-fr-7
+  kind: numeric
+  stem: The most static friction on a box is 40 N. Sliding friction is 80% of this value. What force in N keeps the box sliding at a steady speed?
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: friction-types
+  explanation: 80% of 40 N is 0.8 × 40 = 32 N. The push needed equals the sliding friction.
+  hints:
+  - 80% means 0.8.
+  value: 32
+  tolerance: 0.0
+  verify: 40*4/5
+- key: q-fr-8
+  kind: mcq
+  stem: 'Assertion (A): It is harder to start pushing a heavy almirah than to keep it moving. Reason (R): Most static friction is more than sliding friction.'
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: friction-types
+    weight: 1.0
+  explanation: Both are true. Starting needs more than the most static friction. Keeping it moving needs only the smaller sliding friction. So R explains A.
+  hints:
+  - Compare the force to start with the force to keep going.
+  correct: A
+  options:
+  - key: A
+    text: Both A and R are true and R is the correct explanation of A.
+  - key: B
+    text: Both A and R are true but R is not the correct explanation of A.
+    misconception: sliding-bigger-static
+  - key: C
+    text: A is true but R is false.
+    misconception: sliding-bigger-static
+  - key: D
+    text: A is false but R is true.
+- key: q-fr-9
+  kind: mcq
+  stem: 'Assertion (A): Friction is useful to us. Reason (R): Friction is always harmful and should be removed from everything.'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: friction-types
+    weight: 1.0
+  explanation: A is true, since we need friction to walk and to brake. R is false, because friction has useful and harmful effects.
+  hints:
+  - Could you walk on ice without any friction?
+  correct: C
+  options:
+  - key: A
+    text: Both A and R are true and R is the correct explanation of A.
+    misconception: friction-always-bad
+  - key: B
+    text: Both A and R are true but R is not the correct explanation of A.
+    misconception: friction-always-bad
+  - key: C
+    text: A is true but R is false.
+  - key: D
+    text: A is false but R is true.
+    misconception: friction-always-bad
+- key: q-fr-10
+  pattern: case
+  kind: mcq
+  stem: 'Case. A farmer in a village must move a heavy sack of grain across his yard. Dragging the sack on the ground is very hard. He then puts the sack on a hand cart with two wheels and pushes it easily. Why is the cart easier?'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: friction-types
+    weight: 1.0
+  explanation: Wheels roll, and rolling friction is much smaller than sliding friction. So the same sack needs a smaller push.
+  hints:
+  - Compare dragging with rolling.
+  correct: B
+  options:
+  - key: A
+    text: The cart removes the sack's weight
+  - key: B
+    text: Rolling friction of the wheels is less than sliding friction of dragging
+  - key: C
+    text: There is no friction at all on a cart
+    misconception: smooth-no-friction
+  - key: D
+    text: Friction becomes bigger for wheels
+    misconception: sliding-bigger-static
+- key: q-fr-11
+  kind: mcq
+  stem: You rub your palms together quickly and they become warm. What does this show?
+  difficulty: intro
+  purpose: practice
+  concepts:
+  - id: friction-types
+    weight: 1.0
+  explanation: Friction between the rubbing surfaces turns movement energy into heat.
+  hints:
+  - Think about what friction does to the energy of motion.
+  correct: A
+  options:
+  - key: A
+    text: Friction produces heat
+  - key: B
+    text: Friction makes surfaces cold
+  - key: C
+    text: Skin has no friction
+    misconception: smooth-no-friction
+  - key: D
+    text: Heat comes only from the sun
+misconceptions:
+- code: smooth-no-friction
+  concept: friction-types
+  description: Thinks a smooth surface has no friction at all, or that friction can be fully removed.
+- code: friction-always-bad
+  concept: friction-types
+  description: Thinks friction is always harmful and never useful.
+- code: sliding-bigger-static
+  concept: friction-types
+  description: Mixes up the order of static, sliding and rolling friction.
+cards:
+- key: what-is-friction-card-1
+  concept: friction-types
+  front: What is friction?
+  back: A force where two surfaces touch that acts against sliding or the push to slide.
+- key: what-is-friction-card-2
+  concept: friction-types
+  front: Put static, sliding and rolling friction in order from largest to smallest.
+  back: Static, then sliding, then rolling.
+- key: what-is-friction-card-3
+  concept: friction-types
+  front: Give two ways to reduce friction.
+  back: Use oil or grease, or use wheels and ball bearings.
+- key: what-is-friction-card-4
+  concept: friction-types
+  front: Give two ways to increase friction.
+  back: Make surfaces rougher, such as grooves on tyres or studs on shoes.

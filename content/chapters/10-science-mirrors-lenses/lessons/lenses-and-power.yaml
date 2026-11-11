@@ -1,0 +1,307 @@
+slug: lenses-and-power
+title: Lenses, magnification and power
+minutes: 25
+objectives:
+- Tell a convex lens from a concave lens and say what each does to light
+- Use 1/v = 1/f - 1/u and m = -v/u to find an image distance and magnification
+- Say whether a lens image is real or virtual, upright or inverted, bigger or smaller
+- Find the power of a lens with P = 1/f, using f in metres
+concepts:
+- lens-images-power
+origin: ai_assisted
+blocks:
+- kind: text
+  heading: Two kinds of lens
+  html: '<p>A magnifying glass makes small print look big. It is a lens. A <strong>lens</strong> is a piece of clear glass
+    or plastic with curved surfaces. It works by refraction: light bends at each surface.</p><p>A <strong>convex lens</strong>
+    is thicker in the middle. It brings parallel rays together at its focus, so it is a converging lens. A <strong>concave
+    lens</strong> is thinner in the middle. It spreads parallel rays apart, so it is a diverging lens. The distance from the
+    lens to the focus is the <strong>focal length</strong>, f.</p>'
+- kind: text
+  heading: The lens formula and the sign convention used here
+  html: '<p>In ZENITH, the object distance <strong>u</strong> is positive. The focal length <strong>f</strong> is positive
+    for a convex lens and negative for a concave lens. Then <strong>1/v = 1/f − 1/u</strong>, where v is the image distance.
+    A positive v means a real image and a negative v means a virtual image. The magnification is <strong>m = −v/u</strong>.
+    A negative m means inverted and a positive m means upright.</p><p>Many textbooks use the Cartesian sign convention. There
+    u is negative, and the lens formula is 1/v − 1/u = 1/f with m = v/u. The kind of image and its size come out the same.
+    Only the signs change. In an exam, use the convention your textbook uses.</p>'
+- kind: widget
+  widget: sim_optics
+  config: {element: convex_lens, f0: 10, u0: 30, goal: real}
+  task: A convex lens has a focal length of 10 cm. Place the object so that the image is real and enlarged. Then move it inside the focal length. What happens to the image?
+- kind: example
+  heading: Worked example
+  prompt: An object is 20 cm from a convex lens of focal length 10 cm. Find the image distance and the magnification.
+  steps:
+  - 'Here u = 20 and f = 10, both in centimetres. Write 1/v = 1/f − 1/u.'
+  - '1/v = 1/10 − 1/20 = 2/20 − 1/20 = 1/20, so v = 20 cm.'
+  - 'v is positive, so the image is real. m = −v/u = −20/20 = −1.'
+  - 'Check. The image is inverted and the same size as the object. An object at twice the focal length always does this.'
+- kind: text
+  heading: Power of a lens
+  html: '<p>A lens with a short focal length bends light strongly. The <strong>power</strong> of a lens measures this
+    bending: <strong>P = 1/f</strong>, with f in <strong>metres</strong>. The unit of power is the <strong>dioptre</strong>
+    (D). A convex lens has positive power. A concave lens has negative power because its f is negative.</p><p>Spectacle lenses
+    are sold by power. A lens with f = 0.25 m has power 1 ÷ 0.25 = +4 D. Always change centimetres to metres before you find
+    power.</p>'
+- kind: widget
+  widget: sim_optics
+  config: {element: concave_lens, f0: 20, u0: 20}
+  task: A concave lens has a focal length of 20 cm in size. Move the object to different distances. Does the image ever become real? What happens to its size?
+- kind: example
+  heading: Worked example
+  prompt: A concave lens has f = −20 cm. An object is 20 cm from it. Find v, m and the power.
+  steps:
+  - 'Write 1/v = 1/f − 1/u = −1/20 − 1/20 = −2/20, so v = −10 cm.'
+  - 'v is negative, so the image is virtual, on the same side as the object. m = −v/u = 10/20 = 0.5.'
+  - 'The image is upright and half the size. A concave lens always does this.'
+  - 'Power: change f to metres, f = −0.2 m. P = 1/f = 1 ÷ (−0.2) = −5 D.'
+- kind: callout
+  tone: watch
+  html: Power uses f in metres. A lens with f = 20 cm is not 1/20 dioptre. Change to 0.2 m first, and the power is 5 D.
+- kind: callout
+  tone: real
+  html: An eye doctor writes your spectacle prescription in dioptres. A plus number means a convex lens and a minus number means a concave lens. A magnifying glass is a convex lens held closer than its focal length.
+- kind: check
+  item: q-lp-1
+- kind: check
+  item: q-lp-2
+- kind: check
+  item: q-lp-3
+- kind: summary
+  points:
+  - 'A convex lens is thicker in the middle and brings light together. A concave lens is thinner in the middle and spreads it apart.'
+  - 'Here, 1/v = 1/f − 1/u and m = −v/u, with u positive, f positive for convex and negative for concave, and v positive for real. Textbooks often use the Cartesian convention with u negative.'
+  - 'A convex lens makes a real inverted image when the object is beyond the focal length, and a virtual upright enlarged image inside it. A concave lens always makes a virtual, upright, smaller image.'
+  - 'Power P = 1/f with f in metres, measured in dioptres. Convex is positive and concave is negative.'
+items:
+- key: q-lp-1
+  kind: mcq
+  stem: Which lens is thicker in the middle and brings parallel rays together?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: lens-images-power
+  explanation: A convex lens is thicker in the middle and is a converging lens.
+  hints:
+  - A convex lens bulges outward.
+  correct: C
+  options:
+  - key: A
+    text: Concave lens
+    misconception: lens-type-swap
+  - key: B
+    text: Plane glass
+  - key: C
+    text: Convex lens
+  - key: D
+    text: Both kinds of lens
+- key: q-lp-2
+  kind: mcq
+  stem: What kind of image does a concave lens always form?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: lens-images-power
+  explanation: A concave lens spreads light apart, so rays never meet. The image is virtual, upright and smaller.
+  hints:
+  - Can a lens that spreads light apart make rays meet at a point?
+  correct: A
+  options:
+  - key: A
+    text: Virtual, upright and smaller
+  - key: B
+    text: Real, inverted and smaller
+    misconception: concave-lens-real
+  - key: C
+    text: Real, inverted and enlarged
+    misconception: concave-lens-real
+  - key: D
+    text: Virtual, upright and enlarged
+- key: q-lp-3
+  kind: numeric
+  stem: A convex lens has f = 10 cm. An object is 20 cm from it. What is the image distance v, in cm? Use the convention in this lesson.
+  difficulty: standard
+  purpose: check
+  concepts:
+  - id: lens-images-power
+  explanation: 1/v = 1/10 − 1/20 = 1/20, so v = 20 cm. It is positive, so the image is real.
+  hints:
+  - Use 1/v = 1/f − 1/u. Make both fractions have the bottom number 20.
+  value: 20
+  tolerance: 0.0
+  verify: 1/(1/10-1/20)
+- key: q-lp-4
+  kind: numeric
+  stem: A convex lens has a focal length of 0.25 m. What is its power, in dioptres?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: lens-images-power
+  explanation: P = 1/f = 1 ÷ 0.25 = 4 D.
+  hints:
+  - The focal length is already in metres. Take 1 divided by it.
+  value: 4
+  tolerance: 0.0
+  verify: 1/0.25
+- key: q-lp-5
+  kind: numeric
+  stem: A concave lens has a focal length of −50 cm. What is its power, in dioptres? Change to metres first.
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: lens-images-power
+  explanation: f = −50 cm = −0.5 m. P = 1/f = 1 ÷ (−0.5) = −2 D. A concave lens has negative power.
+  hints:
+  - 50 cm is 0.5 m.
+  value: -2
+  tolerance: 0.0
+  verify: 1/(-0.5)
+- key: q-lp-6
+  kind: mcq
+  stem: An object is 30 cm from a convex lens of focal length 10 cm. Then v = 15 cm and m = −0.5. What is the image like?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: lens-images-power
+  explanation: v is positive, so the image is real. m is negative, so it is inverted, and 0.5 means it is half the size.
+  hints:
+  - Read the sign of v and the sign of m.
+  correct: B
+  options:
+  - key: A
+    text: Virtual, upright and smaller
+    misconception: concave-lens-real
+  - key: B
+    text: Real, inverted and smaller
+  - key: C
+    text: Real, inverted and enlarged
+  - key: D
+    text: Virtual, upright and enlarged
+    misconception: lens-always-inverted
+- key: q-lp-7
+  kind: mcq
+  stem: 'Assertion (A): A concave lens has negative power. Reason (R): A concave lens spreads light apart, so its focal length is taken as negative in this lesson.'
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: lens-images-power
+  explanation: Both are true. P = 1/f, and f is negative for a lens that spreads light apart, so P is negative.
+  hints:
+  - Power is 1 divided by f. What does a negative f give?
+  correct: A
+  options:
+  - key: A
+    text: Both A and R are true, and R explains A
+  - key: B
+    text: Both A and R are true, but R does not explain A
+    misconception: lens-type-swap
+  - key: C
+    text: A is true, but R is false
+    misconception: lens-type-swap
+  - key: D
+    text: A is false, but R is true
+    misconception: lens-type-swap
+- key: q-lp-8
+  kind: mcq
+  stem: 'Assertion (A): A lens of focal length 20 cm has a power of 5 D. Reason (R): The power of a lens is found by taking 1 divided by its focal length in centimetres.'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: lens-images-power
+  explanation: A is true, because 20 cm is 0.2 m and 1 ÷ 0.2 = 5 D. R is false, because the focal length must be in metres, not centimetres.
+  hints:
+  - Check the unit of f in the formula for power.
+  correct: C
+  options:
+  - key: A
+    text: Both A and R are true, and R explains A
+    misconception: power-in-cm
+  - key: B
+    text: Both A and R are true, but R does not explain A
+    misconception: power-in-cm
+  - key: C
+    text: A is true, but R is false
+  - key: D
+    text: A is false, but R is true
+    misconception: power-in-cm
+- key: q-lp-9
+  pattern: case
+  kind: mcq
+  stem: 'Read the passage. A jeweller holds a convex lens of focal length 10 cm exactly 5 cm from a tiny gem. She sees a bigger, upright picture of the gem. She tries to catch the picture on a white card behind the lens, but nothing appears on the card. Which statement explains this?'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: lens-images-power
+  explanation: The gem is inside the focal length, so v = −10 cm and m = 2. The image is virtual and upright. A virtual image can be seen through the lens but cannot be caught on a card.
+  hints:
+  - Compare 5 cm with the focal length. Is the image real or virtual?
+  correct: D
+  options:
+  - key: A
+    text: The image is real, so it needs a darker card
+    misconception: lens-always-inverted
+  - key: B
+    text: A convex lens only makes inverted images, so nothing is formed
+    misconception: lens-always-inverted
+  - key: C
+    text: The lens is concave, which makes a real image far away
+    misconception: lens-type-swap
+  - key: D
+    text: The image is virtual, so no light reaches the card
+- key: q-lp-10
+  kind: numeric
+  stem: A concave lens has f = −20 cm. An object is 20 cm from it, which gives v = −10 cm. What is the magnification m = −v/u?
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: lens-images-power
+  explanation: m = −v/u = −(−10)/20 = 0.5. The image is upright and half the size.
+  hints:
+  - Minus a negative number is positive.
+  value: 0.5
+  tolerance: 0.0
+  verify: -(-10)/20
+- key: q-lp-11
+  kind: numeric
+  stem: A convex lens has f = 20 cm. An object is 60 cm from it. What is the image distance v, in cm?
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: lens-images-power
+  explanation: 1/v = 1/20 − 1/60 = 3/60 − 1/60 = 2/60, so v = 30 cm. It is positive, so the image is real.
+  hints:
+  - Use 1/v = 1/f − 1/u. Make both fractions have the bottom number 60.
+  value: 30
+  tolerance: 0.0
+  verify: 1/(1/20-1/60)
+misconceptions:
+- code: lens-type-swap
+  concept: lens-images-power
+  description: Mixes up convex and concave lenses and what each does to light.
+- code: concave-lens-real
+  concept: lens-images-power
+  description: Thinks a concave lens, or a virtual image, can be real and inverted, when a concave lens always gives a virtual, upright, smaller image.
+- code: power-in-cm
+  concept: lens-images-power
+  description: Puts the focal length in centimetres into P = 1/f, when it must be in metres to give dioptres.
+- code: lens-always-inverted
+  concept: lens-images-power
+  description: Thinks every convex lens image is real and inverted, forgetting the virtual upright image when the object is inside the focal length.
+cards:
+- key: lenses-and-power-card-1
+  concept: lens-images-power
+  front: What does a convex lens do to parallel rays?
+  back: It brings them together at its focus. It is thicker in the middle.
+- key: lenses-and-power-card-2
+  concept: lens-images-power
+  front: What is the lens formula in ZENITH?
+  back: 1/v = 1/f − 1/u, with u positive, f positive for convex and negative for concave, and v positive for a real image. Magnification m = −v/u.
+- key: lenses-and-power-card-3
+  concept: lens-images-power
+  front: How do you find the power of a lens?
+  back: P = 1/f, with f in metres. The unit is the dioptre (D). Concave lenses have negative power.
+- key: lenses-and-power-card-4
+  concept: lens-images-power
+  front: What image does a concave lens always make?
+  back: Virtual, upright and smaller than the object.

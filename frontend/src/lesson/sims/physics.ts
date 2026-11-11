@@ -80,3 +80,37 @@ export function solid(kind: string, v: Record<string, number>): SolidResult {
     default: { const r = x('r'); return { volume: (4 / 3) * PI * r ** 3, surface: 4 * PI * r * r, formulas: { volume: 'V = ⁴⁄₃πr³', surface: 'S = 4πr²' } }; }
   }
 }
+
+/* ---- block on a slope: friction ------------------------------------------------------------------------ */
+export interface Slope { along: number; normal: number; maxStatic: number; slides: boolean; friction: number; net: number; accel: number; critical: number }
+
+/** `mu` is the static coefficient; sliding friction is 80 % of it (a common classroom simplification). */
+export function slope({ mass, angle, mu, g = 9.8 }: { mass: number; angle: number; mu: number; g?: number }): Slope {
+  mass = clamp(mass, 0.1, 1000); angle = clamp(angle, 0, 90); mu = clamp(mu, 0, 2); g = clamp(g, 0.1, 50);
+  const along = mass * g * Math.sin(rad(angle)), normal = mass * g * Math.cos(rad(angle));
+  const maxStatic = mu * normal, slides = along > maxStatic + 1e-9;
+  const friction = slides ? 0.8 * maxStatic : along;
+  return { along, normal, maxStatic, slides, friction, net: along - friction, accel: (along - friction) / mass, critical: deg(Math.atan(mu)) };
+}
+
+/* ---- thin lens and spherical mirror: 1/v = 1/f - 1/u (real-is-positive convention) --------------------- */
+export interface Image { v: number | null; m: number | null; real: boolean; upright: boolean; enlarged: boolean }
+
+/** f > 0 converging (convex lens, concave mirror), f < 0 diverging (concave lens, convex mirror). u > 0 is the object's distance. v > 0 is a real image. */
+export function image({ f, u }: { f: number; u: number }): Image {
+  f = clamp(f, -100, 100) || 1; u = clamp(u, 0.1, 1000);
+  if (Math.abs(u - f) < 1e-9) return { v: null, m: null, real: false, upright: false, enlarged: false };   // rays leave parallel: image at infinity
+  const v = 1 / (1 / f - 1 / u), m = -v / u;
+  return { v, m, real: v > 0, upright: m > 0, enlarged: Math.abs(m) > 1 };
+}
+
+/* ---- moving a shape on a grid: translate, reflect, rotate -------------------------------------------- */
+export type P = [number, number];
+export type Move = { op: 'move'; dx: number; dy: number } | { op: 'reflect'; axis: 'x' | 'y' } | { op: 'rotate' };
+
+/** Rotate is 90° anticlockwise about the origin. Reflect over the x-axis flips y; over the y-axis flips x. */
+export function applyMoves(points: P[], moves: Move[]): P[] {
+  return moves.reduce<P[]>((ps, m) => ps.map(([x, y]): P => (m.op === 'move' ? [x + m.dx, y + m.dy] : m.op === 'reflect' ? (m.axis === 'x' ? [x, -y] : [-x, y]) : [-y, x])), points)
+    .map(([x, y]): P => [x + 0, y + 0]);                    // + 0 turns -0 into 0
+}
+export const samePoints = (a: P[], b: P[]) => a.length === b.length && a.every(([x, y], i) => x === b[i][0] && y === b[i][1]);

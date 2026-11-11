@@ -22,5 +22,5 @@ def get_dataset(dataset_id: str, p: Profile = Depends(get_profile), db: Session 
     credit = {"text": a.attribution_text, "url": a.url, "licence": a.licence_id}
     if a.kind == "geo":
         return {"id": str(a.id), "viewBox": a.data["viewBox"], "features": a.data["features"], "credit": credit,
-                **{k: a.data[k] for k in ("outline", "note") if a.data.get(k)}}
+                **{k: a.data[k] for k in ("outline", "note", "label") if a.data.get(k)}}
     return {"id": str(a.id), "fields": a.data["fields"], "rows": a.data["rows"], "credit": credit}

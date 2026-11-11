@@ -215,3 +215,13 @@ def test_the_atlas_widget_accepts_overlays_and_the_credit_gate_counts_them():
                              misconception_codes=set(), sources=["a1"], assets={"a1": {"status": "approved", "attribution": "x", "kind": "geo"}})
     credit = next(g for g in out if g.name == "Imported assets are credited")
     assert not credit.passed and "r1 is used in the lesson but not listed in sources" in credit.detail and "p1" in credit.detail
+
+
+def test_an_overlay_layer_reaches_students_with_its_label(client, db):
+    from app.ingest.assets import approve_asset
+    rev, st = make_profile(db, "reviewer"), make_profile(db, "student")
+    base = naturalearth.import_geojson(db, {"type": "FeatureCollection", "features": [_state("North", "TL-N", 70, 20)]}, "labelled-base", rev.id)
+    rivers = naturalearth.import_geojson(db, {"type": "FeatureCollection", "features": [_river("Long River", [[70, 20], [72, 22]])]}, "labelled-rivers", rev.id, frame_from=base, label="Rivers")
+    approve_asset(db, rivers.id, rev.id)
+    body = client.get(f"{API}/datasets/{rivers.id}", headers=auth(st)).json()
+    assert body["label"] == "Rivers" and body["features"][0]["kind"] == "line"

@@ -1,0 +1,28 @@
+.hero { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.hero h2 { margin: 0; overflow-wrap: anywhere; }
+.heroStats { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(130px, 100%), 1fr)); gap: 10px; flex: 1 1 320px; }
+.stat { border: 2px solid var(--ink); border-radius: 14px; padding: 10px 12px; background: var(--surface); min-width: 0; }
+.stat b { display: block; font-size: 1.6rem; line-height: 1.1; }
+.stat span { font-size: .8rem; color: var(--ink-2); }
+.live { display: inline-flex; align-items: center; gap: 6px; font-size: .8rem; font-weight: 700; color: var(--ink-2); }
+.dot { width: 9px; height: 9px; border-radius: 50%; background: var(--ok); }
+.dotOff { background: var(--retry, #d98a00); }
+.banner { border: 2px dashed var(--ink); border-radius: 12px; padding: 8px 12px; background: var(--retry-soft, #fff3d6); font-weight: 700; font-size: .9rem; }
+.bars { display: flex; align-items: flex-end; gap: 5px; height: 120px; }
+.barCol { flex: 1; min-width: 0; display: flex; flex-direction: column; justify-content: flex-end; height: 100%; }
+.bar { border: 2px solid var(--ink); border-radius: 6px 6px 0 0; background: var(--brand); min-height: 4px; position: relative; overflow: hidden; }
+.barOk { position: absolute; left: 0; right: 0; bottom: 0; background: var(--ok); }
+.axis { display: flex; gap: 5px; font-size: .68rem; color: var(--ink-2); margin-top: 4px; }
+.axis span { flex: 1; text-align: center; min-width: 0; }
+.stack2 { display: flex; height: 14px; border: 2px solid var(--ink); border-radius: 8px; overflow: hidden; background: var(--surface-2); }
+.stack2 i { display: block; height: 100%; }
+.legend { display: flex; gap: 10px; flex-wrap: wrap; font-size: .78rem; color: var(--ink-2); margin-top: 6px; }
+.legend i { display: inline-block; width: 10px; height: 10px; border: 1.5px solid var(--ink); border-radius: 3px; margin-right: 4px; vertical-align: -1px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); gap: 12px; }
+.battle { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border: 2px solid var(--ink); border-radius: 14px; background: var(--surface); flex-wrap: wrap; }
+.battle > div { min-width: 0; flex: 1 1 140px; }
+.win { background: var(--ok-soft); }
+.loss { background: var(--surface); }
+.delta { font-weight: 800; }
+.up { color: var(--ok); }
+.down { color: var(--ink-2); }

@@ -13,7 +13,7 @@ from sqlalchemy import and_, select
 from sqlalchemy.orm import Session
 
 from app.engine import grading
-from app.models import Chapter, ChapterConcept, Classroom, Item, Profile, QuizAnswer, QuizMatch, QuizPlayer, QuizRating
+from app.models import Chapter, ChapterConcept, ClassMember, Classroom, Item, Profile, QuizAnswer, QuizMatch, QuizPlayer, QuizRating
 from app.services import items as item_svc
 from app.services import practice, states
 from app.services.classes import ClassError, access
@@ -226,3 +226,52 @@ def standings(db: Session, p: Profile, class_id: uuid.UUID) -> dict:
                       .where(Profile.league_opt_out.is_(False), QuizRating.games > 0).distinct().order_by(QuizRating.rating.desc()).limit(20)).all()
     return {"table": [{"nickname": pr.nickname or "Classmate", "avatar": pr.avatar, "rating": round(r.rating), "games": r.games, "you": pr.id == p.id} for r, pr in rows],
             "mine": round(rating(db, p.id).rating) if p.role == "student" else None}
+
+
+def history(db: Session, p: Profile, limit: int = 20, before: datetime | None = None) -> list[dict]:
+    """This student's finished battles, newest first. The opponent shows as nickname and avatar only."""
+    q = (select(QuizMatch, Classroom).join(QuizPlayer, QuizPlayer.match_id == QuizMatch.id).join(Classroom, Classroom.id == QuizMatch.classroom_id)
+         .where(QuizPlayer.student_id == p.id, QuizMatch.status == "done"))
+    if before is not None:
+        q = q.where(QuizMatch.ended_at < before)
+    out = []
+    for m, cls in db.execute(q.order_by(QuizMatch.ended_at.desc()).limit(max(1, min(limit, 50)))):
+        ps = _players(db, m)
+        me = next((x for x in ps if x.student_id == p.id), None)
+        opp = next((x for x in ps if x.student_id != p.id), None)
+        if me is None or opp is None:
+            continue
+        op = db.get(Profile, opp.student_id)
+        out.append({"id": str(m.id), "classId": str(cls.id), "className": cls.name, "endedAt": m.ended_at.isoformat() if m.ended_at else None,
+                    "opponent": {"nickname": (op.nickname or "Classmate") if op else "Classmate", "avatar": op.avatar if op else None},
+                    "youWon": m.winner_id == p.id, "draw": m.winner_id is None, "forfeit": bool(opp.forfeit or me.forfeit),
+                    "myScore": me.score, "theirScore": opp.score, "ratingBefore": round(me.rating_before or 0), "ratingAfter": round(me.rating_after or 0)})
+    return out
+
+
+def arena(db: Session, p: Profile) -> dict:
+    """Everything the Arena page needs in one call: the student's classes with whether they can play, a running match if any, rating, record and recent battles."""
+    if p.role != "student":
+        raise ClassError("Only students play quizzes.", 403)
+    rows = db.execute(select(Classroom).join(ClassMember, ClassMember.classroom_id == Classroom.id)
+                      .where(ClassMember.student_id == p.id, ClassMember.status == "active").order_by(Classroom.name)).scalars().all()
+    reason = None
+    if p.consent_status not in ("granted", "not_required"):
+        reason = "A parent, guardian or school needs to agree first."
+    elif p.league_opt_out:
+        reason = "You turned off competitive features in your settings."
+    classes = []
+    for c in rows:
+        m = _mine(db, p, c)
+        if m is not None:
+            _settle(db, m)
+        if m is not None and m.status not in ("waiting", "active"):
+            m = None
+        classes.append({"id": str(c.id), "name": c.name, "grade": c.grade, "subject": c.subject_id, "canPlay": reason is None and c.leagues_enabled,
+                        "why": reason or (None if c.leagues_enabled else "Your teacher has turned off competitive features for this class."),
+                        "matchId": str(m.id) if m else None, "matchStatus": m.status if m else None})
+    games = history(db, p, 50)
+    r = rating(db, p.id)
+    db.commit()
+    return {"rating": round(r.rating), "games": r.games, "wins": sum(g["youWon"] for g in games), "losses": sum(not g["youWon"] and not g["draw"] for g in games),
+            "draws": sum(g["draw"] for g in games), "classes": classes, "recent": games[:5]}

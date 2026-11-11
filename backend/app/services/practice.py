@@ -11,7 +11,7 @@ from sqlalchemy.orm import Session
 from app.engine import bkt, graph, selector
 from app.engine.templates import templates_for
 from app.models import (AssessmentSession, Chapter, ChapterConcept, Concept, EvidenceEvent, Item, ItemConcept, Lesson, LessonVersion,
-                        LessonVersionItem, Misconception, Profile, RevisionSchedule)
+                        LessonVersionItem, Misconception, Profile, RevisionSchedule, Subject)
 from app.services import generator
 from app.services import items as item_svc
 from app.services import library
@@ -79,10 +79,29 @@ def scope_concepts(db: Session, profile: Profile, chapter: str | None, concept: 
     return ids, "class"
 
 
-def next_item(db: Session, profile: Profile, *, chapter=None, concept=None, weak=False, review=False, harder=False, pattern=None) -> dict:
+def subjects_ready(db: Session, profile: Profile) -> list[dict]:
+    """Subjects that have published, practice-ready questions for the student's class, with real counts. Nothing is listed that would come back empty."""
+    rows = db.execute(
+        select(Concept.subject_id, func.count(func.distinct(Item.id)))
+        .join(ItemConcept, ItemConcept.concept_id == Concept.id).join(Item, Item.id == ItemConcept.item_id)
+        .join(LessonVersionItem, LessonVersionItem.item_id == Item.id)
+        .join(LessonVersion, and_(LessonVersion.id == LessonVersionItem.lesson_version_id, LessonVersion.status == "published"))
+        .join(ChapterConcept, ChapterConcept.concept_id == Concept.id).join(Chapter, and_(Chapter.id == ChapterConcept.chapter_id, Chapter.status == "published", Chapter.grade == profile.grade))
+        .where(Item.status == "published").group_by(Concept.subject_id)).all()
+    names = dict(db.execute(select(Subject.id, Subject.name)).all())
+    return sorted(({"id": sid, "name": names.get(sid, sid), "questions": n} for sid, n in rows), key=lambda r: r["name"])
+
+
+def next_item(db: Session, profile: Profile, *, chapter=None, concept=None, weak=False, review=False, harder=False, pattern=None, subject=None) -> dict:
     if pattern is not None and pattern not in item_svc.PATTERNS:
         raise PracticeError("Unknown question type.", 422)
     ids, scope = scope_concepts(db, profile, chapter, concept, weak, review)
+    if subject:
+        if not db.get(Subject, subject):
+            raise PracticeError("Unknown subject.", 422)
+        ids = [c for c in ids if (db.get(Concept, c) or Concept()).subject_id == subject]
+        if not ids:
+            raise PracticeError(f"No {db.get(Subject, subject).name} questions are ready for you yet. Try another subject.", 409)
     cands = pool(db, ids, ("check", "practice", "probe", "test"))
     if pattern:
         cands = [c for c in cands if item_svc.item_pattern(c["obj"]) == pattern]

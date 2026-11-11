@@ -1,11 +1,12 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { useApi } from '../api/useApi';
 import type { Band, Gamification, Notebook, Overview } from '../api/types';
 import { Avatar, Icon, TierBadge } from '../icons/Icon';
 import { TIERS } from '../icons/icons.mjs';
 import { Button, Card, Chip, CountUp, EmptyState, Progress as Bar, Reveal, Segmented, Skeleton } from '../ui/kit';
 import { GapMap } from './GapMap';
+import { Battles, Dashboard } from './ProfileDash';
 import s from './pages.module.css';
 
 const TONE: Record<Band, 'ok' | 'hi' | 'gap' | 'soft'> = { secure: 'ok', learning: 'hi', gap_confirmed: 'gap', gap_suspected: 'hi', unassessed: 'soft' };
@@ -109,12 +110,15 @@ function Mistakes() {
 }
 
 export default function Progress() {
-  const [tab, setTab] = useState<'understanding' | 'achievements' | 'mistakes'>('understanding');
+  type Tab = 'dashboard' | 'understanding' | 'battles' | 'achievements' | 'mistakes';
+  const [params] = useSearchParams();
+  const first = params.get('tab');
+  const [tab, setTab] = useState<Tab>((['dashboard', 'understanding', 'battles', 'achievements', 'mistakes'] as const).find((t) => t === first) ?? 'dashboard');
   return (
     <div className={s.stack}>
-      <div><h1 className={s.title}>My Progress</h1><p className={s.lead}>What you understand, what you have earned, and what to fix. Everything here comes from your real answers.</p></div>
-      <Segmented label="Section" value={tab} onChange={setTab} options={[{ value: 'understanding', label: 'Understanding' }, { value: 'achievements', label: 'Achievements' }, { value: 'mistakes', label: 'Mistakes' }]} />
-      {tab === 'understanding' && <Understanding />}{tab === 'achievements' && <Achievements />}{tab === 'mistakes' && <Mistakes />}
+      <div><h1 className={s.title}>My Profile</h1><p className={s.lead}>How you are doing, what you understand, your battles and what to fix. Every number comes from your real answers and updates as you learn.</p></div>
+      <Segmented label="Section" value={tab} onChange={setTab} options={[{ value: 'dashboard', label: 'Dashboard' }, { value: 'understanding', label: 'Understanding' }, { value: 'battles', label: 'Battles' }, { value: 'achievements', label: 'Achievements' }, { value: 'mistakes', label: 'Mistakes' }]} />
+      {tab === 'dashboard' && <Dashboard />}{tab === 'battles' && <Battles />}{tab === 'understanding' && <Understanding />}{tab === 'achievements' && <Achievements />}{tab === 'mistakes' && <Mistakes />}
       <p className="sm muted"><Link to="/revision" style={{ textDecoration: 'underline', fontWeight: 700 }}>Revision cards</Link> bring back topics you knew, just before you might forget them.</p>
     </div>
   );

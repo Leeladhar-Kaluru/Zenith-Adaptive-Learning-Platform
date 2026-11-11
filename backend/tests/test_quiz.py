@@ -143,3 +143,25 @@ def test_the_standings_show_only_nickname_avatar_and_rating(client, db, room):
     room["a"].league_opt_out = True
     db.commit()
     assert [r["nickname"] for r in client.get(url, headers=auth(room["c"])).json()["table"]] == ["Ben"]
+
+
+def test_the_arena_lists_my_classes_my_record_and_finished_battles_with_the_opponent_as_nickname_only(client, db, room):
+    empty = client.get(f"{API}/quiz/arena", headers=auth(room["a"])).json()
+    assert empty["games"] == 0 and empty["recent"] == [] and [c["canPlay"] for c in empty["classes"]] == [True]
+    mid = join(client, room, "a").json()["id"]
+    assert client.get(f"{API}/quiz/arena", headers=auth(room["a"])).json()["classes"][0]["matchId"] == mid          # a waiting match shows so the page can resume it
+    join(client, room, "b")
+    play(client, db, room, "a", mid)
+    play(client, db, room, "b", mid, right=False)
+    arena = client.get(f"{API}/quiz/arena", headers=auth(room["a"])).json()
+    assert (arena["wins"], arena["losses"], arena["draws"]) == (1, 0, 0) and arena["rating"] > 1000 and arena["classes"][0]["matchId"] is None
+    battle = client.get(f"{API}/quiz/history", headers=auth(room["a"])).json()[0]
+    assert battle["opponent"] == {"nickname": "Ben", "avatar": battle["opponent"]["avatar"]} and battle["youWon"] and battle["ratingAfter"] > battle["ratingBefore"]
+    assert "email" not in str(battle) and battle["className"] == "7A"
+    assert client.get(f"{API}/quiz/history", headers=auth(room["c"])).json() == []                                   # nobody sees battles they were not in
+    assert client.get(f"{API}/quiz/arena", headers=auth(room["t"])).status_code == 403
+
+
+def test_a_student_in_no_class_gets_an_honest_empty_arena(client, db, room):
+    arena = client.get(f"{API}/quiz/arena", headers=auth(room["out"])).json()
+    assert arena["classes"] == [] and arena["games"] == 0

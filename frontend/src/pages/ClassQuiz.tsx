@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { api, ApiError } from '../api/client';
 import type { PublicItem } from '../api/types';
+import { useClassRealtime } from '../chat/realtime';
 import { Avatar } from '../icons/Icon';
 import { Button, Card, EmptyState } from '../ui/kit';
 import { pw } from '../ui/powers';
@@ -16,7 +17,7 @@ interface Match {
 interface Standings { table: Array<{ nickname: string; avatar: string; rating: number; games: number; you: boolean }>; mine: number | null }
 
 /** 1v1 quiz against a classmate. The server picks the questions, times the answers and grades them; this page only shows state it asks for every 1.5 seconds. */
-export function ClassQuiz({ classId, avatar }: { classId: string; avatar?: string }) {
+export function ClassQuiz({ classId, avatar, nickname = '', resumeId, onDone }: { classId: string; avatar?: string; nickname?: string; resumeId?: string | null; onDone?: () => void }) {
   const [m, setM] = useState<Match | null>(null);
   const [table, setTable] = useState<Standings | null>(null);
   const [err, setErr] = useState('');
@@ -25,29 +26,35 @@ export function ClassQuiz({ classId, avatar }: { classId: string; avatar?: strin
   const [flash, setFlash] = useState<{ correct: boolean; points: number } | null>(null);
   const [now, setNow] = useState(Date.now());
   const sending = useRef(false);
+  const matchId = useRef<string | null>(null);
+  matchId.current = m?.id ?? null;
+  const refresh = useCallback(() => { const id = matchId.current; if (id && !sending.current) void api<Match>(`/quiz/${id}`).then((s) => { if (!sending.current) setM(s); }).catch(() => undefined); }, []);
+  const live = useClassRealtime(classId, nickname, refresh);          // a content-free ping: "something changed, ask the server"
+  useEffect(() => { if (resumeId) void api<Match>(`/quiz/${resumeId}`).then(setM).catch(() => undefined); }, [resumeId]);
 
   const loadTable = useCallback(() => { void api<Standings>(`/classes/${classId}/quiz/standings`).then(setTable).catch(() => undefined); }, [classId]);
   useEffect(loadTable, [loadTable]);
 
-  const live = m?.status === 'waiting' || m?.status === 'active';
+  const running = m?.status === 'waiting' || m?.status === 'active';
   useEffect(() => {
-    if (!live || !m) return;
-    const id = setInterval(() => { setNow(Date.now()); void api<Match>(`/quiz/${m.id}`).then((s) => { if (!sending.current) setM(s); }).catch(() => undefined); }, 1500);
-    return () => clearInterval(id);
-  }, [live, m?.id]);
-  useEffect(() => { if (m?.status === 'done') loadTable(); }, [m?.status, loadTable]);
+    if (!running || !m) return;
+    const tick = setInterval(() => setNow(Date.now()), 1000);
+    const poll = setInterval(refresh, live.connected ? 5000 : 1500);      // Realtime does the fast work when connected; polling is the safety net
+    return () => { clearInterval(tick); clearInterval(poll); };
+  }, [running, m?.id, live.connected, refresh]);
+  useEffect(() => { if (m?.status === 'done') { loadTable(); onDone?.(); } }, [m?.status, loadTable]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const call = async <T,>(path: string, body?: unknown): Promise<T | null> => {
     setErr('');
     try { return await api<T>(path, { method: 'POST', body }); } catch (e) { setErr(e instanceof ApiError ? e.message : 'Something went wrong. Try again.'); return null; }
   };
-  const find = async () => { setBusy(true); const s = await call<Match>(`/classes/${classId}/quiz/join`); setBusy(false); if (s) { setM(s); setFlash(null); } };
-  const leave = async () => { if (m) { const s = await call<Match>(`/quiz/${m.id}/leave`); if (s) setM(s.status === 'cancelled' ? null : s); } };
+  const find = async () => { setBusy(true); const s = await call<Match>(`/classes/${classId}/quiz/join`); setBusy(false); if (s) { setM(s); setFlash(null); live.ping(); } };
+  const leave = async () => { if (m) { const s = await call<Match>(`/quiz/${m.id}/leave`); if (s) { setM(s.status === 'cancelled' ? null : s); live.ping(); } } };
   const send = async (response: Record<string, unknown>) => {
     if (!m?.question || sending.current) return;
     sending.current = true; setBusy(true);
     const r = await call<{ correct: boolean; points: number }>(`/quiz/${m.id}/answer`, { position: m.question.position, response });
-    if (r) { setFlash(r); setText(''); const s = await api<Match>(`/quiz/${m.id}`).catch(() => null); if (s) setM(s); }
+    if (r) { setFlash(r); setText(''); const s = await api<Match>(`/quiz/${m.id}`).catch(() => null); if (s) setM(s); live.ping(); }
     sending.current = false; setBusy(false);
   };
 

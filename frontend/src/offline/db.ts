@@ -14,11 +14,13 @@ class ZenithDB extends Dexie {
   queue!: Table<QueuedEvidence, string>;
   moves!: Table<Move, string>;
   doubts!: Table<Doubt, string>;
+  snapshots!: Table<{ key: string; data: unknown; savedAt: string }, string>;
   constructor() {
     super('ZenithDB');
     this.version(1).stores({ packs: 'chapterSlug', queue: 'clientEventId' });
     this.version(2).stores({ packs: 'chapterSlug', queue: 'clientEventId', moves: 'clientEventId' });
     this.version(3).stores({ packs: 'chapterSlug', queue: 'clientEventId', moves: 'clientEventId', doubts: 'clientId, status' });
+    this.version(4).stores({ packs: 'chapterSlug', queue: 'clientEventId', moves: 'clientEventId', doubts: 'clientId, status', snapshots: 'key' });
   }
 }
 export const db = new ZenithDB();

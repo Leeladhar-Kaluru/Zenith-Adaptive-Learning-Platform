@@ -14,8 +14,9 @@ const STUDENT = [
   { to: '/practice', icon: 'target', label: 'Practice' },
   { to: '/explore', icon: 'puzzle', label: 'Explore' },
   { to: '/classes', icon: 'people', label: 'Classes' },
+  { to: '/arena', icon: 'trophy', label: 'Arena' },
   { to: '/ask', icon: 'chat', label: 'Ask' },
-  { to: '/progress', icon: 'peak', label: 'Progress' },
+  { to: '/progress', icon: 'peak', label: 'Profile' },
 ];
 const TEACHER = [
   { to: '/teacher', icon: 'people', label: 'Classes' },

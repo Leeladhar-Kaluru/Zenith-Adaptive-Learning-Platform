@@ -40,7 +40,7 @@ export function useApi<T>(path: string | null): Resource<T> {
 export const clearApiCache = () => shared.clear();
 
 /** Screens whose numbers change when a student answers, finishes a lesson or submits a test. */
-const PROGRESS_PATHS = /^\/(today|stats|progress|gamification|revision|assignments|mission)\b/;
+const PROGRESS_PATHS = /^\/(today|stats|progress|gamification|revision|assignments|mission|profile|quiz)\b/;
 
 /** Call after anything that changes XP, streak, mastery or scores: cached progress screens are dropped and the header refreshes at once. */
 export function emitProgress(): void {

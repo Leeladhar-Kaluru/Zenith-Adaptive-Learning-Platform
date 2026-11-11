@@ -4,7 +4,7 @@ from __future__ import annotations
 import uuid
 from typing import Any
 
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, Query
 from pydantic import BaseModel
 from sqlalchemy.orm import Session
 
@@ -27,6 +27,16 @@ def _run(fn, *a):
 class AnswerIn(BaseModel):
     position: int
     response: dict[str, Any]
+
+
+@router.get("/quiz/arena")
+def arena(p: Profile = Depends(get_profile), db: Session = Depends(get_db)):
+    return _run(svc.arena, db, p)
+
+
+@router.get("/quiz/history")
+def history(limit: int = Query(20, ge=1, le=50), p: Profile = Depends(get_profile), db: Session = Depends(get_db)):
+    return _run(svc.history, db, p, limit)
 
 
 @router.post("/classes/{class_id}/quiz/join")

@@ -14,7 +14,7 @@ from app.core.database import get_db
 from app.core.security import get_profile, student_only
 from app.engine import graph
 from app.models import AssessmentSession, Board, Chapter, ChapterConcept, Concept, Item, LessonProgress, Profile, Subject
-from app.services import assign, engage, evidence, gaps as gaps_svc, home, interactions, library, mission as mission_svc, notebook as notebook_svc, practice
+from app.services import assign, dashboard, engage, evidence, gaps as gaps_svc, home, interactions, library, mission as mission_svc, notebook as notebook_svc, practice
 from app.services import states as st_svc
 
 router = APIRouter()
@@ -213,10 +213,15 @@ def hint(item_id: uuid.UUID, n: int = Query(1, ge=1, le=5), p: Profile = Depends
 
 
 # ---- practice and tests -------------------------------------------------------------------------
+@router.get("/practice/subjects")
+def practice_subjects(p: Profile = Depends(learner), db: Session = Depends(get_db)):
+    return practice.subjects_ready(db, p)
+
+
 @router.get("/practice/next")
-def practice_next(chapter: Optional[str] = None, concept: Optional[str] = None, weak: bool = False, review: bool = False, harder: bool = False, pattern: Optional[str] = None,
+def practice_next(chapter: Optional[str] = None, concept: Optional[str] = None, weak: bool = False, review: bool = False, harder: bool = False, pattern: Optional[str] = None, subject: Optional[str] = None,
                   p: Profile = Depends(learner), db: Session = Depends(get_db)):
-    return _wrap(practice.next_item, db, p, chapter=chapter, concept=concept, weak=weak, review=review, harder=harder, pattern=pattern)
+    return _wrap(practice.next_item, db, p, chapter=chapter, concept=concept, weak=weak, review=review, harder=harder, pattern=pattern, subject=subject)
 
 
 class AssessIn(BaseModel):
@@ -272,6 +277,11 @@ def daily_mission(p: Profile = Depends(learner), db: Session = Depends(get_db)):
 @router.get("/today")
 def today(p: Profile = Depends(learner), db: Session = Depends(get_db)):
     return home.today(db, p)
+
+
+@router.get("/profile/dashboard")
+def profile_dashboard(p: Profile = Depends(learner), db: Session = Depends(get_db)):
+    return dashboard.build(db, p)
 
 
 @router.get("/progress/overview")

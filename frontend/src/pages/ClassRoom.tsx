@@ -78,7 +78,7 @@ export default function ClassRoom() {
       </div>
 
       {tab === 'chat' && <Suspense fallback={<Skeleton h={320} r={16} />}><Chat classId={id} isTeacher={data.isTeacher} /></Suspense>}
-      {tab === 'quiz' && !data.isTeacher && <Suspense fallback={<Skeleton h={160} r={16} />}><ClassQuiz classId={id} avatar={profile?.avatar} /></Suspense>}
+      {tab === 'quiz' && !data.isTeacher && <Suspense fallback={<Skeleton h={160} r={16} />}><ClassQuiz classId={id} avatar={profile?.avatar} nickname={profile?.nickname ?? ""} /></Suspense>}
       {tab === 'reports' && data.isTeacher && <Suspense fallback={<Skeleton h={80} r={16} />}><Reports classId={id} /></Suspense>}
 
       {tab === 'news' && (

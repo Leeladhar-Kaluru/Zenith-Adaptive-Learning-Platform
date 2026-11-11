@@ -63,3 +63,21 @@ Working method: check what already exists before writing; reuse; finish every ca
 1. Scheduled backups (GitHub Actions secrets) and a restore drill.
 2. Rate limits and abuse checks on chat upload and GIF search; security headers review.
 3. Documentation: update DEPLOY.md, README, status report after each wave.
+
+
+## Update 2026-11-11 (evening)
+DONE since the list above:
+- Data Stories: two Maths lessons on the approved World Bank datasets (Class 8 population line graph, Class 9 life expectancy), numbers re-checked against the rows by an independent reviewer. Both datasets approved.
+- Social Science subject added (icon, colour with checked contrast). Two Class 7 geography lessons with the interactive map layers (mountains, plateaus and the Thar Desert; rivers of India), facts reviewed; moved from Class 9 to Class 7 after the reviewer found the current book places them there. Placement rests on third-party summaries of the new NCERT books: a reviewer should confirm against ncert.nic.in.
+- Practice has a question-type filter (multiple choice, assertion and reason, numerical). Case-based questions cannot be told apart reliably from their wording, so they are not offered as a filter yet (needs an explicit tag on the item, which means re-importing items).
+- Offline sync: fixed a bug where a queue of more than 100 saved answers could never be sent (the server accepts 100 per request); added "answers waiting" with a Send now button on the Offline page; tested.
+- Knowledge Map: tapping a weak topic shows why and which earlier topic is the root cause.
+- Gap Map seen populated in a browser (range chart, root cause, repair order, links).
+- Live now: 44 lessons, 35 chapters, 638 questions, three subjects.
+
+STILL TO DO (new or unchanged):
+1. More Social Science: history, civics, economics, more geography (climate, soils, agriculture); needs timelines and sourced events for history.
+2. Doubts offline (tutor questions saved while offline and sent later): not built, needs a UX decision.
+3. Case-based and assertion-reason tagging on items (explicit field) so every pattern can be filtered.
+4. Upgrade 14 of the older lessons' reviewer notes; more Maths and Science chapters (see section D); Hindi and Telugu versions once the English set is stable.
+5. Remaining simulations (section E), 1v1 quiz (section C5), production smoke test with real accounts (section B2), chat with three accounts (needs A1).

@@ -1,0 +1,333 @@
+slug: life-expectancy-story
+title: The life expectancy story
+minutes: 25
+objectives:
+- Describe a trend in real data and spot years where it dips
+- Find the change over a period and the average gain per decade
+- Work out a percent increase and compare two periods fairly
+- Say what a bar chart shows compared with a line chart
+concepts:
+- change-over-time-data
+origin: ai_assisted
+sources:
+- b8fa4b21-0b7c-4220-a76e-814903a1e61d
+blocks:
+- kind: text
+  heading: How long might a newborn live
+  html: '<p><strong>Life expectancy at birth</strong> is the average number of years a newborn baby would live if the conditions
+    of that year stayed the same through its life. It is an average. It does not mean that everyone lives exactly that long.</p><p>The
+    World Bank has published this number for India for every year from 1960 to 2024. In 1960 it was 45.61 years. In 2024 it
+    was 72.235 years. In this lesson we describe what the numbers show. We use only the numbers and do not guess reasons.</p>'
+- kind: widget
+  widget: data_chart
+  config: {dataset: b8fa4b21-0b7c-4220-a76e-814903a1e61d, x: year, y: value, chart: line}
+  task: Follow the line from 1960 to 2024. Describe the overall trend in one sentence. Then find any years where the line goes down instead of up.
+- kind: text
+  heading: Reading a trend
+  html: '<p>A <strong>trend</strong> is the general direction of the data. Here the line goes up overall, so the trend is rising.
+    But a trend does not mean every year rises. The data show some drops too. From 1964 to 1965 the value fell from 46.742
+    to 45.558. From 2019 to 2020 it fell from 70.746 to 70.156, and in 2021 it was 67.282. By 2022 it was back up at 71.698.</p><p>A
+    good data story says both things: the overall direction, and the exceptions.</p>'
+- kind: example
+  heading: Worked example, change and average per decade
+  prompt: Life expectancy was 45.61 years in 1960 and 58.618 years in 1990. Find the change, and the average gain per decade.
+  steps:
+  - 'Change = 58.618 - 45.61 = 13.008 years.'
+  - 'The period is 1990 - 1960 = 30 years, which is 3 decades.'
+  - 'Average gain per decade = 13.008 ÷ 3 = 4.336 years.'
+  - 'Check: 3 decades at 4.336 years each is 13.008 years, the same as the change.'
+- kind: figure
+  svg: <svg viewBox="0 0 300 220" role="img"><line x1="30" y1="190" x2="280" y2="190" stroke="currentColor" stroke-width="2"/><rect x="70" y="76" width="60" height="114" fill="#6cb7ff"/><rect x="170" y="9" width="60" height="181" fill="#ffb800"/><line x1="130" y1="76" x2="230" y2="76" stroke="#14193a" stroke-width="2" stroke-dasharray="5 4"/><line x1="236" y1="9" x2="236" y2="76" stroke="#14193a" stroke-width="2"/><text x="72" y="70" font-size="13" font-weight="700" fill="currentColor">45.61</text><text x="168" y="24" font-size="13" font-weight="700" fill="currentColor">72.235</text><text x="80" y="208" font-size="13" fill="currentColor">1960</text><text x="180" y="208" font-size="13" fill="currentColor">2024</text><text x="240" y="48" font-size="12" font-weight="700" fill="currentColor">gain</text><text x="240" y="62" font-size="12" fill="currentColor">26.625</text></svg>
+  alt: Two bars side by side, a shorter one for 1960 at 45.61 years and a taller one for 2024 at 72.235 years, with the gain marked between their tops.
+  caption: Bar heights are drawn to scale. The gap between the tops of the bars is the change, 26.625 years.
+- kind: text
+  heading: Percent increase and fair comparison
+  html: '<p>A change of 26.625 years sounds big, but how big compared with where we started? <strong>Percent increase</strong>
+    = (new - old) ÷ old × 100. For 1960 to 2024 this is 26.625 ÷ 45.61 × 100, which is about 58.4%.</p><p>When you compare
+    two periods, make sure they are the same length or use an average per year or per decade. A total over 30 years should
+    not be compared with a total over 4 years.</p>'
+- kind: example
+  heading: Worked example, comparing two periods
+  prompt: Life expectancy was 58.618 in 1990 and 70.156 in 2020. Compare the gain from 1990 to 2020 with the gain from 1960 to 1990 (13.008 years).
+  steps:
+  - 'Gain from 1990 to 2020 = 70.156 - 58.618 = 11.538 years.'
+  - 'Both periods are 30 years long, so the totals can be compared directly.'
+  - '13.008 is greater than 11.538, so the gain was larger in 1960 to 1990. The difference is 13.008 - 11.538 = 1.47 years.'
+  - 'Check by decade: 13.008 ÷ 3 = 4.336 and 11.538 ÷ 3 = 3.846, which again shows the earlier 30 years gained more per decade.'
+- kind: widget
+  widget: data_chart
+  config: {dataset: b8fa4b21-0b7c-4220-a76e-814903a1e61d, x: year, y: value, chart: bar}
+  task: This bar chart shows the same data with one bar for each year. The bars are thin, so tap a bar to read its year and value in the box under the chart, or open See the numbers. The chart rounds to two decimals. Find 1960, 1990 and 2020. Which pair of those years has the bigger gap between the bar heights?
+- kind: text
+  heading: Bar chart or line chart
+  html: '<p>A <strong>line chart</strong> joins the points, so the slope shows how fast the value is changing. It is best for
+    seeing a trend and its turning points. A <strong>bar chart</strong> gives each year its own bar. The height of a bar
+    is easy to compare with another bar, so it is best for comparing the value in particular years.</p><p>Both charts show
+    the same numbers. Choose the one that suits your question.</p>'
+- kind: callout
+  tone: watch
+  html: Do not compare totals over periods of different lengths. A gain of 2.079 years over 4 years and a gain of 11.538 years over 30 years need a rate, such as the gain per year, before they can be compared.
+- kind: callout
+  tone: real
+  html: Health planners and news reports use charts like this to explain how a measure has changed. A careful reader checks the start and end years, the size of the change, and any dips along the way.
+- kind: check
+  item: q-le-1
+- kind: check
+  item: q-le-2
+- kind: check
+  item: q-le-3
+- kind: summary
+  points:
+  - 'A trend is the general direction. A good data story also mentions the dips.'
+  - 'Change = new value - old value. Average per decade = change ÷ number of decades.'
+  - 'Percent increase = (new - old) ÷ old × 100. Compare periods of equal length, or use a rate.'
+  - 'A line chart shows how the value changes over time. A bar chart makes it easy to compare particular years.'
+items:
+- key: q-le-1
+  kind: mcq
+  stem: In 1960 life expectancy at birth in India was 45.61 years. What does this number mean?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: change-over-time-data
+  explanation: Life expectancy at birth is an average. It is the number of years a newborn would live on average if the conditions of that year stayed the same.
+  hints:
+  - Is it a rule for everyone, or an average?
+  correct: B
+  options:
+  - key: A
+    text: Every baby born that year lived exactly 45.61 years
+    misconception: everyone-lives-average
+  - key: B
+    text: It is an average number of years for a newborn under that year's conditions
+  - key: C
+    text: Nobody in India lived longer than 45.61 years
+    misconception: everyone-lives-average
+  - key: D
+    text: It is the age of the oldest person in the country
+- key: q-le-2
+  kind: numeric
+  stem: Life expectancy was 45.61 years in 1960 and 72.235 years in 2024. By how many years did it change?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: change-over-time-data
+  explanation: Change = 72.235 - 45.61 = 26.625 years.
+  hints:
+  - Subtract the old value from the new value.
+  value: 26.625
+  tolerance: 0.0
+  verify: (72235-45610)/1000
+- key: q-le-3
+  kind: numeric
+  stem: Life expectancy was 45.61 years in 1960 and 58.618 years in 1990. What was the average gain per decade, in years?
+  difficulty: standard
+  purpose: check
+  concepts:
+  - id: change-over-time-data
+  explanation: The change is 58.618 - 45.61 = 13.008 years over 30 years, which is 3 decades. 13.008 ÷ 3 = 4.336 years per decade.
+  hints:
+  - How many decades are there in 30 years?
+  value: 4.336
+  tolerance: 0.0
+  verify: (58618-45610)/1000/3
+- key: q-le-4
+  kind: numeric
+  stem: Life expectancy was 45.61 years in 1960 and 72.235 years in 2024. What is the percent increase, rounded to one decimal place?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: change-over-time-data
+  explanation: Percent increase = 26.625 ÷ 45.61 × 100 = 58.375, which rounds to 58.4%.
+  hints:
+  - Divide the change by the old value, the 1960 figure.
+  value: 58.4
+  tolerance: 0.0
+  verify: floor((72235/45610 - 1)*1000 + 1/2)/10
+- key: q-le-5
+  kind: numeric
+  stem: Life expectancy was 48.585 years in 1970 and 53.593 years in 1980. By how many years did it rise?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: change-over-time-data
+  explanation: 53.593 - 48.585 = 5.008 years.
+  hints:
+  - Line up the decimal points before you subtract.
+  value: 5.008
+  tolerance: 0.0
+  verify: (53593-48585)/1000
+- key: q-le-6
+  kind: numeric
+  stem: Life expectancy was 46.742 years in 1964 and 45.558 years in 1965. By how many years did it fall?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: change-over-time-data
+  explanation: The fall is 46.742 - 45.558 = 1.184 years. This is one of the years where the line goes down.
+  hints:
+  - Subtract the smaller value from the larger one, since you want the size of the fall.
+  value: 1.184
+  tolerance: 0.0
+  verify: (46742-45558)/1000
+- key: q-le-7
+  kind: mcq
+  stem: Life expectancy was 45.61 in 1960, 58.618 in 1990 and 70.156 in 2020. Which 30-year period had the larger gain?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: change-over-time-data
+  explanation: The gain from 1960 to 1990 is 13.008 years. The gain from 1990 to 2020 is 11.538 years. Both periods are 30 years, so the earlier one had the larger gain.
+  hints:
+  - Find both gains and compare them.
+  correct: A
+  options:
+  - key: A
+    text: 1960 to 1990, with a gain of 13.008 years
+  - key: B
+    text: 1990 to 2020, because it ends at a higher value
+    misconception: higher-value-bigger-gain
+  - key: C
+    text: Both gained the same
+  - key: D
+    text: It cannot be found without the data for every year
+- key: q-le-8
+  kind: numeric
+  stem: Life expectancy was 58.618 in 1990 and 70.156 in 2020. What is the percent increase, rounded to one decimal place?
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: change-over-time-data
+  explanation: The change is 11.538 years. 11.538 ÷ 58.618 × 100 = 19.68, which rounds to 19.7%.
+  hints:
+  - Divide by the 1990 value, then multiply by 100.
+  value: 19.7
+  tolerance: 0.0
+  verify: floor((70156/58618 - 1)*1000 + 1/2)/10
+- key: q-le-9
+  kind: mcq
+  stem: 'Assertion (A): Life expectancy in India did not rise in every year from 1960 to 2024. Reason (R): The value fell from 46.742 years in 1964 to 45.558 years in 1965.'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: change-over-time-data
+  explanation: A is true because there are years with a drop. R is true and it is one such drop, so R explains A.
+  hints:
+  - Is R an example of what A says?
+  correct: A
+  options:
+  - key: A
+    text: Both A and R are true, and R explains A
+  - key: B
+    text: Both A and R are true, but R does not explain A
+    misconception: reason-must-explain
+  - key: C
+    text: A is true, but R is false
+  - key: D
+    text: A is false, but R is true
+- key: q-le-10
+  kind: mcq
+  stem: 'Assertion (A): A bar chart makes it easy to compare the value in two chosen years. Reason (R): The height of a bar on a bar chart is the same thing as the slope of a line chart.'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: change-over-time-data
+  explanation: A is true, since you compare bar heights. R is false. A bar height shows the value in one year, while slope shows how fast the value changes between years.
+  hints:
+  - Does a bar height tell you how quickly something changes?
+  correct: C
+  options:
+  - key: A
+    text: Both A and R are true, and R explains A
+    misconception: reason-must-explain
+  - key: B
+    text: Both A and R are true, but R does not explain A
+  - key: C
+    text: A is true, but R is false
+  - key: D
+    text: A is false, but R is true
+- key: q-le-11
+  kind: mcq
+  stem: 'A reader notes that life expectancy was 58.618 in 1990, 70.156 in 2020 and 72.235 in 2024. She says, "From 1990 to 2020 the gain was 11.538 years. From 2020 to 2024 it was only 2.079 years. So the later period gained less per year." What is the best reply?'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: change-over-time-data
+  explanation: The periods are 30 years and 4 years long, so totals cannot be compared. The average per year is 11.538 ÷ 30, about 0.38 years, for 1990 to 2020 and 2.079 ÷ 4, about 0.52 years, for 2020 to 2024. Her claim is wrong.
+  hints:
+  - How long is each period? Compare the gain per year.
+  correct: D
+  options:
+  - key: A
+    text: She is right, because 2.079 is less than 11.538
+    misconception: compare-unequal-totals
+  - key: B
+    text: She is right, because 2024 is the last year in the data
+    misconception: compare-unequal-totals
+  - key: C
+    text: She cannot compare them, because the values are decimals
+  - key: D
+    text: She is wrong. The periods differ in length, and per year the later gain is about 0.52 against about 0.38
+- key: q-le-12
+  kind: mcq
+  stem: You want to show how quickly life expectancy was changing, and where it turned downward. Which chart suits this best?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: change-over-time-data
+  explanation: A line chart joins the years, so the slope shows the speed of change and a downward turn is easy to see. Bars are better for comparing chosen years.
+  hints:
+  - Which chart has a slope you can read?
+  correct: A
+  options:
+  - key: A
+    text: A line chart
+  - key: B
+    text: A bar chart, because bars are always more exact
+  - key: C
+    text: Neither, only a table can show a drop
+  - key: D
+    text: A bar chart, because a line chart cannot show years
+- key: q-le-13
+  kind: numeric
+  stem: Life expectancy was 45.61 in 1960 and 70.156 in 2020. What was the average gain per decade, in years, rounded to two decimal places?
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: change-over-time-data
+  explanation: The change is 70.156 - 45.61 = 24.546 years over 60 years, which is 6 decades. 24.546 ÷ 6 = 4.091, which rounds to 4.09 years per decade.
+  hints:
+  - 2020 - 1960 = 60 years. How many decades is that?
+  value: 4.09
+  tolerance: 0.0
+  verify: floor(24546/6000*100 + 1/2)/100
+misconceptions:
+- code: everyone-lives-average
+  concept: change-over-time-data
+  description: Reads life expectancy as the exact lifespan of every person, when it is an average for a newborn under that year's conditions.
+- code: higher-value-bigger-gain
+  concept: change-over-time-data
+  description: Thinks the period that ends at a higher value must have gained more, instead of subtracting to find the gain.
+- code: compare-unequal-totals
+  concept: change-over-time-data
+  description: Compares total changes over periods of different lengths, instead of comparing the average change per year or per decade.
+- code: reason-must-explain
+  concept: change-over-time-data
+  description: Thinks that when both an assertion and a reason are true, the reason must explain the assertion, or that a true reason always supports a claim.
+cards:
+- key: life-expectancy-story-card-1
+  concept: change-over-time-data
+  front: What is life expectancy at birth?
+  back: The average number of years a newborn would live if that year's conditions stayed the same. It is an average, not a rule for each person.
+- key: life-expectancy-story-card-2
+  concept: change-over-time-data
+  front: How do you find the average gain per decade?
+  back: Change in the value divided by the number of decades in the period.
+- key: life-expectancy-story-card-3
+  concept: change-over-time-data
+  front: Why compare gains per year when periods differ in length?
+  back: A longer period gains more in total just by being longer. A rate makes the comparison fair.
+- key: life-expectancy-story-card-4
+  concept: change-over-time-data
+  front: Line chart or bar chart?
+  back: A line chart shows trend and speed of change. A bar chart makes it easy to compare particular years.

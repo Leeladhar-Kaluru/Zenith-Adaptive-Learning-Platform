@@ -1,0 +1,11 @@
+slug: 9-maths-data-life-expectancy
+board: cbse
+curriculum: NCERT current editions (to be confirmed by a reviewer)
+grade: 9
+subject: maths
+title: 'Data Story: how long people live in India'
+summary: Use real life expectancy data to describe a trend, find change and percent increase, and compare two periods with line and bar charts.
+concepts:
+- id: change-over-time-data
+lessons:
+- life-expectancy-story

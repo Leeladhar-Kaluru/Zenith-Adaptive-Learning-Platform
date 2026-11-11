@@ -14,7 +14,7 @@ export function ChapterCard({ c, delay = 0 }: { c: Chapter; delay?: number }) {
     <Reveal delay={delay}>
       <div data-subject={c.subject}>
         <Card to={soon ? undefined : `/learn/${c.slug}`} dashed={soon} className={s.chap}>
-          <div className={s.chapArt}><Icon name={c.subject === 'maths' ? 'ruler' : 'flask'} size={52} accent="var(--subject)" /></div>
+          <div className={s.chapArt}><Icon name={c.subject === 'maths' ? 'ruler' : c.subject === 'social' ? 'globe' : 'flask'} size={52} accent="var(--subject)" /></div>
           <div className={s.chapBody}>
             <div className={s.between}>
               <span className={s.num}>Chapter {c.number}</span>

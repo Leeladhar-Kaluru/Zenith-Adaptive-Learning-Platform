@@ -1,0 +1,427 @@
+slug: rivers-of-india
+title: Rivers of India
+minutes: 25
+objectives:
+- Tell Himalayan rivers from peninsular rivers and give one reason for each difference
+- Name the sea that each of the main rivers reaches
+- Find the Ganga, Brahmaputra, Indus, Godavari, Krishna, Kaveri, Narmada, Tapi and Mahanadi on a map
+- Explain why Himalayan rivers flow all year
+concepts:
+- india-rivers
+origin: ai_assisted
+sources:
+- c67c5680-3d07-4874-a0c8-69d7d16ddff1
+- 7527ac27-80e7-4bb2-9e1b-ce1a613485f9
+blocks:
+- kind: text
+  heading: Rivers carry water and life
+  html: '<p>Rivers give water for drinking, farming and factories. Towns have grown along them for thousands of years. A river
+    and all the streams that join it form a <strong>river system</strong>. A smaller stream that joins a bigger river
+    is called a <strong>tributary</strong>.</p><p>India''s rivers fall into two main groups. The <strong>Himalayan rivers</strong>
+    begin in the northern mountains. The <strong>peninsular rivers</strong> begin on the plateau and hills of the south and
+    centre.</p>'
+- kind: widget
+  widget: atlas
+  config:
+    dataset: c67c5680-3d07-4874-a0c8-69d7d16ddff1
+    overlays: 7527ac27-80e7-4bb2-9e1b-ce1a613485f9
+    find: Ganga
+  task: Find the Ganga on the map. Then find the Yamuna and the Narmada. Which of the two lies closer to the Ganga?
+- kind: text
+  heading: Himalayan rivers
+  html: '<p>The Ganga, the Yamuna, the Brahmaputra and the Indus are Himalayan rivers. They begin in or near the high mountains
+    where snow and glaciers store water. The Ganga begins from the Gangotri glacier, where it is called the Bhagirathi. The Yamuna
+    joins the Ganga at Prayagraj. The Ganga then flows east and reaches the <strong>Bay of Bengal</strong>. The Brahmaputra
+    joins the Ganga near the end of its journey and they reach the Bay of Bengal together. The Indus flows west and reaches
+    the <strong>Arabian Sea</strong>.</p><p>Himalayan rivers are <strong>perennial</strong>, which means they have water all year.
+    In summer, snow and glaciers melt and fill them. In the rainy season, rain adds more water. In the long run, they
+    cut deep valleys in the mountains and spread rich soil across the plains.</p>'
+- kind: widget
+  widget: atlas
+  config:
+    dataset: c67c5680-3d07-4874-a0c8-69d7d16ddff1
+    overlays: 7527ac27-80e7-4bb2-9e1b-ce1a613485f9
+    find: Brahmaputra
+  task: Find the Brahmaputra. Is it in the east or the west of India?
+- kind: widget
+  widget: atlas
+  config:
+    dataset: c67c5680-3d07-4874-a0c8-69d7d16ddff1
+    overlays: 7527ac27-80e7-4bb2-9e1b-ce1a613485f9
+    find: Indus
+  task: Find the Indus. It flows toward the Arabian Sea, so is it on the west side or the east side of the map?
+- kind: figure
+  svg: <svg viewBox="0 0 320 170" role="img"><rect x="10" y="10" width="140" height="150" rx="8" fill="#6cb7ff" opacity=".3"/><rect
+    x="170" y="10" width="140" height="150" rx="8" fill="#ffb800" opacity=".3"/><text x="20" y="32" font-size="13" font-weight="700"
+    fill="currentColor">Himalayan rivers</text><text x="20" y="58" font-size="11" fill="currentColor">Begin in high mountains</text><text
+    x="20" y="78" font-size="11" fill="currentColor">Fed by snow and rain</text><text x="20" y="98" font-size="11" fill="currentColor">Flow all year</text><text
+    x="20" y="118" font-size="11" fill="currentColor">E.g. Ganga, Indus</text><text x="180" y="32" font-size="13" font-weight="700"
+    fill="currentColor">Peninsular rivers</text><text x="180" y="58" font-size="11" fill="currentColor">Begin on plateau, hills</text><text
+    x="180" y="78" font-size="11" fill="currentColor">Fed mainly by rain</text><text x="180" y="98" font-size="11" fill="currentColor">Shrink in dry months</text><text
+    x="180" y="118" font-size="11" fill="currentColor">E.g. Godavari, Narmada</text></svg>
+  alt: Two side by side boxes compare Himalayan rivers, fed by snow and rain, with peninsular rivers, fed mainly by rain.
+  caption: The two river groups compared. The source of the water explains the difference.
+- kind: text
+  heading: Peninsular rivers
+  html: '<p>Peninsular rivers begin on the Peninsular Plateau or in the hills around it. Most of their water comes from rain
+    and not from glaciers. So they swell in the monsoon and shrink in the dry months.</p><p>Most big peninsular rivers flow
+    <strong>east</strong> and reach the Bay of Bengal. These are the <strong>Godavari</strong>, the <strong>Krishna</strong>,
+    the <strong>Kaveri</strong> and the <strong>Mahanadi</strong>. The Godavari, Krishna and Kaveri all begin in the Western
+    Ghats. Near the sea these rivers spread out and build <strong>deltas</strong>, which are fans of fertile land.</p><p>Two
+    large peninsular rivers flow <strong>west</strong>. The <strong>Narmada</strong> begins at Amarkantak and flows west through
+    the valley between the Vindhya and Satpura ranges. The <strong>Tapi</strong> begins in the Satpura Range and flows west
+    too. Both reach the Arabian Sea.</p>'
+- kind: widget
+  widget: atlas
+  config:
+    dataset: c67c5680-3d07-4874-a0c8-69d7d16ddff1
+    overlays: 7527ac27-80e7-4bb2-9e1b-ce1a613485f9
+    find: Godavari
+  task: Find the Godavari. Does it lie north or south of the Krishna?
+- kind: widget
+  widget: atlas
+  config:
+    dataset: c67c5680-3d07-4874-a0c8-69d7d16ddff1
+    overlays: 7527ac27-80e7-4bb2-9e1b-ce1a613485f9
+    find: Narmada
+  task: Find the Narmada. It is one of the few big rivers that flow west. Does its mouth lie on the west coast or the east coast?
+- kind: example
+  heading: Worked reasoning
+  prompt: A river begins in the Western Ghats, flows east across the plateau and reaches the Bay of Bengal. In summer its flow is much smaller. Is it Himalayan or peninsular?
+  steps:
+  - 'Look at where it begins. The Western Ghats are on the peninsula, not in the northern mountains.'
+  - 'Look at the direction and the sea. Flowing east to the Bay of Bengal fits the Krishna, Godavari or Kaveri.'
+  - 'Look at the flow in summer. A river that shrinks in the dry months depends mainly on rain, not on glaciers.'
+  - 'All three clues say peninsular. A Himalayan river would begin in the mountains and keep water all year.'
+- kind: example
+  heading: Worked reasoning
+  prompt: Why does the Ganga still have water in the dry months of April and May while many peninsular rivers have very little?
+  steps:
+  - 'Find where the Ganga starts. It begins from the Gangotri glacier in the Himalayas.'
+  - 'In the hot months glaciers and snow melt. The melt water keeps flowing into the river.'
+  - 'A peninsular river has no glacier. Its water comes mainly from rain, so it falls when rain stops.'
+  - 'Conclusion. The snow and glacier store gives the Ganga water all year. Rain-fed rivers rise and fall with the seasons.'
+- kind: callout
+  tone: watch
+  html: Do not think every river in India flows east. The Narmada and Tapi flow west to the Arabian Sea, and the Indus flows west too. Also, a peninsular river is not always small. The Godavari is a very large river. The difference is the source of water, not the size.
+- kind: callout
+  tone: real
+  html: Cities and farms depend on rivers. In the dry months a peninsular river can nearly dry up, so people store monsoon water in dams and tanks. A Himalayan river like the Ganga keeps flowing, so canals from it can water fields all year.
+- kind: check
+  item: q-ri-1
+- kind: check
+  item: q-ri-2
+- kind: check
+  item: q-ri-3
+- kind: summary
+  points:
+  - 'Himalayan rivers such as the Ganga, Brahmaputra and Indus begin in the northern mountains and flow all year, fed by snow, glaciers and rain.'
+  - 'Peninsular rivers begin on the plateau or hills and depend mainly on rain, so they shrink in the dry months.'
+  - 'The Ganga, Godavari, Krishna, Kaveri and Mahanadi reach the Bay of Bengal. The Narmada, Tapi and Indus reach the Arabian Sea.'
+  - 'The Narmada flows west between the Vindhya and Satpura ranges. Himalayan rivers keep flowing in the dry months because snow and ice add water to them.'
+items:
+- key: q-ri-1
+  kind: mcq
+  stem: Which of these rivers is a Himalayan river?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: india-rivers
+  explanation: The Ganga begins from the Gangotri glacier in the Himalayas. The Godavari, Krishna and Kaveri are peninsular rivers.
+  hints:
+  - Which river begins from a glacier?
+  correct: C
+  options:
+  - key: A
+    text: Godavari
+    misconception: all-rivers-same
+  - key: B
+    text: Kaveri
+    misconception: all-rivers-same
+  - key: C
+    text: Ganga
+  - key: D
+    text: Krishna
+    misconception: all-rivers-same
+- key: q-ri-2
+  kind: mcq
+  stem: Which sea does the Godavari reach?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: india-rivers
+  explanation: The Godavari flows east and reaches the Bay of Bengal.
+  hints:
+  - Most big peninsular rivers flow east.
+  correct: A
+  options:
+  - key: A
+    text: Bay of Bengal
+  - key: B
+    text: Arabian Sea
+    misconception: all-flow-west
+  - key: C
+    text: It does not reach any sea
+  - key: D
+    text: The Indian Ocean only through the Indus
+    misconception: all-flow-west
+- key: q-ri-3
+  kind: mcq
+  stem: Which sea does the Narmada reach?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: india-rivers
+  explanation: The Narmada flows west and reaches the Arabian Sea.
+  hints:
+  - The Narmada is one of the peninsular rivers that flow west.
+  correct: B
+  options:
+  - key: A
+    text: Bay of Bengal
+    misconception: all-flow-east
+  - key: B
+    text: Arabian Sea
+  - key: C
+    text: The Ganga
+    misconception: all-flow-east
+  - key: D
+    text: It does not reach any sea
+    misconception: all-flow-east
+- key: q-ri-4
+  kind: mcq
+  stem: Why do Himalayan rivers have water all year?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: india-rivers
+  explanation: They are fed by melting snow and glaciers as well as by rain, so there is a store of water even in the dry months.
+  hints:
+  - What do the high mountains store?
+  correct: D
+  options:
+  - key: A
+    text: They are the longest rivers so they cannot dry up
+    misconception: size-decides
+  - key: B
+    text: They get rain only in the winter
+    misconception: all-rivers-same
+  - key: C
+    text: They have no tributaries and so lose no water
+    misconception: all-rivers-same
+  - key: D
+    text: They are fed by melting snow and glaciers as well as rain
+- key: q-ri-5
+  kind: mcq
+  stem: Which pair of rivers flows west to the Arabian Sea?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: india-rivers
+  explanation: The Narmada and the Tapi are peninsular rivers that flow west to the Arabian Sea. The Godavari, Krishna, Kaveri and Mahanadi flow east.
+  hints:
+  - Think of the two peninsular rivers that flow west.
+  correct: A
+  options:
+  - key: A
+    text: Narmada and Tapi
+  - key: B
+    text: Godavari and Krishna
+    misconception: all-flow-west
+  - key: C
+    text: Kaveri and Mahanadi
+    misconception: all-flow-west
+  - key: D
+    text: Ganga and Brahmaputra
+    misconception: all-flow-west
+- key: q-ri-6
+  kind: mcq
+  stem: Between which two ranges does the Narmada flow?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: india-rivers
+  explanation: The Narmada flows west in the valley between the Vindhya Range in the north and the Satpura Range in the south.
+  hints:
+  - They are two ranges across central India.
+  correct: C
+  options:
+  - key: A
+    text: Western Ghats and Eastern Ghats
+    misconception: all-rivers-same
+  - key: B
+    text: Himalayas and Aravalli
+    misconception: all-rivers-same
+  - key: C
+    text: Vindhya and Satpura
+  - key: D
+    text: Siwalik and Khasi
+    misconception: all-rivers-same
+- key: q-ri-7
+  kind: mcq
+  stem: Which statement about peninsular rivers is correct?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: india-rivers
+  explanation: Peninsular rivers get most of their water from rain, so they swell in the monsoon and shrink in the dry months.
+  hints:
+  - Is there a glacier on the plateau?
+  correct: B
+  options:
+  - key: A
+    text: They are fed by glaciers and flow all year
+    misconception: all-rivers-same
+  - key: B
+    text: They depend mainly on rain and shrink in the dry months
+  - key: C
+    text: They all flow west
+    misconception: all-flow-west
+  - key: D
+    text: They all begin in the Himalayas
+    misconception: all-rivers-same
+- key: q-ri-8
+  kind: mcq
+  stem: 'Assertion (A): The Ganga has water in the dry months. Reason (R): The Ganga begins from a glacier and is fed by melting snow.'
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: india-rivers
+  explanation: Both statements are true. Snow and glacier melt keep the river supplied in the dry months, so R explains A.
+  hints:
+  - Does the glacier explain the water in the dry months?
+  correct: A
+  options:
+  - key: A
+    text: Both A and R are true, and R explains A
+  - key: B
+    text: Both A and R are true, but R does not explain A
+    misconception: all-rivers-same
+  - key: C
+    text: A is true, but R is false
+    misconception: all-rivers-same
+  - key: D
+    text: A is false, but R is true
+    misconception: all-rivers-same
+- key: q-ri-9
+  kind: mcq
+  stem: 'Assertion (A): Every large river of the peninsula flows east to the Bay of Bengal. Reason (R): The Narmada and Tapi flow west to the Arabian Sea.'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: india-rivers
+  explanation: A is false because the Narmada and Tapi are large peninsular rivers that flow west. R is true, so A is false and R is true.
+  hints:
+  - Find a large peninsular river that flows west.
+  correct: D
+  options:
+  - key: A
+    text: Both A and R are true, and R explains A
+    misconception: all-flow-east
+  - key: B
+    text: Both A and R are true, but R does not explain A
+    misconception: all-flow-east
+  - key: C
+    text: A is true, but R is false
+    misconception: all-flow-east
+  - key: D
+    text: A is false, but R is true
+- key: q-ri-10
+  kind: mcq
+  stem: 'Read this note. A river begins in the Satpura Range, flows west and reaches the Arabian Sea. It has little water in the dry months. Which kind of river is it, and which river could it be?'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: india-rivers
+  explanation: It begins on the peninsula, flows west to the Arabian Sea and shrinks in the dry months, so it is a peninsular river. The Tapi begins in the Satpura Range.
+  hints:
+  - Which peninsular river begins in the Satpura Range?
+  correct: B
+  options:
+  - key: A
+    text: A Himalayan river, the Ganga
+    misconception: all-rivers-same
+  - key: B
+    text: A peninsular river, the Tapi
+  - key: C
+    text: A peninsular river, the Mahanadi
+    misconception: all-flow-east
+  - key: D
+    text: A Himalayan river, the Indus
+    misconception: all-rivers-same
+- key: q-ri-11
+  kind: mcq
+  stem: A student says, "The Godavari is bigger than many Himalayan tributaries, so it must be a Himalayan river." What is the mistake?
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: india-rivers
+  explanation: A river belongs to the Himalayan or peninsular group because of where it begins and how it is fed, not because of its size. The Godavari begins in the Western Ghats and is rain fed, so it is peninsular.
+  hints:
+  - What decides the group, size or source?
+  correct: A
+  options:
+  - key: A
+    text: The group depends on where the river begins and how it is fed, not on its size
+  - key: B
+    text: The Godavari is in fact a Himalayan river
+    misconception: size-decides
+  - key: C
+    text: Only small rivers can be peninsular
+    misconception: size-decides
+  - key: D
+    text: Bigger rivers always flow west
+    misconception: all-flow-west
+- key: q-ri-12
+  kind: mcq
+  stem: Near the sea, a river spreads out into many channels and builds a fan of fertile land. What is this fan called?
+  difficulty: intro
+  purpose: practice
+  concepts:
+  - id: india-rivers
+  explanation: A fan of fertile land built by a river near the sea is a delta. The Godavari, Krishna, Kaveri and Mahanadi all form deltas on the east coast.
+  hints:
+  - The word begins with D.
+  correct: B
+  options:
+  - key: A
+    text: Tributary
+    misconception: all-rivers-same
+  - key: B
+    text: Delta
+  - key: C
+    text: Glacier
+    misconception: all-rivers-same
+  - key: D
+    text: Ghat
+    misconception: all-rivers-same
+misconceptions:
+- code: all-flow-east
+  concept: india-rivers
+  description: Thinks every peninsular river flows east to the Bay of Bengal, forgetting that the Narmada and Tapi flow west.
+- code: all-flow-west
+  concept: india-rivers
+  description: Mixes up the direction of the rivers and thinks the big peninsular rivers reach the Arabian Sea, when most reach the Bay of Bengal.
+- code: all-rivers-same
+  concept: india-rivers
+  description: Treats all rivers as alike and does not separate snow-fed Himalayan rivers from rain-fed peninsular rivers.
+- code: size-decides
+  concept: india-rivers
+  description: Thinks the group of a river or its flow in the dry season depends on how long or large it is, instead of on where it begins and how it is fed.
+cards:
+- key: rivers-of-india-card-1
+  concept: india-rivers
+  front: Why do Himalayan rivers flow all year?
+  back: They are fed by melting snow and glaciers as well as rain.
+- key: rivers-of-india-card-2
+  concept: india-rivers
+  front: Which sea do the Godavari, Krishna, Kaveri and Mahanadi reach?
+  back: The Bay of Bengal.
+- key: rivers-of-india-card-3
+  concept: india-rivers
+  front: Which peninsular rivers flow west, and where do they end?
+  back: The Narmada and the Tapi. Both reach the Arabian Sea.
+- key: rivers-of-india-card-4
+  concept: india-rivers
+  front: What is a tributary?
+  back: A smaller stream or river that joins a bigger river.

@@ -79,13 +79,19 @@ def scope_concepts(db: Session, profile: Profile, chapter: str | None, concept: 
     return ids, "class"
 
 
-def next_item(db: Session, profile: Profile, *, chapter=None, concept=None, weak=False, review=False, harder=False) -> dict:
+def next_item(db: Session, profile: Profile, *, chapter=None, concept=None, weak=False, review=False, harder=False, pattern=None) -> dict:
+    if pattern is not None and pattern not in item_svc.PATTERNS:
+        raise PracticeError("Unknown question type.", 422)
     ids, scope = scope_concepts(db, profile, chapter, concept, weak, review)
     cands = pool(db, ids, ("check", "practice", "probe", "test"))
+    if pattern:
+        cands = [c for c in cands if item_svc.item_pattern(c["obj"]) == pattern]
+        if not cands:
+            raise PracticeError(f"No {item_svc.PATTERNS[pattern].lower()} questions are ready for this yet.", 409)
     stt = st_svc.states(db, profile.id)
     rng = random.Random()
     # Concepts with question templates get a fresh question at the student's own level most of the time.
-    if any(templates_for(c) for c in ids) and (not cands or rng.random() < GENERATED_SHARE):
+    if not pattern and any(templates_for(c) for c in ids) and (not cands or rng.random() < GENERATED_SHARE):
         got = generator.next_generated(db, profile, ids, stt, harder=harder, recent=_recent(db, profile.id), rng=rng)
         if got:
             item, level, reason = got

@@ -3,6 +3,7 @@ boards:
 subjects:
   - {id: maths, name: Mathematics}
   - {id: science, name: Science}
+  - {id: social, name: Social Science}
 versions:
   - board: cbse
     label: NCERT current editions (to be confirmed by a reviewer)

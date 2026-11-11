@@ -214,9 +214,9 @@ def hint(item_id: uuid.UUID, n: int = Query(1, ge=1, le=5), p: Profile = Depends
 
 # ---- practice and tests -------------------------------------------------------------------------
 @router.get("/practice/next")
-def practice_next(chapter: Optional[str] = None, concept: Optional[str] = None, weak: bool = False, review: bool = False, harder: bool = False,
+def practice_next(chapter: Optional[str] = None, concept: Optional[str] = None, weak: bool = False, review: bool = False, harder: bool = False, pattern: Optional[str] = None,
                   p: Profile = Depends(learner), db: Session = Depends(get_db)):
-    return _wrap(practice.next_item, db, p, chapter=chapter, concept=concept, weak=weak, review=review, harder=harder)
+    return _wrap(practice.next_item, db, p, chapter=chapter, concept=concept, weak=weak, review=review, harder=harder, pattern=pattern)
 
 
 class AssessIn(BaseModel):

@@ -4,7 +4,7 @@
     python -m app.cms.dryrun ../content slug-a slug-b   only these lessons
 
 Prints PASS or FAIL per lesson and, for each failed gate, exactly what is wrong. Exit code 1 if any lesson fails.
-Imported-asset checks need the database, so lessons that cite imported assets are checked for structure only here.
+Cited assets are treated as approved and credited here (their real status is checked at import); the check still fails if a lesson uses an asset it does not list in `sources`.
 """
 from __future__ import annotations
 
@@ -30,7 +30,7 @@ def run(root: Path, only: set[str] | None = None) -> tuple[list[tuple[str, bool,
             gates = gate_lib.lesson_gates(
                 title=les.title, grade=ch.grade, objectives=les.objectives, blocks=blocks, items=[it.model_dump(mode="json") for it in les.items],
                 concept_ids=set(les.concepts), known_concepts=known, graph_error=None, curriculum_verified=False, misconception_codes=codes,
-                sources=list(les.sources), assets={})
+                sources=list(les.sources), assets={a: {"status": "approved", "attribution": "checked at import", "kind": "geo", "stored": True} for a in les.sources})
             bad = [f"{g.name}: {g.detail}" for g in gates if not g.passed and not g.manual]
             out.append((f"{ch.slug}/{slug}", not bad, bad))
     return out, errors

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useApi } from '../api/useApi';
-import type { Band, MapGraph } from '../api/types';
+import type { Band, Gaps, MapGraph } from '../api/types';
 import { Icon } from '../icons/Icon';
 import { Button, Card, Chip, EmptyState, Skeleton } from '../ui/kit';
 import s from './pages.module.css';
@@ -13,11 +13,13 @@ export default function MapPage() {
   const { slug = '' } = useParams();
   const { data, error, loading, reload } = useApi<MapGraph>(`/library/map/${slug}`);
   const [pick, setPick] = useState<string | null>(null);
+  const gaps = useApi<Gaps>('/progress/gaps');      // the gap engine's reasons and root causes, shared with My Progress
   if (loading && !data) return <Skeleton h={420} r={16} />;
   if (error && !data) return <EmptyState icon="wifiOff" title="Could not load the map" text={error.message} action={<Button onClick={reload} icon="refresh">Try again</Button>} />;
   if (!data) return null;
   const by = new Map(data.nodes.map((n) => [n.id, n]));
   const sel = pick ? by.get(pick) : null;
+  const gap = sel ? gaps.data?.gaps.find((g) => g.conceptId === sel.id) : undefined;
 
   return (
     <div className={s.stack}>
@@ -44,6 +46,7 @@ export default function MapPage() {
       </Card>
       {sel && (
         <Card flat><div className={s.between}><div><h3>{sel.title}</h3><p className="muted sm">Class {sel.grade}{sel.inChapter ? '' : ' · from an earlier class'}</p></div><Chip tone={sel.band === 'secure' ? 'ok' : sel.band === 'gap_confirmed' ? 'gap' : sel.band === 'learning' ? 'hi' : 'soft'}>{LABEL[sel.band]}</Chip></div>
+          {gap && <p className="sm" style={{ marginTop: 10 }}>{gap.reason}</p>}
           <div className={s.row} style={{ marginTop: 12 }}>{sel.lessonId && <Button to={`/lesson/${sel.lessonId}`} variant="brand" size="sm" iconRight="arrowR">Open the lesson</Button>}<Button to={`/practice?concept=${sel.id}`} variant="ghost" size="sm" icon="target">Practise</Button></div></Card>
       )}
     </div>

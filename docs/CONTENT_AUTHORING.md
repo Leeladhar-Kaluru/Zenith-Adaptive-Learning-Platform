@@ -41,3 +41,18 @@ From `backend/`: `.venv/Scripts/python.exe -m app.cms.dryrun ../content <slug> [
 
 ## Your report back (keep it short)
 List the files you created or changed, the dry-run result, and **any statement you are less than fully sure of**, so a reviewer can look at it.
+
+## Social Science, maps and data stories
+- Subjects are `maths`, `science` and `social` (Social Science). Concept files use `subject: social`.
+- **Maps** use the `atlas` widget. Config: `dataset` (the base map's asset id), optional `overlays` (comma-separated asset ids, up to 4) and optional `find` (the exact name of one place, river or peak the student must tap). It needs a `task`, and EVERY asset used must be listed in the lesson's `sources:` list (one id per line) so the credit is shown.
+  - Base map, India with the official outline and 36 states and union territories: `c67c5680-3d07-4874-a0c8-69d7d16ddff1`
+  - Rivers (23): `7527ac27-80e7-4bb2-9e1b-ce1a613485f9`. Names: Ganga, Yamuna, Brahmaputra, Indus, Godavari, Krishna, Kaveri, Narmada, Tapi, Mahanadi, Sutlej, Beas, Ravi, Chenab, Jhelum, Chambal, Tungabhadra, Son, Gandak, Ghaghara, Bhima, Teesta, Brahmani.
+  - Peaks (6): `ab274c13-f8dc-4d5c-89ec-ef561a862b1b`. Kangchenjunga 8,586 m, Nanda Devi 7,817 m, Anamudi 2,695 m, Doda Betta 2,636 m, Guru Shikhar 1,722 m, Mahendragiri 1,501 m.
+  - Ranges, plateaus and desert (12 approximate areas): `88dce7d7-232f-4f72-8e02-24c56e161d5c`. Names: Himalayas, Karakoram Range, Siwalik Hills, Western Ghats, Eastern Ghats, Vindhya Range, Satpura Range, Aravalli Range, Khasi Hills, Deccan Plateau, Chota Nagpur Plateau, Thar Desert.
+  - State names in the base map are those Natural Earth uses; read them from the data before writing a `find` task. Only use a name you have confirmed exists.
+  - The map layers hold NO facts beyond names, shapes and the six peak heights. Every other fact (where a river rises, which states it crosses, what a plateau is made of) must be certain from your own knowledge; leave out anything you are not sure of.
+- **Data stories** use the `data_chart` widget: `dataset` (asset id), `x`, `y`, `chart` (`line` or `bar`). Needs a `task` and the asset id in `sources:`.
+  - India total population, World Bank SP.POP.TOTL, 1960 to 2025 (66 yearly rows, fields `year`, `value` in people): `2a7799b2-4558-4823-a359-0238e88fce8f`
+  - India life expectancy at birth in years, World Bank SP.DYN.LE00.IN, 1960 to 2024 (65 yearly rows, fields `year`, `value`): `b8fa4b21-0b7c-4220-a76e-814903a1e61d`
+  - The exact rows are in the scratchpad files `wb_population.json` and `wb_life_expectancy.json` given in your task. Any number you quote or ask about MUST come from those rows. Say "about" when you round, and never quote a year you did not read.
+- `python -m app.cms.dryrun` treats cited assets as approved; the real approval check happens at import.

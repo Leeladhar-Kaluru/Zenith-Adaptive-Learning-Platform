@@ -1,0 +1,11 @@
+slug: 7-social-rivers
+board: cbse
+curriculum: NCERT current editions (to be confirmed by a reviewer)
+grade: 7
+subject: social
+title: Drainage - Rivers of India
+summary: Compare Himalayan and peninsular rivers, trace the big ones on a map and see why some flow all year.
+concepts:
+- id: india-rivers
+lessons:
+- rivers-of-india

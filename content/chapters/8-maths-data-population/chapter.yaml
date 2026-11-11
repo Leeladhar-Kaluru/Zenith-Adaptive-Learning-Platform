@@ -1,0 +1,11 @@
+slug: 8-maths-data-population
+board: cbse
+curriculum: NCERT current editions (to be confirmed by a reviewer)
+grade: 8
+subject: maths
+title: 'Data Story: India''s population on a line graph'
+summary: Read real population data from a line graph, find the average change per year, work out percent growth and see where growth was faster.
+concepts:
+- id: reading-line-graphs
+lessons:
+- population-line-graph

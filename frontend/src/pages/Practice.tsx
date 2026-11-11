@@ -5,7 +5,7 @@ import type { Band, EvidenceResult, NextPractice } from '../api/types';
 import { useFx } from '../fx/fx';
 import { Icon } from '../icons/Icon';
 import { Question } from '../lesson/Question';
-import { Button, Card, Chip, CountUp, EmptyState, Skeleton } from '../ui/kit';
+import { Button, Card, Chip, CountUp, EmptyState, Segmented, Skeleton } from '../ui/kit';
 import s from './pages.module.css';
 
 const ROUND = 5;
@@ -24,6 +24,8 @@ export default function Practice() {
   const [round, setRound] = useState(0);
   const celebrated = useRef(false);
   const harder = q.get('harder') === '1';
+  const pattern = q.get('pattern') ?? '';
+  const setPattern = (v: string) => { const p = new URLSearchParams(q); if (v) p.set('pattern', v); else p.delete('pattern'); setQ(p); };
 
   const load = useCallback(async () => {
     setErr(null); setCur(null); setAnswered(false);
@@ -38,7 +40,7 @@ export default function Practice() {
   useEffect(() => { if (done && right >= 4 && !celebrated.current) { celebrated.current = true; fx.confetti(); } }, [done, right, fx]);
 
   if (err) return <Card><EmptyState icon={err.status === 409 ? 'info' : 'wifiOff'} title={err.status === 409 ? 'Nothing to practise here yet' : 'Could not load a question'} text={err.text}
-    action={err.status === 409 ? <Button to="/learn" variant="brand">Browse Learn</Button> : <Button onClick={() => setRound((r) => r + 1)} icon="refresh">Try again</Button>} /></Card>;
+    action={err.status === 409 ? (pattern ? <Button variant="brand" onClick={() => setPattern('')}>Show all question types</Button> : <Button to="/learn" variant="brand">Browse Learn</Button>) : <Button onClick={() => setRound((r) => r + 1)} icon="refresh">Try again</Button>} /></Card>;
 
   if (done) {
     const concepts = new Map<string, EvidenceResult['concepts'][number]>();
@@ -69,6 +71,8 @@ export default function Practice() {
         <div className={s.row}>{results.length > 0 && <Chip icon="check" tone="ok">{right} right</Chip>}{cur && <Chip tone="soft">{cur.generated ? `Level ${cur.ladderLevel} of 5` : LEVEL[cur.concept.level]} · {cur.item.difficulty === 'intro' ? 'Warm-up' : cur.item.difficulty === 'challenge' ? 'Challenge' : 'Standard'}</Chip>}</div>
       </div>
       <div className={s.steps} aria-hidden="true">{Array.from({ length: ROUND }, (_, i) => <i key={i} className={i < n ? s.on : ''} />)}</div>
+      {n === 0 && !answered && <Segmented label="Question type" value={pattern} onChange={setPattern}
+        options={[{ value: '', label: 'All' }, { value: 'mcq', label: 'Multiple choice' }, { value: 'assertion', label: 'Assertion and reason' }, { value: 'numeric', label: 'Numerical' }]} />}
       {!cur ? <div className={s.stack}><Skeleton h={40} w="70%" /><Skeleton h={60} r={14} /><Skeleton h={60} r={14} /><Skeleton h={60} r={14} /></div> : (
         <Card key={n}>
           <Question item={cur.item} context="solve" resetKey={n} onResult={(r) => { if (r) { setResults((x) => [...x, r]); setAnswered(true); } }} />

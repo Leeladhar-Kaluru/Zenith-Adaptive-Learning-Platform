@@ -1,0 +1,400 @@
+slug: mountains-plateaus-thar
+title: Mountains, plateaus and the Thar Desert
+minutes: 25
+objectives:
+- Locate the Himalayas, the Ghats, the Aravalli, Vindhya and Satpura ranges, the Deccan Plateau and the Thar Desert on a map
+- Tell the northern mountains apart from the peninsular hills and plateaus
+- Explain how mountains affect rainfall and rivers
+- Read peak heights from a map layer and compare them
+concepts:
+- india-relief
+origin: ai_assisted
+sources:
+- c67c5680-3d07-4874-a0c8-69d7d16ddff1
+- 88dce7d7-232f-4f72-8e02-24c56e161d5c
+- ab274c13-f8dc-4d5c-89ec-ef561a862b1b
+blocks:
+- kind: text
+  heading: A country with many shapes
+  html: '<p>Travel from the snow of the far north to the warm south and the land keeps changing. You cross high mountains, flat
+    plains, rocky plateaus and even a sandy desert. The shape of the land is called its <strong>relief</strong>. Relief decides
+    where rain falls, where rivers start and where people can farm.</p><p>On the maps below, the ranges and plateaus are
+    drawn as <strong>approximate areas</strong>. They show roughly where each feature lies. They do not show exact borders,
+    so use them to find places, not to measure edges.</p>'
+- kind: widget
+  widget: atlas
+  config:
+    dataset: c67c5680-3d07-4874-a0c8-69d7d16ddff1
+    overlays: 88dce7d7-232f-4f72-8e02-24c56e161d5c
+    find: Himalayas
+  task: Find the Himalayas on the map. Notice that they lie along the northern side of India.
+- kind: text
+  heading: The northern mountains
+  html: '<p>The <strong>Himalayas</strong> are a long chain of very high mountains in the north. They are <strong>fold mountains</strong>,
+    made when huge pieces of the Earth''s crust pushed against each other and the rock crumpled upward. The Himalayas are geologically
+    young. They have sharp peaks and deep valleys, and they have snow and glaciers on the highest parts.</p><p>The Himalayas
+    are not one single ridge. Going from the high inner ridges toward the plains there are three parallel belts. The outermost
+    and lowest belt is the <strong>Siwalik Hills</strong>.</p><p>The mountains help India in two big ways. They block cold
+    winds from the north. They also stop moist monsoon winds, which makes the winds drop rain and snow. Snow and rain in the
+    mountains feed many rivers.</p>'
+- kind: figure
+  svg: <svg viewBox="0 0 330 230" role="img"><line x1="10" y1="190" x2="320" y2="190" stroke="#14193a" stroke-width="2"/><rect
+    x="20" y="30" width="30" height="160" fill="#6cb7ff"/><rect x="65" y="44.6" width="30" height="145.4" fill="#6cb7ff"/><rect
+    x="110" y="139.8" width="30" height="50.2" fill="#ffb800"/><rect x="155" y="141" width="30" height="49" fill="#ffb800"/><rect
+    x="200" y="158" width="30" height="32" fill="#ffb800"/><rect x="245" y="162" width="30" height="28" fill="#ffb800"/><text
+    x="12" y="24" font-size="10" fill="currentColor">8,586</text><text x="57" y="39" font-size="10" fill="currentColor">7,817</text><text
+    x="102" y="134" font-size="10" fill="currentColor">2,695</text><text x="147" y="135" font-size="10" fill="currentColor">2,636</text><text
+    x="192" y="152" font-size="10" fill="currentColor">1,722</text><text x="237" y="156" font-size="10" fill="currentColor">1,501</text><text
+    x="8" y="205" font-size="8" fill="currentColor">Kangchenjunga</text><text x="56" y="215" font-size="8" fill="currentColor">Nanda Devi</text><text
+    x="102" y="205" font-size="8" fill="currentColor">Anamudi</text><text x="147" y="215" font-size="8" fill="currentColor">Doda Betta</text><text
+    x="190" y="205" font-size="8" fill="currentColor">Guru Shikhar</text><text x="235" y="215" font-size="8" fill="currentColor">Mahendragiri</text></svg>
+  alt: A bar chart of six peaks in metres where two Himalayan peaks are far taller than four peaks of the peninsular hills.
+  caption: Heights of six peaks in metres. The two blue bars are Himalayan peaks. The four yellow bars are peaks in the hills of peninsular India (the Ghats and the Aravalli).
+- kind: widget
+  widget: atlas
+  config:
+    dataset: c67c5680-3d07-4874-a0c8-69d7d16ddff1
+    overlays: ab274c13-f8dc-4d5c-89ec-ef561a862b1b
+    find: Nanda Devi
+  task: Find the peak named Nanda Devi. Is it in the north, the centre or the south of India?
+- kind: text
+  heading: The peninsular hills and plateaus
+  html: '<p>South of the northern plains lies the <strong>Peninsular Plateau</strong>, a very old block of hard rock. A
+    <strong>plateau</strong> is a raised area of land with a fairly flat top. Its main part is the <strong>Deccan Plateau</strong>.
+    Its western edge is the <strong>Western Ghats</strong> and its eastern edge is the <strong>Eastern Ghats</strong>.
+    The word <em>ghats</em> here means hill ranges.</p><p>The Western Ghats run close to the west coast. They are
+    high and almost continuous. Anamudi in the Western Ghats is the tallest peak on our map layer for peninsular India. The
+    Eastern Ghats are lower and broken into pieces. Rivers cut across them on their way to the sea. The two ranges meet in
+    the south, where the Nilgiri hills lie.</p><p>In the east the <strong>Chota Nagpur Plateau</strong> is a part of the peninsular
+    region that is rich in minerals. In the north-east the <strong>Khasi Hills</strong> rise above the Brahmaputra valley.</p>'
+- kind: widget
+  widget: atlas
+  config:
+    dataset: c67c5680-3d07-4874-a0c8-69d7d16ddff1
+    overlays: 88dce7d7-232f-4f72-8e02-24c56e161d5c
+    find: Western Ghats
+  task: Find the Western Ghats. Which coast of India do they run beside, the east coast or the west coast?
+- kind: example
+  heading: Worked reasoning
+  prompt: A hill range on a map lies close to the west coast and is almost unbroken. Is it more likely to be the Western Ghats or the Eastern Ghats?
+  steps:
+  - 'Read the clue about position. The range is close to the west coast. The Western Ghats are named for running beside the west coast.'
+  - 'Read the clue about shape. The range is almost unbroken. The Western Ghats are nearly continuous, while the Eastern Ghats are broken by rivers.'
+  - 'Both clues point to the same answer, so the range is more likely the Western Ghats.'
+  - 'Check by looking at the map layer. The Western Ghats area lies along the west side of the peninsula, which agrees.'
+- kind: text
+  heading: Central ranges and the desert
+  html: '<p>Across central India two ranges run in an east-west direction: the <strong>Vindhya Range</strong> in the north and
+    the <strong>Satpura Range</strong> to its south. The Narmada river flows west in the valley between them.</p><p>In the north-west
+    stands the <strong>Aravalli Range</strong>, one of the oldest mountain ranges of India. It has been worn down over a very
+    long time, so its hills are low and rounded. Its highest peak on our map layer is Guru Shikhar.</p><p>To the west of the Aravalli
+    lies the <strong>Thar Desert</strong>, a dry region of sand dunes, mostly in western Rajasthan. It gets very little rain,
+    so few rivers cross it.</p>'
+- kind: widget
+  widget: atlas
+  config:
+    dataset: c67c5680-3d07-4874-a0c8-69d7d16ddff1
+    overlays: 88dce7d7-232f-4f72-8e02-24c56e161d5c
+    find: Thar Desert
+  task: Find the Thar Desert. Then find the Aravalli Range and say which of the two lies further west.
+- kind: example
+  heading: Worked reasoning
+  prompt: How can you tell the Himalayas from the Aravalli Range using only the peak heights on the map layer?
+  steps:
+  - 'Pick the highest Himalayan peak on the layer. Kangchenjunga is 8,586 m.'
+  - 'Pick the highest Aravalli peak on the layer. Guru Shikhar is 1,722 m.'
+  - 'Subtract: 8,586 - 1,722 = 6,864 m. The Himalayan peak is far taller.'
+  - 'Peaks this much lower suggest a range that has been worn down over a very long time. This fits what you read: the Aravalli is old and the Himalayas are young.'
+- kind: callout
+  tone: watch
+  html: A plateau is not always a flat plain. It is raised land with a fairly flat top, and it can have hills and valleys cut into it. Also remember that the map areas here are approximate, so never use them to say exactly where one range stops.
+- kind: callout
+  tone: real
+  html: When the monsoon winds blow from the sea, the Western Ghats lift them and they drop heavy rain on the side facing the sea. Farmers on that side get plenty of rain. Land just behind the ridge gets much less.
+- kind: check
+  item: q-sg-1
+- kind: check
+  item: q-sg-2
+- kind: check
+  item: q-sg-3
+- kind: summary
+  points:
+  - 'The Himalayas are young fold mountains in the north. They block cold winds, catch monsoon rain and snow, and feed rivers.'
+  - 'The Peninsular Plateau, including the Deccan Plateau, is an old hard-rock region. The Western Ghats are high and nearly continuous. The Eastern Ghats are lower and broken.'
+  - 'The Vindhya and Satpura ranges lie across central India. The Aravalli Range is old and worn down. The Thar Desert lies to its west.'
+  - 'The ranges and plateaus on our map layer are approximate areas. Only the six peak heights are exact values.'
+items:
+- key: q-sg-1
+  kind: mcq
+  stem: Which of these is a young fold mountain system with snow on its highest parts?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: india-relief
+  explanation: The Himalayas are young fold mountains. The Aravalli is very old and worn down, and the Ghats are older hills on the peninsula.
+  hints:
+  - Think about which range has the tallest peaks.
+  correct: A
+  options:
+  - key: A
+    text: The Himalayas
+  - key: B
+    text: The Aravalli Range
+    misconception: old-means-tall
+  - key: C
+    text: The Western Ghats
+    misconception: old-means-tall
+  - key: D
+    text: The Thar Desert
+    misconception: desert-is-mountain
+- key: q-sg-2
+  kind: mcq
+  stem: In which part of India does the Thar Desert lie?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: india-relief
+  explanation: The Thar Desert lies in the north-west, mostly in western Rajasthan, to the west of the Aravalli Range.
+  hints:
+  - It is west of the Aravalli Range.
+  correct: C
+  options:
+  - key: A
+    text: The far south, near the Nilgiri hills
+    misconception: desert-is-mountain
+  - key: B
+    text: The north-east, near the Khasi Hills
+    misconception: desert-is-mountain
+  - key: C
+    text: The north-west, west of the Aravalli Range
+  - key: D
+    text: The east coast
+    misconception: desert-is-mountain
+- key: q-sg-3
+  kind: mcq
+  stem: Which range runs close to the west coast and is almost continuous?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: india-relief
+  explanation: The Western Ghats run beside the west coast and are nearly unbroken. The Eastern Ghats lie near the east coast and are broken by rivers.
+  hints:
+  - The name tells you which coast.
+  correct: B
+  options:
+  - key: A
+    text: The Eastern Ghats
+    misconception: ghats-same
+  - key: B
+    text: The Western Ghats
+  - key: C
+    text: The Siwalik Hills
+  - key: D
+    text: The Vindhya Range
+- key: q-sg-4
+  kind: numeric
+  stem: On the peaks layer, Kangchenjunga is 8,586 m and Nanda Devi is 7,817 m. How many metres taller is Kangchenjunga?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: india-relief
+  explanation: Subtract the lower height from the higher one, 8,586 - 7,817 = 769 m.
+  hints:
+  - Subtract the smaller height from the larger.
+  value: 769
+  tolerance: 0.0
+  verify: 8586-7817
+- key: q-sg-5
+  kind: numeric
+  stem: Anamudi is 2,695 m and Doda Betta is 2,636 m. How many metres taller is Anamudi?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: india-relief
+  explanation: 2,695 - 2,636 = 59 m.
+  hints:
+  - Subtract the smaller height from the larger.
+  value: 59
+  tolerance: 0.0
+  verify: 2695-2636
+- key: q-sg-6
+  kind: mcq
+  stem: Why do the Himalayas matter for the climate of northern India?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: india-relief
+  explanation: The high Himalayas block cold winds from the north and make moist monsoon winds rise and drop rain and snow.
+  hints:
+  - Think about what a very tall wall does to wind.
+  correct: D
+  options:
+  - key: A
+    text: They make the winds blow faster toward the south
+    misconception: mountains-no-effect
+  - key: B
+    text: They have no effect on climate because they are far away
+    misconception: mountains-no-effect
+  - key: C
+    text: They turn the rain into sand
+    misconception: desert-is-mountain
+  - key: D
+    text: They block cold winds and make moist winds drop rain and snow
+- key: q-sg-7
+  kind: mcq
+  stem: Which pair of ranges lies across central India, running east to west, with the Narmada flowing between them?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: india-relief
+  explanation: The Vindhya Range lies north and the Satpura Range lies south of the Narmada valley.
+  hints:
+  - Both names end in -a and both lie in central India.
+  correct: A
+  options:
+  - key: A
+    text: Vindhya and Satpura
+  - key: B
+    text: Western Ghats and Eastern Ghats
+    misconception: ghats-same
+  - key: C
+    text: Himalayas and Siwalik
+  - key: D
+    text: Aravalli and Khasi
+- key: q-sg-8
+  kind: mcq
+  stem: 'Assertion (A): The Eastern Ghats are lower and more broken than the Western Ghats. Reason (R): Rivers flowing toward the Bay of Bengal cut across the Eastern Ghats.'
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: india-relief
+  explanation: Both statements are true. Rivers on their way to the Bay of Bengal cut gaps across the Eastern Ghats, which is why they are broken, so R explains A.
+  hints:
+  - Ask whether the rivers explain the gaps.
+  correct: A
+  options:
+  - key: A
+    text: Both A and R are true, and R explains A
+  - key: B
+    text: Both A and R are true, but R does not explain A
+    misconception: ghats-same
+  - key: C
+    text: A is true, but R is false
+    misconception: ghats-same
+  - key: D
+    text: A is false, but R is true
+    misconception: ghats-same
+- key: q-sg-9
+  kind: mcq
+  stem: 'Assertion (A): The Aravalli Range has lower, rounder hills than the Himalayas. Reason (R): The Aravalli Range is much older and has been worn down over a very long time.'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: india-relief
+  explanation: Both statements are true. Long wearing down by wind and water has lowered the old Aravalli, so R explains A.
+  hints:
+  - Old mountains have had more time to wear down.
+  correct: A
+  options:
+  - key: A
+    text: Both A and R are true, and R explains A
+  - key: B
+    text: Both A and R are true, but R does not explain A
+    misconception: old-means-tall
+  - key: C
+    text: A is true, but R is false
+    misconception: old-means-tall
+  - key: D
+    text: A is false, but R is true
+    misconception: old-means-tall
+- key: q-sg-10
+  kind: mcq
+  stem: 'A student looks at the map layers and writes: "The Himalayas area ends exactly at the border of the polygon, so the range is exactly that wide." What is wrong with this?'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: india-relief
+  explanation: The ranges and plateaus on the layer are approximate areas. They show roughly where a feature lies, so exact widths or edges cannot be read from them.
+  hints:
+  - Read again how the ranges layer is described in the lesson.
+  correct: C
+  options:
+  - key: A
+    text: Nothing is wrong, the borders on the map are exact
+    misconception: map-areas-exact
+  - key: B
+    text: The Himalayas are not on the map
+  - key: C
+    text: The areas are approximate, so exact edges cannot be read from them
+  - key: D
+    text: The Himalayas are a desert
+    misconception: desert-is-mountain
+- key: q-sg-11
+  kind: mcq
+  stem: 'Read this note. A class compares two hill ranges. Range P is close to the west coast, almost unbroken, and its tallest peak on the layer is Anamudi at 2,695 m. Range Q is near the east coast, lower and broken into pieces by rivers, and its tallest peak on the layer is Mahendragiri at 1,501 m. Which statement is correct?'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: india-relief
+  explanation: Range P is the Western Ghats and range Q is the Eastern Ghats. P is taller on the layer by 2,695 - 1,501 = 1,194 m.
+  hints:
+  - The coast and the broken shape tell you which range is which.
+  correct: B
+  options:
+  - key: A
+    text: P is the Eastern Ghats and Q is the Western Ghats
+    misconception: ghats-same
+  - key: B
+    text: P is the Western Ghats and Q is the Eastern Ghats
+  - key: C
+    text: Both P and Q are the Western Ghats
+    misconception: ghats-same
+  - key: D
+    text: Both P and Q are part of the Himalayas
+    misconception: old-means-tall
+- key: q-sg-12
+  kind: numeric
+  stem: Kangchenjunga is 8,586 m and Anamudi is 2,695 m. What is the difference in height, in metres?
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: india-relief
+  explanation: 8,586 - 2,695 = 5,891 m.
+  hints:
+  - Subtract the smaller height from the larger.
+  value: 5891
+  tolerance: 0.0
+  verify: 8586-2695
+misconceptions:
+- code: old-means-tall
+  concept: india-relief
+  description: Thinks that an older mountain range must be taller. Very old ranges have been worn down and are lower than young ranges such as the Himalayas.
+- code: ghats-same
+  concept: india-relief
+  description: Treats the Western and Eastern Ghats as the same kind of range, when the Western Ghats are higher and nearly continuous and the Eastern Ghats are lower and broken.
+- code: desert-is-mountain
+  concept: india-relief
+  description: Mixes up the Thar Desert, a dry sandy region in the north-west, with mountain ranges or other regions.
+- code: mountains-no-effect
+  concept: india-relief
+  description: Thinks mountains have no effect on weather, when they block winds and make moist winds drop rain and snow.
+- code: map-areas-exact
+  concept: india-relief
+  description: Reads the approximate areas of ranges and plateaus on a map as exact borders.
+cards:
+- key: mountains-plateaus-thar-card-1
+  concept: india-relief
+  front: What kind of mountains are the Himalayas?
+  back: Young fold mountains in the north, with snow and glaciers on the highest parts.
+- key: mountains-plateaus-thar-card-2
+  concept: india-relief
+  front: How do the Western Ghats differ from the Eastern Ghats?
+  back: The Western Ghats are higher, nearly continuous and close to the west coast. The Eastern Ghats are lower and broken by rivers.
+- key: mountains-plateaus-thar-card-3
+  concept: india-relief
+  front: Where is the Thar Desert?
+  back: In the north-west, mostly in western Rajasthan, to the west of the Aravalli Range.
+- key: mountains-plateaus-thar-card-4
+  concept: india-relief
+  front: How exact are the range and plateau areas on the ZENITH map?
+  back: They are approximate areas. They show where a feature lies, not its exact borders.

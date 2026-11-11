@@ -1,0 +1,334 @@
+slug: population-line-graph
+title: India's population on a line graph
+minutes: 25
+objectives:
+- Read values from a line graph and say what the slope shows
+- Find the average change per year between two years
+- Work out percent growth between two years
+- Compare two periods and decide where growth was faster
+concepts:
+- reading-line-graphs
+origin: ai_assisted
+sources:
+- 2a7799b2-4558-4823-a359-0238e88fce8f
+blocks:
+- kind: text
+  heading: A number that changes every year
+  html: '<p>Every year, experts estimate how many people live in India. The numbers are huge, so a long table of them is hard
+    to read. A <strong>line graph</strong> turns the same numbers into a picture. Each point shows one year. The line joins
+    the points, so you can see the whole story at a glance.</p><p>In this lesson you will use real data from the World Bank.
+    It gives the total population of India for each year from 1960 to 2025. In 1960 the value was 435,990,338 people, which
+    is about 436 million. In 2025 it was 1,463,865,525, which is about 1,464 million.</p>'
+- kind: widget
+  widget: data_chart
+  config: {dataset: 2a7799b2-4558-4823-a359-0238e88fce8f, x: year, y: value, chart: line}
+  task: Look at the line from left to right. Does it ever go down? Then find the part where it looks steepest and the part where it looks flattest.
+- kind: text
+  heading: What the slope tells you
+  html: '<p>The <strong>slope</strong> of a line tells you how steeply it climbs. On a graph of population against year, the
+    slope shows <strong>how fast the population is changing</strong>. A steep part means many people were added each year.
+    A flatter part means fewer were added.</p><p>Slope is the rise divided by the run. The <strong>rise</strong> is the change
+    in the value, here the number of people. The <strong>run</strong> is the change in the year. Rise divided by run gives
+    the <strong>average change per year</strong>.</p>'
+- kind: figure
+  svg: <svg viewBox="0 0 300 200" role="img"><line x1="30" y1="170" x2="280" y2="170" stroke="currentColor" stroke-width="2"/><line x1="30" y1="170" x2="30" y2="15" stroke="currentColor" stroke-width="2"/><line x1="50" y1="150" x2="250" y2="40" stroke="#ffb800" stroke-width="4"/><line x1="60" y1="144" x2="200" y2="144" stroke="#14193a" stroke-width="2" stroke-dasharray="5 4"/><line x1="200" y1="144" x2="200" y2="67" stroke="#14193a" stroke-width="2" stroke-dasharray="5 4"/><circle cx="60" cy="144" r="5" fill="#14193a"/><circle cx="200" cy="67" r="5" fill="#14193a"/><text x="95" y="162" font-size="13" font-weight="700" fill="currentColor">run (years)</text><text x="204" y="110" font-size="13" font-weight="700" fill="currentColor">rise</text><text x="204" y="125" font-size="12" fill="currentColor">(people)</text><text x="258" y="186" font-size="12" fill="currentColor">year</text><text x="36" y="26" font-size="12" fill="currentColor">value</text></svg>
+  alt: A straight line rising to the right with a dashed horizontal run and a dashed vertical rise marked between two points on it.
+  caption: Slope is rise divided by run. For a population graph, the rise is the people added and the run is the years that passed.
+- kind: example
+  heading: Worked example, average change per year
+  prompt: In 1960 India's population was 435,990,338. In 1980 it was 687,354,025. Find the average increase per year, in millions of people, to one decimal place.
+  steps:
+  - 'Rise = 687,354,025 - 435,990,338 = 251,363,687 people. That is about 251.4 million.'
+  - 'Run = 1980 - 1960 = 20 years.'
+  - 'Average change per year = 251,363,687 ÷ 20 = 12,568,184.35. In millions that is 12.568, so about 12.6 million people per year.'
+  - 'Check: 20 years at about 12.6 million a year gives about 252 million, close to the rise of 251.4 million. So the answer fits.'
+- kind: callout
+  tone: watch
+  html: A high point on the graph is not the same as a steep line. Slope depends on how much the line climbs for each year, not on how high it is. A line can be high up and still fairly flat.
+- kind: text
+  heading: Percent growth
+  html: '<p>Sometimes we want to know how big a change is compared with where we started. For this we use <strong>percent growth</strong>.
+    It is <strong>(new value - old value) ÷ old value × 100</strong>. Always divide by the <em>old</em> value, the one you
+    started from.</p><p>Average change per year and percent growth answer different questions. The first says how many people
+    were added each year. The second says how large the total rise was compared with the starting population.</p>'
+- kind: example
+  heading: Worked example, percent growth
+  prompt: Find the percent growth in India's population from 1960 (435,990,338) to 1970 (545,864,268). Round to the nearest whole percent.
+  steps:
+  - 'Rise = 545,864,268 - 435,990,338 = 109,873,930.'
+  - 'Divide by the old value: 109,873,930 ÷ 435,990,338 = 0.2520 (to four places).'
+  - 'Multiply by 100: 0.2520 × 100 = 25.2, so the growth was about 25%.'
+  - 'Check: 25% of 436 million is 109 million, which matches the rise of about 110 million.'
+- kind: widget
+  widget: data_chart
+  config: {dataset: 2a7799b2-4558-4823-a359-0238e88fce8f, x: year, y: value, chart: line}
+  task: Read the population for 1990 and for 2000 from the graph. Find the rise and divide by 10 years. Then do the same for 1960 to 1970. Tap a point to read its value. The chart rounds the values (for example 1.06 billion), so your answers will be close to the exact figures, not equal to them. Which ten years show the faster average growth?
+- kind: text
+  heading: Where was growth faster
+  html: '<p>To compare two periods, find the average change per year for each and see which is bigger. Over 1960 to 1980 the
+    average was about 12.6 million people a year. Over 1980 to 2000 it was about 18.5 million a year. Over 2000 to 2020 it
+    was about 17.2 million a year. So the line was steepest, on average, between 1980 and 2000 out of these three periods.</p><p>This
+    is why a graph helps. In a table you must subtract again and again to find where the numbers change fastest. On a graph
+    your eye finds the steep part at once, and you can then use the numbers to check it.</p>'
+- kind: callout
+  tone: real
+  html: Planners use population data to think about how many schools, homes and hospital beds a city may need in the coming years. They look at the slope of the graph, not only at one year's number.
+- kind: check
+  item: q-pg-1
+- kind: check
+  item: q-pg-2
+- kind: check
+  item: q-pg-3
+- kind: summary
+  points:
+  - 'A line graph shows how a value changes over time. The slope shows how fast it changes.'
+  - 'Average change per year = (new value - old value) ÷ number of years.'
+  - 'Percent growth = (new - old) ÷ old × 100. Divide by the old value.'
+  - 'To compare periods, compare their average change per year. Use the graph to spot the steep parts, and the numbers to check.'
+items:
+- key: q-pg-1
+  kind: mcq
+  stem: On a line graph of India's population against year, what does the slope of the line show?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: reading-line-graphs
+  explanation: The slope is the rise divided by the run, so it shows how fast the population changes for each year. The height of a point only shows the population in that year.
+  hints:
+  - Slope is rise divided by run. What is the run here?
+  correct: C
+  options:
+  - key: A
+    text: How many people live in India in the last year
+    misconception: slope-is-height
+  - key: B
+    text: The year with the most people
+    misconception: slope-is-height
+  - key: C
+    text: How fast the population changes from year to year
+  - key: D
+    text: The total number of years in the graph
+- key: q-pg-2
+  kind: numeric
+  stem: From the data, India's population in 1980 was 687,354,025. Round it to the nearest million. How many millions is that?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: reading-line-graphs
+  explanation: 687,354,025 is 687.354 million. The digit after the millions place is 3, so we round down to 687 million.
+  hints:
+  - Divide by 1,000,000 and look at the first digit after the decimal point.
+  value: 687
+  tolerance: 0.0
+  verify: floor(687354025/10**6 + 1/2)
+- key: q-pg-3
+  kind: numeric
+  stem: India's population was 435,990,338 in 1960 and 545,864,268 in 1970. What was the average increase per year between these years, in people?
+  difficulty: standard
+  purpose: check
+  concepts:
+  - id: reading-line-graphs
+  explanation: Rise = 545,864,268 - 435,990,338 = 109,873,930. Run = 10 years. 109,873,930 ÷ 10 = 10,987,393 people per year.
+  hints:
+  - Subtract to find the rise, then divide by the number of years.
+  value: 10987393
+  tolerance: 0.0
+  verify: (545864268-435990338)/10
+- key: q-pg-4
+  kind: numeric
+  stem: The population was 435,990,338 in 1960 and 687,354,025 in 1980. Find the average increase per year, in millions of people, rounded to one decimal place.
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: reading-line-graphs
+  explanation: (687,354,025 - 435,990,338) ÷ 20 = 12,568,184.35 people per year, which is 12.568 million. To one decimal place this is 12.6 million.
+  hints:
+  - There are 20 years between 1960 and 1980.
+  value: 12.6
+  tolerance: 0.0
+  verify: floor((687354025-435990338)/20/10**5 + 1/2)/10
+- key: q-pg-5
+  kind: numeric
+  stem: The population was 435,990,338 in 1960 and 545,864,268 in 1970. What is the percent growth from 1960 to 1970, rounded to the nearest whole percent?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: reading-line-graphs
+  explanation: Percent growth = (545,864,268 - 435,990,338) ÷ 435,990,338 × 100 = 25.2, so about 25%.
+  hints:
+  - Divide the rise by the old value, the 1960 population.
+  value: 25
+  tolerance: 0.0
+  verify: floor((545864268-435990338)/435990338*100 + 1/2)
+- key: q-pg-6
+  kind: mcq
+  stem: To find the percent growth from one year to a later year, you divide the rise by which number?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: reading-line-graphs
+  explanation: Percent growth compares the rise with where you started, so you divide by the old value, the population in the earlier year.
+  hints:
+  - Growth is measured against the starting point.
+  correct: A
+  options:
+  - key: A
+    text: The population in the earlier year
+  - key: B
+    text: The population in the later year
+    misconception: percent-of-wrong-base
+  - key: C
+    text: The number of years between the two readings
+    misconception: divide-by-readings
+  - key: D
+    text: The sum of the two populations
+    misconception: percent-of-wrong-base
+- key: q-pg-7
+  kind: mcq
+  stem: 'The average increase per year was about 12.6 million for 1960 to 1980, about 18.5 million for 1980 to 2000 and about 17.2 million for 2000 to 2020. Which of these three periods has the steepest line on average?'
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: reading-line-graphs
+  explanation: The steepest line is the one with the largest average increase per year, which is 18.5 million for 1980 to 2000.
+  hints:
+  - A bigger average change per year means a steeper line.
+  correct: B
+  options:
+  - key: A
+    text: 1960 to 1980
+  - key: B
+    text: 1980 to 2000
+  - key: C
+    text: 2000 to 2020, because it ends at the highest population
+    misconception: slope-is-height
+  - key: D
+    text: All three are equally steep
+- key: q-pg-8
+  kind: mcq
+  stem: 'Assertion (A): Between 1960 and 1980 the line on the graph is less steep than between 1980 and 2000. Reason (R): The population in 1960 was about 436 million and in 2025 it was about 1,464 million.'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: reading-line-graphs
+  explanation: A is true, since the average increase was about 12.6 million a year in 1960 to 1980 and about 18.5 million a year in 1980 to 2000. R is also true as a fact, but it only gives two end values. It does not compare the two periods, so it does not explain A.
+  hints:
+  - Does R say anything about the steepness in the two periods?
+  correct: B
+  options:
+  - key: A
+    text: Both A and R are true, and R explains A
+    misconception: reason-must-explain
+  - key: B
+    text: Both A and R are true, but R does not explain A
+  - key: C
+    text: A is true, but R is false
+  - key: D
+    text: A is false, but R is true
+- key: q-pg-9
+  kind: mcq
+  stem: 'Assertion (A): Between 2010 and 2020 India''s population grew by a larger percent than between 1960 and 1970. Reason (R): The population in 2020 was larger than the population in 1960.'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: reading-line-graphs
+  explanation: The percent growth from 1960 to 1970 was about 25%. From 2010 to 2020 it was about 13%. So A is false. R is true, because 2020 had a larger population than 1960. A bigger population does not mean a bigger percent growth.
+  hints:
+  - Work out both percent growth values before you judge A.
+  correct: D
+  options:
+  - key: A
+    text: Both A and R are true, and R explains A
+    misconception: reason-must-explain
+  - key: B
+    text: Both A and R are true, but R does not explain A
+  - key: C
+    text: A is true, but R is false
+  - key: D
+    text: A is false, but R is true
+- key: q-pg-10
+  kind: mcq
+  stem: 'A group reads two values from the graph. In 1990 the population was about 865 million and in 2000 it was about 1,058 million. A member says, "The rise is about 193 million over the years, so I divide by 10 years." Which statement about this method is correct?'
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: reading-line-graphs
+  explanation: 2000 minus 1990 is 10 years, so the run is 10. Dividing the rise of about 193 million by 10 gives about 19.3 million people per year. The method is right.
+  hints:
+  - How many years are there from 1990 to 2000?
+  correct: B
+  options:
+  - key: A
+    text: It is wrong. They should divide by 2 because there are two readings
+    misconception: divide-by-readings
+  - key: B
+    text: It is right. The average increase is about 19.3 million per year
+  - key: C
+    text: It is wrong. They should divide 1,058 by 865
+    misconception: percent-of-wrong-base
+  - key: D
+    text: It is wrong. They should add the two readings and divide by 10
+    misconception: divide-by-readings
+- key: q-pg-11
+  kind: numeric
+  stem: The population was 864,972,221 in 1990 and 1,057,922,733 in 2000. Find the percent growth from 1990 to 2000, rounded to one decimal place.
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: reading-line-graphs
+  explanation: Rise = 1,057,922,733 - 864,972,221 = 192,950,512. Divide by 864,972,221 to get 0.2231, then multiply by 100 to get 22.3 to one decimal place.
+  hints:
+  - Divide the rise by the 1990 population, then multiply by 100.
+  value: 22.3
+  tolerance: 0.0
+  verify: floor((1057922733-864972221)/864972221*1000 + 1/2)/10
+- key: q-pg-12
+  kind: mcq
+  stem: Why is a line graph often better than a table for seeing where the population grew fastest?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: reading-line-graphs
+  explanation: On a graph the steep parts stand out at once. A table of 66 large numbers needs many subtractions before you can compare growth in different years.
+  hints:
+  - Think about how quickly you can spot a steep part.
+  correct: D
+  options:
+  - key: A
+    text: A graph shows more digits than a table
+  - key: B
+    text: A graph gives exact values and a table does not
+  - key: C
+    text: A graph has no rounding at all
+  - key: D
+    text: The steep and flat parts are easy to see without doing any subtraction
+misconceptions:
+- code: slope-is-height
+  concept: reading-line-graphs
+  description: Thinks a point that is higher on the graph means faster growth, when slope depends on the rise for each year and not on the height.
+- code: percent-of-wrong-base
+  concept: reading-line-graphs
+  description: Divides by the later value, or another number, when finding percent growth, instead of dividing by the old value.
+- code: divide-by-readings
+  concept: reading-line-graphs
+  description: Divides the rise by the number of readings or divides in another wrong way, instead of dividing by the number of years.
+- code: reason-must-explain
+  concept: reading-line-graphs
+  description: Thinks that when both an assertion and a reason are true, the reason must explain the assertion.
+cards:
+- key: population-line-graph-card-1
+  concept: reading-line-graphs
+  front: What does the slope of a line graph show?
+  back: How fast the value changes for each unit on the x axis. It is the rise divided by the run.
+- key: population-line-graph-card-2
+  concept: reading-line-graphs
+  front: How do you find the average change per year between two years?
+  back: (new value - old value) ÷ (number of years between them).
+- key: population-line-graph-card-3
+  concept: reading-line-graphs
+  front: What is the formula for percent growth?
+  back: (new value - old value) ÷ old value × 100. Always divide by the old value.
+- key: population-line-graph-card-4
+  concept: reading-line-graphs
+  front: Why can a graph beat a table?
+  back: The steep and flat parts show at once, so you can spot where change was fastest, then check it with numbers.

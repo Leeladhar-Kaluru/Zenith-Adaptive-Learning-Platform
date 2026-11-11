@@ -1,0 +1,3 @@
+concepts:
+  - {id: reading-line-graphs, title: "Reading a line graph and its slope", grade: 8, subject: maths, description: "Reading values off a line graph, using the slope as the rate of change, and finding average change and percent growth between two points.", keywords: [line graph, slope, rate of change, average change, percent growth]}
+  - {id: change-over-time-data, title: "Change over time in real data", grade: 9, subject: maths, description: "Describing a trend in real data using change, average change per decade, percent increase and a comparison of two periods, with line and bar charts.", keywords: [trend, percent increase, average change, bar chart, line chart, data]}

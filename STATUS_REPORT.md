@@ -175,3 +175,11 @@ They are NOT published: project rule 6 requires a named reviewer's approval and 
 Datasets imported to production (World Bank, CC BY 4.0, attribution stored, pending approval): India total population (SP.POP.TOTL, 66 rows) and life expectancy at birth (SP.DYN.LE00.IN, 65 rows). A lesson can only use them after a reviewer approves the asset (`python -m app.cli asset approve <id> <reviewer-email>`).
 
 Still not done: Indian states, rivers and mountains maps (needs a Natural Earth file downloaded, which I have not done without your say-so), Data Stories lessons that use the datasets, Live Books depth for the 14 draft lessons, more Class 9 and 10 chapters, knowledge-map and offline upgrades.
+
+## India states map imported (2026-11-11, later)
+
+With your OK I downloaded `ne_10m_admin_1_states_provinces.geojson` (40.7 MB, public domain, Natural Earth's official GitHub mirror), kept only India (36 states and union territories, current as of the 2020 merger of Dadra and Nagar Haveli with Daman and Diu), and imported it to production as a PENDING map layer (`ne-10m-admin1-india-states`, 173 kB, id f830578b-71fa-4a6e-bc13-47e356638d65). The map importer now fits a regional map to its own frame (longitude scaled by cos latitude), simplifies boundaries, and gives every place a unique id (ISO 3166-2, e.g. IN-MH); the Atlas wording no longer says "country". 4 new tests.
+
+DO NOT APPROVE YET: Natural Earth draws Jammu and Kashmir and Ladakh by present control, which differs from the boundary of India as officially published by the Survey of India (and used in NCERT maps). Maps of India shown to students in India should follow the official boundary. A reviewer must decide how to handle the north (Natural Earth publishes an India-viewpoint country outline, but no India-viewpoint states layer) before this layer is approved.
+
+Not done: rivers and mountains layers, and the lessons that would use the map and datasets.

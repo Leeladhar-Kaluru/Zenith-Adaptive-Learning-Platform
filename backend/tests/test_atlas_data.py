@@ -77,3 +77,42 @@ def test_no_code_points_at_the_public_openstreetmap_tile_servers():
                 text = f.read_text(encoding="utf-8", errors="ignore")
                 hits += [str(f.relative_to(REPO)) for b in banned if b in text]
     assert hits == []
+
+
+def _state(name, code, x, y, w=4, pts=3):
+    # a wavy square: `pts` points per side so simplification has something to remove
+    ring = [[x + w * i / pts, y] for i in range(pts)] + [[x + w, y + w * i / pts] for i in range(pts)] + [[x + w - w * i / pts, y + w] for i in range(pts)] + [[x, y + w - w * i / pts] for i in range(pts)]
+    return {"type": "Feature", "properties": {"NAME": name, "ADMIN": "Testland", "ISO_A3": "TST", "CODE": code}, "geometry": {"type": "Polygon", "coordinates": [ring + [ring[0]]]}}
+
+
+def test_a_regional_map_is_fitted_to_its_own_frame_and_keeps_every_place_distinct():
+    gj = {"type": "FeatureCollection", "features": [_state("North", "TL-N", 70, 20), _state("South", "TL-S", 70, 10), _state("East", "TL-E", 78, 14)]}
+    out = naturalearth.project(gj)
+    w, h = out["viewBox"]
+    assert max(w, h) == 1000 and w != 1000 or h != 500                         # fitted, not the world frame
+    assert w < h * 1.5 and h < w * 1.5                                          # roughly square, because the region is
+    assert [f["id"] for f in out["features"]] == ["TL-N", "TL-S", "TL-E"]
+    nums = [float(n) for f in out["features"] for n in __import__("re").findall(r"-?\d+(?:\.\d+)?", f["d"])]
+    assert min(nums) >= 0 and max(nums) <= 1000
+
+
+def test_places_sharing_a_country_code_still_get_unique_ids():
+    gj = {"type": "FeatureCollection", "features": [{**_state("A", "", 70, 10), "properties": {"NAME": "A", "ISO_A3": "IND"}}, {**_state("B", "", 76, 10), "properties": {"NAME": "B", "ISO_A3": "IND"}}]}
+    ids = [f["id"] for f in naturalearth.project(gj)["features"]]
+    assert len(set(ids)) == 2 and ids[0] == "IND"
+
+
+def test_fitting_can_be_forced_off_and_a_world_sized_map_never_fits_by_accident():
+    gj = {"type": "FeatureCollection", "features": [_state("North", "TL-N", 70, 20), _state("South", "TL-S", 70, 10)]}
+    assert naturalearth.project(gj, fit=False)["viewBox"] == [1000, 500]
+    world = {"type": "FeatureCollection", "features": [_state("W", "W", -170, 10), _state("E", "E", 100, 10)]}
+    assert naturalearth.project(world)["viewBox"] == [1000, 500]
+
+
+def test_a_very_detailed_boundary_is_simplified_so_it_fits_the_size_limit():
+    dense = _state("Dense", "TL-D", 70, 10, w=10, pts=3000)
+    gj = {"type": "FeatureCollection", "features": [dense, _state("Other", "TL-O", 80, 10)]}
+    big = len(json.dumps(naturalearth.project(gj, fit=False)))
+    fitted = naturalearth.project(gj)
+    assert len(fitted["features"][0]["d"]) < len(dense["geometry"]["coordinates"][0]) * 8          # far fewer points than the source
+    assert big > 0

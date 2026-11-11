@@ -1,0 +1,284 @@
+slug: current-and-ohms-law
+title: Current, voltage and Ohm's law
+minutes: 25
+objectives:
+- Describe current, potential difference and resistance and their units
+- Use V = I R to find any one of the three
+- Find the total resistance of resistors in series and in parallel
+- Say what stays the same and what is shared in each kind of circuit
+concepts:
+- ohms-law
+origin: ai_assisted
+blocks:
+- kind: text
+  heading: Current, voltage and resistance
+  html: '<p>An electric <strong>current</strong> is a flow of charge through a wire. We measure it in amperes (A). Charge only
+    flows if something pushes it. That push is the <strong>potential difference</strong>, or voltage, of a battery. We measure
+    it in volts (V).</p><p>Every material resists the flow a little. This is its <strong>resistance</strong>, measured in ohms
+    (Ω). A thin wire or a long wire resists more than a thick or short one.</p>'
+- kind: text
+  heading: Ohm's law
+  html: '<p>For many conductors at a steady temperature, the current is proportional to the voltage across them. The three
+    quantities are linked by <strong>Ohm''s law</strong>: <strong>V = I × R</strong>. So I = V ÷ R and R = V ÷ I.</p><p>A
+    bigger battery pushes a bigger current through the same resistor. A bigger resistor lets less current through the same
+    battery.</p>'
+- kind: example
+  heading: Worked example
+  prompt: A 12 V battery is connected across a 4 Ω resistor. What current flows?
+  steps:
+  - 'Write Ohm''s law as I = V ÷ R.'
+  - 'Put in the numbers: I = 12 ÷ 4.'
+  - 'I = 3 A. The resistor carries 3 amperes.'
+- kind: figure
+  svg: <svg viewBox="0 0 300 150" role="img"><g fill="none" stroke="#14193a" stroke-width="3"><path d="M30 120 V30 H80 M140 30
+    H190 M250 30 H270 V120 H30"/></g><rect x="80" y="18" width="60" height="24" rx="4" fill="#e7e9ff" stroke="#14193a" stroke-width="3"/><rect
+    x="190" y="18" width="60" height="24" rx="4" fill="#e7e9ff" stroke="#14193a" stroke-width="3"/><text x="110" y="35" text-anchor="middle"
+    font-size="12" font-weight="700" fill="#14193a">R1</text><text x="220" y="35" text-anchor="middle" font-size="12" font-weight="700"
+    fill="#14193a">R2</text><line x1="18" y1="70" x2="42" y2="70" stroke="#14193a" stroke-width="4"/><line x1="24" y1="84" x2="36"
+    y2="84" stroke="#14193a" stroke-width="4"/><text x="52" y="82" font-size="12" font-weight="700" fill="currentColor">battery</text></svg>
+  alt: A circuit drawing with a battery on the left and two resistors, R1 and R2, one after the other along the top wire, so the current has only one path.
+  caption: Two resistors in series. The current has one path and passes through both.
+- kind: text
+  heading: Resistors in series
+  html: '<p>When resistors are joined one after another, the current has only one path. The <strong>same current</strong> passes
+    through every resistor. The battery voltage is <strong>shared</strong> between them, and the resistances simply add: <strong>R
+    = R<sub>1</sub> + R<sub>2</sub></strong>.</p>'
+- kind: example
+  heading: Worked example
+  prompt: A 6 V battery is joined to a 2 Ω and a 4 Ω resistor in series. Find the current and the voltage across each.
+  steps:
+  - 'Total resistance: R = 2 + 4 = 6 Ω.'
+  - 'Current from Ohm''s law: I = V ÷ R = 6 ÷ 6 = 1 A. The same 1 A flows through both resistors.'
+  - 'Voltage across the 2 Ω resistor: V = I × R = 1 × 2 = 2 V. Across the 4 Ω resistor: 1 × 4 = 4 V.'
+  - 'Check: 2 V + 4 V = 6 V, the battery voltage. The voltage was shared.'
+- kind: text
+  heading: Resistors in parallel
+  html: '<p>When resistors are joined side by side, the current can take either branch. Each branch has the <strong>same voltage</strong>,
+    the full battery voltage. The current <strong>splits</strong> between the branches. The total resistance is found from
+    <strong>1/R = 1/R<sub>1</sub> + 1/R<sub>2</sub></strong>, and it is always smaller than the smallest resistor, because
+    the extra branch gives the current another way through.</p>'
+- kind: widget
+  widget: sim_circuit
+  config: {volts: 6, r1: 2, r2: 4, mode: series, goal_current: 3}
+  task: The battery is 6 V. Change the circuit until the battery supplies 3 A. Then say which arrangement, series or parallel, you used and why it works.
+- kind: example
+  heading: Worked example
+  prompt: A 6 V battery is joined to a 3 Ω and a 6 Ω resistor in parallel. Find the total resistance and the current from the battery.
+  steps:
+  - '1/R = 1/3 + 1/6 = 2/6 + 1/6 = 3/6 = 1/2. So R = 2 Ω.'
+  - 'Current from the battery: I = V ÷ R = 6 ÷ 2 = 3 A.'
+  - 'Each branch has the full 6 V. The 3 Ω branch carries 6 ÷ 3 = 2 A and the 6 Ω branch carries 6 ÷ 6 = 1 A.'
+  - 'Check: 2 A + 1 A = 3 A. The current split between the branches.'
+- kind: callout
+  tone: watch
+  html: In parallel, the total resistance is smaller than either resistor, not bigger. Adding a branch makes it easier for the current, not harder.
+- kind: callout
+  tone: real
+  html: Home wiring is parallel. Every lamp and fan gets the full supply voltage, and switching one off does not stop the others. If they were in series, one switch would turn everything off.
+- kind: check
+  item: q-ol-1
+- kind: check
+  item: q-ol-2
+- kind: check
+  item: q-ol-3
+- kind: summary
+  points:
+  - 'Ohm''s law: V = I R, with V in volts, I in amperes and R in ohms.'
+  - 'Series: the same current everywhere, the voltage is shared, and R = R1 + R2.'
+  - 'Parallel: the same voltage on every branch, the current splits, and 1/R = 1/R1 + 1/R2.'
+  - 'The power used is P = V × I, in watts.'
+items:
+- key: q-ol-1
+  kind: mcq
+  stem: Which equation is Ohm's law?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: ohms-law
+  explanation: Voltage equals current times resistance, V = I × R.
+  hints:
+  - If the resistance doubles for the same current, the voltage needed doubles.
+  correct: A
+  options:
+  - key: A
+    text: V = I × R
+  - key: B
+    text: V = I ÷ R
+    misconception: ohm-formula-mixup
+  - key: C
+    text: I = V × R
+    misconception: ohm-formula-mixup
+  - key: D
+    text: R = V × I
+    misconception: ohm-formula-mixup
+- key: q-ol-2
+  kind: numeric
+  stem: A 12 V battery is joined across a 4 Ω resistor. What current flows, in amperes?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: ohms-law
+  explanation: I = V ÷ R = 12 ÷ 4 = 3 A.
+  hints:
+  - Divide the voltage by the resistance.
+  value: 3
+  tolerance: 0.0
+  verify: 12/4
+- key: q-ol-3
+  kind: numeric
+  stem: A current of 2 A flows through a 5 Ω resistor. What is the voltage across it, in volts?
+  difficulty: standard
+  purpose: check
+  concepts:
+  - id: ohms-law
+  explanation: V = I × R = 2 × 5 = 10 V.
+  hints:
+  - Multiply the current by the resistance.
+  value: 10
+  tolerance: 0.0
+  verify: 2*5
+- key: q-ol-4
+  kind: numeric
+  stem: A 3 Ω and a 5 Ω resistor are joined in series. What is the total resistance, in ohms?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: ohms-law
+  explanation: In series the resistances add, so R = 3 + 5 = 8 Ω.
+  hints:
+  - In series you just add them.
+  value: 8
+  tolerance: 0.0
+  verify: 3+5
+- key: q-ol-5
+  kind: numeric
+  stem: A 6 Ω and a 3 Ω resistor are joined in parallel. What is the total resistance, in ohms?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: ohms-law
+  explanation: 1/R = 1/6 + 1/3 = 1/6 + 2/6 = 3/6 = 1/2, so R = 2 Ω.
+  hints:
+  - Add the reciprocals, then flip the answer.
+  value: 2
+  tolerance: 0.0
+  verify: (6*3)/(6+3)
+- key: q-ol-6
+  kind: mcq
+  stem: Two resistors are joined in series to a battery. What is the same for both of them?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: ohms-law
+  explanation: In series there is only one path, so the same current flows through both. The voltage is shared.
+  hints:
+  - How many paths does the current have?
+  correct: B
+  options:
+  - key: A
+    text: The voltage across them
+    misconception: series-same-voltage
+  - key: B
+    text: The current through them
+  - key: C
+    text: The power they use
+  - key: D
+    text: Nothing is the same
+- key: q-ol-7
+  kind: mcq
+  stem: Two resistors are joined in parallel to a battery. What is the same for both branches?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: ohms-law
+  explanation: Each branch is connected straight across the battery, so each has the full battery voltage. The current splits.
+  hints:
+  - Each branch touches both ends of the battery.
+  correct: C
+  options:
+  - key: A
+    text: The current through them
+    misconception: parallel-same-current
+  - key: B
+    text: The resistance
+  - key: C
+    text: The voltage across them
+  - key: D
+    text: Nothing is the same
+- key: q-ol-8
+  kind: mcq
+  stem: Why is the total resistance of two resistors in parallel less than the smaller one?
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: ohms-law
+  explanation: The second branch gives the current an extra path, so more current flows for the same voltage. More current for the same voltage means a smaller total resistance.
+  hints:
+  - Think about what an extra path does to the current from the battery.
+  correct: D
+  options:
+  - key: A
+    text: The resistances add up
+    misconception: parallel-adds-resistance
+  - key: B
+    text: The battery gets stronger
+  - key: C
+    text: Current is used up in the first branch
+  - key: D
+    text: The extra path lets more current flow for the same voltage
+- key: q-ol-9
+  kind: numeric
+  stem: A 9 V battery is joined to a 6 Ω and a 3 Ω resistor in parallel. What current does the battery supply, in amperes?
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: ohms-law
+  explanation: The total resistance is 6 × 3 ÷ (6 + 3) = 2 Ω. So I = 9 ÷ 2 = 4.5 A. Check with the branches. 9 ÷ 6 = 1.5 A and 9 ÷ 3 = 3 A, which add to 4.5 A.
+  hints:
+  - Find the total resistance first, then use I = V ÷ R.
+  value: 4.5
+  tolerance: 0.0
+  verify: 9/((6*3)/(6+3))
+- key: q-ol-10
+  kind: numeric
+  stem: A current of 2 A flows through a 10 Ω resistor. How much power does it use, in watts? Use P = I² × R.
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: ohms-law
+  explanation: P = I² × R = 2 × 2 × 10 = 40 W. You get the same from V = I × R = 20 V and P = V × I = 20 × 2 = 40 W.
+  hints:
+  - Square the current first.
+  value: 40
+  tolerance: 0.0
+  verify: 2^2*10
+misconceptions:
+- code: ohm-formula-mixup
+  concept: ohms-law
+  description: Rearranges V, I and R wrongly, for example dividing where the law multiplies.
+- code: series-same-voltage
+  concept: ohms-law
+  description: Thinks resistors in series each get the full battery voltage, when the voltage is shared and the current is the same.
+- code: parallel-same-current
+  concept: ohms-law
+  description: Thinks the current is the same in each parallel branch, when it is the voltage that is the same and the current splits.
+- code: parallel-adds-resistance
+  concept: ohms-law
+  description: Adds resistances in parallel as if they were in series, so expects a total bigger than either resistor.
+cards:
+- key: current-and-ohms-law-card-1
+  concept: ohms-law
+  front: State Ohm's law.
+  back: V = I × R. Voltage in volts, current in amperes, resistance in ohms.
+- key: current-and-ohms-law-card-2
+  concept: ohms-law
+  front: What is the same in a series circuit?
+  back: The current. The voltage is shared and the resistances add.
+- key: current-and-ohms-law-card-3
+  concept: ohms-law
+  front: What is the same in a parallel circuit?
+  back: The voltage across each branch. The current splits.
+- key: current-and-ohms-law-card-4
+  concept: ohms-law
+  front: How do you find the total resistance of two resistors in parallel?
+  back: 1/R = 1/R1 + 1/R2. The total is always smaller than the smallest resistor.

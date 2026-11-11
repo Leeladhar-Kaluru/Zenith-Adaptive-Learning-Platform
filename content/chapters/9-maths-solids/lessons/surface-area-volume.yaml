@@ -1,0 +1,268 @@
+slug: surface-area-volume
+title: Surface area and volume of solids
+minutes: 30
+objectives:
+- Tell surface area (square units) from volume (cubic units)
+- Find the surface area and volume of a cube, cuboid, cylinder, cone and sphere
+- Find the slant height of a cone with the Pythagoras rule
+- Predict how volume changes when a measurement is scaled
+concepts:
+- solids-volume-area
+origin: ai_assisted
+blocks:
+- kind: text
+  heading: Two different questions about a solid
+  html: '<p>A solid is a shape that takes up space, like a box, a can, a party hat or a ball. We ask two different questions
+    about it. <strong>Surface area</strong> asks how much material covers the outside, such as the paper needed to wrap a box.
+    It is measured in <em>square</em> units, like cm². <strong>Volume</strong> asks how much space is inside, such as how
+    much water a bottle holds. It is measured in <em>cubic</em> units, like cm³.</p>'
+- kind: text
+  heading: The formulas
+  html: '<p>Here r is the radius, h is the height and l is the slant height. For a cone, l = √(r² + h²).</p><ul><li><strong>Cube
+    with edge a:</strong> V = a³ and total surface area = 6a².</li><li><strong>Cuboid l × b × h:</strong> V = l × b × h and
+    total surface area = 2(lb + bh + lh).</li><li><strong>Cylinder:</strong> V = πr²h, curved surface = 2πrh and total surface
+    = 2πr(r + h).</li><li><strong>Cone:</strong> V = ⅓πr²h, curved surface = πrl and total surface = πr(r + l).</li><li><strong>Sphere:</strong>
+    V = ⁴⁄₃πr³ and surface area = 4πr².</li></ul>'
+- kind: widget
+  widget: sim_solid
+  config: {shape: cylinder, goal_volume: 100}
+  task: Build a cylinder with a volume of about 100 cubic units. Write down the radius and the height you used, then check them with V = πr²h.
+- kind: example
+  heading: Worked example
+  prompt: A cylinder has radius 7 cm and height 10 cm. Find its volume, its curved surface area and its total surface area. Use π = 22/7.
+  steps:
+  - 'Volume: V = πr²h = 22/7 × 7 × 7 × 10 = 22 × 7 × 10 = 1540 cm³.'
+  - 'Curved surface area: 2πrh = 2 × 22/7 × 7 × 10 = 440 cm².'
+  - 'Total surface area: 2πr(r + h) = 2 × 22/7 × 7 × 17 = 44 × 17 = 748 cm².'
+  - 'Check: the two circles on the ends have area 2 × 22/7 × 49 = 308 cm². Then 440 + 308 = 748 cm², so the total checks out.'
+- kind: example
+  heading: Worked example
+  prompt: A cone has radius 3 cm and height 4 cm. Find its slant height, its volume and its total surface area. Leave π in your answers.
+  steps:
+  - 'Slant height: l = √(r² + h²) = √(9 + 16) = √25 = 5 cm.'
+  - 'Volume: V = ⅓πr²h = ⅓ × π × 9 × 4 = 12π cm³, which is about 37.7 cm³.'
+  - 'Total surface area: πr(r + l) = π × 3 × (3 + 5) = 24π cm², which is about 75.4 cm².'
+  - 'Check the volume against a cylinder with the same base and height: π × 9 × 4 = 36π. The cone holds one third of that, 12π.'
+- kind: widget
+  widget: sim_solid
+  config: {shape: sphere, goal_volume: 113}
+  task: Find the radius that gives a sphere of volume about 113 cubic units. Then double the radius and watch what happens to the volume.
+- kind: text
+  heading: What happens when you scale a solid?
+  html: '<p>Volume does not grow in step with the radius. For a sphere V = ⁴⁄₃πr³, so the radius is multiplied by itself three
+    times. Double the radius and the volume becomes 2 × 2 × 2 = <strong>8 times</strong> as large. The surface area, which
+    uses r², becomes 4 times as large. This is why a small change in size can make a big change in how much a container holds.</p>'
+- kind: callout
+  tone: watch
+  html: Do not mix up the height of a cone with its slant height. The volume uses the height h, straight up. The curved surface uses the slant height l, along the side.
+- kind: callout
+  tone: real
+  html: A tin can is a cylinder, a funnel is a cone and a cricket ball is close to a sphere. Makers of cans work out the surface area to know how much metal to buy and the volume to know how much it holds.
+- kind: check
+  item: q-sv-1
+- kind: check
+  item: q-sv-2
+- kind: check
+  item: q-sv-3
+- kind: summary
+  points:
+  - 'Surface area is the covering, in square units. Volume is the space inside, in cubic units.'
+  - 'Cylinder V = πr²h. Cone V = ⅓πr²h. Sphere V = ⁴⁄₃πr³.'
+  - 'Cone slant height l = √(r² + h²), and its curved surface is πrl.'
+  - 'Doubling the radius of a sphere makes the volume 8 times as large.'
+items:
+- key: q-sv-1
+  kind: mcq
+  stem: In which units do we measure the volume of a box?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: solids-volume-area
+  explanation: Volume measures space, so it uses cubic units such as cm³.
+  hints:
+  - Volume is three-dimensional.
+  correct: C
+  options:
+  - key: A
+    text: cm
+  - key: B
+    text: cm²
+    misconception: area-vs-volume-units
+  - key: C
+    text: cm³
+  - key: D
+    text: Any unit
+- key: q-sv-2
+  kind: numeric
+  stem: A cube has edges of 4 cm. What is its volume in cm³?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: solids-volume-area
+  explanation: V = a³ = 4 × 4 × 4 = 64 cm³.
+  hints:
+  - Multiply the edge by itself three times.
+  value: 64
+  tolerance: 0.0
+  verify: 4^3
+- key: q-sv-3
+  kind: numeric
+  stem: A cube has edges of 3 cm. What is its total surface area in cm²?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: solids-volume-area
+  explanation: A cube has 6 equal square faces. Each has area 3 × 3 = 9 cm², so the total is 6 × 9 = 54 cm².
+  hints:
+  - Count the faces.
+  value: 54
+  tolerance: 0.0
+  verify: 6*3^2
+- key: q-sv-4
+  kind: numeric
+  stem: A cuboid is 5 cm long, 4 cm wide and 3 cm high. What is its volume in cm³?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: solids-volume-area
+  explanation: V = l × b × h = 5 × 4 × 3 = 60 cm³.
+  hints:
+  - Multiply the three edges.
+  value: 60
+  tolerance: 0.0
+  verify: 5*4*3
+- key: q-sv-5
+  kind: numeric
+  stem: The same cuboid is 5 cm long, 4 cm wide and 3 cm high. What is its total surface area in cm²?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: solids-volume-area
+  explanation: Total surface area = 2(lb + bh + lh) = 2(20 + 12 + 15) = 2 × 47 = 94 cm².
+  hints:
+  - There are three pairs of faces.
+  value: 94
+  tolerance: 0.0
+  verify: 2*(5*4+4*3+5*3)
+- key: q-sv-6
+  kind: numeric
+  stem: A cylinder has radius 7 cm and height 10 cm. Use π = 22/7. What is its volume in cm³?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: solids-volume-area
+  explanation: V = πr²h = 22/7 × 49 × 10 = 1540 cm³.
+  hints:
+  - Find the area of the circle first, then multiply by the height.
+  value: 1540
+  tolerance: 0.0
+  verify: (22/7)*7^2*10
+- key: q-sv-7
+  kind: numeric
+  stem: A sphere has radius 21 cm. Use π = 22/7. What is its volume in cm³?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: solids-volume-area
+  explanation: V = ⁴⁄₃πr³ = 4/3 × 22/7 × 21 × 21 × 21 = 38808 cm³.
+  hints:
+  - Cube the radius first, then multiply.
+  value: 38808
+  tolerance: 0.0
+  verify: (4/3)*(22/7)*21^3
+- key: q-sv-8
+  kind: mcq
+  stem: The radius of a sphere is doubled. What happens to its volume?
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: solids-volume-area
+  explanation: V = ⁴⁄₃πr³, so doubling r multiplies the volume by 2 × 2 × 2 = 8.
+  hints:
+  - The radius appears three times in the formula.
+  correct: D
+  options:
+  - key: A
+    text: It doubles
+    misconception: volume-scales-with-radius
+  - key: B
+    text: It becomes 4 times as large
+    misconception: volume-scales-with-radius
+  - key: C
+    text: It becomes 6 times as large
+  - key: D
+    text: It becomes 8 times as large
+- key: q-sv-9
+  kind: numeric
+  stem: A cone has radius 3 cm and height 4 cm. What is its slant height in cm?
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: solids-volume-area
+  explanation: l = √(r² + h²) = √(9 + 16) = √25 = 5 cm.
+  hints:
+  - The radius, the height and the slant height form a right-angled triangle.
+  value: 5
+  tolerance: 0.0
+  verify: sqrt(3^2+4^2)
+- key: q-sv-10
+  kind: numeric
+  stem: A cone has radius 7 cm and height 24 cm. Use π = 22/7. What is its curved surface area in cm²?
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: solids-volume-area
+  explanation: The slant height is l = √(49 + 576) = √625 = 25 cm. Curved surface area = πrl = 22/7 × 7 × 25 = 550 cm².
+  hints:
+  - Find the slant height first.
+  value: 550
+  tolerance: 0.0
+  verify: (22/7)*7*25
+- key: q-sv-11
+  kind: mcq
+  stem: A cone and a cylinder have the same radius and the same height. How does the volume of the cone compare?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: solids-volume-area
+  explanation: The volume of a cone is one third of the volume of a cylinder with the same base and height.
+  hints:
+  - Compare V = πr²h with V = ⅓πr²h.
+  correct: B
+  options:
+  - key: A
+    text: Half as much
+    misconception: cone-half-cylinder
+  - key: B
+    text: One third as much
+  - key: C
+    text: The same
+  - key: D
+    text: Twice as much
+misconceptions:
+- code: area-vs-volume-units
+  concept: solids-volume-area
+  description: Uses square units for a volume, mixing up the covering of a solid with the space inside it.
+- code: volume-scales-with-radius
+  concept: solids-volume-area
+  description: Thinks volume doubles or quadruples when the radius doubles, forgetting the radius is cubed in a sphere.
+- code: cone-half-cylinder
+  concept: solids-volume-area
+  description: Thinks a cone holds half as much as a cylinder of the same base and height, when it holds one third.
+cards:
+- key: surface-area-volume-card-1
+  concept: solids-volume-area
+  front: What is the volume of a cylinder?
+  back: V = πr²h.
+- key: surface-area-volume-card-2
+  concept: solids-volume-area
+  front: What is the volume of a cone, and how is it related to a cylinder?
+  back: V = ⅓πr²h, one third of the cylinder with the same base and height.
+- key: surface-area-volume-card-3
+  concept: solids-volume-area
+  front: What are the volume and surface area of a sphere?
+  back: V = ⁴⁄₃πr³ and surface area = 4πr².
+- key: surface-area-volume-card-4
+  concept: solids-volume-area
+  front: How do you find the slant height of a cone?
+  back: l = √(r² + h²), from the right-angled triangle made by r, h and l.

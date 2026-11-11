@@ -1,0 +1,11 @@
+slug: 10-science-light-refraction
+board: cbse
+curriculum: NCERT current editions (to be confirmed by a reviewer)
+grade: 10
+subject: science
+title: 'Light: Refraction'
+summary: See why light bends when it changes material, and use refractive index and Snell's law to predict how much.
+concepts:
+- id: refraction-light
+lessons:
+- bending-of-light

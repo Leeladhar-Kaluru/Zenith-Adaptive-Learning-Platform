@@ -1,0 +1,11 @@
+slug: 9-science-gravity
+board: cbse
+curriculum: NCERT current editions (to be confirmed by a reviewer)
+grade: 9
+subject: science
+title: Motion under gravity
+summary: Study things that fall or are thrown straight up, using the equations of motion with g.
+concepts:
+- id: free-fall
+lessons:
+- falling-and-throwing

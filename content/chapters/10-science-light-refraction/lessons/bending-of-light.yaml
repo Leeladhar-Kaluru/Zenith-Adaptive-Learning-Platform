@@ -1,0 +1,310 @@
+slug: bending-of-light
+title: Why light bends
+minutes: 25
+objectives:
+- Explain refraction as a change of speed when light enters a new material
+- Use n = c / v and Snell's law to find a refracted angle
+- Decide whether light bends toward or away from the normal
+- Explain total internal reflection and find a critical angle
+concepts:
+- refraction-light
+origin: ai_assisted
+blocks:
+- kind: text
+  heading: Light changes direction at a boundary
+  html: '<p>A pencil standing in a glass of water looks bent at the surface. The pencil is straight. The light coming from
+    it changes direction when it leaves the water and enters the air. This bending of light as it passes from one transparent
+    material into another is called <strong>refraction</strong>.</p><p>Light bends because it travels at different speeds
+    in different materials. It is fastest in empty space and slows down inside water, glass and diamond.</p>'
+- kind: figure
+  svg: <svg viewBox="0 0 300 220" role="img"><rect x="0" y="110" width="300" height="110" fill="#6cb7ff" opacity=".35"/><line
+    x1="0" y1="110" x2="300" y2="110" stroke="#14193a" stroke-width="3"/><line x1="150" y1="10" x2="150" y2="210" stroke="#14193a"
+    stroke-width="2" stroke-dasharray="5 5"/><line x1="60" y1="20" x2="150" y2="110" stroke="#ffb800" stroke-width="4"/><line
+    x1="150" y1="110" x2="205" y2="200" stroke="#ffb800" stroke-width="4"/><text x="8" y="16" font-size="13" font-weight="700"
+    fill="currentColor">Air</text><text x="8" y="212" font-size="13" font-weight="700" fill="currentColor">Water</text><text
+    x="158" y="26" font-size="12" fill="currentColor">normal</text><text x="70" y="62" font-size="12" font-weight="700" fill="currentColor">incident
+    ray</text><text x="190" y="160" font-size="12" font-weight="700" fill="currentColor">refracted ray</text></svg>
+  alt: A ray of light travels down through air, meets the surface of water, and bends toward the dashed normal line as it continues into the water.
+  caption: Light going from air into water bends toward the normal. Angles are always measured from the normal.
+- kind: text
+  heading: Refractive index
+  html: '<p>The <strong>refractive index</strong> n of a material tells you how much it slows light down. It is the speed of
+    light in empty space divided by the speed of light in the material: <strong>n = c / v</strong>. In empty space c is about
+    3 × 10<sup>8</sup> m/s.</p><p>Air is about 1.0, water is 1.33, glass is about 1.5 and diamond is 2.42. A bigger n means
+    slower light. We call a material with a larger n <em>optically denser</em>. This has nothing to do with how heavy it is.</p>'
+- kind: text
+  heading: Snell's law
+  html: '<p>The angle that a ray makes with the normal is called the angle of incidence (before) or the angle of refraction
+    (after). Snell''s law links them: <strong>n<sub>1</sub> sin θ<sub>1</sub> = n<sub>2</sub> sin θ<sub>2</sub></strong>.</p><p>When
+    light enters a denser material (larger n) it slows down and bends <strong>toward</strong> the normal. When it enters
+    a rarer material (smaller n) it speeds up and bends <strong>away from</strong> the normal. A ray that hits the boundary
+    straight on, along the normal, does not bend at all.</p>'
+- kind: widget
+  widget: sim_refraction
+  config: {n1: 1, n2: 1.5, angle0: 10, goal_angle: 25}
+  task: Light goes from air into glass. Change the angle of incidence until the ray inside the glass makes 25° with the normal. What angle of incidence did you need?
+- kind: example
+  heading: Worked example
+  prompt: A ray in air hits glass (n = 1.5) at an angle of incidence of 30°. Find the angle of refraction.
+  steps:
+  - 'Write Snell''s law: n1 sin θ1 = n2 sin θ2. Here n1 = 1.0, θ1 = 30° and n2 = 1.5.'
+  - 'sin 30° = 0.5, so the left side is 1.0 × 0.5 = 0.5. This gives 0.5 = 1.5 × sin θ2.'
+  - 'sin θ2 = 0.5 ÷ 1.5 = 0.333. The angle whose sine is 0.333 is about 19.5°.'
+  - 'Check the direction. Light entered glass, which is denser, so it bent toward the normal. 19.5° is smaller than 30°, so this makes sense.'
+- kind: text
+  heading: Total internal reflection
+  html: '<p>Now turn it around. Light goes from glass into air, from a denser material to a rarer one. It bends <em>away</em>
+    from the normal. As you increase the angle of incidence, the refracted ray swings closer and closer to the boundary.
+    At one special angle it runs exactly along the boundary. This is the <strong>critical angle</strong>. Past it, no light
+    escapes at all and everything reflects back inside.</p><p>This is <strong>total internal reflection</strong>. It needs
+    two things: light must travel from a denser to a rarer material, and the angle of incidence must be bigger than the critical
+    angle. At the critical angle sin c = n<sub>2</sub> ÷ n<sub>1</sub>.</p>'
+- kind: widget
+  widget: sim_refraction
+  config: {n1: 1.5, n2: 1, angle0: 20, goal: tir}
+  task: Light is travelling inside glass toward air. Raise the angle of incidence until no light escapes. Note the angle where the refracted ray disappears.
+- kind: example
+  heading: Worked example
+  prompt: Find the critical angle for light going from glass (n = 1.5) into air (n = 1.0).
+  steps:
+  - 'At the critical angle the refracted ray travels along the boundary, so θ2 = 90° and sin θ2 = 1.'
+  - 'Snell''s law gives 1.5 × sin c = 1.0 × 1. So sin c = 1 ÷ 1.5 = 0.667.'
+  - 'The angle whose sine is 0.667 is about 41.8°. The critical angle of glass in air is about 42°.'
+  - 'Any ray inside the glass that meets the surface at more than about 42° is totally reflected.'
+- kind: callout
+  tone: watch
+  html: Always measure angles from the normal, the line at right angles to the surface. Measuring from the surface itself gives wrong answers.
+- kind: callout
+  tone: real
+  html: Optical fibres carry internet signals as light that keeps reflecting totally from the inside wall of a thin glass strand. A diamond sparkles because its critical angle is only about 24°, so light inside it is reflected many times before it escapes.
+- kind: check
+  item: q-rl-1
+- kind: check
+  item: q-rl-2
+- kind: check
+  item: q-rl-3
+- kind: summary
+  points:
+  - 'Refraction is the bending of light when its speed changes between materials. n = c / v.'
+  - 'Snell''s law: n1 sin θ1 = n2 sin θ2, with angles measured from the normal.'
+  - 'Into a denser material light bends toward the normal. Into a rarer one it bends away.'
+  - 'Total internal reflection needs dense to rare and an angle past the critical angle, where sin c = n2 / n1.'
+items:
+- key: q-rl-1
+  kind: mcq
+  stem: What is refraction?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: refraction-light
+  explanation: Refraction is the bending of light as it passes from one material into another, because its speed changes.
+  hints:
+  - Does the light bounce back, or does it carry on into the new material?
+  correct: B
+  options:
+  - key: A
+    text: Light bouncing back from a surface
+    misconception: refraction-is-reflection
+  - key: B
+    text: Light bending as it passes from one material into another
+  - key: C
+    text: Light splitting into colours only
+  - key: D
+    text: Light stopping at a surface
+- key: q-rl-2
+  kind: mcq
+  stem: A ray travels from air into glass at an angle. How does it bend?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: refraction-light
+  explanation: Glass is optically denser than air, so light slows down and bends toward the normal.
+  hints:
+  - Which material slows light down more?
+  correct: A
+  options:
+  - key: A
+    text: Toward the normal
+  - key: B
+    text: Away from the normal
+    misconception: denser-bends-away
+  - key: C
+    text: It does not bend
+  - key: D
+    text: It turns back into the air
+    misconception: refraction-is-reflection
+- key: q-rl-3
+  kind: numeric
+  stem: Light travels in a material at 2 × 10^8 m/s. The speed in empty space is 3 × 10^8 m/s. What is the refractive index of the material?
+  difficulty: standard
+  purpose: check
+  concepts:
+  - id: refraction-light
+  explanation: n = c / v = 3 × 10^8 ÷ 2 × 10^8 = 1.5.
+  hints:
+  - Divide the speed in empty space by the speed in the material.
+  value: 1.5
+  tolerance: 0.0
+  verify: 3/2
+- key: q-rl-4
+  kind: numeric
+  stem: Light goes from air (n = 1) into a material with n = 2. The angle of incidence has sin θ1 = 0.5. What is sin θ2?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: refraction-light
+  explanation: Snell's law gives 1 × 0.5 = 2 × sin θ2, so sin θ2 = 0.5 ÷ 2 = 0.25.
+  hints:
+  - Write n1 sin θ1 = n2 sin θ2 and put in the numbers.
+  value: 0.25
+  tolerance: 0.0
+  verify: (1/2)/2
+- key: q-rl-5
+  kind: mcq
+  stem: Which pair of conditions is needed for total internal reflection?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: refraction-light
+  explanation: Total internal reflection needs light going from a denser to a rarer material, with an angle of incidence bigger than the critical angle.
+  hints:
+  - Think about which direction makes light bend away from the normal.
+  correct: C
+  options:
+  - key: A
+    text: Light going from a rarer to a denser material, at any angle
+    misconception: tir-needs-no-condition
+  - key: B
+    text: Light going from a denser to a rarer material, at any angle
+    misconception: tir-needs-no-condition
+  - key: C
+    text: Light going from a denser to a rarer material, with an angle past the critical angle
+  - key: D
+    text: Light hitting a surface straight on
+- key: q-rl-6
+  kind: mcq
+  stem: Why does a pencil in a glass of water look bent at the surface?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: refraction-light
+  explanation: Light from the part under water bends away from the normal as it goes into air, so the part under water seems to be in a different place.
+  hints:
+  - The pencil is straight. Something happens to the light.
+  correct: D
+  options:
+  - key: A
+    text: Water bends the pencil
+  - key: B
+    text: The pencil reflects light back into the water
+    misconception: refraction-is-reflection
+  - key: C
+    text: Air is heavier than water
+  - key: D
+    text: Light from the pencil changes direction as it leaves the water
+- key: q-rl-7
+  kind: mcq
+  stem: A ray inside glass (n = 1.5) hits the glass-air surface at 45°. The critical angle is about 42°. What happens?
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: refraction-light
+  explanation: 45° is bigger than the critical angle, and the light is going from glass to air, so it is totally reflected back into the glass.
+  hints:
+  - Compare 45° with the critical angle.
+  correct: B
+  options:
+  - key: A
+    text: It refracts out into the air, bending toward the normal
+    misconception: denser-bends-away
+  - key: B
+    text: It is totally reflected back into the glass
+  - key: C
+    text: It travels along the surface
+  - key: D
+    text: It refracts out into the air, bending away from the normal
+    misconception: tir-needs-no-condition
+- key: q-rl-8
+  kind: mcq
+  stem: Light travels in air, water, glass and diamond. In which one does it travel fastest?
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: refraction-light
+  explanation: Light travels fastest where n is smallest. Air has the smallest refractive index, about 1.0.
+  hints:
+  - A bigger refractive index means slower light.
+  correct: A
+  options:
+  - key: A
+    text: Air
+  - key: B
+    text: Water
+  - key: C
+    text: Glass
+  - key: D
+    text: Diamond
+    misconception: higher-n-faster
+- key: q-rl-9
+  kind: numeric
+  stem: Light goes from a material with n = 2 into air (n = 1). What is the critical angle, in degrees?
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: refraction-light
+  explanation: At the critical angle sin c = n2 / n1 = 1 / 2. The angle whose sine is one half is 30°.
+  hints:
+  - sin c = n2 ÷ n1. Which angle has a sine of 0.5?
+  value: 30
+  tolerance: 0.0
+  verify: asin(1/2)*180/pi
+- key: q-rl-10
+  kind: mcq
+  stem: Why does a diamond sparkle so much?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: refraction-light
+  explanation: Diamond has a very high refractive index, so its critical angle is small, about 24°. Light inside it is totally reflected again and again before it escapes.
+  hints:
+  - Think about the critical angle of a material with a very large n.
+  correct: C
+  options:
+  - key: A
+    text: It makes its own light
+  - key: B
+    text: Light cannot enter a diamond
+  - key: C
+    text: Its small critical angle makes light reflect totally many times inside it
+  - key: D
+    text: Diamond is heavy
+misconceptions:
+- code: refraction-is-reflection
+  concept: refraction-light
+  description: Mixes up refraction, where light carries on into the new material and bends, with reflection, where it bounces back.
+- code: denser-bends-away
+  concept: refraction-light
+  description: Thinks light bends away from the normal when it enters a denser material, when it bends toward it.
+- code: tir-needs-no-condition
+  concept: refraction-light
+  description: Thinks total internal reflection can happen for any ray, instead of needing dense to rare and an angle past the critical angle.
+- code: higher-n-faster
+  concept: refraction-light
+  description: Thinks light moves faster in a material with a higher refractive index, when it moves slower.
+cards:
+- key: bending-of-light-card-1
+  concept: refraction-light
+  front: What is the formula for refractive index?
+  back: n = c / v, the speed of light in empty space divided by its speed in the material.
+- key: bending-of-light-card-2
+  concept: refraction-light
+  front: State Snell's law.
+  back: n1 sin θ1 = n2 sin θ2, with both angles measured from the normal.
+- key: bending-of-light-card-3
+  concept: refraction-light
+  front: When does light bend toward the normal?
+  back: When it enters a denser material, where n is larger and light is slower.
+- key: bending-of-light-card-4
+  concept: refraction-light
+  front: What two conditions give total internal reflection?
+  back: Light goes from a denser to a rarer material, and the angle of incidence is bigger than the critical angle.

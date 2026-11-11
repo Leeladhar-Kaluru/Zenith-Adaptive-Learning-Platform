@@ -4,3 +4,6 @@ concepts:
   - {id: acids-bases, title: "Acids, bases and indicators", grade: 7, subject: science, description: "Telling acids and bases apart with litmus and safe everyday examples.", keywords: [acid, base, indicator, litmus]}
   - {id: pressure-force-area, title: "Force, area and pressure", grade: 8, subject: science, description: "Pressure as force on each unit of area, and why a small area gives a large pressure.", keywords: [pressure, force, area, pascal],
      prerequisites: []}
+  - {id: refraction-light, title: "Refraction of light", grade: 10, subject: science, description: "How light bends between materials, refractive index, Snell's law and total internal reflection.", keywords: [refraction, refractive index, Snell, critical angle, total internal reflection]}
+  - {id: ohms-law, title: "Electric current and Ohm's law", grade: 10, subject: science, description: "Current, potential difference and resistance, and how resistors combine in series and in parallel.", keywords: [current, voltage, resistance, Ohm, series, parallel]}
+  - {id: free-fall, title: "Motion under gravity", grade: 9, subject: science, description: "Objects thrown or dropped move under gravity alone: acceleration, time, height and range.", keywords: [gravity, free fall, acceleration, projectile, g]}

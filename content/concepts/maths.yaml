@@ -34,3 +34,4 @@ concepts:
      prerequisites: [{id: whole-number-ops}]}
   - {id: squares-roots, title: Squares and square roots, grade: 8, subject: maths, description: "Squaring a number and finding the square root of a perfect square.", keywords: [square, square root, perfect square],
      prerequisites: [{id: whole-number-ops}]}
+  - {id: solids-volume-area, title: "Surface area and volume of solids", grade: 9, subject: maths, description: "Surface area and volume of cubes, cuboids, cylinders, cones and spheres.", keywords: [volume, surface area, cylinder, cone, sphere, cuboid]}

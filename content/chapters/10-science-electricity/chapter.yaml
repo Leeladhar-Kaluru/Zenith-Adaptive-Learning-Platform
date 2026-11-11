@@ -1,0 +1,11 @@
+slug: 10-science-electricity
+board: cbse
+curriculum: NCERT current editions (to be confirmed by a reviewer)
+grade: 10
+subject: science
+title: Electricity
+summary: Connect current, voltage and resistance with Ohm's law, and see how resistors share current in series and in parallel.
+concepts:
+- id: ohms-law
+lessons:
+- current-and-ohms-law

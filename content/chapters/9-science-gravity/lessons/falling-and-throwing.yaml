@@ -1,0 +1,271 @@
+slug: falling-and-throwing
+title: Falling and throwing
+minutes: 25
+objectives:
+- Explain that all objects fall with the same acceleration g when air is ignored
+- Use v = u + at, s = ut + ½at² and v² = u² + 2as for falling and rising objects
+- Describe the motion of a ball thrown straight up at each stage
+- Compare falling on Earth and on the Moon
+concepts:
+- free-fall
+origin: ai_assisted
+blocks:
+- kind: text
+  heading: Gravity pulls everything the same way
+  html: '<p>When you drop a ball it speeds up as it falls. Gravity pulls it toward the Earth, so its speed grows every second.
+    If we ignore air, <strong>every</strong> falling object gains speed at the same rate, whatever its mass. This rate is
+    called the <strong>acceleration due to gravity</strong>, g. Near the Earth''s surface g is about 9.8 m/s². To keep sums
+    simple we often use g = 10 m/s².</p><p>g = 10 m/s² means that each second a falling object gains 10 m/s of speed. A stone
+    dropped from rest is moving at 10 m/s after 1 s, 20 m/s after 2 s and 30 m/s after 3 s.</p>'
+- kind: text
+  heading: The three equations
+  html: '<p>For motion in a straight line with steady acceleration a, starting speed u, final speed v, time t and distance
+    s: <strong>v = u + a t</strong>, <strong>s = u t + ½ a t²</strong> and <strong>v² = u² + 2 a s</strong>.</p><p>For falling
+    and throwing, a = g. Choose one direction as positive and stay with it. If up is positive, then a = −g for the whole
+    flight, whether the object is going up or coming down.</p>'
+- kind: example
+  heading: Worked example
+  prompt: A stone is dropped from the top of a 45 m building. How long does it take to reach the ground and how fast is it going then? Take g = 10 m/s².
+  steps:
+  - 'It is dropped, so the starting speed u = 0. Take down as positive, so a = 10 m/s² and s = 45 m.'
+  - 'Use s = ut + ½at². This gives 45 = 0 + ½ × 10 × t² = 5t², so t² = 9 and t = 3 s.'
+  - 'Use v = u + at. This gives v = 0 + 10 × 3 = 30 m/s.'
+  - 'Check with v² = u² + 2as = 0 + 2 × 10 × 45 = 900, and the square root of 900 is 30 m/s. The two methods agree.'
+- kind: text
+  heading: Throwing a ball straight up
+  html: '<p>Now throw a ball straight up. It slows down as it rises because gravity pulls against its motion. At the very top
+    its speed is <strong>zero for an instant</strong>, and then it speeds up on the way down. The acceleration is g downward
+    at every moment, even at the top. Speed is zero there but the acceleration is not.</p><p>Going up and coming down take
+    the same time, and the ball comes back to your hand with the same speed it left with, only now moving downward.</p>'
+- kind: widget
+  widget: sim_projectile
+  config: {v0: 20, angle0: 90, g0: 9.8}
+  task: Throw the ball straight up at 20 m/s on Earth and note the highest point and the flight time. Then press Moon and throw it again. Compare the two.
+- kind: example
+  heading: Worked example
+  prompt: A ball is thrown straight up at 20 m/s. Find the time to reach the top, the greatest height and the total time in the air. Take g = 10 m/s².
+  steps:
+  - 'Take up as positive. u = 20 m/s, a = −10 m/s², and v = 0 at the top.'
+  - 'Time to the top: v = u + at gives 0 = 20 − 10t, so t = 2 s.'
+  - 'Greatest height: v² = u² + 2as gives 0 = 400 − 20s, so s = 20 m.'
+  - 'Going up takes 2 s and coming down takes 2 s, so the total time in the air is 4 s.'
+- kind: callout
+  tone: watch
+  html: Heavier things do not fall faster. In air a feather falls slowly because air pushes against it. On the Moon there is no air, and a hammer and a feather land together.
+- kind: callout
+  tone: real
+  html: On the Moon g is only about 1.6 m/s², about one sixth of the Earth's value. The same throw goes much higher and takes much longer, which you can see in the simulation above.
+- kind: check
+  item: q-ff-1
+- kind: check
+  item: q-ff-2
+- kind: check
+  item: q-ff-3
+- kind: summary
+  points:
+  - 'Without air, all objects fall with the same acceleration g, about 9.8 m/s² on Earth.'
+  - 'v = u + at, s = ut + ½at² and v² = u² + 2as, with a = g for falling and throwing.'
+  - 'At the top of a throw the speed is zero but the acceleration is still g.'
+  - 'An object thrown up returns to the start with the same speed, and up and down take equal times.'
+items:
+- key: q-ff-1
+  kind: mcq
+  stem: A heavy stone and a light stone are dropped together from the same height in a vacuum. What happens?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: free-fall
+  explanation: Without air, all objects fall with the same acceleration g, so both stones land together.
+  hints:
+  - Does the acceleration due to gravity depend on mass?
+  correct: C
+  options:
+  - key: A
+    text: The heavy stone lands first
+    misconception: heavier-falls-faster
+  - key: B
+    text: The light stone lands first
+  - key: C
+    text: They land at the same time
+  - key: D
+    text: Neither falls
+- key: q-ff-2
+  kind: mcq
+  stem: A ball is thrown straight up. At its highest point, which statement is true?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: free-fall
+  explanation: At the top the ball is momentarily at rest, but gravity still pulls on it, so its acceleration is still g downward.
+  hints:
+  - Is gravity switched off when the ball stops for an instant?
+  correct: B
+  options:
+  - key: A
+    text: Its speed is zero and its acceleration is zero
+    misconception: zero-speed-zero-acceleration
+  - key: B
+    text: Its speed is zero but its acceleration is g downward
+  - key: C
+    text: Its acceleration is g upward
+  - key: D
+    text: Its speed is greatest
+- key: q-ff-3
+  kind: numeric
+  stem: A stone is dropped from rest. What is its speed after 3 s, in m/s? Take g = 10 m/s².
+  difficulty: standard
+  purpose: check
+  concepts:
+  - id: free-fall
+  explanation: v = u + at = 0 + 10 × 3 = 30 m/s.
+  hints:
+  - Starting from rest, u = 0.
+  value: 30
+  tolerance: 0.0
+  verify: 10*3
+- key: q-ff-4
+  kind: numeric
+  stem: A ball is thrown straight up at 30 m/s. How long does it take to reach its highest point, in seconds? Take g = 10 m/s².
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: free-fall
+  explanation: At the top v = 0, so 0 = 30 − 10t and t = 3 s.
+  hints:
+  - Speed is zero at the top.
+  value: 3
+  tolerance: 0.0
+  verify: 30/10
+- key: q-ff-5
+  kind: numeric
+  stem: A stone is dropped from rest. How far does it fall in 2 s, in metres? Take g = 10 m/s².
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: free-fall
+  explanation: s = ut + ½at² = 0 + ½ × 10 × 2² = 20 m.
+  hints:
+  - Use s = ½ g t² because u = 0.
+  value: 20
+  tolerance: 0.0
+  verify: (1/2)*10*2^2
+- key: q-ff-6
+  kind: mcq
+  stem: An astronaut drops a hammer and a feather together on the Moon. What happens?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: free-fall
+  explanation: The Moon has no air, so nothing resists the feather. Both fall with the same acceleration and land together.
+  hints:
+  - What slows a feather down on Earth?
+  correct: A
+  options:
+  - key: A
+    text: They land together
+  - key: B
+    text: The hammer lands first because it is heavier
+    misconception: heavier-falls-faster
+  - key: C
+    text: The feather floats away
+  - key: D
+    text: Neither falls on the Moon
+    misconception: gravity-only-on-earth
+- key: q-ff-7
+  kind: mcq
+  stem: A ball is thrown straight up at 20 m/s and caught at the same height on the way down. How fast is it moving when caught?
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: free-fall
+  explanation: By symmetry the ball returns with the speed it left with, 20 m/s, now moving downward.
+  hints:
+  - Use v² = u² + 2as with s = 0.
+  correct: D
+  options:
+  - key: A
+    text: 0 m/s
+  - key: B
+    text: 10 m/s, because it slowed down
+    misconception: returns-slower
+  - key: C
+    text: 40 m/s
+  - key: D
+    text: 20 m/s, moving downward
+- key: q-ff-8
+  kind: numeric
+  stem: A ball is thrown straight up at 20 m/s. What is the greatest height it reaches, in metres? Take g = 10 m/s².
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: free-fall
+  explanation: At the top v = 0. So 0 = 20² − 2 × 10 × h, which gives h = 400 ÷ 20 = 20 m.
+  hints:
+  - Use v² = u² + 2as with v = 0 and a = −10.
+  value: 20
+  tolerance: 0.0
+  verify: 20^2/(2*10)
+- key: q-ff-9
+  kind: numeric
+  stem: A stone dropped from a cliff takes 4 s to hit the ground. How high is the cliff, in metres? Take g = 10 m/s².
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: free-fall
+  explanation: s = ½ g t² = ½ × 10 × 4² = 80 m.
+  hints:
+  - Start from rest, so u = 0.
+  value: 80
+  tolerance: 0.0
+  verify: (1/2)*10*4^2
+- key: q-ff-10
+  kind: mcq
+  stem: The same ball is thrown straight up at the same speed on the Moon, where g is smaller. Compared with Earth, what happens?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: free-fall
+  explanation: With a smaller g the ball slows down more gently, so it rises higher and stays up longer.
+  hints:
+  - Gravity slows the ball. What if gravity is weaker?
+  correct: B
+  options:
+  - key: A
+    text: It goes to the same height
+    misconception: gravity-only-on-earth
+  - key: B
+    text: It goes higher and stays up longer
+  - key: C
+    text: It goes less high
+  - key: D
+    text: It does not come back
+misconceptions:
+- code: heavier-falls-faster
+  concept: free-fall
+  description: Thinks heavier objects fall faster, forgetting that without air every object has the same acceleration.
+- code: zero-speed-zero-acceleration
+  concept: free-fall
+  description: Thinks that when speed is zero at the top of a throw the acceleration is zero too, when gravity still pulls with g.
+- code: returns-slower
+  concept: free-fall
+  description: Thinks a ball thrown up comes back slower than it left, when it returns with the same speed.
+- code: gravity-only-on-earth
+  concept: free-fall
+  description: Treats g as the same everywhere, or as absent away from Earth, instead of depending on the planet or moon.
+cards:
+- key: falling-and-throwing-card-1
+  concept: free-fall
+  front: What is the acceleration due to gravity near the Earth?
+  back: About 9.8 m/s² downward, often taken as 10 m/s² in sums.
+- key: falling-and-throwing-card-2
+  concept: free-fall
+  front: Write the three equations of motion.
+  back: v = u + at, s = ut + ½at², v² = u² + 2as.
+- key: falling-and-throwing-card-3
+  concept: free-fall
+  front: What is the speed and acceleration at the top of a throw?
+  back: Speed is zero for an instant, and acceleration is still g downward.
+- key: falling-and-throwing-card-4
+  concept: free-fall
+  front: Why does a feather fall slowly on Earth but not on the Moon?
+  back: On Earth air resists the feather. The Moon has no air, so both fall together.

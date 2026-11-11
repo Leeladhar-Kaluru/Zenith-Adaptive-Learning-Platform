@@ -1,0 +1,11 @@
+slug: 9-maths-solids
+board: cbse
+curriculum: NCERT current editions (to be confirmed by a reviewer)
+grade: 9
+subject: maths
+title: Surface areas and volumes
+summary: Find the surface area and volume of cuboids, cylinders, cones and spheres.
+concepts:
+- id: solids-volume-area
+lessons:
+- surface-area-volume

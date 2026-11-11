@@ -161,3 +161,17 @@ Needs you:
 3. Confirm `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY` are set in Vercel (needed for live pings).
 4. Wikimedia contact: tell me an email or page you own and monitor for `BOT_CONTACT`.
 5. Vercel connector needs team access authorized if you want me to inspect deployments directly.
+
+## Lessons uploaded for review, datasets imported (2026-11-11, later)
+
+Four new lessons were authored (original text, original SVG, `ai_assisted`), passed every automated gate (SymPy-verified numeric answers, readability for the class, depth, tagged misconceptions, credits) and were imported to production as `in_review`:
+- Class 10 Science, Light: "Why light bends" (refraction simulation, Snell's law, critical angle)
+- Class 10 Science, Electricity: "Current, voltage and Ohm's law" (circuit simulation)
+- Class 9 Science, Motion under gravity: "Falling and throwing" (projectile simulation)
+- Class 9 Maths, Surface areas and volumes: "Surface area and volume of solids" (3D solids simulation)
+
+They are NOT published: project rule 6 requires a named reviewer's approval and AI drafts may never self-publish. Approve them in the reviewer queue (`/review`). Importing also queued revised versions of 21 existing lessons (7 `in_review`, 14 `draft` that fail the depth gate); the 21 published versions are untouched and still live.
+
+Datasets imported to production (World Bank, CC BY 4.0, attribution stored, pending approval): India total population (SP.POP.TOTL, 66 rows) and life expectancy at birth (SP.DYN.LE00.IN, 65 rows). A lesson can only use them after a reviewer approves the asset (`python -m app.cli asset approve <id> <reviewer-email>`).
+
+Still not done: Indian states, rivers and mountains maps (needs a Natural Earth file downloaded, which I have not done without your say-so), Data Stories lessons that use the datasets, Live Books depth for the 14 draft lessons, more Class 9 and 10 chapters, knowledge-map and offline upgrades.

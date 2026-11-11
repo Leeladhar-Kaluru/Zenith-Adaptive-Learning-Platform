@@ -1,0 +1,314 @@
+slug: magnets-and-poles
+title: Magnets and their poles
+minutes: 20
+objectives:
+- Name the two poles of a magnet and say what happens when poles meet
+- Sort materials into magnetic and non-magnetic
+- Explain how a compass shows direction and why the Earth acts like a magnet
+- Handle and store magnets safely
+concepts:
+- magnets-poles
+origin: ai_assisted
+blocks:
+- kind: text
+  heading: A force you cannot see
+  html: '<p>A fridge door stays shut because of a small magnet in its edge. You cannot see anything pulling, yet the door is held tight. A <strong>magnet</strong> is an object that can pull some materials toward it. This pull is called the <strong>magnetic force</strong>. It can act through a gap, and even through a thin sheet of paper.</p><p>Every magnet has two ends where the pull is strongest. These ends are called <strong>poles</strong>. Dip a bar magnet in iron filings (tiny bits of iron). Most of the filings stick near the two ends and very few stick in the middle.</p>'
+- kind: figure
+  svg: <svg viewBox="0 0 300 150" role="img"><rect x="30" y="20" width="110" height="34" fill="#e5484d"/><rect x="140" y="20" width="110" height="34" fill="#3e7bfa"/><text x="76" y="43" font-size="16" font-weight="700" fill="#ffffff">N</text><text x="188" y="43" font-size="16" font-weight="700" fill="#ffffff">S</text><rect x="30" y="20" width="220" height="34" fill="none" stroke="#14193a" stroke-width="2"/><text x="30" y="76" font-size="12" fill="currentColor">Bar magnet, north (N) and south (S)</text><rect x="30" y="94" width="50" height="26" fill="#e5484d"/><rect x="80" y="94" width="50" height="26" fill="#3e7bfa"/><rect x="170" y="94" width="50" height="26" fill="#3e7bfa"/><rect x="220" y="94" width="50" height="26" fill="#e5484d"/><text x="49" y="112" font-size="13" font-weight="700" fill="#ffffff">N</text><text x="99" y="112" font-size="13" font-weight="700" fill="#ffffff">S</text><text x="189" y="112" font-size="13" font-weight="700" fill="#ffffff">S</text><text x="239" y="112" font-size="13" font-weight="700" fill="#ffffff">N</text><text x="30" y="140" font-size="12" fill="currentColor">Two small magnets placed in a line</text></svg>
+  alt: A bar magnet drawn with a red north half and a blue south half, and two small magnets lined up end to end below it.
+  caption: Every magnet has a north pole and a south pole. The two small magnets are in a line with their south poles facing each other, so they would repel.
+- kind: text
+  heading: Attract or repel
+  html: '<p>A magnet has a <strong>north pole</strong> and a <strong>south pole</strong>. Bring two magnets close. Face a north pole to a south pole and they pull together. This is <strong>attraction</strong>. Face two north poles, or two south poles, and they push apart. This is <strong>repulsion</strong>.</p><p>The rule is short: <strong>unlike poles attract and like poles repel</strong>. Repulsion is the real test for a magnet. A plain piece of iron is attracted to either pole, but it never pushes a magnet away.</p><p>You can never get a pole on its own. Break a bar magnet in half and each half is a full magnet with its own north pole and south pole.</p>'
+- kind: text
+  heading: Magnetic and non-magnetic materials
+  html: '<p>A magnet does not pull everything. A material that a magnet attracts is called <strong>magnetic</strong>. Iron, nickel and cobalt are magnetic. Most steel is made mostly of iron, so most steel objects are attracted too.</p><p>A material that a magnet does not attract is <strong>non-magnetic</strong>. Wood, plastic, rubber, glass, paper, copper and aluminium are non-magnetic. Being a metal does not make something magnetic. Copper wire and aluminium foil are metals, yet a magnet does not pull them.</p>'
+- kind: text
+  heading: The compass and the Earth
+  html: '<p>A <strong>compass</strong> has a small magnet shaped like a thin needle that can spin freely. Left alone, one end of the needle settles pointing roughly north. That end is called the <strong>north-seeking pole</strong>. The other end points roughly south.</p><p>The needle does this because the <strong>Earth itself acts like a very large magnet</strong>. The needle lines up with the Earth''s magnetic force. A bar magnet hung from a thread does the same. It swings and rests along a north-south line. Sailors and hikers have used compasses for centuries to find their way.</p>'
+- kind: example
+  heading: Worked example
+  prompt: Two bar magnets lie on a table. The end of magnet X marked N is brought near one end of magnet Y. The two ends push each other away. Which pole of magnet Y is that end?
+  steps:
+  - 'Push apart means repulsion. Repulsion happens only between like poles.'
+  - 'The end of magnet X is a north pole, so the end of magnet Y that it pushes against must also be a north pole.'
+  - 'Check by turning magnet Y around. Now N meets S, so the ends should pull together.'
+  - 'So the end of Y that pushed away is its north pole, and the other end of Y is its south pole.'
+- kind: example
+  heading: Worked example
+  prompt: A girl has an iron nail, a plastic comb, a copper wire and a steel pin. She holds a magnet over each one. Which will stick, and which will not?
+  steps:
+  - 'Ask for each one: is it made of iron, nickel or cobalt, or of steel, which is mostly iron?'
+  - 'The iron nail is iron, so it sticks. The steel pin is mostly iron, so it sticks too.'
+  - 'The plastic comb is plastic, which is non-magnetic. The copper wire is a metal, but copper is not magnetic. Neither one sticks.'
+  - 'Check: the two things that stick are both iron-based. The two that do not stick are made of other materials.'
+- kind: callout
+  tone: watch
+  html: Do not say that all metals are magnetic. Only iron, nickel, cobalt and things made mostly from them are pulled by a magnet. Copper, aluminium, gold and silver are not.
+- kind: callout
+  tone: real
+  html: 'Magnets are all around us, in fridge doors, pencil-box catches, speakers and fan motors. Keep them safe. Keep magnets away from phones, bank cards and television screens, which they can damage. Do not hit a magnet, drop it or heat it, because that makes it weaker. Keep small magnets away from young children, who might swallow them.'
+- kind: check
+  item: q-mg-1
+- kind: check
+  item: q-mg-2
+- kind: check
+  item: q-mg-3
+- kind: summary
+  points:
+  - 'A magnet pulls some materials. Its force is strongest at its two poles, north and south.'
+  - 'Unlike poles attract. Like poles repel. Only repulsion proves that something is a magnet.'
+  - 'Iron, nickel, cobalt and things made mostly from them are magnetic. Many metals are not.'
+  - 'A free magnet settles along north and south because the Earth acts like a big magnet. A compass uses this. Keep magnets away from phones and cards, and do not hit or heat them.'
+items:
+- key: q-mg-1
+  kind: mcq
+  stem: What happens when the north pole of one magnet is brought near the south pole of another?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: magnets-poles
+  explanation: Unlike poles attract. A north pole and a south pole pull toward each other.
+  hints:
+  - Remember the rule for unlike poles.
+  correct: B
+  options:
+  - key: A
+    text: They push each other away
+    misconception: like-poles-attract
+  - key: B
+    text: They pull toward each other
+  - key: C
+    text: Nothing happens
+  - key: D
+    text: They lose their magnetism
+- key: q-mg-2
+  kind: mcq
+  stem: Which of these is attracted by a magnet?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: magnets-poles
+  explanation: Iron is a magnetic material. Copper, glass and rubber are not attracted by a magnet.
+  hints:
+  - Think of the three magnetic metals.
+  correct: C
+  options:
+  - key: A
+    text: A copper wire
+    misconception: all-metals-magnetic
+  - key: B
+    text: A glass marble
+  - key: C
+    text: An iron nail
+  - key: D
+    text: A rubber band
+- key: q-mg-3
+  kind: mcq
+  stem: A bar magnet is hung from a thread so that it can turn freely. In which direction does it come to rest?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: magnets-poles
+  explanation: The Earth acts like a magnet, so a freely hanging bar magnet rests along the north-south line.
+  hints:
+  - A compass needle does the same thing.
+  correct: A
+  options:
+  - key: A
+    text: Along the north-south line
+  - key: B
+    text: Along the east-west line
+  - key: C
+    text: In whatever way it was released
+  - key: D
+    text: Straight down
+- key: q-mg-4
+  kind: numeric
+  stem: A bar magnet is cut into two halves. Then each half is cut into two again. How many separate magnets are there now?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: magnets-poles
+  explanation: Each cut makes magnets, never single poles. Two halves cut again give 2 × 2 = 4 magnets, and each one has its own north and south pole.
+  hints:
+  - Each piece is cut into two pieces.
+  value: 4
+  tolerance: 0.0
+  verify: 2*2
+- key: q-mg-5
+  kind: numeric
+  stem: A bar magnet is cut into 3 pieces. How many poles are there in all, counting every north pole and every south pole?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: magnets-poles
+  explanation: Each of the 3 pieces is a complete magnet with 2 poles. So there are 3 × 2 = 6 poles.
+  hints:
+  - A piece never has only one pole.
+  value: 6
+  tolerance: 0.0
+  verify: 3*2
+- key: q-mg-6
+  kind: mcq
+  stem: Two metal bars pull toward each other when they are brought together. Is it certain that both bars are magnets?
+  difficulty: challenge
+  purpose: practice
+  concepts:
+  - id: magnets-poles
+  explanation: No. A magnet also attracts a plain piece of iron. Only repulsion proves that both are magnets, because iron never pushes a magnet away.
+  hints:
+  - Could one of the bars be a plain iron bar?
+  correct: D
+  options:
+  - key: A
+    text: Yes, because only magnets can pull
+    misconception: attraction-proves-magnet
+  - key: B
+    text: Yes, because all metals pull each other
+    misconception: all-metals-magnetic
+  - key: C
+    text: No, because the bars are too far apart
+  - key: D
+    text: No, because one could be a plain iron bar, and only repulsion proves two magnets
+- key: q-mg-7
+  kind: mcq
+  stem: 'Assertion (A): When a bar magnet is broken into two pieces, each piece has both a north pole and a south pole. Reason (R): A pole can never be separated from the other pole of a magnet.'
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: magnets-poles
+  explanation: Both statements are true. Poles always come in pairs, which is exactly why each broken piece has its own north and south pole. So R explains A.
+  hints:
+  - Think about whether a single pole can exist on its own.
+  correct: A
+  options:
+  - key: A
+    text: Both A and R are true and R explains A
+  - key: B
+    text: Both A and R are true but R does not explain A
+  - key: C
+    text: A is true but R is false
+    misconception: single-pole-pieces
+  - key: D
+    text: A is false but R is true
+    misconception: single-pole-pieces
+- key: q-mg-8
+  kind: mcq
+  stem: 'Assertion (A): A strong magnet will attract an aluminium drink can. Reason (R): Aluminium is a metal.'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: magnets-poles
+  explanation: A is false, because aluminium is not magnetic. R is true, because aluminium is a metal. Being a metal is not enough to be magnetic.
+  hints:
+  - Is every metal magnetic?
+  correct: D
+  options:
+  - key: A
+    text: Both A and R are true and R explains A
+    misconception: all-metals-magnetic
+  - key: B
+    text: Both A and R are true but R does not explain A
+    misconception: all-metals-magnetic
+  - key: C
+    text: A is true but R is false
+  - key: D
+    text: A is false but R is true
+- key: q-mg-9
+  kind: mcq
+  stem: A boy ties a thread round the middle of a bar magnet and hangs it from a hook. It settles with its red-painted end facing north. He then brings the red end of a second bar magnet near the red end of the hanging magnet. The maker painted the north pole of every magnet red. What will he see, and why?
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: magnets-poles
+  explanation: The red end of the hanging magnet faces north, so it is its north pole. The red end of the second magnet is marked the same way, so it is also a north pole. Like poles repel, so the hanging magnet turns away.
+  hints:
+  - Both red ends are the same kind of pole.
+  - What do like poles do?
+  correct: B
+  options:
+  - key: A
+    text: The magnets pull together, because the two red ends are unlike poles
+    misconception: like-poles-attract
+  - key: B
+    text: The hanging magnet turns away, because the two red ends are like poles
+  - key: C
+    text: Nothing happens, because the hanging magnet is free to move
+  - key: D
+    text: The hanging magnet falls, because it is non-magnetic
+- key: q-mg-10
+  kind: mcq
+  stem: Which of these is the safest way to look after a bar magnet?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: magnets-poles
+  explanation: Hitting, dropping or heating a magnet weakens it. Magnets can damage phones and bank cards. So keep them apart and handle magnets gently.
+  hints:
+  - Think about what can damage the magnet and what the magnet can damage.
+  correct: C
+  options:
+  - key: A
+    text: Keep it on top of a phone so that it does not get lost
+  - key: B
+    text: Hit it now and then to keep it strong
+  - key: C
+    text: Keep it away from phones and cards, and do not hit, drop or heat it
+  - key: D
+    text: Put it close to a fire to keep it warm
+- key: q-mg-11
+  kind: mcq
+  stem: Why does a compass needle always settle in one direction?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: magnets-poles
+  explanation: The needle is a small magnet and the Earth acts like a large magnet. The Earth's magnetic force turns the needle until it lines up north and south.
+  hints:
+  - What is the Earth like, as far as magnetism goes?
+  correct: A
+  options:
+  - key: A
+    text: The needle is a small magnet and the Earth acts like a large magnet
+  - key: B
+    text: The wind blows it north
+    misconception: compass-moved-by-wind
+  - key: C
+    text: The needle is heavier at the north end
+    misconception: compass-moved-by-wind
+  - key: D
+    text: The sun pulls it
+misconceptions:
+- code: like-poles-attract
+  concept: magnets-poles
+  description: Thinks that the same poles pull together and different poles push apart, the wrong way round.
+- code: all-metals-magnetic
+  concept: magnets-poles
+  description: Thinks every metal is attracted by a magnet, when only iron, nickel, cobalt and things made mostly from them are.
+- code: single-pole-pieces
+  concept: magnets-poles
+  description: Thinks a broken magnet can give a piece with only one pole.
+- code: attraction-proves-magnet
+  concept: magnets-poles
+  description: Thinks that attraction alone proves two objects are both magnets, forgetting that iron is attracted to a magnet too.
+- code: compass-moved-by-wind
+  concept: magnets-poles
+  description: Gives a cause for the compass needle that has nothing to do with the Earth acting like a magnet.
+cards:
+- key: magnets-and-poles-card-1
+  concept: magnets-poles
+  front: What is the rule for the poles of two magnets?
+  back: Unlike poles attract and like poles repel.
+- key: magnets-and-poles-card-2
+  concept: magnets-poles
+  front: Name the three magnetic metals.
+  back: Iron, nickel and cobalt. Things made mostly from them, such as most steel, are magnetic too.
+- key: magnets-and-poles-card-3
+  concept: magnets-poles
+  front: What happens when a magnet is broken in half?
+  back: Each half becomes a complete magnet with its own north pole and south pole.
+- key: magnets-and-poles-card-4
+  concept: magnets-poles
+  front: Why does a compass needle point north and south?
+  back: The needle is a small magnet and the Earth acts like a large magnet, so the needle lines up with the Earth's magnetic force.

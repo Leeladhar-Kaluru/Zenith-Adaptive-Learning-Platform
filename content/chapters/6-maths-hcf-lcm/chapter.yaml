@@ -1,0 +1,15 @@
+slug: 6-maths-hcf-lcm
+board: cbse
+curriculum: NCERT current editions (to be confirmed by a reviewer)
+grade: 6
+subject: maths
+title: HCF and LCM
+summary: Use factors, multiples and prime factorisation to find the HCF and LCM, and use them to solve tiling and timing problems.
+concepts:
+- id: factors-multiples
+- id: prime-factorisation
+- id: hcf-lcm
+- id: whole-number-ops
+  role: foundation
+lessons:
+- hcf-and-lcm

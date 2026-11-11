@@ -1,0 +1,11 @@
+slug: 6-science-magnets
+board: cbse
+curriculum: NCERT current editions (to be confirmed by a reviewer)
+grade: 6
+subject: science
+title: Magnets
+summary: Explore how magnets attract and repel, which materials they pull, and how a compass finds direction.
+concepts:
+- id: magnets-poles
+lessons:
+- magnets-and-poles

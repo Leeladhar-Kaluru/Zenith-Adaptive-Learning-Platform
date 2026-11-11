@@ -19,12 +19,38 @@ blocks:
   - Let m be the number she started with. Then m + 7 = 19.
   - 'Subtract 7 from both sides: m = 12.'
   - 'Check: 12 + 7 = 19. She started with 12 marbles.'
+- kind: text
+  heading: Words and signs
+  html: '<p>Some words always point to a sign. <strong>More than</strong>, <strong>increased by</strong> and <strong>sum</strong> mean add. <strong>Less than</strong>, <strong>decreased by</strong> and <strong>difference</strong> mean subtract. <strong>Twice</strong> means times 2. <strong>Is</strong> or <strong>gives</strong> means equals.</p>'
+- kind: figure
+  svg: '<svg viewBox="0 0 300 130" role="img"><path d="M10 38 L10 30 L285 30 L285 38" fill="none" stroke="currentColor" stroke-width="2"/><text x="148" y="22" font-size="15" font-weight="700" text-anchor="middle" fill="currentColor">31 pencils</text><rect x="10" y="48" width="55" height="40" fill="#ffb800" stroke="#14193a" stroke-width="2"/><rect x="70" y="48" width="55" height="40" fill="#ffb800" stroke="#14193a" stroke-width="2"/><rect x="130" y="48" width="55" height="40" fill="#ffb800" stroke="#14193a" stroke-width="2"/><rect x="190" y="48" width="55" height="40" fill="#ffb800" stroke="#14193a" stroke-width="2"/><rect x="250" y="48" width="35" height="40" fill="#6cb7ff" stroke="#14193a" stroke-width="2"/><text x="37" y="74" font-size="18" font-weight="700" text-anchor="middle" fill="#14193a">p</text><text x="97" y="74" font-size="18" font-weight="700" text-anchor="middle" fill="#14193a">p</text><text x="157" y="74" font-size="18" font-weight="700" text-anchor="middle" fill="#14193a">p</text><text x="217" y="74" font-size="18" font-weight="700" text-anchor="middle" fill="#14193a">p</text><text x="267" y="74" font-size="18" font-weight="700" text-anchor="middle" fill="#14193a">3</text><text x="148" y="115" font-size="14" text-anchor="middle" fill="currentColor">4p + 3 = 31</text></svg>'
+  alt: A bar of 31 pencils made of four equal packets each marked p and one small group marked 3, which gives the equation 4p + 3 = 31.
+  caption: Four equal packets and 3 loose pencils make 31 pencils. The picture is the equation.
+- kind: example
+  heading: Worked example 2
+  prompt: Karan has 4 packets of pencils with the same number p in each packet, and 3 loose pencils. He has 31 pencils in all. How many pencils are in a packet?
+  steps:
+  - Let p be the number of pencils in one packet.
+  - 4 packets hold 4p pencils. With the 3 loose ones the total is 4p + 3, and it equals 31. So 4p + 3 = 31.
+  - Subtract 3 from both sides to get 4p = 28. Divide both sides by 4 to get p = 7.
+  - 'Check in the story: 4 packets of 7 is 28, and 3 more is 31. A packet holds 7 pencils.'
+- kind: widget
+  widget: sim_equation
+  config: {a: 4, b: 3, c: 31}
+  task: Solve 4p + 3 = 31 on the balance. Does your answer match the pencil bar above?
+- kind: callout
+  tone: watch
+  html: '<strong>Less than</strong> reverses the order. 5 less than n is n - 5, not 5 - n. Say it with a small number. 5 less than 9 is 4, which is 9 - 5.'
 - kind: callout
   tone: real
   html: A shopkeeper in Hyderabad adds a Rs 5 packing charge to every bill. Equations like <strong>12n + 5 = 65</strong> help
     find how many items were bought.
 - kind: check
   item: q-eqw-1
+- kind: check
+  item: q-eqw-7
+- kind: check
+  item: q-eqw-8
 - kind: summary
   points:
   - Name the unknown with a letter.
@@ -116,10 +142,120 @@ items:
   value: 13
   tolerance: 0.0
   verify: (42-3)/3
+- key: q-eqw-7
+  kind: mcq
+  stem: '7 less than a number n is 20. Which equation matches this?'
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: equation-word-problems
+    weight: 1.0
+  explanation: 7 less than n means take 7 away from n, which is n - 7. So the equation is n - 7 = 20, and n = 27.
+  hints:
+  - Try the words with a small number. 7 less than 10 is 3.
+  correct: B
+  options:
+  - key: A
+    text: 7 - n = 20
+    misconception: reverses-less-than
+  - key: B
+    text: n - 7 = 20
+  - key: C
+    text: n + 7 = 20
+  - key: D
+    text: 7n = 20
+- key: q-eqw-8
+  kind: numeric
+  stem: Five more than three times a number is 26. Find the number.
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: equation-word-problems
+  explanation: 3n + 5 = 26, so 3n = 21 and n = 7.
+  hints:
+  - Write 3n + 5 = 26.
+  value: 7
+  tolerance: 0.0
+  verify: (26-5)/3
+- key: q-eqw-9
+  kind: numeric
+  stem: A rope of 50 metres is cut into 2 equal long pieces and one short piece of 4 metres. How long is each long piece in metres?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: equation-word-problems
+  explanation: Let each long piece be p metres. 2p + 4 = 50, so 2p = 46 and p = 23.
+  hints:
+  - Write 2p + 4 = 50.
+  value: 23
+  tolerance: 0.0
+  verify: (50-4)/2
+- key: q-eqw-10
+  kind: mcq
+  stem: A school store has 5 boxes of chalk with the same number c of pieces in each box, and 6 loose pieces. There are 46 pieces in all. How many pieces are in 3 boxes?
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: equation-word-problems
+    weight: 1.0
+  explanation: 5c + 6 = 46, so 5c = 40 and c = 8. Three boxes hold 3 times 8, which is 24 pieces.
+  hints:
+  - First find c. Then answer what the question asks.
+  correct: B
+  options:
+  - key: A
+    text: '8'
+    misconception: answers-wrong-quantity
+  - key: B
+    text: '24'
+  - key: C
+    text: '40'
+  - key: D
+    text: '14'
+- key: q-eqw-11
+  kind: mcq
+  stem: 'Assertion (A): The equation 3n + 2 = 20 can be read as "three times a number, increased by 2, is 20". Reason (R): In 3n + 2, the number 3n is found first and then 2 is added to it.'
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: equation-word-problems
+    weight: 1.0
+  explanation: Both are true. 3n is three times n, and the 2 is added to it. R describes how the expression is built, so it explains A.
+  hints:
+  - Which part of 3n + 2 is made first?
+  correct: A
+  options:
+  - key: A
+    text: Both A and R are true, and R explains A
+  - key: B
+    text: Both A and R are true, but R does not explain A
+  - key: C
+    text: A is true, but R is false
+  - key: D
+    text: A is false, but R is true
+- key: q-eqw-12
+  kind: numeric
+  stem: A mother is 2 years more than 3 times her daughter's age. The mother is 38. How old is the daughter?
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: equation-word-problems
+  explanation: Let the daughter be d years old. 3d + 2 = 38, so 3d = 36 and d = 12.
+  hints:
+  - Write 3d + 2 = 38.
+  value: 12
+  tolerance: 0.0
+  verify: (38-2)/3
 misconceptions:
 - code: brackets-misplaced
   concept: equation-word-problems
   description: Writes 2(s + 4) instead of 2s + 4, doubling the extra 4.
+- code: reverses-less-than
+  concept: equation-word-problems
+  description: Writes '7 less than n' as 7 - n, following the order of the words instead of the order of the subtraction.
+- code: answers-wrong-quantity
+  concept: equation-word-problems
+  description: Solves for the letter correctly but gives its value as the answer when the question asks for something else.
 cards:
 - key: word-problems-card-1
   concept: equation-word-problems
@@ -129,3 +265,11 @@ cards:
   concept: equation-word-problems
   front: What does 'twice a number plus 4' look like?
   back: 2n + 4.
+- key: word-problems-card-3
+  concept: equation-word-problems
+  front: How do you write '7 less than n'?
+  back: n - 7.
+- key: word-problems-card-4
+  concept: equation-word-problems
+  front: After finding the letter, what must you check?
+  back: That you answered what the question asked, and that the answer fits the story.

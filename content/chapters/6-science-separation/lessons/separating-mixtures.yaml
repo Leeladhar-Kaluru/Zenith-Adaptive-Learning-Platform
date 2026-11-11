@@ -1,0 +1,342 @@
+slug: separating-mixtures
+title: Separating mixtures
+minutes: 20
+objectives:
+- Name the main ways of separating a mixture and say how each one works
+- Choose a method by looking at how the parts of a mixture differ
+- Tell sedimentation, decantation and filtration apart
+- Explain why evaporation is used to get back a dissolved solid
+concepts:
+- separating-mixtures
+origin: ai_assisted
+blocks:
+- kind: text
+  heading: Mixtures are everywhere
+  html: '<p>Think of the rice you cook at home. Before cooking, someone looks through it and takes out small stones. Rice
+    and stones together make a <strong>mixture</strong>. A mixture is two or more things that are present together but are
+    not joined into a new substance. Each part keeps its own nature.</p><p>We often want only one part of a mixture. Pulling
+    the parts apart is called <strong>separation</strong>. There is no single best method. The right method depends on how
+    the parts differ: in size, in weight, or in whether they dissolve in water.</p>'
+- kind: text
+  heading: Separating one solid from another
+  html: '<p><strong>Handpicking</strong> means picking out the unwanted pieces with your fingers. It works when the pieces are
+    large enough to see and there are not too many of them. Stones in rice are a good example.</p><p><strong>Winnowing</strong>
+    separates a lighter solid from a heavier one with moving air. A farmer pours the harvested grain from a height. The wind
+    blows the light husk away and the heavy grain falls in a heap.</p><p><strong>Sieving</strong> uses a sieve, which is a
+    net or a plate with small holes. Small pieces fall through the holes. Large pieces stay on top. We sieve flour to remove
+    big lumps and bits of husk.</p>'
+- kind: text
+  heading: Separating a solid that is in water
+  html: '<p>Sometimes a solid is mixed with water. First we check one thing: does the solid dissolve? Sand in water does
+    not dissolve. Salt in water does dissolve.</p><p><strong>Sedimentation</strong> is when the heavier solid settles at the
+    bottom of the liquid if we leave it still. <strong>Decantation</strong> is then pouring off the clear liquid on top, slowly,
+    without disturbing what has settled.</p><p><strong>Filtration</strong> passes the mixture through a filter such as filter
+    paper or a clean cloth. The liquid passes through and is called the <strong>filtrate</strong>. The solid caught on the
+    filter is called the <strong>residue</strong>. Filtration also catches very small bits that decantation leaves behind.</p>'
+- kind: figure
+  svg: <svg viewBox="0 0 300 240" role="img"><polygon points="70,40 230,40 160,120 140,120" fill="#e8f0ff" stroke="#14193a" stroke-width="3"/><polygon
+    points="90,48 210,48 150,108" fill="#cfd8ef" stroke="#14193a" stroke-width="1.5" stroke-dasharray="4 3"/><rect x="146" y="120"
+    width="8" height="22" fill="#e8f0ff" stroke="#14193a" stroke-width="2"/><path d="M110 170 L110 225 L190 225 L190 170" fill="none"
+    stroke="#14193a" stroke-width="3"/><rect x="111" y="195" width="78" height="29" fill="#6cb7ff" opacity=".45"/><line x1="150"
+    y1="142" x2="150" y2="192" stroke="#6cb7ff" stroke-width="3"/><circle cx="130" cy="100" r="4" fill="#8a5a2b"/><circle
+    cx="150" cy="96" r="4" fill="#8a5a2b"/><circle cx="170" cy="100" r="4" fill="#8a5a2b"/><text x="8" y="36" font-size="12"
+    font-weight="700" fill="currentColor">mixture poured in</text><text x="205" y="85" font-size="12" font-weight="700" fill="currentColor">filter
+    paper</text><text x="6" y="104" font-size="12" font-weight="700" fill="currentColor">residue</text><text x="196" y="205"
+    font-size="12" font-weight="700" fill="currentColor">filtrate</text></svg>
+  alt: A funnel lined with filter paper sits over a beaker, with solid residue left in the paper and clear filtrate dripping into the beaker below.
+  caption: In filtration the liquid passes through the filter paper. The solid is held back as residue.
+- kind: example
+  heading: Worked example
+  prompt: A glass of muddy water has soil in it. Plan how to get clear water. Use sedimentation, decantation and filtration.
+  steps:
+  - 'Leave the glass still for some time. The heavier soil particles settle at the bottom. This is sedimentation.'
+  - 'Pour the water off the top slowly into a second glass. Stop before the soil at the bottom comes over. This is decantation.'
+  - 'The water may still look a little cloudy, because very tiny particles are still floating in it. Pour it through filter paper or a clean cloth. This is filtration.'
+  - 'Check the result. The residue on the paper is the tiny soil. The filtrate is clear water. Note that this water may still hold germs, so it is not yet safe to drink.'
+- kind: text
+  heading: Getting back a dissolved solid
+  html: '<p>When salt dissolves in water, the salt breaks into particles too tiny to see. These tiny particles pass through
+    filter paper along with the water. So filtration cannot take salt out of salt water.</p><p><strong>Evaporation</strong>
+    is the method that works. When we heat the salt water, or leave it in the sun, the water turns into vapour and goes into
+    the air. The salt cannot turn into vapour at that temperature, so it stays behind. People make common salt from sea water
+    in this way, in shallow pans in the sun.</p>'
+- kind: example
+  heading: Worked example
+  prompt: A bowl holds sand, salt and water mixed together. Plan how to get the sand, the salt and the water apart.
+  steps:
+  - 'Notice what is dissolved. Salt dissolves in water but sand does not. So the sand is the solid that can be caught by a filter.'
+  - 'Pour the mixture through filter paper. The sand stays on the paper as residue. The filtrate is salt water.'
+  - 'Heat the filtrate in a dish. The water turns to vapour and the dry salt is left in the dish. This is evaporation.'
+  - 'Check. Sand was removed by filtration, which works for undissolved solids. Salt was recovered by evaporation, which works for dissolved solids. Both parts are now separate.'
+- kind: callout
+  tone: watch
+  html: Filtration cannot separate a dissolved solid from water. If the solid has dissolved, it goes through the filter with the water. Use evaporation instead.
+- kind: callout
+  tone: real
+  html: In many homes tea is made by pouring the hot tea through a strainer, which is a small sieve and filter in one. The tea leaves stay in the strainer and the tea passes through.
+- kind: check
+  item: q-sm-1
+- kind: check
+  item: q-sm-2
+- kind: check
+  item: q-sm-3
+- kind: summary
+  points:
+  - 'Pick the method by how the parts differ: size, weight, or whether they dissolve.'
+  - 'Handpicking removes large pieces. Winnowing uses wind to blow away a lighter solid. Sieving uses holes of one size.'
+  - 'Sedimentation lets a heavier solid settle. Decantation pours off the liquid. Filtration holds back the solid as residue.'
+  - 'Evaporation separates a dissolved solid from a liquid, because the liquid turns to vapour and the solid stays.'
+items:
+- key: q-sm-1
+  kind: mcq
+  stem: Which method uses moving air to separate husk from grain?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: separating-mixtures
+  explanation: Winnowing uses wind. The light husk is blown away and the heavier grain falls down.
+  hints:
+  - Think of a farmer pouring grain from a height on a windy day.
+  correct: C
+  options:
+  - key: A
+    text: Sieving
+  - key: B
+    text: Filtration
+  - key: C
+    text: Winnowing
+  - key: D
+    text: Evaporation
+- key: q-sm-2
+  kind: mcq
+  stem: Flour has some large lumps in it. Which method is best to remove the lumps?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: separating-mixtures
+  explanation: Flour is fine and the lumps are big. A sieve lets the fine flour fall through and holds the lumps back.
+  hints:
+  - The two parts differ in size.
+  correct: B
+  options:
+  - key: A
+    text: Evaporation
+    misconception: evaporation-removes-solid
+  - key: B
+    text: Sieving
+  - key: C
+    text: Decantation
+  - key: D
+    text: Winnowing
+    misconception: heavier-blown-away
+- key: q-sm-3
+  kind: mcq
+  stem: Sand is mixed in a jar of water. What is the first step that lets the sand be separated by decantation?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: separating-mixtures
+  explanation: Sand must settle at the bottom first. This is sedimentation. Only then can we pour off the water on top.
+  hints:
+  - Decantation pours off a liquid, but something must settle first.
+  correct: A
+  options:
+  - key: A
+    text: Leave the jar still so the sand settles
+  - key: B
+    text: Heat the jar until the water is gone
+    misconception: evaporation-removes-solid
+  - key: C
+    text: Shake the jar hard
+  - key: D
+    text: Pass the water through a sieve
+- key: q-sm-4
+  kind: numeric
+  stem: A packet holds 500 g of rice mixed with small stones. After handpicking, the stones weigh 35 g. What is the mass of the rice in grams?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: separating-mixtures
+  explanation: The total is rice plus stones. So the rice is 500 g minus 35 g, which is 465 g.
+  hints:
+  - Take the stones away from the total.
+  value: 465
+  tolerance: 0.0
+  unit: g
+  verify: 500-35
+- key: q-sm-5
+  kind: mcq
+  stem: Which method would you use to get common salt back from salt solution?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: separating-mixtures
+  explanation: The salt is dissolved, so it passes through a filter. Evaporation turns the water into vapour and leaves the salt behind.
+  hints:
+  - Is the salt dissolved, or is it a solid bit floating in the water?
+  correct: D
+  options:
+  - key: A
+    text: Filtration
+    misconception: filter-removes-dissolved
+  - key: B
+    text: Sieving
+    misconception: filter-removes-dissolved
+  - key: C
+    text: Handpicking
+  - key: D
+    text: Evaporation
+- key: q-sm-6
+  kind: truefalse
+  stem: 'True or false: Pouring salt solution through filter paper gives pure water in the beaker.'
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: separating-mixtures
+  explanation: False. The dissolved salt is made of particles too small to be held by filter paper, so it passes through with the water.
+  hints:
+  - Does dissolved salt stay on the paper?
+  correct: false
+- key: q-sm-7
+  kind: match
+  stem: Match each mixture to the method that suits it best.
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: separating-mixtures
+  explanation: Each method suits a difference between the parts. Husk is light, stones are large, tiny soil bits float in water and are caught by a filter, and salt is dissolved.
+  hints:
+  - Ask whether the parts differ in weight, in size, or in dissolving.
+  pairs:
+    Husk mixed with grain: Winnowing
+    A few stones in rice: Handpicking
+    Salt dissolved in water: Evaporation
+    Muddy water with tiny soil bits: Filtration
+- key: q-sm-8
+  kind: mcq
+  stem: 'Assertion (A): Winnowing is used to separate husk from grain. Reason (R): Husk is lighter than grain, so the wind carries it farther away.'
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: separating-mixtures
+  explanation: Both statements are true. The husk is lighter, so the wind blows it away, and this is the reason winnowing works.
+  hints:
+  - Which is lighter, husk or grain, and what does the wind do to a light solid?
+  correct: A
+  options:
+  - key: A
+    text: Both A and R are true, and R explains A
+  - key: B
+    text: Both A and R are true, but R does not explain A
+  - key: C
+    text: A is true, but R is false
+    misconception: heavier-blown-away
+  - key: D
+    text: A is false, but R is true
+- key: q-sm-9
+  kind: mcq
+  stem: 'Assertion (A): Salt can be separated from salt solution by filtration. Reason (R): Dissolved salt is in particles too small to be held back by filter paper.'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: separating-mixtures
+  explanation: A is false, because filtration cannot remove dissolved salt. R is true, and it is exactly the reason that A fails.
+  hints:
+  - Can filter paper hold back dissolved particles?
+  correct: D
+  options:
+  - key: A
+    text: Both A and R are true, and R explains A
+    misconception: filter-removes-dissolved
+  - key: B
+    text: Both A and R are true, but R does not explain A
+  - key: C
+    text: A is true, but R is false
+    misconception: filter-removes-dissolved
+  - key: D
+    text: A is false, but R is true
+- key: q-sm-10
+  kind: mcq
+  stem: 'Read this. A student leaves a jar of pond water still for an hour. Sand settles at the bottom but the water on top is still a little cloudy. She pours the top water gently into another jar. She then pours it through a clean cloth and the water looks clearer. Why was the cloth step needed after pouring?'
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: separating-mixtures
+  explanation: Decantation removes only what has settled. Very small particles can stay floating, and the cloth holds them back as residue.
+  hints:
+  - What stays in the water after the big particles settle?
+  correct: B
+  options:
+  - key: A
+    text: To dissolve the sand in the water
+  - key: B
+    text: To hold back tiny particles that had not settled
+  - key: C
+    text: To turn the water into vapour
+    misconception: evaporation-removes-solid
+  - key: D
+    text: To blow away the light particles
+    misconception: heavier-blown-away
+- key: q-sm-11
+  kind: mcq
+  stem: A mixture holds sand, salt and water. Which order of steps gives back sand, salt and water-free salt?
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: separating-mixtures
+  explanation: First filter to catch the sand as residue. The filtrate is salt solution, and evaporating it leaves dry salt. Evaporating first would leave sand and salt together.
+  hints:
+  - One step removes an undissolved solid. Another recovers a dissolved one.
+  correct: C
+  options:
+  - key: A
+    text: Evaporate first, then filter
+    misconception: evaporation-removes-solid
+  - key: B
+    text: Sieve the mixture, then winnow it
+  - key: C
+    text: Filter first, then evaporate the filtrate
+  - key: D
+    text: Filter the mixture, then filter the filtrate again
+    misconception: filter-removes-dissolved
+- key: q-sm-12
+  kind: numeric
+  stem: A dish holds 250 g of salt solution. After all the water evaporates, 20 g of salt is left. How many grams of water evaporated?
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: separating-mixtures
+  explanation: The solution was salt plus water. The water lost is 250 g minus the 20 g of salt left, which is 230 g.
+  hints:
+  - The salt stays. Only the water goes away.
+  value: 230
+  tolerance: 0.0
+  unit: g
+  verify: 250-20
+misconceptions:
+- code: filter-removes-dissolved
+  concept: separating-mixtures
+  description: Thinks filtration or sieving can remove a solid that has dissolved in water, when dissolved particles pass through.
+- code: heavier-blown-away
+  concept: separating-mixtures
+  description: Thinks winnowing or wind carries away the heavier part of a mixture, when it carries the lighter part.
+- code: evaporation-removes-solid
+  concept: separating-mixtures
+  description: Thinks evaporation takes away the solid, or can be used for any mixture, when it removes the liquid and leaves a dissolved solid behind.
+cards:
+- key: separating-mixtures-card-1
+  concept: separating-mixtures
+  front: What is winnowing?
+  back: Separating a lighter solid, such as husk, from a heavier one, such as grain, by letting wind blow the lighter one away.
+- key: separating-mixtures-card-2
+  concept: separating-mixtures
+  front: What is the difference between residue and filtrate?
+  back: Residue is the solid left on the filter. Filtrate is the liquid that passes through it.
+- key: separating-mixtures-card-3
+  concept: separating-mixtures
+  front: How do sedimentation and decantation work together?
+  back: The heavier solid settles at the bottom first. Then the clear liquid on top is poured off gently.
+- key: separating-mixtures-card-4
+  concept: separating-mixtures
+  front: Which method gets a dissolved solid back from a liquid?
+  back: Evaporation. The liquid turns to vapour and the solid stays behind.

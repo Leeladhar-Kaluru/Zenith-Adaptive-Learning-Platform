@@ -28,8 +28,57 @@ blocks:
   steps:
   - 'Place them on the line: -7 is furthest left, then -3, then 0, then 2.'
   - 'Read from left to right: -7, -3, 0, 2.'
+- kind: text
+  heading: The symbols less than and greater than
+  html: <p>We write <strong>&lt;</strong> for <em>is less than</em> and <strong>&gt;</strong> for <em>is greater than</em>.
+    The small end of the symbol points to the smaller number. So -5 &lt; -2 and -2 &gt; -5.</p><p>Zero is greater than every
+    negative number and less than every positive number.</p>
+- kind: figure
+  svg: <svg viewBox="0 0 320 120" role="img"><line x1="8" y1="60" x2="312" y2="60" stroke="currentColor" stroke-width="4"
+    stroke-linecap="round"/><g font-size="13" font-weight="700" text-anchor="middle" fill="currentColor"><line x1="20" y1="54"
+    x2="20" y2="66" stroke="currentColor" stroke-width="2"/><text x="20" y="86">-4</text><line x1="55" y1="54" x2="55" y2="66"
+    stroke="currentColor" stroke-width="2"/><text x="55" y="86">-3</text><line x1="90" y1="54" x2="90" y2="66" stroke="currentColor"
+    stroke-width="2"/><text x="90" y="86">-2</text><line x1="125" y1="54" x2="125" y2="66" stroke="currentColor" stroke-width="2"/><text
+    x="125" y="86">-1</text><line x1="160" y1="54" x2="160" y2="66" stroke="currentColor" stroke-width="2"/><text x="160"
+    y="86">0</text><line x1="195" y1="54" x2="195" y2="66" stroke="currentColor" stroke-width="2"/><text x="195" y="86">1</text><line
+    x1="230" y1="54" x2="230" y2="66" stroke="currentColor" stroke-width="2"/><text x="230" y="86">2</text><line x1="265"
+    y1="54" x2="265" y2="66" stroke="currentColor" stroke-width="2"/><text x="265" y="86">3</text><line x1="300" y1="54" x2="300"
+    y2="66" stroke="currentColor" stroke-width="2"/><text x="300" y="86">4</text></g><circle cx="20" cy="60" r="8" fill="#ffd43b"
+    stroke="#14193a" stroke-width="3"/><circle cx="125" cy="60" r="8" fill="#74c0fc" stroke="#14193a" stroke-width="3"/><text
+    x="20" y="34" font-size="13" font-weight="700" text-anchor="middle" fill="currentColor">smaller</text><text x="125" y="34"
+    font-size="13" font-weight="700" text-anchor="middle" fill="currentColor">greater</text></svg>
+  alt: A number line from minus 4 to 4. A dot at minus 4 is labelled smaller and a dot at minus 1 is labelled greater.
+  caption: -4 is to the left of -1, so -4 is smaller.
+- kind: example
+  heading: 'Worked example: two negatives'
+  prompt: Which is greater, -4 or -9?
+  steps:
+  - Place both numbers on the number line.
+  - -4 is 4 steps left of zero. -9 is 9 steps left of zero.
+  - -9 is further to the left than -4.
+  - The number on the right is greater, so -4 is greater than -9. We write -4 > -9.
+- kind: example
+  heading: 'Worked example: ordering five numbers'
+  prompt: Arrange -2, 5, -8, 0 and -1 from greatest to smallest.
+  steps:
+  - Find the positive numbers first. Only 5 is positive, and it is the greatest.
+  - Next comes 0.
+  - The negatives are -2, -8 and -1. The closest to zero is -1, then -2, then -8.
+  - 'From greatest to smallest: 5, 0, -1, -2, -8.'
+  - 'Check: each number is to the right of the next one on the number line.'
+- kind: callout
+  tone: real
+  html: A day at -5 degrees is colder than a day at -1 degree. The colder day has the smaller number, because -5 is to the
+    left of -1.
+- kind: callout
+  tone: remember
+  html: To order integers, think left to right. The leftmost is smallest and the rightmost is greatest.
 - kind: check
   item: q-int-cmp-1
+- kind: check
+  item: q-int-cmp-2
+- kind: check
+  item: q-int-cmp-10
 - kind: summary
   points:
   - The number on the right is always greater.
@@ -136,10 +185,110 @@ items:
     text: 3, 0, -2, -5
   - key: D
     text: 0, -2, -5, 3
+- key: q-int-cmp-7
+  kind: mcq
+  stem: 'Assertion (A): 0 is greater than -10. Reason (R): Zero lies to the right of every negative number.'
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: integers-compare
+    weight: 1.0
+  explanation: -10 is to the left of zero, so 0 is greater than -10. A is true. R is the reason, so R explains A.
+  hints:
+  - Is zero to the left or to the right of -10?
+  correct: A
+  options:
+  - key: A
+    text: Both A and R are true, and R explains A
+  - key: B
+    text: Both A and R are true, but R does not explain A
+  - key: C
+    text: A is true, but R is false
+  - key: D
+    text: A is false, but R is true
+    misconception: zero-below-negatives
+- key: q-int-cmp-8
+  kind: mcq
+  stem: 'Assertion (A): -3 is greater than -1. Reason (R): 3 is greater than 1.'
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: integers-compare
+    weight: 1.0
+  explanation: -3 is to the left of -1, so -3 is smaller. A is false. R is a true fact about 3 and 1, but it does not work
+    for negative numbers.
+  hints:
+  - Place -3 and -1 on the number line.
+  correct: D
+  options:
+  - key: A
+    text: Both A and R are true, and R explains A
+    misconception: bigger-digit-bigger-number
+  - key: B
+    text: Both A and R are true, but R does not explain A
+    misconception: bigger-digit-bigger-number
+  - key: C
+    text: A is true, but R is false
+  - key: D
+    text: A is false, but R is true
+- key: q-int-cmp-9
+  kind: mcq
+  stem: 'On one winter night four towns recorded these lowest temperatures in degrees Celsius: P -4, Q 1, R -9 and S 0. Which
+    list puts the towns from coldest to warmest?'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: integers-compare
+    weight: 1.0
+  explanation: 'Order the readings from smallest to greatest: -9, -4, 0, 1. That gives the towns R, P, S, Q.'
+  hints:
+  - The coldest town has the smallest number.
+  - Order -9, -4, 0 and 1 from left to right.
+  correct: B
+  options:
+  - key: A
+    text: Q, S, P, R
+    misconception: order-reversed
+  - key: B
+    text: R, P, S, Q
+  - key: C
+    text: P, R, S, Q
+    misconception: bigger-digit-bigger-number
+  - key: D
+    text: S, R, P, Q
+    misconception: zero-below-negatives
+- key: q-int-cmp-10
+  kind: mcq
+  stem: 'Which symbol makes this true: -6 __ -2 ?'
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: integers-compare
+    weight: 1.0
+  explanation: -6 is to the left of -2, so -6 is less than -2. We write -6 < -2.
+  hints:
+  - Which number is further to the right?
+  correct: A
+  options:
+  - key: A
+    text: <
+  - key: B
+    text: '>'
+    misconception: bigger-digit-bigger-number
+  - key: C
+    text: '='
+  - key: D
+    text: It cannot be compared
 misconceptions:
 - code: bigger-digit-bigger-number
   concept: integers-compare
   description: Thinks -8 is greater than -3 because 8 is greater than 3.
+- code: zero-below-negatives
+  concept: integers-compare
+  description: Thinks zero is the smallest integer, so zero is less than a negative number.
+- code: order-reversed
+  concept: integers-compare
+  description: Lists numbers from greatest to smallest when asked for smallest to greatest.
 cards:
 - key: compare-order-card-1
   concept: integers-compare

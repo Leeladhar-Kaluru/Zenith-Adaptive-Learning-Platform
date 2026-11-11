@@ -1,0 +1,318 @@
+slug: simple-circuits
+title: Simple electric circuits
+minutes: 25
+objectives:
+- Name the parts of a simple circuit and draw them with circuit symbols
+- Tell an open circuit from a closed circuit and say why a bulb glows or not
+- Sort materials into electrical conductors and insulators
+- Follow basic safety rules when working with electricity
+concepts:
+- simple-electric-circuit
+origin: ai_assisted
+blocks:
+- kind: text
+  heading: Why does a torch light up?
+  html: '<p>Press the button on a torch and the bulb glows. Press it again and the light goes out. Inside the torch, a cell, a bulb and a switch are joined by metal strips. When they are joined in the right way, electric <strong>current</strong> flows. Current is a flow of electric charge through a material.</p><p>A path that current can follow all the way round is called an <strong>electric circuit</strong>. A simple circuit has four parts. The <strong>cell</strong> pushes the current. The <strong>bulb</strong> glows when current passes through its thin <strong>filament</strong>. The <strong>switch</strong> turns the current on or off. The <strong>wires</strong> join everything together.</p>'
+- kind: text
+  heading: Circuit symbols
+  html: '<p>Drawing every part as a picture takes a long time. So we use short signs called <strong>circuit symbols</strong>. A wire is a plain line. A bulb is a circle with a cross in it. A cell is two parallel lines: the long thin line is the <strong>positive (+) terminal</strong> and the short thick line is the <strong>negative (-) terminal</strong>. A switch is a gap in the wire with a small lever that can close it.</p><p>A circuit drawn with these symbols is called a <strong>circuit diagram</strong>.</p>'
+- kind: figure
+  svg: <svg viewBox="0 0 300 190" role="img"><g fill="none" stroke="#14193a" stroke-width="3" stroke-linecap="round"><path d="M40 40 H132"/><path d="M168 40 H260 V70"/><path d="M260 110 V150 H158"/><path d="M142 150 H40 V40"/><circle cx="150" cy="40" r="18"/><path d="M137 27 L163 53 M163 27 L137 53"/><path d="M260 110 L244 72"/></g><path d="M142 130 V170" stroke="#14193a" stroke-width="2" fill="none"/><path d="M158 138 V162" stroke="#14193a" stroke-width="6" fill="none"/><circle cx="260" cy="70" r="4" fill="#14193a"/><circle cx="260" cy="110" r="4" fill="#14193a"/><text x="118" y="14" font-size="12" font-weight="700" fill="currentColor">bulb</text><text x="116" y="186" font-size="12" font-weight="700" fill="currentColor">cell</text><text x="132" y="126" font-size="12" fill="currentColor">+</text><text x="164" y="126" font-size="12" fill="currentColor">-</text><text x="230" y="92" text-anchor="end" font-size="12" font-weight="700" fill="currentColor">switch (open)</text></svg>
+  alt: A circuit diagram with a cell at the bottom, a bulb at the top and a switch on the right side with its lever lifted so there is a gap.
+  caption: A circuit diagram with a cell, a bulb and a switch joined by wires. The switch lever is lifted, so there is a gap and this circuit is open.
+- kind: text
+  heading: Open and closed circuits
+  html: '<p>Current can flow only if the path is complete from one terminal of the cell, through the bulb and switch, and back to the other terminal. When the path is complete, the circuit is <strong>closed</strong>, and the bulb glows. When there is a gap anywhere in the path, the circuit is <strong>open</strong>, and the current stops everywhere in it. The bulb does not glow.</p><p>A switch works by making or breaking a gap. Switch ON closes the gap. Switch OFF opens it. A loose wire, a broken wire or a burnt-out filament also opens the circuit.</p>'
+- kind: text
+  heading: Conductors and insulators
+  html: '<p>A material that lets current pass through it easily is a <strong>conductor</strong>. Metals such as copper, aluminium and iron are good conductors. So is graphite, the black material in a pencil. A material that does not let current pass is an <strong>insulator</strong>. Plastic, rubber, glass, dry wood and air are insulators.</p><p>Both kinds are useful. A wire is made of copper so that current flows. It is covered with plastic so that the current stays in the wire and a person who touches it is safe. A switch has a handle of plastic so that your hand does not touch the metal.</p>'
+- kind: example
+  heading: Worked example
+  prompt: A student joins a cell, a bulb and a switch with wires. The switch is closed but the bulb does not glow. Give a way to find the fault.
+  steps:
+  - 'Closed switch should mean a closed circuit. So there must be a gap somewhere, or a part that is faulty.'
+  - 'Check the joints. A wire that has slipped off a terminal makes a gap. Press each wire end firmly against its terminal.'
+  - 'Check the bulb. A burnt-out filament is a gap inside the bulb. Replace the bulb with one that is known to work.'
+  - 'Check the cell too. An old cell may have no push left. Try a fresh cell. When the gap is closed, the bulb glows.'
+- kind: example
+  heading: Worked example
+  prompt: A student tests 8 objects by placing each one in the gap of a circuit with a cell and a bulb. The bulb glows for 5 of them. How many of the objects are insulators, and how do you know?
+  steps:
+  - 'When the bulb glows, current passes through the object. So the object is a conductor.'
+  - 'The bulb glows for 5 objects, so 5 are conductors.'
+  - 'The other objects stop the current, so they are insulators. That is 8 - 5 = 3 objects.'
+  - 'Check: 5 conductors and 3 insulators make 8 objects, which is the number tested.'
+- kind: callout
+  tone: watch
+  html: A closed switch does not mean the circuit is stopped. Closed means the path is complete, so current flows and the bulb glows. A switch that is open has a gap and stops the current.
+- kind: callout
+  tone: real
+  html: 'Staying safe: do experiments with a cell only. Never put anything into a wall socket and never touch a bare wire joined to the mains supply. Water from a tap or a puddle can conduct current, so keep wet hands away from switches and plugs. Plastic and rubber insulate. They protect you only when they are not cracked.'
+- kind: check
+  item: q-sc-1
+- kind: check
+  item: q-sc-2
+- kind: check
+  item: q-sc-3
+- kind: summary
+  points:
+  - 'A simple circuit has a cell, a bulb, a switch and wires, and current flows only round a complete path.'
+  - 'A closed circuit has a complete path, so the bulb glows. An open circuit has a gap, so it does not.'
+  - 'Conductors such as copper let current pass. Insulators such as plastic, rubber, glass and dry wood do not.'
+  - 'A cell symbol has a long thin line (+) and a short thick line (-). Never experiment with mains electricity.'
+items:
+- key: q-sc-1
+  kind: mcq
+  stem: What is a switch used for in a circuit?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: simple-electric-circuit
+  explanation: A switch closes the circuit to let current flow or opens it to stop the current.
+  hints:
+  - Think about what you do to switch on a torch.
+  correct: C
+  options:
+  - key: A
+    text: To make the cell stronger
+  - key: B
+    text: To make the wires longer
+  - key: C
+    text: To close or open the circuit
+  - key: D
+    text: To use up the current
+- key: q-sc-2
+  kind: mcq
+  stem: In a circuit with a cell, a bulb and a switch, the switch is open. What happens to the bulb?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: simple-electric-circuit
+  explanation: An open switch leaves a gap in the path. With a gap, no current can flow round the circuit, so the bulb does not glow.
+  hints:
+  - Is the path complete or does it have a gap?
+  correct: B
+  options:
+  - key: A
+    text: It glows brightly
+    misconception: open-switch-glows
+  - key: B
+    text: It does not glow
+  - key: C
+    text: It glows dimly
+    misconception: open-switch-glows
+  - key: D
+    text: It glows only when the cell is removed
+- key: q-sc-3
+  kind: mcq
+  stem: Which of these is a good conductor of electricity?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: simple-electric-circuit
+  explanation: Copper is a metal and a good conductor. Rubber, dry wood and plastic are insulators.
+  hints:
+  - Metals conduct well.
+  correct: A
+  options:
+  - key: A
+    text: A copper wire
+  - key: B
+    text: A rubber eraser
+    misconception: everything-conducts
+  - key: C
+    text: A dry wooden spoon
+    misconception: everything-conducts
+  - key: D
+    text: A plastic ruler
+    misconception: everything-conducts
+- key: q-sc-4
+  kind: mcq
+  stem: In the symbol for a cell, which line stands for the positive terminal?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: simple-electric-circuit
+  explanation: The long thin line is the positive terminal. The short thick line is the negative terminal.
+  hints:
+  - One line is long and thin, the other is short and thick.
+  correct: D
+  options:
+  - key: A
+    text: The short thick line
+  - key: B
+    text: The circle
+  - key: C
+    text: Both lines are the same
+  - key: D
+    text: The long thin line
+- key: q-sc-5
+  kind: numeric
+  stem: A student tests 10 objects in a circuit with a cell and a bulb. The bulb glows for 6 of them. How many of the objects are insulators?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: simple-electric-circuit
+  explanation: The bulb glows for conductors only. So 6 are conductors. The other 10 - 6 = 4 objects are insulators.
+  hints:
+  - The bulb glows only when the object is a conductor.
+  value: 4
+  tolerance: 0.0
+  verify: 10-6
+- key: q-sc-6
+  kind: mcq
+  stem: Why are electric wires covered with plastic?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: simple-electric-circuit
+  explanation: Plastic is an insulator. It keeps the current inside the metal wire and protects a person who touches the wire.
+  hints:
+  - Is plastic a conductor or an insulator?
+  correct: B
+  options:
+  - key: A
+    text: Plastic makes the current flow faster
+    misconception: everything-conducts
+  - key: B
+    text: Plastic is an insulator, so it keeps the current in the wire and keeps people safe
+  - key: C
+    text: Plastic makes the wire shine
+  - key: D
+    text: Plastic stores the current for later
+- key: q-sc-7
+  kind: mcq
+  stem: A cell, a bulb and a switch are joined with wires. The switch is ON, but the bulb does not glow. Which is the least likely cause?
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: simple-electric-circuit
+  explanation: A closed switch is not a fault. A loose wire, a burnt-out filament or a used-up cell can each stop the bulb from glowing. A closed switch is how a circuit should be.
+  hints:
+  - Which of the four choices is what we want to happen?
+  correct: D
+  options:
+  - key: A
+    text: A wire has slipped off a terminal
+  - key: B
+    text: The filament of the bulb has burnt out
+  - key: C
+    text: The cell has no push left
+  - key: D
+    text: The switch is closed
+- key: q-sc-8
+  kind: mcq
+  stem: 'Assertion (A): A bulb glows when the switch in its circuit is closed. Reason (R): A closed switch completes the path, so current can flow round the circuit.'
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: simple-electric-circuit
+  explanation: Both statements are true. The bulb glows because the closed switch completes the path. So R explains A.
+  hints:
+  - What does a closed switch do to the path?
+  correct: A
+  options:
+  - key: A
+    text: Both A and R are true and R explains A
+  - key: B
+    text: Both A and R are true but R does not explain A
+  - key: C
+    text: A is true but R is false
+    misconception: closed-switch-stops-current
+  - key: D
+    text: A is false but R is true
+    misconception: closed-switch-stops-current
+- key: q-sc-9
+  kind: mcq
+  stem: 'Assertion (A): A bulb connected to a cell glows when a plastic strip is placed in the gap of the circuit. Reason (R): Plastic is an insulator.'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: simple-electric-circuit
+  explanation: A is false, because plastic does not let current pass, so the gap stays open and the bulb stays dark. R is true, because plastic is an insulator.
+  hints:
+  - Does current pass through an insulator?
+  correct: D
+  options:
+  - key: A
+    text: Both A and R are true and R explains A
+    misconception: everything-conducts
+  - key: B
+    text: Both A and R are true but R does not explain A
+    misconception: everything-conducts
+  - key: C
+    text: A is true but R is false
+    misconception: everything-conducts
+  - key: D
+    text: A is false but R is true
+- key: q-sc-10
+  kind: mcq
+  stem: A boy builds a circuit with one cell, one bulb and a switch. He joins only one wire from the cell to the bulb and thinks that is enough, because the bulb uses up the current. When he closes the switch, the bulb stays dark. Why?
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: simple-electric-circuit
+  explanation: Current needs a complete path from one terminal of the cell, through the bulb, and back to the other terminal. One wire leaves a gap, so the circuit is open. The bulb does not use up the current. The same current flows round the whole circuit.
+  hints:
+  - How many terminals does a cell have, and do both need to be joined?
+  correct: B
+  options:
+  - key: A
+    text: The cell cannot light a bulb
+  - key: B
+    text: The path is not complete, because the second terminal of the cell is not joined back
+  - key: C
+    text: The switch is too small
+  - key: D
+    text: The bulb used up all the current at once
+    misconception: one-wire-enough
+- key: q-sc-11
+  kind: mcq
+  stem: Which action is safe when you do an experiment about circuits?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: simple-electric-circuit
+  explanation: Cells give a very small push and are safe for experiments. The mains supply in a wall socket can cause serious injury, and wet hands make it more dangerous.
+  hints:
+  - Which supply is safe for children to use?
+  correct: C
+  options:
+  - key: A
+    text: Join the wires to a wall socket
+  - key: B
+    text: Touch a switch with wet hands
+  - key: C
+    text: Use a cell as the source
+  - key: D
+    text: Pull a plug out of the socket by its wire with wet hands
+misconceptions:
+- code: open-switch-glows
+  concept: simple-electric-circuit
+  description: Thinks a bulb can glow even when the switch is open and the path has a gap.
+- code: closed-switch-stops-current
+  concept: simple-electric-circuit
+  description: Thinks a closed switch stops the current, when closed means the path is complete and current flows.
+- code: everything-conducts
+  concept: simple-electric-circuit
+  description: Thinks all materials, including plastic, rubber and dry wood, let electric current pass through.
+- code: one-wire-enough
+  concept: simple-electric-circuit
+  description: Thinks the current is used up by the bulb and only one wire from the cell is needed.
+cards:
+- key: simple-circuits-card-1
+  concept: simple-electric-circuit
+  front: What is the difference between an open and a closed circuit?
+  back: A closed circuit has a complete path, so current flows. An open circuit has a gap, so no current flows.
+- key: simple-circuits-card-2
+  concept: simple-electric-circuit
+  front: What is a conductor? Give two examples.
+  back: A material that lets electric current pass through easily, such as copper and aluminium.
+- key: simple-circuits-card-3
+  concept: simple-electric-circuit
+  front: What is an insulator? Give two examples.
+  back: A material that does not let current pass through, such as plastic and rubber.
+- key: simple-circuits-card-4
+  concept: simple-electric-circuit
+  front: How is a cell drawn in a circuit diagram?
+  back: Two parallel lines. The long thin line is positive (+) and the short thick line is negative (-).

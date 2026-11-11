@@ -1,0 +1,317 @@
+slug: cartesian-plane
+title: The Cartesian plane
+minutes: 30
+objectives:
+- Describe the position of a point using an ordered pair (x, y)
+- Name the quadrant of a point from the signs of its coordinates
+- Plot and read points, including points on the axes
+- Find the distance between two points that lie on the same axis, or on the same horizontal or vertical line
+concepts:
+- coordinate-plane
+origin: ai_assisted
+blocks:
+- kind: text
+  heading: Finding a place with two numbers
+  html: '<p>Think of a seat in a cinema. "Row 4, seat 7" tells you exactly where to go. One number alone is not enough, because many seats are in row 4. Two numbers, given in a fixed order, name one seat.</p><p>Mathematicians do the same for points on a flat sheet. They draw two number lines that cross at right angles. The flat horizontal line is the <strong>x-axis</strong>. The upright vertical line is the <strong>y-axis</strong>. They meet at a point called the <strong>origin</strong>, written O, which stands for 0 on both lines. Together the axes and the flat sheet are called the <strong>Cartesian plane</strong>.</p>'
+- kind: text
+  heading: Coordinates and quadrants
+  html: '<p>A point is named by an <strong>ordered pair</strong> (x, y). The first number, x, says how far to move along the x-axis from O. Right is positive and left is negative. The second number, y, says how far to move up or down. Up is positive and down is negative. The x value is also called the <strong>abscissa</strong> and the y value the <strong>ordinate</strong>. The numbers x and y are the <strong>coordinates</strong> of the point.</p><p>The two axes split the plane into four parts. Each part is a <strong>quadrant</strong>. They are numbered I, II, III and IV, going <em>anticlockwise</em> from the top right. The signs of the coordinates tell you the quadrant: quadrant I is (+, +), quadrant II is (−, +), quadrant III is (−, −) and quadrant IV is (+, −). A point on an axis is in <em>no</em> quadrant.</p>'
+- kind: figure
+  svg: '<svg viewBox="0 0 300 300" role="img"><line x1="30" y1="30" x2="30" y2="270" stroke="#9aa3c7" stroke-width="1" opacity=".5"/><line x1="30" y1="30" x2="270" y2="30" stroke="#9aa3c7" stroke-width="1" opacity=".5"/><line x1="60" y1="30" x2="60" y2="270" stroke="#9aa3c7" stroke-width="1" opacity=".5"/><line x1="30" y1="60" x2="270" y2="60" stroke="#9aa3c7" stroke-width="1" opacity=".5"/><line x1="90" y1="30" x2="90" y2="270" stroke="#9aa3c7" stroke-width="1" opacity=".5"/><line x1="30" y1="90" x2="270" y2="90" stroke="#9aa3c7" stroke-width="1" opacity=".5"/><line x1="120" y1="30" x2="120" y2="270" stroke="#9aa3c7" stroke-width="1" opacity=".5"/><line x1="30" y1="120" x2="270" y2="120" stroke="#9aa3c7" stroke-width="1" opacity=".5"/><line x1="150" y1="30" x2="150" y2="270" stroke="#9aa3c7" stroke-width="1" opacity=".5"/><line x1="30" y1="150" x2="270" y2="150" stroke="#9aa3c7" stroke-width="1" opacity=".5"/><line x1="180" y1="30" x2="180" y2="270" stroke="#9aa3c7" stroke-width="1" opacity=".5"/><line x1="30" y1="180" x2="270" y2="180" stroke="#9aa3c7" stroke-width="1" opacity=".5"/><line x1="210" y1="30" x2="210" y2="270" stroke="#9aa3c7" stroke-width="1" opacity=".5"/><line x1="30" y1="210" x2="270" y2="210" stroke="#9aa3c7" stroke-width="1" opacity=".5"/><line x1="240" y1="30" x2="240" y2="270" stroke="#9aa3c7" stroke-width="1" opacity=".5"/><line x1="30" y1="240" x2="270" y2="240" stroke="#9aa3c7" stroke-width="1" opacity=".5"/><line x1="270" y1="30" x2="270" y2="270" stroke="#9aa3c7" stroke-width="1" opacity=".5"/><line x1="30" y1="270" x2="270" y2="270" stroke="#9aa3c7" stroke-width="1" opacity=".5"/><line x1="20" y1="150" x2="285" y2="150" stroke="#14193a" stroke-width="2.5"/><line x1="150" y1="285" x2="150" y2="15" stroke="#14193a" stroke-width="2.5"/><text x="288" y="145" font-size="13" font-weight="700" fill="currentColor">x</text><text x="156" y="14" font-size="13" font-weight="700" fill="currentColor">y</text><text x="140" y="165" font-size="11" text-anchor="end" fill="currentColor">O</text><text x="30" y="165" font-size="11" text-anchor="middle" fill="currentColor">−4</text><text x="143" y="274" font-size="11" text-anchor="end" fill="currentColor">−4</text><text x="60" y="165" font-size="11" text-anchor="middle" fill="currentColor">−3</text><text x="143" y="244" font-size="11" text-anchor="end" fill="currentColor">−3</text><text x="90" y="165" font-size="11" text-anchor="middle" fill="currentColor">−2</text><text x="143" y="214" font-size="11" text-anchor="end" fill="currentColor">−2</text><text x="120" y="165" font-size="11" text-anchor="middle" fill="currentColor">−1</text><text x="143" y="184" font-size="11" text-anchor="end" fill="currentColor">−1</text><text x="180" y="165" font-size="11" text-anchor="middle" fill="currentColor">1</text><text x="143" y="124" font-size="11" text-anchor="end" fill="currentColor">1</text><text x="210" y="165" font-size="11" text-anchor="middle" fill="currentColor">2</text><text x="143" y="94" font-size="11" text-anchor="end" fill="currentColor">2</text><text x="240" y="165" font-size="11" text-anchor="middle" fill="currentColor">3</text><text x="143" y="64" font-size="11" text-anchor="end" fill="currentColor">3</text><text x="270" y="165" font-size="11" text-anchor="middle" fill="currentColor">4</text><text x="143" y="34" font-size="11" text-anchor="end" fill="currentColor">4</text><text x="252" y="48" font-size="14" font-weight="700" text-anchor="middle" fill="currentColor" opacity=".7">I</text><text x="48" y="48" font-size="14" font-weight="700" text-anchor="middle" fill="currentColor" opacity=".7">II</text><text x="48" y="268" font-size="14" font-weight="700" text-anchor="middle" fill="currentColor" opacity=".7">III</text><text x="252" y="268" font-size="14" font-weight="700" text-anchor="middle" fill="currentColor" opacity=".7">IV</text><circle cx="240" cy="90" r="5" fill="#ffb800" stroke="#14193a" stroke-width="2"/><text x="248" y="84" font-size="12" font-weight="700" fill="currentColor">A (3, 2)</text><circle cx="90" cy="60" r="5" fill="#ffb800" stroke="#14193a" stroke-width="2"/><text x="98" y="54" font-size="12" font-weight="700" fill="currentColor">B (−2, 3)</text><circle cx="60" cy="210" r="5" fill="#ffb800" stroke="#14193a" stroke-width="2"/><text x="68" y="204" font-size="12" font-weight="700" fill="currentColor">C (−3, −2)</text><circle cx="210" cy="240" r="5" fill="#ffb800" stroke="#14193a" stroke-width="2"/><text x="218" y="234" font-size="12" font-weight="700" fill="currentColor">D (2, −3)</text></svg>'
+  alt: A grid from minus 4 to 4 on both axes with four quadrants labelled I to IV, and four marked points A, B, C and D, one in each quadrant.
+  caption: 'Point A (3, 2) is in quadrant I, B (−2, 3) in II, C (−3, −2) in III and D (2, −3) in IV. The order matters: (3, 2) and (2, 3) are different points.'
+- kind: example
+  heading: Worked example
+  prompt: Plot the point P(−4, 3) and say which quadrant it is in.
+  steps:
+  - 'Start at the origin O. The x value is −4, so move 4 units to the left along the x-axis.'
+  - 'The y value is 3, so from there move 3 units up, parallel to the y-axis. Mark the point P.'
+  - 'The x value is negative and the y value is positive. That matches (−, +).'
+  - 'So P is in quadrant II, the top left part of the plane. Check with the figure. Point B (−2, 3) is also in the top left, so the answer fits.'
+- kind: text
+  heading: Points on the axes and distance along a line
+  html: '<p>A point on the x-axis has y = 0, so it looks like (4, 0). A point on the y-axis has x = 0, so it looks like (0, −3). The origin is (0, 0).</p><p>For two points on the same horizontal line, the distance is the difference of their x values, taken as a positive number. For (−3, 0) and (4, 0) the distance is 4 − (−3) = 7 units. Two points on the same vertical line work the same way, using y values. The distance of a point (a, b) from the x-axis is |b|. Its distance from the y-axis is |a|. The bars mean "drop the sign".</p>'
+- kind: example
+  heading: Worked example
+  prompt: Find the distance between (2, 5) and (9, 5), and the distances of the point (−6, 8) from each axis.
+  steps:
+  - 'Both points have y = 5. They lie on the same horizontal line, so use the x values.'
+  - 'The distance is 9 − 2 = 7 units.'
+  - 'For (−6, 8), the distance from the x-axis is the size of y, which is 8 units. The distance from the y-axis is the size of x, which is 6 units, not −6, because distance cannot be negative.'
+  - 'Check by drawing. From (−6, 8) go straight down 8 to the x-axis, and straight right 6 to the y-axis. The numbers agree.'
+- kind: callout
+  tone: watch
+  html: The order of the pair matters. (3, 2) means 3 right and 2 up. (2, 3) means 2 right and 3 up. These are two different points. Remember "walk along the x-axis first, then climb".
+- kind: callout
+  tone: real
+  html: Maps and phone location services use the same idea. A place is found by two numbers, such as how far east and how far north it is from a starting spot. A game screen also stores the place of each object with an x number and a y number.
+- kind: check
+  item: q-cp-1
+- kind: check
+  item: q-cp-2
+- kind: check
+  item: q-cp-3
+- kind: summary
+  points:
+  - 'A point is named by an ordered pair (x, y). Move along the x-axis first, then up or down.'
+  - 'The quadrants are I (+, +), II (−, +), III (−, −) and IV (+, −), numbered anticlockwise.'
+  - 'A point on an axis is not in any quadrant. On the x-axis y = 0, and on the y-axis x = 0.'
+  - 'On a horizontal or vertical line, the distance is the positive difference of the changing coordinate.'
+items:
+- key: q-cp-1
+  kind: mcq
+  stem: In which quadrant does the point (−4, 5) lie?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: coordinate-plane
+  explanation: The x value is negative and the y value is positive. That is (−, +), which is quadrant II.
+  hints:
+  - Look at the sign of each number. Then match the pair of signs to a quadrant.
+  correct: B
+  options:
+  - key: A
+    text: Quadrant I
+    misconception: quadrant-sign-mixup
+  - key: B
+    text: Quadrant II
+  - key: C
+    text: Quadrant III
+    misconception: quadrant-sign-mixup
+  - key: D
+    text: Quadrant IV
+    misconception: quadrant-sign-mixup
+- key: q-cp-2
+  kind: mcq
+  stem: Where does the point (0, −3) lie?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: coordinate-plane
+  explanation: The x value is 0, so the point is on the y-axis. The y value is negative, so it is 3 units below the origin. A point on an axis is in no quadrant.
+  hints:
+  - Which axis do you stay on if x is 0?
+  correct: C
+  options:
+  - key: A
+    text: On the x-axis, 3 units to the left of O
+    misconception: swapped-coordinates
+  - key: B
+    text: In quadrant III
+    misconception: axis-point-in-quadrant
+  - key: C
+    text: On the y-axis, 3 units below O
+  - key: D
+    text: On the y-axis, 3 units above O
+    misconception: quadrant-sign-mixup
+- key: q-cp-3
+  kind: numeric
+  stem: What is the distance between the points (−3, 0) and (4, 0), in units?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: coordinate-plane
+  explanation: Both points are on the x-axis. The distance is 4 − (−3) = 7 units.
+  hints:
+  - Subtract the smaller x value from the larger one. Take care with the minus sign.
+  value: 7
+  tolerance: 0.0
+  verify: 4 - (-3)
+- key: q-cp-4
+  kind: mcq
+  stem: Which statement about the points (3, 2) and (2, 3) is true?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: coordinate-plane
+  explanation: The order of the pair matters. (3, 2) is 3 units right and 2 units up. (2, 3) is 2 units right and 3 units up. They are different points, but both are in quadrant I.
+  hints:
+  - Plot both points and see where each one is.
+  correct: D
+  options:
+  - key: A
+    text: They are the same point
+    misconception: swapped-coordinates
+  - key: B
+    text: One is in quadrant I and the other is in quadrant II
+    misconception: quadrant-sign-mixup
+  - key: C
+    text: They are different points, and one is on an axis
+  - key: D
+    text: They are different points, and both are in quadrant I
+- key: q-cp-5
+  kind: numeric
+  stem: What is the distance of the point (−6, 8) from the x-axis, in units?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: coordinate-plane
+  explanation: The distance from the x-axis is the size of the y value. The y value is 8, so the distance is 8 units.
+  hints:
+  - Which coordinate tells you how far the point is above or below the x-axis?
+  value: 8
+  tolerance: 0.0
+  verify: abs(8)
+- key: q-cp-6
+  kind: mcq
+  stem: The point (5, −2) is reflected in the x-axis. That means it is flipped over the x-axis like a mirror. What are the new coordinates?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: coordinate-plane
+  explanation: A flip over the x-axis keeps the point the same distance along the x-axis and moves it to the other side. So x stays 5 and y changes sign, giving (5, 2).
+  hints:
+  - Which coordinate says how far the point is above or below the x-axis?
+  correct: A
+  options:
+  - key: A
+    text: (5, 2)
+  - key: B
+    text: (−5, −2)
+  - key: C
+    text: (−5, 2)
+  - key: D
+    text: (−2, 5)
+    misconception: swapped-coordinates
+- key: q-cp-7
+  kind: numeric
+  stem: A rectangle has corners at (1, 1), (6, 1), (6, 4) and (1, 4). What is its area, in square units?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: coordinate-plane
+  explanation: The bottom side runs from x = 1 to x = 6, so it is 5 units. The right side runs from y = 1 to y = 4, so it is 3 units. Area = 5 × 3 = 15 square units.
+  hints:
+  - Find the length of one horizontal side and one vertical side first.
+  value: 15
+  tolerance: 0.0
+  verify: (6-1)*(4-1)
+- key: q-cp-8
+  kind: mcq
+  stem: 'Assertion (A): The point (−3, 4) lies in the second quadrant. Reason (R): In the second quadrant the x value is negative and the y value is positive.'
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: coordinate-plane
+  explanation: Both are true. (−3, 4) has a negative x and a positive y, which is exactly what R says for quadrant II. So R explains A.
+  hints:
+  - Check the signs of (−3, 4) against the rule in R.
+  correct: A
+  options:
+  - key: A
+    text: Both A and R are true, and R explains A
+  - key: B
+    text: Both A and R are true, but R does not explain A
+  - key: C
+    text: A is true, but R is false
+  - key: D
+    text: A is false, but R is true
+- key: q-cp-9
+  kind: mcq
+  stem: 'Assertion (A): The point (0, 5) lies in the first quadrant. Reason (R): Neither coordinate of (0, 5) is negative.'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: coordinate-plane
+  explanation: R is true, since 0 and 5 are not negative. But x = 0 puts the point on the y-axis, and a point on an axis is in no quadrant. So A is false and R is true.
+  hints:
+  - What does x = 0 tell you about where the point is?
+  correct: D
+  options:
+  - key: A
+    text: Both A and R are true, and R explains A
+    misconception: axis-point-in-quadrant
+  - key: B
+    text: Both A and R are true, but R does not explain A
+    misconception: axis-point-in-quadrant
+  - key: C
+    text: A is true, but R is false
+    misconception: axis-point-in-quadrant
+  - key: D
+    text: A is false, but R is true
+- key: q-cp-10
+  kind: mcq
+  stem: 'Read this. A school map uses the school gate as the origin O. Each unit is 100 m. East is the positive x direction and north is the positive y direction. A well W is at (3, −2). Which statement is correct?'
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: coordinate-plane
+  explanation: The x value 3 is positive, so the well is 3 units (300 m) east. The y value −2 is negative, so it is 2 units (200 m) south. East and south is the (+, −) region, quadrant IV.
+  hints:
+  - Positive x is east. Negative y is south.
+  correct: C
+  options:
+  - key: A
+    text: The well is 300 m west and 200 m north, in quadrant II
+    misconception: quadrant-sign-mixup
+  - key: B
+    text: The well is 200 m east and 300 m south, in quadrant IV
+    misconception: swapped-coordinates
+  - key: C
+    text: The well is 300 m east and 200 m south, in quadrant IV
+  - key: D
+    text: The well is 300 m east and 200 m south, on an axis
+    misconception: axis-point-in-quadrant
+- key: q-cp-11
+  kind: numeric
+  stem: Three corners of a rectangle are (2, 1), (2, 5) and (7, 1). The sides are parallel to the axes. Add the two coordinates of the fourth corner together. What is the sum?
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: coordinate-plane
+  explanation: The fourth corner shares x with (7, 1) and y with (2, 5). So it is (7, 5), and 7 + 5 = 12.
+  hints:
+  - Sketch the three points. The missing corner takes its x from one point and its y from another.
+  value: 12
+  tolerance: 0.0
+  verify: 7 + 5
+- key: q-cp-12
+  kind: mcq
+  stem: A point (a, b) has a × b < 0 and a < 0. In which quadrant is it?
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: coordinate-plane
+  explanation: The product is negative, so a and b have opposite signs. Since a is negative, b is positive. That is (−, +), quadrant II.
+  hints:
+  - A product is negative only when the two numbers have opposite signs.
+  correct: B
+  options:
+  - key: A
+    text: Quadrant I
+    misconception: quadrant-sign-mixup
+  - key: B
+    text: Quadrant II
+  - key: C
+    text: Quadrant III
+    misconception: quadrant-sign-mixup
+  - key: D
+    text: Quadrant IV
+    misconception: quadrant-sign-mixup
+misconceptions:
+- code: swapped-coordinates
+  concept: coordinate-plane
+  description: Reads or plots the pair as (y, x) instead of (x, y), or thinks the order does not matter.
+- code: quadrant-sign-mixup
+  concept: coordinate-plane
+  description: Mixes up which sign pairs belong to which quadrant, or the direction in which the quadrants are numbered.
+- code: axis-point-in-quadrant
+  concept: coordinate-plane
+  description: Puts a point with a zero coordinate into a quadrant, when it is on an axis and in no quadrant.
+cards:
+- key: cartesian-plane-card-1
+  concept: coordinate-plane
+  front: What do x and y tell you in the ordered pair (x, y)?
+  back: x is the distance along the x-axis from the origin, right or left. y is the distance up or down. Always read x first.
+- key: cartesian-plane-card-2
+  concept: coordinate-plane
+  front: What are the signs of the four quadrants?
+  back: I is (+, +), II is (−, +), III is (−, −) and IV is (+, −). They are numbered anticlockwise from the top right.
+- key: cartesian-plane-card-3
+  concept: coordinate-plane
+  front: Which quadrant is a point on an axis in?
+  back: None. A point on the x-axis has y = 0, and a point on the y-axis has x = 0.
+- key: cartesian-plane-card-4
+  concept: coordinate-plane
+  front: How do you find the distance between two points on a horizontal line?
+  back: Subtract their x values and drop any minus sign, because the y values are the same.

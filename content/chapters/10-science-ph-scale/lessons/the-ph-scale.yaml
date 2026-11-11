@@ -1,0 +1,372 @@
+slug: the-ph-scale
+title: The pH scale
+minutes: 25
+objectives:
+- Explain that pH is a number that tells how acidic or basic a solution is
+- Read the 0 to 14 scale and say whether a pH value is acidic, neutral or basic
+- Use litmus, phenolphthalein, methyl orange and universal indicator to test a solution
+- Explain the role of pH in the stomach, in tooth decay, in soil and in neutralisation
+concepts:
+- ph-scale
+origin: ai_assisted
+blocks:
+- kind: text
+  heading: A number for how acidic
+  html: '<p>Lemon juice is sour and soap feels slippery. Lemon juice is an acid and soap is a base. But two acids can differ
+    a lot. Some acids are mild enough to eat, and some can burn skin. We need a number to say how strong the acid or base
+    is.</p><p>That number is the <strong>pH</strong>. It tells us how much hydrogen ion is present in a solution. Hydrogen
+    ions are the particles that make a solution acidic. The more hydrogen ions, the <strong>lower</strong> the pH.</p>'
+- kind: text
+  heading: Reading the scale from 0 to 14
+  html: '<p>The common pH scale runs from 0 to 14. Pure water at room temperature has a pH of <strong>7</strong>. This is
+    called <strong>neutral</strong>.</p><ul><li>A pH <strong>below 7</strong> is <strong>acidic</strong>. The lower the number,
+    the more acidic the solution.</li><li>A pH of <strong>exactly 7</strong> is neutral.</li><li>A pH <strong>above 7</strong>
+    is <strong>basic</strong>. The higher the number, the more basic the solution.</li></ul><p>Each step on the scale is a
+    tenfold change. A solution with pH 3 has 10 times as many hydrogen ions as one with pH 4. It has 100 times as many as one
+    with pH 5.</p>'
+- kind: figure
+  svg: <svg viewBox="0 0 320 120" role="img"><rect x="10" y="40" width="20" height="36" fill="#e53935"/><text x="20" y="94" text-anchor="middle" font-size="11" font-weight="700" fill="currentColor">0</text><rect x="30" y="40" width="20" height="36" fill="#e53935"/><text x="40" y="94" text-anchor="middle" font-size="11" font-weight="700" fill="currentColor">1</text><rect x="50" y="40" width="20" height="36" fill="#ef5b2b"/><text x="60" y="94" text-anchor="middle" font-size="11" font-weight="700" fill="currentColor">2</text><rect x="70" y="40" width="20" height="36" fill="#f4801f"/><text x="80" y="94" text-anchor="middle" font-size="11" font-weight="700" fill="currentColor">3</text><rect x="90" y="40" width="20" height="36" fill="#f9a825"/><text x="100" y="94" text-anchor="middle" font-size="11" font-weight="700" fill="currentColor">4</text><rect x="110" y="40" width="20" height="36" fill="#fbc02d"/><text x="120" y="94" text-anchor="middle" font-size="11" font-weight="700" fill="currentColor">5</text><rect x="130" y="40" width="20" height="36" fill="#cddc39"/><text x="140" y="94" text-anchor="middle" font-size="11" font-weight="700" fill="currentColor">6</text><rect x="150" y="40" width="20" height="36" fill="#4caf50"/><text x="160" y="94" text-anchor="middle" font-size="11" font-weight="700" fill="currentColor">7</text><rect x="170" y="40" width="20" height="36" fill="#26a69a"/><text x="180" y="94" text-anchor="middle" font-size="11" font-weight="700" fill="currentColor">8</text><rect x="190" y="40" width="20" height="36" fill="#29b6f6"/><text x="200" y="94" text-anchor="middle" font-size="11" font-weight="700" fill="currentColor">9</text><rect x="210" y="40" width="20" height="36" fill="#3f7fd9"/><text x="220" y="94" text-anchor="middle" font-size="11" font-weight="700" fill="currentColor">10</text><rect x="230" y="40" width="20" height="36" fill="#3f51b5"/><text x="240" y="94" text-anchor="middle" font-size="11" font-weight="700" fill="currentColor">11</text><rect x="250" y="40" width="20" height="36" fill="#5e3fb5"/><text x="260" y="94" text-anchor="middle" font-size="11" font-weight="700" fill="currentColor">12</text><rect x="270" y="40" width="20" height="36" fill="#6a2fa5"/><text x="280" y="94" text-anchor="middle" font-size="11" font-weight="700" fill="currentColor">13</text><rect x="290" y="40" width="20" height="36" fill="#4a148c"/><text x="300" y="94" text-anchor="middle" font-size="11" font-weight="700" fill="currentColor">14</text><text x="10" y="28" font-size="12" font-weight="700" fill="currentColor">acidic</text><text x="130" y="28" font-size="12" font-weight="700" fill="currentColor">neutral</text><text x="262" y="28" font-size="12" font-weight="700" fill="currentColor">basic</text><text x="10" y="112" font-size="10" fill="currentColor">more hydrogen ions</text><text x="215" y="112" font-size="10" fill="currentColor">fewer hydrogen ions</text></svg>
+  alt: A strip of coloured boxes numbered 0 to 14 with acidic on the left, neutral in the middle at 7 and basic on the right.
+  caption: The pH scale. Colours shown are typical of universal indicator. Values below 7 are acidic, 7 is neutral and values above 7 are basic.
+- kind: text
+  heading: Indicators show whether a solution is acidic or basic
+  html: '<p>An <strong>indicator</strong> is a substance that shows one colour in an acid and another in a base. Blue litmus
+    turns red in an acid. Red litmus turns blue in a base. Phenolphthalein is colourless in an acid and pink in a base. Methyl
+    orange is red in an acid and yellow in a base.</p><p>These tell us only acid or base. <strong>Universal indicator</strong>
+    is a mixture of several indicators. It shows a whole range of colours. We match the colour to a chart, and the chart gives
+    an approximate pH. Typically strong acids give red, neutral gives green and strong bases give blue to violet. A pH meter
+    or pH paper can also be used.</p>'
+- kind: example
+  heading: Worked example
+  prompt: Solution P has pH 2 and solution Q has pH 5. Which is more acidic, and how many times more hydrogen ions does it have?
+  steps:
+  - 'Both pH values are below 7, so both are acidic. The lower pH is more acidic, so P is more acidic.'
+  - 'Find the gap on the scale. 5 − 2 = 3 steps.'
+  - 'Each step is a tenfold change, so three steps is 10 × 10 × 10 = 1000.'
+  - 'Check the direction. A lower pH means more hydrogen ions, so P has 1000 times as many hydrogen ions as Q.'
+- kind: callout
+  tone: watch
+  html: A lower pH means MORE acidic, not less. A pH of 2 is much more acidic than a pH of 6. Also, adding water to an acid makes the pH rise toward 7, but it never turns the acid into a base.
+- kind: text
+  heading: pH in everyday life
+  html: '<p><strong>In the stomach.</strong> Your stomach makes hydrochloric acid, which helps digestion. It is strongly acidic.
+    Too much acid causes a burning feeling. An antacid is a mild base. It reacts with the extra acid and eases the burning.</p><p><strong>In
+    the mouth.</strong> Bacteria in the mouth break down leftover sugar and make acids. When the pH in the mouth falls below
+    5.5, the hard outer layer of the teeth, called enamel, starts to wear away. This is tooth decay. Toothpaste is usually
+    basic, so it helps to neutralise the acid. Cleaning the teeth after eating helps.</p><p><strong>In soil.</strong> Each
+    crop grows best in soil within a certain pH range. Farmers test the soil. If it is too acidic, they may add slaked lime,
+    which is basic. If it is too basic, they may add compost or other organic matter.</p>'
+- kind: text
+  heading: Neutralisation
+  html: '<p>When an acid and a base react, each reduces the effect of the other. This is <strong>neutralisation</strong>.
+    An acid and a base react to form a salt and water. The pH of the mixture moves toward 7. If exactly the right amounts
+    are used, the final solution can be neutral.</p>'
+- kind: example
+  heading: Worked example
+  prompt: A person has a burning feeling after a heavy meal. An antacid tablet contains a base. Explain how it helps.
+  steps:
+  - 'The stomach has hydrochloric acid, so the pH inside is very low. Too much acid causes the burning.'
+  - 'The antacid is a mild base. When it meets the acid it reacts with it. This is neutralisation.'
+  - 'Neutralisation makes a salt and water and uses up some of the hydrogen ions. The pH of the stomach contents rises a little toward 7.'
+  - 'Check. A mild base is used, not a strong one, so the stomach contents do not become strongly basic.'
+- kind: callout
+  tone: real
+  html: When a bee stings, the sting leaves an acid under the skin. A mild base such as baking soda paste can ease the pain by neutralising it. Never rub a strong base on the skin.
+- kind: check
+  item: q-ph-1
+- kind: check
+  item: q-ph-2
+- kind: check
+  item: q-ph-3
+- kind: summary
+  points:
+  - 'pH tells how acidic or basic a solution is. Lower pH means more hydrogen ions.'
+  - 'Below 7 is acidic, 7 is neutral and above 7 is basic. Each step is a tenfold change.'
+  - 'Litmus, phenolphthalein and methyl orange show acid or base. Universal indicator gives an approximate pH.'
+  - 'pH matters in the stomach, in tooth decay below pH 5.5, and in soil. Neutralisation moves pH toward 7.'
+items:
+- key: q-ph-1
+  kind: mcq
+  stem: What does pH tell us about a solution?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: ph-scale
+  explanation: pH tells how acidic or basic a solution is. It is linked to the amount of hydrogen ions in the solution.
+  hints:
+  - It is a number on a scale from 0 to 14.
+  correct: C
+  options:
+  - key: A
+    text: How hot the solution is
+  - key: B
+    text: How heavy the solution is
+  - key: C
+    text: How acidic or basic the solution is
+  - key: D
+    text: How much the solution can dissolve
+- key: q-ph-2
+  kind: mcq
+  stem: A solution has a pH of 9. What is it?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: ph-scale
+  explanation: A pH above 7 means the solution is basic.
+  hints:
+  - Compare 9 with 7.
+  correct: B
+  options:
+  - key: A
+    text: Acidic
+    misconception: higher-ph-more-acidic
+  - key: B
+    text: Basic
+  - key: C
+    text: Neutral
+    misconception: neutral-is-zero
+  - key: D
+    text: Cannot be found
+- key: q-ph-3
+  kind: mcq
+  stem: Which solution is the MOST acidic?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: ph-scale
+  explanation: The lowest pH is the most acidic. Of 2, 5, 7 and 11, the pH of 2 is the lowest.
+  hints:
+  - Lower pH means more acidic.
+  correct: A
+  options:
+  - key: A
+    text: pH 2
+  - key: B
+    text: pH 5
+  - key: C
+    text: pH 7
+  - key: D
+    text: pH 11
+    misconception: higher-ph-more-acidic
+- key: q-ph-4
+  kind: mcq
+  stem: A few drops of phenolphthalein turn a solution pink. What does this show?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: ph-scale
+  explanation: Phenolphthalein is colourless in acid and pink in a base. So a pink colour shows the solution is basic.
+  hints:
+  - Phenolphthalein is colourless in acid.
+  correct: D
+  options:
+  - key: A
+    text: The solution is acidic
+    misconception: pink-means-acid
+  - key: B
+    text: The solution is neutral
+  - key: C
+    text: The solution has pH 0
+    misconception: pink-means-acid
+  - key: D
+    text: The solution is basic
+- key: q-ph-5
+  kind: numeric
+  stem: Solution X has pH 4 and solution Y has pH 6. How many times more hydrogen ions does X have than Y?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: ph-scale
+  explanation: The gap is 6 − 4 = 2 steps. Each step is a tenfold change, so 10 × 10 = 100.
+  hints:
+  - Each step on the scale is a factor of 10.
+  value: 100
+  tolerance: 0.0
+  verify: 10**(6-4)
+- key: q-ph-6
+  kind: mcq
+  stem: Why is universal indicator more useful than litmus when we need a pH value?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: ph-scale
+  explanation: Litmus only shows acid or base. Universal indicator shows many colours, and matching the colour to a chart gives an approximate pH.
+  hints:
+  - How many different colours does each one show?
+  correct: B
+  options:
+  - key: A
+    text: It is cheaper than litmus
+  - key: B
+    text: It shows a range of colours that match an approximate pH
+  - key: C
+    text: It turns every solution green
+    misconception: neutral-is-zero
+  - key: D
+    text: It changes the pH of the solution
+- key: q-ph-7
+  kind: truefalse
+  stem: 'True or false: If you keep adding water to a strong acid, its pH can rise above 7 and the acid becomes a base.'
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: ph-scale
+  explanation: False. Adding water lowers the hydrogen ion concentration, so the pH rises toward 7. It never becomes a base by dilution alone.
+  hints:
+  - Water is neutral. Can it make a base?
+  correct: false
+- key: q-ph-8
+  kind: match
+  stem: Match each situation to the idea behind it.
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: ph-scale
+  explanation: Antacids neutralise excess acid, enamel wears away below pH 5.5, lime raises the pH of acidic soil, and an acid with a base gives salt and water.
+  hints:
+  - Think about which side of pH 7 each situation is on.
+  pairs:
+    Excess acid in the stomach: An antacid neutralises it
+    Tooth enamel wearing away: Mouth pH falls below 5.5
+    Soil that is too acidic: Slaked lime is added to raise the pH
+    Acid reacts with a base: A salt and water are formed
+- key: q-ph-9
+  kind: mcq
+  stem: 'Assertion (A): A solution of pH 3 is more acidic than a solution of pH 5. Reason (R): A lower pH means a higher amount of hydrogen ions.'
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: ph-scale
+  explanation: Both statements are true. The pH 3 solution has more hydrogen ions, and that is what makes it more acidic.
+  hints:
+  - Which has more hydrogen ions, pH 3 or pH 5?
+  correct: A
+  options:
+  - key: A
+    text: Both A and R are true, and R explains A
+  - key: B
+    text: Both A and R are true, but R does not explain A
+  - key: C
+    text: A is true, but R is false
+    misconception: higher-ph-more-acidic
+  - key: D
+    text: A is false, but R is true
+    misconception: higher-ph-more-acidic
+- key: q-ph-10
+  kind: mcq
+  stem: 'Assertion (A): Adding a lot of water to a strong acid can turn it into a basic solution. Reason (R): Dilution lowers the amount of hydrogen ions in a given volume.'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: ph-scale
+  explanation: A is false, since dilution moves the pH toward 7 but cannot take it past 7. R is true, since the same hydrogen ions are spread in more water.
+  hints:
+  - Can water alone ever give pH above 7?
+  correct: D
+  options:
+  - key: A
+    text: Both A and R are true, and R explains A
+    misconception: dilution-makes-base
+  - key: B
+    text: Both A and R are true, but R does not explain A
+    misconception: dilution-makes-base
+  - key: C
+    text: A is true, but R is false
+  - key: D
+    text: A is false, but R is true
+- key: q-ph-11
+  kind: mcq
+  stem: 'Read this. After a heavy meal a person feels a burning in the chest. She chews an antacid tablet, which contains a mild base, and feels better in a few minutes. Which explanation is correct?'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: ph-scale
+  explanation: The base in the tablet reacts with the extra stomach acid. This is neutralisation. The acid is used up and the pH moves a little toward 7.
+  hints:
+  - Think about what a base does to an acid.
+  correct: B
+  options:
+  - key: A
+    text: The tablet adds more acid so the stomach can digest faster
+    misconception: higher-ph-more-acidic
+  - key: B
+    text: The tablet neutralises some of the extra stomach acid
+  - key: C
+    text: The tablet turns the stomach acid into pure water only
+  - key: D
+    text: The tablet makes the stomach strongly basic
+    misconception: dilution-makes-base
+- key: q-ph-12
+  kind: mcq
+  stem: 'Read this. A farmer finds that the soil in one field is too acidic for her crop. A test shows its pH is well below 7. She spreads slaked lime, which is basic. What should happen to the soil pH?'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: ph-scale
+  explanation: A base neutralises some of the acid in the soil, so the pH rises toward 7.
+  hints:
+  - What does a base do to an acid?
+  correct: C
+  options:
+  - key: A
+    text: It should fall even lower
+    misconception: higher-ph-more-acidic
+  - key: B
+    text: It should stay exactly the same
+  - key: C
+    text: It should rise toward 7
+  - key: D
+    text: It should become zero
+    misconception: neutral-is-zero
+- key: q-ph-13
+  kind: mcq
+  stem: Why is toothpaste usually basic?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: ph-scale
+  explanation: Bacteria in the mouth make acid from sugar, and acid can wear enamel away. A basic toothpaste neutralises some of that acid.
+  hints:
+  - What does a base do to an acid?
+  correct: A
+  options:
+  - key: A
+    text: To neutralise the acids made in the mouth
+  - key: B
+    text: To make the teeth acidic
+    misconception: higher-ph-more-acidic
+  - key: C
+    text: To change the pH of the mouth to zero
+    misconception: neutral-is-zero
+  - key: D
+    text: To make bacteria produce more acid
+misconceptions:
+- code: higher-ph-more-acidic
+  concept: ph-scale
+  description: Thinks a higher pH means a more acidic solution, when a lower pH means more acidic.
+- code: neutral-is-zero
+  concept: ph-scale
+  description: Thinks neutral is pH 0, or that pH 0 means no acid, when neutral is 7 and 0 is very strongly acidic.
+- code: dilution-makes-base
+  concept: ph-scale
+  description: Thinks adding water can turn an acid into a base, when dilution only moves the pH toward 7.
+- code: pink-means-acid
+  concept: ph-scale
+  description: Thinks the pink colour of phenolphthalein shows an acid, when it shows a base.
+cards:
+- key: the-ph-scale-card-1
+  concept: ph-scale
+  front: What do pH values below 7, equal to 7 and above 7 mean?
+  back: Below 7 is acidic, 7 is neutral and above 7 is basic.
+- key: the-ph-scale-card-2
+  concept: ph-scale
+  front: What is the link between pH and hydrogen ions?
+  back: A lower pH means more hydrogen ions. Each step on the scale is a tenfold change.
+- key: the-ph-scale-card-3
+  concept: ph-scale
+  front: What does phenolphthalein show in acid and in base?
+  back: It is colourless in an acid and pink in a base.
+- key: the-ph-scale-card-4
+  concept: ph-scale
+  front: At what mouth pH does tooth enamel start to wear away?
+  back: When the pH falls below 5.5.

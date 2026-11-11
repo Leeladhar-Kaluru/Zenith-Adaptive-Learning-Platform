@@ -1,0 +1,317 @@
+slug: balancing-equations
+title: Balancing chemical equations
+minutes: 30
+objectives:
+- Write a chemical reaction as a word equation and as a symbol equation
+- Explain why an equation must be balanced, using the law of conservation of mass
+- Balance a simple equation step by step by changing coefficients only
+- Use state symbols and name the main types of chemical reaction
+concepts:
+- balancing-equations
+origin: ai_assisted
+blocks:
+- kind: text
+  heading: Atoms are never lost
+  html: '<p>When a candle burns, the wax seems to vanish. But the wax has not disappeared. Its atoms have joined with oxygen from the air to make carbon dioxide gas and water vapour, which float away. A <strong>chemical reaction</strong> is a change in which new substances form. The starting substances are the <strong>reactants</strong>. The new substances are the <strong>products</strong>.</p><p>We can write a reaction as a <strong>word equation</strong>, for example: hydrogen + oxygen → water. The arrow means "changes into" or "gives". Reactants go on the left and products on the right.</p><p>The <strong>law of conservation of mass</strong> says that in a chemical reaction, mass is neither created nor destroyed. The total mass of the reactants equals the total mass of the products, if nothing escapes. This happens because atoms only rearrange. Every atom on the left must show up on the right.</p>'
+- kind: text
+  heading: Symbol equations and balancing
+  html: '<p>A <strong>symbol equation</strong> uses chemical formulae. Hydrogen gas is H<sub>2</sub>, oxygen gas is O<sub>2</sub> and water is H<sub>2</sub>O. The small number after a symbol, a <strong>subscript</strong>, tells how many atoms of that kind are in one molecule. Writing H<sub>2</sub> + O<sub>2</sub> → H<sub>2</sub>O gives 2 oxygen atoms on the left but only 1 on the right. An atom has gone missing, so this equation is <strong>unbalanced</strong>.</p><p>To balance it, we put a whole number in front of a formula. This number is the <strong>coefficient</strong>. It tells how many molecules (or units) of that substance take part. A coefficient multiplies every atom in the formula that follows it, so 2H<sub>2</sub>O means 2 molecules of water, which hold 4 hydrogen atoms and 2 oxygen atoms.</p><p>The balanced equation is <strong>2H<sub>2</sub> + O<sub>2</sub> → 2H<sub>2</sub>O</strong>. Count the atoms: left has 4 H and 2 O, right has 4 H and 2 O.</p><p>You may change coefficients only. You must never change a subscript, because that would turn the substance into a different substance. H<sub>2</sub>O is water, but H<sub>2</sub>O<sub>2</sub> is a different substance.</p>'
+- kind: figure
+  svg: <svg viewBox="0 0 320 180" role="img"><rect x="10" y="10" width="140" height="120" rx="8" fill="none" stroke="currentColor" stroke-width="2"/><rect x="170" y="10" width="140" height="120" rx="8" fill="none" stroke="currentColor" stroke-width="2"/><text x="30" y="32" font-size="13" font-weight="700" fill="currentColor">Reactants</text><text x="190" y="32" font-size="13" font-weight="700" fill="currentColor">Products</text><text x="26" y="62" font-size="14" fill="currentColor">C 1</text><text x="26" y="86" font-size="14" fill="currentColor">H 4</text><text x="26" y="110" font-size="14" fill="currentColor">O 4</text><text x="186" y="62" font-size="14" fill="currentColor">C 1</text><text x="186" y="86" font-size="14" fill="currentColor">H 4</text><text x="186" y="110" font-size="14" fill="currentColor">O 4</text><text x="153" y="76" font-size="20" font-weight="700" fill="#ffb800">=</text><text x="10" y="156" font-size="13" font-weight="700" fill="currentColor">CH4 + 2 O2 → CO2 + 2 H2O</text><text x="10" y="174" font-size="12" fill="currentColor">Atom counts match on both sides</text></svg>
+  alt: Two boxes list atom counts for a balanced equation, with carbon 1, hydrogen 4 and oxygen 4 in both the reactants and the products.
+  caption: Balanced methane burning. The atom count of each element is the same on the left and on the right.
+- kind: example
+  heading: Worked example
+  prompt: Balance this equation for aluminium burning in oxygen. Al + O₂ → Al₂O₃
+  steps:
+  - 'Count the atoms. Left side: Al 1, O 2. Right side: Al 2, O 3. The oxygen counts are 2 and 3, so they are not equal.'
+  - 'Oxygen first. The smallest number that both 2 and 3 divide into is 6. Put 3 in front of O₂ to get 6 oxygen atoms. Put 2 in front of Al₂O₃ to get 6 oxygen atoms.'
+  - 'Now the right side has 2 × 2 = 4 aluminium atoms. Put 4 in front of Al on the left.'
+  - 'The balanced equation is 4Al + 3O₂ → 2Al₂O₃. Check: left Al 4, O 6. Right Al 2 × 2 = 4, O 2 × 3 = 6. Balanced.'
+- kind: example
+  heading: Worked example
+  prompt: Balance this equation for methane burning. CH₄ + O₂ → CO₂ + H₂O
+  steps:
+  - 'Count the atoms. Left: C 1, H 4, O 2. Right: C 1, H 2, O 3 (2 in CO₂ and 1 in H₂O).'
+  - 'Carbon is already balanced. Balance hydrogen: put 2 in front of H₂O. Now the right has 4 H.'
+  - 'Count oxygen on the right: 2 in CO₂ plus 2 × 1 in 2H₂O gives 4. Put 2 in front of O₂ on the left to get 4 oxygen atoms.'
+  - 'The balanced equation is CH₄ + 2O₂ → CO₂ + 2H₂O. Check: left C 1, H 4, O 4. Right C 1, H 4, O 4. Balanced.'
+- kind: text
+  heading: Physical states and types of reaction
+  html: '<p>A balanced equation can also tell the <strong>physical state</strong> of each substance. We put a symbol in brackets after the formula: (s) for solid, (l) for liquid, (g) for gas and (aq) for dissolved in water, which is called an aqueous solution. For example: Zn(s) + 2HCl(aq) → ZnCl<sub>2</sub>(aq) + H<sub>2</sub>(g). Zinc metal is added to an acid solution, and bubbles of hydrogen gas escape. Conditions such as heat can be written above or below the arrow.</p><p>Many reactions fit a few types. In a <strong>combination reaction</strong> two or more substances join to form one product, as when magnesium burns in oxygen. In a <strong>decomposition reaction</strong> one substance breaks into two or more simpler ones. In a <strong>displacement reaction</strong> a more reactive element takes the place of a less reactive element in a compound. In a <strong>double displacement reaction</strong> two compounds swap partners. A reaction in which a substance gains oxygen is called <strong>oxidation</strong>.</p>'
+- kind: callout
+  tone: watch
+  html: Never change a subscript to balance an equation. Change only the coefficients, the big numbers in front. Also remember that a coefficient multiplies every atom in the formula, so 2H₂O has 4 hydrogen atoms, not 2. A balanced equation does not need the same number of molecules on each side, only the same number of each kind of atom.
+- kind: callout
+  tone: real
+  html: Balanced equations help in real work. Fertiliser makers use N₂ + 3H₂ → 2NH₃ to work out how much nitrogen and hydrogen they need to make ammonia. Cooking gas burns as a balanced reaction, and the amount of air needed depends on the coefficients.
+- kind: check
+  item: q-be-1
+- kind: check
+  item: q-be-3
+- kind: check
+  item: q-be-5
+- kind: summary
+  points:
+  - 'Atoms are not created or destroyed in a reaction, so the total mass of reactants equals the total mass of products when nothing escapes.'
+  - 'To balance an equation, count each atom on both sides and change only the coefficients, never the subscripts.'
+  - 'State symbols: (s) solid, (l) liquid, (g) gas, (aq) dissolved in water.'
+  - 'Main types: combination, decomposition, displacement and double displacement.'
+items:
+- key: q-be-1
+  kind: mcq
+  stem: What does the law of conservation of mass say about a chemical reaction in a closed container?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: balancing-equations
+  explanation: Atoms only rearrange in a reaction. So the total mass of the reactants is equal to the total mass of the products.
+  hints:
+  - Think about what happens to atoms in a reaction.
+  correct: B
+  options:
+  - key: A
+    text: The mass of the products is always less than the mass of the reactants
+    misconception: mass-lost-in-reaction
+  - key: B
+    text: The total mass of the reactants equals the total mass of the products
+  - key: C
+    text: The number of molecules stays the same
+    misconception: molecules-must-match
+  - key: D
+    text: The mass of the products is always greater
+    misconception: mass-lost-in-reaction
+- key: q-be-2
+  kind: numeric
+  stem: How many hydrogen atoms are there in 3H₂O?
+  difficulty: intro
+  purpose: practice
+  concepts:
+  - id: balancing-equations
+  explanation: Each H₂O molecule has 2 hydrogen atoms, and there are 3 molecules, so 3 × 2 = 6 hydrogen atoms.
+  hints:
+  - The coefficient multiplies every atom in the formula.
+  value: 6
+  tolerance: 0.0
+  verify: 3*2
+- key: q-be-3
+  kind: numeric
+  stem: 'Balance this equation: CH₄ + __O₂ → CO₂ + 2H₂O. What number goes in the blank?'
+  difficulty: standard
+  purpose: check
+  concepts:
+  - id: balancing-equations
+  explanation: The right side has 2 oxygen atoms in CO₂ and 2 in 2H₂O, making 4. Each O₂ has 2 oxygen atoms, so the blank is 4 ÷ 2 = 2.
+  hints:
+  - Count the oxygen atoms on the right side first.
+  value: 2
+  tolerance: 0.0
+  verify: (2+2*1)/2
+- key: q-be-4
+  kind: numeric
+  stem: 'Balance this equation: N₂ + __H₂ → 2NH₃. What number goes in the blank?'
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: balancing-equations
+  explanation: The right side has 2 × 3 = 6 hydrogen atoms. Each H₂ has 2 atoms, so the blank is 6 ÷ 2 = 3. Nitrogen is balanced too, 2 atoms on each side.
+  hints:
+  - Count the hydrogen atoms in 2NH₃.
+  value: 3
+  tolerance: 0.0
+  verify: (2*3)/2
+- key: q-be-5
+  kind: mcq
+  stem: Which change is allowed when you balance an equation?
+  difficulty: standard
+  purpose: check
+  concepts:
+  - id: balancing-equations
+  explanation: You may only change the coefficients. Changing a subscript changes the substance itself.
+  hints:
+  - H₂O and H₂O₂ are two different substances.
+  correct: C
+  options:
+  - key: A
+    text: Changing a subscript, for example H₂O to H₂O₂
+    misconception: change-subscripts
+  - key: B
+    text: Removing a substance from one side
+    misconception: change-subscripts
+  - key: C
+    text: Writing a whole number in front of a formula
+  - key: D
+    text: Swapping the reactants and products
+- key: q-be-6
+  kind: numeric
+  stem: 12 g of carbon burns completely in 32 g of oxygen to form carbon dioxide only. What is the mass of carbon dioxide formed, in grams?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: balancing-equations
+  explanation: By the law of conservation of mass the product mass equals the reactant mass, 12 + 32 = 44 g.
+  hints:
+  - Add the masses of the reactants.
+  value: 44
+  tolerance: 0.0
+  verify: 12+32
+- key: q-be-7
+  kind: mcq
+  stem: Which state symbol shows that a substance is dissolved in water?
+  difficulty: intro
+  purpose: practice
+  concepts:
+  - id: balancing-equations
+  explanation: (aq) means aqueous, which is dissolved in water. (s) is solid, (l) is liquid and (g) is gas.
+  hints:
+  - Aqueous comes from the Latin word for water.
+  correct: D
+  options:
+  - key: A
+    text: (s)
+  - key: B
+    text: (l)
+  - key: C
+    text: (g)
+  - key: D
+    text: (aq)
+- key: q-be-8
+  kind: mcq
+  stem: 'The reaction 2H₂O → 2H₂ + O₂ happens when electricity is passed through water. What type of reaction is it?'
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: balancing-equations
+  explanation: One substance, water, breaks down into two simpler substances, hydrogen and oxygen. This is a decomposition reaction.
+  hints:
+  - How many reactants are there, and how many products?
+  correct: A
+  options:
+  - key: A
+    text: Decomposition
+  - key: B
+    text: Combination
+  - key: C
+    text: Displacement
+  - key: D
+    text: Double displacement
+- key: q-be-9
+  kind: numeric
+  stem: 'Balance this equation: C₃H₈ + __O₂ → 3CO₂ + 4H₂O. What number goes in the blank?'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: balancing-equations
+  explanation: The right side has 3 × 2 = 6 oxygen atoms in 3CO₂ and 4 × 1 = 4 in 4H₂O, which is 10. Each O₂ has 2 atoms, so the blank is 10 ÷ 2 = 5.
+  hints:
+  - Count the oxygen atoms in 3CO₂ and 4H₂O, and add them.
+  value: 5
+  tolerance: 0.0
+  verify: (3*2+4*1)/2
+- key: q-be-10
+  kind: numeric
+  stem: 'Here is a balanced equation: 4Al + 3O₂ → 2Al₂O₃. How many oxygen atoms are there on the right-hand side?'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: balancing-equations
+  explanation: There are 2 units of Al₂O₃, and each holds 3 oxygen atoms, so 2 × 3 = 6. This equals the 3 × 2 = 6 oxygen atoms on the left.
+  hints:
+  - Multiply the coefficient by the subscript of oxygen.
+  value: 6
+  tolerance: 0.0
+  verify: 2*3
+- key: q-be-11
+  kind: mcq
+  stem: 'Assertion (A): When a candle burns in an open room, the candle gets lighter, and yet the law of conservation of mass is not broken. Reason (R): The gases formed, carbon dioxide and water vapour, escape into the air.'
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: balancing-equations
+  explanation: Both are true. The products include gases that leave the candle, so the candle alone loses mass. If all products were collected, the total mass would be the same as that of the wax and oxygen used. R explains A.
+  hints:
+  - Where do the products of burning go?
+  correct: A
+  options:
+  - key: A
+    text: Both A and R are true, and R explains A
+  - key: B
+    text: Both A and R are true, but R does not explain A
+    misconception: mass-lost-in-reaction
+  - key: C
+    text: A is true, but R is false
+    misconception: mass-lost-in-reaction
+  - key: D
+    text: A is false, but R is true
+    misconception: mass-lost-in-reaction
+- key: q-be-12
+  kind: mcq
+  stem: 'Assertion (A): Changing the formula H₂O to H₂O₂ is a correct way to balance an equation that has too few oxygen atoms on the right. Reason (R): A subscript shows how many atoms are in one molecule, so changing it changes the substance.'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: balancing-equations
+  explanation: R is true. Because a subscript is part of the identity of the substance, changing it gives a different substance. So A is false, and the right way is to change a coefficient.
+  hints:
+  - Is H₂O₂ the same substance as H₂O?
+  correct: D
+  options:
+  - key: A
+    text: Both A and R are true, and R explains A
+    misconception: change-subscripts
+  - key: B
+    text: Both A and R are true, but R does not explain A
+    misconception: change-subscripts
+  - key: C
+    text: A is true, but R is false
+    misconception: change-subscripts
+  - key: D
+    text: A is false, but R is true
+- key: q-be-13
+  kind: mcq
+  stem: 'Read the passage. A student mixes two solutions in a conical flask. One solution has a mass of 20 g and the other has a mass of 30 g. The flask is sealed with a stopper, and a gas forms as the solutions react. The student weighs the sealed flask and its contents after the reaction. What is the total mass of the contents?'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: balancing-equations
+  explanation: The flask is sealed, so no gas escapes. The total mass of the contents stays 20 + 30 = 50 g, as the law of conservation of mass says.
+  hints:
+  - Does any substance leave the sealed flask?
+  correct: C
+  options:
+  - key: A
+    text: Less than 50 g, because a gas formed
+    misconception: mass-lost-in-reaction
+  - key: B
+    text: More than 50 g, because a new substance formed
+  - key: C
+    text: 50 g
+  - key: D
+    text: 30 g, the mass of the heavier solution
+misconceptions:
+- code: mass-lost-in-reaction
+  concept: balancing-equations
+  description: Thinks mass disappears when a substance burns or a gas forms, forgetting that gases carry mass and that mass is conserved in a closed system.
+- code: change-subscripts
+  concept: balancing-equations
+  description: Tries to balance an equation by changing subscripts in formulae, which changes the substance, instead of changing coefficients.
+- code: molecules-must-match
+  concept: balancing-equations
+  description: Thinks a balanced equation needs the same number of molecules on both sides, when only the number of atoms of each element must match.
+cards:
+- key: balancing-equations-card-1
+  concept: balancing-equations
+  front: What does the law of conservation of mass say?
+  back: In a chemical reaction, mass is neither created nor destroyed, so total reactant mass equals total product mass.
+- key: balancing-equations-card-2
+  concept: balancing-equations
+  front: What may you change when balancing an equation?
+  back: Only the coefficients, the numbers in front of formulae. Never change subscripts.
+- key: balancing-equations-card-3
+  concept: balancing-equations
+  front: What do the state symbols (s), (l), (g) and (aq) mean?
+  back: Solid, liquid, gas, and dissolved in water.
+- key: balancing-equations-card-4
+  concept: balancing-equations
+  front: Name four types of chemical reaction.
+  back: Combination, decomposition, displacement and double displacement.

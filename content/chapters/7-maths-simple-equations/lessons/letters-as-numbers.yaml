@@ -18,11 +18,41 @@ blocks:
   steps:
   - Tanvi's age is the brother's age plus 5, so it is b + 5.
   - When b = 8, Tanvi's age is 8 + 5 = 13.
+- kind: text
+  heading: Why use letters?
+  html: '<p>Some numbers change. The cost of a ride depends on how far you go. Instead of writing a new sum each time, we write one rule with a letter. A letter that can stand for different numbers is called a <strong>variable</strong>. A rule written with numbers, letters and signs, like 3x + 2, is called an <strong>expression</strong>.</p>'
+- kind: figure
+  svg: '<svg viewBox="0 0 300 130" role="img"><rect x="10" y="30" width="80" height="40" fill="#ffb800" stroke="#14193a" stroke-width="2"/><rect x="100" y="30" width="80" height="40" fill="#ffb800" stroke="#14193a" stroke-width="2"/><rect x="190" y="30" width="80" height="40" fill="#ffb800" stroke="#14193a" stroke-width="2"/><text x="50" y="56" font-size="18" font-weight="700" text-anchor="middle" fill="#14193a">x</text><text x="140" y="56" font-size="18" font-weight="700" text-anchor="middle" fill="#14193a">x</text><text x="230" y="56" font-size="18" font-weight="700" text-anchor="middle" fill="#14193a">x</text><path d="M10 82 L10 90 L270 90 L270 82" fill="none" stroke="currentColor" stroke-width="2"/><text x="140" y="112" font-size="16" font-weight="700" text-anchor="middle" fill="currentColor">3 pencils cost 3x rupees</text></svg>'
+  alt: Three equal boxes in a row each marked x, joined by a bracket underneath labelled 3x, showing that three pencils of price x cost 3x.
+  caption: Each box is one pencil that costs x rupees. Three boxes together cost 3x.
+- kind: example
+  heading: Worked example 2
+  prompt: A packet holds 10 biscuits. Write the number of biscuits in p packets, then find it when p = 7.
+  steps:
+  - One packet has 10 biscuits. Two packets have 10 times 2. So p packets have 10 times p.
+  - We write 10 times p as 10p.
+  - 'Put p = 7 into the expression: 10 times 7 is 70.'
+  - 'Check: 7 packets with 10 biscuits each is 70 biscuits. It matches.'
+- kind: example
+  heading: Worked example 3
+  prompt: Find the value of 4a - 3 when a = 5.
+  steps:
+  - 'Write the expression with 5 in place of a. Keep the sign: 4 times 5, minus 3.'
+  - Multiply first, as 4a means 4 times a. 4 times 5 is 20.
+  - Now subtract. 20 - 3 = 17.
+  - 'Check: the answer is 17, not 42. The 4 and the a are multiplied, not written side by side.'
 - kind: callout
   tone: watch
   html: <strong>3x</strong> means 3 times x. It does not mean 3 and x written side by side.
 - kind: check
   item: q-var-1
+- kind: callout
+  tone: real
+  html: A taxi charges Rs 15 for each kilometre. For k kilometres the fare is 15k rupees. One rule with the letter k works for every trip, short or long.
+- kind: check
+  item: q-var-7
+- kind: check
+  item: q-var-8
 - kind: summary
   points:
   - A letter stands for a number that can change.
@@ -125,10 +155,130 @@ items:
   value: 13
   tolerance: 0.0
   verify: 4+9
+- key: q-var-7
+  kind: mcq
+  stem: Which expression means '5 less than a number k'?
+  difficulty: intro
+  purpose: practice
+  concepts:
+  - id: expressions-variables
+    weight: 1.0
+  explanation: 5 less than k means take 5 away from k, so k - 5. The number k comes first.
+  hints:
+  - Start from k and take away 5.
+  correct: B
+  options:
+  - key: A
+    text: 5 - k
+    misconception: reverses-subtraction-order
+  - key: B
+    text: k - 5
+  - key: C
+    text: k + 5
+  - key: D
+    text: 5k
+- key: q-var-8
+  kind: mcq
+  stem: If x = 6, what is the value of 3x?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: expressions-variables
+    weight: 1.0
+  explanation: 3x means 3 times x. 3 times 6 is 18.
+  hints:
+  - 3x is a multiplication.
+  correct: B
+  options:
+  - key: A
+    text: '9'
+    misconception: adds-instead-of-multiplies
+  - key: B
+    text: '18'
+  - key: C
+    text: '36'
+    misconception: joins-digits-instead-of-multiplying
+  - key: D
+    text: '2'
+- key: q-var-9
+  kind: numeric
+  stem: If a = 5, what is the value of 4a - 3?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: expressions-variables
+  explanation: 4 times 5 is 20, and 20 - 3 = 17.
+  hints:
+  - Multiply before you subtract.
+  value: 17
+  tolerance: 0.0
+  verify: 4*5-3
+- key: q-var-10
+  kind: mcq
+  stem: 'Assertion (A): The value of the expression 7y changes when y changes. Reason (R): A letter in an expression stands for a number that can change.'
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: expressions-variables
+    weight: 1.0
+  explanation: Both are true. Because y can take different values, 7y takes different values too, so R explains A. For example, 7y is 14 when y = 2 and 35 when y = 5.
+  hints:
+  - Try y = 2 and then y = 5.
+  correct: A
+  options:
+  - key: A
+    text: Both A and R are true, and R explains A
+  - key: B
+    text: Both A and R are true, but R does not explain A
+  - key: C
+    text: A is true, but R is false
+  - key: D
+    text: A is false, but R is true
+- key: q-var-11
+  kind: mcq
+  stem: A stationery shop sells a pen for p rupees. A ruler costs Rs 10. Meera buys 3 pens and 1 ruler. Which expression gives her total bill in rupees?
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: expressions-variables
+    weight: 1.0
+  explanation: 3 pens cost 3 times p, which is 3p. The ruler adds 10. The bill is 3p + 10.
+  hints:
+  - Find the cost of the pens first, then add the ruler.
+  correct: A
+  options:
+  - key: A
+    text: 3p + 10
+  - key: B
+    text: 3 + p + 10
+    misconception: adds-instead-of-multiplies
+  - key: C
+    text: 13p
+  - key: D
+    text: p + 30
+- key: q-var-12
+  kind: numeric
+  stem: A stationery shop sells a pen for Rs 8 and a ruler for Rs 10. Meera buys 3 pens and 1 ruler. What is her total bill in rupees?
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: expressions-variables
+  explanation: Put p = 8 into 3p + 10. 3 times 8 is 24, and 24 + 10 = 34.
+  hints:
+  - Use the expression 3p + 10 with p = 8.
+  value: 34
+  tolerance: 0.0
+  verify: 3*8+10
 misconceptions:
 - code: adds-instead-of-multiplies
   concept: expressions-variables
   description: Writes 4 notebooks at n rupees each as n + 4.
+- code: reverses-subtraction-order
+  concept: expressions-variables
+  description: Writes '5 less than k' as 5 - k, putting the numbers in the order they are spoken instead of the order of the subtraction.
+- code: joins-digits-instead-of-multiplying
+  concept: expressions-variables
+  description: Reads 3x with x = 6 as 36, joining the digits instead of multiplying 3 by 6.
 cards:
 - key: letters-as-numbers-card-1
   concept: expressions-variables
@@ -138,3 +288,11 @@ cards:
   concept: expressions-variables
   front: What does a letter stand for in an expression?
   back: A number that is unknown or can change.
+- key: letters-as-numbers-card-3
+  concept: expressions-variables
+  front: What is a variable?
+  back: A letter that stands for a number that can change.
+- key: letters-as-numbers-card-4
+  concept: expressions-variables
+  front: What is 5 less than k as an expression?
+  back: k - 5.

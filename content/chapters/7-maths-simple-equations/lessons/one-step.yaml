@@ -24,11 +24,31 @@ blocks:
   - To get x alone, undo the adding of 5 by subtracting 5 from both sides.
   - x + 5 - 5 = 9 - 5, so x = 4.
   - 'Check: 4 + 5 = 9. It works.'
+- kind: text
+  heading: Opposite moves
+  html: '<p>Each operation has an opposite that undoes it. Adding 5 is undone by subtracting 5. Multiplying by 3 is undone by dividing by 3. To get x alone, use the opposite of whatever is joined to x, and do it to <strong>both sides</strong>.</p>'
+- kind: example
+  heading: Worked example 2
+  prompt: Solve x / 4 = 6.
+  steps:
+  - x is divided by 4. The opposite of dividing by 4 is multiplying by 4.
+  - Multiply both sides by 4. x / 4 times 4 is x, and 6 times 4 is 24. So x = 24.
+  - 'Check: 24 divided by 4 is 6. It works.'
+- kind: callout
+  tone: watch
+  html: The answer to an equation can be below zero. For x + 6 = 2, subtract 6 from both sides to get x = -4. Do not turn it into 4.
 - kind: callout
   tone: remember
   html: Whatever you do to one side, <strong>do to the other side too</strong>.
 - kind: check
   item: q-eq1-1
+- kind: callout
+  tone: real
+  html: A bus has some passengers. After 8 get down, 22 are left. The equation x - 8 = 22 tells us there were 30 passengers at the start.
+- kind: check
+  item: q-eq1-7
+- kind: check
+  item: q-eq1-8
 - kind: summary
   points:
   - Undo addition with subtraction, and subtraction with addition.
@@ -120,10 +140,130 @@ items:
   hints:
   - Undo dividing by 5.
   correct: true
+- key: q-eq1-7
+  kind: mcq
+  stem: To solve 4x = 20, what do you do to both sides?
+  difficulty: intro
+  purpose: practice
+  concepts:
+  - id: simple-equation-one-step
+    weight: 1.0
+  explanation: x is multiplied by 4, so divide both sides by 4. That gives x = 5.
+  hints:
+  - Which operation is the opposite of multiplying by 4?
+  correct: B
+  options:
+  - key: A
+    text: Multiply by 4
+    misconception: multiplies-instead-of-divides
+  - key: B
+    text: Divide by 4
+  - key: C
+    text: Subtract 4
+  - key: D
+    text: Add 4
+- key: q-eq1-8
+  kind: numeric
+  stem: Solve x / 7 = 4. What is x?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: simple-equation-one-step
+  explanation: Multiply both sides by 7. x = 4 times 7 = 28.
+  hints:
+  - Undo dividing by 7.
+  value: 28
+  tolerance: 0.0
+  verify: 4*7
+- key: q-eq1-9
+  kind: numeric
+  stem: Solve x - 11 = -3. What is x?
+  difficulty: challenge
+  purpose: practice
+  concepts:
+  - id: simple-equation-one-step
+  explanation: Add 11 to both sides. x = -3 + 11 = 8. Check, 8 - 11 is -3.
+  hints:
+  - Undo - 11 by adding 11.
+  value: 8
+  tolerance: 0.0
+  verify: -3+11
+- key: q-eq1-10
+  kind: mcq
+  stem: What is the solution of x + 9 = 4?
+  difficulty: challenge
+  purpose: practice
+  concepts:
+  - id: simple-equation-one-step
+    weight: 1.0
+  explanation: Subtract 9 from both sides. x = 4 - 9 = -5. Check, -5 + 9 is 4.
+  hints:
+  - Subtract 9 from both sides. Is 4 - 9 above or below zero?
+  correct: B
+  options:
+  - key: A
+    text: '13'
+    misconception: wrong-inverse
+  - key: B
+    text: '-5'
+  - key: C
+    text: '5'
+    misconception: loses-the-negative-sign
+  - key: D
+    text: '-13'
+- key: q-eq1-11
+  kind: mcq
+  stem: 'Assertion (A): The solution of x - 6 = 10 is x = 16. Reason (R): To undo subtracting 6, we add 6 to both sides.'
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: simple-equation-one-step
+    weight: 1.0
+  explanation: Both are true. Adding 6 to both sides undoes the - 6 and gives x = 10 + 6 = 16, so R explains A.
+  hints:
+  - What is the opposite of subtracting 6?
+  correct: A
+  options:
+  - key: A
+    text: Both A and R are true, and R explains A
+  - key: B
+    text: Both A and R are true, but R does not explain A
+  - key: C
+    text: A is true, but R is false
+  - key: D
+    text: A is false, but R is true
+- key: q-eq1-12
+  kind: mcq
+  stem: A tank holds some litres of water. After 12 litres are taken out, 30 litres are left. How many litres were in the tank at first?
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: simple-equation-one-step
+    weight: 1.0
+  explanation: Let w be the starting litres. Then w - 12 = 30. Add 12 to both sides. w = 42.
+  hints:
+  - Write w - 12 = 30.
+  correct: B
+  options:
+  - key: A
+    text: 18 litres
+    misconception: wrong-inverse
+  - key: B
+    text: 42 litres
+  - key: C
+    text: 360 litres
+  - key: D
+    text: 30 litres
 misconceptions:
 - code: wrong-inverse
   concept: simple-equation-one-step
   description: Adds 8 to both sides of x + 8 = 3 instead of subtracting it.
+- code: multiplies-instead-of-divides
+  concept: simple-equation-one-step
+  description: Multiplies both sides of 4x = 20 by 4 instead of dividing, so x gets bigger instead of alone.
+- code: loses-the-negative-sign
+  concept: simple-equation-one-step
+  description: Subtracts the smaller number from the larger and drops the minus sign when the answer is below zero.
 cards:
 - key: one-step-card-1
   concept: simple-equation-one-step
@@ -133,3 +273,11 @@ cards:
   concept: simple-equation-one-step
   front: What must you do to keep an equation balanced?
   back: Do the same thing to both sides.
+- key: one-step-card-3
+  concept: simple-equation-one-step
+  front: How do you undo multiplying by 4?
+  back: Divide both sides by 4.
+- key: one-step-card-4
+  concept: simple-equation-one-step
+  front: Solve x + 9 = 4.
+  back: Subtract 9 from both sides. x = -5.

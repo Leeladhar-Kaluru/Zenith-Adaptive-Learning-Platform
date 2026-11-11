@@ -19,16 +19,47 @@ blocks:
   - 'The LCM of 2 and 3 is 6. Multiply both sides by 6: 3x + 2x = 30.'
   - 'Combine: 5x = 30.'
   - 'Divide by 5: x = 6. Check: 6/2 + 6/3 = 3 + 2 = 5.'
+- kind: widget
+  widget: sim_equation
+  config: {a: 5, b: 0, c: 30}
+  task: Multiplying x/2 + x/3 = 5 by 6 gives 5x = 30. Get x alone using the moves. Then put your answer back into x/2 + x/3 and check that you get 5.
+- kind: text
+  heading: Why multiplying is allowed
+  html: <p>Multiplying <strong>both sides</strong> by the same number keeps an equation balanced, just like adding the same number to both sides. When the number is the LCM, each denominator divides into it exactly. So every fraction turns into a whole-number term. For example, 6 times x/2 is 3x, and 6 times x/3 is 2x.</p>
+- kind: example
+  heading: Fractions with brackets
+  prompt: Solve (x + 2)/3 = (x - 1)/2.
+  steps:
+  - 'The LCM of 3 and 2 is 6. Multiply both sides by 6.'
+  - 'On the left, 6 times (x + 2)/3 is 2(x + 2). On the right, 6 times (x - 1)/2 is 3(x - 1). So 2(x + 2) = 3(x - 1).'
+  - 'Open the brackets: 2x + 4 = 3x - 3.'
+  - 'Subtract 2x and add 3 to both sides: 7 = x.'
+  - 'Check: (7 + 2)/3 = 3 and (7 - 1)/2 = 3. Both sides match.'
+- kind: example
+  heading: A fraction and a number
+  prompt: Solve x/3 + 2 = 5.
+  steps:
+  - 'Multiply EVERY term by 3. x/3 becomes x, 2 becomes 6 and 5 becomes 15. So x + 6 = 15.'
+  - 'Subtract 6 from both sides: x = 9.'
+  - 'Check: 9/3 + 2 = 3 + 2 = 5.'
 - kind: callout
   tone: watch
   html: Multiply <strong>every</strong> term by the LCM, including the number on the other side.
 - kind: check
   item: q-frac-1
+- kind: callout
+  tone: real
+  html: A cook uses half of a bag of rice at lunch and a third of the bag at dinner. That is 500 g in all. If the bag weighs x g, then x/2 + x/3 = 500. Multiply by 6 to get 5x = 3000. So the bag weighs x = 600 g.
+- kind: check
+  item: q-frac-2
+- kind: check
+  item: q-frac-8
 - kind: summary
   points:
   - Find the LCM of the denominators.
   - Multiply every term on both sides by it.
   - Then solve the equation without fractions.
+  - Check your answer in the original equation.
 items:
 - key: q-frac-1
   kind: numeric
@@ -71,7 +102,7 @@ items:
   verify: 8*3/2
 - key: q-frac-4
   kind: mcq
-  stem: 'To clear the fractions in x/4 + x/6 = 10, multiply both sides by:'
+  stem: 'What is the smallest number you can multiply both sides of x/4 + x/6 = 10 by to clear the fractions?'
   difficulty: standard
   purpose: practice
   concepts:
@@ -117,10 +148,170 @@ items:
   value: 12
   tolerance: 0.0
   verify: '12'
+- key: q-frac-7
+  kind: numeric
+  stem: Solve x/5 + x/2 = 7. What is x?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: linear-eq-fractions
+  explanation: 'The LCM of 5 and 2 is 10. Multiply by 10: 2x + 5x = 70, so 7x = 70 and x = 10.'
+  hints:
+  - Multiply every term by 10.
+  value: 10
+  tolerance: 0.0
+  verify: 70/7
+- key: q-frac-8
+  kind: mcq
+  stem: 'Multiplying both sides of x/3 + 2 = 5 by 3 gives:'
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: linear-eq-fractions
+    weight: 1.0
+  explanation: 3 times x/3 is x, 3 times 2 is 6, and 3 times 5 is 15. So x + 6 = 15.
+  hints:
+  - Every term gets multiplied, including the plain numbers.
+  correct: B
+  options:
+  - key: A
+    text: x + 2 = 15
+    misconception: skips-a-term
+  - key: B
+    text: x + 6 = 15
+  - key: C
+    text: x + 6 = 5
+    misconception: one-side-only
+  - key: D
+    text: 3x + 6 = 15
+- key: q-frac-9
+  kind: mcq
+  stem: 'Assertion (A): To clear the fractions in x/2 + x/5 = 7, we can multiply both sides by 10. Reason (R): 10 is the LCM of 2 and 5, so both denominators divide into 10 exactly.'
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: linear-eq-fractions
+    weight: 1.0
+  explanation: Both are true. Multiplying by 10 gives 5x + 2x = 70. The reason explains why 10 works. Both 2 and 5 divide into it with no remainder.
+  hints:
+  - Check that 2 and 5 both divide into 10.
+  correct: A
+  options:
+  - key: A
+    text: Both A and R are true and R is the correct explanation of A.
+  - key: B
+    text: Both A and R are true but R is not the correct explanation of A.
+  - key: C
+    text: A is true but R is false.
+  - key: D
+    text: A is false but R is true.
+- key: q-frac-10
+  kind: mcq
+  stem: 'Assertion (A): Multiplying both sides of x/2 + 3 = 5 by 2 gives x + 3 = 10. Reason (R): Every term on both sides, including the whole numbers, must be multiplied by 2.'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: linear-eq-fractions
+    weight: 1.0
+  explanation: R is true. When 3 is multiplied by 2 it becomes 6, so the result is x + 6 = 10. A forgot to multiply the 3, so A is false.
+  hints:
+  - Multiply each of the three terms by 2 and compare with A.
+  correct: D
+  options:
+  - key: A
+    text: Both A and R are true and R is the correct explanation of A.
+    misconception: skips-a-term
+  - key: B
+    text: Both A and R are true but R is not the correct explanation of A.
+    misconception: skips-a-term
+  - key: C
+    text: A is true but R is false.
+    misconception: skips-a-term
+  - key: D
+    text: A is false but R is true.
+- key: q-frac-11
+  kind: mcq
+  stem: 'Case. A class collects x rupees. One third of the money buys snacks and one sixth buys prizes. The other Rs 30 is kept for the next event. So x/3 + x/6 + 30 = x. What is the total x?'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: linear-eq-fractions
+    weight: 1.0
+  explanation: 'Multiply by 6: 2x + x + 180 = 6x. So 3x + 180 = 6x, which gives 180 = 3x and x = 60. Check: 20 + 10 + 30 = 60.'
+  hints:
+  - Multiply every term by 6, including the 30 and the x on the right.
+  correct: B
+  options:
+  - key: A
+    text: Rs 30
+  - key: B
+    text: Rs 60
+  - key: C
+    text: Rs 90
+  - key: D
+    text: Rs 180
+    misconception: stops-before-solving
+- key: q-frac-12
+  kind: numeric
+  stem: Solve (x - 2)/3 = (x + 4)/9. What is x?
+  difficulty: challenge
+  purpose: practice
+  concepts:
+  - id: linear-eq-fractions
+  explanation: 'Multiply both sides by 9: 3(x - 2) = x + 4. So 3x - 6 = x + 4, then 2x = 10 and x = 5.'
+  hints:
+  - The LCM of 3 and 9 is 9.
+  value: 5
+  tolerance: 0.0
+  verify: 10/2
+- key: q-frac-13
+  kind: numeric
+  stem: Solve 3x/4 - 2 = 10. What is x?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: linear-eq-fractions
+  explanation: 'Add 2 to both sides: 3x/4 = 12. Multiply by 4: 3x = 48, so x = 16. Check: 3(16)/4 - 2 = 12 - 2 = 10.'
+  hints:
+  - Add 2 to both sides first, or multiply every term by 4.
+  value: 16
+  tolerance: 0.0
+  verify: 12*4/3
+- key: q-frac-14
+  kind: mcq
+  stem: 'What is the smallest number you can multiply by to clear the fractions in x/6 + x/9 = 5?'
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: linear-eq-fractions
+    weight: 1.0
+  explanation: The LCM of 6 and 9 is 18. Multiplying by 18 gives 3x + 2x = 90.
+  hints:
+  - List the multiples of 9 and find the first one that 6 also divides into.
+  correct: C
+  options:
+  - key: A
+    text: '3'
+  - key: B
+    text: '15'
+  - key: C
+    text: '18'
+  - key: D
+    text: '54'
+    misconception: uses-product-not-lcm
 misconceptions:
 - code: uses-product-not-lcm
   concept: linear-eq-fractions
   description: Multiplies by 24 (4 times 6) instead of the smaller common multiple 12.
+- code: skips-a-term
+  concept: linear-eq-fractions
+  description: Multiplies the fraction by the LCM but forgets to multiply a plain number on the same side.
+- code: one-side-only
+  concept: linear-eq-fractions
+  description: Multiplies the terms on one side by the LCM but leaves the other side unchanged.
+- code: stops-before-solving
+  concept: linear-eq-fractions
+  description: Clears the fractions correctly but then gives a number from the cleared equation as the answer.
 cards:
 - key: with-fractions-card-1
   concept: linear-eq-fractions
@@ -130,3 +321,11 @@ cards:
   concept: linear-eq-fractions
   front: What is the LCM of 4 and 6?
   back: '12.'
+- key: with-fractions-card-3
+  concept: linear-eq-fractions
+  front: In x/3 + 2 = 5, what do you get after multiplying every term by 3?
+  back: x + 6 = 15.
+- key: with-fractions-card-4
+  concept: linear-eq-fractions
+  front: Why must you multiply every term, not just the fractions?
+  back: To keep the equation balanced, both sides must be multiplied by the same number.

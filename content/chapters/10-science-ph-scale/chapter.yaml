@@ -1,0 +1,11 @@
+slug: 10-science-ph-scale
+board: cbse
+curriculum: NCERT current editions (to be confirmed by a reviewer)
+grade: 10
+subject: science
+title: 'Acids, bases and the pH scale'
+summary: Use the pH scale to say how acidic or basic a substance is, and see why pH matters in the body, in teeth and in soil.
+concepts:
+- id: ph-scale
+lessons:
+- the-ph-scale

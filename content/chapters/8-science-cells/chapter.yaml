@@ -1,0 +1,11 @@
+slug: 8-science-cells
+board: cbse
+curriculum: NCERT current editions (to be confirmed by a reviewer)
+grade: 8
+subject: science
+title: The cell, the unit of life
+summary: Meet the cell, the smallest living building block, and compare the parts of plant cells and animal cells.
+concepts:
+- id: cell-unit-of-life
+lessons:
+- cells-the-unit-of-life

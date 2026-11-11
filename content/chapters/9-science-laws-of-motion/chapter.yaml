@@ -1,0 +1,11 @@
+slug: 9-science-laws-of-motion
+board: cbse
+curriculum: NCERT current editions (to be confirmed by a reviewer)
+grade: 9
+subject: science
+title: "Newton's laws of motion"
+summary: "See why things keep moving, speed up or push back, using inertia, F = m a and action-reaction pairs."
+concepts:
+- id: laws-of-motion
+lessons:
+- newtons-laws

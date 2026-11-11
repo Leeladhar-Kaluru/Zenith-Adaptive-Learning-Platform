@@ -1,0 +1,377 @@
+slug: triangle-angles
+title: Angles of a triangle
+minutes: 25
+objectives:
+- State that the three angles of a triangle add up to 180° and explain why
+- Use the angle sum to find a missing angle
+- State and use the exterior angle property of a triangle
+- Solve angle-chasing problems by writing each step with a reason
+concepts:
+- triangle-angle-sum
+- triangle-exterior-angle
+origin: ai_assisted
+blocks:
+- kind: text
+  heading: Three corners that make a straight line
+  html: '<p>Draw any triangle on paper and tear off its three corners. Place the corners side by side with their points together.
+    They fit along a straight line. This hints at a rule: the three <strong>interior angles</strong> of a triangle, the angles
+    inside it, add up to 180°. A straight line is an angle of 180°.</p><p>A hint is not a proof, and a torn paper triangle is
+    only one triangle. Let us see why the rule is true for every triangle.</p>'
+- kind: text
+  heading: Why the angles add up to 180°
+  html: '<p>Take triangle ABC. Through the corner A, draw a line parallel to the side BC. Two angles are now marked at A on the
+    left and on the right of the triangle angle at A. Call the three angles on the straight line p, q and r.</p><p>Look at the
+    line AB crossing the two parallel lines. The angle p at A and the angle B inside the triangle are <strong>alternate angles</strong>.
+    Alternate angles between parallel lines are equal, so p equals angle B. In the same way r equals angle C. The angle q is
+    the angle A of the triangle itself.</p><p>The angles p, q and r sit together on a straight line, so p + q + r = 180°. So angle
+    B + angle A + angle C = 180°. This works for any triangle, because we used nothing special about this one.</p>'
+- kind: figure
+  svg: <svg viewBox="0 0 300 190" role="img"><line x1="10" y1="40" x2="290" y2="40" stroke="#14193a" stroke-width="2" stroke-dasharray="6
+    4"/><polygon points="60,160 240,160 140,40" fill="#6cb7ff" fill-opacity=".25" stroke="#14193a" stroke-width="3"/><text
+    x="40" y="176" font-size="13" font-weight="700" fill="currentColor">B</text><text x="244" y="176" font-size="13" font-weight="700"
+    fill="currentColor">C</text><text x="136" y="32" font-size="13" font-weight="700" fill="currentColor">A</text><text x="112"
+    y="62" font-size="13" font-weight="700" fill="#ff5a5f">p</text><text x="136" y="76" font-size="13" font-weight="700" fill="currentColor">q</text><text
+    x="160" y="62" font-size="13" font-weight="700" fill="#1a7f4b">r</text><text x="82" y="152" font-size="13" font-weight="700"
+    fill="#ff5a5f">p</text><text x="206" y="152" font-size="13" font-weight="700" fill="#1a7f4b">r</text></svg>
+  alt: Triangle ABC with a dashed line through corner A parallel to side BC. Angle p at A matches angle B, and angle r at A matches angle C.
+  caption: The angles p, q and r lie on one straight line, so they add to 180°. Alternate angles make p equal to angle B and r equal to angle C.
+- kind: text
+  heading: The exterior angle
+  html: '<p>Extend the side BC beyond C to a point D. The angle ACD outside the triangle is an <strong>exterior angle</strong>.
+    The two interior angles at A and B are its <strong>interior opposite angles</strong>, because they are not next to it.</p><p>Here
+    is the reason. Angle ACB and angle ACD sit together on the straight line BD, so they add to 180°. The angles A, B and ACB
+    also add to 180°. Both are 180° minus angle ACB. So the exterior angle equals angle A + angle B.</p><p><strong>Exterior angle
+    property:</strong> an exterior angle of a triangle equals the sum of its two interior opposite angles.</p>'
+- kind: figure
+  svg: <svg viewBox="0 0 300 170" role="img"><polygon points="40,140 170,140 110,40" fill="#6cb7ff" fill-opacity=".25" stroke="#14193a"
+    stroke-width="3"/><line x1="170" y1="140" x2="280" y2="140" stroke="#14193a" stroke-width="3"/><text x="22" y="156" font-size="13"
+    font-weight="700" fill="currentColor">B</text><text x="160" y="160" font-size="13" font-weight="700" fill="currentColor">C</text><text
+    x="272" y="160" font-size="13" font-weight="700" fill="currentColor">D</text><text x="106" y="32" font-size="13" font-weight="700"
+    fill="currentColor">A</text><text x="104" y="68" font-size="13" font-weight="700" fill="#ff5a5f">a</text><text x="66" y="132"
+    font-size="13" font-weight="700" fill="#1a7f4b">b</text><text x="146" y="132" font-size="13" font-weight="700" fill="currentColor">c</text><text
+    x="196" y="128" font-size="13" font-weight="700" fill="#ffb800">e</text></svg>
+  alt: Triangle ABC with side BC extended to point D. Interior angles are a, b and c, and the exterior angle at C is marked e.
+  caption: c + e = 180° on the straight line, and a + b + c = 180° in the triangle, so e = a + b.
+- kind: example
+  heading: Worked example
+  prompt: Two angles of a triangle are 48° and 67°. Find the third angle.
+  steps:
+  - 'The three angles add up to 180°. Let the third angle be x.'
+  - '48° + 67° + x = 180°. The first two add to 115°.'
+  - 'x = 180° − 115° = 65°.'
+  - 'Check: 48° + 67° + 65° = 180°.'
+- kind: example
+  heading: Worked example
+  prompt: An exterior angle of a triangle is 110°. One interior opposite angle is 45°. Find the other interior opposite angle and the angle next to the exterior angle.
+  steps:
+  - 'The exterior angle equals the sum of the two interior opposite angles. So 110° = 45° + y.'
+  - 'y = 110° − 45° = 65°.'
+  - 'The angle next to the exterior angle is on a straight line with it, so it is 180° − 110° = 70°.'
+  - 'Check: the three interior angles are 45°, 65° and 70°, and 45° + 65° + 70° = 180°.'
+- kind: example
+  heading: Worked example
+  prompt: In triangle ABC, angle B = 40° and angle C = 60°. The point D is on BC and AD bisects (cuts in half) angle A. Find angle ADC.
+  steps:
+  - 'Angle A = 180° − 40° − 60° = 80°. Reason: the angles of a triangle add up to 180°.'
+  - 'AD cuts angle A in half, so angle BAD = 80° ÷ 2 = 40°.'
+  - 'Angle ADC is an exterior angle of triangle ABD. Its interior opposite angles are B and BAD. So angle ADC = 40° + 40° = 80°.'
+  - 'Check in triangle ADC: angle DAC = 40°, angle C = 60° and angle ADC = 80°. They add up to 180°.'
+- kind: callout
+  tone: watch
+  html: The exterior angle equals the sum of the two interior angles that are far from it, not the one next to it. The angle next to it is the one it adds with to make 180°. Also, always write the reason beside each angle you find.
+- kind: callout
+  tone: real
+  html: Builders use triangles in roof frames and bridges because a triangle cannot change shape. When a carpenter knows two angles of a triangular frame, the third angle follows from the 180° rule, so no third measurement is needed.
+- kind: check
+  item: q-ta-1
+- kind: check
+  item: q-ta-5
+- kind: check
+  item: q-ta-6
+- kind: summary
+  points:
+  - 'The three interior angles of any triangle add up to 180°. Reason: a line through one corner parallel to the opposite side makes three angles on a straight line, and alternate angles are equal.'
+  - 'An exterior angle is formed by extending one side. It is on a straight line with its adjacent interior angle, so the two make 180°.'
+  - 'Exterior angle property: an exterior angle equals the sum of the two interior opposite angles.'
+  - 'In angle chasing, find one angle at a time and write the reason for each step.'
+items:
+- key: q-ta-1
+  kind: mcq
+  stem: What is the sum of the three interior angles of a triangle?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: triangle-angle-sum
+  explanation: The three angles of every triangle add up to 180°, because they fit together on a straight line. A sum of 360° is for a four-sided figure.
+  hints:
+  - Think of the three torn corners placed on a straight line.
+  correct: C
+  options:
+  - key: A
+    text: 360°
+    misconception: sum-360
+  - key: B
+    text: 90°
+  - key: C
+    text: 180°
+  - key: D
+    text: 270°
+- key: q-ta-2
+  kind: numeric
+  stem: Two angles of a triangle are 70° and 50°. What is the third angle, in degrees?
+  difficulty: intro
+  purpose: practice
+  concepts:
+  - id: triangle-angle-sum
+  explanation: 70° + 50° = 120°. The third angle is 180° − 120° = 60°.
+  hints:
+  - Subtract both known angles from 180°.
+  value: 60
+  tolerance: 0.0
+  verify: 180 - 70 - 50
+- key: q-ta-3
+  kind: numeric
+  stem: A triangle has a right angle of 90° and another angle of 35°. What is the third angle, in degrees?
+  difficulty: intro
+  purpose: practice
+  concepts:
+  - id: triangle-angle-sum
+  explanation: 90° + 35° = 125°. The third angle is 180° − 125° = 55°.
+  hints:
+  - A right angle is 90°.
+  value: 55
+  tolerance: 0.0
+  verify: 180 - 90 - 35
+- key: q-ta-4
+  kind: mcq
+  stem: Which set of three angles can be the angles of a triangle?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: triangle-angle-sum
+  explanation: The angles of a triangle must add up to 180°. 40° + 60° + 80° = 180°. The other sets add up to 190° or 210°.
+  hints:
+  - Add up each set.
+  correct: B
+  options:
+  - key: A
+    text: 50°, 60°, 80°
+  - key: B
+    text: 40°, 60°, 80°
+  - key: C
+    text: 90°, 90°, 30°
+  - key: D
+    text: 100°, 50°, 40°
+- key: q-ta-5
+  kind: numeric
+  stem: The two interior opposite angles of a triangle are 55° and 40°. What is the exterior angle, in degrees?
+  difficulty: standard
+  purpose: check
+  concepts:
+  - id: triangle-exterior-angle
+  explanation: The exterior angle equals the sum of the two interior opposite angles. 55° + 40° = 95°.
+  hints:
+  - Add the two interior opposite angles.
+  value: 95
+  tolerance: 0.0
+  verify: 55 + 40
+- key: q-ta-6
+  kind: mcq
+  stem: What does the exterior angle property of a triangle say?
+  difficulty: standard
+  purpose: check
+  concepts:
+  - id: triangle-exterior-angle
+  explanation: An exterior angle equals the sum of the two interior opposite angles. It does not equal the angle next to it, because those two add to 180°.
+  hints:
+  - Which two angles are far from the exterior angle?
+  correct: B
+  options:
+  - key: A
+    text: It equals the interior angle next to it
+    misconception: ext-equals-adjacent
+  - key: B
+    text: It equals the sum of the two interior opposite angles
+  - key: C
+    text: It equals the sum of all three interior angles
+    misconception: ext-equals-adjacent
+  - key: D
+    text: It is always 90°
+- key: q-ta-7
+  kind: numeric
+  stem: A triangle has two equal angles of 65° each. What is the third angle, in degrees?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: triangle-angle-sum
+  explanation: 65° + 65° = 130°. The third angle is 180° − 130° = 50°.
+  hints:
+  - Add the two equal angles first.
+  value: 50
+  tolerance: 0.0
+  verify: 180 - 2*65
+- key: q-ta-8
+  kind: numeric
+  stem: An exterior angle of a triangle is 125°. One interior opposite angle is 80°. What is the other interior opposite angle, in degrees?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: triangle-exterior-angle
+  explanation: The exterior angle is the sum of the two interior opposite angles. 125° = 80° + other, so the other angle is 125° − 80° = 45°.
+  hints:
+  - Subtract the known opposite angle from the exterior angle.
+  value: 45
+  tolerance: 0.0
+  verify: 125 - 80
+- key: q-ta-9
+  kind: mcq
+  stem: 'Assertion (A): A triangle cannot have two angles of 90°. Reason (R): The three angles of a triangle add up to 180°.'
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: triangle-angle-sum
+  explanation: Two right angles already make 180°, so nothing is left for the third angle. This is because the three angles add to 180°. R explains A.
+  hints:
+  - Add 90° and 90°. How much is left for the third angle?
+  correct: A
+  options:
+  - key: A
+    text: Both A and R are true, and R explains A
+  - key: B
+    text: Both A and R are true, but R does not explain A
+  - key: C
+    text: A is true, but R is false
+  - key: D
+    text: A is false, but R is true
+- key: q-ta-10
+  kind: mcq
+  stem: 'Assertion (A): An exterior angle of a triangle is 80° when its interior opposite angles are 30° and 40°. Reason (R): An exterior angle equals the sum of the two interior opposite angles.'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: triangle-exterior-angle
+  explanation: R is true. By R the exterior angle would be 30° + 40° = 70°, not 80°. So A is false.
+  hints:
+  - Use R to work out what the exterior angle should be.
+  correct: D
+  options:
+  - key: A
+    text: Both A and R are true, and R explains A
+  - key: B
+    text: Both A and R are true, but R does not explain A
+  - key: C
+    text: A is true, but R is false
+  - key: D
+    text: A is false, but R is true
+- key: q-ta-11
+  kind: mcq
+  stem: 'Assertion (A): An equilateral triangle has three angles of 60°. Reason (R): Every triangle has three equal angles.'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: triangle-angle-sum
+  explanation: An equilateral triangle has three equal angles that add to 180°, so each is 60°. A is true. R is false, because most triangles do not have three equal angles.
+  hints:
+  - Does every triangle have three equal angles? Think of a triangle with a right angle.
+  correct: C
+  options:
+  - key: A
+    text: Both A and R are true, and R explains A
+    misconception: reason-always-explains
+  - key: B
+    text: Both A and R are true, but R does not explain A
+  - key: C
+    text: A is true, but R is false
+  - key: D
+    text: A is false, but R is true
+- key: q-ta-12
+  kind: mcq
+  stem: 'A roof frame is a triangle ABC. Angle A is 52° and angle B is 64°. A rod is made by extending the side BC beyond C to a point D. What is the exterior angle ACD?'
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: triangle-exterior-angle
+  explanation: The exterior angle equals the sum of the two interior opposite angles, A and B. 52° + 64° = 116°. The angle 64° is just one of them, and the angle 52° is the other.
+  hints:
+  - Which two interior angles are not next to the exterior angle ACD?
+  correct: B
+  options:
+  - key: A
+    text: 64°
+    misconception: ext-equals-one-opposite
+  - key: B
+    text: 116°
+  - key: C
+    text: 244°
+  - key: D
+    text: 52°
+    misconception: ext-equals-one-opposite
+- key: q-ta-13
+  kind: numeric
+  stem: In a triangular roof frame, angle A is 52° and angle B is 64°. What is the interior angle ACB, in degrees?
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: triangle-angle-sum
+  explanation: The three interior angles add to 180°. Angle ACB = 180° − 52° − 64° = 64°. As a check, ACB and the exterior angle ACD should add to 180°, and 64° + 116° = 180°.
+  hints:
+  - Use the angle sum, or use the straight line at C.
+  value: 64
+  tolerance: 0.0
+  verify: 180 - 52 - 64
+- key: q-ta-14
+  kind: numeric
+  stem: The three angles of a triangle are in the ratio 2 to 3 to 4. What is the largest angle, in degrees?
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: triangle-angle-sum
+  explanation: The ratio adds to 2 + 3 + 4 = 9 parts, and the angles add to 180°, so one part is 20°. The largest angle is 4 × 20° = 80°.
+  hints:
+  - Find how many degrees one part is worth.
+  value: 80
+  tolerance: 0.0
+  verify: 180*4/9
+- key: q-ta-15
+  kind: numeric
+  stem: The angles of a triangle are x, x + 10° and x + 20°. What is the largest angle, in degrees?
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: triangle-angle-sum
+  explanation: x + (x + 10) + (x + 20) = 180, so 3x + 30 = 180 and x = 50. The angles are 50°, 60° and 70°. The largest is 70°.
+  hints:
+  - Add the three angles and set the total equal to 180.
+  value: 70
+  tolerance: 0.0
+  verify: (180 - 30)/3 + 20
+misconceptions:
+- code: sum-360
+  concept: triangle-angle-sum
+  description: Thinks the angles of a triangle add up to 360°, mixing it up with a four-sided figure or a full turn.
+- code: ext-equals-adjacent
+  concept: triangle-exterior-angle
+  description: Thinks the exterior angle equals the interior angle next to it, when the two add up to 180°.
+- code: ext-equals-one-opposite
+  concept: triangle-exterior-angle
+  description: Takes only one of the interior opposite angles as the exterior angle instead of adding both.
+- code: reason-always-explains
+  concept: triangle-angle-sum
+  description: Thinks that a true reason must explain a true assertion, even when it does not.
+cards:
+- key: triangle-angles-card-1
+  concept: triangle-angle-sum
+  front: What is the angle sum of a triangle?
+  back: 180°. A line through one corner parallel to the opposite side shows the three angles fit on a straight line.
+- key: triangle-angles-card-2
+  concept: triangle-exterior-angle
+  front: State the exterior angle property.
+  back: An exterior angle of a triangle equals the sum of the two interior opposite angles.
+- key: triangle-angles-card-3
+  concept: triangle-exterior-angle
+  front: Why is the exterior angle equal to the sum of the two opposite angles?
+  back: The exterior angle and its adjacent interior angle make 180°. The three interior angles also make 180°. So the exterior angle equals the other two.
+- key: triangle-angles-card-4
+  concept: triangle-angle-sum
+  front: Which kind of angles are equal between two parallel lines and a crossing line, on opposite sides?
+  back: Alternate angles. We used them to prove the angle sum.

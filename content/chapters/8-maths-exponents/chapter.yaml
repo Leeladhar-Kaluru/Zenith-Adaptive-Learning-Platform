@@ -1,0 +1,11 @@
+slug: 8-maths-exponents
+board: cbse
+curriculum: NCERT current editions (to be confirmed by a reviewer)
+grade: 8
+subject: maths
+title: Exponents and Powers
+summary: Write repeated multiplication as a power, use the laws of exponents, and write very large and very small numbers in standard form.
+concepts:
+- id: exponents-laws
+lessons:
+- laws-of-exponents

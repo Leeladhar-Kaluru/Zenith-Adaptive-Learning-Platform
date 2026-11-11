@@ -1,0 +1,426 @@
+slug: hcf-and-lcm
+title: HCF and LCM
+minutes: 25
+objectives:
+- List the factors and multiples of a number and name the common ones for two numbers
+- Write a number as a product of primes
+- Find the HCF and LCM of two numbers using prime factorisation
+- Decide whether a tiling or timing problem needs the HCF or the LCM
+concepts:
+- factors-multiples
+- prime-factorisation
+- hcf-lcm
+origin: ai_assisted
+blocks:
+- kind: text
+  heading: Two everyday puzzles
+  html: '<p>A balcony floor is 120 cm long and 180 cm wide. You want to cover it with square tiles. You do not want to cut any
+    tile. You want the tiles as big as possible.</p><p>Here is a second puzzle. Two buses leave a stop together. One bus comes
+    back every 12 minutes. The other comes back every 18 minutes. When will they leave together again?</p><p>The first puzzle
+    needs the <strong>HCF</strong>. The second needs the <strong>LCM</strong>. This lesson shows how to find both and how
+    to tell which one a problem wants.</p>'
+- kind: text
+  heading: Factors and multiples
+  html: '<p>A <strong>factor</strong> of a number divides it exactly, with nothing left over. The factors of 12 are 1, 2, 3,
+    4, 6 and 12. A <strong>multiple</strong> of a number is what you get when you multiply it by 1, 2, 3 and so on. The multiples
+    of 4 are 4, 8, 12, 16 and so on.</p><p>A factor is never bigger than the number. A multiple is never smaller than the number.
+    Factors are few. Multiples go on for ever.</p><p>The factors of 18 are 1, 2, 3, 6, 9 and 18. The numbers 1, 2, 3 and 6 are
+    on both lists. They are the <strong>common factors</strong> of 12 and 18. The biggest of them is 6. This is the <strong>highest
+    common factor</strong>, or <strong>HCF</strong>.</p>'
+- kind: figure
+  svg: <svg viewBox="0 0 260 190" role="img"><rect x="40" y="30" width="180" height="120" fill="#6cb7ff" opacity=".25"/><rect
+    x="40" y="30" width="60" height="60" fill="none" stroke="#14193a" stroke-width="2"/><rect x="100" y="30" width="60" height="60"
+    fill="none" stroke="#14193a" stroke-width="2"/><rect x="160" y="30" width="60" height="60" fill="none" stroke="#14193a"
+    stroke-width="2"/><rect x="40" y="90" width="60" height="60" fill="none" stroke="#14193a" stroke-width="2"/><rect x="100"
+    y="90" width="60" height="60" fill="none" stroke="#14193a" stroke-width="2"/><rect x="160" y="90" width="60" height="60"
+    fill="none" stroke="#14193a" stroke-width="2"/><text x="130" y="20" font-size="13" font-weight="700" text-anchor="middle"
+    fill="currentColor">180 cm</text><text x="228" y="95" font-size="13" font-weight="700" fill="currentColor">120</text><text
+    x="228" y="110" font-size="13" font-weight="700" fill="currentColor">cm</text><text x="70" y="65" font-size="12" text-anchor="middle"
+    fill="currentColor">60</text><text x="130" y="172" font-size="12" text-anchor="middle" fill="currentColor">Square tiles of side 60 cm</text></svg>
+  alt: A floor 180 cm long and 120 cm wide is covered exactly by six square tiles, three in each row and two rows, each tile 60 cm wide.
+  caption: 60 divides both 120 and 180, so six square tiles of side 60 cm cover the floor with no cutting. 60 is the HCF of 120 and 180.
+- kind: text
+  heading: Prime factorisation
+  html: '<p>A <strong>prime number</strong> has exactly two factors, 1 and itself. The numbers 2, 3, 5, 7, 11 and 13 are prime.
+    The number 1 is not prime, because it has only one factor. A number with more than two factors, like 12, is <strong>composite</strong>.</p><p>Every
+    number above 1 can be broken into primes. This is its <strong>prime factorisation</strong>. Keep splitting until every
+    piece is prime. For 12: 12 = 2 × 6 = 2 × 2 × 3. For 18: 18 = 2 × 9 = 2 × 3 × 3. We write repeated primes with a power,
+    so 12 = 2<sup>2</sup> × 3 and 18 = 2 × 3<sup>2</sup>.</p>'
+- kind: text
+  heading: Finding the HCF and LCM
+  html: '<p>Write both numbers as products of primes. Then follow two rules.</p><ul><li><strong>HCF:</strong> take only the primes
+    that appear in both numbers. For each, use the smaller power.</li><li><strong>LCM:</strong> take every prime that appears
+    in either number. For each, use the bigger power.</li></ul><p>For 12 = 2<sup>2</sup> × 3 and 18 = 2 × 3<sup>2</sup>:
+    the HCF is 2 × 3 = 6. The LCM is 2<sup>2</sup> × 3<sup>2</sup> = 36.</p><p>Why does this work? A common factor can use only
+    what both numbers have, so it takes the smaller power. A common multiple must hold everything that either number has, so
+    it takes the bigger power. A handy check for two numbers: HCF × LCM = the product of the two numbers. Here 6 × 36 = 216 and
+    12 × 18 = 216.</p>'
+- kind: figure
+  svg: <svg viewBox="0 0 300 140" role="img"><line x1="20" y1="45" x2="272" y2="45" stroke="#14193a" stroke-width="2"/><line
+    x1="20" y1="100" x2="272" y2="100" stroke="#14193a" stroke-width="2"/><circle cx="20" cy="45" r="5" fill="#ffb800"/><circle
+    cx="104" cy="45" r="5" fill="#ffb800"/><circle cx="188" cy="45" r="5" fill="#ffb800"/><circle cx="272" cy="45" r="7" fill="#ff5a5f"/><circle
+    cx="20" cy="100" r="5" fill="#6cb7ff"/><circle cx="146" cy="100" r="5" fill="#6cb7ff"/><circle cx="272" cy="100" r="7" fill="#ff5a5f"/><line
+    x1="272" y1="30" x2="272" y2="115" stroke="#ff5a5f" stroke-width="2" stroke-dasharray="4 4"/><text x="20" y="22" font-size="12"
+    font-weight="700" fill="currentColor">Bus A every 12 min</text><text x="20" y="132" font-size="12" font-weight="700" fill="currentColor">Bus
+    B every 18 min</text><text x="104" y="64" font-size="11" text-anchor="middle" fill="currentColor">12</text><text x="188"
+    y="64" font-size="11" text-anchor="middle" fill="currentColor">24</text><text x="146" y="119" font-size="11" text-anchor="middle"
+    fill="currentColor">18</text><text x="290" y="22" font-size="12" font-weight="700" text-anchor="end" fill="currentColor">36 min together</text></svg>
+  alt: Two number lines show Bus A leaving at 12, 24 and 36 minutes and Bus B leaving at 18 and 36 minutes, so both leave together at 36 minutes.
+  caption: The first time both lists of multiples meet is 36 minutes. That is the lowest common multiple, or LCM, of 12 and 18.
+- kind: example
+  heading: Worked example
+  prompt: Find the HCF and LCM of 24 and 36.
+  steps:
+  - 'Break each number into primes. 24 = 2 × 2 × 2 × 3 = 2<sup>3</sup> × 3. 36 = 2 × 2 × 3 × 3 = 2<sup>2</sup> × 3<sup>2</sup>.'
+  - 'HCF: the primes in both are 2 and 3. Smaller powers: 2<sup>2</sup> and 3. So HCF = 4 × 3 = 12.'
+  - 'LCM: every prime, bigger powers: 2<sup>3</sup> and 3<sup>2</sup>. So LCM = 8 × 9 = 72.'
+  - 'Check: HCF × LCM = 12 × 72 = 864, and 24 × 36 = 864. They match.'
+- kind: example
+  heading: Worked example
+  prompt: A floor is 90 cm by 150 cm. What is the side of the biggest square tile that fits with no cutting? How many tiles are needed?
+  steps:
+  - 'The side must divide both 90 and 150, and it must be as big as possible. So we need the HCF.'
+  - '90 = 2 × 3<sup>2</sup> × 5 and 150 = 2 × 3 × 5<sup>2</sup>. The smaller powers give 2 × 3 × 5 = 30. The tile side is 30 cm.'
+  - 'Tiles along the 90 cm side: 90 ÷ 30 = 3. Tiles along the 150 cm side: 150 ÷ 30 = 5. Total tiles = 3 × 5 = 15.'
+  - 'Check: 15 tiles of area 30 × 30 = 900 cm<sup>2</sup> give 13500 cm<sup>2</sup>, and the floor is 90 × 150 = 13500 cm<sup>2</sup>.'
+- kind: callout
+  tone: watch
+  html: Do not mix up the two. The HCF is never bigger than the smaller number. The LCM is never smaller than the bigger number. If your "HCF" is bigger than one of the numbers, you have found the LCM by mistake. Also, 1 is not a prime number.
+- kind: callout
+  tone: real
+  html: Use the HCF when you are cutting or sharing into equal parts that are as big as possible, like tiles, ribbon pieces or equal groups. Use the LCM when events repeat and you want the first time they meet, like buses, bells and blinking lights.
+- kind: check
+  item: q-hl-1
+- kind: check
+  item: q-hl-3
+- kind: check
+  item: q-hl-5
+- kind: summary
+  points:
+  - 'A factor divides a number exactly. A multiple is the number times 1, 2, 3 and so on.'
+  - 'Prime factorisation writes a number as a product of primes. 1 is not prime.'
+  - 'HCF: common primes with the smaller powers. LCM: all primes with the bigger powers. For two numbers HCF × LCM = their product.'
+  - 'Cutting or sharing into the biggest equal parts needs the HCF. Events that repeat and meet again need the LCM.'
+items:
+- key: q-hl-1
+  kind: mcq
+  stem: Which of these is a factor of 18?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: factors-multiples
+  explanation: 18 ÷ 6 = 3 with nothing left over, so 6 is a factor of 18. The number 36 is a multiple of 18, not a factor. The numbers 4 and 5 do not divide 18 exactly.
+  hints:
+  - A factor divides the number exactly. Try dividing 18 by each option.
+  correct: B
+  options:
+  - key: A
+    text: '36'
+    misconception: factor-multiple-mix
+  - key: B
+    text: '6'
+  - key: C
+    text: '4'
+  - key: D
+    text: '5'
+- key: q-hl-2
+  kind: mcq
+  stem: Which of these is a multiple of 9?
+  difficulty: intro
+  purpose: practice
+  concepts:
+  - id: factors-multiples
+  explanation: 9 × 3 = 27, so 27 is a multiple of 9. The numbers 3 and 1 are factors of 9, not multiples. The number 19 is not in the table of 9.
+  hints:
+  - Multiples of 9 come from the table of 9, such as 9, 18, 27.
+  correct: C
+  options:
+  - key: A
+    text: '3'
+    misconception: factor-multiple-mix
+  - key: B
+    text: '19'
+  - key: C
+    text: '27'
+  - key: D
+    text: '1'
+    misconception: factor-multiple-mix
+- key: q-hl-3
+  kind: numeric
+  stem: What is the HCF of 8 and 12?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: hcf-lcm
+  explanation: The factors of 8 are 1, 2, 4, 8. The factors of 12 are 1, 2, 3, 4, 6, 12. The common factors are 1, 2 and 4, and the highest is 4.
+  hints:
+  - List the factors of both numbers and pick the biggest one on both lists.
+  value: 4
+  tolerance: 0.0
+  verify: gcd(8, 12)
+- key: q-hl-4
+  kind: mcq
+  stem: Which of these is a prime number?
+  difficulty: intro
+  purpose: practice
+  concepts:
+  - id: prime-factorisation
+  explanation: 11 has only two factors, 1 and 11, so it is prime. The number 1 has only one factor. The number 9 has the factor 3 and the number 15 has the factors 3 and 5.
+  hints:
+  - A prime number has exactly two factors.
+  correct: C
+  options:
+  - key: A
+    text: '1'
+    misconception: one-is-prime
+  - key: B
+    text: '9'
+  - key: C
+    text: '11'
+  - key: D
+    text: '15'
+- key: q-hl-5
+  kind: mcq
+  stem: Which is the prime factorisation of 60?
+  difficulty: standard
+  purpose: check
+  concepts:
+  - id: prime-factorisation
+  explanation: 60 = 2 × 30 = 2 × 2 × 15 = 2 × 2 × 3 × 5. Every number in this product is prime. Each other option contains 10, 6 or 4 or 15, which can be split further.
+  hints:
+  - Every number in the product must be prime. Can you split 10, 6 or 4 any further?
+  correct: B
+  options:
+  - key: A
+    text: 2 × 3 × 10
+    misconception: stops-before-primes
+  - key: B
+    text: 2 × 2 × 3 × 5
+  - key: C
+    text: 2 × 5 × 6
+    misconception: stops-before-primes
+  - key: D
+    text: 4 × 15
+    misconception: stops-before-primes
+- key: q-hl-6
+  kind: numeric
+  stem: What is the LCM of 6 and 8?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: hcf-lcm
+  explanation: 6 = 2 × 3 and 8 = 2<sup>3</sup>. Take every prime with its bigger power, 2<sup>3</sup> × 3 = 24.
+  hints:
+  - Write 6 and 8 as products of primes, then take the bigger power of each prime.
+  value: 24
+  tolerance: 0.0
+  verify: lcm(6, 8)
+- key: q-hl-7
+  kind: numeric
+  stem: What is the HCF of 36 and 48?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: hcf-lcm
+  explanation: 36 = 2<sup>2</sup> × 3<sup>2</sup> and 48 = 2<sup>4</sup> × 3. The smaller powers are 2<sup>2</sup> and 3, so the HCF is 4 × 3 = 12.
+  hints:
+  - Take only the primes in both numbers, with the smaller power of each.
+  value: 12
+  tolerance: 0.0
+  verify: gcd(36, 48)
+- key: q-hl-8
+  kind: mcq
+  stem: A rope 40 m long and a rope 56 m long are cut into pieces of equal length. The pieces must be as long as possible and nothing is left over. How long is each piece?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: hcf-lcm
+  explanation: We want the biggest length that divides both 40 and 56, so we need the HCF. 40 = 2<sup>3</sup> × 5 and 56 = 2<sup>3</sup> × 7, so the HCF is 8. Each piece is 8 m long. The number 280 is the LCM.
+  hints:
+  - Cutting into the biggest equal parts is an HCF problem.
+  correct: A
+  options:
+  - key: A
+    text: 8 m
+  - key: B
+    text: 280 m
+    misconception: hcf-lcm-swap
+  - key: C
+    text: 4 m
+  - key: D
+    text: 2 m
+- key: q-hl-9
+  kind: mcq
+  stem: Two bells ring together at 9:00 a.m. One rings every 12 minutes and the other every 15 minutes. When do they next ring together?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: hcf-lcm
+  explanation: Events that repeat and meet again need the LCM. 12 = 2<sup>2</sup> × 3 and 15 = 3 × 5, so the LCM is 4 × 3 × 5 = 60 minutes. That is 10:00 a.m. The HCF, 3, would give 9:03, which is too early.
+  hints:
+  - Find the first time that is a multiple of both 12 and 15 minutes.
+  correct: B
+  options:
+  - key: A
+    text: 9:03 a.m.
+    misconception: hcf-lcm-swap
+  - key: B
+    text: 10:00 a.m.
+  - key: C
+    text: 9:30 a.m.
+  - key: D
+    text: 12:00 noon
+- key: q-hl-10
+  kind: mcq
+  stem: 'Assertion (A): The HCF of two numbers is never bigger than the smaller number. Reason (R): The HCF is a factor of both numbers, and a factor of a number cannot be bigger than that number.'
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: hcf-lcm
+  explanation: Both statements are true. The HCF divides the smaller number, and a factor cannot exceed the number it divides, so R explains A.
+  hints:
+  - Is the HCF a factor of the smaller number?
+  correct: A
+  options:
+  - key: A
+    text: Both A and R are true, and R explains A
+  - key: B
+    text: Both A and R are true, but R does not explain A
+  - key: C
+    text: A is true, but R is false
+  - key: D
+    text: A is false, but R is true
+- key: q-hl-11
+  kind: mcq
+  stem: 'Assertion (A): The LCM of 6 and 10 is 30. Reason (R): 6 and 10 are both even numbers.'
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: hcf-lcm
+  explanation: 6 = 2 × 3 and 10 = 2 × 5, so the LCM is 2 × 3 × 5 = 30, and A is true. R is also true, but being even does not tell us the LCM. R does not explain A.
+  hints:
+  - Find the LCM first. Then ask whether being even is the reason for 30.
+  correct: B
+  options:
+  - key: A
+    text: Both A and R are true, and R explains A
+    misconception: reason-always-explains
+  - key: B
+    text: Both A and R are true, but R does not explain A
+  - key: C
+    text: A is true, but R is false
+  - key: D
+    text: A is false, but R is true
+- key: q-hl-12
+  kind: mcq
+  stem: 'Assertion (A): The HCF of 7 and 11 is 7. Reason (R): 7 and 11 are both prime numbers.'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: hcf-lcm
+  explanation: The only common factor of 7 and 11 is 1, so their HCF is 1. A is false. R is true, since 7 and 11 are both prime.
+  hints:
+  - List the factors of 7 and of 11. What do they share?
+  correct: D
+  options:
+  - key: A
+    text: Both A and R are true, and R explains A
+  - key: B
+    text: Both A and R are true, but R does not explain A
+  - key: C
+    text: A is true, but R is false
+  - key: D
+    text: A is false, but R is true
+- key: q-hl-13
+  kind: mcq
+  stem: A hall floor is 420 cm by 300 cm. The caretaker wants all tiles to be the same square size, with no cutting, and as big as possible. What is the side of one tile?
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: hcf-lcm
+  explanation: We need the HCF of 420 and 300. 420 = 2<sup>2</sup> × 3 × 5 × 7 and 300 = 2<sup>2</sup> × 3 × 5<sup>2</sup>. The common part is 2<sup>2</sup> × 3 × 5 = 60. The side is 60 cm. The number 2100 is the LCM.
+  hints:
+  - Biggest square tile with no cutting means the HCF of the floor lengths.
+  correct: B
+  options:
+  - key: A
+    text: 2100 cm
+    misconception: hcf-lcm-swap
+  - key: B
+    text: 60 cm
+  - key: C
+    text: 30 cm
+  - key: D
+    text: 20 cm
+- key: q-hl-14
+  kind: numeric
+  stem: A hall floor is 420 cm by 300 cm and is covered with square tiles of side 60 cm. How many tiles are needed?
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: hcf-lcm
+  explanation: Along 420 cm there are 420 ÷ 60 = 7 tiles. Along 300 cm there are 300 ÷ 60 = 5 tiles. In all 7 × 5 = 35 tiles.
+  hints:
+  - Count the tiles along each side first, then multiply.
+  value: 35
+  tolerance: 0.0
+  verify: (420/60)*(300/60)
+- key: q-hl-15
+  kind: numeric
+  stem: What is the smallest number that 12, 15 and 18 all divide exactly?
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: hcf-lcm
+  explanation: 12 = 2<sup>2</sup> × 3, 15 = 3 × 5 and 18 = 2 × 3<sup>2</sup>. Take every prime with its bigger power. LCM = 2<sup>2</sup> × 3<sup>2</sup> × 5 = 180.
+  hints:
+  - The smallest number divisible by all three is their LCM.
+  value: 180
+  tolerance: 0.0
+  verify: lcm(lcm(12, 15), 18)
+- key: q-hl-16
+  kind: numeric
+  stem: Two numbers have HCF 6 and LCM 72. One of the numbers is 18. What is the other?
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: hcf-lcm
+  explanation: For two numbers, HCF × LCM = product of the numbers. So 6 × 72 = 18 × other. The other number is 432 ÷ 18 = 24. Check the HCF of 18 and 24 is 6, and their LCM is 72.
+  hints:
+  - Use HCF × LCM = first number × second number.
+  value: 24
+  tolerance: 0.0
+  verify: 6*72/18
+misconceptions:
+- code: factor-multiple-mix
+  concept: factors-multiples
+  description: Mixes up factors and multiples, for example calling 36 a factor of 18 or calling 3 a multiple of 9.
+- code: one-is-prime
+  concept: prime-factorisation
+  description: Thinks 1 is a prime number, when a prime must have exactly two factors.
+- code: stops-before-primes
+  concept: prime-factorisation
+  description: Stops splitting a number before every piece is prime, for example leaving 10 or 6 in the product.
+- code: hcf-lcm-swap
+  concept: hcf-lcm
+  description: Uses the LCM where the HCF is needed, or the other way round, because the kind of problem was not read carefully.
+- code: reason-always-explains
+  concept: hcf-lcm
+  description: Thinks that if both an assertion and its reason are true, the reason must explain the assertion.
+cards:
+- key: hcf-and-lcm-card-1
+  concept: hcf-lcm
+  front: How do you find the HCF from prime factorisations?
+  back: Take only the primes that appear in both numbers, each with its smaller power, and multiply them.
+- key: hcf-and-lcm-card-2
+  concept: hcf-lcm
+  front: How do you find the LCM from prime factorisations?
+  back: Take every prime that appears in either number, each with its bigger power, and multiply them.
+- key: hcf-and-lcm-card-3
+  concept: hcf-lcm
+  front: Which one do tiling and equal cutting problems need?
+  back: The HCF, because we want the biggest equal piece that fits both lengths exactly.
+- key: hcf-and-lcm-card-4
+  concept: prime-factorisation
+  front: Is 1 a prime number?
+  back: No. A prime number has exactly two factors, and 1 has only one.

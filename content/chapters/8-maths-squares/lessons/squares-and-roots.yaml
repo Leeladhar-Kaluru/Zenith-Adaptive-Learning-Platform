@@ -17,6 +17,29 @@ blocks:
   heading: Going backwards
   html: <p>The <strong>square root</strong> undoes squaring. The square root of 25 is 5, because 5 times 5 is 25. Squaring
     and taking the square root are opposite steps, just like adding and subtracting.</p>
+- kind: text
+  heading: Square numbers as dot patterns
+  html: <p>Why is it called a <strong>square</strong> number? Because you can arrange that many dots in a square, with the same number of dots in each row and each column. Four dots make a 2 by 2 square. Nine dots make a 3 by 3 square.</p><p>Look at the picture. To go from one square to the next, you add an L-shaped border of dots. The border has 3 dots, then 5, then 7. So 1 + 3 = 4, then 4 + 5 = 9, then 9 + 7 = 16. Each border is the next odd number.</p>
+- kind: figure
+  svg: '<svg viewBox="-10 0 290 124" role="img"><circle cx="20" cy="86" r="5.5" fill="#c2410c"/><circle cx="62" cy="70" r="5.5" fill="#c2410c"/><circle cx="62" cy="86" r="5.5" fill="#3b4cca"/><circle cx="78" cy="70" r="5.5" fill="#c2410c"/><circle cx="78" cy="86" r="5.5" fill="#c2410c"/><circle cx="124" cy="54" r="5.5" fill="#c2410c"/><circle cx="124" cy="70" r="5.5" fill="#3b4cca"/><circle cx="124" cy="86" r="5.5" fill="#3b4cca"/><circle cx="140" cy="54" r="5.5" fill="#c2410c"/><circle cx="140" cy="70" r="5.5" fill="#3b4cca"/><circle cx="140" cy="86" r="5.5" fill="#3b4cca"/><circle cx="156" cy="54" r="5.5" fill="#c2410c"/><circle cx="156" cy="70" r="5.5" fill="#c2410c"/><circle cx="156" cy="86" r="5.5" fill="#c2410c"/><circle cx="206" cy="38" r="5.5" fill="#c2410c"/><circle cx="206" cy="54" r="5.5" fill="#3b4cca"/><circle cx="206" cy="70" r="5.5" fill="#3b4cca"/><circle cx="206" cy="86" r="5.5" fill="#3b4cca"/><circle cx="222" cy="38" r="5.5" fill="#c2410c"/><circle cx="222" cy="54" r="5.5" fill="#3b4cca"/><circle cx="222" cy="70" r="5.5" fill="#3b4cca"/><circle cx="222" cy="86" r="5.5" fill="#3b4cca"/><circle cx="238" cy="38" r="5.5" fill="#c2410c"/><circle cx="238" cy="54" r="5.5" fill="#3b4cca"/><circle cx="238" cy="70" r="5.5" fill="#3b4cca"/><circle cx="238" cy="86" r="5.5" fill="#3b4cca"/><circle cx="254" cy="38" r="5.5" fill="#c2410c"/><circle cx="254" cy="54" r="5.5" fill="#c2410c"/><circle cx="254" cy="70" r="5.5" fill="#c2410c"/><circle cx="254" cy="86" r="5.5" fill="#c2410c"/><g font-size="12" font-weight="700" fill="currentColor"><text x="20" y="112" text-anchor="middle">1 x 1 = 1</text><text x="74" y="112" text-anchor="middle">2 x 2 = 4</text><text x="140" y="112" text-anchor="middle">3 x 3 = 9</text><text x="230" y="112" text-anchor="middle">4 x 4 = 16</text></g></svg>'
+  alt: Dot squares of side 1, 2, 3 and 4 hold 1, 4, 9 and 16 dots. The orange L-shaped border on each square shows the dots added to the previous square.
+  caption: A square of side n holds n x n dots. The orange border is the odd number of dots added to reach the next square.
+- kind: example
+  heading: Is it a perfect square?
+  prompt: Is 196 a perfect square? If it is, find its square root.
+  steps:
+  - 'Estimate. 10 times 10 is 100 and 20 times 20 is 400, so the root is between 10 and 20.'
+  - 'The last digit of 196 is 6. A number ending in 4 or 6 can be the square of a number ending in 4 or 6, so try 14 and 16.'
+  - 'Try 14: 14 times 14 = 196.'
+  - 'So 196 is a perfect square and its square root is 14.'
+- kind: example
+  heading: Adding odd numbers
+  prompt: Find 1 + 3 + 5 + 7 + 9 without adding one by one.
+  steps:
+  - 'The sum of the first n odd numbers is n times n. This is the border pattern in the picture.'
+  - 'There are 5 odd numbers here, so n = 5.'
+  - 'The sum is 5 times 5 = 25.'
+  - 'Check by adding: 1 + 3 = 4, 4 + 5 = 9, 9 + 7 = 16, 16 + 9 = 25.'
 - kind: example
   heading: Worked example
   prompt: Find the square root of 144.
@@ -35,12 +58,18 @@ blocks:
   item: q-sq-1
 - kind: check
   item: q-sq-2
+- kind: callout
+  tone: watch
+  html: A perfect square never ends in 2, 3, 7 or 8. So 47 and 128 are not perfect squares. But ending in 1, 4, 5, 6, 9 or 0 does not prove a number is a perfect square. For example, 24 ends in 4 but it is not a square.
+- kind: check
+  item: q-sq-6
 - kind: summary
   points:
   - The square of a number is the number times itself.
   - A perfect square is a whole number times itself, like 1, 4, 9, 16, 25.
   - The square root undoes squaring.
   - The square root of a perfect square is a whole number.
+  - A square of side n holds n times n dots. Each new square adds the next odd number.
 items:
 - key: q-sq-1
   kind: numeric
@@ -184,6 +213,99 @@ items:
     text: 6 and 7
   - key: D
     text: 8 and 9
+- key: q-sq-10
+  kind: mcq
+  stem: 'Assertion (A): 49 is a perfect square. Reason (R): 49 = 7 x 7, which is a whole number multiplied by itself.'
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: squares-roots
+    weight: 1.0
+  explanation: Both are true. A perfect square is a whole number times itself, and 7 times 7 is 49. R is the reason A is true.
+  hints:
+  - Recall what makes a number a perfect square.
+  correct: A
+  options:
+  - key: A
+    text: Both A and R are true and R is the correct explanation of A.
+  - key: B
+    text: Both A and R are true but R is not the correct explanation of A.
+  - key: C
+    text: A is true but R is false.
+  - key: D
+    text: A is false but R is true.
+- key: q-sq-11
+  kind: mcq
+  stem: 'Assertion (A): The square of 8 is 16. Reason (R): To square a number, we multiply the number by itself.'
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: squares-roots
+    weight: 1.0
+  explanation: R is true. By R, the square of 8 is 8 times 8 = 64, not 16. 16 is 8 times 2. So A is false.
+  hints:
+  - Work out 8 times 8.
+  correct: D
+  options:
+  - key: A
+    text: Both A and R are true and R is the correct explanation of A.
+    misconception: doubles-instead-of-squares
+  - key: B
+    text: Both A and R are true but R is not the correct explanation of A.
+    misconception: doubles-instead-of-squares
+  - key: C
+    text: A is true but R is false.
+    misconception: doubles-instead-of-squares
+  - key: D
+    text: A is false but R is true.
+- key: q-sq-12
+  kind: mcq
+  stem: 'Case. Ravi has 144 plants. He wants to plant them in a square garden, with the same number of plants in each row and in each column and none left over. How many plants should he put in each row?'
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: squares-roots
+    weight: 1.0
+  explanation: The number in each row is the square root of 144. 12 times 12 is 144, so each row has 12 plants.
+  hints:
+  - Rows times columns must give 144, with rows equal to columns.
+  correct: B
+  options:
+  - key: A
+    text: '72'
+    misconception: halves-instead-of-root
+  - key: B
+    text: '12'
+  - key: C
+    text: '14'
+  - key: D
+    text: '24'
+- key: q-sq-13
+  kind: numeric
+  stem: What is 1 + 3 + 5 + 7 + 9 + 11?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: squares-roots
+  explanation: The sum of the first 6 odd numbers is 6 times 6 = 36. Adding one by one gives 1, 4, 9, 16, 25, 36.
+  hints:
+  - How many odd numbers are being added?
+  value: 36
+  tolerance: 0.0
+  verify: 1+3+5+7+9+11
+- key: q-sq-14
+  kind: numeric
+  stem: What is the smallest perfect square greater than 200?
+  difficulty: challenge
+  purpose: practice
+  concepts:
+  - id: squares-roots
+  explanation: 14 times 14 is 196, which is less than 200. 15 times 15 is 225, which is the next perfect square.
+  hints:
+  - Find the number whose square is just below 200 first.
+  value: 225
+  tolerance: 0.0
+  verify: 15**2
 misconceptions:
 - code: doubles-instead-of-squares
   concept: squares-roots
@@ -191,6 +313,9 @@ misconceptions:
 - code: tests-wrong-squares
   concept: squares-roots
   description: Picks the wrong perfect squares when estimating a square root.
+- code: halves-instead-of-root
+  concept: squares-roots
+  description: Divides by 2 to find a square root instead of finding the number that multiplies by itself.
 cards:
 - key: squares-and-roots-card-1
   concept: squares-roots
@@ -200,3 +325,11 @@ cards:
   concept: squares-roots
   front: What does a square root do?
   back: It undoes squaring.
+- key: squares-and-roots-card-3
+  concept: squares-roots
+  front: How many dots are in a square pattern with 6 dots in each row?
+  back: 6 times 6 = 36 dots.
+- key: squares-and-roots-card-4
+  concept: squares-roots
+  front: How do you get from one square number to the next?
+  back: Add the next odd number. For example, 16 + 9 = 25.

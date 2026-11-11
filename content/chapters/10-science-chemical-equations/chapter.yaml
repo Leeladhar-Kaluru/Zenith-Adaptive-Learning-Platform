@@ -1,0 +1,11 @@
+slug: 10-science-chemical-equations
+board: cbse
+curriculum: NCERT current editions (to be confirmed by a reviewer)
+grade: 10
+subject: science
+title: "Chemical equations"
+summary: "Write and balance chemical equations so that atoms and mass are conserved."
+concepts:
+- id: balancing-equations
+lessons:
+- balancing-equations

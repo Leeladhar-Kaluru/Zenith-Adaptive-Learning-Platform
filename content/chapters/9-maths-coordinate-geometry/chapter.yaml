@@ -1,0 +1,11 @@
+slug: 9-maths-coordinate-geometry
+board: cbse
+curriculum: NCERT current editions (to be confirmed by a reviewer)
+grade: 9
+subject: maths
+title: Coordinate Geometry
+summary: Describe the position of a point with a pair of numbers, find its quadrant, and measure distance along an axis.
+concepts:
+- id: coordinate-plane
+lessons:
+- cartesian-plane

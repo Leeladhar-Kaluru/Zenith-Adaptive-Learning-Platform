@@ -27,8 +27,57 @@ blocks:
 - kind: callout
   tone: watch
   html: <strong>Two minus signs together:</strong> 3 - (-4) is 7, not -1.
+- kind: text
+  heading: A pattern that shows why
+  html: <p>Look at this pattern. Each time we subtract a number that is one smaller, the answer goes up by 1.</p><ul><li>3
+    - 2 = 1</li><li>3 - 1 = 2</li><li>3 - 0 = 3</li><li>3 - (-1) = 4</li><li>3 - (-2) = 5</li></ul><p>The pattern keeps going.
+    So subtracting a negative number gives a bigger answer. It is the same as adding the opposite.</p>
+- kind: figure
+  svg: <svg viewBox="0 0 320 120" role="img"><line x1="8" y1="60" x2="312" y2="60" stroke="currentColor" stroke-width="4"
+    stroke-linecap="round"/><g font-size="13" font-weight="700" text-anchor="middle" fill="currentColor"><line x1="20" y1="54"
+    x2="20" y2="66" stroke="currentColor" stroke-width="2"/><text x="20" y="86">0</text><line x1="55" y1="54" x2="55" y2="66"
+    stroke="currentColor" stroke-width="2"/><text x="55" y="86">1</text><line x1="90" y1="54" x2="90" y2="66" stroke="currentColor"
+    stroke-width="2"/><text x="90" y="86">2</text><line x1="125" y1="54" x2="125" y2="66" stroke="currentColor" stroke-width="2"/><text
+    x="125" y="86">3</text><line x1="160" y1="54" x2="160" y2="66" stroke="currentColor" stroke-width="2"/><text x="160" y="86">4</text><line
+    x1="195" y1="54" x2="195" y2="66" stroke="currentColor" stroke-width="2"/><text x="195" y="86">5</text><line x1="230"
+    y1="54" x2="230" y2="66" stroke="currentColor" stroke-width="2"/><text x="230" y="86">6</text><line x1="265" y1="54" x2="265"
+    y2="66" stroke="currentColor" stroke-width="2"/><text x="265" y="86">7</text><line x1="300" y1="54" x2="300" y2="66" stroke="currentColor"
+    stroke-width="2"/><text x="300" y="86">8</text></g><circle cx="125" cy="60" r="8" fill="#ffd43b" stroke="#14193a" stroke-width="3"/><circle
+    cx="265" cy="60" r="8" fill="#74c0fc" stroke="#14193a" stroke-width="3"/><path d="M125 36 Q195.0 -4 265 36" fill="none"
+    stroke="currentColor" stroke-width="2.5"/><text x="195" y="14" font-size="13" font-weight="700" text-anchor="middle" fill="currentColor">move
+    4 right</text></svg>
+  alt: A number line from 0 to 8. An arc labelled move 4 right goes from a dot at 3 to a dot at 7.
+  caption: 3 - (-4) = 7. Subtracting -4 moves you 4 steps to the right.
+- kind: example
+  heading: 'Worked example: subtract a positive'
+  prompt: Work out -2 - 5.
+  steps:
+  - Subtracting 5 is the same as adding the opposite of 5, which is -5.
+  - So -2 - 5 = -2 + (-5).
+  - Start at -2 and move 5 steps left. The steps are -3, -4, -5, -6, -7.
+  - You land on -7. So -2 - 5 = -7.
+- kind: example
+  heading: 'Worked example: subtract a negative'
+  prompt: Work out -5 - (-3).
+  steps:
+  - Subtracting -3 is the same as adding the opposite of -3, which is 3.
+  - So -5 - (-3) = -5 + 3.
+  - Start at -5 and move 3 steps right. The steps are -4, -3, -2.
+  - You land on -2. So -5 - (-3) = -2.
+  - 'Check: the answer -2 is bigger than -5, as it should be when we subtract a negative number.'
+- kind: callout
+  tone: real
+  html: The temperature rose from -2 degrees to 6 degrees. The rise is 6 - (-2) = 8 degrees. Subtracting the lower reading
+    gives the size of the change.
+- kind: callout
+  tone: remember
+  html: 'Change every subtraction into an addition: a - b becomes a + (-b). Then use the number line.'
 - kind: check
   item: q-int-sub-1
+- kind: check
+  item: q-int-sub-5
+- kind: check
+  item: q-int-sub-10
 - kind: summary
   points:
   - a - b means a + (-b).
@@ -131,6 +180,99 @@ items:
   value: 7
   tolerance: 0.0
   verify: 4-(-3)
+- key: q-int-sub-7
+  kind: mcq
+  stem: 'Assertion (A): 5 - (-2) = 7. Reason (R): Subtracting -2 is the same as adding 2.'
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: integers-subtract
+    weight: 1.0
+  explanation: Subtracting -2 is the same as adding its opposite, 2. So 5 - (-2) = 5 + 2 = 7. A is true and R explains it.
+  hints:
+  - Change the subtraction into adding the opposite.
+  correct: A
+  options:
+  - key: A
+    text: Both A and R are true, and R explains A
+  - key: B
+    text: Both A and R are true, but R does not explain A
+  - key: C
+    text: A is true, but R is false
+  - key: D
+    text: A is false, but R is true
+    misconception: double-sign-ignored
+- key: q-int-sub-8
+  kind: mcq
+  stem: 'Assertion (A): 4 - (-4) = 0. Reason (R): Subtracting a number is the same as adding its opposite.'
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: integers-subtract
+    weight: 1.0
+  explanation: R is true. By R, 4 - (-4) = 4 + 4 = 8, not 0. So A is false.
+  hints:
+  - 'Use R: what is the opposite of -4?'
+  correct: D
+  options:
+  - key: A
+    text: Both A and R are true, and R explains A
+    misconception: double-sign-ignored
+  - key: B
+    text: Both A and R are true, but R does not explain A
+    misconception: double-sign-ignored
+  - key: C
+    text: A is true, but R is false
+  - key: D
+    text: A is false, but R is true
+- key: q-int-sub-9
+  kind: mcq
+  stem: At 5 am a hill town recorded -2 degrees. At 2 pm it recorded 6 degrees. By how many degrees did the temperature rise?
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: integers-subtract
+    weight: 1.0
+  explanation: 'The rise is the later reading minus the earlier one: 6 - (-2) = 6 + 2 = 8 degrees.'
+  hints:
+  - Write the rise as 6 - (-2).
+  - Subtracting a negative adds.
+  correct: B
+  options:
+  - key: A
+    text: 4 degrees
+    misconception: double-sign-ignored
+  - key: B
+    text: 8 degrees
+  - key: C
+    text: -8 degrees
+    misconception: reverses-subtraction
+  - key: D
+    text: Cannot tell
+- key: q-int-sub-10
+  kind: mcq
+  stem: What is -5 - (-3)?
+  difficulty: standard
+  purpose: check
+  concepts:
+  - id: integers-subtract
+    weight: 1.0
+  explanation: Subtracting -3 is adding 3. So -5 - (-3) = -5 + 3 = -2.
+  hints:
+  - Change it into -5 + 3.
+  correct: B
+  options:
+  - key: A
+    text: '-8'
+    misconception: double-sign-ignored
+  - key: B
+    text: '-2'
+  - key: C
+    text: '2'
+    misconception: reverses-subtraction
+  - key: D
+    text: '8'
+    misconception: double-negative-adds-digits
 misconceptions:
 - code: reverses-subtraction
   concept: integers-subtract
@@ -138,6 +280,12 @@ misconceptions:
 - code: subtracts-digits
   concept: integers-subtract
   description: Subtracts the digits and ignores the sign of -10.
+- code: double-sign-ignored
+  concept: integers-subtract
+  description: Ignores the second minus sign, so reads 6 - (-2) as 6 - 2.
+- code: double-negative-adds-digits
+  concept: integers-subtract
+  description: Sees two minus signs and adds the digits, so -5 - (-3) becomes 8.
 cards:
 - key: subtract-integers-card-1
   concept: integers-subtract

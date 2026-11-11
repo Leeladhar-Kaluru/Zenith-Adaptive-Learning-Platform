@@ -1,0 +1,11 @@
+slug: 9-science-motion
+board: cbse
+curriculum: NCERT current editions (to be confirmed by a reviewer)
+grade: 9
+subject: science
+title: "Describing motion"
+summary: "Describe how things move using distance, displacement, speed, velocity and acceleration, and read motion graphs."
+concepts:
+- id: motion-description
+lessons:
+- describing-motion

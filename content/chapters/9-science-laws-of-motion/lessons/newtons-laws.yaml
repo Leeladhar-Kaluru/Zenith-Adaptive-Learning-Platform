@@ -1,0 +1,304 @@
+slug: newtons-laws
+title: Newton's three laws of motion
+minutes: 30
+objectives:
+- Explain inertia and state Newton's first law with everyday examples
+- Use F = m a to find force, mass or acceleration
+- Identify an action and reaction pair and explain why the two forces do not cancel
+- Find momentum using p = m v
+concepts:
+- laws-of-motion
+origin: ai_assisted
+blocks:
+- kind: text
+  heading: Why do you lurch forward when a bus stops?
+  html: '<p>You are standing in a moving bus. The driver brakes hard. The bus slows down, but your body keeps going forward, so you lurch. Nothing pushed you forward. Your body simply kept the motion it already had.</p><p>A <strong>force</strong> is a push or a pull. Its SI unit is the newton (N). Newton''s <strong>first law</strong> says: an object at rest stays at rest, and an object in motion keeps moving in a straight line at steady speed, unless an unbalanced (net) force acts on it. The tendency of an object to resist a change in its motion is called <strong>inertia</strong>. The more <strong>mass</strong> an object has, the more inertia it has. Mass is the amount of matter in an object and is measured in kilograms (kg).</p><p>That is why a loaded truck is much harder to start, and much harder to stop, than a bicycle.</p>'
+- kind: text
+  heading: The second law, F = m a
+  html: '<p>When a net force acts on an object, the object accelerates. The <strong>second law</strong> says that the acceleration is bigger when the net force is bigger and smaller when the mass is bigger. We write it as <strong>F = m a</strong>, where F is the net force in newtons, m is the mass in kilograms and a is the acceleration in m/s<sup>2</sup>. One newton is the force that gives a 1 kg object an acceleration of 1 m/s<sup>2</sup>.</p><p>The <strong>net force</strong> is what is left when all the forces on the object are added with their directions. Two forces of equal size pulling in opposite directions give a net force of zero, and the object does not accelerate.</p><p>The momentum of a moving object is its mass times its velocity: <strong>p = m v</strong>, in kg m/s. The second law can also be said as: the net force equals the change in momentum in one second. A heavy, fast object is hard to stop because it has a large momentum.</p>'
+- kind: example
+  heading: Worked example
+  prompt: A trolley of mass 5 kg is pushed with a net force of 20 N. Find its acceleration. Then find the force needed to give a 5 kg trolley an acceleration of 4 m/s².
+  steps:
+  - 'Write the law: F = m a, so a = F ÷ m.'
+  - 'First part: a = 20 ÷ 5 = 4 m/s².'
+  - 'Second part: F = m a = 5 × 4 = 20 N. This is the same force, which is a good sign.'
+  - 'Check the units: kg × m/s² gives N, and N ÷ kg gives m/s².'
+- kind: example
+  heading: Worked example
+  prompt: A box of mass 10 kg is pulled to the right with 50 N. Friction pulls it to the left with 20 N. Find the acceleration.
+  steps:
+  - 'Forces act in opposite directions, so subtract them: net force = 50 N - 20 N = 30 N to the right.'
+  - 'Use a = F ÷ m, with F the net force, not just the pull.'
+  - 'a = 30 ÷ 10 = 3 m/s² to the right.'
+  - 'Check: if friction were not there, a would be 50 ÷ 10 = 5 m/s², so a smaller answer with friction makes sense.'
+- kind: text
+  heading: The third law, action and reaction
+  html: '<p>When you push a wall, the wall pushes back on you. Newton''s <strong>third law</strong> says: when one object pushes or pulls a second object, the second object pushes or pulls back on the first with a force that is equal in size and opposite in direction. We call these two forces an <strong>action-reaction pair</strong>.</p><p>The two forces of a pair act on <strong>different</strong> objects. That is why they never cancel each other. A swimmer pushes the water backward, and the water pushes the swimmer forward. A rocket pushes hot gas downward, and the gas pushes the rocket upward. When you step off a small boat onto the bank, you push the boat backward as you move forward.</p><p>Equal forces do not mean equal accelerations. The acceleration of each object is its own force divided by its own mass, so the lighter object accelerates more.</p>'
+- kind: figure
+  svg: <svg viewBox="0 0 320 170" role="img"><rect x="20" y="120" width="280" height="8" fill="#6cb7ff" opacity=".5"/><circle cx="110" cy="70" r="26" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="210" cy="70" r="26" fill="none" stroke="currentColor" stroke-width="3"/><line x1="137" y1="70" x2="170" y2="70" stroke="#ffb800" stroke-width="4"/><polygon points="172,70 162,64 162,76" fill="#ffb800"/><line x1="183" y1="86" x2="150" y2="86" stroke="#ff6b6b" stroke-width="4"/><polygon points="148,86 158,80 158,92" fill="#ff6b6b"/><text x="94" y="74" font-size="13" font-weight="700" fill="currentColor">A</text><text x="204" y="74" font-size="13" font-weight="700" fill="currentColor">B</text><text x="120" y="52" font-size="12" fill="currentColor">A pushes B</text><text x="122" y="108" font-size="12" fill="currentColor">B pushes A</text></svg>
+  alt: Two skaters labelled A and B stand on ice facing each other. One arrow shows A pushing B, and an opposite arrow shows B pushing A.
+  caption: Skater A pushes skater B to the right. At the same moment B pushes A to the left with a force of the same size. The two forces act on different skaters.
+- kind: example
+  heading: Worked example
+  prompt: Two skaters stand still on smooth ice. Skater A has mass 40 kg and skater B has mass 60 kg. A pushes B, and B starts to accelerate at 2 m/s². Find the force on B, the force on A, and the acceleration of A.
+  steps:
+  - 'Force on B = m a = 60 × 2 = 120 N.'
+  - 'By the third law, B pushes A back with a force of the same size, 120 N, in the opposite direction.'
+  - 'Acceleration of A = F ÷ m = 120 ÷ 40 = 3 m/s², in the direction opposite to B.'
+  - 'Check: the forces are equal, but A is lighter than B, so A accelerates more (3 m/s² is bigger than 2 m/s²).'
+- kind: callout
+  tone: watch
+  html: The action and the reaction act on different objects, so you cannot add them up to get a zero net force on one object. Also, your weight and the push of the floor on you are not an action-reaction pair. They act on the same object, you. The reaction to your weight is your pull on the Earth.
+- kind: callout
+  tone: real
+  html: Seat belts, headrests and airbags protect you because of inertia. In a sudden stop your body keeps moving forward, and the belt gives the net force that slows it down. Cricket fielders pull their hands back while catching a fast ball. This makes the ball stop over a longer time, so the force on the hands is smaller.
+- kind: check
+  item: q-nl-1
+- kind: check
+  item: q-nl-3
+- kind: check
+  item: q-nl-6
+- kind: summary
+  points:
+  - 'First law: an object keeps its state of rest or steady straight-line motion unless a net force acts. Inertia grows with mass.'
+  - 'Second law: F = m a. Net force is in newtons, mass in kilograms and acceleration in m/s². Momentum p = m v.'
+  - 'Third law: forces come in equal and opposite pairs that act on different objects.'
+  - 'Use the net force in F = m a. Equal forces on two objects give a larger acceleration to the lighter one.'
+items:
+- key: q-nl-1
+  kind: mcq
+  stem: A coin rests on a card placed on top of a glass. The card is flicked away quickly and the coin drops into the glass. Which idea explains this?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: laws-of-motion
+  explanation: The coin has inertia. It tends to stay at rest when the card is pulled away fast, so gravity then pulls it straight down into the glass.
+  hints:
+  - What does a resting object tend to do when nothing pushes it sideways?
+  correct: B
+  options:
+  - key: A
+    text: The card pushes the coin down into the glass
+    misconception: motion-needs-force
+  - key: B
+    text: The coin has inertia and stays at rest while the card moves away
+  - key: C
+    text: Heavy objects always fall straight down
+  - key: D
+    text: The coin is pulled by the flicking finger
+    misconception: motion-needs-force
+- key: q-nl-2
+  kind: mcq
+  stem: Which of these has the most inertia?
+  difficulty: intro
+  purpose: practice
+  concepts:
+  - id: laws-of-motion
+  explanation: Inertia depends on mass. A loaded truck has the largest mass in the list, so it has the most inertia.
+  hints:
+  - Inertia grows with mass.
+  correct: D
+  options:
+  - key: A
+    text: A cricket ball
+  - key: B
+    text: A bicycle
+  - key: C
+    text: A speeding scooter
+    misconception: inertia-is-speed
+  - key: D
+    text: A loaded truck at rest
+- key: q-nl-3
+  kind: numeric
+  stem: A net force of 30 N acts on a 6 kg object. What is its acceleration, in m/s²?
+  difficulty: standard
+  purpose: check
+  concepts:
+  - id: laws-of-motion
+  explanation: a = F ÷ m = 30 ÷ 6 = 5 m/s².
+  hints:
+  - Use F = m a and rearrange for a.
+  value: 5
+  tolerance: 0.0
+  verify: 30/6
+- key: q-nl-4
+  kind: numeric
+  stem: A force of 40 N gives an object an acceleration of 8 m/s². What is its mass, in kg?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: laws-of-motion
+  explanation: m = F ÷ a = 40 ÷ 8 = 5 kg.
+  hints:
+  - Rearrange F = m a to find m.
+  value: 5
+  tolerance: 0.0
+  verify: 40/8
+- key: q-nl-5
+  kind: numeric
+  stem: A box of mass 10 kg is pulled with 50 N to the right and 20 N of friction acts to the left. What is the acceleration, in m/s²?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: laws-of-motion
+  explanation: Net force = 50 - 20 = 30 N. a = 30 ÷ 10 = 3 m/s².
+  hints:
+  - Find the net force first, then divide by the mass.
+  value: 3
+  tolerance: 0.0
+  verify: (50-20)/10
+- key: q-nl-6
+  kind: numeric
+  stem: A ball of mass 2 kg moves at 6 m/s. What is its momentum, in kg m/s?
+  difficulty: standard
+  purpose: check
+  concepts:
+  - id: laws-of-motion
+  explanation: p = m v = 2 × 6 = 12 kg m/s.
+  hints:
+  - Momentum is mass times velocity.
+  value: 12
+  tolerance: 0.0
+  verify: 2*6
+- key: q-nl-7
+  kind: numeric
+  stem: Take g = 10 m/s². What is the weight of a 4 kg bag, in newtons? (Weight is the downward pull of the Earth, W = m g.)
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: laws-of-motion
+  explanation: W = m g = 4 × 10 = 40 N. This is the force of gravity on the bag, so it is just F = m a with a = g.
+  hints:
+  - Multiply the mass by 10.
+  value: 40
+  tolerance: 0.0
+  verify: 4*10
+- key: q-nl-8
+  kind: mcq
+  stem: A horse pulls a cart forward. By the third law the cart pulls the horse back with an equal force. Why does the cart still move forward?
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: laws-of-motion
+  explanation: The two forces of a pair act on different objects, the cart and the horse, so they do not cancel. The cart moves because the horse pulls it forward harder than friction pulls it back.
+  hints:
+  - Do the action and reaction forces act on the same object?
+  correct: C
+  options:
+  - key: A
+    text: The reaction force is always smaller than the action force
+    misconception: reaction-cancels
+  - key: B
+    text: The two forces cancel, but the horse is stronger
+    misconception: reaction-cancels
+  - key: C
+    text: The action and reaction act on different objects, so they cannot cancel
+  - key: D
+    text: Newton's third law does not work on carts
+- key: q-nl-9
+  kind: mcq
+  stem: 'Assertion (A): It is harder to start moving a heavy trolley than a light trolley with the same push. Reason (R): A heavier object has greater inertia.'
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: laws-of-motion
+  explanation: Both are true. The heavy trolley has more mass, so it has more inertia and resists a change in motion more. R explains A.
+  hints:
+  - Which property resists a change in motion?
+  correct: A
+  options:
+  - key: A
+    text: Both A and R are true, and R explains A
+  - key: B
+    text: Both A and R are true, but R does not explain A
+    misconception: inertia-is-speed
+  - key: C
+    text: A is true, but R is false
+    misconception: inertia-is-speed
+  - key: D
+    text: A is false, but R is true
+    misconception: inertia-is-speed
+- key: q-nl-10
+  kind: mcq
+  stem: 'Assertion (A): A book resting on a table and the upward push of the table on the book are an action-reaction pair. Reason (R): The two forces are equal in size and opposite in direction.'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: laws-of-motion
+  explanation: R is true, but it is not enough to make a pair. An action-reaction pair acts on two different objects. The table pushes up on the book and the Earth pulls down on the book. Both act on the book, so they are not a pair. A is false.
+  hints:
+  - Both of these forces act on the book. Can an action-reaction pair act on one object?
+  correct: D
+  options:
+  - key: A
+    text: Both A and R are true, and R explains A
+    misconception: reaction-cancels
+  - key: B
+    text: Both A and R are true, but R does not explain A
+    misconception: reaction-cancels
+  - key: C
+    text: A is true, but R is false
+  - key: D
+    text: A is false, but R is true
+- key: q-nl-11
+  kind: mcq
+  stem: 'Read the passage. Two skaters stand still on smooth ice. Skater A has a mass of 40 kg and skater B has a mass of 60 kg. A pushes B with a force of 120 N for a short time. What is the acceleration of B while she is being pushed?'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: laws-of-motion
+  explanation: The force on B is 120 N and her mass is 60 kg. a = F ÷ m = 120 ÷ 60 = 2 m/s². A has the same force but less mass, so A accelerates at 3 m/s².
+  hints:
+  - Use the force on B and the mass of B only.
+  correct: B
+  options:
+  - key: A
+    text: 3 m/s²
+  - key: B
+    text: 2 m/s²
+  - key: C
+    text: 0 m/s²
+    misconception: motion-needs-force
+  - key: D
+    text: 4.5 m/s²
+- key: q-nl-12
+  kind: numeric
+  stem: In the passage about the two skaters (A is 40 kg, B is 60 kg, push of 120 N), what is the acceleration of skater A, in m/s²?
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: laws-of-motion
+  explanation: By the third law B pushes A back with 120 N. a = F ÷ m = 120 ÷ 40 = 3 m/s².
+  hints:
+  - The force on A is the same size as the force on B.
+  value: 3
+  tolerance: 0.0
+  verify: 120/40
+misconceptions:
+- code: motion-needs-force
+  concept: laws-of-motion
+  description: Thinks a force is always needed to keep something moving, or that an object with no push on it must be stopped.
+- code: inertia-is-speed
+  concept: laws-of-motion
+  description: Thinks inertia depends on how fast an object moves, when it depends on the mass.
+- code: reaction-cancels
+  concept: laws-of-motion
+  description: Thinks the action and reaction forces cancel each other, or forgets that they act on different objects.
+cards:
+- key: newtons-laws-card-1
+  concept: laws-of-motion
+  front: State Newton's first law.
+  back: An object stays at rest or keeps moving in a straight line at steady speed unless a net force acts on it.
+- key: newtons-laws-card-2
+  concept: laws-of-motion
+  front: What does F = m a say?
+  back: The net force on an object equals its mass times its acceleration. Force in N, mass in kg, acceleration in m/s².
+- key: newtons-laws-card-3
+  concept: laws-of-motion
+  front: Why do action and reaction forces not cancel?
+  back: They act on two different objects, so they cannot be added to give zero on one object.
+- key: newtons-laws-card-4
+  concept: laws-of-motion
+  front: What is momentum?
+  back: Mass times velocity, p = m v, in kg m/s.

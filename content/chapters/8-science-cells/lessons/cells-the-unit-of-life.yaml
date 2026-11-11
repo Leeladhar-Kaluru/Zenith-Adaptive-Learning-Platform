@@ -1,0 +1,356 @@
+slug: cells-the-unit-of-life
+title: The cell, the unit of life
+minutes: 25
+objectives:
+- Say why the cell is called the unit of life
+- Name the cell membrane, cytoplasm and nucleus and give the job of each
+- Name the cell wall, chloroplasts and large vacuole of a plant cell and give the job of each
+- Compare a plant cell with an animal cell
+concepts:
+- cell-unit-of-life
+origin: ai_assisted
+blocks:
+- kind: text
+  heading: Tiny rooms that make up living things
+  html: '<p>A wall is built from many bricks. A living thing is built from many tiny parts called <strong>cells</strong>.
+    A cell is the smallest part of an organism that can carry out the jobs of life by itself. This is why we call the cell
+    the <strong>unit of life</strong>.</p><p>Most cells are too small to see with the eye alone. We need a microscope. Some
+    living things, such as an amoeba, are just one cell. Others, such as a banana plant or a dog, are made of very many cells.
+    Cells were first seen in 1665 by Robert Hooke, who looked at a thin slice of cork.</p>'
+- kind: text
+  heading: Parts found in plant and animal cells
+  html: '<p>Plant cells and animal cells share three main parts.</p><p>The <strong>cell membrane</strong> is a thin, soft
+    covering around the cell. It controls what goes into the cell and what comes out.</p><p>The <strong>cytoplasm</strong>
+    is the jelly-like fluid inside the cell membrane. It is not empty. Many small parts of the cell float in it and many of
+    the cell''s jobs happen there.</p><p>The <strong>nucleus</strong> is usually a round body inside the cytoplasm. It acts
+    like the control room. It controls what the cell does and holds the material that carries the instructions for the living
+    thing.</p>'
+- kind: text
+  heading: Extra parts in a plant cell
+  html: '<p>A plant cell has three things that an animal cell does not have in the same way.</p><p>The <strong>cell wall</strong>
+    is a stiff layer outside the cell membrane. It is made of a tough material called cellulose. It gives the plant cell a
+    fixed shape and strength.</p><p><strong>Chloroplasts</strong> are small green bodies in the cytoplasm. They hold a green
+    substance called chlorophyll. Chlorophyll traps light energy so the plant can make food by photosynthesis.</p><p>The
+    <strong>vacuole</strong> is a space in the cell that holds water and other substances. A mature plant cell usually has
+    one <strong>large vacuole</strong> in the middle. It helps keep the cell firm. Animal cells may have vacuoles too, but
+    they are small and there are usually several.</p>'
+- kind: figure
+  svg: <svg viewBox="0 0 520 240" role="img"><rect x="10" y="30" width="230" height="170" rx="10" fill="#e6f4ea" stroke="#14193a"
+    stroke-width="5"/><rect x="17" y="37" width="216" height="156" rx="8" fill="none" stroke="#c0392b" stroke-width="2"/><ellipse
+    cx="85" cy="118" rx="50" ry="52" fill="#d8ecff" stroke="#14193a" stroke-width="2"/><circle cx="185" cy="140" r="24" fill="#8f9bff"
+    stroke="#14193a" stroke-width="2"/><ellipse cx="190" cy="68" rx="20" ry="11" fill="#3aa655" stroke="#14193a" stroke-width="2"/><ellipse
+    cx="145" cy="172" rx="16" ry="9" fill="#3aa655" stroke="#14193a" stroke-width="2"/><text x="10" y="20" font-size="13"
+    font-weight="700" fill="currentColor">Plant cell</text><text x="52" y="122" font-size="11" font-weight="700" fill="currentColor">large
+    vacuole</text><text x="165" y="144" font-size="11" font-weight="700" fill="currentColor">nucleus</text><text x="160" y="52"
+    font-size="11" font-weight="700" fill="currentColor">chloroplast</text><text x="95" y="218" font-size="11" font-weight="700"
+    fill="currentColor">cell wall (thick outer layer)</text><text x="22" y="54" font-size="11" fill="currentColor">cell membrane
+    (red line)</text><ellipse cx="400" cy="120" rx="105" ry="82" fill="#fff1e0" stroke="#c0392b" stroke-width="3"/><circle
+    cx="415" cy="115" r="28" fill="#8f9bff" stroke="#14193a" stroke-width="2"/><circle cx="345" cy="150" r="10" fill="#d8ecff"
+    stroke="#14193a" stroke-width="1.5"/><circle cx="360" cy="85" r="8" fill="#d8ecff" stroke="#14193a" stroke-width="1.5"/><text
+    x="300" y="20" font-size="13" font-weight="700" fill="currentColor">Animal cell</text><text x="395" y="119" font-size="11"
+    font-weight="700" fill="currentColor">nucleus</text><text x="318" y="175" font-size="11" font-weight="700" fill="currentColor">small
+    vacuole</text><text x="345" y="222" font-size="11" font-weight="700" fill="currentColor">cell membrane (outer edge)</text><text
+    x="370" y="68" font-size="11" fill="currentColor">cytoplasm</text></svg>
+  alt: A plant cell with a thick cell wall, large vacuole, nucleus and green chloroplasts, beside a rounder animal cell with a nucleus and small vacuoles.
+  caption: The plant cell has a cell wall, chloroplasts and one large vacuole. The animal cell has none of the first two and only small vacuoles. Both have a membrane, cytoplasm and nucleus.
+- kind: example
+  heading: Worked example
+  prompt: Under a microscope a student sees a cell with a thick outer wall, a large clear space in the middle, and green dots. Is it a plant cell or an animal cell?
+  steps:
+  - 'List what is seen. There is a thick outer wall, a large central space and green dots.'
+  - 'Match each one. A thick outer wall is a cell wall. A large central space is a large vacuole. Green dots are chloroplasts.'
+  - 'Check against animal cells. Animal cells have no cell wall, no chloroplasts and only small vacuoles. So the cell cannot be an animal cell.'
+  - 'Conclude that it is a plant cell. All three features agree, so this is strong evidence.'
+- kind: callout
+  tone: watch
+  html: Not every plant cell is green. Chloroplasts are found in cells that get light, such as leaf cells. Root cells and the cells of an onion bulb are underground and have no chloroplasts.
+- kind: text
+  heading: How to compare two cells
+  html: '<p>To compare cells, first list what is the same, then what is different. Both plant and animal cells have a cell
+    membrane, cytoplasm and a nucleus. A plant cell also has a cell wall, chloroplasts and a large vacuole. An animal cell
+    has only a membrane at its outer edge, so its shape can change, and its vacuoles are small.</p><p>The differences link
+    to how the living things live. Plants make their own food and stand upright without bones, so their cells carry chloroplasts
+    and stiff walls. Animals take in food, so their cells do not need chloroplasts.</p>'
+- kind: example
+  heading: Worked example
+  prompt: A cell is 50 micrometres wide. How many such cells lined up side by side would cover 1 millimetre? (1 millimetre = 1000 micrometres)
+  steps:
+  - 'We want to know how many widths of 50 micrometres fit into 1000 micrometres.'
+  - 'Divide. 1000 ÷ 50 = 20.'
+  - 'Check by multiplying back. 20 × 50 = 1000, which equals 1 millimetre.'
+  - 'So 20 cells in a row would span 1 millimetre.'
+- kind: callout
+  tone: real
+  html: A doctor can look at a drop of blood under a microscope and see its cells. The shape and number of the cells give clues about health.
+- kind: check
+  item: q-cl-1
+- kind: check
+  item: q-cl-2
+- kind: check
+  item: q-cl-3
+- kind: summary
+  points:
+  - 'The cell is the basic unit of life. Some living things are one cell, others have many.'
+  - 'Plant cells and animal cells both have a cell membrane, cytoplasm and a nucleus.'
+  - 'A plant cell also has a cell wall, chloroplasts and one large vacuole.'
+  - 'Compare cells by listing what is the same, then what is different.'
+items:
+- key: q-cl-1
+  kind: mcq
+  stem: Why is the cell called the unit of life?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: cell-unit-of-life
+  explanation: The cell is the smallest part of a living thing that can carry out the jobs of life, and living things are built from cells.
+  hints:
+  - Think of a brick in a wall.
+  correct: B
+  options:
+  - key: A
+    text: It is the largest part of an organism
+  - key: B
+    text: It is the basic building block of living things
+  - key: C
+    text: It is found only in plants
+  - key: D
+    text: It can always be seen without a microscope
+- key: q-cl-2
+  kind: mcq
+  stem: Which part of the cell controls the cell's activities?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: cell-unit-of-life
+  explanation: The nucleus is the control room. It controls what the cell does.
+  hints:
+  - Which part is like a control room?
+  correct: C
+  options:
+  - key: A
+    text: Cytoplasm
+    misconception: cytoplasm-is-empty
+  - key: B
+    text: Cell membrane
+  - key: C
+    text: Nucleus
+  - key: D
+    text: Vacuole
+- key: q-cl-3
+  kind: mcq
+  stem: Which part of the cell controls what goes in and out?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: cell-unit-of-life
+  explanation: The cell membrane is the thin covering around the cell that controls what enters and leaves.
+  hints:
+  - It is the thin covering around the cell contents.
+  correct: A
+  options:
+  - key: A
+    text: Cell membrane
+  - key: B
+    text: Chloroplast
+  - key: C
+    text: Nucleus
+  - key: D
+    text: Cell wall
+    misconception: wall-is-membrane
+- key: q-cl-4
+  kind: mcq
+  stem: Which of these is found in plant cells but NOT in animal cells?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: cell-unit-of-life
+  explanation: The cell wall is found outside the membrane in plant cells. Animal cells have a membrane but no cell wall. Plant and animal cells all have a membrane, cytoplasm and a nucleus.
+  hints:
+  - Three of the four are in both plant and animal cells.
+  correct: D
+  options:
+  - key: A
+    text: Nucleus
+  - key: B
+    text: Cytoplasm
+  - key: C
+    text: Cell membrane
+    misconception: wall-is-membrane
+  - key: D
+    text: Cell wall
+- key: q-cl-5
+  kind: truefalse
+  stem: 'True or false: Every cell in a plant contains chloroplasts.'
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: cell-unit-of-life
+  explanation: False. Chloroplasts are found in cells that receive light, such as leaf cells. Root cells have none.
+  hints:
+  - Think of cells under the soil.
+  correct: false
+- key: q-cl-6
+  kind: match
+  stem: Match each cell part to its job.
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: cell-unit-of-life
+  explanation: The nucleus controls the cell, chloroplasts trap light for making food, the cell wall gives stiff support, and the large vacuole stores water and keeps the cell firm.
+  hints:
+  - Link each part to the word in its job.
+  pairs:
+    Nucleus: Controls the activities of the cell
+    Chloroplast: Traps light to make food
+    Cell wall: Gives the plant cell strength and fixed shape
+    Large vacuole: Holds water and helps keep the cell firm
+- key: q-cl-7
+  kind: label_diagram
+  stem: Match each number on the plant cell to its name.
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: cell-unit-of-life
+  explanation: The thick outer layer is the cell wall. The big space on the left is the large vacuole. The round body is the nucleus and the small green oval is a chloroplast.
+  hints:
+  - Start with the thick outer layer.
+  - Green parts trap light.
+  diagram:
+    kind: labelled
+    width: 320
+    height: 220
+    shapes:
+    - {type: rect, id: wall, region: '1', x: 20, y: 20, width: 280, height: 180, fill: '#e6f4ea'}
+    - {type: ellipse, id: vacuole, region: '2', cx: 95, cy: 112, rx: 50, ry: 56, fill: '#d8ecff'}
+    - {type: circle, id: nucleus, region: '3', cx: 235, cy: 150, r: 26, fill: '#8f9bff'}
+    - {type: ellipse, id: chloro, region: '4', cx: 235, cy: 60, rx: 28, ry: 14, fill: '#3aa655'}
+  pairs:
+    '1': Cell wall
+    '2': Large vacuole
+    '3': Nucleus
+    '4': Chloroplast
+- key: q-cl-8
+  kind: numeric
+  stem: A cell is 25 micrometres wide. How many of these cells placed side by side make 1 millimetre? (1 millimetre = 1000 micrometres)
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: cell-unit-of-life
+  explanation: 1000 ÷ 25 = 40. So 40 cells side by side span 1 millimetre.
+  hints:
+  - Divide 1000 by the width of one cell.
+  value: 40
+  tolerance: 0.0
+  verify: 1000/25
+- key: q-cl-9
+  kind: mcq
+  stem: 'Assertion (A): Plant cells keep a fixed shape. Reason (R): A plant cell has a stiff cell wall outside its cell membrane.'
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: cell-unit-of-life
+  explanation: Both statements are true. The stiff cell wall holds the plant cell in a fixed shape, so R explains A.
+  hints:
+  - What does a stiff layer outside the membrane do to shape?
+  correct: A
+  options:
+  - key: A
+    text: Both A and R are true, and R explains A
+  - key: B
+    text: Both A and R are true, but R does not explain A
+  - key: C
+    text: A is true, but R is false
+    misconception: wall-is-membrane
+  - key: D
+    text: A is false, but R is true
+- key: q-cl-10
+  kind: mcq
+  stem: 'Assertion (A): Chloroplasts are present in all the cells of a plant. Reason (R): Chloroplasts hold chlorophyll, which traps light for making food.'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: cell-unit-of-life
+  explanation: A is false, because root cells and onion bulb cells have no chloroplasts. R is true, since chlorophyll traps light, but it does not make A true.
+  hints:
+  - Do cells under the soil get light?
+  correct: D
+  options:
+  - key: A
+    text: Both A and R are true, and R explains A
+    misconception: all-plant-cells-green
+  - key: B
+    text: Both A and R are true, but R does not explain A
+    misconception: all-plant-cells-green
+  - key: C
+    text: A is true, but R is false
+  - key: D
+    text: A is false, but R is true
+- key: q-cl-11
+  kind: mcq
+  stem: 'Read this. A student studies two slides. Slide X shows box-shaped cells packed closely, each with a thick outline and one large clear space inside. Slide Y shows roundish cells with only a thin outline and several tiny spaces. Which statement is the best conclusion?'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: cell-unit-of-life
+  explanation: A thick outline is a cell wall and a large clear space is a large vacuole, so Slide X is a plant. A thin outline and only small vacuoles fit an animal cell, so Slide Y is an animal.
+  hints:
+  - Which slide shows a cell wall and a large vacuole?
+  correct: C
+  options:
+  - key: A
+    text: Both slides show animal cells
+  - key: B
+    text: Slide X shows an animal cell and Slide Y shows a plant cell
+    misconception: wall-is-membrane
+  - key: C
+    text: Slide X shows a plant cell and Slide Y shows an animal cell
+  - key: D
+    text: Both slides show plant cells because they have vacuoles
+- key: q-cl-12
+  kind: mcq
+  stem: Cells from an onion bulb show no green colour under the microscope, even though onion is a plant. What is the best reason?
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: cell-unit-of-life
+  explanation: The bulb grows under the ground in the dark, and its cells do not contain chloroplasts. Having no chloroplasts means no green colour, even though they are plant cells.
+  hints:
+  - Where does the bulb grow, and what do chloroplasts need?
+  correct: B
+  options:
+  - key: A
+    text: Onion cells are animal cells
+  - key: B
+    text: Bulb cells have no chloroplasts
+  - key: C
+    text: Plant cells have no nucleus
+  - key: D
+    text: The cell wall removes the green colour
+    misconception: wall-is-membrane
+misconceptions:
+- code: wall-is-membrane
+  concept: cell-unit-of-life
+  description: Mixes up the cell wall with the cell membrane, or thinks that a plant cell has a wall instead of a membrane. A plant cell has both.
+- code: all-plant-cells-green
+  concept: cell-unit-of-life
+  description: Thinks every cell in a plant contains chloroplasts, when only cells that receive light, such as leaf cells, do.
+- code: cytoplasm-is-empty
+  concept: cell-unit-of-life
+  description: Thinks the cytoplasm is just empty space, when it is a fluid that holds the cell parts and where many jobs happen.
+cards:
+- key: cells-the-unit-of-life-card-1
+  concept: cell-unit-of-life
+  front: Why is the cell called the unit of life?
+  back: It is the smallest part of a living thing that carries out the jobs of life, and all living things are made of cells.
+- key: cells-the-unit-of-life-card-2
+  concept: cell-unit-of-life
+  front: What are the three parts found in both plant and animal cells?
+  back: The cell membrane, the cytoplasm and the nucleus.
+- key: cells-the-unit-of-life-card-3
+  concept: cell-unit-of-life
+  front: Name three parts a plant cell has that an animal cell does not have in the same way.
+  back: A cell wall, chloroplasts and one large central vacuole.
+- key: cells-the-unit-of-life-card-4
+  concept: cell-unit-of-life
+  front: What does the nucleus do?
+  back: It controls the cell's activities and holds the material that carries the instructions of the living thing.

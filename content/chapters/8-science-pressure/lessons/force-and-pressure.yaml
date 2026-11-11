@@ -33,6 +33,21 @@ blocks:
   heading: Why it matters
   html: <p>A sharp knife has a tiny edge, so your push is on a very small area. That gives a large pressure and the knife
     cuts easily. A camel has wide, flat feet, so its weight spreads over a large area and it does not sink into sand.</p>
+- kind: text
+  heading: Pressure in liquids and gases
+  html: <p>Liquids and gases are called <strong>fluids</strong> because they can flow. A fluid presses on the base and on the walls of its container, and on anything placed in it. It presses in <strong>all directions</strong>, not only downwards.</p><p>The pressure in a liquid <strong>increases with depth</strong>. Deeper water has more water above it. This is why the wall of a dam is built thicker at the bottom. It is also why your ears feel the pressure when you dive deep into a pool.</p><p>Air is a gas, and it also presses on us. This is <strong>atmospheric pressure</strong>. At sea level it is about 100 000 Pa. We do not feel it because the fluids inside our bodies push outwards with a similar pressure.</p>
+- kind: figure
+  svg: '<svg viewBox="0 0 300 170" role="img"><rect x="40" y="20" width="110" height="130" fill="#dbeafe" stroke="#14193a" stroke-width="3"/><g stroke="currentColor" stroke-width="3" fill="none"><path d="M150 50 H178 M172 45 L180 50 L172 55"/><path d="M150 90 H204 M198 85 L206 90 L198 95"/><path d="M150 130 H230 M224 125 L232 130 L224 135"/></g><g font-size="12" font-weight="700" fill="currentColor"><text x="190" y="42">small push</text><text x="214" y="82">bigger push</text><text x="206" y="122">biggest push</text><text x="48" y="14">water surface</text></g></svg>'
+  alt: A tank of water with three arrows pushing sideways on its wall. The arrow near the top is short and the arrow near the bottom is long.
+  caption: Water pressure grows with depth, so the push on the tank wall is biggest near the bottom.
+- kind: example
+  heading: Pressure on the ground
+  prompt: A brick weighs 40 N. It rests on a face of area 0.02 m². Find the pressure on the table. Then find it when the brick stands on a smaller face of area 0.01 m².
+  steps:
+  - 'The weight of the brick is the force pushing on the table: F = 40 N.'
+  - 'First face: P = F / A = 40 / 0.02 = 2000 Pa.'
+  - 'Smaller face: P = 40 / 0.01 = 4000 Pa.'
+  - 'The force is the same but the area is half as big, so the pressure is twice as big.'
 - kind: callout
   tone: watch
   html: A larger force does not always mean a larger pressure. If the area also gets much larger, the pressure can go down.
@@ -44,12 +59,20 @@ blocks:
   item: q-pr-1
 - kind: check
   item: q-pr-2
+- kind: callout
+  tone: watch
+  html: Do not mix up force and pressure. Force is measured in newtons (N). Pressure is force divided by area, so it is measured in N/m², or pascal (Pa). You divide the force by the area. You do not multiply them.
+- kind: check
+  item: q-pr-9
+- kind: check
+  item: q-pr-12
 - kind: summary
   points:
   - Pressure = force divided by area.
   - 'Unit: N/m² or pascal (Pa).'
   - 'Same force, smaller area: higher pressure.'
   - 'Same force, larger area: lower pressure.'
+  - Liquids and gases press in all directions. Liquid pressure increases with depth.
 items:
 - key: q-pr-1
   kind: numeric
@@ -180,10 +203,228 @@ items:
   value: 200
   tolerance: 0.0
   verify: 40*5
+- key: q-pr-9
+  kind: mcq
+  stem: Which is the SI unit of pressure?
+  difficulty: intro
+  purpose: practice
+  concepts:
+  - id: pressure-force-area
+    weight: 1.0
+  explanation: Pressure is force divided by area, so its unit is N/m². This unit is called the pascal (Pa). The newton is the unit of force.
+  hints:
+  - Pressure = force divided by area.
+  correct: B
+  options:
+  - key: A
+    text: newton (N)
+    misconception: pressure-unit-n
+  - key: B
+    text: pascal (Pa), which is 1 N/m²
+  - key: C
+    text: kilogram (kg)
+  - key: D
+    text: square metre (m²)
+- key: q-pr-10
+  kind: numeric
+  stem: A brick weighing 40 N rests on a table. The face touching the table has an area of 0.02 m². What is the pressure on the table in Pa?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: pressure-force-area
+  explanation: The force is the weight, 40 N. Pressure = 40 divided by 0.02 = 2000 Pa.
+  hints:
+  - The weight of the brick is the force on the table.
+  value: 2000
+  tolerance: 0.0
+  verify: 40/(1/50)
+- key: q-pr-11
+  kind: numeric
+  stem: A person weighing 600 N stands on two feet. Each foot has an area of 0.025 m². What is the pressure on the ground in Pa?
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: pressure-force-area
+  explanation: The total area is 2 times 0.025 = 0.05 m². Pressure = 600 divided by 0.05 = 12 000 Pa.
+  hints:
+  - Add the area of both feet first.
+  value: 12000
+  tolerance: 0.0
+  verify: 600/(2*(1/40))
+- key: q-pr-12
+  kind: mcq
+  stem: A brick is turned from its small face to its large face on a table. Compared with before, the pressure on the table is now
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: pressure-force-area
+    weight: 1.0
+  explanation: The weight, which is the force, stays the same. The area in contact is larger, so the pressure is smaller.
+  hints:
+  - Does the weight change? What happens to the area?
+  correct: B
+  options:
+  - key: A
+    text: larger, because the area is larger
+    misconception: larger-area-more-pressure
+  - key: B
+    text: smaller, because the same force is spread over a larger area
+  - key: C
+    text: the same, because the weight has not changed
+    misconception: force-not-area
+  - key: D
+    text: zero
+- key: q-pr-13
+  kind: mcq
+  stem: Water in a bucket presses on
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: pressure-force-area
+    weight: 1.0
+  explanation: A liquid presses in all directions. It pushes on the base and on the side walls of the bucket.
+  hints:
+  - Think of water pushing out through a hole in the side of a bucket.
+  correct: B
+  options:
+  - key: A
+    text: only the base of the bucket
+    misconception: liquid-downward-only
+  - key: B
+    text: the base and the side walls of the bucket
+  - key: C
+    text: only the side walls
+    misconception: liquid-downward-only
+  - key: D
+    text: nothing, unless the water is moving
+- key: q-pr-14
+  kind: mcq
+  stem: Why is the wall of a dam thicker at the bottom than at the top?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: pressure-force-area
+    weight: 1.0
+  explanation: Water pressure increases with depth. The bottom of the wall must hold back a larger pressure, so it is made thicker.
+  hints:
+  - Think about how pressure changes as you go deeper.
+  correct: B
+  options:
+  - key: A
+    text: Water at the bottom is a different liquid
+  - key: B
+    text: The pressure of water is larger at greater depth
+  - key: C
+    text: The water pushes only at the top
+    misconception: liquid-downward-only
+  - key: D
+    text: A thick wall makes the water colder
+- key: q-pr-15
+  kind: mcq
+  stem: 'Assertion (A): A school bag with wide straps is more comfortable to carry than one with thin straps. Reason (R): Wide straps spread the weight over a larger area, so the pressure on the shoulder is smaller.'
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: pressure-force-area
+    weight: 1.0
+  explanation: Both are true. The weight is the same, but a larger area gives a smaller pressure on the shoulder. R explains A.
+  hints:
+  - Use pressure = force divided by area for the shoulder.
+  correct: A
+  options:
+  - key: A
+    text: Both A and R are true and R is the correct explanation of A.
+  - key: B
+    text: Both A and R are true but R is not the correct explanation of A.
+  - key: C
+    text: A is true but R is false.
+  - key: D
+    text: A is false but R is true.
+- key: q-pr-16
+  kind: mcq
+  stem: 'Assertion (A): For the same force, pressure is larger when the area is larger. Reason (R): Pressure is equal to force divided by area.'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: pressure-force-area
+    weight: 1.0
+  explanation: R is true. But dividing the same force by a larger area gives a smaller answer. So A is false.
+  hints:
+  - Try 100 N on 2 m² and then on 4 m².
+  correct: D
+  options:
+  - key: A
+    text: Both A and R are true and R is the correct explanation of A.
+    misconception: larger-area-more-pressure
+  - key: B
+    text: Both A and R are true but R is not the correct explanation of A.
+    misconception: larger-area-more-pressure
+  - key: C
+    text: A is true but R is false.
+    misconception: larger-area-more-pressure
+  - key: D
+    text: A is false but R is true.
+- key: q-pr-17
+  kind: mcq
+  stem: 'Case. A girl presses a drawing pin into a notice board with a force of 20 N. The flat head of the pin has an area of 0.0001 m². The sharp tip has an area of 0.000001 m². The pin passes the same force to the board. How many times larger is the pressure at the tip than at the head?'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: pressure-force-area
+    weight: 1.0
+  explanation: 'Head: 20 / 0.0001 = 200 000 Pa. Tip: 20 / 0.000001 = 20 000 000 Pa. The ratio is 100. The areas differ by a factor of 100, and the force is the same.'
+  hints:
+  - Compare the two areas. How many times smaller is the tip area?
+  correct: C
+  options:
+  - key: A
+    text: 10 times
+  - key: B
+    text: The same, because the force is the same
+    misconception: force-not-area
+  - key: C
+    text: 100 times
+  - key: D
+    text: Smaller, because the tip is smaller
+    misconception: larger-area-more-pressure
+- key: q-pr-18
+  kind: mcq
+  stem: A force of 60 N acts on an area of 3 m². What is the pressure?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: pressure-force-area
+    weight: 1.0
+  explanation: Pressure = force divided by area = 60 / 3 = 20 Pa.
+  hints:
+  - Divide, do not multiply.
+  correct: B
+  options:
+  - key: A
+    text: 180 Pa
+    misconception: multiplies-force-area
+  - key: B
+    text: 20 Pa
+  - key: C
+    text: 57 Pa
+  - key: D
+    text: 63 Pa
 misconceptions:
 - code: force-not-area
   concept: pressure-force-area
   description: Thinks that only the size of the force matters, and ignores the area it acts on.
+- code: pressure-unit-n
+  concept: pressure-force-area
+  description: Gives the newton as the unit of pressure, mixing up pressure with force.
+- code: multiplies-force-area
+  concept: pressure-force-area
+  description: Multiplies force and area instead of dividing force by area.
+- code: larger-area-more-pressure
+  concept: pressure-force-area
+  description: Thinks that a larger area gives a larger pressure for the same force.
+- code: liquid-downward-only
+  concept: pressure-force-area
+  description: Thinks a liquid presses only downwards and not sideways or in other directions.
 cards:
 - key: force-and-pressure-card-1
   concept: pressure-force-area
@@ -193,3 +434,11 @@ cards:
   concept: pressure-force-area
   front: What is the unit of pressure?
   back: N/m², also called pascal (Pa).
+- key: force-and-pressure-card-3
+  concept: pressure-force-area
+  front: How does pressure change with depth in a liquid?
+  back: It increases with depth. A liquid presses in all directions.
+- key: force-and-pressure-card-4
+  concept: pressure-force-area
+  front: Same force on half the area. What happens to the pressure?
+  back: It becomes twice as large.

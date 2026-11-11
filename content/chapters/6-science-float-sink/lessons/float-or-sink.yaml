@@ -41,10 +41,51 @@ blocks:
 - kind: callout
   tone: real
   html: People float more easily in the sea than in a swimming pool because salty water is denser than fresh water.
+- kind: figure
+  svg: '<svg viewBox="0 0 320 135" role="img"><rect x="20" y="50" width="120" height="60" fill="#74c0fc" opacity="0.5"/><rect
+    x="180" y="50" width="120" height="60" fill="#74c0fc" opacity="0.5"/><path d="M20 20 V110 H140 V20" fill="none" stroke="currentColor"
+    stroke-width="3"/><path d="M180 20 V110 H300 V20" fill="none" stroke="currentColor" stroke-width="3"/><rect x="60" y="38"
+    width="40" height="24" fill="#ffd43b" stroke="#14193a" stroke-width="2"/><rect x="220" y="86" width="40" height="24" fill="#adb5bd"
+    stroke="#14193a" stroke-width="2"/><g font-size="13" font-weight="700" text-anchor="middle" fill="currentColor"><text
+    x="80" y="128">less dense: floats</text><text x="240" y="128">more dense: sinks</text></g></svg>'
+  alt: Two beakers of water. In the left beaker a block floats with its top above the water. In the right beaker a block rests
+    on the bottom.
+  caption: A block less dense than water floats. A block more dense than water sinks.
+- kind: text
+  heading: Other liquids
+  html: <p>The rule works for any liquid. Compare the density of the object with the density of the <strong>liquid</strong>.
+    If the object is less dense than the liquid, it floats. If it is more dense, it sinks.</p><p>This means the same object
+    can float in one liquid and sink in another. A block with a density of 1.1 g/cm³ sinks in water, which has a density of
+    about 1 g/cm³. It would float in a liquid with a density of 1.2 g/cm³.</p>
+- kind: example
+  heading: 'Worked example: a light block'
+  prompt: A block has a mass of 50 g and a volume of 100 cm³. Will it float in water?
+  steps:
+  - Density = mass divided by volume = 50 divided by 100.
+  - 50 divided by 100 = 0.5 g/cm³.
+  - Water has a density of about 1 g/cm³. 0.5 is less than 1.
+  - The block is less dense than water, so it floats.
+  - 'Check: half a gram in each cubic centimetre is lighter than water, which has 1 g in each cubic centimetre.'
+- kind: example
+  heading: 'Worked example: two liquids'
+  prompt: A block has a mass of 66 g and a volume of 60 cm³. Does it float in water? Does it float in a liquid of density
+    1.2 g/cm³?
+  steps:
+  - Density = 66 divided by 60 = 1.1 g/cm³.
+  - In water, 1.1 is more than 1, so the block sinks.
+  - In the other liquid, 1.1 is less than 1.2, so the block floats.
+  - The same block sinks in water but floats in the denser liquid.
+- kind: callout
+  tone: remember
+  html: Always write the unit with density. Here it is g/cm³. Compare numbers only when both use the same unit.
 - kind: check
   item: q-fs-1
 - kind: check
   item: q-fs-2
+- kind: check
+  item: q-fs-5
+- kind: check
+  item: q-fs-14
 - kind: summary
   points:
   - Density = mass divided by volume.
@@ -191,10 +232,125 @@ items:
   value: 100
   tolerance: 0.0
   verify: 4*25
+- key: q-fs-10
+  kind: mcq
+  stem: 'Assertion (A): An object with a density of 0.8 g/cm³ floats in water. Reason (R): The density of the object is less
+    than the density of water.'
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: float-sink
+    weight: 1.0
+  explanation: Water has a density of about 1 g/cm³. 0.8 is less than 1, so the object floats. A is true. R is the reason,
+    so R explains A.
+  hints:
+  - Compare 0.8 with 1.
+  correct: A
+  options:
+  - key: A
+    text: Both A and R are true, and R explains A
+  - key: B
+    text: Both A and R are true, but R does not explain A
+  - key: C
+    text: A is true, but R is false
+  - key: D
+    text: A is false, but R is true
+    misconception: heavier-number-sinks
+- key: q-fs-11
+  kind: mcq
+  stem: 'Assertion (A): A heavy log can float on a river. Reason (R): Floating depends only on the mass of the object.'
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: float-sink
+    weight: 1.0
+  explanation: A heavy log has a density less than water, so it floats. A is true. R is false, because floating depends on
+    density, which uses both mass and volume.
+  hints:
+  - Does floating depend on mass alone?
+  correct: C
+  options:
+  - key: A
+    text: Both A and R are true, and R explains A
+    misconception: heavier-number-sinks
+  - key: B
+    text: Both A and R are true, but R does not explain A
+    misconception: heavier-number-sinks
+  - key: C
+    text: A is true, but R is false
+  - key: D
+    text: A is false, but R is true
+- key: q-fs-12
+  kind: mcq
+  stem: A student has two blocks. Block X has a mass of 40 g and a volume of 50 cm³. Block Y has a mass of 100 g and a volume
+    of 40 cm³. She drops both into water. What happens?
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: float-sink
+    weight: 1.0
+  explanation: 'Block X: 40 divided by 50 = 0.8 g/cm³, which is less than 1, so X floats. Block Y: 100 divided by 40 = 2.5
+    g/cm³, which is more than 1, so Y sinks.'
+  hints:
+  - Find the density of each block first.
+  - Compare each density with 1 g/cm³.
+  correct: B
+  options:
+  - key: A
+    text: Both sink, because both are heavy
+    misconception: heavier-number-sinks
+  - key: B
+    text: X floats and Y sinks
+  - key: C
+    text: X sinks and Y floats
+  - key: D
+    text: Both float
+- key: q-fs-13
+  kind: numeric
+  stem: An object has a mass of 120 g and a density of 3 g/cm³. What is its volume in cm³?
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: float-sink
+  explanation: Volume = mass divided by density = 120 divided by 3 = 40 cm³.
+  hints:
+  - Density = mass divided by volume. Undo it to find the volume.
+  value: 40
+  tolerance: 0.0
+  verify: 120/3
+- key: q-fs-14
+  kind: mcq
+  stem: A block has a mass of 80 g and a volume of 20 cm³. What is its density?
+  difficulty: standard
+  purpose: check
+  concepts:
+  - id: float-sink
+    weight: 1.0
+  explanation: Density = mass divided by volume = 80 divided by 20 = 4 g/cm³.
+  hints:
+  - Divide the mass by the volume.
+  correct: C
+  options:
+  - key: A
+    text: 80 g/cm³
+    misconception: density-is-mass
+  - key: B
+    text: 0.25 g/cm³
+    misconception: volume-over-mass
+  - key: C
+    text: 4 g/cm³
+  - key: D
+    text: 100 g/cm³
 misconceptions:
 - code: heavier-number-sinks
   concept: float-sink
   description: Believes that heavy or large objects always sink, without comparing density.
+- code: density-is-mass
+  concept: float-sink
+  description: Thinks density and mass are the same thing and gives the mass as the density.
+- code: volume-over-mass
+  concept: float-sink
+  description: Divides volume by mass instead of mass by volume.
 cards:
 - key: float-or-sink-card-1
   concept: float-sink

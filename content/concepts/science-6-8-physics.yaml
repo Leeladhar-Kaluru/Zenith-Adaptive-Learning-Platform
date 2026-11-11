@@ -1,0 +1,4 @@
+concepts:
+  - {id: magnets-poles, title: "Magnets and their poles", grade: 6, subject: science, description: "Poles, attraction and repulsion, magnetic and non-magnetic materials, the compass and the Earth as a magnet, and safe handling.", keywords: [magnet, pole, compass, attraction, repulsion, magnetic material]}
+  - {id: simple-electric-circuit, title: "Simple electric circuits", grade: 7, subject: science, description: "Cell, bulb, switch and wires, open and closed circuits, conductors and insulators, and circuit symbols.", keywords: [circuit, cell, bulb, switch, conductor, insulator, symbol]}
+  - {id: sound-vibration, title: "Sound and vibration", grade: 8, subject: science, description: "Sound from vibration, travel through a medium, frequency and pitch, amplitude and loudness, and the speed of sound.", keywords: [sound, vibration, medium, frequency, pitch, amplitude, loudness, hertz, decibel]}

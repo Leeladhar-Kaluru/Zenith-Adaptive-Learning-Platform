@@ -1,0 +1,12 @@
+slug: 7-maths-triangles
+board: cbse
+curriculum: NCERT current editions (to be confirmed by a reviewer)
+grade: 7
+subject: maths
+title: Angles of a triangle
+summary: Learn why the angles of a triangle add up to 180 degrees, use the exterior angle property, and find unknown angles step by step.
+concepts:
+- id: triangle-angle-sum
+- id: triangle-exterior-angle
+lessons:
+- triangle-angles

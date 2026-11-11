@@ -36,10 +36,49 @@ blocks:
 - kind: callout
   tone: real
   html: If two friends share the same chocolate, 1/2 of it is a bigger share than 1/4 of it.
+- kind: figure
+  svg: <svg viewBox="0 0 320 120" role="img"><rect x="20" y="15" width="150" height="30" fill="#ffd43b"/><rect x="20" y="15"
+    width="250" height="30" fill="none" stroke="currentColor" stroke-width="3"/><line x1="70" y1="15" x2="70" y2="45" stroke="currentColor"
+    stroke-width="2"/><line x1="120" y1="15" x2="120" y2="45" stroke="currentColor" stroke-width="2"/><line x1="170" y1="15"
+    x2="170" y2="45" stroke="currentColor" stroke-width="2"/><line x1="220" y1="15" x2="220" y2="45" stroke="currentColor"
+    stroke-width="2"/><rect x="20" y="70" width="93.75" height="30" fill="#ffd43b"/><rect x="20" y="70" width="250" height="30"
+    fill="none" stroke="currentColor" stroke-width="3"/><line x1="51.25" y1="70" x2="51.25" y2="100" stroke="currentColor"
+    stroke-width="2"/><line x1="82.5" y1="70" x2="82.5" y2="100" stroke="currentColor" stroke-width="2"/><line x1="113.75"
+    y1="70" x2="113.75" y2="100" stroke="currentColor" stroke-width="2"/><line x1="145.0" y1="70" x2="145.0" y2="100" stroke="currentColor"
+    stroke-width="2"/><line x1="176.25" y1="70" x2="176.25" y2="100" stroke="currentColor" stroke-width="2"/><line x1="207.5"
+    y1="70" x2="207.5" y2="100" stroke="currentColor" stroke-width="2"/><line x1="238.75" y1="70" x2="238.75" y2="100" stroke="currentColor"
+    stroke-width="2"/><g font-size="14" font-weight="700" fill="currentColor"><text x="278" y="36">3/5</text><text x="278"
+    y="91">3/8</text></g></svg>
+  alt: Two equal bars. The top bar is cut into five parts with three shaded. The bottom bar is cut into eight parts with three
+    shaded. The top shaded part is longer.
+  caption: Three fifths is longer than three eighths. Fifths are bigger pieces.
+- kind: text
+  heading: Use one half as a marker
+  html: <p>Sometimes both the numerator and the denominator are different. Then use <strong>1/2</strong> as a marker. A fraction
+    is more than 1/2 when its numerator is more than half of its denominator. It is less than 1/2 when its numerator is less
+    than half of its denominator.</p><p>For example, 4/8 is exactly 1/2. So 5/8 is more than 1/2 and 3/8 is less than 1/2.
+    A fraction above the marker beats a fraction below it.</p>
+- kind: example
+  heading: 'Worked example: a different numerator and denominator'
+  prompt: Which is greater, 2/5 or 5/8?
+  steps:
+  - The numerators and the denominators are both different, so use 1/2 as a marker.
+  - Half of 5 is 2 and a half. The numerator 2 is less than that, so 2/5 is less than 1/2.
+  - Half of 8 is 4. The numerator 5 is more than 4, so 5/8 is more than 1/2.
+  - 5/8 is above the marker and 2/5 is below it. So 5/8 is greater than 2/5.
+  - 'Check: 2/5 is a bit less than a half and 5/8 is a bit more than a half. The answer makes sense.'
+- kind: callout
+  tone: remember
+  html: Two fractions can be compared by looking at the numerator, the denominator, or a marker like 1/2. Pick the quickest
+    way for the numbers you have.
 - kind: check
   item: q-fc-1
 - kind: check
   item: q-fc-2
+- kind: check
+  item: q-fc-3
+- kind: check
+  item: q-fc-9
 - kind: summary
   points:
   - 'Same denominator: the bigger numerator is the greater fraction.'
@@ -199,10 +238,125 @@ items:
     text: They ate the same
   - key: D
     text: Cannot tell
+- key: q-fc-9
+  kind: mcq
+  stem: 'Which is greater: 3/4 or 5/12?'
+  difficulty: standard
+  purpose: check
+  concepts:
+  - id: fractions-compare
+    weight: 1.0
+  explanation: Half of 12 is 6. The numerator 5 is less than 6, so 5/12 is less than 1/2. Half of 4 is 2. The numerator 3
+    is more than 2, so 3/4 is more than 1/2. So 3/4 is greater. A bigger numerator alone does not decide it.
+  hints:
+  - Compare each fraction with 1/2.
+  - Half of 12 is 6. Is 5 more or less than 6?
+  correct: B
+  options:
+  - key: A
+    text: 5/12, because 5 is more than 3
+    misconception: bigger-top-bigger-fraction
+  - key: B
+    text: 3/4
+  - key: C
+    text: They are equal
+  - key: D
+    text: Cannot tell
+- key: q-fc-10
+  kind: numeric
+  stem: How many eighths make 1/2?
+  difficulty: intro
+  purpose: practice
+  concepts:
+  - id: fractions-compare
+  explanation: Half of 8 is 4, so 4/8 is the same as 1/2. This is why 1/2 is a good marker for eighths.
+  hints:
+  - Half of 8 pieces is how many pieces?
+  value: 4
+  tolerance: 0.0
+  verify: 8/2
+- key: q-fc-11
+  kind: mcq
+  stem: 'Assertion (A): 1/7 is greater than 1/9. Reason (R): When two fractions have the same numerator, the one with the
+    smaller denominator is greater.'
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: fractions-compare
+    weight: 1.0
+  explanation: Both 1/7 and 1/9 have numerator 1. Sevenths are bigger pieces than ninths, so 1/7 is greater. So A is true.
+    R is the rule that gives this result, so R explains A.
+  hints:
+  - Which pieces are bigger, sevenths or ninths?
+  correct: A
+  options:
+  - key: A
+    text: Both A and R are true, and R explains A
+  - key: B
+    text: Both A and R are true, but R does not explain A
+  - key: C
+    text: A is true, but R is false
+  - key: D
+    text: A is false, but R is true
+    misconception: bigger-bottom-bigger-fraction
+- key: q-fc-12
+  kind: mcq
+  stem: 'Assertion (A): 4/9 is greater than 4/5. Reason (R): 9 is greater than 5.'
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: fractions-compare
+    weight: 1.0
+  explanation: A is false. The numerators are the same, so the smaller denominator gives the greater fraction. 4/5 is greater
+    than 4/9. R is a true fact, but it does not help here, because a bigger denominator means smaller pieces.
+  hints:
+  - Same numerator, so look at the denominators.
+  - Which pieces are bigger, fifths or ninths?
+  correct: D
+  options:
+  - key: A
+    text: Both A and R are true, and R explains A
+    misconception: bigger-bottom-bigger-fraction
+  - key: B
+    text: Both A and R are true, but R does not explain A
+    misconception: bigger-bottom-bigger-fraction
+  - key: C
+    text: A is true, but R is false
+  - key: D
+    text: A is false, but R is true
+- key: q-fc-13
+  kind: mcq
+  stem: Two tailors have ribbons of the same length. The first tailor uses 3/10 of her ribbon for a bow. The second tailor
+    uses 3/4 of his ribbon for a belt. Which tailor uses the greater part of a ribbon?
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: fractions-compare
+    weight: 1.0
+  explanation: Both fractions have numerator 3. Quarters are bigger pieces than tenths, so 3/4 is greater than 3/10. The second
+    tailor uses the greater part.
+  hints:
+  - The numerators are the same. Compare the denominators.
+  - Which pieces are bigger, quarters or tenths?
+  correct: B
+  options:
+  - key: A
+    text: The first tailor, because 10 is greater than 4
+    misconception: bigger-bottom-bigger-fraction
+  - key: B
+    text: The second tailor
+  - key: C
+    text: Both use the same part
+  - key: D
+    text: Cannot tell
 misconceptions:
 - code: bigger-bottom-bigger-fraction
   concept: fractions-compare
   description: Thinks a bigger denominator makes a bigger fraction.
+- code: bigger-top-bigger-fraction
+  concept: fractions-compare
+  description: Compares only the numerators and picks the fraction with the bigger top number, even when the denominators
+    are different.
 cards:
 - key: comparing-fractions-card-1
   concept: fractions-compare

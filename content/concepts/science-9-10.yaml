@@ -1,0 +1,5 @@
+concepts:
+  - {id: motion-description, title: "Describing motion", grade: 9, subject: science, description: "Distance and displacement, speed and velocity, acceleration, and reading distance-time and speed-time graphs.", keywords: [distance, displacement, speed, velocity, acceleration, graph]}
+  - {id: laws-of-motion, title: "Newton's laws of motion", grade: 9, subject: science, description: "Inertia, force and acceleration with F = m a, and action and reaction pairs.", keywords: [inertia, force, mass, acceleration, momentum, action, reaction],
+     prerequisites: [{id: motion-description, why: "The second law links force to acceleration, so students need to know what acceleration is."}]}
+  - {id: balancing-equations, title: "Balancing chemical equations", grade: 10, subject: science, description: "Writing and balancing chemical equations using the law of conservation of mass, with physical states and the main types of reaction.", keywords: [chemical equation, balancing, conservation of mass, reactant, product, coefficient]}

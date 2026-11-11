@@ -1,0 +1,383 @@
+slug: unlike-fractions
+title: Adding and subtracting unlike fractions
+minutes: 25
+objectives:
+- Write equivalent fractions by multiplying the top and bottom by the same number
+- Explain why pieces must be the same size before we add or subtract
+- Find a common denominator using the LCM of the denominators
+- Add and subtract unlike fractions and write the answer in simplest form
+concepts:
+- fractions-equivalent
+- fractions-add-subtract-unlike
+origin: ai_assisted
+blocks:
+- kind: text
+  heading: Pieces of different sizes
+  html: '<p>You eat half of a roti in the morning. In the evening you eat one third of another roti of the same size. How much
+    roti did you eat in all?</p><p>It is hard to say, because a half and a third are pieces of different sizes. You cannot
+    add pieces unless they are the same size. It is like adding 2 apples and 3 oranges. You first need a common name, such
+    as "fruit".</p><p>Fractions with the same denominator are called <strong>like fractions</strong>. Fractions with different
+    denominators are <strong>unlike fractions</strong>. To add unlike fractions we first turn them into like fractions.</p>'
+- kind: text
+  heading: Equivalent fractions
+  html: '<p>Two fractions are <strong>equivalent</strong> if they show the same amount. Cut each half into 3 smaller pieces.
+    Now the whole has 6 pieces and the half is 3 of them. So 1/2 = 3/6.</p><p>We did this by multiplying the top (numerator)
+    and the bottom (denominator) by the same number, 3. The pieces got smaller and there are more of them, but the amount did
+    not change. So 1/2 = 3/6 = 4/8 = 5/10.</p>'
+- kind: figure
+  svg: <svg viewBox="0 0 300 130" role="img"><text x="30" y="16" font-size="13" font-weight="700" fill="currentColor">1/2</text><rect
+    x="30" y="22" width="120" height="30" fill="#ffb800" stroke="#14193a" stroke-width="2"/><rect x="150" y="22" width="120"
+    height="30" fill="none" stroke="#14193a" stroke-width="2"/><text x="30" y="82" font-size="13" font-weight="700" fill="currentColor">3/6</text><rect
+    x="30" y="88" width="40" height="30" fill="#ffb800" stroke="#14193a" stroke-width="2"/><rect x="70" y="88" width="40" height="30"
+    fill="#ffb800" stroke="#14193a" stroke-width="2"/><rect x="110" y="88" width="40" height="30" fill="#ffb800" stroke="#14193a"
+    stroke-width="2"/><rect x="150" y="88" width="40" height="30" fill="none" stroke="#14193a" stroke-width="2"/><rect x="190"
+    y="88" width="40" height="30" fill="none" stroke="#14193a" stroke-width="2"/><rect x="230" y="88" width="40" height="30"
+    fill="none" stroke="#14193a" stroke-width="2"/></svg>
+  alt: Two bars of the same length. The first is cut into two parts with one shaded. The second is cut into six parts with three shaded, covering the same length.
+  caption: The shaded part is the same length in both bars, so 1/2 and 3/6 are equivalent fractions.
+- kind: text
+  heading: Adding and subtracting unlike fractions
+  html: '<p>Follow these steps.</p><ul><li>Find a common denominator. The smallest choice is the LCM of the two denominators.</li><li>Write
+    each fraction as an equivalent fraction with that denominator.</li><li>Add or subtract the numerators. Keep the denominator
+    the same.</li><li>Write the answer in simplest form.</li></ul><p>For 1/2 + 1/3, the LCM of 2 and 3 is 6. Then 1/2 = 3/6 and
+    1/3 = 2/6. So 1/2 + 1/3 = 3/6 + 2/6 = 5/6.</p><p>Why keep the denominator? The denominator only names the size of the piece.
+    3 sixths plus 2 sixths is 5 sixths, just as 3 apples plus 2 apples is 5 apples.</p>'
+- kind: figure
+  svg: <svg viewBox="0 0 300 200" role="img"><text x="30" y="16" font-size="13" font-weight="700" fill="currentColor">1/2 = 3/6</text><rect
+    x="30" y="22" width="40" height="28" fill="#ffb800" stroke="#14193a" stroke-width="2"/><rect x="70" y="22" width="40" height="28"
+    fill="#ffb800" stroke="#14193a" stroke-width="2"/><rect x="110" y="22" width="40" height="28" fill="#ffb800" stroke="#14193a"
+    stroke-width="2"/><rect x="150" y="22" width="40" height="28" fill="none" stroke="#14193a" stroke-width="2"/><rect x="190"
+    y="22" width="40" height="28" fill="none" stroke="#14193a" stroke-width="2"/><rect x="230" y="22" width="40" height="28"
+    fill="none" stroke="#14193a" stroke-width="2"/><text x="30" y="76" font-size="13" font-weight="700" fill="currentColor">1/3
+    = 2/6</text><rect x="30" y="82" width="40" height="28" fill="#6cb7ff" stroke="#14193a" stroke-width="2"/><rect x="70" y="82"
+    width="40" height="28" fill="#6cb7ff" stroke="#14193a" stroke-width="2"/><rect x="110" y="82" width="40" height="28" fill="none"
+    stroke="#14193a" stroke-width="2"/><rect x="150" y="82" width="40" height="28" fill="none" stroke="#14193a" stroke-width="2"/><rect
+    x="190" y="82" width="40" height="28" fill="none" stroke="#14193a" stroke-width="2"/><rect x="230" y="82" width="40" height="28"
+    fill="none" stroke="#14193a" stroke-width="2"/><text x="30" y="136" font-size="13" font-weight="700" fill="currentColor">Sum
+    = 5/6</text><rect x="30" y="142" width="40" height="28" fill="#ffb800" stroke="#14193a" stroke-width="2"/><rect x="70" y="142"
+    width="40" height="28" fill="#ffb800" stroke="#14193a" stroke-width="2"/><rect x="110" y="142" width="40" height="28" fill="#ffb800"
+    stroke="#14193a" stroke-width="2"/><rect x="150" y="142" width="40" height="28" fill="#6cb7ff" stroke="#14193a" stroke-width="2"/><rect
+    x="190" y="142" width="40" height="28" fill="#6cb7ff" stroke="#14193a" stroke-width="2"/><rect x="230" y="142" width="40"
+    height="28" fill="none" stroke="#14193a" stroke-width="2"/></svg>
+  alt: Three bars each cut into six equal parts. Three parts are shaded in the first bar, two in the second, and the third bar shows all five shaded together.
+  caption: Once both fractions are cut into sixths, the shaded pieces can be counted together. 3 sixths and 2 sixths make 5 sixths.
+- kind: example
+  heading: Worked example
+  prompt: Find 2/3 + 1/4.
+  steps:
+  - 'The denominators are 3 and 4. Their LCM is 12, so the common denominator is 12.'
+  - '2/3 = (2 × 4)/(3 × 4) = 8/12. 1/4 = (1 × 3)/(4 × 3) = 3/12.'
+  - 'Add the numerators and keep the denominator: 8/12 + 3/12 = 11/12.'
+  - 'Check: 11/12 is a little less than 1. A bit more than half plus a quarter should be about that. 11 and 12 share no common factor, so it is in simplest form.'
+- kind: example
+  heading: Worked example
+  prompt: Find 5/6 − 3/8.
+  steps:
+  - 'The LCM of 6 and 8 is 24, so the common denominator is 24.'
+  - '5/6 = 20/24 because 6 × 4 = 24 and 5 × 4 = 20. 3/8 = 9/24 because 8 × 3 = 24 and 3 × 3 = 9.'
+  - 'Subtract the numerators: 20/24 − 9/24 = 11/24.'
+  - 'Check by adding back: 11/24 + 9/24 = 20/24 = 5/6. It matches.'
+- kind: example
+  heading: Worked example
+  prompt: A tank is 3/10 full. Then 1/5 of a tank of water is added. What fraction of the tank is full now?
+  steps:
+  - 'We add 3/10 and 1/5. The LCM of 10 and 5 is 10.'
+  - '1/5 = 2/10. The fraction 3/10 already has denominator 10.'
+  - '3/10 + 2/10 = 5/10.'
+  - 'Simplify by dividing top and bottom by 5: 5/10 = 1/2. The tank is half full.'
+- kind: callout
+  tone: watch
+  html: Do not add the tops and the bottoms. 1/2 + 1/3 is not 2/5. The answer 2/5 is smaller than 1/2, but we added something to 1/2, so the answer must be bigger. Also remember to multiply the top and the bottom by the same number.
+- kind: callout
+  tone: real
+  html: Recipes and tailoring use this all the time. If one dish needs 1/2 cup of oil and another needs 1/4 cup, you need 3/4 cup in all. The common piece is the quarter cup.
+- kind: check
+  item: q-uf-1
+- kind: check
+  item: q-uf-3
+- kind: check
+  item: q-uf-5
+- kind: summary
+  points:
+  - 'Equivalent fractions show the same amount. Multiply the top and bottom by the same number.'
+  - 'Only pieces of the same size can be added or subtracted, so unlike fractions need a common denominator, best chosen as the LCM.'
+  - 'Add or subtract the numerators and keep the denominator. Then write the answer in simplest form.'
+  - 'Never add the denominators. 1/2 + 1/3 = 5/6, not 2/5.'
+items:
+- key: q-uf-1
+  kind: mcq
+  stem: Which fraction is equivalent to 1/2?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: fractions-equivalent
+  explanation: Multiply the top and bottom of 1/2 by 2 to get 2/4. Adding the same number to the top and bottom changes the amount, so the other options are not equal to 1/2.
+  hints:
+  - Multiply the top and the bottom by the same number.
+  correct: B
+  options:
+  - key: A
+    text: 2/3
+    misconception: add-not-multiply
+  - key: B
+    text: 2/4
+  - key: C
+    text: 1/4
+  - key: D
+    text: 3/5
+    misconception: add-not-multiply
+- key: q-uf-2
+  kind: numeric
+  stem: 2/5 = ?/20. What number goes in place of the question mark?
+  difficulty: intro
+  purpose: practice
+  concepts:
+  - id: fractions-equivalent
+  explanation: The bottom went from 5 to 20, which is times 4. So the top must also be times 4. 2 × 4 = 8, and 2/5 = 8/20.
+  hints:
+  - How many times bigger is 20 than 5?
+  value: 8
+  tolerance: 0.0
+  verify: 2*(20/5)
+- key: q-uf-3
+  kind: mcq
+  stem: What must be true before we can add two fractions by adding their numerators?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: fractions-add-subtract-unlike
+  explanation: Only pieces of the same size can be counted together. So the denominators must be the same.
+  hints:
+  - Think of adding 2 apples and 3 oranges.
+  correct: B
+  options:
+  - key: A
+    text: The numerators must be the same
+    misconception: need-equal-numerators
+  - key: B
+    text: The denominators must be the same, so the pieces are the same size
+  - key: C
+    text: Both fractions must be less than 1
+  - key: D
+    text: The denominators must be different
+    misconception: need-equal-numerators
+- key: q-uf-4
+  kind: numeric
+  stem: What is the smallest common denominator for 4/9 and 5/6?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: fractions-add-subtract-unlike
+  explanation: The smallest common denominator is the LCM of 9 and 6. 9 = 3<sup>2</sup> and 6 = 2 × 3, so the LCM is 2 × 9 = 18.
+  hints:
+  - Find the LCM of the two denominators.
+  value: 18
+  tolerance: 0.0
+  verify: lcm(9, 6)
+- key: q-uf-5
+  kind: numeric
+  stem: What is 1/2 + 1/3? Write your answer as a fraction.
+  difficulty: standard
+  purpose: check
+  concepts:
+  - id: fractions-add-subtract-unlike
+  explanation: The common denominator is 6. 1/2 = 3/6 and 1/3 = 2/6, so the sum is 5/6.
+  hints:
+  - Write both fractions with denominator 6.
+  value: 5/6
+  tolerance: 0.0
+  verify: 1/2 + 1/3
+- key: q-uf-6
+  kind: mcq
+  stem: What is 3/5 + 1/4?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: fractions-add-subtract-unlike
+  explanation: The common denominator is 20. 3/5 = 12/20 and 1/4 = 5/20. The sum is 17/20. The answer 4/9 comes from adding the tops and the bottoms, which is wrong.
+  hints:
+  - The LCM of 5 and 4 is 20.
+  correct: C
+  options:
+  - key: A
+    text: 4/9
+    misconception: add-tops-bottoms
+  - key: B
+    text: 4/20
+    misconception: add-tops-bottoms
+  - key: C
+    text: 17/20
+  - key: D
+    text: 15/20
+- key: q-uf-7
+  kind: numeric
+  stem: What is 7/8 − 1/3? Write your answer as a fraction.
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: fractions-add-subtract-unlike
+  explanation: The common denominator is 24. 7/8 = 21/24 and 1/3 = 8/24. The difference is 13/24.
+  hints:
+  - The LCM of 8 and 3 is 24.
+  value: 13/24
+  tolerance: 0.0
+  verify: 7/8 - 1/3
+- key: q-uf-8
+  kind: mcq
+  stem: A tailor uses 2/5 of a roll of cloth on Monday and 1/3 of the roll on Tuesday. What fraction of the roll has been used?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: fractions-add-subtract-unlike
+  explanation: The common denominator is 15. 2/5 = 6/15 and 1/3 = 5/15. Together they make 11/15.
+  hints:
+  - Use 15 as the common denominator.
+  correct: B
+  options:
+  - key: A
+    text: 3/8
+    misconception: add-tops-bottoms
+  - key: B
+    text: 11/15
+  - key: C
+    text: 3/15
+  - key: D
+    text: 1/15
+- key: q-uf-9
+  kind: mcq
+  stem: 'Assertion (A): 1/2 + 1/3 = 5/6. Reason (R): Both fractions can be written with denominator 6 as 3/6 and 2/6, and then the numerators are added.'
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: fractions-add-subtract-unlike
+  explanation: Both statements are true. Writing both as sixths gives equal pieces, and counting them gives 5 sixths. R explains A.
+  hints:
+  - Check 3/6 + 2/6 yourself.
+  correct: A
+  options:
+  - key: A
+    text: Both A and R are true, and R explains A
+  - key: B
+    text: Both A and R are true, but R does not explain A
+  - key: C
+    text: A is true, but R is false
+  - key: D
+    text: A is false, but R is true
+- key: q-uf-10
+  kind: mcq
+  stem: 'Assertion (A): 1/3 + 1/6 = 1/2. Reason (R): The denominators 3 and 6 are different.'
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: fractions-add-subtract-unlike
+  explanation: 1/3 = 2/6, so 2/6 + 1/6 = 3/6 = 1/2. A is true. R is true as well, but different denominators are not the reason for the answer. R does not explain A.
+  hints:
+  - First work out 1/3 + 1/6. Then ask if different denominators explain the answer.
+  correct: B
+  options:
+  - key: A
+    text: Both A and R are true, and R explains A
+    misconception: reason-always-explains
+  - key: B
+    text: Both A and R are true, but R does not explain A
+  - key: C
+    text: A is true, but R is false
+  - key: D
+    text: A is false, but R is true
+- key: q-uf-11
+  kind: mcq
+  stem: 'Assertion (A): 3/4 and 6/8 are equivalent fractions. Reason (R): Equivalent fractions always have the same denominator.'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: fractions-equivalent
+  explanation: 6/8 is 3/4 with top and bottom multiplied by 2, so A is true. But equivalent fractions usually have different denominators, such as 3/4 and 6/8. R is false.
+  hints:
+  - Do 3/4 and 6/8 have the same denominator?
+  correct: C
+  options:
+  - key: A
+    text: Both A and R are true, and R explains A
+  - key: B
+    text: Both A and R are true, but R does not explain A
+  - key: C
+    text: A is true, but R is false
+  - key: D
+    text: A is false, but R is true
+- key: q-uf-12
+  kind: mcq
+  stem: A gardener plants a bed. 1/4 of the bed has tomatoes, 1/6 has beans, and the rest is empty. What fraction of the bed has tomatoes or beans?
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: fractions-add-subtract-unlike
+  explanation: The common denominator is 12. 1/4 = 3/12 and 1/6 = 2/12. Together they make 5/12.
+  hints:
+  - The LCM of 4 and 6 is 12.
+  correct: B
+  options:
+  - key: A
+    text: 2/10
+    misconception: add-tops-bottoms
+  - key: B
+    text: 5/12
+  - key: C
+    text: 1/12
+  - key: D
+    text: 5/24
+- key: q-uf-13
+  kind: numeric
+  stem: In a garden bed, 1/4 has tomatoes and 1/6 has beans. What fraction of the bed is empty? Write your answer as a fraction.
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: fractions-add-subtract-unlike
+  explanation: The planted part is 5/12. The whole bed is 12/12, so the empty part is 12/12 − 5/12 = 7/12.
+  hints:
+  - Subtract the planted fraction from 1, which is 12/12.
+  value: 7/12
+  tolerance: 0.0
+  verify: 1 - 1/4 - 1/6
+- key: q-uf-14
+  kind: numeric
+  stem: What is 5/6 − 3/4? Write your answer as a fraction.
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: fractions-add-subtract-unlike
+  explanation: The common denominator is 12. 5/6 = 10/12 and 3/4 = 9/12. The difference is 1/12.
+  hints:
+  - The LCM of 6 and 4 is 12.
+  value: 1/12
+  tolerance: 0.0
+  verify: 5/6 - 3/4
+misconceptions:
+- code: add-not-multiply
+  concept: fractions-equivalent
+  description: Adds the same number to the top and bottom to make an equivalent fraction, when both must be multiplied by the same number.
+- code: add-tops-bottoms
+  concept: fractions-add-subtract-unlike
+  description: Adds the numerators and also the denominators, for example writing 1/2 + 1/3 = 2/5.
+- code: need-equal-numerators
+  concept: fractions-add-subtract-unlike
+  description: Thinks it is the numerators, not the denominators, that must match before fractions can be added.
+- code: reason-always-explains
+  concept: fractions-add-subtract-unlike
+  description: Thinks that if both an assertion and its reason are true, the reason must explain the assertion.
+cards:
+- key: unlike-fractions-card-1
+  concept: fractions-equivalent
+  front: How do you make an equivalent fraction?
+  back: Multiply the numerator and the denominator by the same number. The amount stays the same.
+- key: unlike-fractions-card-2
+  concept: fractions-add-subtract-unlike
+  front: What do you do first to add 1/2 and 1/3?
+  back: Write both with a common denominator, the LCM of 2 and 3, which is 6. Then 3/6 + 2/6 = 5/6.
+- key: unlike-fractions-card-3
+  concept: fractions-add-subtract-unlike
+  front: Why do we keep the denominator when adding like fractions?
+  back: The denominator only names the size of the piece. We are counting pieces of the same size.
+- key: unlike-fractions-card-4
+  concept: fractions-add-subtract-unlike
+  front: What is the best common denominator to use?
+  back: The LCM of the two denominators, because it keeps the numbers small.

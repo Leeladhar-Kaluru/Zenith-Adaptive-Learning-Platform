@@ -19,11 +19,40 @@ blocks:
   - 'Subtract 3 from both sides: 2x = 8.'
   - 'Divide both sides by 2: x = 4.'
   - 'Check: 2 times 4 plus 3 is 11. Correct.'
+- kind: figure
+  svg: '<svg viewBox="0 0 290 140" role="img"><path d="M10 38 L10 30 L274 30 L274 38" fill="none" stroke="currentColor" stroke-width="2"/><text x="142" y="22" font-size="16" font-weight="700" text-anchor="middle" fill="currentColor">11 in all</text><rect x="10" y="50" width="96" height="40" fill="#ffb800" stroke="#14193a" stroke-width="2"/><rect x="106" y="50" width="96" height="40" fill="#ffb800" stroke="#14193a" stroke-width="2"/><rect x="202" y="50" width="72" height="40" fill="#6cb7ff" stroke="#14193a" stroke-width="2"/><text x="58" y="77" font-size="18" font-weight="700" text-anchor="middle" fill="#14193a">x</text><text x="154" y="77" font-size="18" font-weight="700" text-anchor="middle" fill="#14193a">x</text><text x="238" y="77" font-size="18" font-weight="700" text-anchor="middle" fill="#14193a">3</text><text x="142" y="118" font-size="14" text-anchor="middle" fill="currentColor">2x + 3 = 11</text></svg>'
+  alt: A long bar worth 11 split into two equal boxes marked x and one smaller box marked 3, which is the equation 2x + 3 = 11.
+  caption: Take the 3 off the bar first. What is left is two equal boxes, so each x is half of it.
+- kind: widget
+  widget: sim_equation
+  config: {a: 4, b: 6, c: 22}
+  task: Solve 4x + 6 = 22 on the balance. Which move must come first, and why?
+- kind: example
+  heading: Worked example 2
+  prompt: Solve 5x - 7 = 18.
+  steps:
+  - 'The last thing done to 5x is taking away 7. Undo it first: add 7 to both sides to get 5x = 25.'
+  - 'Now undo the times 5: divide both sides by 5 to get x = 5.'
+  - 'Check: 5 times 5 is 25, and 25 - 7 is 18. Correct.'
+- kind: example
+  heading: Worked example 3
+  prompt: Solve x / 4 + 2 = 6.
+  steps:
+  - 'Undo the + 2 first: subtract 2 from both sides to get x / 4 = 4.'
+  - 'Undo the divide by 4: multiply both sides by 4 to get x = 16.'
+  - 'Check: 16 divided by 4 is 4, and 4 + 2 is 6. Correct.'
 - kind: callout
   tone: watch
   html: Do not divide first unless you divide <strong>every</strong> term. Undo the adding or subtracting first.
 - kind: check
   item: q-eq2-1
+- kind: callout
+  tone: real
+  html: A cab charges a fixed Rs 30 plus Rs 12 for each kilometre. If the fare is Rs 90, the equation 12k + 30 = 90 tells you the distance. First take off the fixed charge, then divide by the rate per kilometre.
+- kind: check
+  item: q-eq2-7
+- kind: check
+  item: q-eq2-8
 - kind: summary
   points:
   - Undo adding or subtracting first.
@@ -115,10 +144,133 @@ items:
   value: 6
   tolerance: 0.0
   verify: (4-1)*2
+- key: q-eq2-7
+  kind: mcq
+  stem: What is the solution of 3x + 4 = 19?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: simple-equation-two-step
+    weight: 1.0
+  explanation: Subtract 4 to get 3x = 15. Divide by 3 to get x = 5. Check, 3 times 5 plus 4 is 19.
+  hints:
+  - Undo + 4 first, then divide.
+  correct: B
+  options:
+  - key: A
+    text: '15'
+    misconception: stops-after-one-step
+  - key: B
+    text: '5'
+  - key: C
+    text: 23/3
+    misconception: adds-when-it-should-subtract
+  - key: D
+    text: '3'
+- key: q-eq2-8
+  kind: numeric
+  stem: Solve 7x - 3 = 25. What is x?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: simple-equation-two-step
+  explanation: Add 3 to get 7x = 28. Divide by 7 to get x = 4.
+  hints:
+  - Undo - 3 first.
+  value: 4
+  tolerance: 0.0
+  verify: (25+3)/7
+- key: q-eq2-9
+  kind: numeric
+  stem: Solve x/5 - 3 = 2. What is x?
+  difficulty: challenge
+  purpose: practice
+  concepts:
+  - id: simple-equation-two-step
+  explanation: Add 3 to get x/5 = 5. Multiply both sides by 5 to get x = 25.
+  hints:
+  - Undo - 3, then undo dividing by 5.
+  value: 25
+  tolerance: 0.0
+  verify: (2+3)*5
+- key: q-eq2-10
+  kind: mcq
+  stem: What is the right first step for 5x - 9 = 16?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: simple-equation-two-step
+    weight: 1.0
+  explanation: The last thing done to 5x is taking away 9. Undo it by adding 9 to both sides. That gives 5x = 25.
+  hints:
+  - Undo the - 9 with its opposite.
+  correct: B
+  options:
+  - key: A
+    text: Subtract 9 from both sides
+    misconception: adds-when-it-should-subtract
+  - key: B
+    text: Add 9 to both sides
+  - key: C
+    text: Divide only the 5x by 5
+    misconception: divides-before-undoing-addition
+  - key: D
+    text: Multiply both sides by 5
+- key: q-eq2-11
+  kind: mcq
+  stem: 'Assertion (A): To solve 4x + 7 = 27, we should subtract 7 before dividing by 4. Reason (R): x was first multiplied by 4 and then 7 was added, so we undo the adding first.'
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: simple-equation-two-step
+    weight: 1.0
+  explanation: Both are true. We undo steps in reverse order. The + 7 was done last, so it is undone first. R explains A.
+  hints:
+  - Which operation was applied to x last?
+  correct: A
+  options:
+  - key: A
+    text: Both A and R are true, and R explains A
+  - key: B
+    text: Both A and R are true, but R does not explain A
+  - key: C
+    text: A is true, but R is false
+  - key: D
+    text: A is false, but R is true
+- key: q-eq2-12
+  kind: mcq
+  stem: A cab charges a fixed Rs 30 plus Rs 12 for each kilometre. Anu paid Rs 90 in all. How many kilometres did she travel?
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: simple-equation-two-step
+    weight: 1.0
+  explanation: Let k be the kilometres. 12k + 30 = 90. Subtract 30 to get 12k = 60. Divide by 12 to get k = 5.
+  hints:
+  - Write 12k + 30 = 90.
+  correct: A
+  options:
+  - key: A
+    text: 5 km
+  - key: B
+    text: 7.5 km
+    misconception: divides-before-undoing-addition
+  - key: C
+    text: 10 km
+    misconception: adds-when-it-should-subtract
+  - key: D
+    text: 60 km
+    misconception: stops-after-one-step
 misconceptions:
 - code: divides-before-undoing-addition
   concept: simple-equation-two-step
   description: Divides only the first term by 4 before removing + 7.
+- code: stops-after-one-step
+  concept: simple-equation-two-step
+  description: Undoes only the first step, for example finds 3x = 15 and gives 15 as the answer without dividing.
+- code: adds-when-it-should-subtract
+  concept: simple-equation-two-step
+  description: Uses the same sign instead of the opposite one when undoing the plus or minus, for example adds 4 to both sides of 3x + 4 = 19.
 cards:
 - key: two-step-card-1
   concept: simple-equation-two-step
@@ -128,3 +280,11 @@ cards:
   concept: simple-equation-two-step
   front: How do you check a solution?
   back: Put it back into the original equation.
+- key: two-step-card-3
+  concept: simple-equation-two-step
+  front: What is the first step for 5x - 9 = 16?
+  back: Add 9 to both sides, to get 5x = 25.
+- key: two-step-card-4
+  concept: simple-equation-two-step
+  front: Solve x/4 + 2 = 6.
+  back: Subtract 2, then multiply by 4. x = 16.

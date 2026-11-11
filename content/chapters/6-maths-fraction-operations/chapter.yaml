@@ -1,0 +1,14 @@
+slug: 6-maths-fraction-operations
+board: cbse
+curriculum: NCERT current editions (to be confirmed by a reviewer)
+grade: 6
+subject: maths
+title: Adding and subtracting fractions
+summary: Make unlike fractions the same size of piece with equivalent fractions, then add and subtract them.
+concepts:
+- id: fractions-equivalent
+- id: fractions-add-subtract-unlike
+- id: fractions-compare
+  role: foundation
+lessons:
+- unlike-fractions

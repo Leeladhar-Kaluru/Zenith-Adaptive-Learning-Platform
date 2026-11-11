@@ -1,0 +1,7 @@
+concepts:
+  - {id: exponents-laws, title: "Laws of exponents", grade: 8, subject: maths, description: "Powers with positive, zero and negative integer exponents, the product, quotient and power rules, and standard form.", keywords: [exponent, power, base, negative exponent, standard form, scientific notation],
+     prerequisites: [{id: whole-number-ops}, {id: integers-subtract, why: "Quotient and negative exponent rules subtract exponents, which can go below zero."}]}
+  - {id: coordinate-plane, title: "The Cartesian plane", grade: 9, subject: maths, description: "Describing a point by an ordered pair, the four quadrants, plotting and reading points, and distance along an axis.", keywords: [Cartesian plane, coordinates, quadrant, x-axis, y-axis, abscissa, ordinate],
+     prerequisites: [{id: integers-number-line}, {id: integers-subtract}]}
+  - {id: quadratic-equations, title: "Quadratic equations", grade: 10, subject: maths, description: "Standard form, solving by factorising and by the quadratic formula, the discriminant and the nature of roots, and word problems.", keywords: [quadratic, root, factorise, discriminant, quadratic formula],
+     prerequisites: [{id: linear-eq-both-sides}, {id: squares-roots}]}

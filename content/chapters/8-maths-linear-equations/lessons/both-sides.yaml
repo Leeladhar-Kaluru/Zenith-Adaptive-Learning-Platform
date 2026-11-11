@@ -19,17 +19,53 @@ blocks:
   - 'Subtract 2x from both sides: 3x - 3 = 9.'
   - 'Add 3 to both sides: 3x = 12.'
   - 'Divide by 3: x = 4. Check: 5(4) - 3 = 17 and 2(4) + 9 = 17.'
+- kind: figure
+  svg: '<svg viewBox="0 0 340 190" role="img"><g font-size="15" font-weight="700" text-anchor="middle" fill="currentColor"><text x="160" y="24">5x - 3 = 2x + 9</text><text x="160" y="76">3x - 3 = 9</text><text x="160" y="128">3x = 12</text><text x="160" y="180">x = 4</text></g><g font-size="12" fill="currentColor"><text x="175" y="46">subtract 2x from both sides</text><text x="175" y="98">add 3 to both sides</text><text x="175" y="150">divide both sides by 3</text></g><g stroke="currentColor" stroke-width="2" fill="none"><path d="M160 32 V52 M154 46 L160 54 L166 46"/><path d="M160 84 V104 M154 98 L160 106 L166 98"/><path d="M160 136 V156 M154 150 L160 158 L166 150"/></g></svg>'
+  alt: A ladder of steps for 5x - 3 = 2x + 9. Subtract 2x, then add 3, then divide by 3, to reach x = 4.
+  caption: Each step does the same thing to both sides, so every line is still balanced.
+- kind: widget
+  widget: sim_equation
+  config: {a: 3, b: -3, c: 9}
+  task: This is 5x - 3 = 2x + 9 after 2x has been subtracted from both sides. Finish the job and get x alone, using as few moves as you can. Then say what x is.
+- kind: text
+  heading: Why the sign changes
+  html: <p>Think of the equation as a balanced scale. To get rid of <strong>+2x</strong> on the right, you <em>subtract</em> 2x from both sides. On the right, +2x and -2x cancel. On the left, a new <strong>-2x</strong> appears. So the term seems to have jumped across the equal sign and changed its sign. Nothing really jumped. You did the same operation to both sides.</p><p>An equation can have a negative answer. That is fine. A number is allowed to be less than zero.</p>
+- kind: example
+  heading: Another worked example
+  prompt: Solve 4x + 6 = 2x - 8.
+  steps:
+  - 'Subtract 2x from both sides: 2x + 6 = -8.'
+  - 'Subtract 6 from both sides: 2x = -14.'
+  - 'Divide by 2: x = -7.'
+  - 'Check: 4(-7) + 6 = -22 and 2(-7) - 8 = -22. Both sides match.'
+- kind: example
+  heading: With a bracket
+  prompt: Solve 2(x + 4) = 3x + 1.
+  steps:
+  - 'Open the bracket. Multiply BOTH terms inside by 2: 2x + 8 = 3x + 1.'
+  - 'Subtract 2x from both sides: 8 = x + 1.'
+  - 'Subtract 1 from both sides: 7 = x.'
+  - 'Check: 2(7 + 4) = 22 and 3(7) + 1 = 22.'
 - kind: callout
   tone: watch
   html: Moving <strong>+3x</strong> across the equal sign gives <strong>-3x</strong>. If the sign does not change, the equation
     is no longer balanced.
 - kind: check
   item: q-lin-1
+- kind: callout
+  tone: real
+  html: Two taxi firms charge differently. Firm P charges Rs 30 plus Rs 10 for each km. Firm Q charges Rs 20 for each km and nothing extra. To find the distance where both cost the same, write 30 + 10x = 20x and solve it. Here x = 3 km.
+- kind: check
+  item: q-lin-4
+- kind: check
+  item: q-lin-7
 - kind: summary
   points:
   - Put x terms on one side and numbers on the other.
   - A term changes sign when it crosses the equal sign.
   - Check in the original equation.
+  - Open a bracket by multiplying every term inside it.
+  - An answer can be negative.
 items:
 - key: q-lin-1
   kind: numeric
@@ -118,10 +154,149 @@ items:
   value: 6
   tolerance: 0.0
   verify: 12/2
+- key: q-lin-7
+  kind: mcq
+  stem: Which of these equations has the variable on both sides?
+  difficulty: intro
+  purpose: practice
+  concepts:
+  - id: linear-eq-both-sides
+    weight: 1.0
+  explanation: 4x - 1 = x + 8 has x on the left side and on the right side. The others have x on one side only.
+  hints:
+  - Look at both sides of the equal sign.
+  correct: B
+  options:
+  - key: A
+    text: 3x + 2 = 11
+  - key: B
+    text: 4x - 1 = x + 8
+  - key: C
+    text: x/2 = 5
+  - key: D
+    text: 7 = 2 + 5
+- key: q-lin-8
+  kind: numeric
+  stem: Solve 6x + 1 = 2x + 25. What is x?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: linear-eq-both-sides
+  explanation: Subtract 2x and 1 from both sides. 4x = 24, so x = 6.
+  hints:
+  - Subtract 2x from both sides, then subtract 1.
+  value: 6
+  tolerance: 0.0
+  verify: (25-1)/(6-2)
+- key: q-lin-9
+  kind: mcq
+  stem: 'Opening the bracket in 4(x - 3) = x + 6 gives:'
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: linear-eq-both-sides
+    weight: 1.0
+  explanation: The 4 multiplies both x and -3. So 4(x - 3) = 4x - 12.
+  hints:
+  - The number outside multiplies every term inside the bracket.
+  correct: B
+  options:
+  - key: A
+    text: 4x - 3 = x + 6
+    misconception: bracket-one-term
+  - key: B
+    text: 4x - 12 = x + 6
+  - key: C
+    text: 4x + 12 = x + 6
+  - key: D
+    text: x - 12 = x + 6
+- key: q-lin-10
+  kind: mcq
+  stem: 'Assertion (A): In 5x - 3 = 2x + 9, subtracting 2x from both sides gives 3x - 3 = 9. Reason (R): Whatever is subtracted from one side must also be subtracted from the other side to keep the equation balanced.'
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: linear-eq-both-sides
+    weight: 1.0
+  explanation: Both statements are true. 5x - 2x = 3x on the left and 2x - 2x = 0 on the right. The reason is exactly why we subtract 2x from both sides.
+  hints:
+  - Check A by doing the subtraction. Then ask whether R explains why we do it on both sides.
+  correct: A
+  options:
+  - key: A
+    text: Both A and R are true and R is the correct explanation of A.
+  - key: B
+    text: Both A and R are true but R is not the correct explanation of A.
+  - key: C
+    text: A is true but R is false.
+  - key: D
+    text: A is false but R is true.
+- key: q-lin-11
+  kind: mcq
+  stem: 'Assertion (A): The solution of 3x + 4 = x + 4 is x = 4. Reason (R): Subtracting 4 from both sides of 3x + 4 = x + 4 gives 3x = x.'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: linear-eq-both-sides
+    weight: 1.0
+  explanation: R is true, since 3x + 4 - 4 = 3x and x + 4 - 4 = x. Then 2x = 0, so x = 0. Check x = 4. The left side is 16 and the right side is 8. So A is false.
+  hints:
+  - Put x = 4 into both sides and compare.
+  correct: D
+  options:
+  - key: A
+    text: Both A and R are true and R is the correct explanation of A.
+  - key: B
+    text: Both A and R are true but R is not the correct explanation of A.
+  - key: C
+    text: A is true but R is false.
+  - key: D
+    text: A is false but R is true.
+- key: q-lin-12
+  kind: mcq
+  stem: 'Case. A tailor charges Rs 50 as a fixed fee plus Rs 10 for each shirt stitched. A second tailor charges Rs 20 for each shirt and no fixed fee. Let n be the number of shirts. For what value of n do both tailors charge the same amount?'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: linear-eq-both-sides
+    weight: 1.0
+  explanation: 'Set the two costs equal: 50 + 10n = 20n. Subtract 10n from both sides: 50 = 10n. Divide by 10: n = 5. Check: 50 + 50 = 100 and 20 x 5 = 100.'
+  hints:
+  - Write 50 + 10n = 20n and solve it.
+  correct: B
+  options:
+  - key: A
+    text: '3'
+  - key: B
+    text: '5'
+  - key: C
+    text: '10'
+    misconception: stops-early
+  - key: D
+    text: '30'
+- key: q-lin-13
+  kind: numeric
+  stem: Solve 3(2x + 1) = 5x + 8. What is x?
+  difficulty: challenge
+  purpose: practice
+  concepts:
+  - id: linear-eq-both-sides
+  explanation: Open the bracket to get 6x + 3 = 5x + 8. Subtract 5x and 3 from both sides, so x = 5.
+  hints:
+  - Open the bracket first. The 3 multiplies both 2x and 1.
+  value: 5
+  tolerance: 0.0
+  verify: 8-3
 misconceptions:
 - code: sign-does-not-change
   concept: linear-eq-both-sides
   description: Moves a term across the equal sign but keeps its sign.
+- code: bracket-one-term
+  concept: linear-eq-both-sides
+  description: Multiplies only the first term inside a bracket and leaves the second term unchanged.
+- code: stops-early
+  concept: linear-eq-both-sides
+  description: Stops before the last step and gives the coefficient or a middle number as the answer.
 cards:
 - key: both-sides-card-1
   concept: linear-eq-both-sides
@@ -131,3 +306,11 @@ cards:
   concept: linear-eq-both-sides
   front: How do you solve ax + b = cx + d?
   back: Collect x terms on one side and numbers on the other, then divide.
+- key: both-sides-card-3
+  concept: linear-eq-both-sides
+  front: What is the first step in 5x - 3 = 2x + 9?
+  back: Subtract 2x from both sides to get 3x - 3 = 9.
+- key: both-sides-card-4
+  concept: linear-eq-both-sides
+  front: How do you open the bracket in 3(x - 2)?
+  back: Multiply every term inside by 3 to get 3x - 6.

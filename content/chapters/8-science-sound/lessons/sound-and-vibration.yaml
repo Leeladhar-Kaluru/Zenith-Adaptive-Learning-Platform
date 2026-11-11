@@ -1,0 +1,338 @@
+slug: sound-and-vibration
+title: Sound and vibration
+minutes: 25
+objectives:
+- Explain that sound is made by vibrations and needs a medium to travel
+- Link frequency to pitch and amplitude to loudness, with units Hz and dB
+- Use distance = speed × time with the speed of sound in air, about 340 m/s
+- Work out the distance of thunder or an echo from a time
+concepts:
+- sound-vibration
+origin: ai_assisted
+blocks:
+- kind: text
+  heading: Sound starts with a shake
+  html: '<p>Pluck a stretched rubber band and you hear a note. Touch the band lightly and it tickles your finger and the sound stops. The band was <strong>vibrating</strong>, which means moving quickly to and fro about its rest position. <strong>Every sound is made by something that vibrates.</strong> A drum skin, a guitar string, the air in a flute and your own vocal cords all vibrate when they make sound.</p><p>One complete to-and-fro movement is called one vibration, or one oscillation.</p>'
+- kind: text
+  heading: How sound travels
+  html: '<p>A vibrating object pushes and pulls on the air next to it. That air pushes and pulls on the air beyond it, and so on. The disturbance passes along from one layer of air to the next until it reaches your ear. The air does not travel from the source to you. Each bit of air only moves to and fro a little, and the vibration is what travels. This travelling disturbance is a <strong>sound wave</strong>.</p><p>Sound needs a <strong>medium</strong> to travel through. A medium is any material that can carry the vibration: a solid, a liquid or a gas. Sound cannot travel through a vacuum, which is a space with no matter in it. In outer space there is almost no air, so astronauts cannot hear each other without radios. Sound travels fastest in solids, slower in liquids, and slowest in gases. In air it moves at about <strong>340 m/s</strong>.</p>'
+- kind: figure
+  svg: <svg viewBox="0 0 300 150" role="img"><rect x="20" y="40" width="10" height="60" fill="#14193a"/><g fill="none" stroke="#3e7bfa" stroke-width="2"><path d="M44 30 Q52 70 44 110"/><path d="M62 30 Q70 70 62 110"/><path d="M92 30 Q100 70 92 110"/><path d="M110 30 Q118 70 110 110"/><path d="M140 30 Q148 70 140 110"/><path d="M158 30 Q166 70 158 110"/><path d="M188 30 Q196 70 188 110"/><path d="M206 30 Q214 70 206 110"/></g><text x="12" y="26" font-size="12" font-weight="700" fill="currentColor">vibrating object</text><text x="38" y="132" font-size="12" fill="currentColor">squeezed and stretched layers of air</text></svg>
+  alt: A vibrating object on the left with pairs of closely spaced curved lines moving to the right, showing squeezed and stretched layers of air.
+  caption: A vibrating object sends pairs of squeezed and stretched layers of air outward. The pattern travels, but the air does not move along with it.
+- kind: text
+  heading: Pitch and frequency
+  html: '<p>The <strong>frequency</strong> of a vibration is the number of vibrations in one second. Its unit is the <strong>hertz (Hz)</strong>. A frequency of 1 Hz means one vibration each second. A string that makes 440 vibrations in one second has a frequency of 440 Hz.</p><p><strong>Pitch</strong> is how high or low a sound seems. A higher frequency gives a higher pitch, like a whistle. A lower frequency gives a lower pitch, like a drum. Humans can usually hear sounds from about 20 Hz to 20 000 Hz.</p>'
+- kind: text
+  heading: Loudness and amplitude
+  html: '<p>The <strong>amplitude</strong> of a vibration is the biggest distance the object moves away from its rest position. A harder pluck makes a bigger amplitude. A bigger amplitude makes a <strong>louder</strong> sound. Loudness is measured in <strong>decibels (dB)</strong>. Normal talking is about 60 dB. Sounds above about 85 dB can damage hearing if you listen to them for a long time.</p><p>Pitch and loudness are separate. Hitting a drum harder makes it louder but does not change its pitch. Pitch changes only when the frequency changes.</p>'
+- kind: example
+  heading: Worked example
+  prompt: You see a flash of lightning and hear the thunder 3 seconds later. Take the speed of sound in air as 340 m/s. How far away did the lightning strike?
+  steps:
+  - 'Light is so fast that we see the flash almost at once. So the 3 seconds is the time the sound took to reach you.'
+  - 'Write the rule: distance = speed × time.'
+  - 'Put in the numbers: distance = 340 m/s × 3 s = 1020 m.'
+  - 'Check the units: m/s × s leaves m. The lightning was about 1020 m, a little over a kilometre, away.'
+- kind: example
+  heading: Worked example
+  prompt: A girl shouts toward a tall wall and hears her echo 2 seconds later. Take the speed of sound as 340 m/s. How far away is the wall?
+  steps:
+  - 'An echo is sound that bounces back. The sound goes to the wall and then comes back, so it travels the distance twice in 2 seconds.'
+  - 'Total distance travelled by the sound = 340 m/s × 2 s = 680 m.'
+  - 'This is there and back, so the wall is half of that: 680 m ÷ 2 = 340 m.'
+  - 'Check: sound takes 1 s to reach the wall and 1 s to return. In 1 s it travels 340 m.'
+- kind: callout
+  tone: watch
+  html: Do not mix up pitch and loudness. Pitch depends on frequency and is measured in Hz. Loudness depends on amplitude and is measured in dB. A high-pitched sound can be quiet, and a low-pitched sound can be very loud.
+- kind: callout
+  tone: real
+  html: 'Animals and machines use echoes too. Bats find insects by sending out very high-pitched squeaks and listening for the echo. Ships use sound echoes to measure how deep the sea is. Loud music through earphones for hours can harm your ears, so keep the volume low.'
+- kind: check
+  item: q-sv-1
+- kind: check
+  item: q-sv-2
+- kind: check
+  item: q-sv-3
+- kind: summary
+  points:
+  - 'Sound is made by vibrating objects. It travels as a disturbance through a medium and cannot travel through a vacuum.'
+  - 'Frequency is the number of vibrations per second, in hertz (Hz). A higher frequency means a higher pitch.'
+  - 'Amplitude is the biggest movement from the rest position. A bigger amplitude means a louder sound, measured in decibels (dB).'
+  - 'Speed of sound in air is about 340 m/s. Use distance = speed × time. For an echo, the sound travels there and back.'
+items:
+- key: q-sv-1
+  kind: mcq
+  stem: What produces every sound?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: sound-vibration
+  explanation: Every sound is made by a vibrating object.
+  hints:
+  - Think of a plucked rubber band.
+  correct: B
+  options:
+  - key: A
+    text: Light falling on an object
+  - key: B
+    text: A vibrating object
+  - key: C
+    text: An object kept still
+  - key: D
+    text: A vacuum
+- key: q-sv-2
+  kind: mcq
+  stem: Why can sound not travel through space between the Moon and the Earth?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: sound-vibration
+  explanation: Sound needs a medium to travel. Space between the Earth and the Moon is almost a vacuum, so there is nothing to carry the vibration.
+  hints:
+  - What does sound need to travel through?
+  correct: C
+  options:
+  - key: A
+    text: Sound is too slow
+  - key: B
+    text: Sound is too quiet
+    misconception: sound-in-vacuum
+  - key: C
+    text: There is no medium to carry the vibration
+  - key: D
+    text: Sound can travel there easily
+    misconception: sound-in-vacuum
+- key: q-sv-3
+  kind: mcq
+  stem: Which quantity decides the pitch of a sound?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: sound-vibration
+  explanation: Pitch depends on frequency. A higher frequency gives a higher pitch.
+  hints:
+  - Pitch is measured in hertz.
+  correct: A
+  options:
+  - key: A
+    text: Frequency
+  - key: B
+    text: Amplitude
+    misconception: loudness-pitch-mixup
+  - key: C
+    text: Distance from the listener
+  - key: D
+    text: Speed of sound
+- key: q-sv-4
+  kind: numeric
+  stem: A guitar string vibrates 50 times in 10 seconds. What is the frequency in hertz?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: sound-vibration
+  explanation: Frequency is the number of vibrations per second. 50 vibrations ÷ 10 s = 5 Hz.
+  hints:
+  - Divide the number of vibrations by the time in seconds.
+  value: 5
+  tolerance: 0.0
+  verify: 50/10
+- key: q-sv-5
+  kind: numeric
+  stem: You hear thunder 4 seconds after you see lightning. The speed of sound in air is 340 m/s. How far away, in metres, did the lightning strike?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: sound-vibration
+  explanation: distance = speed × time = 340 m/s × 4 s = 1360 m.
+  hints:
+  - Use distance = speed × time.
+  value: 1360
+  tolerance: 0.0
+  verify: 340*4
+- key: q-sv-6
+  kind: numeric
+  stem: Sound travels in air at 340 m/s. How many seconds does it take to travel 1700 m?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: sound-vibration
+  explanation: time = distance ÷ speed = 1700 m ÷ 340 m/s = 5 s.
+  hints:
+  - Rearrange distance = speed × time to find time.
+  value: 5
+  tolerance: 0.0
+  verify: 1700/340
+- key: q-sv-7
+  kind: numeric
+  stem: A boy claps near a cliff and hears the echo 6 seconds later. The speed of sound is 340 m/s. How far away, in metres, is the cliff?
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: sound-vibration
+  explanation: The sound goes to the cliff and back in 6 s. Total distance = 340 × 6 = 2040 m. The cliff is half of that, 2040 ÷ 2 = 1020 m away.
+  hints:
+  - The sound travels there and back.
+  - Find the total distance first, then halve it.
+  value: 1020
+  tolerance: 0.0
+  verify: 340*6/2
+- key: q-sv-8
+  kind: mcq
+  stem: A drummer hits the drum harder without changing how it is tuned. What changes about the sound?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: sound-vibration
+  explanation: A harder hit makes a bigger amplitude, so the sound is louder. The tuning, which sets the frequency, is not changed, so the pitch stays the same.
+  hints:
+  - Which quantity gets bigger when you hit harder?
+  correct: D
+  options:
+  - key: A
+    text: The pitch becomes higher
+    misconception: loudness-pitch-mixup
+  - key: B
+    text: The frequency becomes higher
+    misconception: loudness-pitch-mixup
+  - key: C
+    text: The sound becomes quieter
+  - key: D
+    text: The sound becomes louder
+- key: q-sv-9
+  kind: mcq
+  stem: 'Assertion (A): Astronauts working outside a spacecraft in space need radios to talk to each other. Reason (R): Sound cannot travel through a vacuum.'
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: sound-vibration
+  explanation: Both statements are true. There is no air outside the spacecraft to carry the vibration of their voices, so they cannot simply shout to each other. So R explains A.
+  hints:
+  - What does sound need in order to travel?
+  correct: A
+  options:
+  - key: A
+    text: Both A and R are true and R explains A
+  - key: B
+    text: Both A and R are true but R does not explain A
+  - key: C
+    text: A is true but R is false
+    misconception: sound-in-vacuum
+  - key: D
+    text: A is false but R is true
+    misconception: sound-in-vacuum
+- key: q-sv-10
+  kind: mcq
+  stem: 'Assertion (A): A drum that is hit harder gives a sound of higher pitch. Reason (R): A harder hit makes the drum skin vibrate with a bigger amplitude.'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: sound-vibration
+  explanation: A is false, because a harder hit makes the sound louder, not higher in pitch. R is true, because a harder hit does give a bigger amplitude. Pitch depends on frequency.
+  hints:
+  - Which quantity does amplitude change, pitch or loudness?
+  correct: D
+  options:
+  - key: A
+    text: Both A and R are true and R explains A
+    misconception: loudness-pitch-mixup
+  - key: B
+    text: Both A and R are true but R does not explain A
+    misconception: loudness-pitch-mixup
+  - key: C
+    text: A is true but R is false
+    misconception: loudness-pitch-mixup
+  - key: D
+    text: A is false but R is true
+- key: q-sv-11
+  kind: mcq
+  stem: Two tuning forks are struck gently one after the other. Fork P vibrates 256 times in every second. Fork Q vibrates 512 times in every second. A student listens to both. Which statement is correct?
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: sound-vibration
+  explanation: Fork Q has the larger frequency, 512 Hz against 256 Hz, so its pitch is higher. Both were struck gently, which says nothing about Q being louder.
+  hints:
+  - Frequency is the number of vibrations per second.
+  - Higher frequency means higher pitch.
+  correct: C
+  options:
+  - key: A
+    text: Fork P has the higher pitch, because 256 is the smaller number
+  - key: B
+    text: Fork Q is louder, because its frequency is higher
+    misconception: loudness-pitch-mixup
+  - key: C
+    text: Fork Q has the higher pitch, because its frequency is 512 Hz
+  - key: D
+    text: Both have the same pitch, because they were struck gently
+- key: q-sv-12
+  kind: mcq
+  stem: A hand clap travels from one side of a hall to your ear. What actually moves from the clap to your ear?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: sound-vibration
+  explanation: The vibration passes from one layer of air to the next. The air itself only moves to and fro a little and does not travel from the clap to your ear.
+  hints:
+  - Think of a wave on a rope. The rope itself stays where it is.
+  correct: B
+  options:
+  - key: A
+    text: The air that was next to the hands
+    misconception: air-travels-with-sound
+  - key: B
+    text: The vibration, passed along from one layer of air to the next
+  - key: C
+    text: A cloud of sound particles
+    misconception: air-travels-with-sound
+  - key: D
+    text: Light from the hands
+- key: q-sv-13
+  kind: mcq
+  stem: In which of these does sound travel fastest?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: sound-vibration
+  explanation: Sound travels fastest in solids, slower in liquids, and slowest in gases. A steel rail is a solid.
+  hints:
+  - Think of putting your ear to a railway line.
+  correct: A
+  options:
+  - key: A
+    text: A steel rail
+  - key: B
+    text: Water
+  - key: C
+    text: Air
+  - key: D
+    text: A vacuum
+    misconception: sound-in-vacuum
+misconceptions:
+- code: sound-in-vacuum
+  concept: sound-vibration
+  description: Thinks sound can travel through a vacuum, when it needs a medium such as air, water or a solid.
+- code: loudness-pitch-mixup
+  concept: sound-vibration
+  description: Mixes up pitch, which depends on frequency, with loudness, which depends on amplitude.
+- code: air-travels-with-sound
+  concept: sound-vibration
+  description: Thinks the air itself flows from the source to the listener, when only the vibration travels.
+cards:
+- key: sound-and-vibration-card-1
+  concept: sound-vibration
+  front: What produces sound, and what does it need to travel?
+  back: A vibrating object produces sound. It travels through a medium (solid, liquid or gas) and cannot travel through a vacuum.
+- key: sound-and-vibration-card-2
+  concept: sound-vibration
+  front: What are frequency and pitch, and what is the unit?
+  back: Frequency is the number of vibrations per second, in hertz (Hz). A higher frequency gives a higher pitch.
+- key: sound-and-vibration-card-3
+  concept: sound-vibration
+  front: What are amplitude and loudness, and what is the unit of loudness?
+  back: Amplitude is the biggest movement from the rest position. A bigger amplitude gives a louder sound, measured in decibels (dB).
+- key: sound-and-vibration-card-4
+  concept: sound-vibration
+  front: What is the speed of sound in air, and how do you find an echo distance?
+  back: About 340 m/s. distance = speed × time. For an echo, halve the total distance because the sound goes there and back.

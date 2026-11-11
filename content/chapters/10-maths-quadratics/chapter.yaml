@@ -1,0 +1,11 @@
+slug: 10-maths-quadratics
+board: cbse
+curriculum: NCERT current editions (to be confirmed by a reviewer)
+grade: 10
+subject: maths
+title: Quadratic Equations
+summary: Solve equations with a squared unknown by factorising and by the quadratic formula, read the discriminant and use quadratics in word problems.
+concepts:
+- id: quadratic-equations
+lessons:
+- solving-quadratics

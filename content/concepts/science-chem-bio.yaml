@@ -1,0 +1,5 @@
+concepts:
+  - {id: separating-mixtures, title: "Separating mixtures", grade: 6, subject: science, description: "Choosing handpicking, winnowing, sieving, sedimentation and decantation, filtration or evaporation by looking at how the parts of a mixture differ.", keywords: [mixture, separation, winnowing, sieving, filtration, evaporation, decantation]}
+  - {id: cell-unit-of-life, title: "The cell as the unit of life", grade: 8, subject: science, description: "The cell as the basic unit of living things, its main parts, and how plant and animal cells differ.", keywords: [cell, nucleus, cytoplasm, cell membrane, cell wall, chloroplast, vacuole]}
+  - {id: ph-scale, title: "The pH scale", grade: 10, subject: science, description: "What pH measures, the 0 to 14 scale, indicators, and pH in the stomach, teeth, soil and neutralisation.", keywords: [pH, acidic, basic, neutral, universal indicator, neutralisation],
+     prerequisites: [{id: acids-bases, why: "pH puts numbers on the acid and base ideas met earlier."}]}

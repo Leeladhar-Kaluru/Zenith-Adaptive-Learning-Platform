@@ -1,0 +1,314 @@
+slug: describing-motion
+title: Describing motion
+minutes: 30
+objectives:
+- Tell distance from displacement, and speed from velocity
+- Calculate speed, average speed and acceleration with the correct units
+- Read speed from a distance-time graph and distance from a speed-time graph
+- Explain why an object moving in a circle at steady speed is still accelerating
+concepts:
+- motion-description
+origin: ai_assisted
+blocks:
+- kind: text
+  heading: Where did you end up, and how far did you travel?
+  html: '<p>You walk from your house to a shop, buy a pencil and walk back home. You have walked a long way. But where did you end up? Right where you began. Physics keeps these two ideas apart.</p><p><strong>Distance</strong> is the total length of the path you travelled. It is measured in metres (m) and it is never negative. <strong>Displacement</strong> is the straight-line change in position from the start to the finish, together with its direction. If you finish where you started, your displacement is zero, however far you walked.</p><p>A quantity that has only a size is called a <strong>scalar</strong>. A quantity that has a size and a direction is called a <strong>vector</strong>. Distance is a scalar. Displacement is a vector.</p>'
+- kind: example
+  heading: Worked example
+  prompt: A runner goes 300 m north along a straight road. Then she turns round and runs 100 m south. Find her distance and her displacement.
+  steps:
+  - 'Distance is the whole path length. Add the two parts: 300 m + 100 m = 400 m.'
+  - 'Displacement is the change in position. She went 300 m north and then 100 m back south, so she is 300 m - 100 m = 200 m north of her start.'
+  - 'Give the direction with the displacement: 200 m north.'
+  - 'Check: the displacement (200 m) is smaller than the distance (400 m). On a path that turns back, displacement is always smaller than distance.'
+- kind: text
+  heading: Speed and velocity
+  html: '<p><strong>Speed</strong> tells you how fast something moves. It is the distance covered in one unit of time: <strong>speed = distance ÷ time</strong>. Its SI unit is metres per second (m/s). Road signs use kilometres per hour (km/h). To change km/h into m/s, multiply by 1000 and divide by 3600. So 72 km/h = 72 × 1000 ÷ 3600 = 20 m/s.</p><p><strong>Velocity</strong> is the displacement in one unit of time, so it has a direction too: <strong>velocity = displacement ÷ time</strong>. Two cars can have the same speed but different velocities if they move in different directions.</p><p>Most journeys are not at one steady speed. The <strong>average speed</strong> is the total distance divided by the total time taken. It is not the plain average of the speeds.</p>'
+- kind: example
+  heading: Worked example
+  prompt: A bus travels 60 km in the first hour at 60 km/h. It then travels 60 km in the next 2 hours at 30 km/h. What is its average speed for the whole trip?
+  steps:
+  - 'Total distance = 60 km + 60 km = 120 km.'
+  - 'Total time = 1 h + 2 h = 3 h.'
+  - 'Average speed = total distance ÷ total time = 120 km ÷ 3 h = 40 km/h.'
+  - 'Check: the plain average of 60 and 30 is 45 km/h, which is wrong. The bus spent more time at the slower speed, so the true average, 40 km/h, is closer to 30.'
+- kind: text
+  heading: Acceleration
+  html: '<p>When you ride a bicycle and pedal harder, your velocity changes. The rate at which velocity changes is called <strong>acceleration</strong>: <strong>a = (v - u) ÷ t</strong>. Here u is the starting (initial) velocity, v is the final velocity and t is the time taken. The SI unit is metres per second squared (m/s<sup>2</sup>).</p><p>If an object speeds up, the acceleration is positive. If it slows down, the acceleration is negative and is also called <strong>retardation</strong> or deceleration. Velocity changes when the speed changes or when the direction changes, so even a car going round a bend at steady speed is accelerating.</p>'
+- kind: example
+  heading: Worked example
+  prompt: A car moving at 30 m/s brakes steadily and slows to 10 m/s in 4 s. Find its acceleration.
+  steps:
+  - 'Write what you know: u = 30 m/s, v = 10 m/s, t = 4 s.'
+  - 'Change in velocity = v - u = 10 - 30 = -20 m/s.'
+  - 'a = (v - u) ÷ t = -20 ÷ 4 = -5 m/s².'
+  - 'The negative sign means the car is slowing down. Its speed falls by 5 m/s every second.'
+- kind: text
+  heading: Reading motion graphs
+  html: '<p>A graph shows motion at a glance. On a <strong>distance-time graph</strong>, time is along the bottom and distance is up the side. A flat line means the object is not moving, because the distance is not changing. A straight sloping line means steady speed, and the <strong>slope (steepness) of the line is the speed</strong>. A steeper line means a faster object. A curved line means the speed is changing.</p><p>On a <strong>speed-time graph</strong> a flat line means steady speed. A line that slopes upward means speeding up, and its slope is the acceleration. The <strong>area under the line</strong> is the distance travelled.</p>'
+- kind: figure
+  svg: <svg viewBox="0 0 300 220" role="img"><line x1="40" y1="180" x2="280" y2="180" stroke="currentColor" stroke-width="2"/><line x1="40" y1="180" x2="40" y2="20" stroke="currentColor" stroke-width="2"/><line x1="40" y1="180" x2="280" y2="20" stroke="#ffb800" stroke-width="4"/><line x1="280" y1="180" x2="280" y2="20" stroke="currentColor" stroke-width="1" stroke-dasharray="4 4"/><line x1="40" y1="20" x2="280" y2="20" stroke="currentColor" stroke-width="1" stroke-dasharray="4 4"/><text x="150" y="208" font-size="13" font-weight="700" fill="currentColor">time (s)</text><text x="4" y="14" font-size="13" font-weight="700" fill="currentColor">distance (m)</text><text x="28" y="196" font-size="12" fill="currentColor">0</text><text x="272" y="196" font-size="12" fill="currentColor">10</text><text x="12" y="24" font-size="12" fill="currentColor">40</text><text x="110" y="118" font-size="12" font-weight="700" fill="currentColor">steady slope</text></svg>
+  alt: A distance-time graph with a straight line rising from zero to 40 metres at 10 seconds, showing steady speed.
+  caption: A straight sloping line on a distance-time graph. It covers 40 m in 10 s, so its speed is 40 ÷ 10 = 4 m/s.
+- kind: figure
+  svg: <svg viewBox="0 0 300 220" role="img"><line x1="40" y1="180" x2="280" y2="180" stroke="currentColor" stroke-width="2"/><line x1="40" y1="180" x2="40" y2="20" stroke="currentColor" stroke-width="2"/><polygon points="40,180 136,20 280,20 280,180" fill="#6cb7ff" opacity=".35"/><polyline points="40,180 136,20 280,20" fill="none" stroke="#ffb800" stroke-width="4"/><line x1="136" y1="20" x2="136" y2="180" stroke="currentColor" stroke-width="1" stroke-dasharray="4 4"/><text x="150" y="208" font-size="13" font-weight="700" fill="currentColor">time (s)</text><text x="4" y="14" font-size="13" font-weight="700" fill="currentColor">speed (m/s)</text><text x="28" y="196" font-size="12" fill="currentColor">0</text><text x="128" y="196" font-size="12" fill="currentColor">4</text><text x="272" y="196" font-size="12" fill="currentColor">10</text><text x="12" y="24" font-size="12" fill="currentColor">10</text><text x="70" y="140" font-size="12" font-weight="700" fill="currentColor">speeding up</text><text x="160" y="110" font-size="12" font-weight="700" fill="currentColor">steady speed</text></svg>
+  alt: A speed-time graph where speed rises from zero to 10 metres per second in 4 seconds, then stays flat until 10 seconds.
+  caption: The line rises for 4 s (acceleration 10 ÷ 4 = 2.5 m/s²) and then stays flat. The shaded area under the line is the distance travelled.
+- kind: example
+  heading: Worked example
+  prompt: A toy car moves at a steady 6 m/s for 5 s. Use a speed-time graph to find the distance it travels.
+  steps:
+  - 'On a speed-time graph the line is flat at 6 m/s from 0 s to 5 s.'
+  - 'The area under the line is a rectangle, 5 s wide and 6 m/s tall.'
+  - 'Area = 5 × 6 = 30. The units are s × m/s = m, so the distance is 30 m.'
+  - 'Check with the formula: distance = speed × time = 6 × 5 = 30 m. Both ways agree.'
+- kind: callout
+  tone: watch
+  html: A flat line on a distance-time graph means the object is standing still, not moving at steady speed. A flat line on a speed-time graph means steady speed. The same shape means different things on different graphs, so always read the axis labels first.
+- kind: callout
+  tone: real
+  html: A bus ticket machine, a cricket speed gun and a phone app for cyclists all work out speed as distance divided by time. When a driver says the car pulls away quickly, that is a large acceleration.
+- kind: check
+  item: q-dm-1
+- kind: check
+  item: q-dm-3
+- kind: check
+  item: q-dm-5
+- kind: summary
+  points:
+  - 'Distance is the path length (scalar). Displacement is the straight-line change in position with direction (vector).'
+  - 'Speed = distance ÷ time. Average speed = total distance ÷ total time. Velocity uses displacement.'
+  - 'Acceleration a = (v - u) ÷ t, in m/s². A change in direction also counts as a change in velocity.'
+  - 'On a distance-time graph the slope is speed. On a speed-time graph the slope is acceleration and the area is distance.'
+items:
+- key: q-dm-1
+  kind: mcq
+  stem: A boy walks once round a square field and returns to his starting corner. Which statement is correct?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: motion-description
+  explanation: His path has some length, so the distance is not zero. He ends where he began, so the change in position, the displacement, is zero.
+  hints:
+  - Compare where he started with where he finished.
+  correct: C
+  options:
+  - key: A
+    text: Distance is zero and displacement is zero
+    misconception: distance-equals-displacement
+  - key: B
+    text: Distance is zero and displacement is not zero
+  - key: C
+    text: Distance is not zero and displacement is zero
+  - key: D
+    text: Neither is zero, and they are equal
+    misconception: distance-equals-displacement
+- key: q-dm-2
+  kind: numeric
+  stem: A man walks 70 m east and then 30 m back west along a straight path. What is the total distance he walks, in metres?
+  difficulty: intro
+  purpose: practice
+  concepts:
+  - id: motion-description
+  explanation: Distance adds up the whole path, 70 + 30 = 100 m. His displacement would be 70 - 30 = 40 m east.
+  hints:
+  - Distance counts every metre walked, in either direction.
+  value: 100
+  tolerance: 0.0
+  verify: 70+30
+- key: q-dm-3
+  kind: numeric
+  stem: A cyclist covers 150 m in 30 s at a steady speed. What is the speed, in m/s?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: motion-description
+  explanation: Speed = distance ÷ time = 150 ÷ 30 = 5 m/s.
+  hints:
+  - Divide the distance by the time.
+  value: 5
+  tolerance: 0.0
+  verify: 150/30
+- key: q-dm-4
+  kind: numeric
+  stem: A train moves at 54 km/h. What is its speed in m/s?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: motion-description
+  explanation: 54 km/h = 54 × 1000 ÷ 3600 = 15 m/s.
+  hints:
+  - 1 km is 1000 m and 1 hour is 3600 s.
+  value: 15
+  tolerance: 0.0
+  verify: 54*1000/3600
+- key: q-dm-5
+  kind: numeric
+  stem: A scooter starts from rest and reaches 18 m/s in 6 s. What is its acceleration, in m/s²?
+  difficulty: standard
+  purpose: check
+  concepts:
+  - id: motion-description
+  explanation: Starting from rest means u = 0. a = (v - u) ÷ t = (18 - 0) ÷ 6 = 3 m/s².
+  hints:
+  - Use a = (v - u) ÷ t. What is u when the scooter starts from rest?
+  value: 3
+  tolerance: 0.0
+  verify: (18-0)/6
+- key: q-dm-6
+  kind: mcq
+  stem: On a distance-time graph an object is shown by a straight line that slopes steeply upward. What does it show?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: motion-description
+  explanation: The slope of a distance-time graph is the speed. A straight line means the speed is steady, and a steep line means the speed is large.
+  hints:
+  - What does the slope of a distance-time graph tell you?
+  correct: B
+  options:
+  - key: A
+    text: The object is at rest
+    misconception: flat-line-confusion
+  - key: B
+    text: The object moves fast at a steady speed
+  - key: C
+    text: The object is speeding up with steady acceleration
+    misconception: flat-line-confusion
+  - key: D
+    text: The object has returned to its starting point
+- key: q-dm-7
+  kind: numeric
+  stem: An object moves at a steady 8 m/s for 7 s. Using the area under its speed-time graph, find the distance travelled, in metres.
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: motion-description
+  explanation: The area under the flat line is a rectangle, 7 s × 8 m/s = 56 m.
+  hints:
+  - Area of a rectangle is width times height.
+  value: 56
+  tolerance: 0.0
+  verify: 7*8
+- key: q-dm-8
+  kind: numeric
+  stem: A car travels 80 km in the first 2 hours and then 40 km in the next 2 hours. What is its average speed for the whole trip, in km/h?
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: motion-description
+  explanation: Total distance = 80 + 40 = 120 km. Total time = 2 + 2 = 4 h. Average speed = 120 ÷ 4 = 30 km/h.
+  hints:
+  - Add up the distances and add up the times before you divide.
+  value: 30
+  tolerance: 0.0
+  verify: (80+40)/(2+2)
+- key: q-dm-9
+  kind: numeric
+  stem: A car moving at 25 m/s brakes steadily and slows to 5 m/s in 4 s. What is its acceleration, in m/s²? Use a negative number for slowing down.
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: motion-description
+  explanation: a = (v - u) ÷ t = (5 - 25) ÷ 4 = -5 m/s². The negative sign shows the car is slowing down.
+  hints:
+  - Final velocity minus initial velocity gives a negative number when the car slows down.
+  value: -5
+  tolerance: 0.0
+  verify: (5-25)/4
+- key: q-dm-10
+  kind: mcq
+  stem: 'Assertion (A): A car moving round a circular track at a constant speed is accelerating. Reason (R): Velocity has a direction, and the direction of the car keeps changing.'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: motion-description
+  explanation: Both are true. Acceleration is a change in velocity, and velocity changes when direction changes even if speed does not. So R explains A.
+  hints:
+  - Is velocity only about how fast, or also about which way?
+  correct: A
+  options:
+  - key: A
+    text: Both A and R are true, and R explains A
+  - key: B
+    text: Both A and R are true, but R does not explain A
+    misconception: accel-means-speed-change
+  - key: C
+    text: A is true, but R is false
+    misconception: accel-means-speed-change
+  - key: D
+    text: A is false, but R is true
+    misconception: accel-means-speed-change
+- key: q-dm-11
+  kind: mcq
+  stem: 'Assertion (A): The displacement of an object can be zero even when the distance it has travelled is not zero. Reason (R): Displacement is the total length of the path that the object follows.'
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: motion-description
+  explanation: A is true, for example a full lap of a track. R is false, because the total path length is the distance. Displacement is the straight-line change in position.
+  hints:
+  - Which quantity is the length of the path, distance or displacement?
+  correct: C
+  options:
+  - key: A
+    text: Both A and R are true, and R explains A
+    misconception: distance-equals-displacement
+  - key: B
+    text: Both A and R are true, but R does not explain A
+    misconception: distance-equals-displacement
+  - key: C
+    text: A is true, but R is false
+  - key: D
+    text: A is false, but R is true
+- key: q-dm-12
+  kind: mcq
+  stem: 'Read the passage. A cyclist starts from rest and speeds up steadily to 6 m/s in 3 s. She rides at 6 m/s for the next 5 s. She then brakes steadily and stops in 2 s. What total distance does she travel? (On a speed-time graph, the distance is the total area under the line.)'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: motion-description
+  explanation: 'Speeding up: ½ × 3 × 6 = 9 m. Steady part: 5 × 6 = 30 m. Braking: ½ × 2 × 6 = 6 m. Total = 9 + 30 + 6 = 45 m.'
+  hints:
+  - The graph has three parts, a triangle, a rectangle and another triangle. Find each area.
+  correct: C
+  options:
+  - key: A
+    text: 30 m
+  - key: B
+    text: 39 m
+  - key: C
+    text: 45 m
+  - key: D
+    text: 60 m
+    misconception: mean-of-speeds
+misconceptions:
+- code: distance-equals-displacement
+  concept: motion-description
+  description: Treats distance and displacement as the same thing, forgetting that displacement is a straight-line change in position and can be zero.
+- code: flat-line-confusion
+  concept: motion-description
+  description: Misreads the shape of a distance-time graph, for example thinking a flat line means steady motion or a steep line means speeding up.
+- code: accel-means-speed-change
+  concept: motion-description
+  description: Thinks acceleration only means a change in speed, so steady motion in a circle seems to have none.
+- code: mean-of-speeds
+  concept: motion-description
+  description: Uses the biggest speed, or the plain average of speeds, for the whole journey instead of total distance divided by total time.
+cards:
+- key: describing-motion-card-1
+  concept: motion-description
+  front: What is the difference between distance and displacement?
+  back: Distance is the length of the path travelled (scalar). Displacement is the straight-line change in position with direction (vector).
+- key: describing-motion-card-2
+  concept: motion-description
+  front: How do you find average speed?
+  back: Total distance divided by total time taken.
+- key: describing-motion-card-3
+  concept: motion-description
+  front: What is the formula for acceleration?
+  back: a = (v - u) ÷ t, where u is initial velocity and v is final velocity. The unit is m/s².
+- key: describing-motion-card-4
+  concept: motion-description
+  front: What do the slope and the area tell you on a speed-time graph?
+  back: The slope is acceleration. The area under the line is the distance travelled.

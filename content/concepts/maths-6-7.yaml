@@ -1,0 +1,14 @@
+concepts:
+  - {id: factors-multiples, title: Factors and multiples, grade: 6, subject: maths, description: "Finding the factors of a number and listing its multiples.", keywords: [factor, multiple, divisible],
+     prerequisites: [{id: whole-number-ops}]}
+  - {id: prime-factorisation, title: Prime numbers and prime factorisation, grade: 6, subject: maths, description: "Telling prime numbers from composite numbers and writing a number as a product of primes.", keywords: [prime, composite, factor tree, prime factorisation],
+     prerequisites: [{id: factors-multiples}]}
+  - {id: hcf-lcm, title: HCF and LCM, grade: 6, subject: maths, description: "Finding the highest common factor and lowest common multiple, and using them in tiling and timing problems.", keywords: [HCF, LCM, common factor, common multiple],
+     prerequisites: [{id: prime-factorisation}]}
+  - {id: fractions-equivalent, title: Equivalent fractions, grade: 6, subject: maths, description: "Writing the same amount as different fractions by multiplying the top and bottom by the same number.", keywords: [equivalent, same value, simplest form],
+     prerequisites: [{id: fractions-parts}, {id: factors-multiples}]}
+  - {id: fractions-add-subtract-unlike, title: Adding and subtracting unlike fractions, grade: 6, subject: maths, description: "Adding and subtracting fractions with different denominators by first writing them with a common denominator.", keywords: [unlike fractions, common denominator, add, subtract],
+     prerequisites: [{id: fractions-equivalent}, {id: fractions-compare}, {id: hcf-lcm, why: The smallest common denominator is the LCM of the denominators.}]}
+  - {id: triangle-angle-sum, title: Angle sum of a triangle, grade: 7, subject: maths, description: "The three angles of any triangle add up to 180 degrees, and why.", keywords: [triangle, angle sum, 180 degrees, interior angle]}
+  - {id: triangle-exterior-angle, title: Exterior angle of a triangle, grade: 7, subject: maths, description: "An exterior angle equals the sum of the two interior opposite angles; angle chasing.", keywords: [exterior angle, interior opposite angles, angle chasing],
+     prerequisites: [{id: triangle-angle-sum}]}

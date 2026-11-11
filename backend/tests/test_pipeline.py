@@ -154,3 +154,11 @@ def test_the_scheduled_run_needs_the_secret_and_the_pipeline_screens_are_for_rev
     assert client.get(f"{API}/pipeline/overview", headers=auth(people["s7"])).status_code == 403
     ov = client.get(f"{API}/pipeline/overview", headers=auth(people["reviewer"])).json()
     assert ov["cronConfigured"] is True and set(ov) >= {"jobs", "pages", "drafts", "queued", "aiEnabled"}
+
+
+def test_the_api_starts_without_sympy_and_yaml_because_the_serverless_runtime_does_not_install_them():
+    import subprocess
+    import sys
+    code = "import sys\nfor m in ('sympy', 'yaml'):\n    sys.modules[m] = None\nimport app.main\n"
+    r = subprocess.run([sys.executable, "-c", code], capture_output=True, text=True, cwd=str(__import__("pathlib").Path(__file__).resolve().parents[1]))
+    assert r.returncode == 0, r.stderr[-400:]

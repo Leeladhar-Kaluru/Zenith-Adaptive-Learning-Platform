@@ -5,7 +5,6 @@ import hmac
 import uuid
 from typing import Optional
 
-import yaml
 from fastapi import APIRouter, Depends, Header, HTTPException
 from pydantic import BaseModel, Field
 from sqlalchemy import func, select
@@ -106,6 +105,7 @@ def draft_detail(draft_id: uuid.UUID, r: Profile = Depends(reviewer_only), db: S
     d = db.get(LessonDraft, draft_id)
     if d is None:
         raise HTTPException(404, "Draft not found.")
+    import yaml
     return {"id": str(d.id), "title": d.title, "grade": d.grade, "subject": d.subject_id, "scorecard": d.scorecard, "score": d.score, "verdict": d.verdict, "status": d.status,
             "yaml": yaml.safe_dump(d.lesson, allow_unicode=True, sort_keys=False)}
 

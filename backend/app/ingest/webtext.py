@@ -8,7 +8,7 @@ import re
 from dataclasses import dataclass, field
 from html.parser import HTMLParser
 
-from app.cms.gates import fk_grade
+from app.cms.readability import fk_grade
 
 SKIP = {"script", "style", "nav", "header", "footer", "aside", "form", "noscript", "svg", "figure", "figcaption", "button", "select", "dialog", "iframe", "table"}
 HEADINGS = {"h1", "h2", "h3", "h4"}

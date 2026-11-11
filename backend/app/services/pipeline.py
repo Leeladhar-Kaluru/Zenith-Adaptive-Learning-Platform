@@ -17,7 +17,6 @@ from typing import Awaitable, Callable
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
-from app.cms import autodraft, evaluator
 from app.ingest import textsource, webtext
 from app.ingest.commons import user_agent
 from app.ingest.fetch import fetch
@@ -116,6 +115,7 @@ def run_requests(db: Session, fetcher: Callable[..., bytes] = fetch, budget_s: f
 
 async def run_drafts(db: Session, generate: Callable[..., Awaitable[str]] | None, limit: int = 1, budget_s: float = 20.0) -> dict:
     """Draft a lesson from each approved text page that has none yet. Needs the AI helper; without it nothing is drafted and that is reported."""
+    from app.cms import autodraft, evaluator          # needs PyYAML, so loaded only when drafting is on
     out = {"drafted": 0, "rejected": 0, "skipped": ""}
     if generate is None:
         out["skipped"] = "The AI helper is switched off, so no drafts were made."

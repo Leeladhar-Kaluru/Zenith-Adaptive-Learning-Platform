@@ -39,6 +39,10 @@ const EquationSim = lazy(() => import('./sims/EquationSim').then((m) => ({ defau
 const DensitySim = lazy(() => import('./sims/DensitySim').then((m) => ({ default: m.DensitySim })));
 const Atlas = lazy(() => import('./viz/Atlas').then((m) => ({ default: m.Atlas })));
 const Chart = lazy(() => import('./viz/Chart').then((m) => ({ default: m.Chart })));
+const ProjectileSim = lazy(() => import('./sims/ProjectileSim').then((m) => ({ default: m.ProjectileSim })));
+const RefractionSim = lazy(() => import('./sims/RefractionSim').then((m) => ({ default: m.RefractionSim })));
+const CircuitSim = lazy(() => import('./sims/CircuitSim').then((m) => ({ default: m.CircuitSim })));
+const SolidSim = lazy(() => import('./sims/SolidSim').then((m) => ({ default: m.SolidSim })));
 const SpinnerSim = lazy(() => import('./sims/SpinnerSim').then((m) => ({ default: m.SpinnerSim })));
 
 function Sim({ b }: { b: Extract<Block, { kind: 'widget' }> }) {
@@ -47,6 +51,11 @@ function Sim({ b }: { b: Extract<Block, { kind: 'widget' }> }) {
   if (b.widget === 'sim_linegraph') return <LineGraphSim blockId={b.id} m0={n('m0')} c0={n('c0')} goal_m={n('goal_m')} goal_c={n('goal_c')} task={task} />;
   if (b.widget === 'sim_equation') return <EquationSim blockId={b.id} a={n('a')} b={n('b')} c={n('c')} task={task} />;
   if (b.widget === 'sim_density') return <DensitySim blockId={b.id} mass0={n('mass0')} vol0={n('vol0')} goal={b.config.goal === undefined ? undefined : String(b.config.goal)} task={task} />;
+  const str = (k: string) => (b.config[k] === undefined ? undefined : String(b.config[k]));
+  if (b.widget === 'sim_projectile') return <ProjectileSim blockId={b.id} v0={n('v0')} angle0={n('angle0')} g0={n('g0')} h0={n('h0')} target={n('target')} tol={n('tol')} task={task} />;
+  if (b.widget === 'sim_refraction') return <RefractionSim blockId={b.id} n1={n('n1')} n2={n('n2')} angle0={n('angle0')} goal={str('goal')} goal_angle={n('goal_angle')} task={task} />;
+  if (b.widget === 'sim_circuit') return <CircuitSim blockId={b.id} volts={n('volts')} r1={n('r1')} r2={n('r2')} mode={str('mode')} goal_current={n('goal_current')} task={task} />;
+  if (b.widget === 'sim_solid') return <SolidSim blockId={b.id} shape={str('shape')} goal_volume={n('goal_volume')} a={n('a')} l={n('l')} w={n('w')} h={n('h')} r={n('r')} task={task} />;
   return <SpinnerSim blockId={b.id} parts={n('parts')} hit={n('hit')} task={task} />;
 }
 

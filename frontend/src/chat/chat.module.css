@@ -1,0 +1,78 @@
+.chat { display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; }
+.chat > * { min-width: 0; }
+.head { display: flex; gap: 10px; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+.status { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; font-size: .85rem; color: var(--ink-2); }
+.dotOn, .dotOff { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+.dotOn { background: var(--ok); box-shadow: 0 0 0 3px var(--ok-soft); }
+.dotOff { background: var(--ink-3); }
+.search { display: flex; align-items: center; gap: 6px; border: 2px solid var(--ink); border-radius: 12px; padding: 4px 10px; background: var(--surface); flex: 1 1 180px; max-width: 320px; color: var(--ink); }
+.search input { border: 0; background: transparent; color: var(--ink); width: 100%; min-width: 0; font: inherit; outline: none; padding: 6px 0; }
+.online, .typing { font-size: .82rem; color: var(--ink-2); margin: 0; }
+.pinned { display: flex; align-items: center; gap: 8px; padding: 8px 12px; border: 2px dashed var(--ink); border-radius: 12px; background: var(--hi-soft, var(--surface-2)); color: var(--ink); font-size: .9rem; overflow-wrap: anywhere; }
+.pinned em { margin-left: auto; font-style: normal; color: var(--ink-2); white-space: nowrap; }
+.list { list-style: none; margin: 0; padding: 12px; display: grid; gap: 12px; align-content: start; height: clamp(240px, calc(100dvh - 470px), 560px); overflow-y: auto; overscroll-behavior: contain; border: 2px solid var(--ink); border-radius: 16px; background: var(--surface); }
+.older, .empty { text-align: center; color: var(--ink-2); font-size: .9rem; padding: 6px; }
+.row { display: flex; gap: 8px; align-items: flex-start; min-width: 0; }
+.mine { flex-direction: row-reverse; }
+.mine .bubbleCol { align-items: flex-end; }
+.bubbleCol { display: flex; flex-direction: column; gap: 4px; min-width: 0; max-width: min(86%, 560px); }
+.who { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; font-size: .82rem; color: var(--ink-2); }
+.who strong { color: var(--ink); }
+.who time { font-size: .74rem; }
+.bubble { background: var(--surface-2); color: var(--ink); border: 2px solid var(--ink); border-radius: 14px; padding: 8px 12px; min-width: 0; max-width: 100%; }
+.mine .bubble { background: var(--brand); color: var(--brand-ink); }
+.notice .bubble { border-style: dashed; background: var(--hi-soft, var(--surface-2)); color: var(--ink); }
+.text { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; }
+.gone { color: var(--ink-2); font-style: italic; margin: 0 0 0 42px; font-size: .9rem; }
+.quote { border-left: 4px solid var(--ink-3); padding: 2px 8px; margin-bottom: 6px; font-size: .82rem; opacity: .85; overflow-wrap: anywhere; }
+.media { margin: 0; }
+.media img { max-width: 100%; max-height: 260px; border-radius: 10px; display: block; }
+.media figcaption { font-size: .7rem; opacity: .7; margin-top: 2px; }
+.fileBtn { display: inline-flex; align-items: center; gap: 8px; flex-wrap: wrap; text-align: left; padding: 8px 10px; border: 2px solid var(--ink); border-radius: 10px; background: var(--surface); color: var(--ink); font-weight: 700; max-width: 100%; overflow-wrap: anywhere; }
+.fileBtn span { color: var(--brand); text-decoration: underline; }
+.reacts { display: flex; gap: 6px; flex-wrap: wrap; }
+.react { border: 2px solid var(--ink); border-radius: 999px; background: var(--surface); color: var(--ink); padding: 2px 10px; font-size: .85rem; font-weight: 700; min-height: 30px; }
+.react[aria-pressed='true'] { background: var(--brand); color: var(--brand-ink); }
+.actions { display: flex; gap: 4px; flex-wrap: wrap; }
+.actions button, .tools button { background: transparent; color: var(--ink-2); border: 0; padding: 4px 8px; border-radius: 8px; font-weight: 700; font-size: .8rem; min-height: 32px; }
+.actions button:hover, .tools button:hover { background: var(--surface-2); color: var(--ink); }
+.picker { display: flex; flex-wrap: wrap; gap: 2px; padding: 6px; border: 2px solid var(--ink); border-radius: 12px; background: var(--surface); max-width: 100%; }
+.picker button { font-size: 1.3rem; width: 40px; height: 40px; border: 0; background: transparent; border-radius: 8px; }
+.picker button:hover { background: var(--surface-2); }
+.more, .actionsRow { display: flex; gap: 6px; flex-wrap: wrap; }
+.report { display: grid; gap: 8px; padding: 8px; border: 2px solid var(--ink); border-radius: 12px; background: var(--surface); }
+.report label, .panel label { display: grid; gap: 4px; font-size: .85rem; font-weight: 700; color: var(--ink); }
+.report input, .panel input[type='text'], .panel label input { border: 2px solid var(--ink); border-radius: 10px; padding: 8px 10px; background: var(--surface-2); color: var(--ink); font: inherit; min-width: 0; }
+.poll { display: grid; gap: 6px; min-width: min(260px, 100%); }
+.opt { position: relative; display: flex; justify-content: space-between; gap: 10px; text-align: left; border: 2px solid var(--ink); border-radius: 10px; background: var(--surface); color: var(--ink); padding: 8px 10px; overflow: hidden; font-weight: 700; min-height: 40px; }
+.opt[aria-pressed='true'] { outline: 3px solid var(--brand); }
+.bar { position: absolute; inset: 0 auto 0 0; background: var(--ok-soft); z-index: 0; transition: width .3s; }
+.optText, .optN { position: relative; z-index: 1; }
+.optText { overflow-wrap: anywhere; }
+.optN { white-space: nowrap; font-weight: 600; font-size: .82rem; }
+.composer { display: grid; gap: 8px; }
+.bar2 { display: flex; gap: 8px; align-items: flex-end; }
+.bar2 textarea { flex: 1; min-width: 0; resize: none; border: 2px solid var(--ink); border-radius: 12px; padding: 10px 12px; background: var(--surface); color: var(--ink); font: inherit; min-height: 46px; max-height: 140px; field-sizing: content; }
+.tools { display: flex; gap: 2px; align-items: center; flex-wrap: wrap; }
+.tools b { font-size: .78rem; border: 2px solid currentColor; border-radius: 6px; padding: 0 4px; }
+.count { margin-left: auto; font-size: .75rem; color: var(--ink-2); }
+.check { display: inline-flex; align-items: center; gap: 6px; font-size: .82rem; font-weight: 700; color: var(--ink-2); margin-left: 6px; }
+.rules { margin: 0; font-size: .75rem; color: var(--ink-2); }
+.replying { display: flex; align-items: center; gap: 8px; padding: 6px 10px; border-radius: 10px; background: var(--surface-2); color: var(--ink); font-size: .85rem; overflow-wrap: anywhere; }
+.replying button { margin-left: auto; background: transparent; border: 0; color: var(--ink); }
+.panel { display: grid; gap: 8px; padding: 10px; border: 2px solid var(--ink); border-radius: 12px; background: var(--surface); }
+.panelHead { display: flex; gap: 8px; }
+.panelHead input { flex: 1; border: 2px solid var(--ink); border-radius: 10px; padding: 8px 10px; background: var(--surface-2); color: var(--ink); font: inherit; min-width: 0; }
+.panelHead button { background: transparent; border: 0; color: var(--ink); }
+.gifs { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(110px, 45%), 1fr)); gap: 6px; max-height: 240px; overflow-y: auto; }
+.gifs button { border: 2px solid var(--ink); border-radius: 8px; padding: 0; overflow: hidden; background: var(--surface-2); line-height: 0; }
+.gifs img { width: 100%; height: 90px; object-fit: cover; }
+.progress { position: relative; height: 30px; border: 2px solid var(--ink); border-radius: 10px; overflow: hidden; display: flex; align-items: center; justify-content: space-between; padding: 0 8px; background: var(--surface); color: var(--ink); }
+.progress span { position: absolute; inset: 0 auto 0 0; background: var(--ok-soft); transition: width .15s; }
+.progress em, .progress button { position: relative; font-size: .8rem; font-style: normal; font-weight: 700; background: transparent; border: 0; color: var(--ink); }
+.mutedNote { padding: 12px; border: 2px dashed var(--ink); border-radius: 12px; color: var(--ink); background: var(--surface-2); margin: 0; }
+.thread { display: grid; gap: 10px; }
+.threadHead { display: flex; align-items: center; gap: 10px; }
+.err { color: var(--gap-ink); margin: 4px 0 0; font-size: .85rem; }
+.reports { display: grid; gap: 12px; }
+.reported { margin: 6px 0 10px; overflow-wrap: anywhere; }

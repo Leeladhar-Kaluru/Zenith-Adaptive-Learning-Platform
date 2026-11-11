@@ -63,6 +63,11 @@ def _teacher(db: Session, c: Classroom) -> dict:
     return {"name": (t.display_name or "Your teacher") if t else "Your teacher", "avatar": t.avatar if t else None}
 
 
+def _unread(db: Session, c: Classroom, p: Profile) -> int:
+    from app.services import chat   # imported here: chat imports this module
+    return chat.unread(db, p, c.id)
+
+
 def listing(db: Session, student: Profile) -> list[dict]:
     rows = db.scalars(select(Classroom).join(ClassMember, ClassMember.classroom_id == Classroom.id)
                       .where(ClassMember.student_id == student.id, ClassMember.status == "active").order_by(Classroom.name))
@@ -72,7 +77,7 @@ def listing(db: Session, student: Profile) -> list[dict]:
         up = _upcoming(db, c)
         due = [a for a in up if a["dueAt"]]
         out.append({"id": str(c.id), "name": c.name, "grade": c.grade, "subject": c.subject_id, "teacher": _teacher(db, c), "classmates": n,
-                    "nextDue": due[0] if due else None, "announcements": len(db.scalars(select(Announcement.id).where(Announcement.classroom_id == c.id)).all())})
+                    "nextDue": due[0] if due else None, "unread": _unread(db, c, student), "announcements": len(db.scalars(select(Announcement.id).where(Announcement.classroom_id == c.id)).all())})
     return out
 
 

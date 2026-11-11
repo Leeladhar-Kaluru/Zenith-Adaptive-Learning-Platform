@@ -38,7 +38,7 @@ export default function MyClasses() {
           <Reveal key={k.id} delay={Math.min(i, 8) * 40}>
             <Card to={`/classes/${k.id}`}>
               <h3 style={{ overflowWrap: 'anywhere' }}>{k.name}</h3>
-              <div className={c.meta}><Chip tone="soft">Class {k.grade}</Chip><Chip tone="soft">{k.subject}</Chip><Chip tone="soft" icon="people">{k.classmates}</Chip></div>
+              <div className={c.meta}><Chip tone="soft">Class {k.grade}</Chip><Chip tone="soft">{k.subject}</Chip><Chip tone="soft" icon="people">{k.classmates}</Chip>{k.unread > 0 && <Chip tone="hi" icon="chat">{k.unread} new</Chip>}</div>
               <div className={c.teacher}><Avatar id={k.teacher.avatar} size={30} /><span>{k.teacher.name}</span></div>
               {k.nextDue && <div className={c.next}><Icon name="clock" size={16} /> Next: <strong>{k.nextDue.title}</strong>{dueText(k.nextDue.dueAt) && <> · due {dueText(k.nextDue.dueAt)}</>}</div>}
             </Card>

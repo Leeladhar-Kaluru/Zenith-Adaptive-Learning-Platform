@@ -28,7 +28,7 @@ export interface PublicItem {
 export type Block =
   | { id: string; kind: 'text'; heading?: string; html: string }
   | { id: string; kind: 'figure'; svg: string; asset?: string; imageUrl?: string | null; alt: string; caption?: string }
-  | { id: string; kind: 'widget'; widget: 'numberline' | 'balance' | 'fraction' | 'sim_linegraph' | 'sim_equation' | 'sim_spinner' | 'sim_density' | 'data_chart' | 'atlas'; config: Record<string, number | string>; task?: string }
+  | { id: string; kind: 'widget'; widget: 'numberline' | 'balance' | 'fraction' | 'sim_linegraph' | 'sim_equation' | 'sim_spinner' | 'sim_density' | 'sim_projectile' | 'sim_refraction' | 'sim_circuit' | 'sim_solid' | 'data_chart' | 'atlas'; config: Record<string, number | string>; task?: string }
   | { id: string; kind: 'example'; heading: string; prompt: string; steps: string[] }
   | { id: string; kind: 'callout'; tone: 'watch' | 'remember' | 'real'; html: string }
   | { id: string; kind: 'check'; item: PublicItem }
@@ -129,13 +129,26 @@ export interface Coverage { slug: string; title: string; grade: number; subject:
 export interface ClassActivity { id: string; title: string; kind: string; note: string | null; dueAt: string | null; href: string | null }
 export interface ClassCard {
   id: string; name: string; grade: number; subject: string; teacher: { name: string; avatar: string | null }; classmates: number;
-  nextDue: ClassActivity | null; announcements: number;
+  nextDue: ClassActivity | null; announcements: number; unread: number;
 }
 export interface ClassNotice { id: string; title: string; body: string; pinned: boolean; createdAt: string; author: string }
 export interface ClassDetail {
   id: string; name: string; grade: number; subject: string; teacher: { name: string; avatar: string | null }; isTeacher: boolean;
   classmates: Array<{ nickname: string; avatar: string | null; me: boolean }>; assignments: ClassActivity[]; announcements: ClassNotice[];
 }
+
+export interface ChatAuthor { nickname: string; avatar: string | null; teacher: boolean; me: boolean }
+export interface ChatMsg {
+  id: string; kind: 'text' | 'gif' | 'image' | 'file' | 'poll' | 'announcement'; body: string; removed: boolean; pinned: boolean; createdAt: string; author: ChatAuthor;
+  reactions: Array<{ emoji: string; count: number; mine: boolean }>; threadCount: number; parentId: string | null;
+  replyTo: { id: string; nickname: string; snippet: string } | null;
+  attachment: { name?: string; type?: string; size?: number; url?: string; title?: string; provider?: string } | null;
+  poll: { options: Array<{ text: string; votes: number }>; total: number; myVote: number | null } | null;
+}
+export interface ChatPage { messages: ChatMsg[]; hasMore: boolean; next: string | null; pinned: ChatMsg[]; muted: boolean; canModerate: boolean }
+export interface ChatThread extends ChatPage { root: ChatMsg }
+export interface ChatReport { id: string; reason: string; createdAt: string; message: ChatMsg | null }
+export interface Gif { id: string; title: string; url: string; preview: string }
 
 export interface Gap {
   conceptId: string; title: string; grade: number; p: number; n: number; correct: number; interval: [number, number]; band: 'gap_confirmed' | 'gap_suspected';

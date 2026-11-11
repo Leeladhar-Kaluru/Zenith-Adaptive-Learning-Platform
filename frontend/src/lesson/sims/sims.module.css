@@ -36,3 +36,5 @@
 .barA { background: var(--brand); }
 .barB { background: var(--ok); }
 @media (prefers-reduced-motion: reduce) { .bars i, .op { transition: none; } }
+
+.stage3d { width: 100%; height: clamp(200px, 40vh, 300px); border-radius: 12px; background: var(--surface-2); color: var(--ink); overflow: hidden; }

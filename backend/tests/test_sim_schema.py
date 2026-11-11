@@ -42,3 +42,35 @@ def test_density_simulation_rules():
         w("sim_density", goal="fly")
     with pytest.raises(ValidationError, match="from 1 to 200"):
         w("sim_density", vol0=0)
+
+
+def test_physics_and_solid_simulations_accept_sensible_settings():
+    w("sim_projectile", v0=25, angle0=40, g0=9.8, h0=0, target=50, tol=3)
+    w("sim_projectile", v0=25)                                     # no target is fine: free exploration
+    w("sim_refraction", n1=1.5, n2=1, angle0=30, goal="tir")
+    w("sim_refraction", n1=1, n2=1.5, goal_angle=20)
+    w("sim_circuit", volts=9, r1=10, r2=20, mode="parallel", goal_current=1.35)
+    w("sim_solid", shape="cone", r=3, h=4, goal_volume=100)
+
+
+@pytest.mark.parametrize("widget,config,message", [
+    ("sim_projectile", {"v0": 500}, "from 1 to 60"),
+    ("sim_projectile", {"target": 50}, "both target and tol"),
+    ("sim_projectile", {"g0": 0}, "from 1 to 25"),
+    ("sim_refraction", {"n1": 0.5}, "from 1 to 2.5"),
+    ("sim_refraction", {"goal": "tir", "goal_angle": 10}, "not both"),
+    ("sim_refraction", {"goal": "sink"}, "must be one of"),
+    ("sim_circuit", {"mode": "ring"}, "must be one of"),
+    ("sim_circuit", {"r1": 0}, "from 1 to 100"),
+    ("sim_solid", {"shape": "torus"}, "must be one of"),
+    ("sim_solid", {"r": 50}, "from 1 to 10"),
+    ("sim_solid", {"colour": 1}, "no parameter"),
+])
+def test_physics_and_solid_simulations_reject_unsafe_settings(widget, config, message):
+    with pytest.raises(ValidationError, match=message):
+        w(widget, **config)
+
+
+def test_the_new_simulations_also_need_a_task():
+    with pytest.raises(ValidationError, match="task"):
+        w("sim_circuit", task="", volts=6)

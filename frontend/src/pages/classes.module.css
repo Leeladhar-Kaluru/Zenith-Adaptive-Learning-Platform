@@ -19,3 +19,11 @@
 .check { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: .9rem; }
 .actions { display: flex; gap: 8px; flex-wrap: wrap; }
 .privacy { font-size: .85rem; color: var(--ink-2); }
+
+@media (max-width: 560px) {
+  .top { gap: 2px; }
+  .top h1 { font-size: 1.45rem; line-height: 1.15; }
+  .meta { margin-top: 4px; }
+  .teacher { margin-top: 6px; font-size: .9rem; }
+  .tabs { margin: 2px 0; }
+}

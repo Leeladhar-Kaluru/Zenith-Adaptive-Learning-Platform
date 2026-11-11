@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { lazy, Suspense, useCallback, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { api } from '../api/client';
 import { useApi } from '../api/useApi';
@@ -9,14 +9,30 @@ import { dueText } from './MyClasses';
 import s from './pages.module.css';
 import c from './classes.module.css';
 
-type Tab = 'news' | 'work' | 'people';
+type Tab = 'chat' | 'news' | 'work' | 'people' | 'reports';
+const Chat = lazy(() => import('../chat/Chat').then((m) => ({ default: m.Chat })));
+const Reports = lazy(() => import('../chat/Chat').then((m) => ({ default: m.Reports })));
+
+/** Classmates you chose not to see in chat, with a way back. */
+function Blocked() {
+  const [rows, setRows] = useState<Array<{ id: string; nickname: string }>>([]);
+  const load = useCallback(() => { api<Array<{ id: string; nickname: string }>>('/chat/blocks').then(setRows).catch(() => {}); }, []);
+  useEffect(() => { load(); }, [load]);
+  if (rows.length === 0) return null;
+  return (
+    <Card flat style={{ marginTop: 12 }}>
+      <strong>Hidden in chat</strong>
+      {rows.map((r) => <div key={r.id} className={c.noteHead} style={{ marginTop: 8 }}><span>{r.nickname}</span><Button size="sm" variant="ghost" onClick={() => void api(`/chat/blocks/${r.id}`, { method: 'DELETE' }).then(load)}>Show again</Button></div>)}
+    </Card>
+  );
+}
 
 export default function ClassRoom() {
   const { id = '' } = useParams();
   const nav = useNavigate();
   const toast = useToast();
   const { data, error, loading, reload } = useApi<ClassDetail>(`/classes/${id}`);
-  const [tab, setTab] = useState<Tab>('news');
+  const [tab, setTab] = useState<Tab>('chat');
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
   const [pinned, setPinned] = useState(false);
@@ -54,8 +70,11 @@ export default function ClassRoom() {
 
       <div className={c.tabs}>
         <Segmented<Tab> label="Class sections" value={tab} onChange={setTab}
-          options={[{ value: 'news', label: `News (${data.announcements.length})` }, { value: 'work', label: `Work (${data.assignments.length})` }, { value: 'people', label: `People (${data.classmates.length})` }]} />
+          options={[{ value: 'chat', label: 'Chat' }, { value: 'news', label: `News (${data.announcements.length})` }, { value: 'work', label: `Work (${data.assignments.length})` }, { value: 'people', label: `People (${data.classmates.length})` }, ...(data.isTeacher ? [{ value: 'reports' as Tab, label: 'Reports' }] : [])]} />
       </div>
+
+      {tab === 'chat' && <Suspense fallback={<Skeleton h={320} r={16} />}><Chat classId={id} isTeacher={data.isTeacher} /></Suspense>}
+      {tab === 'reports' && data.isTeacher && <Suspense fallback={<Skeleton h={80} r={16} />}><Reports classId={id} /></Suspense>}
 
       {tab === 'news' && (
         <section className={c.list} aria-label="Announcements">
@@ -109,6 +128,7 @@ export default function ClassRoom() {
           <div className={c.mates}>{data.classmates.map((m, i) => (
             <div key={`${m.nickname}-${i}`} className={c.mate}><Avatar id={m.avatar} size={34} /><span>{m.nickname}{m.me ? ' (you)' : ''}</span></div>
           ))}</div>
+          {!data.isTeacher && <Blocked />}
           <p className={c.privacy} style={{ marginTop: 12 }}>Only nicknames and characters are shown. Classmates who prefer privacy appear as "A classmate".</p>
         </section>
       )}

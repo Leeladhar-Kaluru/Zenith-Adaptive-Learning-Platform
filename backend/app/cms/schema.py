@@ -97,13 +97,22 @@ SIM_BOUNDS: dict[str, dict[str, tuple[float, float]]] = {
     "sim_equation": {"a": (1, 12), "b": (-20, 20), "c": (-60, 60)},
     "sim_spinner": {"parts": (2, 12), "hit": (1, 11)},
     "sim_density": {"mass0": (1, 500), "vol0": (1, 200)},
+    "sim_projectile": {"v0": (1, 60), "angle0": (0, 90), "g0": (1, 25), "h0": (0, 50), "target": (1, 300), "tol": (0.5, 20)},
+    "sim_refraction": {"n1": (1, 2.5), "n2": (1, 2.5), "angle0": (0, 89), "goal_angle": (1, 89)},
+    "sim_circuit": {"volts": (1, 24), "r1": (1, 100), "r2": (1, 100), "goal_current": (0.05, 20)},
+    "sim_solid": {"a": (1, 10), "l": (1, 10), "w": (1, 10), "h": (1, 10), "r": (1, 10), "goal_volume": (1, 2000)},
 }
-SIM_CHOICES: dict[str, dict[str, set[str]]] = {"sim_density": {"goal": {"float", "sink"}}}
+SIM_CHOICES: dict[str, dict[str, set[str]]] = {
+    "sim_density": {"goal": {"float", "sink"}},
+    "sim_refraction": {"goal": {"tir"}},
+    "sim_circuit": {"mode": {"series", "parallel"}},
+    "sim_solid": {"shape": {"cube", "cuboid", "cylinder", "cone", "sphere"}},
+}
 
 
 class WidgetBlock(Strict):
     kind: Literal["widget"]
-    widget: Literal["numberline", "balance", "fraction", "sim_linegraph", "sim_equation", "sim_spinner", "sim_density", "data_chart", "atlas"]
+    widget: Literal["numberline", "balance", "fraction", "sim_linegraph", "sim_equation", "sim_spinner", "sim_density", "sim_projectile", "sim_refraction", "sim_circuit", "sim_solid", "data_chart", "atlas"]
     config: dict[str, Union[int, float, str]] = {}
     task: str = ""
 
@@ -144,6 +153,10 @@ class WidgetBlock(Strict):
                 raise ValueError(f"{self.widget} parameter '{k}' must be a number from {lo} to {hi}.")
         if self.widget == "sim_linegraph" and ("goal_m" in self.config) != ("goal_c" in self.config):
             raise ValueError("sim_linegraph needs both goal_m and goal_c, or neither.")
+        if self.widget == "sim_projectile" and ("target" in self.config) != ("tol" in self.config):
+            raise ValueError("sim_projectile needs both target and tol, or neither.")
+        if self.widget == "sim_refraction" and "goal" in self.config and "goal_angle" in self.config:
+            raise ValueError("sim_refraction takes goal or goal_angle, not both.")
         if self.widget == "sim_spinner" and self.config.get("hit", 1) >= self.config.get("parts", 6):
             raise ValueError("sim_spinner 'hit' must be smaller than 'parts'.")
         return self

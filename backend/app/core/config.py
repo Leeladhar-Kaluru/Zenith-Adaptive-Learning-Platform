@@ -36,6 +36,7 @@ class Settings(BaseSettings):
     B2_APP_KEY: Optional[str] = Field(default=None, validation_alias=AliasChoices("B2_APP_KEY", "BACK_BLAZE_API_KEY"))
     B2_BUCKET: Optional[str] = None
     BACKUP_KEY: Optional[str] = None
+    GIPHY_API_KEY: Optional[str] = None   # GIF search for class chat (server side only); GIFs are off without it
     XP_DAILY_CAP: int = 300
 
     model_config = SettingsConfigDict(

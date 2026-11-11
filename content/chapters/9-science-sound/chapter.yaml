@@ -1,0 +1,11 @@
+slug: 9-science-sound
+board: cbse
+curriculum: NCERT current editions (to be confirmed by a reviewer)
+grade: 9
+subject: science
+title: Sound waves
+summary: See how vibrations make sound waves, how waves travel through a medium, and use frequency, wavelength, speed, echoes and sonar.
+concepts:
+- id: sound-vibration
+lessons:
+- sound-and-vibration

@@ -268,6 +268,7 @@ items:
   - key: D
     text: A is false, but R is true
 - key: q-be-13
+  pattern: case
   kind: mcq
   stem: 'Read the passage. A student mixes two solutions in a conical flask. One solution has a mass of 20 g and the other has a mass of 30 g. The flask is sealed with a stopper, and a gas forms as the solutions react. The student weighs the sealed flask and its contents after the reaction. What is the total mass of the contents?'
   difficulty: challenge

@@ -142,12 +142,16 @@ def _item_payload(it: ItemDef) -> tuple[dict, dict]:
 
 def _upsert_item(db: Session, it: ItemDef, misc_ids: dict[tuple[str, str], uuid.UUID], codes_to_concept: dict[str, str]) -> Item:
     canon = it.model_dump(mode="json")
+    if canon.get("pattern") is None:
+        canon.pop("pattern", None)            # untagged items keep their old hash, so nothing is re-versioned
     h = _hash(canon)
     row = db.scalar(select(Item).where(Item.key == it.key, Item.content_hash == h))
     if row:
         return row
     version = (db.scalar(select(func.max(Item.version)).where(Item.key == it.key)) or 0) + 1
     payload, spec = _item_payload(it)
+    if it.pattern:
+        payload["pattern"] = it.pattern
     prior = db.scalar(select(Item.beta).where(Item.key == it.key).order_by(Item.version.desc()).limit(1))
     row = Item(key=it.key, version=version, kind=it.kind, stem=it.stem, payload=payload, answer_spec=spec,
                explanation=it.explanation, hints=it.hints, difficulty=it.difficulty, beta=prior if prior is not None else elo.BETA_PRIOR[it.difficulty],

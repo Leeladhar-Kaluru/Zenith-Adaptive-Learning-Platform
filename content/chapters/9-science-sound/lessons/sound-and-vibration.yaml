@@ -442,6 +442,7 @@ items:
     text: A is false but R is true
     misconception: sound-in-vacuum
 - key: q-sv-20
+  pattern: case
   kind: mcq
   stem: 'Ravi claps in a large empty hall and hears a long fading sound. When thick curtains are hung on the walls, the fading sound becomes much shorter. What is the long fading sound, and why do curtains help?'
   difficulty: challenge

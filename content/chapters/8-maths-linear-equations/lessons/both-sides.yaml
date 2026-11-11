@@ -253,6 +253,7 @@ items:
   - key: D
     text: A is false but R is true.
 - key: q-lin-12
+  pattern: case
   kind: mcq
   stem: 'Case. A tailor charges Rs 50 as a fixed fee plus Rs 10 for each shirt stitched. A second tailor charges Rs 20 for each shirt and no fixed fee. Let n be the number of shirts. For what value of n do both tailors charge the same amount?'
   difficulty: challenge

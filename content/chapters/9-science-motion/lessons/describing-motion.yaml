@@ -262,6 +262,7 @@ items:
   - key: D
     text: A is false, but R is true
 - key: q-dm-12
+  pattern: case
   kind: mcq
   stem: 'Read the passage. A cyclist starts from rest and speeds up steadily to 6 m/s in 3 s. She rides at 6 m/s for the next 5 s. She then brakes steadily and stops in 2 s. What total distance does she travel? (On a speed-time graph, the distance is the total area under the line.)'
   difficulty: challenge

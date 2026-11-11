@@ -230,6 +230,7 @@ items:
   - key: D
     text: A is false, but R is true
 - key: q-cp-10
+  pattern: case
   kind: mcq
   stem: 'Read this. A school map uses the school gate as the origin O. Each unit is 100 m. East is the positive x direction and north is the positive y direction. A well W is at (3, −2). Which statement is correct?'
   difficulty: standard

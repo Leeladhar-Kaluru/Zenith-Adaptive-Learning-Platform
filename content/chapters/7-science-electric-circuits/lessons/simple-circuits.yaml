@@ -246,6 +246,7 @@ items:
   - key: D
     text: A is false but R is true
 - key: q-sc-10
+  pattern: case
   kind: mcq
   stem: A boy builds a circuit with one cell, one bulb and a switch. He joins only one wire from the cell to the bulb and thinks that is enough, because the bulb uses up the current. When he closes the switch, the bulb stays dark. Why?
   difficulty: challenge

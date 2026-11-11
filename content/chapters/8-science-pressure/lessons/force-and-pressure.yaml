@@ -365,6 +365,7 @@ items:
   - key: D
     text: A is false but R is true.
 - key: q-pr-17
+  pattern: case
   kind: mcq
   stem: 'Case. A girl presses a drawing pin into a notice board with a force of 20 N. The flat head of the pin has an area of 0.0001 m². The sharp tip has an area of 0.000001 m². The pin passes the same force to the board. How many times larger is the pressure at the tip than at the head?'
   difficulty: challenge

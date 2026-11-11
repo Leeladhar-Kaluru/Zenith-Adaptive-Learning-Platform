@@ -184,6 +184,7 @@ items:
     text: The sum of the two populations
     misconception: percent-of-wrong-base
 - key: q-pg-7
+  pattern: case
   kind: mcq
   stem: 'The average increase per year was about 12.6 million for 1960 to 1980, about 18.5 million for 1980 to 2000 and about 17.2 million for 2000 to 2020. Which of these three periods has the steepest line on average?'
   difficulty: standard
@@ -247,6 +248,7 @@ items:
   - key: D
     text: A is false, but R is true
 - key: q-pg-10
+  pattern: case
   kind: mcq
   stem: 'A group reads two values from the graph. In 1990 the population was about 865 million and in 2000 it was about 1,058 million. A member says, "The rise is about 193 million over the years, so I divide by 10 years." Which statement about this method is correct?'
   difficulty: standard

@@ -286,6 +286,7 @@ items:
   - key: D
     text: A is false, but R is true
 - key: q-cl-11
+  pattern: case
   kind: mcq
   stem: 'Read this. A student studies two slides. Slide X shows box-shaped cells packed closely, each with a thick outline and one large clear space inside. Slide Y shows roundish cells with only a thin outline and several tiny spaces. Which statement is the best conclusion?'
   difficulty: challenge

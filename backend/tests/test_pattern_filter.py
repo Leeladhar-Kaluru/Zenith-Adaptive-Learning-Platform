@@ -10,8 +10,10 @@ def test_questions_are_classified_by_how_they_are_asked():
     assert item_pattern(I(kind="mcq", stem="Assertion (A): x. Reason (R): y.")) == "assertion"
     assert item_pattern(I(kind="mcq", stem="  Assertion (A): leading space")) == "assertion"
     assert item_pattern(I(kind="mcq", stem="Which is bigger?")) == "mcq"
+    assert item_pattern(I(kind="mcq", stem="Read this. A boy...", payload={"pattern": "case"})) == "case"       # only the explicit tag makes a case-based question
+    assert item_pattern(I(kind="mcq", stem="Read this. A boy...", payload={})) == "mcq"
     assert item_pattern(I(kind="match", stem="Match them")) == "other"
-    assert set(PATTERNS) == {"mcq", "assertion", "numeric"}
+    assert set(PATTERNS) == {"mcq", "assertion", "numeric", "case"}
 
 
 def test_practice_can_be_limited_to_one_question_type(client, world):

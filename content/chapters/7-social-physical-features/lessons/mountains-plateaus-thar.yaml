@@ -330,6 +330,7 @@ items:
     text: The Himalayas are a desert
     misconception: desert-is-mountain
 - key: q-sg-11
+  pattern: case
   kind: mcq
   stem: 'Read this note. A class compares two hill ranges. Range P is close to the west coast, almost unbroken, and its tallest peak on the layer is Anamudi at 2,695 m. Range Q is near the east coast, lower and broken into pieces by rivers, and its tallest peak on the layer is Mahendragiri at 1,501 m. Which statement is correct?'
   difficulty: challenge

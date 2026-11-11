@@ -242,6 +242,7 @@ items:
   - key: D
     text: A is false, but R is true
 - key: q-nl-11
+  pattern: case
   kind: mcq
   stem: 'Read the passage. Two skaters stand still on smooth ice. Skater A has a mass of 40 kg and skater B has a mass of 60 kg. A pushes B with a force of 120 N for a short time. What is the acceleration of B while she is being pushed?'
   difficulty: challenge

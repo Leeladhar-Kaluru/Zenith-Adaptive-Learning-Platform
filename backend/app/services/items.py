@@ -10,11 +10,13 @@ from app.engine import grading
 from app.models import Item, ItemConcept, Misconception, OptionMisconception
 
 
-PATTERNS = {"mcq": "Multiple choice", "assertion": "Assertion and reason", "numeric": "Numerical"}
+PATTERNS = {"mcq": "Multiple choice", "assertion": "Assertion and reason", "numeric": "Numerical", "case": "Case-based"}
 
 
 def item_pattern(item) -> str:
     """How a question is asked, for Practice filters. Assertion-and-reason items are written with the standard 'Assertion (A): ... Reason (R): ...' stem."""
+    if (getattr(item, "payload", None) or {}).get("pattern") == "case":
+        return "case"
     if item.kind == "numeric":
         return "numeric"
     if item.kind == "mcq" and (item.stem or "").lstrip().startswith("Assertion (A)"):

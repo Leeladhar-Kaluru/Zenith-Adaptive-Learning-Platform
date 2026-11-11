@@ -247,6 +247,7 @@ items:
   - key: D
     text: A is false, but R is true
 - key: q-le-11
+  pattern: case
   kind: mcq
   stem: 'A reader notes that life expectancy was 58.618 in 1990, 70.156 in 2020 and 72.235 in 2024. She says, "From 1990 to 2020 the gain was 11.538 years. From 2020 to 2024 it was only 2.079 years. So the later period gained less per year." What is the best reply?'
   difficulty: challenge

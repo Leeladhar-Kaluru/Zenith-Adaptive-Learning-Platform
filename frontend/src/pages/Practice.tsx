@@ -72,7 +72,7 @@ export default function Practice() {
       </div>
       <div className={s.steps} aria-hidden="true">{Array.from({ length: ROUND }, (_, i) => <i key={i} className={i < n ? s.on : ''} />)}</div>
       {n === 0 && !answered && <Segmented label="Question type" value={pattern} onChange={setPattern}
-        options={[{ value: '', label: 'All' }, { value: 'mcq', label: 'Multiple choice' }, { value: 'assertion', label: 'Assertion and reason' }, { value: 'numeric', label: 'Numerical' }]} />}
+        options={[{ value: '', label: 'All' }, { value: 'mcq', label: 'Multiple choice' }, { value: 'assertion', label: 'Assertion and reason' }, { value: 'numeric', label: 'Numerical' }, { value: 'case', label: 'Case-based' }]} />}
       {!cur ? <div className={s.stack}><Skeleton h={40} w="70%" /><Skeleton h={60} r={14} /><Skeleton h={60} r={14} /><Skeleton h={60} r={14} /></div> : (
         <Card key={n}>
           <Question item={cur.item} context="solve" resetKey={n} onResult={(r) => { if (r) { setResults((x) => [...x, r]); setAnswered(true); } }} />

@@ -225,6 +225,7 @@ class ItemDef(Strict):
     steps: list[str] = []                   # find_error: a worked solution, one line per step
     wrong_step: Optional[int] = None        # find_error: index of the one wrong line (never 0, the given problem)
     verify: Optional[str] = None            # SymPy expression that must evaluate to the correct numeric answer
+    pattern: Optional[Literal["case"]] = None   # explicit tag: a case-based question (a passage or situation, then the question)
 
     @model_validator(mode="after")
     def _shape(self):

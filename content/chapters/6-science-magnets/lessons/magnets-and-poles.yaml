@@ -216,6 +216,7 @@ items:
   - key: D
     text: A is false but R is true
 - key: q-mg-9
+  pattern: case
   kind: mcq
   stem: A boy ties a thread round the middle of a bar magnet and hangs it from a hook. It settles with its red-painted end facing north. He then brings the red end of a second bar magnet near the red end of the hanging magnet. The maker painted the north pole of every magnet red. What will he see, and why?
   difficulty: challenge

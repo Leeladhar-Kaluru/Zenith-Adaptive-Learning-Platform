@@ -256,6 +256,7 @@ items:
   - key: D
     text: A is false, but R is true
 - key: q-sm-10
+  pattern: case
   kind: mcq
   stem: 'Read this. A student leaves a jar of pond water still for an hour. Sand settles at the bottom but the water on top is still a little cloudy. She pours the top water gently into another jar. She then pours it through a clean cloth and the water looks clearer. Why was the cloth step needed after pouring?'
   difficulty: standard

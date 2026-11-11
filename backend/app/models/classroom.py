@@ -55,6 +55,21 @@ class Announcement(Base):
     created_at = now_col()
 
 
+class ClassResource(Base):
+    """A document or link the class teacher shares with one class. Files live in private storage and are served by short-lived links."""
+    __tablename__ = "class_resources"
+    id = uuid_pk()
+    classroom_id = Column(UUID(as_uuid=True), ForeignKey("classrooms.id", ondelete="CASCADE"), nullable=False, index=True)
+    author_id = Column(UUID(as_uuid=True), ForeignKey("profiles.id", ondelete="SET NULL"))
+    kind = Column(String(8), nullable=False)
+    title = Column(String(120), nullable=False)
+    note = Column(String(500), nullable=False, default="")
+    url = Column(String(500))
+    attachment = Column(JSONB)
+    created_at = now_col()
+    __table_args__ = (CheckConstraint("kind in ('file','link')", name="ck_resource_kind"),)
+
+
 class TeacherDecision(Base):
     """Teacher accepted or dismissed a ZENITH suggestion. Teachers always have the last word."""
     __tablename__ = "teacher_decisions"

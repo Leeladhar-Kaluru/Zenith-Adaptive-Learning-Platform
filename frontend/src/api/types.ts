@@ -127,14 +127,15 @@ export interface ReviewDetail {
 export interface Coverage { slug: string; title: string; grade: number; subject: string; status: string; lessons: number; published: number }
 
 export interface ClassActivity { id: string; title: string; kind: string; note: string | null; dueAt: string | null; href: string | null }
+export interface ClassResourceItem { id: string; kind: 'file' | 'link'; title: string; note: string; createdAt: string; url: string | null; file: { name: string; type: string; size: number } | null }
 export interface ClassCard {
   id: string; name: string; grade: number; subject: string; teacher: { name: string; avatar: string | null }; classmates: number;
-  nextDue: ClassActivity | null; announcements: number; unread: number;
+  nextDue: ClassActivity | null; announcements: number; unread: number; resources?: number;
 }
 export interface ClassNotice { id: string; title: string; body: string; pinned: boolean; createdAt: string; author: string }
 export interface ClassDetail {
   id: string; name: string; grade: number; subject: string; teacher: { name: string; avatar: string | null }; isTeacher: boolean;
-  classmates: Array<{ nickname: string; avatar: string | null; me: boolean }>; assignments: ClassActivity[]; announcements: ClassNotice[]; openReports?: number;
+  classmates: Array<{ nickname: string; avatar: string | null; me: boolean }>; assignments: ClassActivity[]; announcements: ClassNotice[]; resources?: ClassResourceItem[]; openReports?: number;
 }
 
 export interface ChatAuthor { nickname: string; avatar: string | null; teacher: boolean; me: boolean }

@@ -16,6 +16,7 @@ from app.core.config import settings
 
 MAX_BYTES = 4 * 1024 * 1024        # Vercel functions accept bodies up to 4.5 MB
 PREFIX = "classchat/"
+FILES_PREFIX = "classfiles/"      # documents a teacher shares with a class (kept apart from chat attachments)
 LINK_SECONDS = 600
 GIF_HOSTS = ("media.giphy.com", "media0.giphy.com", "media1.giphy.com", "media2.giphy.com", "media3.giphy.com", "media4.giphy.com", "i.giphy.com")
 
@@ -26,7 +27,35 @@ class FileError(ValueError):
         self.status = status
 
 
-def sniff(data: bytes) -> tuple[str, str, str]:
+OFFICE = (("word/", "docx", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"),
+          ("xl/", "xlsx", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"),
+          ("ppt/", "pptx", "application/vnd.openxmlformats-officedocument.presentationml.presentation"))
+
+
+def _office(data: bytes) -> tuple[str, str, str] | None:
+    """A Word, Excel or PowerPoint file WITHOUT macros, recognised by its own structure (never by its name). Anything odd is refused."""
+    import io
+    import zipfile
+    if not data.startswith(b"PK\x03\x04"):
+        return None
+    try:
+        z = zipfile.ZipFile(io.BytesIO(data))
+        names = z.namelist()
+        if "[Content_Types].xml" not in names or len(names) > 2000 or sum(i.file_size for i in z.infolist()) > 50 * 1024 * 1024:
+            return None                                              # also guards against zip bombs
+        if any("vbaproject" in n.lower() or n.startswith("/") or ".." in n for n in names):
+            return None
+        if b"macroEnabled" in z.read("[Content_Types].xml"):
+            return None
+    except (zipfile.BadZipFile, KeyError, OSError, RuntimeError):
+        return None
+    for prefix, ext, mime in OFFICE:
+        if any(n.startswith(prefix) for n in names):
+            return "file", mime, ext
+    return None
+
+
+def sniff(data: bytes, office: bool = False) -> tuple[str, str, str]:
     """Return (kind, mime, extension) from the file's own bytes. The name and the browser's claimed type are never trusted."""
     if data.startswith(b"\x89PNG\r\n\x1a\n"):
         return "image", "image/png", "png"
@@ -38,7 +67,9 @@ def sniff(data: bytes) -> tuple[str, str, str]:
         return "image", "image/webp", "webp"
     if data.startswith(b"%PDF-"):
         return "file", "application/pdf", "pdf"
-    raise FileError("Only pictures (PNG, JPG, GIF, WebP) and PDF files can be shared.")
+    if office and (found := _office(data)):
+        return found
+    raise FileError("Only pictures (PNG, JPG, GIF, WebP), PDF" + (" and Word, Excel or PowerPoint files without macros" if office else "") + " can be shared.")
 
 
 def clean_name(name: str, ext: str) -> str:
@@ -46,17 +77,17 @@ def clean_name(name: str, ext: str) -> str:
     return f"{stem or 'file'}.{ext}"
 
 
-def validate(name: str, data: bytes) -> dict:
+def validate(name: str, data: bytes, office: bool = False) -> dict:
     if not data:
         raise FileError("That file is empty.")
     if len(data) > MAX_BYTES:
         raise FileError("That file is too big. The limit is 4 MB.", 413)
-    kind, mime, ext = sniff(data)
+    kind, mime, ext = sniff(data, office)
     return {"kind": kind, "type": mime, "name": clean_name(name, ext), "size": len(data), "ext": ext}
 
 
-def new_key(class_id: uuid.UUID, ext: str) -> str:
-    return f"{PREFIX}{class_id}/{secrets.token_hex(16)}.{ext}"
+def new_key(class_id: uuid.UUID, ext: str, prefix: str = PREFIX) -> str:
+    return f"{prefix}{class_id}/{secrets.token_hex(16)}.{ext}"
 
 
 def _b2():
@@ -79,7 +110,7 @@ def put(key: str, data: bytes, mime: str) -> None:
 
 def signed_url(key: str) -> str:
     """A download link for exactly this one file that stops working after ten minutes."""
-    if not key.startswith(PREFIX):
+    if not key.startswith((PREFIX, FILES_PREFIX)):
         raise FileError("Not found.", 404)
     b2 = _b2()
     j = b2._post("b2_get_download_authorization", {"bucketId": b2.bucket_id, "fileNamePrefix": key, "validDurationInSeconds": LINK_SECONDS})

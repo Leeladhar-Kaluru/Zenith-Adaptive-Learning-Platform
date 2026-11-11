@@ -8,7 +8,7 @@ from app.models.learning import (AssessmentSession, ConceptLevel, ConceptState, 
 from app.models.sources import ASSET_STATUS, ContentProvenance, Source, SourceAsset
 from app.models.ops import VITAL_NAMES, WebVital
 from app.models.chat import (ChatBlock, ChatMessage, ChatMute, ChatPollVote, ChatReaction, ChatRead, ChatReport)
-from app.models.classroom import (Announcement, Assignment, ClassMember, Classroom, DailyActivity, LeagueMembership, StudentBadge,
+from app.models.classroom import (Announcement, Assignment, ClassMember, Classroom, ClassResource, DailyActivity, LeagueMembership, StudentBadge,
                                   TeacherDecision, TutorMessage, TutorThread, XpEvent)
 
 __all__ = [n for n in dir() if not n.startswith("_")]

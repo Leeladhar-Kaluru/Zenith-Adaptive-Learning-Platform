@@ -68,6 +68,11 @@ def _unread(db: Session, c: Classroom, p: Profile) -> int:
     return chat.unread(db, p, c.id)
 
 
+def _resource_count(db: Session, c: Classroom) -> int:
+    from app.services import resources
+    return resources.count(db, c.id)
+
+
 def listing(db: Session, student: Profile) -> list[dict]:
     rows = db.scalars(select(Classroom).join(ClassMember, ClassMember.classroom_id == Classroom.id)
                       .where(ClassMember.student_id == student.id, ClassMember.status == "active").order_by(Classroom.name))
@@ -77,7 +82,7 @@ def listing(db: Session, student: Profile) -> list[dict]:
         up = _upcoming(db, c)
         due = [a for a in up if a["dueAt"]]
         out.append({"id": str(c.id), "name": c.name, "grade": c.grade, "subject": c.subject_id, "teacher": _teacher(db, c), "classmates": n,
-                    "nextDue": due[0] if due else None, "unread": _unread(db, c, student), "announcements": len(db.scalars(select(Announcement.id).where(Announcement.classroom_id == c.id)).all())})
+                    "nextDue": due[0] if due else None, "unread": _unread(db, c, student), "resources": _resource_count(db, c), "announcements": len(db.scalars(select(Announcement.id).where(Announcement.classroom_id == c.id)).all())})
     return out
 
 
@@ -107,11 +112,16 @@ def open_reports(db: Session, c: Classroom) -> int:
     return len(db.scalars(select(ChatReport.id).where(ChatReport.classroom_id == c.id, ChatReport.status == "open")).all())
 
 
+def _resources(db: Session, c: Classroom) -> list[dict]:
+    from app.services import resources     # imported here: resources imports this module
+    return resources.listing(db, c)
+
+
 def detail(db: Session, viewer: Profile, class_id: uuid.UUID) -> dict:
     c = access(db, viewer, class_id)
     return {"id": str(c.id), "name": c.name, "grade": c.grade, "subject": c.subject_id, "teacher": _teacher(db, c), "isTeacher": _is_owner(viewer, c),
             "classmates": _classmates(db, c, viewer), "assignments": _upcoming(db, c), "announcements": _announcements(db, c),
-            "openReports": open_reports(db, c) if _is_owner(viewer, c) else 0}
+            "resources": _resources(db, c), "openReports": open_reports(db, c) if _is_owner(viewer, c) else 0}
 
 
 def leave(db: Session, student: Profile, class_id: uuid.UUID) -> dict:

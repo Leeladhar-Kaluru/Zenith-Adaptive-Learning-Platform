@@ -6,10 +6,11 @@ import type { ClassDetail } from '../api/types';
 import { Avatar, Icon } from '../icons/Icon';
 import { Button, Card, Chip, EmptyState, Segmented, Skeleton, useToast } from '../ui/kit';
 import { dueText } from './MyClasses';
+import { ClassResources } from './ClassResources';
 import s from './pages.module.css';
 import c from './classes.module.css';
 
-type Tab = 'chat' | 'news' | 'work' | 'people' | 'reports';
+type Tab = 'chat' | 'news' | 'work' | 'files' | 'people' | 'reports';
 const Chat = lazy(() => import('../chat/Chat').then((m) => ({ default: m.Chat })));
 const Reports = lazy(() => import('../chat/Chat').then((m) => ({ default: m.Reports })));
 
@@ -70,7 +71,7 @@ export default function ClassRoom() {
 
       <div className={c.tabs}>
         <Segmented<Tab> label="Class sections" value={tab} onChange={setTab}
-          options={[{ value: 'chat', label: 'Chat' }, { value: 'news', label: `News (${data.announcements.length})` }, { value: 'work', label: `Work (${data.assignments.length})` }, { value: 'people', label: `People (${data.classmates.length})` }, ...(data.isTeacher ? [{ value: 'reports' as Tab, label: data.openReports ? `Reports (${data.openReports})` : 'Reports' }] : [])]} />
+          options={[{ value: 'chat', label: 'Chat' }, { value: 'news', label: `News (${data.announcements.length})` }, { value: 'work', label: `Work (${data.assignments.length})` }, { value: 'files', label: `Files (${data.resources?.length ?? 0})` }, { value: 'people', label: `People (${data.classmates.length})` }, ...(data.isTeacher ? [{ value: 'reports' as Tab, label: data.openReports ? `Reports (${data.openReports})` : 'Reports' }] : [])]} />
       </div>
 
       {tab === 'chat' && <Suspense fallback={<Skeleton h={320} r={16} />}><Chat classId={id} isTeacher={data.isTeacher} /></Suspense>}
@@ -108,6 +109,8 @@ export default function ClassRoom() {
             ))}
         </section>
       )}
+
+      {tab === 'files' && <ClassResources classId={id} items={data.resources ?? []} isTeacher={data.isTeacher} onChanged={reload} />}
 
       {tab === 'work' && (
         <section className={c.list} aria-label="Work set for this class">

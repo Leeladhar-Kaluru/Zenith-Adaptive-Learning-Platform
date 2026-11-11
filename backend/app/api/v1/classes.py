@@ -3,14 +3,16 @@ from __future__ import annotations
 
 import uuid
 
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, Query, Request
 from pydantic import BaseModel
 from sqlalchemy.orm import Session
 
 from app.core.database import get_db
 from app.core.security import get_profile
 from app.models import Profile
+from app.services import chatfiles
 from app.services import classes as svc
+from app.services import resources as res_svc
 
 router = APIRouter()
 
@@ -63,3 +65,38 @@ def pin_announcement(class_id: uuid.UUID, ann_id: uuid.UUID, body: PinIn, p: Pro
 @router.delete("/classes/{class_id}/announcements/{ann_id}")
 def delete_announcement(class_id: uuid.UUID, ann_id: uuid.UUID, p: Profile = Depends(get_profile), db: Session = Depends(get_db)):
     return _run(svc.remove, db, p, class_id, ann_id)
+
+
+class LinkIn(BaseModel):
+    title: str
+    url: str
+    note: str = ""
+
+
+@router.post("/classes/{class_id}/resources/link")
+def add_link(class_id: uuid.UUID, body: LinkIn, p: Profile = Depends(get_profile), db: Session = Depends(get_db)):
+    return _run(res_svc.add_link, db, p, class_id, body.title, body.url, body.note)
+
+
+@router.post("/classes/{class_id}/resources/upload")
+async def add_file(class_id: uuid.UUID, request: Request, name: str = Query("file", max_length=120), title: str = Query("", max_length=200), note: str = Query("", max_length=600),
+                   p: Profile = Depends(get_profile), db: Session = Depends(get_db)):
+    """The file is the request body (no multipart). Ownership and size are checked before the body is read."""
+    _run(svc.owner_only, db, p, class_id)
+    try:
+        declared = int(request.headers.get("content-length", "0"))
+    except ValueError:
+        declared = 0
+    if declared > chatfiles.MAX_BYTES:
+        raise HTTPException(413, "That file is too big. The limit is 4 MB.")
+    return _run(res_svc.add_file, db, p, class_id, name, await request.body(), title, note)
+
+
+@router.get("/classes/{class_id}/resources/{rid}/file")
+def resource_file(class_id: uuid.UUID, rid: uuid.UUID, p: Profile = Depends(get_profile), db: Session = Depends(get_db)):
+    return _run(res_svc.file_link, db, p, class_id, rid)
+
+
+@router.delete("/classes/{class_id}/resources/{rid}")
+def delete_resource(class_id: uuid.UUID, rid: uuid.UUID, p: Profile = Depends(get_profile), db: Session = Depends(get_db)):
+    return _run(res_svc.remove, db, p, class_id, rid)

@@ -24,7 +24,7 @@ Working method: check what already exists before writing; reuse; finish every ca
 9. Remove the stale `planned` references and re-run the full backend suite (360+ tests) and the frontend suite after the next batch.
 
 ## C. Classroom (original request, section 2)
-1. Resources tab per class (teacher uploads documents and links; students download through signed URLs; B2; size and type limits).
+1. DONE 2026-11-11: Files tab per class. Teacher shares PDF, pictures, Word, Excel (no macros) or PowerPoint up to 4 MB, or https links; students open files through ten-minute signed links; private B2 under `classfiles/`; migration 007. Not yet tried against real B2 from a browser (tests use a fake store).
 2. Assignment creation from the class page; due-date reminders; student "upcoming activities" on Home.
 3. Discussion topics separate from the main chat (one channel per topic) if wanted.
 4. Moderation tools: teacher can unmute from the class page, view mute list, export a report.

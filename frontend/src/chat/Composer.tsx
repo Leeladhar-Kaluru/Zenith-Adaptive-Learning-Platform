@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
-import { api, API_BASE, token } from '../api/client';
+import { api, API_BASE } from '../api/client';
+import { uploadFile } from '../api/upload';
 import type { ChatMsg, Gif } from '../api/types';
 import { Icon } from '../icons/Icon';
 import { Button, useToast } from '../ui/kit';
@@ -8,27 +9,6 @@ import c from './chat.module.css';
 const EMOJI = '😀 😃 😄 😁 😆 😅 😂 🙂 😉 😊 😍 🤩 😎 🤔 😮 😢 😭 😡 🥳 🤗 🙌 👍 👏 🙏 💪 🎉 🎯 ⭐ 🔥 💡 ✅ ❌ ❤️ 💙 📚 ✏️ 🧪 🔬 🌍 ⚡ 🧮 🧠 🏆 🌟 😴 🤝 👋 🍎 ☀️ 🌈'.split(' ');
 const ACCEPT = 'image/png,image/jpeg,image/gif,image/webp,application/pdf';
 const MAX = 4 * 1024 * 1024;
-
-/** Upload as the raw request body so the browser can report real progress (XHR is the only way to get upload progress). */
-function upload(url: string, file: File, onProgress: (f: number) => void, signal: AbortSignal): Promise<ChatMsg> {
-  return new Promise((resolve, reject) => {
-    const x = new XMLHttpRequest();
-    x.open('POST', url);
-    const t = token.get();
-    if (t) x.setRequestHeader('Authorization', `Bearer ${t}`);
-    x.setRequestHeader('Content-Type', 'application/octet-stream');
-    x.upload.onprogress = (e) => e.lengthComputable && onProgress(e.loaded / e.total);
-    x.onload = () => {
-      let j: { detail?: string } & Partial<ChatMsg> = {};
-      try { j = JSON.parse(x.responseText); } catch { /* not json */ }
-      if (x.status >= 200 && x.status < 300) resolve(j as ChatMsg); else reject(new Error(typeof j.detail === 'string' ? j.detail : 'The upload failed.'));
-    };
-    x.onerror = () => reject(new Error('You appear to be offline. Try again.'));
-    x.onabort = () => reject(new Error('Upload cancelled.'));
-    signal.addEventListener('abort', () => x.abort());
-    x.send(file);
-  });
-}
 
 function GifPicker({ base, onPick, onClose }: { base: string; onPick: (g: Gif) => void; onClose: () => void }) {
   const [q, setQ] = useState('');
@@ -78,7 +58,7 @@ export function Composer({ base, isTeacher, muted, threadId, replyTo, clearReply
     setProgress(0);
     try {
       const qs = new URLSearchParams({ name: f.name, caption: text.slice(0, 200), ...(threadId ? { threadId } : {}) });
-      await upload(`${API_BASE}${base}/upload?${qs}`, f, setProgress, ctl.current.signal);
+      await uploadFile<ChatMsg>(`${API_BASE}${base}/upload?${qs}`, f, setProgress, ctl.current.signal);
       done();
     } catch (e) { toast((e as Error).message, 'err'); } finally { setProgress(null); if (fileRef.current) fileRef.current.value = ''; }
   };

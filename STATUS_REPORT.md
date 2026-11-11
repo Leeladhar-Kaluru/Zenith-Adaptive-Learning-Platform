@@ -135,8 +135,29 @@ Tests: new `test_classes.py` (9), `test_gaps.py` (8), `test_explore.py` (4), sta
 Commands: `python -m pytest -q` in backend; `npm test`, `npm run build` in frontend.
 
 Waiting on you:
-- Approve migrations 004 and 005 for production (take the backup first), then a deploy. Until then none of this is live.
+- (Done 2026-11-11: backup taken and verified, migrations 004-006 applied to production, deployed.)
 - Wikimedia contact: tell me an email or page you own and monitor; it goes in the BOT_CONTACT environment variable only, never in source.
 - Carried over: rotate the Backblaze key, confirm SUPABASE_SECRET_KEY in Vercel, run the real data imports, and the 14-lesson depth backlog.
 
 Next: real-time class chat (Supabase Realtime, B2 signed-URL attachments, reactions, moderation, reporting, blocking), then Live Books depth, then simulations.
+
+## Phase 2: class chat, simulations, deployed to production (2026-11-11)
+
+Production: backup `backups/zenith-20261111T055131Z.zbk` (46 tables, 1,497 rows, verified) taken first; migrations 005 (announcements) and 006 (chat) applied to the `zenith` schema (6 profiles intact, RLS on every new table); master pushed; Vercel build succeeded; live checks: `/health` ok, `/classes` and `/classes/{id}/chat` answer 401 to anonymous callers, live CSS contains the fixed hero colours (the invisible "next step" card).
+
+Class chat (backend `services/chat.py`, `services/chatfiles.py`, `api/v1/chat.py`; UI `frontend/src/chat/`): messages, replies, threads, fixed reaction set plus a larger emoji picker, teacher-only polls and announcements, pins, search (wildcards treated as text), pagination, unread counts, typing and online status, report, block, teacher mute and remove. Child safety: no direct messages; links, emails and phone numbers refused; a short unkind-word filter; burst limit; students cannot post HTML. Attachments (PNG, JPG, GIF, WebP, PDF, 4 MB max) are checked by their bytes, stored in the PRIVATE B2 bucket under `classchat/`, and served only through ten-minute signed links after a membership check; storage keys never reach browsers. GIF search goes through a server-side Giphy proxy (G rating, credit shown, host allow-list). 29 tests.
+
+Realtime: clients send content-free "changed" pings, typing and presence over a PRIVATE Supabase channel; messages always come from the API. Polling (7 s) is the fallback and is what works today.
+
+Simulations (`frontend/src/lesson/sims/`): projectile motion (step mode, planets, target challenge), refraction (Snell, critical angle, total internal reflection, Fresnel brightness), series and parallel circuits (Ohm's law), and a Three.js solids viewer (cube, cuboid, cylinder, cone, sphere; drag or arrow keys to turn; falls back to numbers when WebGL is missing or memory is very low). Models are pure functions with 12 tests against textbook values; schema bounds with 18 tests. Three.js (193 kB gzip) loads only on the solids simulation and is outside the precache. Checked in a real browser: projectile fired and hit its target, 3D cone and cube render, readouts match formulas.
+
+Tests: 360 backend passed (full run) plus 18 schema tests; 18 frontend tests; build and budget pass (precache 618.5 of 650 kB).
+
+NOT done: Supabase Realtime policies (blocked, see below); GIF and file sharing depend on keys in Vercel; no lessons yet USE the new simulations; Live Books depth upgrades, Indian states/rivers/mountains maps, Data Stories real imports, Classes 9 and 10 content, knowledge-map and offline upgrades.
+
+Needs you:
+1. Run `backend/sql/realtime_class_chat.sql` in the Supabase SQL editor (it adds two policies on the managed `realtime.messages` table and one membership function). My attempt was refused by the permission system, so chat is polling until you do.
+2. GIFs: create a free Giphy API key and set `GIPHY_API_KEY` in Vercel (server only). Attachments: confirm `B2_KEY_ID`, `B2_APP_KEY`, `B2_BUCKET` are set in Vercel; rotate the B2 key.
+3. Confirm `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY` are set in Vercel (needed for live pings).
+4. Wikimedia contact: tell me an email or page you own and monitor for `BOT_CONTACT`.
+5. Vercel connector needs team access authorized if you want me to inspect deployments directly.

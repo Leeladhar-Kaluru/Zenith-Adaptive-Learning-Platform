@@ -1,6 +1,7 @@
 import { Suspense, useEffect, useState } from 'react';
 import { NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { Avatar, Icon } from '../icons/Icon';
+import { NotificationBell } from './NotificationBell';
 import { Chip } from '../ui/kit';
 import { RouteLoader } from '../fx/fx';
 import { useAuth } from '../context/AuthContext';
@@ -25,6 +26,7 @@ const TEACHER = [
 ];
 const REVIEWER = [
   { to: '/review', icon: 'clipboard', label: 'Review' },
+  { to: '/review/pipeline', icon: 'compass', label: 'Pipeline' },
   { to: '/learn', icon: 'book', label: 'Library' },
   { to: '/settings', icon: 'gear', label: 'Settings' },
 ];
@@ -83,6 +85,7 @@ export default function Shell() {
             {profile?.grade && <Chip>Class {profile.grade}</Chip>}
             <span className={s.spacer} />
             {profile?.role === 'student' && <Stats />}
+            {profile && <NotificationBell />}
             <button className={s.iconBtn} onClick={() => setTheme(dark ? 'light' : 'dark')} aria-label={dark ? 'Switch to light theme' : 'Switch to dark theme'}>
               <Icon name={dark ? 'sun' : 'moon'} size={22} />
             </button>

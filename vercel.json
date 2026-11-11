@@ -21,5 +21,11 @@
       "source": "/((?!assets/|icons/|.*\\..*).*)",
       "destination": "/index.html"
     }
+  ],
+  "crons": [
+    {
+      "path": "/api/v1/ingest/run",
+      "schedule": "30 21 * * *"
+    }
   ]
 }

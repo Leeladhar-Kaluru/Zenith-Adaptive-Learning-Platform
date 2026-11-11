@@ -41,21 +41,22 @@ class OpenSource:
     homepage: str
     terms: str
     attribution: str                # {title} and {url} are filled in
+    index_urls: tuple[str, ...] = ()   # pages that list the source's articles, used to discover candidates for a topic
     proof: str = "page"             # "page": the page itself must show exactly this Creative Commons licence; "publisher": public domain by the publisher's own law or policy
 
 
 SOURCES: dict[str, OpenSource] = {
     "nasa": OpenSource(
-        name="NASA", hosts=("spaceplace.nasa.gov", "science.nasa.gov"), path_prefix="/", licence="US-GOV-PD", homepage="https://www.nasa.gov/", proof="publisher",
+        name="NASA", hosts=("spaceplace.nasa.gov", "science.nasa.gov"), path_prefix="/", licence="US-GOV-PD", homepage="https://www.nasa.gov/", proof="publisher", index_urls=("https://spaceplace.nasa.gov/",),
         terms="https://www.nasa.gov/nasa-brand-center/images-and-media/",
         attribution="Adapted from NASA, {title} ({url}). NASA content is generally not copyrighted. Simplified for school students by ZENITH."),
     "usgs-water": OpenSource(
         name="USGS Water Science School", hosts=("www.usgs.gov",), path_prefix="/special-topics/water-science-school/", licence="US-GOV-PD", homepage="https://www.usgs.gov/",
-        proof="publisher", terms="https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits",
+        proof="publisher", index_urls=("https://www.usgs.gov/special-topics/water-science-school/science",), terms="https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits",
         attribution="Adapted from the U.S. Geological Survey, {title} ({url}). USGS-authored content is in the public domain. Simplified for school students by ZENITH."),
     "noaa-ocean": OpenSource(
         name="NOAA National Ocean Service", hosts=("oceanservice.noaa.gov",), path_prefix="/facts/", licence="US-GOV-PD", homepage="https://oceanservice.noaa.gov/",
-        proof="publisher", terms="https://www.noaa.gov/protecting-your-privacy",
+        proof="publisher", index_urls=("https://oceanservice.noaa.gov/facts/",), terms="https://www.noaa.gov/protecting-your-privacy",
         attribution="Adapted from NOAA National Ocean Service, {title} ({url}). NOAA-authored content is in the public domain. Simplified for school students by ZENITH."),
 }
 

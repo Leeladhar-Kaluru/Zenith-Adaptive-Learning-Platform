@@ -110,6 +110,42 @@ class _Reader(HTMLParser):
         self._buf.append(data)
 
 
+class _Links(HTMLParser):
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self.out: list[tuple[str, str]] = []
+        self._href: str | None = None
+        self._text: list[str] = []
+
+    def handle_starttag(self, tag, attrs):
+        if tag == "a":
+            self._href, self._text = dict(attrs).get("href"), []
+
+    def handle_data(self, data):
+        if self._href is not None:
+            self._text.append(data)
+
+    def handle_endtag(self, tag):
+        if tag == "a" and self._href:
+            self.out.append((self._href, re.sub(r"\s+", " ", "".join(self._text)).strip()))
+        if tag == "a":
+            self._href = None
+
+
+def links(html: str, base: str) -> list[tuple[str, str]]:
+    """(absolute url, link text) for every link on a page, without fragments or queries, each URL once."""
+    from urllib.parse import urldefrag, urljoin, urlsplit
+    r = _Links()
+    r.feed(html)
+    seen: dict[str, str] = {}
+    for href, text in r.out:
+        u = urldefrag(urljoin(base, href))[0]
+        parts = urlsplit(u)
+        if parts.scheme == "https" and not parts.query and text and u not in seen:
+            seen[u] = text
+    return list(seen.items())
+
+
 def parse(html: str) -> Page:
     r = _Reader()
     r.feed(html)

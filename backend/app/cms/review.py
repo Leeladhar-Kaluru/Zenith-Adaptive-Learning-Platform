@@ -7,6 +7,7 @@ from datetime import datetime, timezone
 from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
+from app.services import notifications
 from app.models import AuditLog, Chapter, GateResult, Item, Lesson, LessonVersion, LessonVersionItem
 
 
@@ -66,7 +67,9 @@ def publish(db: Session, lv_id: uuid.UUID, actor: uuid.UUID) -> LessonVersion:
         item.status = "published"
     _audit(db, actor, "content.publish", lv)
     db.flush()
-    refresh_chapter_status(db, db.get(Lesson, lv.lesson_id).chapter_id)
+    chapter = db.get(Chapter, db.get(Lesson, lv.lesson_id).chapter_id)
+    refresh_chapter_status(db, chapter.id)
+    notifications.notify_grade(db, chapter.grade, "new_lesson", f"New lesson: {lv.title}"[:120], f"{chapter.title}", f"/lesson/{lv.lesson_id}", f"lesson-{lv.id}")
     return lv
 
 

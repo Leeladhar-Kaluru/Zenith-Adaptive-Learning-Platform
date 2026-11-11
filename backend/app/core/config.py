@@ -22,6 +22,7 @@ class Settings(BaseSettings):
     SUPABASE_URL: str = ""
     SUPABASE_PUBLISHABLE_KEY: str = ""
     SUPABASE_SECRET_KEY: str = ""
+    CRON_SECRET: str = ""        # shared secret the scheduler sends to /ingest/run; empty means the scheduled run is off
     
     # AI provider (Groq in production, LM Studio locally via LLM_PROVIDER=lmstudio)
     APP_NAME: str = "ZENITH"

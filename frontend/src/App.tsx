@@ -8,6 +8,7 @@ import type { Role } from './api/types';
 const Landing = lazy(() => import('./pages/Landing'));
 const Auth = lazy(() => import('./pages/Auth'));
 const Onboarding = lazy(() => import('./pages/Onboarding'));
+const Pipeline = lazy(() => import('./pages/review/Pipeline'));
 const ArenaPage = lazy(() => import('./pages/Arena'));
 const HomePage = lazy(() => import('./pages/Home'));
 const Learn = lazy(() => import('./pages/Learn'));
@@ -85,6 +86,7 @@ export default function App() {
           <Route path="/teacher/class/:cid/student/:id" element={<Guard roles={['teacher', 'admin']}><TeacherStudent /></Guard>} />
           <Route path="/teacher/assign" element={<Guard roles={['teacher', 'admin']}><Assign /></Guard>} />
           <Route path="/review" element={<Guard roles={['reviewer', 'admin']}><ReviewQueue /></Guard>} />
+          <Route path="/review/pipeline" element={<Guard roles={['reviewer', 'admin']}><Pipeline /></Guard>} />
           <Route path="/review/:id" element={<Guard roles={['reviewer', 'admin']}><ReviewLesson /></Guard>} />
         </Route>
         <Route path="*" element={<NotFound />} />

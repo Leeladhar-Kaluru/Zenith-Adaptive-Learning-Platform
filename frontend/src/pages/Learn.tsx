@@ -5,6 +5,7 @@ import type { Boards, Chapter, SearchResults, Subject } from '../api/types';
 import { useAuth } from '../context/AuthContext';
 import { Icon } from '../icons/Icon';
 import { Button, Card, Chip, EmptyState, Progress, Reveal, Segmented, Skeleton } from '../ui/kit';
+import { Coverage } from './Coverage';
 import s from './pages.module.css';
 
 export function ChapterCard({ c, delay = 0 }: { c: Chapter; delay?: number }) {
@@ -60,9 +61,10 @@ export default function Learn() {
             {search.data.concepts.filter((c) => c.lessonId).map((c) => <Link key={c.id} to={`/lesson/${c.lessonId}`} className={s.lrow}><div style={{ flex: 1 }}><strong>{c.title}</strong><div className="sm muted">Topic · Class {c.grade}</div></div></Link>)}
           </div></Card>
       )}
+      {profile?.role === 'student' && boards.data && <div style={{ marginBottom: 14 }}><Coverage subject={subject} grade={grade} name={boards.data.subjects.find((x) => x.id === subject)?.name ?? subject} /></div>}
       {loading && !data && <div className={s.grid}>{[0, 1, 2].map((i) => <Skeleton key={i} h={250} r={16} />)}</div>}
       {error && !data && <EmptyState icon="wifiOff" title="Could not load chapters" text={error.message} action={<Button onClick={reload} icon="refresh">Try again</Button>} />}
-      {data && data.length === 0 && <EmptyState icon="book" title="Nothing here yet" text={`Class ${grade} ${subject} chapters are on the way.`} />}
+      {data && data.length === 0 && <EmptyState icon="book" title="Nothing here yet" text={`No published ${boards.data?.subjects.find((x) => x.id === subject)?.name ?? subject} chapters for Class ${grade} yet. Use "Ask for more lessons" above and a teacher will be asked to review new ones.`} />}
       {data && data.length > 0 && <div className={s.grid}>{data.map((c, i) => <ChapterCard key={c.id} c={c} delay={i * 70} />)}</div>}
     </div>
   );

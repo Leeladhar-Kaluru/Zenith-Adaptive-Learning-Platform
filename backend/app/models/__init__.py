@@ -7,6 +7,7 @@ from app.models.learning import (AssessmentSession, ConceptLevel, ConceptState, 
                                  Recommendation, RevisionSchedule)
 from app.models.sources import ASSET_STATUS, ContentProvenance, Source, SourceAsset
 from app.models.ops import VITAL_NAMES, WebVital
+from app.models.pipeline import IngestJob, JobRequester, LessonDraft, Notification
 from app.models.quiz import QuizAnswer, QuizMatch, QuizPlayer, QuizRating
 from app.models.chat import (ChatBlock, ChatMessage, ChatMute, ChatPollVote, ChatReaction, ChatRead, ChatReport)
 from app.models.classroom import (Announcement, Assignment, ClassMember, Classroom, ClassResource, DailyActivity, LeagueMembership, StudentBadge,

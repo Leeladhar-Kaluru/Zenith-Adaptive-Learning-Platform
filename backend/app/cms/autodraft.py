@@ -10,6 +10,7 @@ import json
 import re
 from typing import Awaitable, Callable
 
+from app.cms import infographic
 from app.cms.draft import TODO
 from app.models import SourceAsset
 
@@ -35,7 +36,8 @@ def build_prompt(asset: SourceAsset, grade: int, subject: str, title: str, conce
         '"mistake":"the most common wrong idea and why it is wrong","real_life":"one everyday use",'
         '"items":[{"level":"intro|standard|challenge","stem":str,"options":[{"text":str,"mistake":"a short label of the wrong idea behind this option, or empty for the right one"} x4],'
         '"correct":0-3,"explanation":str}] (8 to 10 questions, at least one of each level, exactly one correct option, wrong options that are really wrong),'
-        '"summary":[3 or 4 short points],"cards":[{"front":str,"back":str}] (4 cards)}\n\n'
+        '"summary":[3 or 4 short points],"cards":[{"front":str,"back":str}] (4 cards),'
+        '"infographic":{"type":"flow","title":str,"steps":[3 to 6 short steps taken from the source]} OR {"type":"compare","title":str,"left_name":str,"left":[2 to 4 short points],"right_name":str,"right":[2 to 4 short points]}}\n\n'
         f"SOURCE ({asset.attribution_text}):\n{sections}")
 
 
@@ -73,7 +75,11 @@ def assemble(data: dict, *, slug: str, title: str, grade: int, concept_id: str, 
     for s in secs[:4]:
         paras = [_t(p, 700) for p in s.get("paragraphs", []) if _t(p, 700)][:3]
         blocks.append({"kind": "text", "heading": _t(s["heading"], 120), "html": "".join(f"<p>{html.escape(p, quote=False)}</p>" for p in paras) or f"<p>{TODO}</p>"})
-    blocks.append({"kind": "figure", "svg": f"{TODO}: draw an original diagram", "alt": f"{TODO}: describe what the diagram shows", "caption": f"{TODO}: caption"})
+    try:
+        svg, alt = infographic.build(data.get("infographic"))
+        blocks.append({"kind": "figure", "svg": svg, "alt": alt, "caption": _t((data.get("infographic") or {}).get("title"), 120) or "Summary diagram"})
+    except ValueError:                                           # no usable infographic: leave a visible TODO instead of inventing one
+        blocks.append({"kind": "figure", "svg": f"{TODO}: draw an original diagram", "alt": f"{TODO}: describe what the diagram shows", "caption": f"{TODO}: caption"})
     for ex in data.get("examples", [])[:2]:
         steps = [_t(x, 300) for x in (ex.get("steps") or []) if _t(x, 300)] if isinstance(ex, dict) else []
         if isinstance(ex, dict) and _t(ex.get("prompt"), 300) and len(steps) >= 2:

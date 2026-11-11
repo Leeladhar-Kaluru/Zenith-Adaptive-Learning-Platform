@@ -1,0 +1,312 @@
+slug: commas-and-apostrophes
+title: Commas and apostrophes
+minutes: 20
+objectives:
+- Use commas to separate the items in a list and after words like yes and no
+- Write short forms such as don't and it's with an apostrophe
+- Show that something belongs to someone with an apostrophe and s
+- Know that an apostrophe is not used to make a plural
+concepts:
+- english-commas
+- english-apostrophes
+origin: ai_assisted
+blocks:
+- kind: text
+  heading: Two small marks that do big jobs
+  html: '<p>Think of a dabba packed for school. Mother puts in rice, dal and pickle. Without any marks, the list could look like one long muddle. A <strong>comma</strong> (,) is a small mark that separates things and shows a short pause.</p><p>An <strong>apostrophe</strong> (&#39;) is a small mark that sits high on the line. It has two jobs, and we will learn both.</p>'
+- kind: text
+  heading: Commas
+  html: '<p>Use commas to separate the items in a list. Put a comma after each item except the last two, which are joined by <em>and</em>: I packed rice, dal and pickle.</p><p>Also use a comma after a word such as yes or no at the start of a sentence: Yes, I will come.</p>'
+- kind: text
+  heading: Apostrophes
+  html: '<p>First job: a short form. We join two words and leave out some letters. The apostrophe shows where the letters were. Do not becomes <em>don''t</em>, it is becomes <em>it''s</em> and I am becomes <em>I''m</em>.</p><p>Second job: belonging. Add an apostrophe and s to a name: Ravi''s bag is the bag that belongs to Ravi. The word <em>its</em> with no apostrophe also shows belonging: The parrot flapped its wings.</p><p>Never use an apostrophe just to make a plural. Two cats is right. Two cat''s is wrong.</p>'
+- kind: figure
+  svg: <svg viewBox="0 0 320 180" role="img"><g fill="none" stroke="#14193a" stroke-width="2"><rect x="10" y="10" width="140" height="160" rx="8"/><rect x="170" y="10" width="140" height="160" rx="8"/></g><g font-size="12" fill="currentColor" text-anchor="middle"><text x="80" y="32" font-weight="700">Short form</text><text x="80" y="62">do not</text><text x="80" y="86">becomes</text><text x="80" y="116" font-size="20" font-weight="700">don't</text><text x="80" y="150">the apostrophe replaces o</text><text x="240" y="32" font-weight="700">Belonging</text><text x="240" y="62">the bag of Ravi</text><text x="240" y="86">becomes</text><text x="240" y="116" font-size="20" font-weight="700">Ravi's bag</text><text x="240" y="150">the apostrophe shows owner</text></g></svg>
+  alt: Two boxes show the two jobs of an apostrophe, a short form like don't for do not and belonging like Ravi's bag.
+  caption: An apostrophe stands in for missing letters or shows who owns something.
+- kind: example
+  heading: Worked example
+  prompt: 'Add the commas: We bought mangoes bananas and grapes.'
+  steps:
+  - 'Find the list. It has three items: mangoes, bananas and grapes.'
+  - 'Put a comma after each item except the last two.'
+  - 'So a comma goes after mangoes only, because bananas and grapes are joined by and.'
+  - 'Check: We bought mangoes, bananas and grapes.'
+- kind: example
+  heading: Worked example
+  prompt: 'Write the short form of did not, and the belonging form of the pen of Meera.'
+  steps:
+  - 'Did not: join the words and leave out the o of not. Put an apostrophe where the o was.'
+  - 'This gives didn''t.'
+  - 'Belonging: the pen of Meera becomes Meera''s pen. Add an apostrophe and s to the name.'
+  - 'Check: didn''t and Meera''s pen.'
+- kind: callout
+  tone: watch
+  html: It's and its are not the same. It's means it is (a short form). Its with no apostrophe shows belonging. If you can say it is in its place, write it's.
+- kind: callout
+  tone: real
+  html: In a text message you may write dont. In school writing and in letters, write don't. The apostrophe shows you know the word is a short form.
+- kind: check
+  item: q-cp-1
+- kind: check
+  item: q-cp-2
+- kind: check
+  item: q-cp-3
+- kind: summary
+  points:
+  - 'A comma separates the items in a list and follows opening words such as yes and no.'
+  - 'An apostrophe in a short form such as don''t shows where letters are left out.'
+  - 'An apostrophe and s show that something belongs to someone, as in Ravi''s bag.'
+  - 'Do not use an apostrophe to make a plural, and remember: it''s means it is, but its shows belonging.'
+items:
+- key: q-cp-1
+  kind: mcq
+  stem: Which sentence has the commas in the right places?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: english-commas
+  explanation: In a list, commas separate the items, except that the last two are joined by and. So rice, dal and pickle is right.
+  hints:
+  - Separate the items of the list with commas. The last two are joined by and.
+  correct: B
+  options:
+  - key: A
+    text: I packed rice dal and pickle.
+  - key: B
+    text: I packed rice, dal and pickle.
+  - key: C
+    text: I packed, rice dal and pickle.
+  - key: D
+    text: I packed rice, dal, and, pickle.
+- key: q-cp-2
+  kind: mcq
+  stem: What is the short form of do not?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: english-apostrophes
+  explanation: Do not becomes don't. The apostrophe takes the place of the letter o that is left out.
+  hints:
+  - Which letter is left out of not?
+  correct: A
+  options:
+  - key: A
+    text: don't
+  - key: B
+    text: do'nt
+  - key: C
+    text: dont'
+  - key: D
+    text: do not's
+- key: q-cp-3
+  kind: mcq
+  stem: What does Ravi's bag tell us?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: english-apostrophes
+  explanation: The apostrophe and s show belonging. Ravi's bag is the bag that belongs to Ravi. It does not mean more than one Ravi.
+  hints:
+  - Think of the figure with Ravi's bag.
+  correct: B
+  options:
+  - key: A
+    text: There are many boys called Ravi.
+    misconception: apos-plural
+  - key: B
+    text: The bag belongs to Ravi.
+  - key: C
+    text: Ravi is a kind of bag.
+  - key: D
+    text: Ravi is not a name.
+- key: q-cp-4
+  kind: mcq
+  stem: Which sentence shows that the pen belongs to Meera?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: english-apostrophes
+  explanation: To show belonging, add an apostrophe and s to the name. So Meera's pen is right.
+  hints:
+  - Add an apostrophe and s to the name of the owner.
+  correct: B
+  options:
+  - key: A
+    text: This is Meeras pen.
+  - key: B
+    text: This is Meera's pen.
+  - key: C
+    text: This is Meeras' pen.
+  - key: D
+    text: This is Meera,s pen.
+- key: q-cp-5
+  kind: mcq
+  stem: Which sentence is correct?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: english-apostrophes
+  explanation: We do not use an apostrophe to make a plural. Cats, with no apostrophe, means more than one cat. So The cats are sleeping is right.
+  hints:
+  - Is the sentence about belonging or about more than one cat?
+  correct: B
+  options:
+  - key: A
+    text: The cat's are sleeping.
+    misconception: apos-plural
+  - key: B
+    text: The cats are sleeping.
+  - key: C
+    text: The cats' are sleeping.
+    misconception: apos-plural
+  - key: D
+    text: The cat's is sleeping.
+- key: q-cp-6
+  kind: mcq
+  stem: 'Which word fits the gap? The parrot flapped ___ wings.'
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: english-apostrophes
+  explanation: The wings belong to the parrot, and its without an apostrophe shows belonging. It's would mean it is, which does not fit here.
+  hints:
+  - Try replacing the gap with it is. Does the sentence still make sense?
+  correct: B
+  options:
+  - key: A
+    text: it's
+    misconception: its-its
+  - key: B
+    text: its
+  - key: C
+    text: its'
+  - key: D
+    text: it
+- key: q-cp-7
+  kind: mcq
+  stem: Which sentence is written correctly?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: english-commas
+  explanation: A comma follows the opening word Yes. A comma does not belong after will or at the very end of the sentence.
+  hints:
+  - Where does the short pause come after the opening word Yes?
+  correct: A
+  options:
+  - key: A
+    text: Yes, I will come.
+  - key: B
+    text: Yes I, will come.
+  - key: C
+    text: Yes I will, come.
+  - key: D
+    text: Yes I will come,
+    misconception: comma-stop
+- key: q-cp-8
+  kind: numeric
+  stem: 'Following the rule in this lesson, how many commas are needed in this sentence? We bought mangoes bananas oranges grapes and plums.'
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: english-commas
+  explanation: The items are mangoes, bananas, oranges, grapes and plums. A comma goes after each item except the last two, which are joined by and. That is a comma after mangoes, bananas and oranges, so 3.
+  hints:
+  - Count the items. Put a comma after each, but not before and.
+  value: 3
+  tolerance: 0.0
+  verify: '1+1+1'
+- key: q-cp-9
+  kind: mcq
+  stem: 'Assertion (A): In It''s raining, the word It''s is a short form of it is. Reason (R): The apostrophe takes the place of the letter i that is left out.'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: english-apostrophes
+  explanation: Both are true. It is becomes it's, and the apostrophe stands in for the letter i of is. So R explains why the apostrophe is there.
+  hints:
+  - Write it is in full and see which letter disappears.
+  correct: A
+  options:
+  - key: A
+    text: Both A and R are true and R explains A
+  - key: B
+    text: Both A and R are true but R does not explain A
+  - key: C
+    text: A is true but R is false
+  - key: D
+    text: A is false but R is true
+- key: q-cp-10
+  kind: mcq
+  stem: 'Assertion (A): The cow wagged it''s tail needs an apostrophe in its. Reason (R): The short form it''s means it is.'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: english-apostrophes
+  explanation: R is true, because it's means it is. But A is false. The tail belongs to the cow, and its without an apostrophe shows belonging.
+  hints:
+  - Would The cow wagged it is tail make sense?
+  correct: D
+  options:
+  - key: A
+    text: Both A and R are true and R explains A
+    misconception: its-its
+  - key: B
+    text: Both A and R are true but R does not explain A
+    misconception: its-its
+  - key: C
+    text: A is true but R is false
+    misconception: its-its
+  - key: D
+    text: A is false but R is true
+- key: q-cp-11
+  pattern: case
+  kind: mcq
+  stem: 'Read the passage. Mother''s list for the market has rice, tomatoes, onions and tea. Ravi''s job is to carry the bag. He doesn''t mind, because he likes the market. Which word in the passage is a short form of two words?'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: english-apostrophes
+  explanation: Doesn't is the short form of does not. Mother's and Ravi's show belonging, and tomatoes is a plural with no apostrophe.
+  hints:
+  - Which word can be written as two words, with a letter left out?
+  correct: B
+  options:
+  - key: A
+    text: Mother's
+    misconception: apos-plural
+  - key: B
+    text: doesn't
+  - key: C
+    text: Ravi's
+    misconception: apos-plural
+  - key: D
+    text: tomatoes
+misconceptions:
+- code: apos-plural
+  concept: english-apostrophes
+  description: Thinks an apostrophe and s make a plural, or cannot tell belonging from more than one.
+- code: its-its
+  concept: english-apostrophes
+  description: Thinks its with no apostrophe is wrong, or that it's shows belonging.
+- code: comma-stop
+  concept: english-commas
+  description: Puts a comma where a full stop should end the sentence, or in places where there is no pause.
+cards:
+- key: cp-card-1
+  concept: english-commas
+  front: Where do commas go in a list?
+  back: After each item except the last two, which are joined by and.
+- key: cp-card-2
+  concept: english-apostrophes
+  front: What does the apostrophe do in don't?
+  back: It shows that a letter, the o of not, is left out.
+- key: cp-card-3
+  concept: english-apostrophes
+  front: How do you show that a bag belongs to Ravi?
+  back: Write Ravi's bag, with an apostrophe and s.
+- key: cp-card-4
+  concept: english-apostrophes
+  front: What is the difference between it's and its?
+  back: It's means it is. Its, with no apostrophe, shows that something belongs to it.

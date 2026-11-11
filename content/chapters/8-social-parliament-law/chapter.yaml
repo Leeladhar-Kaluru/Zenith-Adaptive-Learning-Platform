@@ -1,0 +1,13 @@
+slug: 8-social-parliament-law
+board: cbse
+curriculum: NCERT current editions (to be confirmed by a reviewer)
+grade: 8
+subject: social
+title: 'How India is governed: Parliament and the law'
+summary: Learn who makes the laws of India, how the two houses and the President work together, and the steps a bill follows to become a law.
+concepts:
+- id: civics-parliament-houses
+- id: civics-bill-to-law
+lessons:
+- lok-sabha-rajya-sabha-president
+- how-a-bill-becomes-law

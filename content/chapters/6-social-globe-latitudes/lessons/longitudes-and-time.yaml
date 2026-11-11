@@ -1,0 +1,281 @@
+slug: longitudes-and-time
+title: Longitudes, the prime meridian and time
+minutes: 25
+objectives:
+- Explain that longitude tells how far a place is east or west of the prime meridian
+- Name the prime meridian and the standard meridian of India
+- Work out the time difference between two longitudes using 4 minutes for each degree
+- Say why a country needs one standard time
+concepts:
+- longitudes-time
+origin: ai_assisted
+blocks:
+- kind: text
+  heading: Lines from pole to pole
+  html: <p>Latitudes tell north or south. To pin down a place we also need an east-west address. For that we draw half-circles that run from the North Pole to the South Pole. Each one is a <strong>meridian of longitude</strong>. All meridians are the same length and they meet at the poles.</p><p><strong>Longitude</strong> is the angle that tells how far a place is east or west of a starting meridian. It is also measured in degrees.</p>
+- kind: text
+  heading: The prime meridian
+  html: <p>The starting meridian is the <strong>prime meridian</strong>. It is marked <strong>0 degrees</strong> and it passes through Greenwich, near London. The prime meridian and the line on the opposite side of the Earth, at 180 degrees, split the globe into the <strong>Eastern Hemisphere</strong> and the <strong>Western Hemisphere</strong>.</p><p>Longitude goes up to 180 degrees east (180 E) and 180 degrees west (180 W). India lies in the Eastern Hemisphere. Its <strong>standard meridian</strong> is <strong>82.5 degrees east</strong>. It passes near Prayagraj in Uttar Pradesh.</p>
+- kind: figure
+  svg: <svg viewBox="0 0 240 240" role="img"><circle cx="120" cy="120" r="100" fill="none" stroke="currentColor" stroke-width="2"/><path d="M120 20 Q120 120 120 220" stroke="#ffb800" stroke-width="3" fill="none"/><path d="M120 20 Q70 120 120 220" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M120 20 Q20 120 120 220" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M120 20 Q170 120 120 220" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M120 20 Q220 120 120 220" stroke="currentColor" stroke-width="1.5" fill="none"/><text x="96" y="14" font-size="10" fill="currentColor">Prime meridian 0</text><text x="30" y="236" font-size="9" fill="currentColor">West of 0</text><text x="150" y="236" font-size="9" fill="currentColor">East of 0</text></svg>
+  alt: A circle for the globe with five curved meridians from the top to the bottom, and the middle one marked as the prime meridian.
+  caption: Meridians run from pole to pole. The middle line is the prime meridian at 0 degrees. Places to its right are east and places to its left are west.
+- kind: text
+  heading: Longitude and time
+  html: <p>The Earth turns once around in 24 hours. In one turn it passes through 360 degrees. So in one hour it turns 360 divided by 24, which is 15 degrees. In one hour there are 60 minutes, so 15 degrees take 60 minutes. That means every <strong>1 degree of longitude is 4 minutes of time</strong>.</p><p>The Sun rises in the east first. So a place that is east of another place sees the Sun earlier, and its clock is <strong>ahead</strong>. A place to the west has its clock <strong>behind</strong>.</p><p>Having a different clock in every town would be confusing, so a country picks one meridian and uses its time everywhere. This is its <strong>standard time</strong>. India uses the time of 82.5 degrees east, called Indian Standard Time.</p>
+- kind: example
+  heading: 'Worked example: a small difference'
+  prompt: Two places are 10 degrees of longitude apart. What is the difference in their local time?
+  steps:
+  - 'Use the rule: 1 degree of longitude is 4 minutes of time.'
+  - 'Multiply the degrees by 4: 10 x 4.'
+  - 10 x 4 = 40 minutes.
+  - 'Check: 15 degrees would be 60 minutes, so 10 degrees must be less than an hour. 40 minutes fits.'
+- kind: example
+  heading: 'Worked example: India and Greenwich'
+  prompt: India's standard meridian is 82.5 E. How far ahead of Greenwich time is Indian Standard Time?
+  steps:
+  - Greenwich is at 0 degrees, so the longitude difference is 82.5 - 0 = 82.5 degrees.
+  - 'Multiply by 4 minutes: 82.5 x 4 = 330 minutes.'
+  - 'Change to hours: 330 / 60 = 5.5 hours, which is 5 hours 30 minutes.'
+  - India is east of Greenwich, so its clock is ahead. When it is 12 noon at Greenwich, it is 5:30 in the evening in India.
+- kind: callout
+  tone: watch
+  html: Time goes ahead as you go east, not behind. Also, meridians are not parallel to each other. They meet at the poles. The lines that are parallel are the parallels of latitude.
+- kind: callout
+  tone: real
+  html: India is very wide from west to east. The Sun rises earlier in Arunachal Pradesh than in Gujarat. Yet one standard time keeps trains, schools and offices all over the country on the same clock.
+- kind: check
+  item: q-lt-1
+- kind: check
+  item: q-lt-2
+- kind: check
+  item: q-lt-3
+- kind: summary
+  points:
+  - Longitude is the angle east or west of the prime meridian, which is 0 degrees and passes through Greenwich.
+  - Meridians run from pole to pole and meet at the poles. Longitude goes up to 180 E and 180 W.
+  - Every 1 degree of longitude is 4 minutes of time, and 15 degrees is 1 hour.
+  - East is ahead in time and west is behind. India uses one standard time based on 82.5 E.
+items:
+- key: q-lt-1
+  kind: mcq
+  stem: Which line is the prime meridian?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: longitudes-time
+  explanation: The prime meridian is the 0 degree line of longitude and it passes through Greenwich.
+  hints:
+  - It is the starting line for longitude.
+  correct: B
+  options:
+  - key: A
+    text: The equator
+    misconception: meridian-parallel
+  - key: B
+    text: The line of 0 degrees longitude through Greenwich
+  - key: C
+    text: The line of 90 degrees north
+  - key: D
+    text: The Tropic of Cancer
+    misconception: meridian-parallel
+- key: q-lt-2
+  kind: mcq
+  stem: What does longitude measure?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: longitudes-time
+  explanation: Longitude measures how far a place is east or west of the prime meridian.
+  hints:
+  - Latitude does the north and south.
+  correct: B
+  options:
+  - key: A
+    text: How far north or south of the equator
+    misconception: meridian-parallel
+  - key: B
+    text: How far east or west of the prime meridian
+  - key: C
+    text: How high a place is
+  - key: D
+    text: How big a country is
+- key: q-lt-3
+  kind: mcq
+  stem: What is the standard meridian of India?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: longitudes-time
+  explanation: India uses 82.5 degrees east as its standard meridian for Indian Standard Time.
+  hints:
+  - It is east of Greenwich.
+  correct: C
+  options:
+  - key: A
+    text: 0 degrees
+  - key: B
+    text: 22.5 degrees east
+  - key: C
+    text: 82.5 degrees east
+  - key: D
+    text: 82.5 degrees north
+    misconception: meridian-parallel
+- key: q-lt-4
+  kind: truefalse
+  stem: 'True or false: All meridians of longitude meet at the poles.'
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: longitudes-time
+  explanation: True. Meridians are half-circles from the North Pole to the South Pole, so they meet at both poles.
+  hints:
+  - Think of the segments of an orange.
+  correct: true
+- key: q-lt-5
+  kind: mcq
+  stem: When it is noon at Greenwich, a place to the east of Greenwich will have a clock that is
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: longitudes-time
+  explanation: The Sun reaches places in the east first, so their clocks are ahead of Greenwich.
+  hints:
+  - The Sun rises in the east.
+  correct: B
+  options:
+  - key: A
+    text: behind, showing a time before noon
+    misconception: east-behind
+  - key: B
+    text: ahead, showing a time after noon
+  - key: C
+    text: the same as Greenwich
+  - key: D
+    text: stopped
+- key: q-lt-6
+  kind: numeric
+  stem: Two places are 30 degrees of longitude apart. What is the difference in their time, in minutes?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: longitudes-time
+  explanation: Each degree is 4 minutes, so 30 x 4 = 120 minutes, which is 2 hours.
+  hints:
+  - Multiply the degrees by 4.
+  value: 120
+  tolerance: 0.0
+  verify: 30*4
+- key: q-lt-7
+  kind: numeric
+  stem: A place is at 22.5 E. How many minutes ahead of Greenwich time is its local time?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: longitudes-time
+  explanation: The difference from 0 is 22.5 degrees. 22.5 x 4 = 90 minutes.
+  hints:
+  - Greenwich is at 0 degrees.
+  value: 90
+  tolerance: 0.0
+  verify: 45/2*4
+- key: q-lt-8
+  kind: numeric
+  stem: India is at 82.5 E and a place is at 52.5 E. How many minutes does its local time differ from the standard time of India?
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: longitudes-time
+  explanation: 'Both are east, so subtract: 82.5 - 52.5 = 30 degrees. 30 x 4 = 120 minutes. The place at 52.5 E is west of 82.5 E, so it is behind.'
+  hints:
+  - Subtract the longitudes first, then multiply by 4.
+  value: 120
+  tolerance: 0.0
+  verify: (165/2-105/2)*4
+- key: q-lt-9
+  pattern: case
+  kind: mcq
+  stem: Read this note. A class studies two towns. Town M is at 70 E and town N is at 80 E. Both use their own local time. Which statement is correct?
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: longitudes-time
+  explanation: N is 10 degrees east of M. 10 x 4 = 40 minutes. N is further east, so its clock is 40 minutes ahead of M.
+  hints:
+  - Find the gap in degrees, then multiply by 4. Decide which is east.
+  correct: A
+  options:
+  - key: A
+    text: N is 40 minutes ahead of M
+  - key: B
+    text: N is 40 minutes behind M
+    misconception: east-behind
+  - key: C
+    text: M and N show the same time
+  - key: D
+    text: N is 10 minutes ahead of M
+- key: q-lt-10
+  kind: mcq
+  stem: 'Assertion (A): A place at 60 E has a clock that is ahead of Greenwich. Reason (R): Places in the east see the Sun earlier than places in the west.'
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: longitudes-time
+  explanation: Both are true. Because the Sun reaches the east first, an eastern place has an earlier sunrise and its clock is ahead. R explains A.
+  hints:
+  - Which way does the Sun seem to travel?
+  correct: A
+  options:
+  - key: A
+    text: Both A and R are true, and R explains A
+  - key: B
+    text: Both A and R are true, but R does not explain A
+  - key: C
+    text: A is true, but R is false
+  - key: D
+    text: A is false, but R is true
+- key: q-lt-11
+  kind: mcq
+  stem: 'Assertion (A): Meridians of longitude are parallel to each other. Reason (R): All meridians run from the North Pole to the South Pole.'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: longitudes-time
+  explanation: A is false because meridians meet at the poles. R is true. They all go from pole to pole.
+  hints:
+  - Do lines that meet at a point stay parallel?
+  correct: D
+  options:
+  - key: A
+    text: Both A and R are true, and R explains A
+  - key: B
+    text: Both A and R are true, but R does not explain A
+  - key: C
+    text: A is true, but R is false
+  - key: D
+    text: A is false, but R is true
+misconceptions:
+- code: east-behind
+  concept: longitudes-time
+  description: Thinks places in the east have clocks behind those in the west. The Sun reaches the east first, so eastern clocks are ahead.
+- code: meridian-parallel
+  concept: longitudes-time
+  description: Mixes up meridians of longitude with parallels of latitude, such as calling the equator the prime meridian or using latitude for east-west position.
+cards:
+- key: longitudes-and-time-card-1
+  concept: longitudes-time
+  front: What is the prime meridian?
+  back: The 0 degree line of longitude. It passes through Greenwich.
+- key: longitudes-and-time-card-2
+  concept: longitudes-time
+  front: What is the standard meridian of India?
+  back: 82.5 degrees east. Indian Standard Time is based on it.
+- key: longitudes-and-time-card-3
+  concept: longitudes-time
+  front: How much time is 1 degree of longitude?
+  back: 4 minutes. So 15 degrees is 1 hour.
+- key: longitudes-and-time-card-4
+  concept: longitudes-time
+  front: 'East or west: which clock is ahead?'
+  back: The place that is further east has the clock that is ahead.

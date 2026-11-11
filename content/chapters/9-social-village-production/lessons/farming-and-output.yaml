@@ -1,0 +1,296 @@
+slug: farming-and-output
+title: Farming, non-farm work and raising output
+minutes: 25
+objectives:
+- Explain multiple cropping, irrigation and high yielding variety seeds
+- Work out output from area and yield
+- Describe non-farm activities that give work in a village
+- Explain why raising output on fixed land needs extra capital
+concepts:
+- village-farming-output
+- village-factors-of-production
+origin: ai_assisted
+blocks:
+- kind: text
+  heading: Same land, more grain
+  html: '<p>A village cannot make its land bigger, so farmers look for ways to get more from the land they have. <strong>Output</strong> is the total amount produced. <strong>Yield</strong> is the output from one hectare. If a field gives 20 quintals of wheat on each hectare, its yield is 20 quintals per hectare. A <strong>quintal</strong> is 100 kilograms.</p><p>We continue with the invented village of Hariyali. Its numbers are an <strong>example</strong> made up for learning and are not real data.</p>'
+- kind: text
+  heading: Three ways to raise output
+  html: '<p><strong>Multiple cropping</strong> means growing more than one crop on the same land in one year. For example, a farmer may grow rice in the rainy months and wheat in the cool months. The land stays the same, but the output of the year goes up.</p><p><strong>High yielding variety seeds</strong>, or <strong>HYV seeds</strong>, are seeds bred to give more grain per hectare. They give a high yield only when they get enough water and fertiliser, and these cost money. So HYV seeds need more working capital.</p><p><strong>Irrigation</strong> means bringing water to fields by wells, tubewells, canals or tanks. With irrigation, a farmer does not depend only on rain. This makes a second or third crop in a year possible.</p>'
+- kind: text
+  heading: Work outside the field
+  html: '<p>Farming is not the only work in a village. <strong>Non-farm activities</strong> are production work that is not growing crops. Examples are running a flour mill, sewing clothes, repairing pumps, driving a transport cart, keeping a small shop and teaching. These activities need less land. Many families earn some or all of their income from them, and they give work to people when farm work is slow.</p>'
+- kind: figure
+  svg: '<svg viewBox="0 0 330 210" role="img"><line x1="20" y1="170" x2="310" y2="170" stroke="currentColor" stroke-width="2"/><rect x="40" y="130" width="60" height="40" fill="#ffb800"/><rect x="130" y="110" width="60" height="60" fill="#6cb7ff"/><rect x="220" y="50" width="60" height="120" fill="#9be8a8"/><text x="70" y="124" font-size="11" text-anchor="middle" fill="currentColor">40</text><text x="160" y="104" font-size="11" text-anchor="middle" fill="currentColor">60</text><text x="250" y="44" font-size="11" text-anchor="middle" fill="currentColor">120</text><text x="70" y="186" font-size="9" text-anchor="middle" fill="currentColor">Old seeds</text><text x="70" y="198" font-size="9" text-anchor="middle" fill="currentColor">one crop</text><text x="160" y="186" font-size="9" text-anchor="middle" fill="currentColor">HYV seeds</text><text x="160" y="198" font-size="9" text-anchor="middle" fill="currentColor">one crop</text><text x="250" y="186" font-size="9" text-anchor="middle" fill="currentColor">HYV seeds</text><text x="250" y="198" font-size="9" text-anchor="middle" fill="currentColor">two crops</text></svg>'
+  alt: A bar chart for a made-up 2 hectare farm showing output rising from 40 to 60 to 120 quintals.
+  caption: Output in quintals a year from the same 2 hectares in the made-up Hariyali example. Old seeds with one crop give 40, HYV seeds with one crop give 60, and HYV seeds with two crops give 120.
+- kind: example
+  heading: Worked example from the made-up village of Hariyali
+  prompt: In this example, a farmer has 2 hectares. With old seeds the yield is 20 quintals per hectare and there is one crop a year. With HYV seeds and enough water the yield is 30 quintals per hectare for each crop, and the farmer grows two crops a year. Find the output in each case.
+  steps:
+  - 'Output = area x yield. With old seeds and one crop, output = 2 x 20 = 40 quintals.'
+  - 'With HYV seeds and one crop, output = 2 x 30 = 60 quintals.'
+  - 'With HYV seeds and two crops, output = 2 x 30 x 2 = 120 quintals.'
+  - 'Check: 120 is 3 times 40, and the land is still 2 hectares. The extra output came from higher yield and a second crop, not from more land.'
+- kind: example
+  heading: Worked reasoning
+  prompt: A village has canals that carry water all year. Why might farmers there manage two or three crops a year while farmers who depend only on rain manage one?
+  steps:
+  - 'A crop needs water while it grows. Rain falls in only some months.'
+  - 'A canal gives water in the dry months too, so a second crop can grow then.'
+  - 'More crops on the same land means more output in the year.'
+  - 'Check: this fits the idea that irrigation makes multiple cropping possible.'
+- kind: callout
+  tone: watch
+  html: Multiple cropping does not mean more land. The land stays the same size. Also, HYV seeds do not give a high yield by themselves. They need enough water and fertiliser, which cost money.
+- kind: callout
+  tone: real
+  html: A family in a village may farm a small plot and also run a flour mill or a shop. When the crop fails or farm work is slow, the non-farm income helps the family.
+- kind: check
+  item: q-fo-1
+- kind: check
+  item: q-fo-3
+- kind: check
+  item: q-fo-5
+- kind: summary
+  points:
+  - 'Output is the total produced. Yield is output per hectare. Output = area x yield.'
+  - 'Farmers raise output on fixed land by multiple cropping, HYV seeds and irrigation.'
+  - 'HYV seeds give a high yield only with enough water and fertiliser, so they need more working capital.'
+  - 'Non-farm activities such as milling, repairs, shops and transport give extra work in a village.'
+items:
+- key: q-fo-1
+  kind: mcq
+  stem: What is multiple cropping?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: village-farming-output
+  explanation: Multiple cropping means growing more than one crop on the same land in one year.
+  hints:
+  - Same land, more crops.
+  correct: A
+  options:
+  - key: A
+    text: Growing more than one crop on the same land in a year
+  - key: B
+    text: Buying more land each year
+    misconception: multiple-is-more-land
+  - key: C
+    text: Growing one crop on many different fields
+    misconception: multiple-is-more-land
+  - key: D
+    text: Using only old seeds
+- key: q-fo-2
+  kind: mcq
+  stem: Which of these is a non-farm activity?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: village-farming-output
+  explanation: Running a flour mill is production work that is not growing crops. Ploughing, sowing and harvesting are farm work.
+  hints:
+  - Non-farm means not growing crops.
+  correct: C
+  options:
+  - key: A
+    text: Ploughing a field
+    misconception: only-farming-is-work
+  - key: B
+    text: Sowing seeds
+    misconception: only-farming-is-work
+  - key: C
+    text: Running a flour mill
+  - key: D
+    text: Harvesting wheat
+    misconception: only-farming-is-work
+- key: q-fo-3
+  kind: mcq
+  stem: What is irrigation?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: village-farming-output
+  explanation: Irrigation means bringing water to fields from wells, tubewells, canals or tanks, so crops do not depend only on rain.
+  hints:
+  - It is about water for crops.
+  correct: D
+  options:
+  - key: A
+    text: Spreading fertiliser on the field
+    misconception: hyv-needs-nothing
+  - key: B
+    text: Rain falling on the field
+  - key: C
+    text: Selling crops in the market
+  - key: D
+    text: Bringing water to fields by wells, tubewells or canals
+- key: q-fo-4
+  kind: mcq
+  stem: Why do HYV seeds need more working capital than old seeds?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: village-farming-output
+  explanation: HYV seeds give a high yield only with enough water and fertiliser, and these have to be paid for each season, so more working capital is needed.
+  hints:
+  - Think about what HYV seeds need to grow well.
+  correct: B
+  options:
+  - key: A
+    text: They need no water or fertiliser
+    misconception: hyv-needs-nothing
+  - key: B
+    text: They need enough water and fertiliser, which cost money each season
+  - key: C
+    text: They make the land bigger
+    misconception: multiple-is-more-land
+  - key: D
+    text: They are free
+    misconception: hyv-needs-nothing
+- key: q-fo-5
+  kind: numeric
+  stem: A farm of 3 hectares has a yield of 25 quintals per hectare from one crop. What is the output in quintals?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: village-farming-output
+  explanation: Output = area x yield = 3 x 25 = 75 quintals.
+  hints:
+  - Multiply area by yield.
+  value: 75
+  tolerance: 0.0
+  verify: 3*25
+- key: q-fo-6
+  kind: numeric
+  stem: A farm of 4 hectares grows two crops in a year. Each crop gives a yield of 18 quintals per hectare. What is the output for the year, in quintals?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: village-farming-output
+  explanation: Output = 4 x 18 x 2 = 144 quintals.
+  hints:
+  - Find the output of one crop, then count both crops.
+  value: 144
+  tolerance: 0.0
+  verify: 4*18*2
+- key: q-fo-7
+  kind: mcq
+  stem: 'Assertion (A): Multiple cropping raises the output of the year from the same land. Reason (R): The farmer grows more than one crop on that land in the year.'
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: village-farming-output
+  explanation: Both statements are true. More than one crop on the same land in a year means more total output, so R explains A.
+  hints:
+  - Does R say why the output goes up?
+  correct: A
+  options:
+  - key: A
+    text: Both A and R are true, and R explains A
+  - key: B
+    text: Both A and R are true, but R does not explain A
+    misconception: multiple-is-more-land
+  - key: C
+    text: A is true, but R is false
+    misconception: multiple-is-more-land
+  - key: D
+    text: A is false, but R is true
+    misconception: multiple-is-more-land
+- key: q-fo-8
+  kind: mcq
+  stem: 'Assertion (A): HYV seeds always give a high yield, whatever the water and fertiliser. Reason (R): HYV seeds need enough water and fertiliser to give a high yield.'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: village-farming-output
+  explanation: R is true, because HYV seeds need enough water and fertiliser. That makes A false, since HYV seeds do not give a high yield whatever the inputs.
+  hints:
+  - If R is true, can A be true as well?
+  correct: D
+  options:
+  - key: A
+    text: Both A and R are true, and R explains A
+    misconception: hyv-needs-nothing
+  - key: B
+    text: Both A and R are true, but R does not explain A
+    misconception: hyv-needs-nothing
+  - key: C
+    text: A is true, but R is false
+    misconception: hyv-needs-nothing
+  - key: D
+    text: A is false, but R is true
+- key: q-fo-9
+  kind: mcq
+  stem: 'A student says, "In a village, only farming counts as real work, so non-farm activities do not matter." What is the best reply?'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: village-farming-output
+  explanation: Non-farm activities such as mills, repairs, shops and transport are production work. They give extra income and work, especially when farm work is slow.
+  hints:
+  - Think about a family with a small plot and a shop.
+  correct: C
+  options:
+  - key: A
+    text: The student is right
+    misconception: only-farming-is-work
+  - key: B
+    text: Non-farm work needs more land than farming
+    misconception: only-farming-is-work
+  - key: C
+    text: Non-farm activities are production work that gives extra income and jobs
+  - key: D
+    text: Non-farm work only happens in cities
+    misconception: only-farming-is-work
+- key: q-fo-10
+  pattern: case
+  kind: mcq
+  stem: 'Read this example. In the made-up village of Hariyali, a farmer has 2 hectares. With old seeds the yield is 20 quintals per hectare, with one crop a year. The farmer then uses HYV seeds, gets canal water and grows two crops a year, each with a yield of 30 quintals per hectare. What is the output of the year now?'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: village-farming-output
+  explanation: Output = 2 x 30 x 2 = 120 quintals. The old output was 40 quintals, and 60 would count only one crop.
+  hints:
+  - Output = area x yield x number of crops.
+  correct: B
+  options:
+  - key: A
+    text: 60 quintals
+    misconception: multiple-is-more-land
+  - key: B
+    text: 120 quintals
+  - key: C
+    text: 40 quintals
+    misconception: hyv-needs-nothing
+  - key: D
+    text: 30 quintals
+    misconception: multiple-is-more-land
+misconceptions:
+- code: multiple-is-more-land
+  concept: village-farming-output
+  description: Thinks multiple cropping means farming more land. It means more than one crop a year on the same land.
+- code: hyv-needs-nothing
+  concept: village-farming-output
+  description: Thinks HYV seeds give a high yield without extra water, fertiliser and money.
+- code: only-farming-is-work
+  concept: village-farming-output
+  description: Thinks only crop farming counts as work in a village, when non-farm activities also give production and jobs.
+cards:
+- key: farming-and-output-card-1
+  concept: village-farming-output
+  front: What is multiple cropping?
+  back: Growing more than one crop on the same land in a year.
+- key: farming-and-output-card-2
+  concept: village-farming-output
+  front: What do HYV seeds need to give a high yield?
+  back: Enough water and fertiliser, which cost money.
+- key: farming-and-output-card-3
+  concept: village-farming-output
+  front: How do you find output from area and yield?
+  back: Output = area x yield. For several crops, multiply by the number of crops.
+- key: farming-and-output-card-4
+  concept: village-farming-output
+  front: Give two non-farm activities in a village.
+  back: Running a flour mill and repairing pumps. Shops and transport are others.

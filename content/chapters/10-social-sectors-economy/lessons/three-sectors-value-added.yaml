@@ -1,0 +1,285 @@
+slug: three-sectors-value-added
+title: Three sectors and how GDP counts value added
+minutes: 25
+objectives:
+- Sort economic activities into the primary, secondary and tertiary sectors
+- Follow one product from raw material to the customer and name the sector of each step
+- Work out the value added at each stage of a production chain
+- Explain why GDP adds value added, or counts only final goods, to avoid counting twice
+concepts:
+- sectors-of-economy
+- value-added-gdp
+origin: ai_assisted
+blocks:
+- kind: text
+  heading: From a cotton field to your shirt
+  html: '<p>Think of a cotton shirt. First a farmer grows cotton. A mill spins the cotton into yarn. A weaver makes cloth from the yarn. A tailor stitches the shirt and a shop sells it to you. Many people did different jobs before the shirt reached you. Economists group all such jobs into a few <strong>sectors</strong>. A sector is a group of economic activities of the same kind.</p>'
+- kind: text
+  heading: The three sectors
+  html: '<p>The <strong>primary sector</strong> gets goods directly from nature. Farming, fishing, mining and cutting wood are primary activities. Our cotton farmer works here.</p><p>The <strong>secondary sector</strong> turns one kind of good into another by making it. The mill that spins yarn and the weaver who makes cloth are in this sector. Building houses and baking bread are also secondary activities.</p><p>The <strong>tertiary sector</strong> gives services instead of goods. A <strong>service</strong> is useful work that is not a physical thing you take home. Teaching, banking, transport, medical care and shopkeeping are services. The shop that sells our shirt is in this sector.</p><p>Notice that a sector depends on the <em>activity</em>, not on the material. A mill uses cotton but it makes yarn, so it is secondary.</p>'
+- kind: figure
+  svg: <svg viewBox="0 0 340 150" role="img"><rect x="8" y="30" width="72" height="50" rx="6" fill="#6cb7ff"/><rect x="92" y="30" width="72" height="50" rx="6" fill="#ffb800"/><rect x="176" y="30" width="72" height="50" rx="6" fill="#ffb800"/><rect x="260" y="30" width="72" height="50" rx="6" fill="#7bd88f"/><text x="44" y="50" font-size="10" text-anchor="middle" fill="#14193a">Farmer</text><text x="44" y="66" font-size="10" text-anchor="middle" fill="#14193a">sells 40</text><text x="128" y="50" font-size="10" text-anchor="middle" fill="#14193a">Mill</text><text x="128" y="66" font-size="10" text-anchor="middle" fill="#14193a">sells 70</text><text x="212" y="50" font-size="10" text-anchor="middle" fill="#14193a">Weaver</text><text x="212" y="66" font-size="10" text-anchor="middle" fill="#14193a">sells 110</text><text x="296" y="50" font-size="10" text-anchor="middle" fill="#14193a">Shop</text><text x="296" y="66" font-size="10" text-anchor="middle" fill="#14193a">sells 150</text><text x="86" y="58" font-size="14" text-anchor="middle" fill="currentColor">&#8594;</text><text x="170" y="58" font-size="14" text-anchor="middle" fill="currentColor">&#8594;</text><text x="254" y="58" font-size="14" text-anchor="middle" fill="currentColor">&#8594;</text><text x="44" y="100" font-size="9" text-anchor="middle" fill="currentColor">primary</text><text x="128" y="100" font-size="9" text-anchor="middle" fill="currentColor">secondary</text><text x="212" y="100" font-size="9" text-anchor="middle" fill="currentColor">secondary</text><text x="296" y="100" font-size="9" text-anchor="middle" fill="currentColor">tertiary</text><text x="170" y="130" font-size="9" text-anchor="middle" fill="currentColor">Example numbers in rupees for one length of cloth</text></svg>
+  alt: A chain of four boxes from farmer to mill to weaver to shop, each showing the price it sells at and its sector.
+  caption: A made-up cotton chain. The numbers are example rupees, not real prices. Blue is primary, yellow is secondary and green is tertiary.
+- kind: text
+  heading: Counting GDP with value added
+  html: '<p><strong>GDP</strong> (Gross Domestic Product) is the total value of all final goods and services produced inside a country in one year. A <strong>final good</strong> is one that is ready for the person who will use it. An <strong>intermediate good</strong> is used up to make another good. In our chain the cotton, the yarn and the cloth are intermediate goods. Only the finished product sold to the customer is final.</p><p>Look at the example numbers in the figure. The farmer sells cotton for 40. The mill buys it and sells yarn for 70. The weaver buys the yarn and sells cloth for 110. The shop buys the cloth and sells it for 150. If we add 40 + 70 + 110 + 150 = 370 we get a wrong total. The cotton has been counted four times, once inside every later price. This mistake is called <strong>double counting</strong>.</p><p>There are two correct ways. One way is to count only the final price, which is 150. The other way is to add up the <strong>value added</strong> at every stage. Value added is the value of what a stage sells minus the value of the goods it bought to make it. Both ways give the same answer.</p>'
+- kind: example
+  heading: Value added at each stage
+  prompt: Use the example chain. Find the value added at each stage and add them up.
+  steps:
+  - 'Farmer: sells for 40 and buys no goods in this simple example, so value added = 40 - 0 = 40.'
+  - 'Mill: sells yarn for 70 and bought cotton for 40, so value added = 70 - 40 = 30.'
+  - 'Weaver: sells cloth for 110 and bought yarn for 70, so value added = 110 - 70 = 40.'
+  - 'Shop: sells for 150 and bought cloth for 110, so value added = 150 - 110 = 40.'
+  - 'Add them: 40 + 30 + 40 + 40 = 150. This equals the final price of 150, so the check works.'
+- kind: example
+  heading: Value added by sector
+  prompt: In the same chain, how much value is added by each sector?
+  steps:
+  - 'Primary: only the farmer, so 40.'
+  - 'Secondary: the mill and the weaver, so 30 + 40 = 70.'
+  - 'Tertiary: only the shop, so 40.'
+  - 'Add the three sectors: 40 + 70 + 40 = 150. The total is the same final price, so every rupee is counted once.'
+- kind: callout
+  tone: watch
+  html: Do not add the selling prices of every stage to find GDP. That counts the same cotton again and again. Add only the value added at each stage, or count only the final good.
+- kind: callout
+  tone: real
+  html: When you buy a packet of biscuits, the price you pay already includes the wheat, the flour, the packing and the shop. GDP counts that packet once, as a final good, not once for each stage.
+- kind: check
+  item: q-ts-1
+- kind: check
+  item: q-ts-4
+- kind: check
+  item: q-ts-6
+- kind: summary
+  points:
+  - 'Primary activities take goods from nature, secondary activities make goods from other goods, and tertiary activities give services.'
+  - 'A sector is decided by the activity done, not by the material used.'
+  - 'GDP counts final goods and services once. Adding the selling price at every stage counts the same value again and again, which is double counting.'
+  - 'Value added at a stage is what it sells for minus what it bought. The value added of all stages together equals the final price.'
+items:
+- key: q-ts-1
+  kind: mcq
+  stem: A fisher catches fish from the sea and sells them at the harbour. Which sector is this?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: sectors-of-economy
+  explanation: Fishing takes a good straight from nature, so it is a primary activity.
+  hints:
+  - Ask whether the good comes directly from nature.
+  correct: A
+  options:
+  - key: A
+    text: Primary sector
+  - key: B
+    text: Secondary sector
+    misconception: sector-by-material
+  - key: C
+    text: Tertiary sector
+  - key: D
+    text: None of the three sectors
+- key: q-ts-2
+  kind: mcq
+  stem: A small factory turns yarn into cloth. Which sector does it belong to?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: sectors-of-economy
+  explanation: The factory makes a new good from another good. That is a secondary activity. It does not matter that it starts from a farm product.
+  hints:
+  - Look at what the factory does, not at what it starts with.
+  correct: B
+  options:
+  - key: A
+    text: Primary sector, because cotton comes from a farm
+    misconception: sector-by-material
+  - key: B
+    text: Secondary sector
+  - key: C
+    text: Tertiary sector, because it sells cloth
+    misconception: sector-by-material
+  - key: D
+    text: It is not part of the economy
+- key: q-ts-3
+  kind: mcq
+  stem: Which of these is a tertiary activity?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: sectors-of-economy
+  explanation: A doctor gives a service. Growing wheat is primary, and making a bicycle or building a bridge is secondary.
+  hints:
+  - Tertiary means services, not physical goods.
+  correct: C
+  options:
+  - key: A
+    text: Growing wheat
+  - key: B
+    text: Making bicycles in a factory
+  - key: C
+    text: A doctor treating patients
+  - key: D
+    text: Building a bridge
+- key: q-ts-4
+  kind: numeric
+  stem: In the example chain the weaver bought yarn for 70 rupees and sold the cloth for 110 rupees. What is the weaver's value added, in rupees?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: value-added-gdp
+  explanation: Value added is the selling value minus the cost of goods bought, 110 - 70 = 40.
+  hints:
+  - Subtract what the stage bought from what it sold for.
+  value: 40
+  tolerance: 0.0
+  verify: 110-70
+- key: q-ts-5
+  kind: numeric
+  stem: In the example chain the stages added 40, 30, 40 and 40 rupees of value. What is the value of the final good, in rupees?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: value-added-gdp
+  explanation: The value added at all stages together equals the final price, 40 + 30 + 40 + 40 = 150.
+  hints:
+  - Add the value added of every stage.
+  value: 150
+  tolerance: 0.0
+  verify: 40+30+40+40
+- key: q-ts-6
+  kind: mcq
+  stem: Why is GDP not found by adding the selling prices of every stage in a production chain?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: value-added-gdp
+  explanation: Each later price already includes the value of the earlier goods. Adding all the prices counts those earlier values again and again.
+  hints:
+  - Does the price of cloth already include the price of yarn?
+  correct: D
+  options:
+  - key: A
+    text: Because prices are different in every shop
+    misconception: add-all-sales
+  - key: B
+    text: Because only farmers add value
+    misconception: services-add-no-value
+  - key: C
+    text: Because the total would be too small
+    misconception: add-all-sales
+  - key: D
+    text: Because earlier goods would be counted again in later prices
+- key: q-ts-7
+  kind: numeric
+  stem: In the example chain, how much value is added by the secondary sector (the mill and the weaver together), in rupees?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: value-added-gdp
+  - id: sectors-of-economy
+  explanation: The mill adds 70 - 40 = 30 and the weaver adds 110 - 70 = 40. Together 30 + 40 = 70.
+  hints:
+  - Find the value added of each of the two stages, then add them.
+  value: 70
+  tolerance: 0.0
+  verify: (70-40)+(110-70)
+- key: q-ts-8
+  kind: mcq
+  stem: 'Assertion (A): A farmer who grows cotton works in the primary sector. Reason (R): The primary sector gets goods directly from natural resources such as land.'
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: sectors-of-economy
+  explanation: Both statements are true. Growing cotton on land uses a natural resource directly, so R explains A.
+  hints:
+  - Check whether R gives the reason for A.
+  correct: A
+  options:
+  - key: A
+    text: Both A and R are true, and R explains A
+  - key: B
+    text: Both A and R are true, but R does not explain A
+    misconception: sector-by-material
+  - key: C
+    text: A is true, but R is false
+    misconception: sector-by-material
+  - key: D
+    text: A is false, but R is true
+    misconception: sector-by-material
+- key: q-ts-9
+  kind: mcq
+  stem: 'Assertion (A): Adding the selling prices of all stages gives a total larger than the value of the final good. Reason (R): The value of earlier goods is included again in each later selling price.'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: value-added-gdp
+  explanation: Both statements are true. In the example, 370 is larger than 150 because the cotton and the yarn are counted again in later prices, so R explains A.
+  hints:
+  - Compare 370 with 150 in the lesson.
+  correct: A
+  options:
+  - key: A
+    text: Both A and R are true, and R explains A
+  - key: B
+    text: Both A and R are true, but R does not explain A
+    misconception: add-all-sales
+  - key: C
+    text: A is true, but R is false
+    misconception: add-all-sales
+  - key: D
+    text: A is false, but R is true
+    misconception: add-all-sales
+- key: q-ts-10
+  pattern: case
+  kind: mcq
+  stem: 'Read this made-up example. A baker buys flour for 30 rupees and bakes bread, which she sells to a shop for 50 rupees. The shop sells the bread to customers for 60 rupees. The farm that grew the wheat sold it to the flour mill for 20 rupees, and the mill sold the flour for 30 rupees. A student says GDP from this chain is 20 + 30 + 50 + 60 = 160 rupees. Which statement is correct?'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: value-added-gdp
+  explanation: The final good is bread sold at 60. The value added is 20 for the farm, 10 for the mill, 20 for the baker and 10 for the shop, and 20 + 10 + 20 + 10 = 60. The student double counted, so the correct contribution is 60 rupees.
+  hints:
+  - Find the final price, then check by adding value added at each stage.
+  correct: C
+  options:
+  - key: A
+    text: The student is right, the total is 160 rupees
+    misconception: add-all-sales
+  - key: B
+    text: The total is 50 rupees, the price the baker got
+    misconception: add-all-sales
+  - key: C
+    text: The student double counted, and the contribution is 60 rupees
+  - key: D
+    text: Only the shop adds value, so the total is 10 rupees
+    misconception: services-add-no-value
+misconceptions:
+- code: add-all-sales
+  concept: value-added-gdp
+  description: Adds the selling price of every stage to find GDP, which counts the same value many times (double counting).
+- code: sector-by-material
+  concept: sectors-of-economy
+  description: Puts an activity in a sector because of the material it uses (for example cotton or wheat) instead of what the activity does.
+- code: services-add-no-value
+  concept: sectors-of-economy
+  description: Thinks that only people who make physical goods add value, so shops, transport or doctors add nothing to GDP.
+cards:
+- key: three-sectors-value-added-card-1
+  concept: sectors-of-economy
+  front: What are the primary, secondary and tertiary sectors?
+  back: Primary takes goods from nature, secondary makes goods from other goods, and tertiary gives services.
+- key: three-sectors-value-added-card-2
+  concept: value-added-gdp
+  front: What is value added?
+  back: What a stage sells for minus the value of the goods it bought to make it.
+- key: three-sectors-value-added-card-3
+  concept: value-added-gdp
+  front: What is double counting?
+  back: Counting the value of an intermediate good again inside later prices. GDP avoids it by counting only final goods or only value added.
+- key: three-sectors-value-added-card-4
+  concept: value-added-gdp
+  front: What does GDP measure?
+  back: The value of all final goods and services produced inside a country in one year.

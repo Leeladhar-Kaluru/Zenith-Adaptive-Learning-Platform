@@ -1,0 +1,309 @@
+slug: simple-tenses
+title: Simple present, simple past and simple future
+minutes: 20
+objectives:
+- Say what a tense is and place an action on a timeline
+- Use the simple present for habits and facts, adding s or es after he, she and it
+- Use the simple past, including common irregular verbs such as go and buy
+- Use will with the base verb for the simple future
+concepts:
+- english-simple-tenses
+origin: ai_assisted
+blocks:
+- kind: text
+  heading: When did it happen
+  html: '<p>Your grandmother says, I walk in the park every morning. Yesterday she said, I walked to the temple. Tomorrow she will say, I will visit my sister. The same verb, walk, changes its form to tell us <em>when</em> the action happens. This form is called the <strong>tense</strong> of the verb.</p><p>There are three main times: past, present and future. In this lesson we learn the simple form of each.</p>'
+- kind: figure
+  svg: <svg viewBox="0 0 320 170" role="img"><g fill="none" stroke="#14193a" stroke-width="2"><path d="M20 70 H300 M292 62 L300 70 L292 78"/><path d="M160 58 V82"/></g><g font-size="12" fill="currentColor" text-anchor="middle"><text x="70" y="50" font-weight="700">Past</text><text x="160" y="50" font-weight="700">Now</text><text x="250" y="50" font-weight="700">Future</text><text x="70" y="104">Raju walked.</text><text x="70" y="122">Raju ate rice.</text><text x="160" y="104">Raju walks.</text><text x="160" y="122">Raju eats rice.</text><text x="250" y="104">Raju will walk.</text><text x="250" y="122">Raju will eat rice.</text><text x="160" y="154" font-size="11">The verb form changes with the time.</text></g></svg>
+  alt: A timeline with past on the left, now in the middle and future on the right, each with sentences about Raju walking and eating rice.
+  caption: The form of the verb shows whether the action is in the past, the present or the future.
+- kind: text
+  heading: Simple present
+  html: '<p>Use the <strong>simple present</strong> for habits and for facts that are always true. My uncle goes to Chennai every Monday. The sun rises in the east.</p><p>With he, she, it or a single name, add <em>s</em> or <em>es</em> to the verb: she walks, he goes, the sun rises. With I, you, we and they, use the base verb: we walk.</p>'
+- kind: text
+  heading: Simple past and simple future
+  html: '<p>Use the <strong>simple past</strong> for an action that is finished. Most verbs add <em>ed</em>: walk becomes walked. Many common verbs change in other ways. Go becomes went, eat becomes ate and buy becomes bought. You must learn these.</p><p>Use the <strong>simple future</strong> for what has not happened yet. Put <em>will</em> before the base verb: I will call you tomorrow. After will, the verb never changes: she will go, not she will went.</p>'
+- kind: example
+  heading: Worked example
+  prompt: 'Choose the tense: Every evening my father ___ the news. (watch)'
+  steps:
+  - 'Look for time words. Every evening tells us about a habit.'
+  - 'A habit uses the simple present.'
+  - 'My father is one person, so we add s to the verb.'
+  - 'Check: Every evening my father watches the news.'
+- kind: example
+  heading: Worked example
+  prompt: 'Put the verb in brackets in the right form: Last year we ___ to Kerala, and next year we ___ to Goa. (go)'
+  steps:
+  - 'Last year is finished, so the first gap needs the simple past.'
+  - 'The simple past of go is went. It is an irregular verb, so we do not write goed.'
+  - 'Next year has not happened yet, so the second gap needs will and the base verb: will go.'
+  - 'Check: Last year we went to Kerala, and next year we will go to Goa.'
+- kind: callout
+  tone: watch
+  html: Simple present does not mean only now. She walks to school every day is about a habit, and the sun rises in the east is about a fact. To say what is happening right now we use a different form, which you will meet in the next lesson.
+- kind: callout
+  tone: real
+  html: A train timetable, a recipe and a school rule are written in the simple present. A diary is written in the simple past. A to-do list for tomorrow often uses will.
+- kind: check
+  item: q-st-1
+- kind: check
+  item: q-st-2
+- kind: check
+  item: q-st-3
+- kind: summary
+  points:
+  - 'The tense of a verb tells us when the action happens: past, present or future.'
+  - 'Simple present is for habits and facts. After he, she, it or one name, the verb takes s or es.'
+  - 'Simple past is for finished actions. Regular verbs add ed. Irregular verbs such as go, eat and buy change to went, ate and bought.'
+  - 'Simple future uses will with the base verb, and the verb after will does not change.'
+items:
+- key: q-st-1
+  kind: mcq
+  stem: Which sentence is in the simple past?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: english-simple-tenses
+  explanation: Ate is the past form of eat, so We ate rice tells about a finished action. We eat rice is simple present, and We will eat rice is future.
+  hints:
+  - Look for a verb that tells about something already finished.
+  correct: B
+  options:
+  - key: A
+    text: We eat rice.
+  - key: B
+    text: We ate rice.
+  - key: C
+    text: We will eat rice.
+  - key: D
+    text: We are eating rice.
+- key: q-st-2
+  kind: mcq
+  stem: Which sentence uses the simple future?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: english-simple-tenses
+  explanation: Will with the base verb call shows something that has not happened yet. The other sentences are about the past or the present.
+  hints:
+  - Look for the word will.
+  correct: C
+  options:
+  - key: A
+    text: I called you yesterday.
+  - key: B
+    text: I call you every day.
+  - key: C
+    text: I will call you tomorrow.
+  - key: D
+    text: I have called you.
+- key: q-st-3
+  kind: mcq
+  stem: 'Choose the word that completes this fact. The sun ___ in the east.'
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: english-simple-tenses
+  explanation: A fact that is always true uses the simple present. The sun is one thing, so the verb takes s, which gives rises.
+  hints:
+  - A fact that is always true uses the simple present. The sun is a single thing.
+  correct: B
+  options:
+  - key: A
+    text: rise
+    misconception: s-forgot
+  - key: B
+    text: rises
+  - key: C
+    text: rose
+  - key: D
+    text: will rising
+- key: q-st-4
+  kind: mcq
+  stem: What is the simple past of the verb buy?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: english-simple-tenses
+  explanation: Buy is an irregular verb. Its simple past is bought. Words like buyed are not English.
+  hints:
+  - Buy does not add ed. Think of what you did at the shop yesterday.
+  correct: B
+  options:
+  - key: A
+    text: buyed
+    misconception: ed-always
+  - key: B
+    text: bought
+  - key: C
+    text: boughten
+  - key: D
+    text: buys
+- key: q-st-5
+  kind: mcq
+  stem: 'Choose the correct word. My uncle ___ to Chennai every Monday.'
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: english-simple-tenses
+  explanation: Every Monday is a habit, so we use the simple present. My uncle is one person, so we add es to go. That gives goes.
+  hints:
+  - The time word every Monday points to a habit. How does a verb change after one person?
+  correct: B
+  options:
+  - key: A
+    text: go
+    misconception: s-forgot
+  - key: B
+    text: goes
+  - key: C
+    text: going
+  - key: D
+    text: gone
+- key: q-st-6
+  kind: mcq
+  stem: Which sentence uses the simple present to tell about a habit?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: english-simple-tenses
+  explanation: Anita walks to school every day tells what she does again and again, so it is a habit in the simple present. The first sentence is about the moment of speaking, and the others are past and future.
+  hints:
+  - A habit is something done again and again. Look for a time word such as every day.
+  correct: B
+  options:
+  - key: A
+    text: Anita is walking to school now.
+    misconception: present-now-only
+  - key: B
+    text: Anita walks to school every day.
+  - key: C
+    text: Anita walked to school yesterday.
+  - key: D
+    text: Anita will walk to school tomorrow.
+- key: q-st-7
+  kind: mcq
+  stem: 'Choose the correct word. Yesterday we ___ the match on TV.'
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: english-simple-tenses
+  explanation: Yesterday is in the past, so the verb takes the simple past form watched. Watch and watches are present, and will watch is future.
+  hints:
+  - Yesterday tells you the tense.
+  correct: B
+  options:
+  - key: A
+    text: watch
+    misconception: present-now-only
+  - key: B
+    text: watched
+  - key: C
+    text: will watch
+  - key: D
+    text: watches
+- key: q-st-8
+  kind: numeric
+  stem: 'How many verbs in the simple past are in this sentence? Rohan woke up early, took a bath and went to the temple.'
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: english-simple-tenses
+  explanation: The simple past verbs are woke, took and went. Up is a small word that goes with woke, and it is not a verb. So there are 3.
+  hints:
+  - Count what Rohan did, one action at a time.
+  value: 3
+  tolerance: 0.0
+  verify: '1+1+1'
+- key: q-st-9
+  kind: mcq
+  stem: 'Assertion (A): Water boils at 100 degrees Celsius at sea level is in the simple present. Reason (R): The simple present is used for facts that are always true.'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: english-simple-tenses
+  explanation: Both are true. The sentence states a fact and uses the verb boils in the simple present, and the simple present is the tense we use for such facts. So R explains A.
+  hints:
+  - Is the sentence a fact? Which tense do we use for facts?
+  correct: A
+  options:
+  - key: A
+    text: Both A and R are true and R explains A
+  - key: B
+    text: Both A and R are true but R does not explain A
+  - key: C
+    text: A is true but R is false
+  - key: D
+    text: A is false but R is true
+- key: q-st-10
+  kind: mcq
+  stem: 'Assertion (A): The sentence He will went home is correct. Reason (R): The verb after will stays in its base form.'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: english-simple-tenses
+  explanation: R is true, because we write will go, with the base form. A is false. He will went home is wrong, and the correct sentence is He will go home.
+  hints:
+  - Which form of the verb follows will?
+  correct: D
+  options:
+  - key: A
+    text: Both A and R are true and R explains A
+    misconception: ed-always
+  - key: B
+    text: Both A and R are true but R does not explain A
+    misconception: ed-always
+  - key: C
+    text: A is true but R is false
+    misconception: ed-always
+  - key: D
+    text: A is false but R is true
+- key: q-st-11
+  pattern: case
+  kind: mcq
+  stem: 'Read the passage. Last Sunday, Kavya''s family went to the village. They stayed with her grandfather. He grows coconuts and sells them in the market. Next year, they will visit again. Which verb in the passage is in the simple present?'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: english-simple-tenses
+  explanation: Grows is the simple present, for something the grandfather does regularly. Went and stayed are simple past, and will visit is simple future.
+  hints:
+  - Which verb tells about something the grandfather does again and again?
+  correct: C
+  options:
+  - key: A
+    text: went
+  - key: B
+    text: stayed
+  - key: C
+    text: grows
+  - key: D
+    text: will visit
+misconceptions:
+- code: s-forgot
+  concept: english-simple-tenses
+  description: Leaves out s or es on the verb after he, she, it or one name in the simple present.
+- code: ed-always
+  concept: english-simple-tenses
+  description: Adds ed to every verb to make the past, even irregular ones, or keeps a past form after will.
+- code: present-now-only
+  concept: english-simple-tenses
+  description: Thinks the simple present is only for what is happening right now, and mixes tenses with time words.
+cards:
+- key: st-card-1
+  concept: english-simple-tenses
+  front: When do we use the simple present?
+  back: For habits and facts that are always true, such as She walks to school every day.
+- key: st-card-2
+  concept: english-simple-tenses
+  front: What changes in the simple present after he, she or it?
+  back: The verb takes s or es, as in she walks and he goes.
+- key: st-card-3
+  concept: english-simple-tenses
+  front: Give the simple past of go, eat and buy.
+  back: Went, ate and bought. They are irregular verbs.
+- key: st-card-4
+  concept: english-simple-tenses
+  front: How do we make the simple future?
+  back: Use will with the base verb, such as I will call you. The verb after will does not change.

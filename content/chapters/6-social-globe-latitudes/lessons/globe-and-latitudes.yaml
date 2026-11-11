@@ -1,0 +1,288 @@
+slug: globe-and-latitudes
+title: The globe and lines of latitude
+minutes: 25
+objectives:
+- Say why a globe shows the Earth better than a flat map
+- Name the equator, the poles and the two hemispheres
+- Explain that latitude tells how far a place is north or south of the equator
+- Find the difference between two latitudes
+concepts:
+- globe-latitudes
+origin: ai_assisted
+blocks:
+- kind: text
+  heading: Why a ball?
+  html: <p>Imagine peeling an orange and pressing the peel flat on a table. It tears and stretches. A flat map has the same trouble. The Earth is round like a ball, so the best model of it is a <strong>globe</strong>. A globe shows shapes and distances without stretching them.</p><p>The Earth spins around an imaginary line called its <strong>axis</strong>. The two points where the axis meets the surface are the <strong>North Pole</strong> and the <strong>South Pole</strong>.</p>
+- kind: text
+  heading: The equator and the hemispheres
+  html: <p>Halfway between the two poles, an imaginary circle runs around the middle of the Earth. It is called the <strong>equator</strong>. It is marked <strong>0 degrees</strong>. The equator cuts the globe into two equal halves. Each half is a <strong>hemisphere</strong>, which means half of a sphere.</p><ul><li>The half above the equator is the <strong>Northern Hemisphere</strong>. India lies in it.</li><li>The half below the equator is the <strong>Southern Hemisphere</strong>.</li></ul>
+- kind: figure
+  svg: <svg viewBox="0 0 240 240" role="img"><circle cx="120" cy="120" r="100" fill="none" stroke="currentColor" stroke-width="2"/><line x1="20" y1="120" x2="220" y2="120" stroke="#ffb800" stroke-width="3"/><line x1="33" y1="70" x2="207" y2="70" stroke="currentColor" stroke-width="1.5"/><line x1="33" y1="170" x2="207" y2="170" stroke="currentColor" stroke-width="1.5"/><line x1="64" y1="40" x2="176" y2="40" stroke="currentColor" stroke-width="1.5"/><line x1="64" y1="200" x2="176" y2="200" stroke="currentColor" stroke-width="1.5"/><circle cx="120" cy="20" r="3" fill="#6cb7ff"/><circle cx="120" cy="220" r="3" fill="#6cb7ff"/><text x="126" y="16" font-size="10" fill="currentColor">North Pole 90 N</text><text x="126" y="236" font-size="10" fill="currentColor">South Pole 90 S</text><text x="24" y="114" font-size="10" fill="currentColor">Equator 0</text><text x="85" y="92" font-size="10" fill="currentColor">Northern Hemisphere</text><text x="85" y="152" font-size="10" fill="currentColor">Southern
+    Hemisphere</text></svg>
+  alt: A circle for the globe with a thick equator across the middle, four thinner parallels, and the poles at top and bottom.
+  caption: The equator is 0 degrees. The poles are 90 degrees north and 90 degrees south. Every line between them is a parallel of latitude.
+- kind: text
+  heading: Parallels of latitude
+  html: <p>Now draw more circles around the globe, all parallel to the equator. Each one is a <strong>parallel of latitude</strong>. The circles get smaller as they go toward the poles. A pole itself is just a point.</p><p><strong>Latitude</strong> is the angle that tells how far a place is north or south of the equator. It is measured in <strong>degrees</strong>. The equator is 0 degrees. The North Pole is 90 degrees north (90 N). The South Pole is 90 degrees south (90 S). No place can have a latitude above 90 degrees.</p><p>A place at 20 N is 20 degrees north of the equator. A place at 20 S is the same distance on the other side. India lies in the Northern Hemisphere, and the Tropic of Cancer, at about 23.5 N, passes through it.</p>
+- kind: example
+  heading: 'Worked example: the gap between two latitudes'
+  prompt: Town P is at 12 N. Town Q is at 30 N. How many degrees apart are they in latitude?
+  steps:
+  - Check the hemispheres. Both towns are north, so they are on the same side of the equator.
+  - 'When both are on the same side, subtract the smaller from the larger: 30 - 12.'
+  - 30 - 12 = 18 degrees.
+  - 'Check: Q is further from the equator than P, so Q is further north. An answer of 18 degrees fits.'
+- kind: example
+  heading: 'Worked example: crossing the equator'
+  prompt: Town A is at 10 N. Town B is at 15 S. How many degrees apart are they in latitude?
+  steps:
+  - Check the hemispheres. A is north and B is south, so the equator lies between them.
+  - 'When the places are on opposite sides, add the two latitudes: 10 + 15.'
+  - 10 + 15 = 25 degrees.
+  - 'Check: A is 10 degrees above the equator and B is 15 degrees below it, so the whole gap is 25 degrees.'
+- kind: callout
+  tone: watch
+  html: Parallels of latitude run east to west, but they measure how far north or south a place is. Do not think latitudes are lines that run north to south. Also, the equator is 0 degrees, not 90 degrees. Ninety degrees is the pole.
+- kind: callout
+  tone: real
+  html: Weather is warmer near the equator and colder near the poles. So a place with a low latitude, such as Kerala in the south of India, is usually warmer through the year than a place with a high latitude, such as Ladakh in the north.
+- kind: check
+  item: q-gl-1
+- kind: check
+  item: q-gl-2
+- kind: check
+  item: q-gl-3
+- kind: summary
+  points:
+  - A globe is the truest model of the Earth. A flat map always stretches some shapes.
+  - The equator is the 0 degree circle. It splits the Earth into the Northern and Southern Hemispheres.
+  - Latitude is the angle north or south of the equator. It goes from 0 degrees at the equator to 90 degrees at the poles.
+  - 'Same side of the equator: subtract the latitudes. Opposite sides: add them.'
+items:
+- key: q-gl-1
+  kind: mcq
+  stem: Which model shows the shape of the Earth best?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: globe-latitudes
+  explanation: The Earth is a ball, so a globe shows it without stretching. A flat map must stretch or tear some parts.
+  hints:
+  - Think of the orange peel.
+  correct: A
+  options:
+  - key: A
+    text: A globe
+  - key: B
+    text: A flat wall map
+  - key: C
+    text: A bar chart
+  - key: D
+    text: A drawing of a square
+- key: q-gl-2
+  kind: mcq
+  stem: What is the latitude of the equator?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: globe-latitudes
+  explanation: The equator is the starting line for latitude, so it is 0 degrees. The poles are at 90 degrees.
+  hints:
+  - It is the starting line.
+  correct: B
+  options:
+  - key: A
+    text: 90 degrees
+    misconception: equator-90
+  - key: B
+    text: 0 degrees
+  - key: C
+    text: 45 degrees
+  - key: D
+    text: 180 degrees
+- key: q-gl-3
+  kind: mcq
+  stem: The equator divides the Earth into two parts. What are they called?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: globe-latitudes
+  explanation: The equator cuts the Earth into the Northern Hemisphere and the Southern Hemisphere.
+  hints:
+  - Each part is half of a sphere.
+  correct: B
+  options:
+  - key: A
+    text: East and West Hemispheres
+    misconception: lat-vertical
+  - key: B
+    text: Northern and Southern Hemispheres
+  - key: C
+    text: Upper and Lower Poles
+  - key: D
+    text: Inner and Outer Hemispheres
+- key: q-gl-4
+  kind: truefalse
+  stem: 'True or false: Parallels of latitude are circles that run east to west around the globe.'
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: globe-latitudes
+  explanation: True. Each parallel is a circle parallel to the equator, so it runs east to west. It still measures distance north or south.
+  hints:
+  - Picture rings around an orange.
+  correct: true
+- key: q-gl-5
+  kind: mcq
+  stem: A place has a latitude of 35 degrees north. Where is it?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: globe-latitudes
+  explanation: North means above the equator, so it is in the Northern Hemisphere, 35 degrees away from the equator.
+  hints:
+  - The letter N tells the hemisphere.
+  correct: C
+  options:
+  - key: A
+    text: In the Southern Hemisphere, 35 degrees from the equator
+  - key: B
+    text: On the equator
+  - key: C
+    text: In the Northern Hemisphere, 35 degrees from the equator
+  - key: D
+    text: 35 degrees from the North Pole
+    misconception: equator-90
+- key: q-gl-6
+  kind: mcq
+  stem: Which of these circles around the globe is the longest?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: globe-latitudes
+  explanation: The equator is the biggest parallel. The circles shrink as they go toward the poles, and each pole is only a point.
+  hints:
+  - Parallels get smaller toward the poles.
+  correct: B
+  options:
+  - key: A
+    text: The 60 N parallel
+  - key: B
+    text: The equator
+  - key: C
+    text: The 80 S parallel
+  - key: D
+    text: All parallels are equal
+- key: q-gl-7
+  kind: numeric
+  stem: Town P is at 12 N and town Q is at 30 N. How many degrees apart are they in latitude?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: globe-latitudes
+  explanation: 'Both are north, so subtract: 30 - 12 = 18 degrees.'
+  hints:
+  - 'Same side of the equator: subtract.'
+  value: 18
+  tolerance: 0.0
+  verify: 30-12
+- key: q-gl-8
+  kind: numeric
+  stem: Town A is at 25 N and town B is at 15 S. How many degrees apart are they in latitude?
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: globe-latitudes
+  explanation: 'They are on opposite sides of the equator, so add: 25 + 15 = 40 degrees.'
+  hints:
+  - The equator lies between them. Add the two numbers.
+  value: 40
+  tolerance: 0.0
+  verify: 25+15
+- key: q-gl-9
+  pattern: case
+  kind: mcq
+  stem: Read this note. A class looks at three towns. Town X is at 8 N, town Y is at 28 N and town Z is at 20 S. Which statement is correct?
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: globe-latitudes
+  explanation: X at 8 N is the closest to the equator, and Z at 20 S is in the Southern Hemisphere. Y is the furthest from the equator of the northern towns.
+  hints:
+  - Compare how far each latitude is from 0.
+  correct: B
+  options:
+  - key: A
+    text: Z is in the Northern Hemisphere
+  - key: B
+    text: X is closest to the equator, and Z is in the Southern Hemisphere
+  - key: C
+    text: Y is closest to the equator
+    misconception: equator-90
+  - key: D
+    text: All three towns lie on the same parallel
+    misconception: lat-vertical
+- key: q-gl-10
+  kind: mcq
+  stem: 'Assertion (A): The equator is called 0 degrees latitude. Reason (R): Latitude is measured as an angle north or south from the equator.'
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: globe-latitudes
+  explanation: Both are true. Latitude is counted away from the equator, so the equator is the starting line at 0 degrees. R explains A.
+  hints:
+  - Ask why 0 is placed on the equator.
+  correct: A
+  options:
+  - key: A
+    text: Both A and R are true, and R explains A
+  - key: B
+    text: Both A and R are true, but R does not explain A
+  - key: C
+    text: A is true, but R is false
+  - key: D
+    text: A is false, but R is true
+- key: q-gl-11
+  kind: mcq
+  stem: 'Assertion (A): A place can have a latitude of 120 degrees north. Reason (R): The North Pole is at 90 degrees north.'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: globe-latitudes
+  explanation: 'A is false because 90 degrees is the greatest latitude. R is true: the pole is the end of the northward count.'
+  hints:
+  - What is the largest latitude on Earth?
+  correct: D
+  options:
+  - key: A
+    text: Both A and R are true, and R explains A
+  - key: B
+    text: Both A and R are true, but R does not explain A
+  - key: C
+    text: A is true, but R is false
+  - key: D
+    text: A is false, but R is true
+misconceptions:
+- code: equator-90
+  concept: globe-latitudes
+  description: Thinks the equator is 90 degrees, or counts latitude from a pole. Latitude is counted from the equator, which is 0 degrees.
+- code: lat-vertical
+  concept: globe-latitudes
+  description: Thinks lines of latitude run north to south, or that the hemispheres are east and west. Parallels run east to west and the equator makes the Northern and Southern Hemispheres.
+cards:
+- key: globe-and-latitudes-card-1
+  concept: globe-latitudes
+  front: What is the equator?
+  back: The 0 degree circle around the middle of the Earth. It splits the Earth into the Northern and Southern Hemispheres.
+- key: globe-and-latitudes-card-2
+  concept: globe-latitudes
+  front: What is latitude?
+  back: The angle that tells how far a place is north or south of the equator.
+- key: globe-and-latitudes-card-3
+  concept: globe-latitudes
+  front: What are the latitudes of the poles?
+  back: 90 N for the North Pole and 90 S for the South Pole.
+- key: globe-and-latitudes-card-4
+  concept: globe-latitudes
+  front: How do you find the gap between two latitudes?
+  back: Subtract if both are on the same side of the equator. Add if they are on opposite sides.

@@ -1,0 +1,289 @@
+slug: ap-nth-term
+title: Arithmetic progressions and the nth term
+minutes: 30
+objectives:
+- Say whether a list of numbers is an arithmetic progression and find its common difference
+- Name the first term a and the common difference d
+- Use a_n = a + (n - 1)d to find a term
+- Find which term of an AP equals a given number, or whether it is a term at all
+concepts:
+- ap-nth-term
+origin: ai_assisted
+blocks:
+- kind: text
+  heading: Steps with the same gap
+  html: '<p>Rohan saves money in a piggy bank. He puts in Rs 20 in the first week. Then he adds Rs 5 more each week than the week before. His weekly savings are 20, 25, 30, 35 and so on. Each number is 5 more than the one before it.</p><p>A list of numbers where every term is found by adding the <strong>same number</strong> to the term before it is called an <strong>arithmetic progression</strong>, or <strong>AP</strong>. The first number is the <strong>first term</strong>, written <em>a</em>. The fixed number that is added each time is the <strong>common difference</strong>, written <em>d</em>. We find d by subtracting any term from the one after it. For Rohan, a = 20 and d = 5.</p><p>The common difference can be zero or negative. The list 3, 3, 3, 3 has d = 0. The list 50, 45, 40 has d = −5.</p>'
+- kind: figure
+  svg: '<svg viewBox="0 0 300 190" role="img"><line x1="15" y1="165" x2="290" y2="165" stroke="#14193a" stroke-width="2.5"/><rect x="30" y="125" width="45" height="40" fill="#6cb7ff" stroke="#14193a" stroke-width="2"/><rect x="85" y="105" width="45" height="60" fill="#6cb7ff" stroke="#14193a" stroke-width="2"/><rect x="140" y="85" width="45" height="80" fill="#6cb7ff" stroke="#14193a" stroke-width="2"/><rect x="195" y="65" width="45" height="100" fill="#6cb7ff" stroke="#14193a" stroke-width="2"/><text x="52" y="119" font-size="12" font-weight="700" text-anchor="middle" fill="currentColor">a</text><text x="107" y="99" font-size="12" font-weight="700" text-anchor="middle" fill="currentColor">a + d</text><text x="162" y="79" font-size="12" font-weight="700" text-anchor="middle" fill="currentColor">a + 2d</text><text x="217" y="59" font-size="12" font-weight="700" text-anchor="middle" fill="currentColor">a + 3d</text><text x="52" y="183" font-size="11" text-anchor="middle" fill="currentColor">step 1</text><text x="107" y="183" font-size="11" text-anchor="middle" fill="currentColor">step 2</text><text x="162" y="183" font-size="11" text-anchor="middle" fill="currentColor">step 3</text><text x="217" y="183" font-size="11" text-anchor="middle" fill="currentColor">step 4</text></svg>'
+  alt: Four blue steps in a row, each one the same height higher than the last, labelled a, a plus d, a plus 2d and a plus 3d.
+  caption: Each step is the same height above the one before. To reach step 4 from step 1 you climb d three times, so a_4 = a + 3d.
+- kind: text
+  heading: The nth term
+  html: '<p>Suppose you want the 50th week of savings. Adding 5 again and again fifty times is slow. Look at the pattern instead. The 1st term is a. The 2nd term is a + d. The 3rd term is a + 2d. The 4th term is a + 3d. The number of d is always <strong>one less</strong> than the term number.</p><p>So the <strong>nth term</strong> is <strong>a<sub>n</sub> = a + (n − 1)d</strong>. For Rohan, the 50th term is 20 + 49 × 5 = 265, so he saves Rs 265 in week 50.</p>'
+- kind: example
+  heading: Worked example
+  prompt: Find the 10th term of the AP 5, 8, 11, 14, ...
+  steps:
+  - 'The first term is a = 5. The common difference is d = 8 − 5 = 3. Check: 11 − 8 = 3 and 14 − 11 = 3.'
+  - 'Use a_n = a + (n − 1)d with n = 10. So a_10 = 5 + 9 × 3.'
+  - 'Multiply first: 9 × 3 = 27. Then a_10 = 5 + 27 = 32.'
+  - 'Check by listing: 5, 8, 11, 14, 17, 20, 23, 26, 29, 32. The 10th number is 32.'
+- kind: example
+  heading: Worked example
+  prompt: Which term of the AP 7, 12, 17, 22, ... is 102?
+  steps:
+  - 'Here a = 7 and d = 5. We want n so that a_n = 102.'
+  - 'Write 7 + (n − 1) × 5 = 102. Subtract 7 from both sides: (n − 1) × 5 = 95.'
+  - 'Divide by 5: n − 1 = 19. So n = 20.'
+  - 'Check: a_20 = 7 + 19 × 5 = 7 + 95 = 102. So 102 is the 20th term.'
+- kind: example
+  heading: Worked example
+  prompt: In an AP the 3rd term is 13 and the 7th term is 29. Find a and d, and then the 20th term.
+  steps:
+  - 'Write the two facts. a + 2d = 13 and a + 6d = 29.'
+  - 'Subtract the first from the second. 4d = 16, so d = 4.'
+  - 'Put d = 4 into a + 2d = 13. So a + 8 = 13 and a = 5.'
+  - 'Now a_20 = 5 + 19 × 4 = 5 + 76 = 81. Check the 7th term: 5 + 6 × 4 = 29, which matches.'
+- kind: callout
+  tone: watch
+  html: A very common mistake is to write a + nd instead of a + (n − 1)d. For the 10th term of 5, 8, 11, ... that gives 5 + 30 = 35, but the right answer is 32. The first term has <em>no</em> d added, so the 10th term has only 9 of them. Also, to test whether a number is a term, n must come out as a whole number of 1 or more.
+- kind: callout
+  tone: real
+  html: Many everyday counts are APs. The fare of a taxi that adds the same amount for each extra kilometre, the number of seats in rows of a hall that grow by the same number, and the steps of a staircase that rise by the same height all follow an AP.
+- kind: check
+  item: q-apn-1
+- kind: check
+  item: q-apn-3
+- kind: check
+  item: q-apn-5
+- kind: summary
+  points:
+  - 'An arithmetic progression is a list in which the same number d, the common difference, is added to get from each term to the next.'
+  - 'The first term is a. The common difference is d = (any term) − (the term before it). It can be zero or negative.'
+  - 'The nth term is a_n = a + (n − 1)d. There are n − 1 steps of d between the 1st term and the nth term.'
+  - 'To find which term equals a number, put a + (n − 1)d equal to that number and solve for n. If n is not a whole number, the number is not in the AP.'
+items:
+- key: q-apn-1
+  kind: numeric
+  stem: What is the common difference of the AP 12, 19, 26, 33, ...?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: ap-nth-term
+  explanation: Subtract a term from the one after it. 19 − 12 = 7. Check 26 − 19 = 7 and 33 − 26 = 7.
+  hints:
+  - Subtract the first term from the second term.
+  value: 7
+  tolerance: 0.0
+  verify: 19 - 12
+- key: q-apn-2
+  kind: mcq
+  stem: Which of these lists is an arithmetic progression?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: ap-nth-term
+  explanation: In 5, 9, 13, 17 the gap is 4 every time. In 2, 4, 8, 16 and 3, 6, 12, 24 the terms are multiplied by 2, so the gaps are not equal. In 1, 2, 4, 7 the gaps are 1, 2, 3.
+  hints:
+  - Work out the gap between each pair of neighbours. Are all the gaps equal?
+  correct: B
+  options:
+  - key: A
+    text: 2, 4, 8, 16
+    misconception: multiply-not-add
+  - key: B
+    text: 5, 9, 13, 17
+  - key: C
+    text: 1, 2, 4, 7
+    misconception: unequal-gaps
+  - key: D
+    text: 3, 6, 12, 24
+    misconception: multiply-not-add
+- key: q-apn-3
+  kind: numeric
+  stem: Find the 8th term of the AP 4, 9, 14, 19, ...
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: ap-nth-term
+  explanation: a = 4 and d = 5. a_8 = 4 + (8 − 1) × 5 = 4 + 35 = 39.
+  hints:
+  - Use a_n = a + (n − 1)d with n = 8.
+  value: 39
+  tolerance: 0.0
+  verify: 4 + (8 - 1)*5
+- key: q-apn-4
+  kind: mcq
+  stem: Which rule gives the nth term of the AP 6, 10, 14, 18, ...?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: ap-nth-term
+  explanation: Here a = 6 and d = 4. So a_n = 6 + (n − 1) × 4. Test n = 1 gives 6, and n = 2 gives 10.
+  hints:
+  - Put n = 1 into each rule. You must get the first term, 6.
+  correct: A
+  options:
+  - key: A
+    text: 6 + (n − 1) × 4
+  - key: B
+    text: 6 + n × 4
+    misconception: n-for-n-minus-1
+  - key: C
+    text: 4 + (n − 1) × 6
+    misconception: swap-a-d
+  - key: D
+    text: 6 × n + 4
+    misconception: swap-a-d
+- key: q-apn-5
+  kind: numeric
+  stem: Which term of the AP 7, 12, 17, 22, ... is equal to 102?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: ap-nth-term
+  explanation: 7 + (n − 1) × 5 = 102 gives (n − 1) × 5 = 95, so n − 1 = 19 and n = 20.
+  hints:
+  - Put a + (n − 1)d equal to 102 and solve for n. Remember the answer is n, not n − 1.
+  value: 20
+  tolerance: 0.0
+  verify: (102 - 7)/5 + 1
+- key: q-apn-6
+  kind: numeric
+  stem: Find the 30th term of the AP 100, 94, 88, 82, ...
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: ap-nth-term
+  explanation: a = 100 and d = 94 − 100 = −6. a_30 = 100 + 29 × (−6) = 100 − 174 = −74. The terms go below zero.
+  hints:
+  - The common difference is negative here. Take care with the signs.
+  value: -74
+  tolerance: 0.0
+  verify: 100 + (30 - 1)*(-6)
+- key: q-apn-7
+  kind: numeric
+  stem: In an AP the 4th term is 14 and the 9th term is 34. What is the 15th term?
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: ap-nth-term
+  explanation: From the 4th term to the 9th term there are 5 steps, so 5d = 34 − 14 = 20 and d = 4. From the 9th term to the 15th term there are 6 steps, so a_15 = 34 + 6 × 4 = 58.
+  hints:
+  - How many steps of d are there between the 4th and the 9th term?
+  value: 58
+  tolerance: 0.0
+  verify: 34 + 6*((34 - 14)/5)
+- key: q-apn-8
+  kind: mcq
+  stem: 'Read this. In a small hall, the first row has 18 seats. Every row behind it has 2 more seats than the row in front. How many seats are in the 12th row?'
+  difficulty: standard
+  purpose: test
+  pattern: case
+  concepts:
+  - id: ap-nth-term
+  explanation: The seats form an AP with a = 18 and d = 2. a_12 = 18 + 11 × 2 = 18 + 22 = 40.
+  hints:
+  - There are 11 rows between the 1st row and the 12th row.
+  correct: C
+  options:
+  - key: A
+    text: '42'
+    misconception: n-for-n-minus-1
+  - key: B
+    text: '38'
+    misconception: unequal-gaps
+  - key: C
+    text: '40'
+  - key: D
+    text: '216'
+    misconception: multiply-not-add
+- key: q-apn-9
+  kind: numeric
+  stem: How many terms are there in the AP 5, 8, 11, ..., 203?
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: ap-nth-term
+  explanation: a = 5, d = 3 and the last term is 203. Then 5 + (n − 1) × 3 = 203, so (n − 1) × 3 = 198, n − 1 = 66 and n = 67.
+  hints:
+  - The last term is a_n. Put a + (n − 1)d equal to 203.
+  value: 67
+  tolerance: 0.0
+  verify: (203 - 5)/3 + 1
+- key: q-apn-10
+  kind: mcq
+  stem: 'Assertion (A): The list 3, 3, 3, 3, ... is an arithmetic progression. Reason (R): The common difference of an AP is allowed to be 0.'
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: ap-nth-term
+  explanation: Every term is found by adding 0 to the term before. So d = 0, and the list is an AP. Both statements are true, and R is the reason A is true.
+  hints:
+  - What is 3 − 3?
+  correct: A
+  options:
+  - key: A
+    text: Both A and R are true, and R explains A
+  - key: B
+    text: Both A and R are true, but R does not explain A
+    misconception: unequal-gaps
+  - key: C
+    text: A is true, but R is false
+    misconception: unequal-gaps
+  - key: D
+    text: A is false, but R is true
+    misconception: unequal-gaps
+- key: q-apn-11
+  kind: mcq
+  stem: 'Assertion (A): The number 100 is not a term of the AP 3, 7, 11, 15, ... Reason (R): Every term of this AP is 1 less than a multiple of 4.'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: ap-nth-term
+  explanation: The terms 3, 7, 11, 15 are 4 − 1, 8 − 1, 12 − 1, 16 − 1, so each is 1 less than a multiple of 4. But 100 is a multiple of 4, so it is not in the list. Also 3 + (n − 1) × 4 = 100 gives n − 1 = 24.25, not a whole number. Both are true, and R explains A.
+  hints:
+  - Put 3 + (n − 1) × 4 = 100 and see whether n is a whole number.
+  correct: A
+  options:
+  - key: A
+    text: Both A and R are true, and R explains A
+  - key: B
+    text: Both A and R are true, but R does not explain A
+    misconception: n-for-n-minus-1
+  - key: C
+    text: A is true, but R is false
+    misconception: unequal-gaps
+  - key: D
+    text: A is false, but R is true
+    misconception: n-for-n-minus-1
+misconceptions:
+- code: n-for-n-minus-1
+  concept: ap-nth-term
+  description: Uses a + nd instead of a + (n - 1)d, so one extra d is added to the term.
+- code: swap-a-d
+  concept: ap-nth-term
+  description: Mixes up the first term a and the common difference d when writing the rule for the nth term.
+- code: multiply-not-add
+  concept: ap-nth-term
+  description: Treats a list whose terms are multiplied by the same number as an AP, or multiplies the term number by a term.
+- code: unequal-gaps
+  concept: ap-nth-term
+  description: Calls a list an AP although the gaps between neighbouring terms are not all equal, or misjudges a list whose gap is 0.
+cards:
+- key: ap-nth-term-card-1
+  concept: ap-nth-term
+  front: What is an arithmetic progression?
+  back: A list of numbers in which the same number d (the common difference) is added each time to get the next term.
+- key: ap-nth-term-card-2
+  concept: ap-nth-term
+  front: How do you find the common difference?
+  back: Subtract a term from the term after it, d = a2 − a1. It can be zero or negative.
+- key: ap-nth-term-card-3
+  concept: ap-nth-term
+  front: State the formula for the nth term of an AP.
+  back: a_n = a + (n − 1)d.
+- key: ap-nth-term-card-4
+  concept: ap-nth-term
+  front: Why is it (n − 1)d and not nd?
+  back: The first term has no d added. The nth term is n − 1 steps away from it.

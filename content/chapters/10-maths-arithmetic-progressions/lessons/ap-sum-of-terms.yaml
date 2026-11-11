@@ -1,0 +1,266 @@
+slug: ap-sum-of-terms
+title: The sum of the first n terms of an AP
+minutes: 30
+objectives:
+- Explain why the sum of an AP can be found by pairing the first and last terms
+- Use S_n = n/2 (2a + (n - 1)d) to add the first n terms
+- Solve word problems on savings, seats and steps with the sum formula
+- Find how many terms are needed to reach a given sum
+concepts:
+- ap-sum
+origin: ai_assisted
+blocks:
+- kind: text
+  heading: Adding a long list quickly
+  html: '<p>A shopkeeper stacks tins in a pile. The bottom row has 10 tins, the next row has 9, then 8, and so on up to 1 tin on top. How many tins are there in all? That is 10 + 9 + 8 + ... + 1, an AP that has to be added up.</p><p>Write the list forwards and then backwards, one under the other: 1 + 2 + 3 + ... + 10 and 10 + 9 + 8 + ... + 1. Each pair from top to bottom adds up to 11, and there are 10 pairs. That is 110 for two copies of the list, so the list alone is 110 ÷ 2 = 55 tins.</p><p>The same trick works for every AP. The sum of the first n terms is written <strong>S<sub>n</sub></strong>.</p>'
+- kind: text
+  heading: The sum formula
+  html: '<p>In any AP, the first term plus the last term gives a total. The second term plus the second last gives the same total. So S<sub>n</sub> is half of n copies of that total. The last term is a + (n − 1)d, and this gives</p><p><strong>S<sub>n</sub> = n/2 × (2a + (n − 1)d)</strong></p><p>Here <em>a</em> is the first term, <em>d</em> is the common difference and <em>n</em> is how many terms you add. If you know the last term <em>l</em>, a shorter form is <strong>S<sub>n</sub> = n/2 × (a + l)</strong>.</p>'
+- kind: figure
+  svg: '<svg viewBox="0 0 300 170" role="img"><rect x="20" y="20" width="30" height="30" fill="#ffb800" stroke="#14193a" stroke-width="2"/><rect x="50" y="20" width="30" height="30" fill="#ffb800" stroke="#14193a" stroke-width="2"/><rect x="80" y="20" width="30" height="30" fill="#ffb800" stroke="#14193a" stroke-width="2"/><rect x="110" y="20" width="30" height="30" fill="#ffb800" stroke="#14193a" stroke-width="2"/><rect x="20" y="50" width="30" height="30" fill="#ffb800" stroke="#14193a" stroke-width="2"/><rect x="50" y="50" width="30" height="30" fill="#ffb800" stroke="#14193a" stroke-width="2"/><rect x="80" y="50" width="30" height="30" fill="#ffb800" stroke="#14193a" stroke-width="2"/><rect x="20" y="80" width="30" height="30" fill="#ffb800" stroke="#14193a" stroke-width="2"/><rect x="50" y="80" width="30" height="30" fill="#ffb800" stroke="#14193a" stroke-width="2"/><rect x="20" y="110" width="30" height="30" fill="#ffb800" stroke="#14193a" stroke-width="2"/><rect x="170" y="20" width="30" height="30" fill="#6cb7ff" stroke="#14193a" stroke-width="2"/><rect x="200" y="20" width="30" height="30" fill="#6cb7ff" stroke="#14193a" stroke-width="2"/><rect x="230" y="20" width="30" height="30" fill="#6cb7ff" stroke="#14193a" stroke-width="2"/><rect x="260" y="20" width="30" height="30" fill="#6cb7ff" stroke="#14193a" stroke-width="2"/><rect x="170" y="50" width="30" height="30" fill="#6cb7ff" stroke="#14193a" stroke-width="2"/><rect x="170" y="80" width="30" height="30" fill="#6cb7ff" stroke="#14193a" stroke-width="2"/><text x="20" y="160" font-size="11" fill="currentColor">staircase 4, 3, 2, 1</text><text x="170" y="160" font-size="11" fill="currentColor">another staircase</text></svg>'
+  alt: Two staircases of squares with rows of four, three, two and one square, one yellow and one blue, drawn side by side.
+  caption: A staircase of 4, 3, 2 and 1 squares has 10 squares. Turn a second copy upside down and fit it against the first, and the two make a rectangle 4 squares by 5 squares, which is 20 squares. Half of 20 is 10.
+- kind: example
+  heading: Worked example
+  prompt: Find the sum of the first 12 terms of the AP 2, 5, 8, 11, ...
+  steps:
+  - 'Here a = 2, d = 5 − 2 = 3 and n = 12.'
+  - 'Use S_n = n/2 × (2a + (n − 1)d). So S_12 = 12/2 × (2 × 2 + 11 × 3).'
+  - 'Work inside the bracket: 4 + 33 = 37. Then S_12 = 6 × 37 = 222.'
+  - 'Check with the short form. The 12th term is 2 + 11 × 3 = 35. Then 12/2 × (2 + 35) = 6 × 37 = 222.'
+- kind: example
+  heading: Worked example
+  prompt: Asha puts Rs 50 in her savings box in week 1. Every week after that she puts Rs 20 more than the week before. How much has she saved after 10 weeks?
+  steps:
+  - 'The weekly amounts 50, 70, 90, ... are an AP. So a = 50, d = 20 and n = 10.'
+  - 'S_10 = 10/2 × (2 × 50 + 9 × 20) = 5 × (100 + 180).'
+  - 'Add inside the bracket: 100 + 180 = 280. Then 5 × 280 = 1400.'
+  - 'Asha has saved Rs 1400. Check: the 10th week is 50 + 9 × 20 = 230, and 10/2 × (50 + 230) = 5 × 280 = 1400.'
+- kind: example
+  heading: Worked example
+  prompt: How many terms of the AP 3, 6, 9, ... must be added to get 135?
+  steps:
+  - 'Here a = 3 and d = 3. We want S_n = 135.'
+  - 'S_n = n/2 × (6 + (n − 1) × 3) = n/2 × (3n + 3). Set this equal to 135 and multiply by 2: n(3n + 3) = 270.'
+  - 'Divide by 3: n(n + 1) = 90, so n^2 + n − 90 = 0. This is (n + 10)(n − 9) = 0, so n = 9 or n = −10.'
+  - 'The number of terms cannot be negative, so n = 9. Check: 3 + 6 + 9 + 12 + 15 + 18 + 21 + 24 + 27 = 135.'
+- kind: callout
+  tone: watch
+  html: Do not forget the half in front. Using n × (2a + (n − 1)d) gives a total that is double the right one. Also remember that the bracket has 2a, not just a. When the question gives the last term, you may use n/2 × (a + l) instead. Do not mix the two forms.
+- kind: callout
+  tone: real
+  html: The sum of an AP tells you the total seats in a hall with rows that grow by the same number, the total savings when you add the same extra amount each week, or the total number of steps climbed when each flight has one step fewer than the one below.
+- kind: check
+  item: q-aps-1
+- kind: check
+  item: q-aps-4
+- kind: check
+  item: q-aps-8
+- kind: summary
+  points:
+  - 'The sum of the first n terms of an AP is S_n = n/2 × (2a + (n − 1)d).'
+  - 'If you know the last term l, then S_n = n/2 × (a + l). The two forms agree because l = a + (n − 1)d.'
+  - 'In a word problem, find a, d and n first, then put them in the formula. Check by finding the last term and using the short form.'
+  - 'To find how many terms give a sum, put S_n equal to that sum and solve for n. Reject a negative n.'
+items:
+- key: q-aps-1
+  kind: numeric
+  stem: Use the sum formula to find 1 + 2 + 3 + ... + 10. (Here a = 1, d = 1, n = 10.)
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: ap-sum
+  explanation: S_10 = 10/2 × (2 × 1 + 9 × 1) = 5 × 11 = 55. This matches the pairing trick.
+  hints:
+  - Put a = 1, d = 1 and n = 10 into n/2 × (2a + (n − 1)d).
+  value: 55
+  tolerance: 0.0
+  verify: 10*(2*1 + 9*1)/2
+- key: q-aps-2
+  kind: numeric
+  stem: Find the sum of the first 5 terms of the AP with a = 3 and d = 2.
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: ap-sum
+  explanation: S_5 = 5/2 × (2 × 3 + 4 × 2) = 5/2 × 14 = 35. The terms are 3, 5, 7, 9, 11, which add up to 35.
+  hints:
+  - Write S_n = n/2 × (2a + (n − 1)d) and put in n = 5.
+  value: 35
+  tolerance: 0.0
+  verify: 5*(2*3 + 4*2)/2
+- key: q-aps-3
+  kind: mcq
+  stem: Which is the correct formula for the sum of the first n terms of an AP?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: ap-sum
+  explanation: The sum is S_n = n/2 × (2a + (n − 1)d). It has a half in front, a 2a in the bracket, and n − 1 next to d.
+  hints:
+  - Test with the AP 1, 2, with n = 2. The sum must be 3.
+  correct: A
+  options:
+  - key: A
+    text: n/2 × (2a + (n − 1)d)
+  - key: B
+    text: n/2 × (2a + nd)
+    misconception: n-for-n-minus-1
+  - key: C
+    text: n × (2a + (n − 1)d)
+    misconception: forgets-half
+  - key: D
+    text: n/2 × (a + (n − 1)d)
+    misconception: forgets-half
+- key: q-aps-4
+  kind: numeric
+  stem: Find the sum of the first 12 terms of the AP 2, 5, 8, 11, ...
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: ap-sum
+  explanation: a = 2, d = 3, n = 12. S_12 = 12/2 × (4 + 33) = 6 × 37 = 222.
+  hints:
+  - Find d first, then use the sum formula.
+  value: 222
+  tolerance: 0.0
+  verify: 12*(2*2 + 11*3)/2
+- key: q-aps-5
+  kind: numeric
+  stem: Asha puts Rs 50 in her box in week 1. She puts Rs 20 more each week than the week before. How many rupees has she saved in all after 10 weeks?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: ap-sum
+  explanation: a = 50, d = 20, n = 10. S_10 = 10/2 × (100 + 180) = 5 × 280 = 1400.
+  hints:
+  - The weekly amounts are 50, 70, 90, ... so find a, d and n first.
+  value: 1400
+  tolerance: 0.0
+  verify: 10*(2*50 + 9*20)/2
+- key: q-aps-6
+  kind: numeric
+  stem: Find the sum of the first 20 odd numbers, 1 + 3 + 5 + ...
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: ap-sum
+  explanation: a = 1, d = 2, n = 20. S_20 = 20/2 × (2 + 19 × 2) = 10 × 40 = 400.
+  hints:
+  - Odd numbers go up by 2 each time.
+  value: 400
+  tolerance: 0.0
+  verify: 20*(2*1 + 19*2)/2
+- key: q-aps-7
+  kind: numeric
+  stem: A diver sinks by 3 metres each minute. Her depth in metres at the start of the first 10 minutes is 40, 37, 34, ... Find the sum of these 10 numbers.
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: ap-sum
+  explanation: This is an AP with a = 40 and d = −3, so the numbers go down. S_10 = 10/2 × (80 + 9 × (−3)) = 5 × 53 = 265.
+  hints:
+  - The common difference is negative. Put d = −3 in the formula.
+  value: 265
+  tolerance: 0.0
+  verify: 10*(2*40 + 9*(-3))/2
+- key: q-aps-8
+  kind: mcq
+  stem: 'Read this. A community hall has 15 rows of seats. The first row has 20 seats, and each row behind it has 2 more seats than the row in front. How many seats are there in the hall altogether?'
+  difficulty: standard
+  purpose: test
+  pattern: case
+  concepts:
+  - id: ap-sum
+  explanation: a = 20, d = 2, n = 15. S_15 = 15/2 × (40 + 14 × 2) = 15/2 × 68 = 15 × 34 = 510. The last row has 20 + 28 = 48 seats and 15/2 × (20 + 48) = 510.
+  hints:
+  - Find a, d and n, then use n/2 × (2a + (n − 1)d).
+  correct: B
+  options:
+  - key: A
+    text: '525'
+    misconception: n-for-n-minus-1
+  - key: B
+    text: '510'
+  - key: C
+    text: '1020'
+    misconception: forgets-half
+  - key: D
+    text: '48'
+    misconception: sum-vs-last-term
+- key: q-aps-9
+  kind: numeric
+  stem: How many terms of the AP 3, 6, 9, ... must be added to get a sum of 135?
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: ap-sum
+  explanation: S_n = n/2 × (6 + 3(n − 1)) = n(3n + 3)/2 = 135. So n^2 + n = 90, which gives (n + 10)(n − 9) = 0. A number of terms cannot be negative, so n = 9.
+  hints:
+  - Put S_n = 135 and make an equation in n. Reject a negative n.
+  value: 9
+  tolerance: 0.0
+  verify: (-1 + sqrt(1 + 4*90))/2
+- key: q-aps-10
+  kind: numeric
+  stem: An AP has 10 terms. Its first term is 5 and its last term is 41. What is the sum of all 10 terms?
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: ap-sum
+  explanation: When the first and last terms are known, S_n = n/2 × (a + l) = 10/2 × (5 + 41) = 5 × 46 = 230. You do not need d.
+  hints:
+  - Use the short form S_n = n/2 × (a + l).
+  value: 230
+  tolerance: 0.0
+  verify: 10*(5 + 41)/2
+- key: q-aps-11
+  kind: mcq
+  stem: 'Assertion (A): The sum of the first 6 terms of the AP 4, 4, 4, ... is 24. Reason (R): The sum formula for an AP cannot be used when d = 0.'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: ap-sum
+  explanation: Six 4s add up to 24, so A is true. The formula works for d = 0 too, since 6/2 × (8 + 0) = 24. So R is false.
+  hints:
+  - Try the formula with a = 4, d = 0 and n = 6.
+  correct: C
+  options:
+  - key: A
+    text: Both A and R are true, and R explains A
+    misconception: forgets-half
+  - key: B
+    text: Both A and R are true, but R does not explain A
+    misconception: forgets-half
+  - key: C
+    text: A is true, but R is false
+  - key: D
+    text: A is false, but R is true
+    misconception: sum-vs-last-term
+misconceptions:
+- code: forgets-half
+  concept: ap-sum
+  description: Leaves out the half in the sum formula, or uses a instead of 2a in the bracket, so the sum is wrong by a factor of 2.
+- code: n-for-n-minus-1
+  concept: ap-sum
+  description: Uses nd instead of (n - 1)d inside the sum formula, so one extra d is added.
+- code: sum-vs-last-term
+  concept: ap-sum
+  description: Gives the last term or another single term when the question asks for the sum of all the terms.
+cards:
+- key: ap-sum-card-1
+  concept: ap-sum
+  front: State the sum formula for the first n terms of an AP.
+  back: S_n = n/2 × (2a + (n − 1)d).
+- key: ap-sum-card-2
+  concept: ap-sum
+  front: What is the short form of the sum formula?
+  back: S_n = n/2 × (a + l), where l is the last term.
+- key: ap-sum-card-3
+  concept: ap-sum
+  front: What is the idea behind the sum formula?
+  back: Write the list forwards and backwards. Each pair adds to the same total, so S_n is half of n such totals.
+- key: ap-sum-card-4
+  concept: ap-sum
+  front: What do you do first in an AP word problem?
+  back: Find a, d and n. Then put them in the formula and check with the last term.

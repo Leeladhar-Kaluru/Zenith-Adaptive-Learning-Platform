@@ -1,0 +1,264 @@
+slug: lok-sabha-rajya-sabha-president
+title: Parliament, the Lok Sabha, the Rajya Sabha and the President
+minutes: 25
+objectives:
+- Name the three parts of the Parliament of India
+- Explain how members of the Lok Sabha and the Rajya Sabha are chosen
+- Tell the two houses apart by how they are chosen and how long they last
+- Describe the role of the President in Parliament
+concepts:
+- civics-parliament-houses
+origin: ai_assisted
+blocks:
+- kind: text
+  heading: Who makes the rules?
+  html: '<p>Think of a school election. Students vote for a class leader. The leader and the elected team then decide rules for the class, such as when to hand in homework. India works in a similar way on a much bigger scale. The people vote, and the people they choose make the laws for the whole country.</p><p>A <strong>law</strong> is a rule that everyone in the country must follow. The body that makes laws for the whole of India is the <strong>Parliament</strong>. The rules for how it works are written in the <strong>Constitution</strong>, the basic document of India. The Constitution came into force on 26 January 1950.</p>'
+- kind: text
+  heading: Three parts of Parliament
+  html: '<p>Parliament has three parts: the <strong>President</strong>, the <strong>Lok Sabha</strong> and the <strong>Rajya Sabha</strong>. The Lok Sabha and the Rajya Sabha are called the two <strong>houses</strong> of Parliament. A house is a group of members who meet, discuss and vote.</p><p>The President is the head of the country. The President is not a member of either house, but Parliament is not complete without the President. You will see why in the next lesson.</p>'
+- kind: figure
+  svg: <svg viewBox="0 0 330 200" role="img"><rect x="105" y="10" width="120" height="40" rx="6" fill="#ffb800" stroke="#14193a" stroke-width="2"/><text x="165" y="35" font-size="13" text-anchor="middle" fill="#14193a">President</text><rect x="15" y="110" width="130" height="50" rx="6" fill="#6cb7ff" stroke="#14193a" stroke-width="2"/><text x="80" y="132" font-size="13" text-anchor="middle" fill="#14193a">Lok Sabha</text><text x="80" y="150" font-size="10" text-anchor="middle" fill="#14193a">chosen by voters</text><rect x="185" y="110" width="130" height="50" rx="6" fill="#6cb7ff" stroke="#14193a" stroke-width="2"/><text x="250" y="132" font-size="13" text-anchor="middle" fill="#14193a">Rajya Sabha</text><text x="250" y="150" font-size="10" text-anchor="middle" fill="#14193a">chosen by state legislatures</text><line x1="145" y1="50" x2="80" y2="110" stroke="currentColor" stroke-width="2"/><line x1="185" y1="50" x2="250" y2="110" stroke="currentColor" stroke-width="2"/><text x="165" y="188" font-size="12" text-anchor="middle" fill="currentColor">Parliament = all three together</text></svg>
+  alt: A diagram showing the President at the top joined by lines to the Lok Sabha and the Rajya Sabha below, together making Parliament.
+  caption: The three parts of Parliament. The Lok Sabha is chosen directly by voters. The Rajya Sabha is chosen by the legislatures of the states.
+- kind: text
+  heading: The Lok Sabha, the house of the people
+  html: '<p>The <strong>Lok Sabha</strong> is also called the House of the People. Its members are <strong>directly elected</strong>. This means ordinary voters choose them. Every Indian citizen who is 18 years old or more can vote. India is divided into areas called constituencies, and each constituency elects one member. The Lok Sabha has 543 elected seats.</p><p>A Lok Sabha runs for up to five years. After that, new elections are held. The house is led by a chairperson called the <strong>Speaker</strong>, who is chosen by the members themselves. The Speaker keeps order in the debates, like a class monitor who makes sure one person speaks at a time.</p>'
+- kind: text
+  heading: The Rajya Sabha, the house of the states
+  html: '<p>The <strong>Rajya Sabha</strong> is also called the Council of States. Its members are not chosen by voters directly. They are chosen by the elected members of the legislatures of the states. This is called <strong>indirect election</strong>. It is like each class choosing a few students, and those students then choosing members for a school-wide council.</p><p>The Rajya Sabha is never dissolved all at once. Each member has a fixed term, and the terms are arranged so that only some members finish at a time. This is why the Rajya Sabha is called a permanent house. The Vice-President of India presides over it.</p>'
+- kind: example
+  heading: Worked example
+  prompt: 'A school has 60 voters and picks its class leader by simple majority. A candidate needs more than half the votes. How many votes are enough to win for sure?'
+  steps:
+  - 'Find half of the voters. Half of 60 is 30.'
+  - 'More than half means more than 30, so at least 31 votes.'
+  - 'Check. If one candidate gets 31, the others share only 29 votes, so nobody else can reach 31.'
+  - 'So 31 votes are enough. In the same way, a group must have more than half of its members to have a majority.'
+- kind: example
+  heading: Worked reasoning
+  prompt: A news report says "A member of the Lok Sabha was chosen by the voters of one constituency." Is this about the Lok Sabha or the Rajya Sabha, and how do you know?
+  steps:
+  - 'Look for the clue about who chose the member. The report says voters of one constituency chose the member.'
+  - 'Direct election by voters is how the Lok Sabha is filled. The Rajya Sabha is filled by state legislatures.'
+  - 'The clue matches the Lok Sabha.'
+  - 'Check the other house: no voter in a constituency elects a Rajya Sabha member directly, so the Rajya Sabha does not fit.'
+- kind: callout
+  tone: watch
+  html: Do not say that the President is a member of the Lok Sabha or the Rajya Sabha. The President is a separate part of Parliament. Also do not think the Rajya Sabha members are chosen by voters in the same way as the Lok Sabha members.
+- kind: callout
+  tone: real
+  html: When you see on the news that "Parliament has passed a new law", it means the Lok Sabha and the Rajya Sabha have both agreed to it. You can follow the debates of both houses and see how the members you helped to elect speak for your area.
+- kind: check
+  item: q-ph-1
+- kind: check
+  item: q-ph-2
+- kind: check
+  item: q-ph-3
+- kind: summary
+  points:
+  - 'Parliament is made of three parts, the President, the Lok Sabha and the Rajya Sabha.'
+  - 'The Lok Sabha has 543 elected seats. Its members are directly elected by voters and it lasts up to five years.'
+  - 'The Rajya Sabha is chosen by the legislatures of the states and is a permanent house with members finishing at different times.'
+  - 'The Constitution, in force from 26 January 1950, sets out how Parliament works.'
+items:
+- key: q-ph-1
+  kind: mcq
+  stem: Which of these is NOT a part of the Parliament of India?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: civics-parliament-houses
+  explanation: Parliament is the President, the Lok Sabha and the Rajya Sabha. The Supreme Court is a separate institution and is not a part of Parliament.
+  hints:
+  - Parliament has three parts. Which option is none of them?
+  correct: D
+  options:
+  - key: A
+    text: The President
+  - key: B
+    text: The Lok Sabha
+  - key: C
+    text: The Rajya Sabha
+  - key: D
+    text: The Supreme Court
+    misconception: parliament-two-houses-only
+- key: q-ph-2
+  kind: mcq
+  stem: How are the members of the Lok Sabha chosen?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: civics-parliament-houses
+  explanation: Lok Sabha members are directly elected by voters in their constituencies.
+  hints:
+  - Think about who goes to the polling booth.
+  correct: B
+  options:
+  - key: A
+    text: They are chosen by state legislatures
+    misconception: both-houses-same
+  - key: B
+    text: They are directly elected by the voters
+  - key: C
+    text: They are named by the President alone
+    misconception: president-member
+  - key: D
+    text: They are chosen by the Speaker
+    misconception: both-houses-same
+- key: q-ph-3
+  kind: mcq
+  stem: How are the members of the Rajya Sabha chosen?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: civics-parliament-houses
+  explanation: Rajya Sabha members are chosen by the elected members of the state legislatures, which is indirect election.
+  hints:
+  - It is the house of the states.
+  correct: C
+  options:
+  - key: A
+    text: Directly by voters in each constituency
+    misconception: both-houses-same
+  - key: B
+    text: By the Speaker of the Lok Sabha
+    misconception: both-houses-same
+  - key: C
+    text: By the elected members of the state legislatures
+  - key: D
+    text: By drawing lots from all citizens
+    misconception: both-houses-same
+- key: q-ph-4
+  kind: numeric
+  stem: How many elected seats does the Lok Sabha have?
+  difficulty: intro
+  purpose: practice
+  concepts:
+  - id: civics-parliament-houses
+  explanation: The Lok Sabha has 543 elected seats, one for each constituency.
+  hints:
+  - It is a three-digit number that starts with 5.
+  value: 543
+  tolerance: 0.0
+  verify: '543'
+- key: q-ph-5
+  kind: truefalse
+  stem: The President is a member of the Lok Sabha.
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: civics-parliament-houses
+  explanation: False. The President is a separate part of Parliament and is not a member of either house.
+  hints:
+  - Look at the diagram. The President is drawn apart from the two houses.
+  correct: false
+- key: q-ph-6
+  kind: mcq
+  stem: Why is the Rajya Sabha called a permanent house?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: civics-parliament-houses
+  explanation: It is never dissolved all at once. Members finish their terms at different times, so the house always continues.
+  hints:
+  - Think about whether all members leave on the same day.
+  correct: A
+  options:
+  - key: A
+    text: It is never dissolved as a whole, because members finish their terms at different times
+  - key: B
+    text: Its members can never be changed
+    misconception: both-houses-same
+  - key: C
+    text: It is chosen by the voters every year
+    misconception: both-houses-same
+  - key: D
+    text: It meets only once in a lifetime
+    misconception: parliament-two-houses-only
+- key: q-ph-7
+  kind: numeric
+  stem: A school has 80 voters. A candidate needs more than half the votes to win. What is the smallest number of votes that is enough?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: civics-parliament-houses
+  explanation: Half of 80 is 40, and more than half means at least 41.
+  hints:
+  - Find half first, then go one more.
+  value: 41
+  tolerance: 0.0
+  verify: 80/2+1
+- key: q-ph-8
+  kind: mcq
+  stem: 'Assertion (A): The Lok Sabha is called the house of the people. Reason (R): Its members are directly elected by voters.'
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: civics-parliament-houses
+  explanation: Both statements are true. Voters choose Lok Sabha members directly, which is why it is called the house of the people, so R explains A.
+  hints:
+  - Ask whether the way members are chosen explains the name.
+  correct: A
+  options:
+  - key: A
+    text: Both A and R are true, and R explains A
+  - key: B
+    text: Both A and R are true, but R does not explain A
+    misconception: both-houses-same
+  - key: C
+    text: A is true, but R is false
+    misconception: both-houses-same
+  - key: D
+    text: A is false, but R is true
+    misconception: both-houses-same
+- key: q-ph-9
+  pattern: case
+  kind: mcq
+  stem: 'Read this note. Asha is 19 and votes in her constituency. She sees that her area has sent a member to Parliament, and that this member sits in the house that has 543 elected seats. Later she learns that her state legislature has helped choose members for the other house. Which statement is correct?'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: civics-parliament-houses
+  explanation: The house with 543 elected seats and direct voting is the Lok Sabha. The other house, chosen by state legislatures, is the Rajya Sabha.
+  hints:
+  - Match direct election and 543 seats to one house, then the state legislatures to the other.
+  correct: B
+  options:
+  - key: A
+    text: Asha voted directly for the Rajya Sabha, and the state legislature chose the Lok Sabha
+    misconception: both-houses-same
+  - key: B
+    text: Asha voted directly for the Lok Sabha, and the state legislature helped choose the Rajya Sabha
+  - key: C
+    text: Both houses are chosen directly by voters like Asha
+    misconception: both-houses-same
+  - key: D
+    text: The President chose both houses
+    misconception: president-member
+misconceptions:
+- code: both-houses-same
+  concept: civics-parliament-houses
+  description: Thinks the Lok Sabha and the Rajya Sabha are chosen in the same way, when the Lok Sabha is directly elected by voters and the Rajya Sabha is chosen by state legislatures.
+- code: president-member
+  concept: civics-parliament-houses
+  description: Thinks the President is a member of one of the houses or picks the members, when the President is a separate part of Parliament.
+- code: parliament-two-houses-only
+  concept: civics-parliament-houses
+  description: Forgets that Parliament has three parts, the President and the two houses, or mixes Parliament up with other institutions such as the courts.
+cards:
+- key: lok-sabha-rajya-sabha-president-card-1
+  concept: civics-parliament-houses
+  front: What are the three parts of Parliament?
+  back: The President, the Lok Sabha and the Rajya Sabha.
+- key: lok-sabha-rajya-sabha-president-card-2
+  concept: civics-parliament-houses
+  front: How is the Lok Sabha chosen?
+  back: Its members are directly elected by voters. It has 543 elected seats.
+- key: lok-sabha-rajya-sabha-president-card-3
+  concept: civics-parliament-houses
+  front: How is the Rajya Sabha chosen?
+  back: By the elected members of the state legislatures. It is a permanent house.
+- key: lok-sabha-rajya-sabha-president-card-4
+  concept: civics-parliament-houses
+  front: When did the Constitution of India come into force?
+  back: On 26 January 1950.

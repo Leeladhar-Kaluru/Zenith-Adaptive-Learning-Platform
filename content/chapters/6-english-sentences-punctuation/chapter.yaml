@@ -1,0 +1,15 @@
+slug: 6-english-sentences-punctuation
+board: cbse
+curriculum: NCERT current editions (to be confirmed by a reviewer)
+grade: 6
+subject: english
+title: Sentences and punctuation
+summary: Learn the four kinds of sentence and the marks that make writing clear, from capital letters and full stops to commas and apostrophes.
+concepts:
+- id: english-sentence-kinds
+- id: english-end-marks
+- id: english-commas
+- id: english-apostrophes
+lessons:
+- sentence-kinds-capitals-stops
+- commas-and-apostrophes

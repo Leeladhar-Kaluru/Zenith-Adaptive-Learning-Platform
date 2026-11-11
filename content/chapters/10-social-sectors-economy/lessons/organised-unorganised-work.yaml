@@ -1,0 +1,314 @@
+slug: organised-unorganised-work
+title: Organised and unorganised work
+minutes: 25
+objectives:
+- Describe the features of organised and unorganised work
+- Give everyday examples of each kind of work
+- Explain why unorganised workers face more insecurity
+- Tell apart this split from the primary, secondary and tertiary sectors
+concepts:
+- organised-unorganised
+- sectors-of-economy
+origin: ai_assisted
+blocks:
+- kind: text
+  heading: Two workers, two kinds of job
+  html: '<p>Imagine two people in the same town. One has a job in a registered factory. She gets a letter that states her pay and her hours. The other sells fruit from a cart. He earns money each day that he sells and nothing on a day when it rains. Both work hard, but their working lives are very different. Economists describe this difference with the words <strong>organised</strong> and <strong>unorganised</strong>.</p>'
+- kind: text
+  heading: The organised sector
+  html: '<p>Work is <strong>organised</strong> when the business is registered and follows rules about work. The terms of the job are fixed and usually written down. Hours are fixed, and extra hours are paid. Workers often get benefits such as paid leave, medical help, a pension or a provident fund. A <strong>provident fund</strong> is money that is saved from the salary for the worker to receive later. Jobs here are usually <strong>secure</strong>, which means a worker cannot be sent away without a good reason.</p><p>Organised work can be in a private firm or in a government office. Being organised is about the rules of the job, not about who owns the business.</p>'
+- kind: text
+  heading: The unorganised sector
+  html: '<p>Work is <strong>unorganised</strong> when units are small and scattered and the rules are weakly followed. Jobs are low-paid and often irregular. There may be no paid leave and no pension. Workers can be asked to leave without notice. Daily-wage labourers, street vendors, many farm workers and people who work in small home workshops are examples.</p><p>Unorganised work is not illegal and it is not unimportant. Millions of people earn their living this way and many goods and services reach us through it. The problem is that these workers have little <strong>security</strong>. Security means knowing that your work and income will continue.</p><p>This split is different from the three sectors. The three sectors ask <em>what</em> work is done. Organised and unorganised ask <em>on what terms</em> the work is done. A tailor in a registered garment factory and a tailor with a roadside stall are both in the secondary sector, but one is organised and the other is not.</p>'
+- kind: figure
+  svg: <svg viewBox="0 0 340 130" role="img"><rect x="20" y="30" width="60" height="30" fill="#6cb7ff"/><rect x="80" y="30" width="240" height="30" fill="#ffb800"/><text x="50" y="50" font-size="11" text-anchor="middle" fill="#14193a">Organised</text><text x="200" y="50" font-size="11" text-anchor="middle" fill="#14193a">Unorganised</text><text x="50" y="80" font-size="10" text-anchor="middle" fill="currentColor">200</text><text x="200" y="80" font-size="10" text-anchor="middle" fill="currentColor">800</text><text x="170" y="108" font-size="10" text-anchor="middle" fill="currentColor">Example of 1,000 workers in a made-up town</text></svg>
+  alt: A single bar for 1,000 example workers split into 200 organised and 800 unorganised workers.
+  caption: A made-up town of 1,000 workers. The numbers are examples, not real data. The blue part is organised and the yellow part is unorganised.
+- kind: example
+  heading: Reading a share
+  prompt: In the made-up town, 200 of the 1,000 workers have organised jobs. What percentage of workers are unorganised?
+  steps:
+  - 'Find the unorganised workers. 1,000 - 200 = 800 workers.'
+  - 'Write the share as a fraction of all workers, 800 out of 1,000.'
+  - 'Convert to a percentage, 800 / 1,000 x 100 = 80 percent.'
+  - 'Check. The two shares must add to 100. Organised is 200 / 1,000 x 100 = 20 percent, and 20 + 80 = 100, so the answer is consistent.'
+- kind: example
+  heading: Income that is not steady
+  prompt: A fruit seller in the example earns 400 rupees on each day he sells. In one month he could sell on 22 days and could not on the other days. How much did he earn, and how does that compare with a fixed monthly salary?
+  steps:
+  - 'Count the earning days. The month has 22 selling days.'
+  - 'Multiply. 400 x 22 = 8,800 rupees.'
+  - 'A fixed salary is the same every month. The seller''s income changes with the number of days he can sell, for example if he sells on 18 days he earns 400 x 18 = 7,200 rupees.'
+  - 'So the unorganised worker cannot be sure of the same income each month. This is what we mean by income insecurity.'
+- kind: callout
+  tone: watch
+  html: Do not mix up the two splits. Organised does not mean a government job, and unorganised does not mean illegal or small in value. A private firm that follows the rules is organised too.
+- kind: callout
+  tone: real
+  html: A mason who works on a building site by the day usually has no paid leave. A bank clerk usually has paid leave and a fixed salary. The same town needs both kinds of workers.
+- kind: check
+  item: q-ou-1
+- kind: check
+  item: q-ou-4
+- kind: check
+  item: q-ou-7
+- kind: summary
+  points:
+  - 'Organised work is registered and rule-bound, with fixed hours and terms and benefits such as paid leave and a pension.'
+  - 'Unorganised work is in small, scattered units, with irregular and low pay and little security.'
+  - 'Organised is not the same as government, and unorganised is not the same as illegal.'
+  - 'The three sectors say what work is done. Organised and unorganised say on what terms it is done, so a worker has one answer to each question.'
+items:
+- key: q-ou-1
+  kind: mcq
+  stem: Which is a feature of organised work?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: organised-unorganised
+  explanation: Organised work has fixed written terms, and benefits such as paid leave are common. Irregular pay and no notice are features of unorganised work.
+  hints:
+  - Think about the factory worker with a letter stating her pay and hours.
+  correct: B
+  options:
+  - key: A
+    text: Pay that changes from day to day with no written terms
+    misconception: organised-means-government
+  - key: B
+    text: Fixed hours and written terms of the job
+  - key: C
+    text: Being asked to leave at any time without notice
+    misconception: organised-means-government
+  - key: D
+    text: Working only for the government
+    misconception: organised-means-government
+- key: q-ou-2
+  kind: mcq
+  stem: A person sells vegetables from a cart and earns only on the days they sell. Which kind of work is this?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: organised-unorganised
+  explanation: A cart seller works alone with irregular income, no paid leave and no fixed terms, so the work is unorganised.
+  hints:
+  - Is the income fixed and the job protected by rules?
+  correct: A
+  options:
+  - key: A
+    text: Unorganised
+  - key: B
+    text: Organised
+  - key: C
+    text: Illegal
+    misconception: unorganised-is-illegal
+  - key: D
+    text: It does not count as work
+    misconception: unorganised-is-illegal
+- key: q-ou-3
+  kind: mcq
+  stem: A registered company runs a factory. Workers have fixed hours, paid leave and a provident fund. This work is
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: organised-unorganised
+  explanation: Registration, rules and benefits make the work organised. The company does not have to be owned by the government.
+  hints:
+  - Organised is about the rules of the job, not about the owner.
+  correct: C
+  options:
+  - key: A
+    text: Unorganised, because it is a private company
+    misconception: organised-means-government
+  - key: B
+    text: Unorganised, because it makes goods
+    misconception: organised-means-government
+  - key: C
+    text: Organised, even though it is a private company
+  - key: D
+    text: Organised only if the government owns it
+    misconception: organised-means-government
+- key: q-ou-4
+  kind: numeric
+  stem: In a made-up village, 600 workers have jobs and 150 of them have organised jobs. How many workers are unorganised?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: organised-unorganised
+  explanation: Unorganised workers are all workers minus organised workers, 600 - 150 = 450.
+  hints:
+  - Subtract the organised workers from all the workers.
+  value: 450
+  tolerance: 0.0
+  verify: 600-150
+- key: q-ou-5
+  kind: numeric
+  stem: A daily-wage labourer earns 350 rupees on each day he finds work. He finds work on 20 days in a month. How many rupees does he earn that month?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: organised-unorganised
+  explanation: Daily wage times days worked, 350 x 20 = 7,000 rupees.
+  hints:
+  - Multiply the daily wage by the number of days.
+  value: 7000
+  tolerance: 0.0
+  verify: 350*20
+- key: q-ou-6
+  kind: mcq
+  stem: Why are unorganised workers often worried about the future?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: organised-unorganised
+  explanation: Their income can change and their jobs are not protected, and there is often no pension or paid leave, so they have little security.
+  hints:
+  - Think about the fruit seller on a rainy day.
+  correct: D
+  options:
+  - key: A
+    text: Because they do not work at all
+    misconception: unorganised-is-illegal
+  - key: B
+    text: Because their work is against the law
+    misconception: unorganised-is-illegal
+  - key: C
+    text: Because they all work for the government
+    misconception: organised-means-government
+  - key: D
+    text: Because their income and jobs are not secure
+- key: q-ou-7
+  kind: mcq
+  stem: A tailor with a roadside stall and a tailor in a registered garment factory both sew clothes. How do they differ?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: organised-unorganised
+  - id: sectors-of-economy
+  explanation: They do the same kind of work, so they are in the same sector. They differ in the terms of work, so one is organised and the other is unorganised.
+  hints:
+  - Separate what work is done from the terms of the work.
+  correct: A
+  options:
+  - key: A
+    text: They are in the same sector but differ in the terms of work
+  - key: B
+    text: They are in different sectors only because one works outdoors
+    misconception: same-as-three-sectors
+  - key: C
+    text: Neither one is a worker
+    misconception: unorganised-is-illegal
+  - key: D
+    text: The factory tailor is primary and the stall tailor is tertiary
+    misconception: same-as-three-sectors
+- key: q-ou-8
+  kind: mcq
+  stem: 'Assertion (A): A daily-wage mason is part of the unorganised sector. Reason (R): His work has no fixed hours, no written terms and no paid leave.'
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: organised-unorganised
+  explanation: Both statements are true. Irregular work, no written terms and no paid leave are the features that make work unorganised, so R explains A.
+  hints:
+  - Check whether R lists features of unorganised work.
+  correct: A
+  options:
+  - key: A
+    text: Both A and R are true, and R explains A
+  - key: B
+    text: Both A and R are true, but R does not explain A
+    misconception: unorganised-is-illegal
+  - key: C
+    text: A is true, but R is false
+    misconception: unorganised-is-illegal
+  - key: D
+    text: A is false, but R is true
+    misconception: unorganised-is-illegal
+- key: q-ou-9
+  kind: mcq
+  stem: 'Assertion (A): Moving from an unorganised job to an organised job does not change a worker''s sector among primary, secondary and tertiary. Reason (R): The three sectors describe what work is done, while organised and unorganised describe the terms of the work.'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: organised-unorganised
+  - id: sectors-of-economy
+  explanation: Both statements are true. A tailor who moves from a stall to a factory still does secondary work, so R explains A.
+  hints:
+  - Ask what question each split answers.
+  correct: A
+  options:
+  - key: A
+    text: Both A and R are true, and R explains A
+  - key: B
+    text: Both A and R are true, but R does not explain A
+    misconception: same-as-three-sectors
+  - key: C
+    text: A is true, but R is false
+    misconception: same-as-three-sectors
+  - key: D
+    text: A is false, but R is true
+    misconception: same-as-three-sectors
+- key: q-ou-10
+  pattern: case
+  kind: mcq
+  stem: 'Read this made-up example. Meena works in a private garment factory that is registered. She has fixed hours, a written letter of her pay, and paid leave. Her brother Ravi stitches clothes on a roadside stall. His income depends on how many customers come, and he has no leave. A student says, "Meena works in the government sector and Ravi works in the tertiary sector." Which statement is correct?'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: organised-unorganised
+  - id: sectors-of-economy
+  explanation: Meena works in a private firm, so organised does not mean government. Both stitch clothes, so both do secondary work. Meena is organised and Ravi is unorganised.
+  hints:
+  - Check two things, who owns the firm does not decide organised, and stitching makes goods.
+  correct: B
+  options:
+  - key: A
+    text: The student is right on both counts
+    misconception: organised-means-government
+  - key: B
+    text: Both do secondary work, Meena is organised and Ravi is unorganised
+  - key: C
+    text: Both do tertiary work, and both are unorganised
+    misconception: same-as-three-sectors
+  - key: D
+    text: Meena is unorganised because her firm is private
+    misconception: organised-means-government
+- key: q-ou-11
+  kind: numeric
+  stem: In a made-up village of 600 workers, 150 have organised jobs. If 120 more workers get organised jobs, what percentage of the 600 workers are then in organised work?
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: organised-unorganised
+  explanation: Organised workers become 150 + 120 = 270. The share is 270 / 600 x 100 = 45 percent.
+  hints:
+  - Add the new workers first, then find the share of 600.
+  value: 45
+  tolerance: 0.0
+  verify: (150+120)/600*100
+misconceptions:
+- code: organised-means-government
+  concept: organised-unorganised
+  description: Thinks organised work means only government jobs, when a private firm can also be organised if it is registered and follows the rules.
+- code: unorganised-is-illegal
+  concept: organised-unorganised
+  description: Thinks unorganised work is illegal or is not real work, when it is ordinary work done on weaker terms and with little security.
+- code: same-as-three-sectors
+  concept: sectors-of-economy
+  description: Confuses organised and unorganised with the primary, secondary and tertiary sectors, which answer a different question.
+cards:
+- key: organised-unorganised-work-card-1
+  concept: organised-unorganised
+  front: What are the features of organised work?
+  back: A registered business that follows work rules, with fixed hours, written terms and benefits such as paid leave and a pension.
+- key: organised-unorganised-work-card-2
+  concept: organised-unorganised
+  front: What are the features of unorganised work?
+  back: Small, scattered units with irregular and low pay, few benefits and little job security.
+- key: organised-unorganised-work-card-3
+  concept: organised-unorganised
+  front: Does organised mean government?
+  back: No. A private business that is registered and follows the rules is also organised.
+- key: organised-unorganised-work-card-4
+  concept: sectors-of-economy
+  front: How is organised versus unorganised different from the three sectors?
+  back: The three sectors say what work is done. Organised and unorganised say on what terms it is done.

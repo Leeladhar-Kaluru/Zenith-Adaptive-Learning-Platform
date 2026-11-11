@@ -1,0 +1,25 @@
+concepts:
+- id: globe-latitudes
+  title: The globe and latitudes
+  grade: 6
+  subject: social
+  description: The globe as a model of the Earth, the poles, the equator, the hemispheres and latitude measured in degrees north or south of the equator.
+  keywords:
+  - globe
+  - equator
+  - latitude
+  - hemisphere
+  - parallel
+- id: longitudes-time
+  title: Longitudes and time
+  grade: 6
+  subject: social
+  description: Longitude as degrees east or west of the prime meridian, the standard meridian of India, and the link between longitude and time at 4 minutes per degree.
+  keywords:
+  - longitude
+  - prime meridian
+  - Greenwich
+  - standard time
+  - time difference
+  prerequisites:
+  - id: globe-latitudes

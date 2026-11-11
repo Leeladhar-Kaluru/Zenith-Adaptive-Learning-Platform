@@ -1,0 +1,13 @@
+slug: 9-social-village-production
+board: cbse
+curriculum: NCERT current editions (to be confirmed by a reviewer)
+grade: 9
+subject: social
+title: 'Production in a village: land, labour and capital'
+summary: See how land, labour and capital work together in a village, and how farmers raise output from the same land.
+concepts:
+- id: village-factors-of-production
+- id: village-farming-output
+lessons:
+- factors-of-production
+- farming-and-output

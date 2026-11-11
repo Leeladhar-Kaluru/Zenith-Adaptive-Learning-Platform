@@ -1,0 +1,5 @@
+concepts:
+  - {id: ap-nth-term, title: "Arithmetic progressions and the nth term", grade: 10, subject: maths, description: "A list of numbers with a fixed gap, the first term a and common difference d, and the nth term a_n = a + (n - 1)d.", keywords: [arithmetic progression, AP, common difference, nth term, first term],
+     prerequisites: [{id: linear-eq-both-sides}, {id: integers-subtract, why: "The common difference can be negative."}]}
+  - {id: ap-sum, title: "Sum of the first n terms of an AP", grade: 10, subject: maths, description: "Adding the first n terms of an AP with S_n = n/2 (2a + (n - 1)d) and using it in word problems.", keywords: [sum of AP, S_n, series, word problem],
+     prerequisites: [{id: ap-nth-term}]}

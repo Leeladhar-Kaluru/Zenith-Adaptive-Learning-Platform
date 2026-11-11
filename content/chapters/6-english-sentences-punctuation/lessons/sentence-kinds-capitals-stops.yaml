@@ -1,0 +1,315 @@
+slug: sentence-kinds-capitals-stops
+title: Kinds of sentence, capital letters and end marks
+minutes: 20
+objectives:
+- Name the four kinds of sentence and say what each one does
+- End each kind of sentence with the right mark
+- Use capital letters at the start of a sentence and for names, days, months and the word I
+- Tell a question from a statement even when both have a question word
+concepts:
+- english-sentence-kinds
+- english-end-marks
+origin: ai_assisted
+blocks:
+- kind: text
+  heading: Why we need marks
+  html: '<p>When you talk, your voice goes up for a question and drops at the end of a telling sentence. On paper there is no voice. We use small marks instead. A <strong>sentence</strong> is a group of words that makes complete sense. It begins with a capital letter and ends with a mark.</p>'
+- kind: text
+  heading: Four kinds of sentence
+  html: '<p>A <strong>statement</strong> tells something: The bus is late. A <strong>question</strong> asks something: Is the bus late? A <strong>command</strong> asks or tells someone to do something: Please sit down. An <strong>exclamation</strong> shows strong feeling: What a loud noise that was!</p><p>A statement and a command usually end with a full stop. A question ends with a question mark. An exclamation ends with an exclamation mark.</p>'
+- kind: figure
+  svg: <svg viewBox="0 0 320 200" role="img"><g fill="none" stroke="#14193a" stroke-width="2"><rect x="10" y="10" width="140" height="80" rx="8"/><rect x="170" y="10" width="140" height="80" rx="8"/><rect x="10" y="110" width="140" height="80" rx="8"/><rect x="170" y="110" width="140" height="80" rx="8"/></g><g font-size="12" fill="currentColor" text-anchor="middle"><text x="80" y="32" font-weight="700">Statement</text><text x="80" y="54">The tea is hot.</text><text x="80" y="78" font-size="20" font-weight="700">.</text><text x="240" y="32" font-weight="700">Question</text><text x="240" y="54">Is the tea hot?</text><text x="240" y="78" font-size="20" font-weight="700">?</text><text x="80" y="132" font-weight="700">Command</text><text x="80" y="154">Drink the tea.</text><text x="80" y="178" font-size="20" font-weight="700">.</text><text x="240" y="132" font-weight="700">Exclamation</text><text x="240" y="154">How hot the tea is!</text><text x="240" y="178" font-size="20" font-weight="700">!</text></g></svg>
+  alt: Four boxes show a statement, a question, a command and an exclamation, each with an example about tea and its end mark.
+  caption: Each kind of sentence has its own job and usually its own end mark.
+- kind: text
+  heading: Capital letters
+  html: '<p>Use a capital letter for the first word of every sentence. Also use one for the names of people and places, for days and months, and for the word <strong>I</strong>. So we write: On Friday I met Ravi in Delhi.</p><p>Do not use a capital letter for ordinary words such as train or school in the middle of a sentence.</p>'
+- kind: example
+  heading: Worked example
+  prompt: 'Write this correctly: where are you going on sunday'
+  steps:
+  - 'The first word starts a sentence, so it needs a capital letter: Where.'
+  - 'Sunday is a day, so it also needs a capital letter.'
+  - 'The sentence asks something, so it is a question. It ends with a question mark.'
+  - 'Check: Where are you going on Sunday?'
+- kind: example
+  heading: Worked example
+  prompt: 'What kind of sentence is this, and what mark ends it? Open your books.'
+  steps:
+  - 'Ask: does it tell a fact, ask something, tell someone to act, or show strong feeling?'
+  - 'It tells the listeners to do something. That is a command.'
+  - 'A command usually ends with a full stop.'
+  - 'Check: Open your books. is a command ending with a full stop.'
+- kind: callout
+  tone: watch
+  html: A question word such as where, when or what does not always make a question. I know where the shop is. is a statement, so it ends with a full stop. Ask yourself whether the sentence is asking something.
+- kind: callout
+  tone: real
+  html: On a phone you type questions and short notes all day. A question mark in a message such as Are you coming? shows at once that you need an answer.
+- kind: check
+  item: q-sk-1
+- kind: check
+  item: q-sk-2
+- kind: check
+  item: q-sk-3
+- kind: summary
+  points:
+  - 'The four kinds of sentence are statement, question, command and exclamation.'
+  - 'A sentence starts with a capital letter. Names, days, months and I also take capital letters.'
+  - 'A statement or command usually ends with a full stop, a question with a question mark and an exclamation with an exclamation mark.'
+  - 'A question word does not always make a question, so check whether the sentence really asks something.'
+items:
+- key: q-sk-1
+  kind: mcq
+  stem: Which of these is a question?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: english-end-marks
+  explanation: What time is it? asks something, so it is a question. Close the door is a command, The bus is late is a statement and How loud the music is! shows strong feeling.
+  hints:
+  - A question asks for an answer. Which sentence does that?
+  correct: B
+  options:
+  - key: A
+    text: Close the door.
+  - key: B
+    text: What time is it?
+  - key: C
+    text: The bus is late.
+  - key: D
+    text: How loud the music is!
+- key: q-sk-2
+  kind: mcq
+  stem: Which mark usually ends a statement?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: english-end-marks
+  explanation: A statement tells something and usually ends with a full stop. A question mark is for questions, and a comma or an apostrophe does not end a sentence.
+  hints:
+  - Think of how the sentence The tea is hot ends.
+  correct: B
+  options:
+  - key: A
+    text: a question mark
+  - key: B
+    text: a full stop
+  - key: C
+    text: a comma
+  - key: D
+    text: an apostrophe
+- key: q-sk-3
+  kind: mcq
+  stem: Which sentence is written correctly?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: english-end-marks
+  explanation: The sentence starts with a capital letter and ends with a full stop, because it is a statement. The other choices miss the capital letter or use the wrong end mark.
+  hints:
+  - Check the first letter and the last mark.
+  correct: B
+  options:
+  - key: A
+    text: the train leaves at six
+    misconception: cap-missing-start
+  - key: B
+    text: The train leaves at six.
+  - key: C
+    text: The train leaves at six?
+  - key: D
+    text: The train leaves at six,
+- key: q-sk-4
+  kind: mcq
+  stem: Which is the correct way to write this question? Are you coming to the match
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: english-end-marks
+  explanation: The sentence asks something, so it needs a question mark. A full stop is for statements, and a comma does not end a sentence.
+  hints:
+  - Does the sentence ask something?
+  correct: B
+  options:
+  - key: A
+    text: Are you coming to the match.
+    misconception: stop-for-all
+  - key: B
+    text: Are you coming to the match?
+  - key: C
+    text: Are you coming to the match
+  - key: D
+    text: Are you coming to the match,
+- key: q-sk-5
+  kind: mcq
+  stem: Which of these is a question?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: english-sentence-kinds
+  explanation: Where is the library? asks something, so it is a question. I know where the library is is a statement. Tell me where the library is is a command. The library is open is a statement.
+  hints:
+  - Two of these contain the word where but do not ask anything. Which one really asks for an answer?
+  correct: C
+  options:
+  - key: A
+    text: I know where the library is.
+    misconception: question-word-only
+  - key: B
+    text: Tell me where the library is.
+    misconception: question-word-only
+  - key: C
+    text: Where is the library?
+  - key: D
+    text: The library is open.
+- key: q-sk-6
+  kind: mcq
+  stem: 'What kind of sentence is this? Close the window, please.'
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: english-sentence-kinds
+  explanation: The sentence asks someone to do something, so it is a command (a polite request is still a command). Ending with a full stop does not make it a statement.
+  hints:
+  - Does the sentence tell a fact, or ask someone to act?
+  correct: C
+  options:
+  - key: A
+    text: a statement, because it ends with a full stop
+    misconception: stop-for-all
+  - key: B
+    text: a question
+    misconception: question-word-only
+  - key: C
+    text: a command
+  - key: D
+    text: an exclamation
+- key: q-sk-7
+  kind: mcq
+  stem: 'Which word in this sentence needs a capital letter? We visit agra in December with my cousin.'
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: english-end-marks
+  explanation: Agra is the name of a city, so it needs a capital letter. Visit and with are ordinary words, and cousin is an ordinary word too. Names of places need capitals, not only the first word of a sentence.
+  hints:
+  - Which word names one particular place?
+  correct: B
+  options:
+  - key: A
+    text: visit
+  - key: B
+    text: agra
+  - key: C
+    text: with
+  - key: D
+    text: none, only the first word of a sentence needs a capital letter
+    misconception: cap-first-only
+- key: q-sk-8
+  kind: numeric
+  stem: 'How many capital letters are needed in this sentence? on friday ravi and i went to delhi.'
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: english-end-marks
+  explanation: Capitals are needed for On (first word), Friday (a day), Ravi (a name), I and Delhi (a city). That is 5. The words and, went and to need none.
+  hints:
+  - Count the first word, a day, a person, the word I and a city.
+  value: 5
+  tolerance: 0.0
+  verify: '1+1+1+1+1'
+- key: q-sk-9
+  kind: mcq
+  stem: 'Assertion (A): The sentence Tell me your name. does not need a question mark. Reason (R): It is a command, not a question.'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: english-sentence-kinds
+  explanation: Both are true. The sentence tells someone to do something, so it is a command and ends with a full stop. That is why no question mark is needed, so R explains A.
+  hints:
+  - Decide what kind of sentence Tell me your name is, then see if that kind needs a question mark.
+  correct: A
+  options:
+  - key: A
+    text: Both A and R are true and R explains A
+  - key: B
+    text: Both A and R are true but R does not explain A
+  - key: C
+    text: A is true but R is false
+  - key: D
+    text: A is false but R is true
+- key: q-sk-10
+  kind: mcq
+  stem: 'Assertion (A): Every sentence must end with a full stop. Reason (R): A full stop shows the end of a telling sentence.'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: english-end-marks
+  explanation: R is true, because a full stop ends a statement. A is false, because questions end with a question mark and exclamations with an exclamation mark.
+  hints:
+  - Think of a question. Does it end with a full stop?
+  correct: D
+  options:
+  - key: A
+    text: Both A and R are true and R explains A
+    misconception: stop-for-all
+  - key: B
+    text: Both A and R are true but R does not explain A
+    misconception: stop-for-all
+  - key: C
+    text: A is true but R is false
+    misconception: stop-for-all
+  - key: D
+    text: A is false but R is true
+- key: q-sk-11
+  pattern: case
+  kind: mcq
+  stem: 'Read the note. Lata writes to her friend: I reached Pune on Monday. Did you get my parcel? Please write soon. What a lovely city it is! Which sentence in the note is a command?'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: english-sentence-kinds
+  explanation: Please write soon. asks the friend to do something, so it is a command. I reached Pune on Monday is a statement, Did you get my parcel is a question and What a lovely city it is is an exclamation.
+  hints:
+  - Which sentence asks the friend to do something?
+  correct: C
+  options:
+  - key: A
+    text: I reached Pune on Monday.
+  - key: B
+    text: Did you get my parcel?
+  - key: C
+    text: Please write soon.
+  - key: D
+    text: What a lovely city it is!
+misconceptions:
+- code: stop-for-all
+  concept: english-end-marks
+  description: Thinks every sentence ends with a full stop, or that a full stop always means a statement.
+- code: question-word-only
+  concept: english-sentence-kinds
+  description: Thinks a sentence is a question just because it has a word like where or what, or that a polite request is a question.
+- code: cap-missing-start
+  concept: english-end-marks
+  description: Forgets the capital letter at the start of a sentence.
+- code: cap-first-only
+  concept: english-end-marks
+  description: Thinks only the first word of a sentence needs a capital letter, not names, days and months.
+cards:
+- key: sk-card-1
+  concept: english-sentence-kinds
+  front: Name the four kinds of sentence.
+  back: Statement, question, command and exclamation.
+- key: sk-card-2
+  concept: english-end-marks
+  front: Which mark ends a question?
+  back: A question mark.
+- key: sk-card-3
+  concept: english-end-marks
+  front: Which words need capital letters?
+  back: The first word of a sentence, names, days, months, places and the word I.
+- key: sk-card-4
+  concept: english-sentence-kinds
+  front: Does a question word always make a question?
+  back: No. I know where the shop is. is a statement. Check whether the sentence really asks something.

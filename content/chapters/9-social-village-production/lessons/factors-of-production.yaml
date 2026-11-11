@@ -1,0 +1,296 @@
+slug: factors-of-production
+title: Land, labour and capital
+minutes: 25
+objectives:
+- Name the factors of production and give a village example of each
+- Tell fixed capital from working capital
+- Explain human capital and why land is fixed in supply
+- Add up fixed and working capital in a small worked example
+concepts:
+- village-factors-of-production
+origin: ai_assisted
+blocks:
+- kind: text
+  heading: What does a village need to make things?
+  html: '<p>Think of a farm in the early morning. The field is ready, workers arrive, and a pump starts to bring up water. Every farm and every small workshop needs the same few things to make goods and services. These things are called <strong>factors of production</strong>. A <strong>good</strong> is something you can touch, such as wheat. A <strong>service</strong> is work done for others, such as carrying goods on a cart.</p><p>In this lesson we use an invented village called Hariyali as an <strong>example</strong>. Hariyali and its numbers are made up to help you learn. They are not a real place.</p>'
+- kind: text
+  heading: Land and labour
+  html: '<p><strong>Land</strong> means all natural resources of a place: the soil, water, trees, minerals and the open space itself. Land in a village is <strong>fixed in supply</strong>. This means the area does not grow when people want more output. If Hariyali has 100 hectares, it will still have 100 hectares next year. A <strong>hectare</strong> is an area of 10,000 square metres, a little larger than a big playing field.</p><p><strong>Labour</strong> means the work done by people. Some labour is done by farmers on their own field. Some is done by workers who are paid wages. Labour needs effort of the body and of the mind.</p>'
+- kind: text
+  heading: Capital
+  html: '<p><strong>Capital</strong> is what people use to produce, other than land and labour. It is not only cash. There are two kinds of physical capital. <strong>Fixed capital</strong> is used again and again for many seasons, such as a tubewell pump, a plough or a tractor. <strong>Working capital</strong> is used up in making the product, such as seeds, fertiliser, diesel and the money to pay wages and buy these things.</p><p>There is also <strong>human capital</strong>. This is the skill, knowledge and health that workers have. A farmer who learns to test soil, or a mechanic trained to repair pumps, adds human capital to the village.</p>'
+- kind: figure
+  svg: '<svg viewBox="0 0 360 200" role="img"><rect x="10" y="20" width="90" height="34" rx="6" fill="#ffb800"/><text x="55" y="41" font-size="11" text-anchor="middle" fill="#14193a">Land</text><rect x="10" y="64" width="90" height="34" rx="6" fill="#6cb7ff"/><text x="55" y="85" font-size="11" text-anchor="middle" fill="#14193a">Labour</text><rect x="10" y="108" width="90" height="34" rx="6" fill="#9be8a8"/><text x="55" y="129" font-size="10" text-anchor="middle" fill="#14193a">Fixed capital</text><rect x="10" y="152" width="90" height="34" rx="6" fill="#9be8a8"/><text x="55" y="173" font-size="10" text-anchor="middle" fill="#14193a">Working capital</text><line x1="100" y1="37" x2="200" y2="100" stroke="currentColor" stroke-width="2"/><line x1="100" y1="81" x2="200" y2="100" stroke="currentColor" stroke-width="2"/><line x1="100" y1="125" x2="200" y2="100" stroke="currentColor" stroke-width="2"/><line x1="100" y1="169" x2="200" y2="100" stroke="currentColor" stroke-width="2"/><rect x="200" y="78" width="70" height="44" rx="8" fill="none" stroke="currentColor" stroke-width="2"/><text x="235" y="104" font-size="11" text-anchor="middle" fill="currentColor">Output</text><text x="285" y="104" font-size="9" fill="currentColor">wheat, milk,</text><text x="285" y="116" font-size="9" fill="currentColor">flour, carts</text></svg>'
+  alt: Four boxes named land, labour, fixed capital and working capital all point with lines to one box named output.
+  caption: Four inputs work together to make output in a village. Human capital sits inside labour, because it is the skill of the workers.
+- kind: example
+  heading: Worked example from the made-up village of Hariyali
+  prompt: In this example, a farm family in Hariyali has a pump that cost Rs 18,000 and a plough that cost Rs 2,000. In one season they spend Rs 3,000 on seeds, Rs 5,000 on fertiliser and Rs 2,000 on diesel. Find their fixed capital, their working capital for the season and the total.
+  steps:
+  - 'Sort the items. The pump and plough are used for many seasons, so they are fixed capital. Seeds, fertiliser and diesel are used up, so they are working capital.'
+  - 'Add the fixed capital. 18,000 + 2,000 = Rs 20,000.'
+  - 'Add the working capital. 3,000 + 5,000 + 2,000 = Rs 10,000.'
+  - 'Add both. 20,000 + 10,000 = Rs 30,000. Check: the fixed part is twice the working part here, and 20,000 is twice 10,000, so the sums agree.'
+- kind: example
+  heading: Worked reasoning
+  prompt: A baker in the village buys an oven and also flour every week. Which is fixed capital and which is working capital?
+  steps:
+  - 'Ask whether the item is used up in making the product. Flour goes into the bread, so it is used up.'
+  - 'Ask whether the item is used again and again. The oven bakes batch after batch, so it is not used up.'
+  - 'So the oven is fixed capital and the flour is working capital.'
+  - 'Check with the farm: a pump is like the oven, and seeds are like the flour. The match holds.'
+- kind: callout
+  tone: watch
+  html: Capital is not only money. A pump, a plough and a store of seed are capital too. Also, land cannot be made bigger by wanting it. Farmers must raise output from the same area of land.
+- kind: callout
+  tone: real
+  html: A village mechanic who learns to repair a new type of pump helps many farms. The training is human capital, and it keeps the fixed capital of the village working.
+- kind: check
+  item: q-fp-1
+- kind: check
+  item: q-fp-3
+- kind: check
+  item: q-fp-5
+- kind: summary
+  points:
+  - 'Land, labour and capital are the factors of production. They work together to make goods and services.'
+  - 'Land is fixed in supply. Labour is the work of people, and human capital is their skill, knowledge and health.'
+  - 'Fixed capital is used for many seasons. Working capital is used up in making the product.'
+  - 'Capital is not only money. Tools, machines, seeds and fertiliser are physical capital.'
+items:
+- key: q-fp-1
+  kind: mcq
+  stem: Which of these is best described as land, as a factor of production?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: village-factors-of-production
+  explanation: Land means natural resources such as soil, water and trees. Cash, skills and the work of people belong to other factors.
+  hints:
+  - Land is a natural resource.
+  correct: A
+  options:
+  - key: A
+    text: The soil and water of the village
+  - key: B
+    text: Cash kept in a box
+    misconception: capital-is-money
+  - key: C
+    text: The work done by a hired worker
+  - key: D
+    text: A newly bought plough
+    misconception: capital-is-money
+- key: q-fp-2
+  kind: mcq
+  stem: Which of these is an example of human capital?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: village-factors-of-production
+  explanation: Human capital is the skill, knowledge and health of people. Training that helps someone repair a pump adds to it. Pumps and money are physical capital or cash.
+  hints:
+  - Human capital sits in people, not in machines.
+  correct: B
+  options:
+  - key: A
+    text: A tubewell pump
+    misconception: capital-is-money
+  - key: B
+    text: A mechanic trained to repair pumps
+  - key: C
+    text: A bag of seeds
+    misconception: capital-is-money
+  - key: D
+    text: Ten hectares of soil
+- key: q-fp-3
+  kind: mcq
+  stem: Which of these is fixed capital on a farm?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: village-factors-of-production
+  explanation: A tractor is used for many seasons, so it is fixed capital. Seeds, fertiliser and diesel are used up.
+  hints:
+  - Ask which item is NOT used up in one season.
+  correct: C
+  options:
+  - key: A
+    text: Seeds
+    misconception: fixed-working-mixup
+  - key: B
+    text: Fertiliser
+    misconception: fixed-working-mixup
+  - key: C
+    text: A tractor
+  - key: D
+    text: Diesel for the pump
+    misconception: fixed-working-mixup
+- key: q-fp-4
+  kind: mcq
+  stem: Which of these is working capital?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: village-factors-of-production
+  explanation: Fertiliser is used up in making the crop, so it is working capital. A pump, a plough and a tractor are used again and again.
+  hints:
+  - Which one is used up when the crop grows?
+  correct: D
+  options:
+  - key: A
+    text: A pump
+    misconception: fixed-working-mixup
+  - key: B
+    text: A plough
+    misconception: fixed-working-mixup
+  - key: C
+    text: A tractor
+    misconception: fixed-working-mixup
+  - key: D
+    text: Fertiliser
+- key: q-fp-5
+  kind: numeric
+  stem: A farm has a bullock cart that cost Rs 12,000 and a pump that cost Rs 9,000. What is its fixed capital in rupees?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: village-factors-of-production
+  explanation: Both items are used for many seasons, so both are fixed capital. 12,000 + 9,000 = 21,000.
+  hints:
+  - Add the cost of the two items.
+  value: 21000
+  tolerance: 0.0
+  verify: 12000+9000
+- key: q-fp-6
+  kind: numeric
+  stem: In one season a farm spends Rs 3,500 on seeds, Rs 4,500 on fertiliser and Rs 2,000 on diesel. What is its working capital for the season, in rupees?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: village-factors-of-production
+  explanation: All three are used up in the season. 3,500 + 4,500 + 2,000 = 10,000.
+  hints:
+  - Add all three amounts.
+  value: 10000
+  tolerance: 0.0
+  verify: 3500+4500+2000
+- key: q-fp-7
+  kind: mcq
+  stem: 'Assertion (A): The area of land in a village is fixed in supply. Reason (R): The area of land does not grow when farmers want more output.'
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: village-factors-of-production
+  explanation: Both statements are true. Fixed in supply means the area does not grow when people want more output, so R explains A.
+  hints:
+  - Check if R says what fixed in supply means.
+  correct: A
+  options:
+  - key: A
+    text: Both A and R are true, and R explains A
+  - key: B
+    text: Both A and R are true, but R does not explain A
+    misconception: land-is-expandable
+  - key: C
+    text: A is true, but R is false
+    misconception: land-is-expandable
+  - key: D
+    text: A is false, but R is true
+    misconception: land-is-expandable
+- key: q-fp-8
+  kind: mcq
+  stem: 'Assertion (A): Fertiliser is fixed capital. Reason (R): Fertiliser is used up in making one crop.'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: village-factors-of-production
+  explanation: Fertiliser is used up in making a crop, so R is true. That makes it working capital, so A is false.
+  hints:
+  - Decide whether R is true first, then what it says about A.
+  correct: D
+  options:
+  - key: A
+    text: Both A and R are true, and R explains A
+    misconception: fixed-working-mixup
+  - key: B
+    text: Both A and R are true, but R does not explain A
+    misconception: fixed-working-mixup
+  - key: C
+    text: A is true, but R is false
+    misconception: fixed-working-mixup
+  - key: D
+    text: A is false, but R is true
+- key: q-fp-9
+  kind: mcq
+  stem: 'A village wants more wheat. A student says, "We can simply make more land, because land is a factor we can increase whenever we like." What is wrong with this?'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: village-factors-of-production
+  explanation: Land is fixed in supply. A village cannot enlarge its area on demand, so it must raise output from the same land using labour and capital.
+  hints:
+  - Think about what fixed in supply means.
+  correct: B
+  options:
+  - key: A
+    text: Nothing is wrong
+    misconception: land-is-expandable
+  - key: B
+    text: Land is fixed in supply, so output must be raised from the same land
+  - key: C
+    text: Land is only a kind of money
+    misconception: capital-is-money
+  - key: D
+    text: Wheat needs no land
+    misconception: land-is-expandable
+- key: q-fp-10
+  pattern: case
+  kind: mcq
+  stem: 'Read this example. In the made-up village of Hariyali, one family has 2 hectares of soil. Two family members work on it and three more workers are hired at harvest. The family owns a pump and buys seeds and fertiliser every season. Which statement sorts these correctly?'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: village-factors-of-production
+  explanation: The 2 hectares are land, the five people are labour, the pump is fixed capital, and seeds and fertiliser are working capital.
+  hints:
+  - Ask what is used up and what is used again.
+  correct: C
+  options:
+  - key: A
+    text: Pump is working capital; seeds are fixed capital
+    misconception: fixed-working-mixup
+  - key: B
+    text: The workers are fixed capital; the soil is labour
+    misconception: capital-is-money
+  - key: C
+    text: Soil is land; workers are labour; pump is fixed capital; seeds and fertiliser are working capital
+  - key: D
+    text: Everything listed is land
+    misconception: land-is-expandable
+misconceptions:
+- code: capital-is-money
+  concept: village-factors-of-production
+  description: Thinks capital means only cash. Tools, machines, seeds and fertiliser are capital too, and skills are human capital.
+- code: fixed-working-mixup
+  concept: village-factors-of-production
+  description: Mixes up fixed capital, which is used for many seasons, with working capital, which is used up in making the product.
+- code: land-is-expandable
+  concept: village-factors-of-production
+  description: Thinks the area of land can be increased when output must rise, when land is fixed in supply.
+cards:
+- key: factors-of-production-card-1
+  concept: village-factors-of-production
+  front: What are the factors of production?
+  back: Land, labour and capital. They work together to make goods and services.
+- key: factors-of-production-card-2
+  concept: village-factors-of-production
+  front: What does fixed in supply mean for land?
+  back: The area of land does not grow when people want more output.
+- key: factors-of-production-card-3
+  concept: village-factors-of-production
+  front: Fixed capital or working capital? A tubewell pump.
+  back: Fixed capital, because it is used again and again for many seasons.
+- key: factors-of-production-card-4
+  concept: village-factors-of-production
+  front: What is human capital?
+  back: The skill, knowledge and health of workers.

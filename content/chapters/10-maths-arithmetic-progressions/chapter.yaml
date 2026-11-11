@@ -1,0 +1,13 @@
+slug: 10-maths-arithmetic-progressions
+board: cbse
+curriculum: NCERT current editions (to be confirmed by a reviewer)
+grade: 10
+subject: maths
+title: Arithmetic Progressions
+summary: Spot lists that grow by a fixed gap, find any term with a + (n - 1)d, and add the first n terms with S_n = n/2 (2a + (n - 1)d) in everyday problems.
+concepts:
+- id: ap-nth-term
+- id: ap-sum
+lessons:
+- ap-nth-term
+- ap-sum-of-terms

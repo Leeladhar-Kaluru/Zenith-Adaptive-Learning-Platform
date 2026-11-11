@@ -1,0 +1,3 @@
+concepts:
+  - {id: civics-parliament-houses, title: "Parliament: Lok Sabha, Rajya Sabha and the President", grade: 8, subject: social, description: "The three parts of the Union Parliament, how members of each house are chosen, and what each part does.", keywords: [Parliament, Lok Sabha, Rajya Sabha, President, election, Constitution]}
+  - {id: civics-bill-to-law, title: "How a bill becomes a law", grade: 8, subject: social, description: "The steps a bill follows through both houses of Parliament and the President's assent before it becomes an Act.", keywords: [bill, Act, law, assent, debate, vote], prerequisites: [{id: civics-parliament-houses, strength: 0.8}]}

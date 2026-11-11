@@ -1,0 +1,13 @@
+slug: 6-social-globe-latitudes
+board: cbse
+curriculum: NCERT current editions (to be confirmed by a reviewer)
+grade: 6
+subject: social
+title: Globe, latitudes and longitudes
+summary: Use the globe, the equator, latitudes, the prime meridian and longitudes to find places and work out time differences.
+concepts:
+- id: globe-latitudes
+- id: longitudes-time
+lessons:
+- globe-and-latitudes
+- longitudes-and-time

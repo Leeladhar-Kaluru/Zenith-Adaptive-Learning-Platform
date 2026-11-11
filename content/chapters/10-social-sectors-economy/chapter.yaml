@@ -1,0 +1,14 @@
+slug: 10-social-sectors-economy
+board: cbse
+curriculum: NCERT current editions (to be confirmed by a reviewer)
+grade: 10
+subject: social
+title: Sectors of the Economy
+summary: See how farming, factories and services fit together, how GDP counts value added without counting twice, and how organised and unorganised work differ.
+concepts:
+- id: sectors-of-economy
+- id: value-added-gdp
+- id: organised-unorganised
+lessons:
+- three-sectors-value-added
+- organised-unorganised-work

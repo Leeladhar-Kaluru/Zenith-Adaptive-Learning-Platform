@@ -1,0 +1,260 @@
+slug: how-a-bill-becomes-law
+title: How a bill becomes a law
+minutes: 25
+objectives:
+- Explain the difference between a bill and an Act
+- Put the steps from a bill to a law in the right order
+- Explain why a bill needs both houses and the President
+- Work out simple majority votes
+concepts:
+- civics-bill-to-law
+origin: ai_assisted
+blocks:
+- kind: text
+  heading: From an idea to a rule
+  html: '<p>Imagine your class wants a new rule: no mobile phones during lessons. First someone writes the rule down. Then the class talks about it. Then everyone votes. Finally the teacher agrees, and only then does the rule start. A law in India is made in a very similar way.</p><p>A <strong>bill</strong> is a proposal for a new law, or a change to an old law. It is only a draft. It is not yet a rule that people must follow. When a bill has passed every step, it becomes an <strong>Act</strong>, which is a law.</p>'
+- kind: text
+  heading: The steps
+  html: '<p>An ordinary bill can start in either house (a money bill, about taxes and spending, starts only in the Lok Sabha). It is first <strong>introduced</strong>, which means a member presents it to the house. Then the members <strong>debate</strong> it. They talk about why it is needed and point out what could go wrong. After the debate, they <strong>vote</strong>. A bill passes if more than half of the members who vote say yes.</p><p>Once the first house has passed the bill, it goes to the other house. The second house also debates and votes. A bill needs to be passed by <strong>both houses</strong>. If a house wants a change, the bill goes back and the houses must settle the matter.</p><p>At last the bill goes to the <strong>President</strong>. When the President gives <strong>assent</strong>, which means formal agreement, the bill becomes an Act and the law comes into force.</p>'
+- kind: figure
+  svg: <svg viewBox="0 0 340 120" role="img"><rect x="5" y="30" width="70" height="50" rx="6" fill="#6cb7ff" stroke="#14193a" stroke-width="2"/><text x="40" y="52" font-size="10" text-anchor="middle" fill="#14193a">Bill</text><text x="40" y="66" font-size="10" text-anchor="middle" fill="#14193a">introduced</text><rect x="95" y="30" width="70" height="50" rx="6" fill="#6cb7ff" stroke="#14193a" stroke-width="2"/><text x="130" y="52" font-size="10" text-anchor="middle" fill="#14193a">First house</text><text x="130" y="66" font-size="10" text-anchor="middle" fill="#14193a">votes</text><rect x="185" y="30" width="70" height="50" rx="6" fill="#6cb7ff" stroke="#14193a" stroke-width="2"/><text x="220" y="52" font-size="10" text-anchor="middle" fill="#14193a">Second house</text><text x="220" y="66" font-size="10" text-anchor="middle" fill="#14193a">votes</text><rect x="275" y="30" width="60" height="50" rx="6" fill="#ffb800" stroke="#14193a" stroke-width="2"/><text x="305" y="52" font-size="10" text-anchor="middle" fill="#14193a">President</text><text x="305" y="66" font-size="10" text-anchor="middle" fill="#14193a">assents</text><line x1="75" y1="55" x2="95" y2="55" stroke="currentColor" stroke-width="2"/><line x1="165" y1="55" x2="185" y2="55" stroke="currentColor" stroke-width="2"/><line x1="255" y1="55" x2="275" y2="55" stroke="currentColor" stroke-width="2"/><text x="170" y="108" font-size="12" text-anchor="middle" fill="currentColor">Then it is an Act</text></svg>
+  alt: A flow chart of four boxes joined by lines, from a bill being introduced to votes in two houses and then the President giving assent.
+  caption: The path of a bill. It must pass both houses and then get the President's assent. An ordinary bill can start in either house (a money bill, about taxes and spending, starts only in the Lok Sabha).
+- kind: example
+  heading: Worked example
+  prompt: 'A bill is voted on by a house. 120 members vote yes and 80 vote no. Does the bill pass, and by how many votes?'
+  steps:
+  - 'Count the members who voted. 120 + 80 = 200.'
+  - 'Find half of 200, which is 100. A bill needs more than half.'
+  - '120 is more than 100, so the bill passes in this house.'
+  - 'Find the margin by subtracting: 120 - 80 = 40 votes. Check: 40 more yes votes than no votes.'
+- kind: example
+  heading: Worked reasoning
+  prompt: A newspaper says "The Lok Sabha has passed a bill, so it is now a law." Is that correct?
+  steps:
+  - 'Recall the steps. A bill must pass both houses.'
+  - 'The report speaks only about the Lok Sabha. The Rajya Sabha has not yet voted.'
+  - 'The President has not yet given assent either.'
+  - 'So it is not yet a law. It is still a bill that has passed one house.'
+- kind: callout
+  tone: watch
+  html: A bill that passes one house is not yet a law. It must also pass the other house and receive the President's assent. Do not mix up a bill, which is a proposal, with an Act, which is a law.
+- kind: callout
+  tone: real
+  html: Laws that touch daily life, such as rules about school education or road safety, are made this way. You can read a bill and follow its debates, so you can learn what a new rule says before it starts.
+- kind: check
+  item: q-bl-1
+- kind: check
+  item: q-bl-2
+- kind: check
+  item: q-bl-3
+- kind: summary
+  points:
+  - 'A bill is a proposal for a law. After it passes every step it becomes an Act.'
+  - 'A bill is introduced, debated and voted on in a house. It passes with more than half of the votes cast.'
+  - 'A bill needs to pass both houses of Parliament and receive the assent of the President.'
+  - 'Only after that is it a law that everyone must follow.'
+items:
+- key: q-bl-1
+  kind: mcq
+  stem: What is a bill?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: civics-bill-to-law
+  explanation: A bill is a proposal for a new law, or for a change to an old one. It becomes an Act only after all the steps.
+  hints:
+  - A bill is not yet a rule people must follow.
+  correct: A
+  options:
+  - key: A
+    text: A proposal for a new law
+  - key: B
+    text: A law that is already in force
+    misconception: bill-is-law
+  - key: C
+    text: A meeting of the Rajya Sabha
+    misconception: bill-is-law
+  - key: D
+    text: A vote by the President
+    misconception: president-alone
+- key: q-bl-2
+  kind: mcq
+  stem: What does a bill become after it passes both houses and gets the President's assent?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: civics-bill-to-law
+  explanation: It becomes an Act, which is a law.
+  hints:
+  - The word starts with the letter A.
+  correct: C
+  options:
+  - key: A
+    text: A draft
+    misconception: bill-is-law
+  - key: B
+    text: A debate
+    misconception: bill-is-law
+  - key: C
+    text: An Act
+  - key: D
+    text: A constituency
+    misconception: bill-is-law
+- key: q-bl-3
+  kind: mcq
+  stem: Who must give assent before a bill that has passed both houses becomes a law?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: civics-bill-to-law
+  explanation: The President gives assent. Without it, a bill that has passed both houses does not become an Act.
+  hints:
+  - Remember the third part of Parliament.
+  correct: D
+  options:
+  - key: A
+    text: The Speaker alone
+    misconception: one-house-enough
+  - key: B
+    text: The Vice-President alone
+    misconception: one-house-enough
+  - key: C
+    text: Every voter in India
+    misconception: one-house-enough
+  - key: D
+    text: The President
+- key: q-bl-4
+  kind: numeric
+  stem: A house has 150 members voting. 90 vote yes and the rest vote no. By how many votes does yes beat no?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: civics-bill-to-law
+  explanation: No votes are 150 - 90 = 60. The margin is 90 - 60 = 30 votes.
+  hints:
+  - Find the no votes first.
+  value: 30
+  tolerance: 0.0
+  verify: 90-(150-90)
+- key: q-bl-5
+  kind: truefalse
+  stem: A bill that has passed only the Lok Sabha is already a law.
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: civics-bill-to-law
+  explanation: False. The bill must also pass the Rajya Sabha and receive the President's assent.
+  hints:
+  - How many houses must agree?
+  correct: false
+- key: q-bl-6
+  kind: mcq
+  stem: Which order of steps is correct for a bill?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: civics-bill-to-law
+  explanation: A bill is introduced, debated and voted on in one house, then in the other house, and last the President gives assent.
+  hints:
+  - The President acts last.
+  correct: B
+  options:
+  - key: A
+    text: President assents, then both houses vote, then it is introduced
+    misconception: president-alone
+  - key: B
+    text: Introduced, debated and voted in a house, voted in the other house, then President assents
+  - key: C
+    text: Voted in one house, then it is a law
+    misconception: one-house-enough
+  - key: D
+    text: The President writes it, and the houses only read it
+    misconception: president-alone
+- key: q-bl-7
+  kind: numeric
+  stem: In a house, 200 members vote on a bill. A bill needs more than half of the votes cast. What is the smallest number of yes votes that is enough?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: civics-bill-to-law
+  explanation: Half of 200 is 100, and more than half means at least 101.
+  hints:
+  - Find half, then go one more.
+  value: 101
+  tolerance: 0.0
+  verify: 200/2+1
+- key: q-bl-8
+  kind: mcq
+  stem: 'Assertion (A): A bill must pass both the Lok Sabha and the Rajya Sabha. Reason (R): Both houses are parts of Parliament, and the law is made by Parliament as a whole.'
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: civics-bill-to-law
+  explanation: Both statements are true. Parliament consists of both houses and the President, so a law needs the agreement of both houses. R explains A.
+  hints:
+  - Ask why the other house cannot be skipped.
+  correct: A
+  options:
+  - key: A
+    text: Both A and R are true, and R explains A
+  - key: B
+    text: Both A and R are true, but R does not explain A
+    misconception: one-house-enough
+  - key: C
+    text: A is true, but R is false
+    misconception: one-house-enough
+  - key: D
+    text: A is false, but R is true
+    misconception: one-house-enough
+- key: q-bl-9
+  pattern: case
+  kind: mcq
+  stem: 'Read this note. A bill about school safety is introduced in the Rajya Sabha. The house debates it and votes yes. Then the Lok Sabha debates it and votes yes. A news channel says "The bill is now a law." The President has not yet given assent. What is the best comment on the news report?'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: civics-bill-to-law
+  explanation: An ordinary bill can start in either house, so starting in the Rajya Sabha is fine. Both houses have passed it, but without the President's assent it is not yet an Act. The report is early.
+  hints:
+  - Check each step against the list. Which step is missing?
+  correct: B
+  options:
+  - key: A
+    text: The report is wrong because a bill cannot start in the Rajya Sabha
+    misconception: one-house-enough
+  - key: B
+    text: The report is early, because the President has not yet given assent
+  - key: C
+    text: The report is right, because two houses voting is enough
+    misconception: president-alone
+  - key: D
+    text: The report is wrong because only the Speaker can make a law
+    misconception: president-alone
+misconceptions:
+- code: bill-is-law
+  concept: civics-bill-to-law
+  description: Treats a bill as if it were already a law, when a bill is only a proposal until it becomes an Act.
+- code: one-house-enough
+  concept: civics-bill-to-law
+  description: Thinks one house, or one person, is enough to make a law, when a bill must pass both houses and get the President's assent.
+- code: president-alone
+  concept: civics-bill-to-law
+  description: Thinks the President alone makes laws or that the President can skip the houses, when the President gives assent only after both houses have passed the bill.
+cards:
+- key: how-a-bill-becomes-law-card-1
+  concept: civics-bill-to-law
+  front: What is a bill?
+  back: A proposal for a new law or a change to a law. It is not yet a law.
+- key: how-a-bill-becomes-law-card-2
+  concept: civics-bill-to-law
+  front: What does a bill need before it becomes an Act?
+  back: Passing in both houses of Parliament and the President's assent.
+- key: how-a-bill-becomes-law-card-3
+  concept: civics-bill-to-law
+  front: How many votes does a bill need to pass in a house?
+  back: More than half of the votes cast.
+- key: how-a-bill-becomes-law-card-4
+  concept: civics-bill-to-law
+  front: What is assent?
+  back: The President's formal agreement to a bill, after which it becomes an Act.

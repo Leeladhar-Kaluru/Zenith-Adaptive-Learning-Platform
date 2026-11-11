@@ -9,7 +9,7 @@ from datetime import datetime, timedelta, timezone
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
-from app.engine import bkt, streaks
+from app.engine import bkt, retention, streaks
 from app.models import Concept, EvidenceEvent, Item, Profile, Subject
 from app.services import engage, home, quiz
 from app.services import states as st_svc
@@ -78,13 +78,22 @@ def build(db: Session, p: Profile) -> dict:
     focus = [topic(c) for c in sorted((c for c in seen if stt[c]["p"] < 0.8), key=lambda c: stt[c]["p"])[:5]]
     strong = [topic(c) for c in sorted((c for c in seen if stt[c]["p"] >= 0.8), key=lambda c: -stt[c]["p"])[:3]]
 
+    fading = []
+    for cid in seen:
+        s = stt[cid]
+        if s["p"] >= 0.6 and s["last"] is not None:
+            r = retention.recall(s["p"], s["n"], s["last"], now)
+            if r < retention.FADING_BELOW:
+                fading.append({**topic(cid), "recall": round(r, 2), "lastPracticed": s["last"].isoformat()})
+    fading.sort(key=lambda t: t["recall"])
+
     games = quiz.history(db, p, 50)
     r = quiz.rating(db, p.id)
     db.commit()
     return {
         "generatedAt": now.isoformat(),
         "me": {"nickname": p.nickname, "avatar": p.avatar, "grade": p.grade, "xp": streaks.level(engage.total_xp(db, p.id)), "streak": engage.streak_info(db, p.id)},
-        "today": today, "days": days, "pace": pace, "subjects": subjects, "focus": focus, "strong": strong,
+        "fading": fading[:5], "retentionModel": retention.MODEL_VERSION, "today": today, "days": days, "pace": pace, "subjects": subjects, "focus": focus, "strong": strong,
         "revisionDue": len(home.due_revision(db, p.id)), "openMistakes": home.mistake_count(db, p.id),
         "battles": {"rating": round(r.rating), "games": r.games, "wins": sum(g["youWon"] for g in games), "draws": sum(g["draw"] for g in games),
                     "losses": sum(not g["youWon"] and not g["draw"] for g in games), "recent": games[:5]},

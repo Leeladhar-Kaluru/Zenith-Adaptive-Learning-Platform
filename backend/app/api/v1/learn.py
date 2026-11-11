@@ -14,7 +14,7 @@ from app.core.database import get_db
 from app.core.security import get_profile, student_only
 from app.engine import graph
 from app.models import AssessmentSession, Board, Chapter, ChapterConcept, Concept, Item, LessonProgress, Profile, Subject
-from app.services import assign, dashboard, engage, evidence, gaps as gaps_svc, home, interactions, library, mission as mission_svc, notebook as notebook_svc, practice
+from app.services import adaptive as adaptive_svc, assign, dashboard, engage, evidence, gaps as gaps_svc, home, interactions, library, mission as mission_svc, notebook as notebook_svc, practice
 from app.services import states as st_svc
 
 router = APIRouter()
@@ -213,6 +213,12 @@ def hint(item_id: uuid.UUID, n: int = Query(1, ge=1, le=5), p: Profile = Depends
 
 
 # ---- practice and tests -------------------------------------------------------------------------
+@router.get("/adaptive/step")
+def adaptive_step(since: datetime, chapter: Optional[str] = None, concept: Optional[str] = None, subject: Optional[str] = None,
+                  p: Profile = Depends(learner), db: Session = Depends(get_db)):
+    return _wrap(adaptive_svc.step, db, p, chapter=chapter, concept=concept, subject=subject, since=since)
+
+
 @router.get("/practice/subjects")
 def practice_subjects(p: Profile = Depends(learner), db: Session = Depends(get_db)):
     return practice.subjects_ready(db, p)

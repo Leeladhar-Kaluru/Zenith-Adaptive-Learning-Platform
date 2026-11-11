@@ -79,7 +79,12 @@ def _system(profile: Profile, ctx: str, mistakes: list[str], lang: str) -> str:
     return "\n".join(lines)
 
 
-async def ask(db: Session, profile: Profile, message: str, lesson_id: uuid.UUID | None, lang: str) -> dict:
+async def ask(db: Session, profile: Profile, message: str, lesson_id: uuid.UUID | None, lang: str, client_id: str | None = None) -> dict:
+    if client_id:                                    # the same question sent again (offline retry) returns the stored answer instead of asking twice
+        done = db.scalar(select(TutorMessage.meta).join(TutorThread, TutorThread.id == TutorMessage.thread_id)
+                         .where(TutorThread.student_id == profile.id, TutorMessage.role == "tutor", TutorMessage.meta["clientId"].astext == client_id))
+        if done and done.get("result"):
+            return done["result"]
     message = message.strip()
     if not message:
         raise ValueError("Type your question first.")
@@ -120,6 +125,7 @@ async def ask(db: Session, profile: Profile, message: str, lesson_id: uuid.UUID 
         paras = _relevant_paragraphs(ctx, message) if ctx else []
         reply = ("The AI helper is not available right now, so here is what your lesson says:\n" + "\n".join(paras)) if paras else \
             "The AI helper is not available right now, and I could not find this in your lessons. Try the search, or ask your teacher."
-    db.add(TutorMessage(thread_id=thread.id, role="tutor", content=reply, language=lang, meta={"degraded": degraded}))
+    result = {"reply": reply, "citations": citations if lvs else [], "language": lang, "aiTranslated": lang != "en" and not degraded, "degraded": degraded}
+    db.add(TutorMessage(thread_id=thread.id, role="tutor", content=reply, language=lang, meta={"degraded": degraded, **({"clientId": client_id, "result": result} if client_id else {})}))
     db.commit()
-    return {"reply": reply, "citations": citations if lvs else [], "language": lang, "aiTranslated": lang != "en" and not degraded, "degraded": degraded}
+    return result

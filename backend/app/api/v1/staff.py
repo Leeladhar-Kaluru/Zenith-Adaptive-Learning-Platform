@@ -197,6 +197,7 @@ class AskIn(BaseModel):
     message: str = Field(min_length=1, max_length=600)
     lessonId: Optional[uuid.UUID] = None
     language: str = "en"
+    clientId: Optional[str] = Field(default=None, min_length=8, max_length=64)      # set by the app so a retried offline question is answered once
 
 
 @router.post("/tutor/ask")
@@ -204,7 +205,7 @@ async def ask(body: AskIn, p: Profile = Depends(student_only), db: Session = Dep
     if p.consent_status not in ("granted", "not_required"):
         raise HTTPException(403, "A parent, guardian or school needs to agree first.")
     try:
-        return await tutor.ask(db, p, body.message, body.lessonId, body.language)
+        return await tutor.ask(db, p, body.message, body.lessonId, body.language, body.clientId)
     except tutor.TutorLimit:
         raise HTTPException(429, "You have asked a lot of questions today. Try again tomorrow, or reread the lesson.")
     except ValueError as e:

@@ -3,10 +3,12 @@ import { api, ApiError } from '../api/client';
 import type { TutorReply } from '../api/types';
 import { useAuth } from '../context/AuthContext';
 import { Avatar, Icon } from '../icons/Icon';
+import { db } from '../offline/db';
+import { DOUBTS_EVENT, queueDoubt } from '../offline/sync';
 import { Button, Chip } from '../ui/kit';
 import s from './ask.module.css';
 
-interface Msg { who: 'me' | 'ai'; text: string; reply?: TutorReply; error?: boolean }
+interface Msg { who: 'me' | 'ai'; text: string; reply?: TutorReply; error?: boolean; waiting?: boolean }
 const LANGS = [{ v: 'en', l: 'English' }, { v: 'hi', l: 'हिन्दी' }, { v: 'te', l: 'తెలుగు' }] as const;
 const PROMPTS = ['Explain it in a simpler way', 'Give me another example', 'Why is this true?', 'What mistake should I avoid?'];
 
@@ -17,18 +19,40 @@ export default function AskPanel({ lessonId, compact }: { lessonId?: string; com
   const [lang, setLang] = useState<'en' | 'hi' | 'te'>(profile?.language ?? 'en');
   const [busy, setBusy] = useState(false);
   const end = useRef<HTMLDivElement>(null);
+  const [waiting, setWaiting] = useState<string[]>([]);
+  // Questions asked offline: answered or failed ones join the chat (once), queued ones show as waiting.
+  useEffect(() => {
+    const load = async () => {
+      try {
+        const mine = (await db.doubts.toArray()).filter((d) => (d.lessonId ?? undefined) === lessonId).sort((a, b) => a.askedAt.localeCompare(b.askedAt));
+        setWaiting(mine.filter((d) => d.status === 'queued').map((d) => d.message));
+        const ready = mine.filter((d) => d.status !== 'queued');
+        if (!ready.length) return;
+        await db.doubts.bulkDelete(ready.map((d) => d.clientId));
+        setMsgs((m) => [...m, ...ready.flatMap<Msg>((d) => [{ who: 'me', text: d.message }, d.reply ? { who: 'ai', text: d.reply.reply, reply: d.reply } : { who: 'ai', text: d.error ?? 'ZENITH could not answer.', error: true }])]);
+      } catch { /* no local storage: online questions still work */ }
+    };
+    void load();
+    addEventListener(DOUBTS_EVENT, load);
+    return () => removeEventListener(DOUBTS_EVENT, load);
+  }, [lessonId]);
   useEffect(() => { end.current?.scrollIntoView({ behavior: 'smooth', block: 'end' }); }, [msgs, busy]);
 
+  async function saveForLater(message: string) {
+    try { await queueDoubt(message, lang, lessonId); setMsgs((m) => m.slice(0, -1)); } catch { setMsgs((m) => [...m, { who: 'ai', text: 'You are offline and this device could not save your question. Try again when you are online.', error: true }]); }
+  }
   async function send(q: string) {
     const message = q.trim();
     if (!message || busy) return;
     setMsgs((m) => [...m, { who: 'me', text: message }]);
     setText('');
     setBusy(true);
+    if (!navigator.onLine) { await saveForLater(message); setBusy(false); return; }
     try {
       const reply = await api<TutorReply>('/tutor/ask', { method: 'POST', body: { message, lessonId, language: lang } });
       setMsgs((m) => [...m, { who: 'ai', text: reply.reply, reply }]);
     } catch (e) {
+      if (e instanceof ApiError && e.status === 0) { await saveForLater(message); return; }
       const msg = e instanceof ApiError && e.status === 429 ? 'You have asked a lot today. Try again tomorrow, or reread the lesson.' : 'ZENITH could not answer right now. Your question is not lost; try again in a moment.';
       setMsgs((m) => [...m, { who: 'ai', text: msg, error: true }]);
     } finally { setBusy(false); }
@@ -63,6 +87,7 @@ export default function AskPanel({ lessonId, compact }: { lessonId?: string; com
           </div>
         ))}
         {busy && <div className={`${s.msg} ${s.ai}`}><span className={s.bot}><Icon name="spark" size={18} /></span><span className={s.typing} aria-label="ZENITH is thinking"><i /><i /><i /></span></div>}
+        {waiting.map((w, i) => <div key={`w${i}`} className={`${s.msg} ${s.me}`}><Avatar id={profile?.avatar} size={30} /><div><p>{w}</p><p className="sm muted"><Icon name="wifiOff" size={14} /> Saved on this device. ZENITH will answer when you are back online.</p></div></div>)}
         <div ref={end} />
       </div>
       <form className={s.form} onSubmit={submit}>

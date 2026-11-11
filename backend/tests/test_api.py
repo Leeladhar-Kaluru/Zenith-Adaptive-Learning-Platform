@@ -431,6 +431,15 @@ def test_tutor_without_ai_answers_from_the_lesson_and_says_so(client, db, world)
     assert r["degraded"] is True and "less than zero" in r["reply"] and r["citations"]
 
 
+def test_a_question_sent_twice_with_the_same_client_id_is_answered_and_counted_once(client, db, world):
+    from app.models import TutorMessage
+    body = {"message": "What are numbers below zero?", "clientId": "offline-doubt-0001"}
+    first = client.post(f"{API}/tutor/ask", json=body, headers=world["h"]).json()
+    again = client.post(f"{API}/tutor/ask", json=body, headers=world["h"]).json()
+    assert again == first
+    assert len(db.scalars(select(TutorMessage).where(TutorMessage.role == "student")).all()) == 1
+
+
 def test_tutor_prompt_has_no_student_identity_and_hides_nothing_about_ai(client, db, world, monkeypatch):
     from app.services import tutor
     seen = {}

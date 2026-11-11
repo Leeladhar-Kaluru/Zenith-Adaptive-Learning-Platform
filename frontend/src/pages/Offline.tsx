@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { listPacks, removePack, type OfflinePackRow } from '../offline/db';
-import { flush, pendingCount } from '../offline/sync';
+import { db } from '../offline/db';
+import { flush, flushDoubts, pendingCount } from '../offline/sync';
 import { Icon } from '../icons/Icon';
 import { Button, Card, EmptyState, Reveal, useToast } from '../ui/kit';
 import s from './pages.module.css';
@@ -14,12 +15,12 @@ export default function Offline() {
   const toast = useToast();
   const [waiting, setWaiting] = useState(0);
   const [sending, setSending] = useState(false);
-  const load = () => { void listPacks().then(setPacks); void pendingCount().then(setWaiting); };
+  const load = () => { void listPacks().then(setPacks); void Promise.all([pendingCount(), db.doubts.where('status').equals('queued').count()]).then(([a, d]) => setWaiting(a + d)); };
   const sendNow = async () => {
     setSending(true);
-    const n = await flush();
+    const n = (await flush()) + (await flushDoubts());
     setSending(false); load();
-    toast(n ? `Sent ${n} answer${n === 1 ? '' : 's'}` : 'Nothing could be sent yet. Check your connection.', n ? 'ok' : 'err');
+    toast(n ? `Sent ${n} item${n === 1 ? '' : 's'}` : 'Nothing could be sent yet. Check your connection.', n ? 'ok' : 'err');
   };
   useEffect(() => {
     load();
@@ -34,7 +35,7 @@ export default function Offline() {
         <div><h1 className={s.title}>Offline lessons</h1><p className={s.lead}>Chapters you saved work without internet. Your answers are kept safely and sent when you are back online.</p></div>
         <span className="chip" style={{ display: 'inline-flex', gap: 6, alignItems: 'center', padding: '5px 12px', border: '2px solid var(--ink)', borderRadius: 999, fontWeight: 800, background: online ? 'var(--ok-soft)' : 'var(--retry-soft)' }}><Icon name={online ? 'check' : 'wifiOff'} size={16} />{online ? 'Online' : 'Offline'}</span>
       </div>
-      {waiting > 0 && <Card flat><div className={s.between}><span><strong>{waiting} answer{waiting === 1 ? '' : 's'} waiting</strong> <span className="muted sm">saved on this device, not sent yet</span></span><Button size="sm" variant="brand" icon="upload" loading={sending} disabled={!online} onClick={() => void sendNow()}>Send now</Button></div></Card>}
+      {waiting > 0 && <Card flat><div className={s.between}><span><strong>{waiting} item{waiting === 1 ? '' : 's'} waiting</strong> <span className="muted sm">answers and questions saved on this device, not sent yet</span></span><Button size="sm" variant="brand" icon="upload" loading={sending} disabled={!online} onClick={() => void sendNow()}>Send now</Button></div></Card>}
       {packs && packs.length === 0 && <Card><EmptyState icon="download" title="Nothing saved yet" text="Open a chapter and choose Save for offline to study on a shared phone or with little data." action={<Button to="/learn" variant="brand" iconRight="arrowR">Browse chapters</Button>} /></Card>}
       <div className={s.grid}>
         {packs?.map((p, i) => (

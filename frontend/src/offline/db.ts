@@ -1,18 +1,24 @@
 import Dexie, { type Table } from 'dexie';
 import type { EvidenceRequest, Lesson } from '../api/types';
 import type { Move } from '../track/tracker';
+import type { TutorReply } from '../api/types';
 
 export interface OfflinePackRow { chapterSlug: string; title: string; savedAt: string; bytes: number; lessons: Lesson[] }
 export interface QueuedEvidence extends EvidenceRequest { queuedAt: string }
+
+/** A tutor question asked offline. `queued` waits to be sent; `answered` holds the reply; `failed` holds a reason to show. */
+export interface Doubt { clientId: string; message: string; lessonId?: string; language: string; askedAt: string; status: 'queued' | 'answered' | 'failed'; reply?: TutorReply; error?: string }
 
 class ZenithDB extends Dexie {
   packs!: Table<OfflinePackRow, string>;
   queue!: Table<QueuedEvidence, string>;
   moves!: Table<Move, string>;
+  doubts!: Table<Doubt, string>;
   constructor() {
     super('ZenithDB');
     this.version(1).stores({ packs: 'chapterSlug', queue: 'clientEventId' });
     this.version(2).stores({ packs: 'chapterSlug', queue: 'clientEventId', moves: 'clientEventId' });
+    this.version(3).stores({ packs: 'chapterSlug', queue: 'clientEventId', moves: 'clientEventId', doubts: 'clientId, status' });
   }
 }
 export const db = new ZenithDB();

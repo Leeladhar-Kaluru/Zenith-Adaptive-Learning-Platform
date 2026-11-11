@@ -30,6 +30,12 @@ export function createSharedCache(fetcher: (path: string) => Promise<unknown>) {
     set: (path: string, value: unknown) => { cache.set(path, value); },
     /** Forget one path: its cached value and any request still on the way. */
     invalidate: (path: string) => { cache.delete(path); inflight.delete(path); tokens.delete(path); },
+    /** Forget every path the test accepts (cached values and requests on the way), for example everything that shows progress. */
+    invalidateWhere: (test: (path: string) => boolean) => {
+      for (const path of new Set([...cache.keys(), ...inflight.keys(), ...tokens.keys()])) {
+        if (test(path)) { cache.delete(path); inflight.delete(path); tokens.delete(path); }
+      }
+    },
     /** Forget everything (sign-in, sign-out, after a write). */
     clear: () => { cache.clear(); inflight.clear(); tokens.clear(); },
   };

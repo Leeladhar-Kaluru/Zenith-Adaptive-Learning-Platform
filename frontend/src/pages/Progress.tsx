@@ -5,6 +5,7 @@ import type { Band, Gamification, Notebook, Overview } from '../api/types';
 import { Avatar, Icon, TierBadge } from '../icons/Icon';
 import { TIERS } from '../icons/icons.mjs';
 import { Button, Card, Chip, CountUp, EmptyState, Progress as Bar, Reveal, Segmented, Skeleton } from '../ui/kit';
+import { GapMap } from './GapMap';
 import s from './pages.module.css';
 
 const TONE: Record<Band, 'ok' | 'hi' | 'gap' | 'soft'> = { secure: 'ok', learning: 'hi', gap_confirmed: 'gap', gap_suspected: 'hi', unassessed: 'soft' };
@@ -30,6 +31,8 @@ function Understanding() {
         <Card><span className="muted sm">Streak</span><h3 style={{ fontSize: '2rem' }}>{data.streak.days} days</h3><span className="muted sm">{data.streak.restDayAvailable ? 'One rest day is free this week' : 'Rest day used this week'}</span></Card>
         <Card><span className="muted sm">To revisit</span><h3 style={{ fontSize: '2rem' }}>{data.mistakes + data.revisionDue}</h3><span className="muted sm">{data.mistakes} mistakes · {data.revisionDue} due for revision</span></Card>
       </div>
+
+      <GapMap />
 
       <section><h2 style={{ marginBottom: 12 }}>What you understand</h2>
         {data.concepts.length === 0 ? <Card><EmptyState icon="target" title="Nothing measured yet" text="Answer a few questions in a lesson or in Practice. ZENITH will show what you understand here, and how sure it is." action={<Button to="/practice" variant="brand">Start practising</Button>} /></Card> : (

@@ -1,0 +1,21 @@
+.top { display: grid; grid-template-columns: minmax(0, 1fr); gap: 6px; }
+.top > a, .top > button { justify-self: start; }
+.meta { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.teacher { display: flex; align-items: center; gap: 10px; margin-top: 12px; color: var(--ink-2); font-weight: 700; }
+.next { margin-top: 12px; padding: 8px 12px; border: 2px dashed var(--line); border-radius: 12px; font-size: .9rem; color: var(--ink-2); }
+.join { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.join input { flex: 1 1 160px; min-width: 0; }
+.tabs { margin: 4px 0 2px; overflow-x: auto; }
+.list { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; }
+.note h3 { margin: 0; overflow-wrap: anywhere; }
+.note p { margin: 8px 0 0; white-space: pre-wrap; overflow-wrap: anywhere; color: var(--ink); }
+.noteHead { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; flex-wrap: wrap; }
+.noteMeta { font-size: .8rem; color: var(--ink-2); margin-top: 4px; }
+.mates { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(150px, 100%), 1fr)); gap: 10px; }
+.mate { display: flex; align-items: center; gap: 10px; padding: 8px 12px; border: 2px solid var(--ink); border-radius: 14px; background: var(--surface); font-weight: 700; min-width: 0; }
+.mate span { overflow-wrap: anywhere; line-height: 1.2; }
+.compose { display: grid; gap: 10px; }
+.compose textarea { min-height: 96px; resize: vertical; }
+.check { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: .9rem; }
+.actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.privacy { font-size: .85rem; color: var(--ink-2); }

@@ -47,13 +47,21 @@ def test_backup_and_restore_refuse_dangerous_schemas():
         bk.restore(b"", "zenith_test")     # the schema the app is currently pointed at
 
 
+def _head() -> str:
+    from alembic.config import Config
+    from alembic.script import ScriptDirectory
+    cfg = Config(os.path.join(os.path.dirname(__file__), "..", "alembic.ini"))
+    cfg.set_main_option("script_location", os.path.join(os.path.dirname(__file__), "..", "alembic"))
+    return ScriptDirectory.from_config(cfg).get_current_head()
+
+
 def test_dump_and_unpack_a_real_schema(db):
     from tests.conftest import make_profile
     make_profile(db, "student")
     archive, manifest = bk.dump()
     meta, files = bk._unpack(archive)
     rows = {t["name"]: t["rows"] for t in meta["tables"]}
-    assert rows["profiles"] == 1 and rows["boards"] == 1 and manifest["alembic_revision"] == "004"
+    assert rows["profiles"] == 1 and rows["boards"] == 1 and manifest["alembic_revision"] == _head()
     assert "profiles.bin" in files
     flipped = bytearray(archive)
     with pytest.raises(Exception):

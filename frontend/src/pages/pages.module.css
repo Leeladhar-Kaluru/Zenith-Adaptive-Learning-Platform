@@ -2,9 +2,10 @@
 .lead { font-size: 1.15rem; color: var(--ink-2); max-width: 60ch; margin-top: 6px; }
 .row { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
 .between { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
-.stack { display: grid; gap: 18px; }
-.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 22px; }
-.cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 22px; align-items: start; }
+.stack { display: grid; grid-template-columns: minmax(0, 1fr); gap: 18px; }
+.stack > *, .cols > *, .grid > *, .between > * { min-width: 0; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr)); gap: 22px; }
+.cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(310px, 100%), 1fr)); gap: 22px; align-items: start; }
 .section { margin-top: 34px; }
 .section > h2 { margin-bottom: 14px; font-size: 1.6rem; }
 
@@ -68,7 +69,7 @@ a.lrow:hover { transform: translate(-2px, -2px); box-shadow: var(--hard); }
 .prereq { display: flex; gap: 12px; align-items: center; border: 2px dashed var(--gap); background: var(--gap-soft); padding: 12px 16px; border-radius: var(--r); }
 
 /* today / climb */
-.hero2 { background: var(--ink); color: var(--bg); border-radius: 22px; border: 2px solid var(--ink); box-shadow: var(--hard); padding: 24px; position: relative; overflow: hidden; }
+.hero2 { background: var(--hero); color: #fff; border-radius: 22px; border: 2px solid var(--ink); box-shadow: var(--hard); padding: 24px; position: relative; overflow: hidden; }
 .hero2 h2 { color: #fff; font-size: clamp(1.5rem, 3.4vw, 2.2rem); margin: 4px 0 8px; }
 .hero2 .why { display: flex; gap: 12px; padding: 12px 14px; border-radius: 14px; background: rgba(255, 255, 255, .1); color: #d9defa; margin: 12px 0 18px; }
 .kick { font-weight: 800; font-size: .78rem; letter-spacing: .1em; text-transform: uppercase; color: var(--hi); }
@@ -129,7 +130,7 @@ a.lrow:hover { transform: translate(-2px, -2px); box-shadow: var(--hard); }
 .pwRow { position: relative; display: block; }
 .pwRow .input { padding-right: 76px; }
 .pwToggle { position: absolute; right: 8px; top: 50%; transform: translateY(-50%); min-height: 36px; padding: 0 12px; border: 0; border-radius: 10px; background: transparent; font: inherit; font-weight: 800; color: var(--brand); cursor: pointer; }
-.rules { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; color: var(--muted, #667); }
+.rules { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; color: var(--ink-2); }
 .rules li::before { content: "CB"; margin-right: 8px; }
 .rules li.ok { color: var(--ink); font-weight: 700; }
 .rules li.ok::before { content: "¹3"; color: var(--brand); }

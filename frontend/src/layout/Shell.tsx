@@ -13,8 +13,9 @@ const STUDENT = [
   { to: '/learn', icon: 'book', label: 'Learn' },
   { to: '/practice', icon: 'target', label: 'Practice' },
   { to: '/explore', icon: 'puzzle', label: 'Explore' },
+  { to: '/classes', icon: 'people', label: 'Classes' },
   { to: '/ask', icon: 'chat', label: 'Ask' },
-  { to: '/progress', icon: 'peak', label: 'My Progress' },
+  { to: '/progress', icon: 'peak', label: 'Progress' },
 ];
 const TEACHER = [
   { to: '/teacher', icon: 'people', label: 'Classes' },
@@ -28,7 +29,11 @@ const REVIEWER = [
 ];
 
 function Stats() {
-  const { data } = useApi<Today>('/today');
+  const { data, reload } = useApi<Today>('/stats');
+  useEffect(() => {
+    window.addEventListener('zenith:progress', reload);
+    return () => window.removeEventListener('zenith:progress', reload);
+  }, [reload]);
   if (!data) return null;
   return (
     <>

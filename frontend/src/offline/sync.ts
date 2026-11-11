@@ -1,5 +1,5 @@
 import { api, ApiError } from '../api/client';
-import { clearApiCache } from '../api/useApi';
+import { clearApiCache, emitProgress } from '../api/useApi';
 import type { EvidenceRequest } from '../api/types';
 import { db } from './db';
 
@@ -24,7 +24,7 @@ export async function flush(): Promise<number> {
     // Keep only events that failed for a reason that might pass later (network or server errors).
     const done = res.results.filter((r) => r.ok || (r.status && r.status < 500)).map((r) => r.clientEventId);
     await db.queue.bulkDelete(done);
-    if (done.length) clearApiCache();
+    if (done.length) { clearApiCache(); emitProgress(); }
     return done.length;
   } catch (e) {
     if (e instanceof ApiError && e.status === 0) return 0;

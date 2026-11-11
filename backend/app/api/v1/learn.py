@@ -14,7 +14,7 @@ from app.core.database import get_db
 from app.core.security import get_profile, student_only
 from app.engine import graph
 from app.models import AssessmentSession, Board, Chapter, ChapterConcept, Concept, Item, LessonProgress, Profile, Subject
-from app.services import assign, engage, evidence, home, interactions, library, mission as mission_svc, notebook as notebook_svc, practice
+from app.services import assign, engage, evidence, gaps as gaps_svc, home, interactions, library, mission as mission_svc, notebook as notebook_svc, practice
 from app.services import states as st_svc
 
 router = APIRouter()
@@ -257,6 +257,12 @@ def submit_assessment(sid: uuid.UUID, p: Profile = Depends(learner), db: Session
 
 
 # ---- Home, progress, revision, engagement -------------------------------------------------------
+@router.get("/stats")
+def stats(p: Profile = Depends(learner), db: Session = Depends(get_db)):
+    """The few numbers the header shows (XP level, streak, today's XP). Light enough to refresh after every answer."""
+    return home.stats(db, p)
+
+
 @router.get("/mission")
 def daily_mission(p: Profile = Depends(learner), db: Session = Depends(get_db)):
     """Up to three short steps for today (revise, learn, stretch), each with its reason; at most 12 minutes."""
@@ -271,6 +277,12 @@ def today(p: Profile = Depends(learner), db: Session = Depends(get_db)):
 @router.get("/progress/overview")
 def overview(p: Profile = Depends(learner), db: Session = Depends(get_db)):
     return home.overview(db, p)
+
+
+@router.get("/progress/gaps")
+def progress_gaps(p: Profile = Depends(learner), db: Session = Depends(get_db)):
+    """Where the student is lacking: ranked gaps with confidence ranges, root causes, a repair order, and the lesson, practice and test for each."""
+    return gaps_svc.gap_map(db, p)
 
 
 @router.get("/progress/notebook")
@@ -322,12 +334,6 @@ def my_assignments(p: Profile = Depends(learner), db: Session = Depends(get_db))
 
 @router.get("/explore")
 def explore(p: Profile = Depends(get_profile), db: Session = Depends(get_db)):
-    from sqlalchemy import func
-    from app.models import Card, LessonVersion
-    cards = db.scalar(select(func.count(Card.id)).join(LessonVersion, LessonVersion.id == Card.lesson_version_id).where(LessonVersion.status == "published")) or 0
-    return {"available": [{"key": "flashcards", "title": "Flashcards", "text": "Revise key ideas with spaced repetition. Cards come back when you are about to forget them.",
-                           "href": "/revision", "count": cards}],
-            "planned": [{"key": "physics-lab", "title": "Physics simulations", "text": "Change forces, voltage or angles and see what happens."},
-                        {"key": "chemistry-lab", "title": "Chemistry simulations", "text": "Explore particles, reactions, acids and bases."},
-                        {"key": "biology-lab", "title": "Biology explorations", "text": "Cells, body systems and ecosystems you can open up."},
-                        {"key": "map-lab", "title": "Social Science maps", "text": "Interactive maps of India and the world."}]}
+    """What a student can really do today: flashcards, and every simulation, chart or map found in a published lesson."""
+    from app.services import explore as explore_svc
+    return {"available": explore_svc.available(db), "labs": explore_svc.labs(db, p.grade)}

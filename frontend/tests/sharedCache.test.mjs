@@ -53,3 +53,14 @@ test('a failed request is not cached and the next caller retries', async () => {
   assert.equal(c.has('/x'), false); assert.equal(c.isLoading('/x'), false);
   assert.equal(await c.get('/x'), 'ok');
 });
+
+test('invalidateWhere drops matching cached values and in-flight requests only', async () => {
+  const gate = later(); let n = 0;
+  const c = createSharedCache((path) => (path === '/stats' ? gate.p : Promise.resolve(`v${++n}:${path}`)));
+  await c.get('/progress/overview'); await c.get('/library/boards');
+  const pending = c.get('/stats');
+  c.invalidateWhere((p) => p.startsWith('/progress') || p === '/stats');
+  assert.equal(c.has('/progress/overview'), false); assert.equal(c.has('/library/boards'), true); assert.equal(c.isLoading('/stats'), false);
+  gate.resolve('late'); await pending;
+  assert.equal(c.peek('/stats'), undefined);           // a response from before the change is not stored
+});

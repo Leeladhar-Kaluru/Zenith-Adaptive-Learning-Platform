@@ -15,6 +15,8 @@ const LessonPage = lazy(() => import('./pages/Lesson'));
 const Practice = lazy(() => import('./pages/Practice'));
 const Progress = lazy(() => import('./pages/Progress'));
 const Explore = lazy(() => import('./pages/Explore'));
+const MyClasses = lazy(() => import('./pages/MyClasses'));
+const ClassRoom = lazy(() => import('./pages/ClassRoom'));
 const RevisionPage = lazy(() => import('./pages/Revision'));
 const TestStart = lazy(() => import('./pages/tests/Start'));
 const TestRun = lazy(() => import('./pages/tests/Run'));
@@ -67,6 +69,8 @@ export default function App() {
           <Route path="/practice" element={<Guard roles={['student']}><Practice /></Guard>} />
           <Route path="/progress" element={<Guard roles={['student']}><Progress /></Guard>} />
           <Route path="/explore" element={<Guard roles={['student']}><Explore /></Guard>} />
+          <Route path="/classes" element={<Guard roles={['student']}><MyClasses /></Guard>} />
+          <Route path="/classes/:id" element={<Guard roles={['student', 'teacher', 'admin']}><ClassRoom /></Guard>} />
           <Route path="/revision" element={<Guard roles={['student']}><RevisionPage /></Guard>} />
           <Route path="/tests/new" element={<Guard roles={['student']}><TestStart /></Guard>} />
           <Route path="/tests/:id" element={<Guard roles={['student']}><TestRun /></Guard>} />

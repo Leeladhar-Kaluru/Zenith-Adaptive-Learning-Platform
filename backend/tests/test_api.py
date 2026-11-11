@@ -474,7 +474,8 @@ def test_my_progress_reflects_only_real_evidence(client, db, world):
 
 def test_explore_is_honest_about_what_exists(client, db, world):
     e = client.get(f"{API}/explore", headers=world["h"]).json()
-    assert [a["key"] for a in e["available"]] == ["flashcards"] and e["planned"]
+    assert [a["key"] for a in e["available"]] == ["flashcards"] and isinstance(e["labs"], list)
+    assert "planned" not in e      # no "coming soon" placeholders: everything listed is real
 
 
 def test_lesson_start_is_idempotent_when_sent_twice(db, client, world):

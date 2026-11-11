@@ -61,8 +61,12 @@ def join(db: Session, student: Profile, code: str) -> Classroom:
     c = db.scalar(select(Classroom).where(Classroom.join_code == code.strip().upper()))
     if c is None:
         raise TeacherError("That class code was not found. Check it with your teacher.", 404)
-    if db.get(ClassMember, (c.id, student.id)) is None:
+    m = db.get(ClassMember, (c.id, student.id))
+    if m is None:
         db.add(ClassMember(classroom_id=c.id, student_id=student.id))
+        db.commit()
+    elif m.status != "active":
+        m.status = "active"      # coming back with the class code after leaving
         db.commit()
     return c
 

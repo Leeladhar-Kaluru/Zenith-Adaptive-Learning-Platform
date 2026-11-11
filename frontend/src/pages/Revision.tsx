@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { api } from '../api/client';
-import { clearApiCache, useApi } from '../api/useApi';
+import { clearApiCache, useApi, emitProgress } from '../api/useApi';
 import type { Revision } from '../api/types';
 import { Button, Card, EmptyState, Skeleton, useToast } from '../ui/kit';
 import s from './pages.module.css';
@@ -24,7 +24,7 @@ export default function RevisionPage() {
 
   async function rate(remembered: boolean) {
     setBusy(true);
-    try { await api(`/revision/cards/${card.id}/review`, { method: 'POST', body: { remembered } }); clearApiCache(); setFlip(false); setI(i + 1); }
+    try { await api(`/revision/cards/${card.id}/review`, { method: 'POST', body: { remembered } }); clearApiCache(); emitProgress(); setFlip(false); setI(i + 1); }
     catch (e) { toast((e as Error).message, 'err'); } finally { setBusy(false); }
   }
 

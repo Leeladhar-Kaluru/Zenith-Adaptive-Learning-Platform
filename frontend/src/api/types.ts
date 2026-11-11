@@ -90,7 +90,10 @@ export interface TestSummary {
   boss?: boolean; passed?: boolean; passMark?: number;
 }
 export interface Revision { due: Array<{ conceptId: string; title: string; dueAt: string }>; cards: Array<{ id: string; conceptId: string; front: string; back: string }> }
-export interface Explore { available: Array<{ key: string; title: string; text: string; href: string; count: number }>; planned: Array<{ key: string; title: string; text: string }> }
+export interface Explore {
+  available: Array<{ key: string; title: string; text: string; href: string; count: number }>;
+  labs: Array<{ lessonId: string; lessonTitle: string; chapterSlug: string; chapterTitle: string; grade: number; subject: string; kind: 'simulation' | 'data' | 'map'; kinds: string[]; forYou: boolean }>;
+}
 export interface SearchResults {
   chapters: Chapter[]; lessons: Array<{ id: string; title: string; chapter: string; grade: number }>; concepts: Array<{ id: string; title: string; grade: number; lessonId: string | null }>;
 }
@@ -122,3 +125,24 @@ export interface ReviewDetail {
   lesson: Lesson; answers: Array<{ key: string; kind: string; stem: string; difficulty: string; purpose: string; answer: Record<string, unknown>; explanation: string }>;
 }
 export interface Coverage { slug: string; title: string; grade: number; subject: string; status: string; lessons: number; published: number }
+
+export interface ClassActivity { id: string; title: string; kind: string; note: string | null; dueAt: string | null; href: string | null }
+export interface ClassCard {
+  id: string; name: string; grade: number; subject: string; teacher: { name: string; avatar: string | null }; classmates: number;
+  nextDue: ClassActivity | null; announcements: number;
+}
+export interface ClassNotice { id: string; title: string; body: string; pinned: boolean; createdAt: string; author: string }
+export interface ClassDetail {
+  id: string; name: string; grade: number; subject: string; teacher: { name: string; avatar: string | null }; isTeacher: boolean;
+  classmates: Array<{ nickname: string; avatar: string | null; me: boolean }>; assignments: ClassActivity[]; announcements: ClassNotice[];
+}
+
+export interface Gap {
+  conceptId: string; title: string; grade: number; p: number; n: number; correct: number; interval: [number, number]; band: 'gap_confirmed' | 'gap_suspected';
+  confidence: 'low' | 'medium' | 'high'; priority: number; downstream: number; root: { id: string; title: string } | null; reason: string;
+  actions: { lesson: string | null; practice: string; test: string; startWith: string | null };
+}
+export interface Gaps {
+  gaps: Gap[]; repairPath: string[]; unmeasured: Array<{ conceptId: string; title: string; grade: number }>; evidence: number;
+  summary: { secure: number; learning: number; gaps: number; unmeasured: number };
+}

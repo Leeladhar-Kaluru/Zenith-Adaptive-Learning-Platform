@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { track } from '../track/tracker';
 import { api, ApiError } from '../api/client';
-import { clearApiCache } from '../api/useApi';
+import { clearApiCache, emitProgress } from '../api/useApi';
 import type { EvidenceResult, PublicItem, Response } from '../api/types';
 import { useFx } from '../fx/fx';
 import { Icon } from '../icons/Icon';
@@ -83,6 +83,7 @@ export function Question({ item, context = 'learn_check', sessionId, deferFeedba
       clearApiCache();
       if (deferFeedback) { setSaved(true); onResult?.(null); return; }
       setRes(out);
+      emitProgress();
       if (out.correct && out.xp > 0) fx.xp(out.xp);
       const up = out.changes.find((c) => c.to === 'secure');
       if (up) toast(`${up.title} is now secure`, 'ok');

@@ -117,3 +117,26 @@ NOT done / waiting:
 - Looked at in a real browser: detective question (answered end to end), Atlas (wrong then right), chart, labelling dropdowns, credits, diagram figure, mission and map. Not looked at on a phone-width screen.
 
 Review pass (2026-11-11): an independent whole-branch review found no critical issues and 9 important ones; all were fixed test-first (robots.txt redirects, asset retirement and a due-list for reviewers, images only from our own storage, a gate against outside links and images in lesson markup, re-checking drafts when an asset is approved, bounded anonymous speed metrics, shared-request races in the browser, 30 s clock-skew tolerance, and the Wikimedia contact requirement). 308 backend tests and 5 frontend tests pass. Wikimedia refuses bots without a real contact in the User-Agent: set BOT_CONTACT (an email or page you choose) before importing from Commons. Branch pushed; master and production untouched.
+
+## Product completion, phase 1: P0 fixes, gap map, My Classes (2026-11-11)
+
+Scope of the "Product completion and major learning upgrade" request. This phase covers the P0 items; chat, Live Books depth, Three.js and the rest are NOT started.
+
+Done and verified:
+- Visual audit by computed contrast in a real browser (light, dark, and the third theme): fixed the dark hero, muted text, danger/gap red, science and ok greens, an undefined `--muted`, and mobile overflow at 360 px on chapter, ask and settings. Buttons wrap instead of overflowing.
+- Explore now shows only what exists (flashcards, and published lessons that contain a simulation, chart or map). The "coming soon" placeholders and the `planned` field are gone.
+- XP and streak in the header refresh the moment an answer, lesson, test or revision is saved (`emitProgress`, new light `/stats` route). Test-mode quizzes refresh on submit on purpose: a rising XP number mid-test would reveal which answers were right.
+- Gap Map on My Progress: Wilson confidence ranges, root-cause tracing through the prerequisite graph, downstream-impact priority, a repair order, and a lesson, practice and test link per gap. Honest empty state with no evidence (seen in browser); ranked view covered by 8 engine tests.
+- My Classes (student): list with teacher, classmates count and next due work; class page with announcements (pinned first), work by due date, classmates (nickname and avatar only; opted-out students show as "A classmate"), leave with confirmation, rejoin by class code (previously a "left" row blocked rejoining). Teachers post, pin and delete announcements from the same page (plain text only; tags and scripts are stripped). A class you are not in answers 404, same as one that does not exist. Verified in a browser as a student and a teacher at 1280 and 360 px.
+- Migration 005 adds `announcements` (RLS on, no browser access). Applied to `zenith_test` only.
+
+Tests: new `test_classes.py` (9), `test_gaps.py` (8), `test_explore.py` (4), stats and cache tests; frontend 6 node tests pass; build and size budget pass.
+
+Commands: `python -m pytest -q` in backend; `npm test`, `npm run build` in frontend.
+
+Waiting on you:
+- Approve migrations 004 and 005 for production (take the backup first), then a deploy. Until then none of this is live.
+- Wikimedia contact: tell me an email or page you own and monitor; it goes in the BOT_CONTACT environment variable only, never in source.
+- Carried over: rotate the Backblaze key, confirm SUPABASE_SECRET_KEY in Vercel, run the real data imports, and the 14-lesson depth backlog.
+
+Next: real-time class chat (Supabase Realtime, B2 signed-URL attachments, reactions, moderation, reporting, blocking), then Live Books depth, then simulations.

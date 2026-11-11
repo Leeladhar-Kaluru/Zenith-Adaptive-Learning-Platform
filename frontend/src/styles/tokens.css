@@ -1,11 +1,12 @@
 /* ZENITH design tokens ("Field notes on graph paper"). Light is default; dark follows the system or [data-theme]. */
 :root {
   --bg: #f6f5ef; --grid: rgba(58, 70, 214, 0.07); --surface: #fff; --surface-2: #eeece3; --line: #d9d5c6;
-  --ink: #14193a; --ink-2: #4b5175; --ink-3: #737897;
+  --ink: #14193a; --ink-2: #4b5175; --ink-3: #5a5f80;
   --brand: #3a46d6; --brand-ink: #fff; --brand-soft: #e6e8ff;
   --hi: #ffd43b; --hi-ink: #3b2d00;
-  --maths: #3a46d6; --maths-soft: #e6e8ff; --science: #0f9a78; --science-soft: #d9f6ec;
-  --ok: #138a4f; --ok-soft: #d8f4e3; --retry: #b94f08; --retry-soft: #ffe8d4; --gap: #d62f58; --gap-soft: #ffe0e8;
+  --maths: #3a46d6; --maths-soft: #e6e8ff; --science: #087256; --science-soft: #d9f6ec;
+  --ok: #0d7340; --ok-soft: #d8f4e3; --retry: #b94f08; --retry-soft: #ffe8d4; --gap: #d62f58; --gap-soft: #ffe0e8; --gap-ink: #b3173f;
+  --hero: #14193a;          /* the "next step" card is a dark card with light text in BOTH themes */
   --subject: var(--maths); --subject-soft: var(--maths-soft);
 
   --font: 'Plus Jakarta Sans Variable', 'Noto Sans Devanagari Variable', 'Noto Sans Telugu Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
@@ -23,7 +24,8 @@
   --bg: #0c1020; --grid: rgba(143, 155, 255, 0.06); --surface: #141a33; --surface-2: #1b2345; --line: #2a3566;
   --ink: #f1f3ff; --ink-2: #b7bfe6; --ink-3: #8f99c8; --brand: #8f9bff; --brand-ink: #0c1020; --brand-soft: #212a66;
   --maths: #8f9bff; --maths-soft: #212a66; --science: #3fd7a9; --science-soft: #0f3b31;
-  --ok: #4fd68c; --ok-soft: #10392a; --retry: #ffa35c; --retry-soft: #40250f; --gap: #ff7a9c; --gap-soft: #45152b;
+  --ok: #4fd68c; --ok-soft: #10392a; --retry: #ffa35c; --retry-soft: #40250f; --gap: #ff7a9c; --gap-soft: #45152b; --gap-ink: #ff9db5;
+  --hero: #232c63;
   --hi: #ffd43b; --hi-ink: #2a2000;
   --hard: 4px 4px 0 #000; --hard-sm: 2px 2px 0 #000; --hard-lg: 7px 7px 0 #000;
   --shadow: 0 1px 2px #0006, 0 8px 24px #0005;
@@ -34,7 +36,7 @@
     --bg: #0c1020; --grid: rgba(143, 155, 255, 0.06); --surface: #141a33; --surface-2: #1b2345; --line: #2a3566;
     --ink: #f1f3ff; --ink-2: #b7bfe6; --ink-3: #8f99c8; --brand: #8f9bff; --brand-ink: #0c1020; --brand-soft: #212a66;
     --maths: #8f9bff; --maths-soft: #212a66; --science: #3fd7a9; --science-soft: #0f3b31;
-    --ok: #4fd68c; --ok-soft: #10392a; --retry: #ffa35c; --retry-soft: #40250f; --gap: #ff7a9c; --gap-soft: #45152b;
+    --ok: #4fd68c; --ok-soft: #10392a; --retry: #ffa35c; --retry-soft: #40250f; --gap: #ff7a9c; --gap-soft: #45152b; --gap-ink: #ff9db5; --hero: #232c63;
     --hard: 4px 4px 0 #000; --hard-sm: 2px 2px 0 #000; --hard-lg: 7px 7px 0 #000;
     --shadow: 0 1px 2px #0006, 0 8px 24px #0005;
     color-scheme: dark;

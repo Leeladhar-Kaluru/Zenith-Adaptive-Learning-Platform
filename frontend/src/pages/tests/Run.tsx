@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { api } from '../../api/client';
-import { clearApiCache, useApi } from '../../api/useApi';
+import { clearApiCache, useApi, emitProgress } from '../../api/useApi';
 import type { Band, TestSession, TestSummary } from '../../api/types';
 import { useFx } from '../../fx/fx';
 import { Icon } from '../../icons/Icon';
@@ -55,7 +55,7 @@ export default function Run() {
   async function finish() {
     if (submitted.current) return;
     submitted.current = true; setBusy(true);
-    try { const out = await api<TestSession>(`/assessments/${id}/submit`, { method: 'POST' }); clearApiCache(); setData(out); }
+    try { const out = await api<TestSession>(`/assessments/${id}/submit`, { method: 'POST' }); clearApiCache(); setData(out); emitProgress(); }
     catch (e) { submitted.current = false; toast((e as Error).message, 'err'); } finally { setBusy(false); }
   }
 

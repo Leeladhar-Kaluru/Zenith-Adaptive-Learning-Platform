@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { track } from '../track/tracker';
-import { prefetch } from '../api/useApi';
+import { prefetch, emitProgress } from '../api/useApi';
 import { Credits } from '../lesson/Credits';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { api } from '../api/client';
@@ -61,6 +61,7 @@ export default function LessonPage() {
     setBusy(true);
     try {
       const r = await api<{ xp: number; newBadges: string[] }>('/progress', { method: 'POST', body: { lessonId: data.id, action: 'complete' } });
+      emitProgress();
       clearApiCache();
       const go = () => nav(data.nextId ? `/lesson/${data.nextId}` : `/learn/${data.chapterSlug}`);
       fx.celebrate({ title: data.nextId ? 'Lesson complete!' : 'Chapter complete!', text: data.nextId ? 'Nice work. Your next lesson is ready.' : 'You finished every lesson in this chapter.', icon: data.nextId ? 'star' : 'trophy', cta: data.nextId ? 'Next lesson' : 'Back to chapter', onClose: go });

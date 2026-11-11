@@ -64,6 +64,7 @@ export default function ClassView() {
           <Chip icon="lock">Code {cls.joinCode}</Chip>
           <Button size="sm" variant="ghost" icon="share" onClick={() => { void navigator.clipboard?.writeText(cls.joinCode); toast('Class code copied', 'ok'); }}>Copy</Button>
           <Button to={`/teacher/assign?class=${cls.id}`} size="sm" icon="clipboard">Assign work</Button>
+          <Button to={`/classes/${cls.id}`} size="sm" variant="ghost" icon="bell">Announcements</Button>
         </div>
       </div>
       {classes.length > 1 && <Segmented label="Class" value={cls.id} onChange={(v) => { window.location.assign(`/teacher/class/${v}`); }} options={classes.map((c) => ({ value: c.id, label: c.name }))} />}

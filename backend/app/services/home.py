@@ -100,6 +100,13 @@ def next_steps(db: Session, profile: Profile) -> list[dict]:
     return ranked
 
 
+def stats(db: Session, profile: Profile) -> dict:
+    """Same numbers as /today, without building the whole day: used by the header after every answer."""
+    sid = profile.id
+    row = engage.today_row(db, sid)
+    return {"xp": streaks.level(engage.total_xp(db, sid)), "streak": engage.streak_info(db, sid), "todayXp": row.xp if row else 0}
+
+
 def today(db: Session, profile: Profile) -> dict:
     sid = profile.id
     steps = next_steps(db, profile)

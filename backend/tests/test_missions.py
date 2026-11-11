@@ -78,3 +78,30 @@ def test_map_shows_mastery_and_marks_what_unlocks_next(db, client, student):
 def test_today_carries_the_same_mission_without_a_second_request(db, client, student):
     today = client.get(f"{API}/today", headers=auth(student)).json()
     assert today["mission"] == mission(client, student)
+
+
+def test_stats_endpoint_tracks_xp_and_streak_right_after_an_answer(db, client, student):
+    import uuid
+    from app.models import Item
+    before = client.get(f"{API}/stats", headers=auth(student)).json()
+    assert before["xp"]["xp"] == 0 and before["streak"]["days"] == 0 and before["todayXp"] == 0
+    item = db.scalar(select(Item).where(Item.status == "published", Item.kind == "mcq"))
+    r = client.post(f"{API}/evidence", headers=auth(student), json={"itemId": str(item.id), "response": {"choice": item.answer_spec["correct"]}, "hintsUsed": 0, "ms": 5000,
+                                                                     "context": "solve", "clientEventId": uuid.uuid4().hex}).json()
+    after = client.get(f"{API}/stats", headers=auth(student)).json()
+    assert r["xp"] > 0 and after["xp"]["xp"] == r["xp"] and after["todayXp"] == r["xp"] and after["streak"]["days"] == 1
+    assert after == {k: client.get(f"{API}/today", headers=auth(student)).json()[k] for k in ("xp", "streak", "todayXp")}   # one truth, two endpoints
+
+
+def test_stats_is_light_and_student_only(db, client, student):
+    from sqlalchemy import event
+    from app.core.database import engine
+    n = {"n": 0}
+    hit = lambda *a: n.__setitem__("n", n["n"] + 1)
+    event.listen(engine, "before_cursor_execute", hit)
+    try:
+        client.get(f"{API}/stats", headers=auth(student))
+    finally:
+        event.remove(engine, "before_cursor_execute", hit)
+    assert n["n"] <= 6
+    assert client.get(f"{API}/stats", headers=auth(make_profile(db, "teacher"))).status_code == 403

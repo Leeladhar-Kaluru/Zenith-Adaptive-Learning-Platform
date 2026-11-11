@@ -43,6 +43,18 @@ class Assignment(Base):
     __table_args__ = (CheckConstraint("kind in ('lesson','practice','test','revision')", name="ck_assignment_kind"),)
 
 
+class Announcement(Base):
+    """A teacher's notice to one class. Plain text only; students of that class can read it, nobody else."""
+    __tablename__ = "announcements"
+    id = uuid_pk()
+    classroom_id = Column(UUID(as_uuid=True), ForeignKey("classrooms.id", ondelete="CASCADE"), nullable=False, index=True)
+    author_id = Column(UUID(as_uuid=True), ForeignKey("profiles.id", ondelete="SET NULL"))
+    title = Column(String(120), nullable=False)
+    body = Column(Text, nullable=False)
+    pinned = Column(Boolean, nullable=False, default=False)
+    created_at = now_col()
+
+
 class TeacherDecision(Base):
     """Teacher accepted or dismissed a ZENITH suggestion. Teachers always have the last word."""
     __tablename__ = "teacher_decisions"

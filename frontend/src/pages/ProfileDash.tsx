@@ -13,7 +13,7 @@ export interface Battle {
 }
 interface Topic { id: string; title: string; subject: string; grade: number; understanding: number; answers: number; correct: number; band: string; confidence: string; practice: string }
 interface Dash {
-  generatedAt: string;
+  generatedAt: string; fading: Array<Topic & { recall: number }>;
   me: { nickname: string | null; avatar: string | null; grade: number | null; xp: { level: number; xp: number; into?: number; next?: number }; streak: { days: number } };
   today: { answers: number; correct: number; minutes: number };
   days: Array<{ day: string; answers: number; correct: number; minutes: number }>;
@@ -133,7 +133,11 @@ export function Dashboard() {
         <Card><h3>Work on next</h3>
           {d.focus.length === 0 ? <p className="muted sm" style={{ marginTop: 8 }}>No weak topics found yet. Topics appear here after at least three answers.</p> : d.focus.map((t) => (
             <div key={t.id} className={s.between} style={{ marginTop: 10 }}><div><strong>{t.title}</strong><div className="sm muted">{t.correct} of {t.answers} right · {Math.round(t.understanding * 100)}% · confidence {t.confidence}</div></div><Button to={t.practice} size="sm" variant="brand">Practise</Button></div>))}
+          <div style={{ marginTop: 12 }}><Button to="/check" size="sm" variant="ghost" icon="compass">Take an adaptive check</Button></div>
         </Card>
+        {d.fading.length > 0 && <Card><h3>Fading from memory</h3>
+          {d.fading.map((t) => <div key={t.id} className={s.between} style={{ marginTop: 10 }}><div><strong>{t.title}</strong><div className="sm muted">You knew this well, but it may be fading: about {Math.round(t.recall * 100)}% likely to be remembered now.</div></div><Button to={t.practice} size="sm" variant="ghost">Refresh</Button></div>)}
+          <p className="sm muted" style={{ marginTop: 10 }}>A simple forgetting-curve estimate from how much you practised and how long ago.</p></Card>}
         <Card><h3>Your strengths</h3>
           {d.strong.length === 0 ? <p className="muted sm" style={{ marginTop: 8 }}>Topics you know well show up here.</p> : d.strong.map((t) => (
             <div key={t.id} style={{ marginTop: 10 }}><strong>{t.title}</strong><div className="sm muted">{t.correct} of {t.answers} right · {Math.round(t.understanding * 100)}%</div></div>))}

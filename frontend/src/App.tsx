@@ -9,6 +9,7 @@ const Landing = lazy(() => import('./pages/Landing'));
 const Auth = lazy(() => import('./pages/Auth'));
 const Onboarding = lazy(() => import('./pages/Onboarding'));
 const Pipeline = lazy(() => import('./pages/review/Pipeline'));
+const AdaptiveCheck = lazy(() => import('./pages/AdaptiveCheck'));
 const ArenaPage = lazy(() => import('./pages/Arena'));
 const HomePage = lazy(() => import('./pages/Home'));
 const Learn = lazy(() => import('./pages/Learn'));
@@ -71,6 +72,7 @@ export default function App() {
           <Route path="/practice" element={<Guard roles={['student']}><Practice /></Guard>} />
           <Route path="/progress" element={<Guard roles={['student']}><Progress /></Guard>} />
           <Route path="/explore" element={<Guard roles={['student']}><Explore /></Guard>} />
+          <Route path="/check" element={<Guard roles={['student']}><AdaptiveCheck /></Guard>} />
           <Route path="/arena" element={<Guard roles={['student']}><ArenaPage /></Guard>} />
           <Route path="/classes" element={<Guard roles={['student']}><MyClasses /></Guard>} />
           <Route path="/classes/:id" element={<Guard roles={['student', 'teacher', 'admin']}><ClassRoom /></Guard>} />

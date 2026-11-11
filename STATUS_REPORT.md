@@ -203,3 +203,15 @@ HELD (not published): `sound-and-vibration` (written as Class 8). Reviewers foun
 Reviewer notes still open (judgment, not errors): Class 7 solving-equations placement unverified against the current Ganita Prakash; chapter numbers come from third-party sites, not the NCERT PDFs; several misconception tags only loosely fit their option; the `^` caret notation in some plain-text fields (stems, cards) depends on the renderer.
 
 Maps: rivers (23), peaks (6) and mountain ranges, plateaus and desert (12 approximate areas) were imported from Natural Earth (public domain) in the same frame as the approved India map, and approved under your reviewer account. The Atlas draws them as switchable layers (lessons use `overlays:`). Not yet used by a lesson.
+
+## Arena, profile dashboard, pipeline, adaptive engine, more chapters (2026-11-11, latest)
+
+Commands run (all on the local test schema unless noted): `pytest` for each new area (quiz 10, dashboard 2, pipeline 8, adaptive 5, pattern/subject filter 3, sim schema 23, physics 17 JS tests) all pass; the full backend suite was last run before these features (315 passed, 1 failed, fixed and re-run alone) and has not been re-run since. `python -m app.cli backup` then `verify` before migrations 008 and 009; both applied to production (alembic head 009).
+
+Shipped: Practice subject filter (counts from the database); Arena page and 1v1 ranked quiz (migration 008) with Supabase Realtime pings and polling fallback, quiz Elo separate from the learner model, battle history on the Profile; live Profile dashboard with a Dexie snapshot for offline; notifications (bell, new-lesson fan-out on publish); content pipeline (migration 009: jobs, drafts, requesters; discovery from vetted sources, evaluator scorecard, deterministic infographics, reviewer Pipeline screen, daily cron entry in vercel.json); coverage view with "Ask for more lessons"; adaptive check (Rasch MAP estimate, information-based item choice, early stop, interval) and forgetting-curve retention; simulations friction, optics, transformations; chapters for English, Hindi (held), Telugu (held), Friction, Transformations, Mirrors and lenses, Social Science 6/8/9/10, English 6/8, Class 10 Arithmetic progressions.
+
+Verified in the browser (local, dev tokens): quiz match end to end, dashboard with real answers, Arena, Learn coverage and the bell, simulations, adaptive check flow. NOT verified: Supabase Realtime push (needs real sessions; policies confirmed present in the project), the deployed site, 360 px layouts of the new pages.
+
+Blockers and decisions for the owner: `CRON_SECRET` is not set in Vercel, so the scheduled pipeline run is off; AI drafting needs `ENABLE_REMOTE_AI` and `GROQ_API_KEY` in production; Hindi and Telugu chapters need a native-language reviewer before publishing; Vercel Hobby limits cron to once a day (set for 03:00 IST).
+
+Next: offline pack suggestions from the recommendation engine; confidence tap and calibration; more chapters in every class and subject (coverage table shows the gaps); remaining simulations (atoms 3D, mixtures, reactions, cells, organs, Maths lab); re-run the full backend suite.

@@ -116,3 +116,48 @@ def test_a_very_detailed_boundary_is_simplified_so_it_fits_the_size_limit():
     fitted = naturalearth.project(gj)
     assert len(fitted["features"][0]["d"]) < len(dense["geometry"]["coordinates"][0]) * 8          # far fewer points than the source
     assert big > 0
+
+
+def _outlined():
+    states = [_state("North", "TL-N", 70, 20), _state("South", "TL-S", 70, 10)]
+    outline = {"type": "Feature", "properties": {"NAME": "Testland (official outline)", "OUTLINE": True, "NOTE": "Includes areas that others administer."},
+               "geometry": {"type": "Polygon", "coordinates": [[[68, 8], [76, 8], [76, 26], [68, 26], [68, 8]]]}}
+    return {"type": "FeatureCollection", "features": [*states, outline]}
+
+
+def test_an_outline_is_drawn_underneath_widens_the_frame_and_is_never_a_place():
+    out = naturalearth.project(_outlined())
+    assert [f["id"] for f in out["features"]] == ["TL-N", "TL-S"]            # the outline cannot be tapped or found
+    assert out["outline"].startswith("M") and out["note"] == "Includes areas that others administer."
+    plain = naturalearth.project({"type": "FeatureCollection", "features": _outlined()["features"][:2]})
+    assert out["viewBox"] != plain["viewBox"]                                  # the frame now has room for the whole outline
+    nums = [float(n) for n in __import__("re").findall(r"-?\d+(?:\.\d+)?", out["outline"] + "".join(f["d"] for f in out["features"]))]
+    assert min(nums) >= 0 and max(nums) <= 1000
+    assert "outline" not in plain and "note" not in plain
+
+
+def test_students_receive_the_outline_and_note_for_an_approved_layer(client, db):
+    from app.ingest.assets import approve_asset
+    rev, st = make_profile(db, "reviewer"), make_profile(db, "student")
+    a = naturalearth.import_geojson(db, _outlined(), "outlined-test", rev.id)
+    approve_asset(db, a.id, rev.id)
+    body = client.get(f"{API}/datasets/{a.id}", headers=auth(st)).json()
+    assert body["outline"].startswith("M") and "administer" in body["note"] and len(body["features"]) == 2
+
+
+def test_the_india_outline_builder_joins_states_and_the_official_boundary_and_refuses_a_mismatch():
+    pytest.importorskip("shapely")
+    from app.ingest import india_outline
+    states = {"type": "FeatureCollection", "features": [_state("North", "TL-N", 70, 20), _state("South", "TL-S", 70, 10)]}
+    official = {"type": "FeatureCollection", "features": [
+        {"type": "Feature", "properties": {"NAME": "India", "ADM0_A3": "IND"}, "geometry": {"type": "Polygon", "coordinates": [[[68, 8], [76, 8], [76, 26], [68, 26], [68, 8]]]}},
+        {"type": "Feature", "properties": {"NAME": "Elsewhere", "ADM0_A3": "ELS"}, "geometry": {"type": "Polygon", "coordinates": [[[0, 0], [1, 0], [1, 1], [0, 0]]]}}]}
+    joined = india_outline.build(states, official)
+    assert len(joined["features"]) == 3 and joined["features"][-1]["properties"]["OUTLINE"] is True
+    assert "not drawn" in joined["features"][-1]["properties"]["NOTE"]
+    assert len(naturalearth.project(joined)["features"]) == 2
+    far = {"type": "FeatureCollection", "features": [_state("Far", "TL-F", 10, 50)]}
+    with pytest.raises(india_outline.OutlineError, match="outside the official outline"):
+        india_outline.build(far, official)
+    with pytest.raises(india_outline.OutlineError, match="exactly one India"):
+        india_outline.build(states, {"type": "FeatureCollection", "features": []})

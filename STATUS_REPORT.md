@@ -183,3 +183,11 @@ With your OK I downloaded `ne_10m_admin_1_states_provinces.geojson` (40.7 MB, pu
 DO NOT APPROVE YET: Natural Earth draws Jammu and Kashmir and Ladakh by present control, which differs from the boundary of India as officially published by the Survey of India (and used in NCERT maps). Maps of India shown to students in India should follow the official boundary. A reviewer must decide how to handle the north (Natural Earth publishes an India-viewpoint country outline, but no India-viewpoint states layer) before this layer is approved.
 
 Not done: rivers and mountains layers, and the lessons that would use the map and datasets.
+
+## India map: official outline added (2026-11-11, later)
+
+Per your choice, the northern boundary now follows India's officially published outline. I downloaded `ne_10m_admin_0_countries_ind.geojson` (13.2 MB, public domain, Natural Earth's India-viewpoint country file) and `app/ingest/india_outline.py` joins it to the states layer: the 36 states stay selectable as drawn, and the complete official outline is a decorative layer underneath (new `outline` and `note` fields, passed through the API and drawn by the Atlas). Aksai Chin and the northwest areas are inside the drawn boundary. I did NOT invent the divisions inside the areas that Pakistan and China administer (no data exists in the source), so they appear as one undivided shape; a caption tells students this. The builder refuses a states layer that does not fit inside the outline. 3 new tests (13 map tests pass); `shapely` was added to requirements-ops.txt only (not production).
+
+New pending layer in production: `ne-10m-india-states-official-outline`, 215 kB, id c67c5680-3d07-4874-a0c8-69d7d16ddff1. The earlier layer (`ne-10m-admin1-india-states`, id f830578b-71fa-4a6e-bc13-47e356638d65) draws the north by present control and should be retired, not approved: `python -m app.cli asset retire f830578b-71fa-4a6e-bc13-47e356638d65 <your-reviewer-email> "superseded by the official outline"`.
+
+Before approving the new layer a reviewer must compare it with the Survey of India's published map of India. I could not do that comparison. I also have not yet seen the outline in the Atlas component itself (checked in a standalone render and by tests).

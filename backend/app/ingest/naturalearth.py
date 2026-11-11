@@ -68,17 +68,22 @@ def _ring(ring, xy, tol: float) -> str:
 
 
 def project(geojson: dict, fit: bool | None = None) -> dict:
-    """GeoJSON polygons -> {viewBox, features:[{id, name, d}]}. Only a name and a code are kept; points and lines are skipped."""
-    feats = []
+    """GeoJSON polygons -> {viewBox, features:[{id, name, d}]} (+ optional outline and note).
+    A feature marked OUTLINE is not a place: it is a complete boundary drawn underneath, with a plain-language NOTE shown to students."""
+    feats, outline_rings, note = [], [], ""
     for f in geojson.get("features", []):
         geom, props = f.get("geometry") or {}, f.get("properties") or {}
         rings = _outer_rings(geom)
+        if props.get("OUTLINE"):
+            outline_rings = rings
+            note = str(props.get("NOTE") or "").strip()[:400]
+            continue
         name = str(props.get("NAME") or props.get("ADMIN") or "").strip()
         if rings and name:
             feats.append((name, props, rings))
     if not feats:
         raise GeoError("The map has no countries I can draw.")
-    xy, view_box, tol = _transform([r for _, _, rings in feats for r in rings], fit)
+    xy, view_box, tol = _transform([r for _, _, rings in feats for r in rings] + outline_rings, fit)
     features, seen = [], set()
     for name, props, rings in feats:
         d = "".join(_ring(r, xy, tol * 0.8) for r in rings)
@@ -92,7 +97,13 @@ def project(geojson: dict, fit: bool | None = None) -> dict:
         features.append({"id": code, "name": name, "d": d})
     if not features:
         raise GeoError("The map has no countries I can draw.")
-    return {"viewBox": view_box, "features": features}
+    out = {"viewBox": view_box, "features": features}
+    outline = "".join(_ring(r, xy, tol * 0.8) for r in outline_rings)
+    if outline:
+        out["outline"] = outline
+        if note:
+            out["note"] = note
+    return out
 
 
 def import_geojson(db: Session, geojson: dict, external_id: str, actor_id: uuid.UUID | None, url: str = "https://www.naturalearthdata.com/", fit: bool | None = None) -> SourceAsset:

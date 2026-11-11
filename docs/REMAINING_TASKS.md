@@ -81,3 +81,9 @@ STILL TO DO (new or unchanged):
 3. Case-based and assertion-reason tagging on items (explicit field) so every pattern can be filtered.
 4. Upgrade 14 of the older lessons' reviewer notes; more Maths and Science chapters (see section D); Hindi and Telugu versions once the English set is stable.
 5. Remaining simulations (section E), 1v1 quiz (section C5), production smoke test with real accounts (section B2), chat with three accounts (needs A1).
+
+## Source-to-lesson pipeline (added)
+`python -m app.cli source list|import|draft`. Fetch (robots.txt, vetted hosts only) -> licence check on the page -> clean/filter -> pending credited asset -> reviewer approves -> AI-assisted draft (JSON, `ai_assisted`, diagram left as TODO) -> gates -> named review.
+- Vetted: NASA, USGS Water Science School, NOAA Ocean Service (US-government public domain; text with its own copyright notice is dropped).
+- Refused on purpose (see `textsource.REFUSED`): OpenStax (CC BY-NC-SA and an AI-ingestion ban), NCERT, Wikipedia (share-alike), Khan, CK-12, NROER.
+- Proven live: NOAA "What are tides?" imported as pending. The draft step is only tested with a fake model (needs ENABLE_REMOTE_AI=true). Some pages (USGS water cycle) are script-rendered and yield no text.

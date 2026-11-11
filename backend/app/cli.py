@@ -14,6 +14,9 @@
   map import <file.geojson> <external-id> [frame-from=<asset-id>] [label=<text>]   import a Natural Earth GeoJSON a person has downloaded (public domain, left pending)
   assets-due              imported assets whose licence re-check date has passed
   new-lesson <content-dir> <chapter-slug> <lesson-slug> "<Title>" <concept,concept>   start a lesson from a TODO skeleton
+  source list             the vetted open-licence text sources and the pages imported from them
+  source import <source-key> <url> [keywords=a,b]   fetch one page, check its licence, clean and filter the text, store it pending approval
+  source draft <asset-id> <content-dir> <chapter-slug> <lesson-slug> "<Title>" <concept-id>   draft a simple lesson from an APPROVED text source (needs ENABLE_REMOTE_AI=true)
   asset commons <File:Title>   import one Wikimedia Commons file (licence checked, left pending)
   asset retire <asset-id> <reviewer-email> "<reason>"   take an asset out of use at once (licence changed, removed upstream)
   asset approve <asset-id> <reviewer-email>   approve an imported asset for use in lessons
@@ -133,6 +136,51 @@ def main(argv: list[str]) -> int:
                 return 1
             print(f"{a.status}: {a.external_id} [{a.licence_id}] {len(a.data['features'])} countries, {a.bytes // 1024} kB  (id {a.id})")
             return 0
+        if cmd == "source":
+            from sqlalchemy import select
+            from app.ingest import textsource
+            from app.models import SourceAsset
+            if argv[2] == "list":
+                for k, v in textsource.SOURCES.items():
+                    print(f"{k}: {v.name}, https://{v.hosts[0]}{v.path_prefix}, licence {v.licence}")
+                for a in db.scalars(select(SourceAsset).where(SourceAsset.kind == "text").order_by(SourceAsset.retrieved_at)):
+                    print(f"  {a.status:9} {a.id}  {len(a.data['sections'])} sections  {a.url}")
+                return 0
+            if argv[2] == "import":
+                opts = dict(x.split("=", 1) for x in argv[5:] if "=" in x)
+                try:
+                    a = textsource.import_page(db, argv[4], argv[3], None, keywords=[k for k in opts.get("keywords", "").split(",") if k])
+                except Exception as e:  # noqa: BLE001  (fetch, robots, licence and extraction problems all print the same way)
+                    print("Not imported:", e)
+                    return 1
+                print(f"{a.status}: {a.data['title']} [{a.licence_id}] {len(a.data['sections'])} sections, {a.bytes // 1024} kB  (id {a.id})")
+                return 0
+            if argv[2] == "draft":
+                import asyncio
+                import uuid as _uuid
+                from app.cms import autodraft, importer
+                from app.cms.draft import write_lesson
+                from app.core.ai_provider import ai_provider
+                from app.services import tutor
+                if not tutor.ai_enabled():
+                    print("The model is switched off. Run this command with ENABLE_REMOTE_AI=true (it sends only the public source text, never student data).")
+                    return 1
+                asset_id, root, chapter_slug, slug, title, concept_id = _uuid.UUID(argv[3]), Path(argv[4]), argv[5], argv[6], argv[7], argv[8]
+                tree = importer.load_tree(root)
+                ch = next((c for c, _ in tree.chapters if c.slug == chapter_slug), None)
+                concept = next((c for c in tree.concepts if c.id == concept_id), None)
+                if ch is None or concept is None:
+                    print("Unknown chapter or concept id in", root)
+                    return 1
+                try:
+                    lesson = asyncio.run(autodraft.draft(db.get(SourceAsset, asset_id), grade=ch.grade, subject=ch.subject, slug=slug, title=title, concept_id=concept_id,
+                                                         concept_title=concept.title, generate=ai_provider.generate_chat))
+                    path = write_lesson(root, chapter_slug, lesson)
+                except Exception as e:  # noqa: BLE001
+                    print("No draft written:", e)
+                    return 1
+                print(f"Draft written: {path}. {len(lesson['items'])} questions. It still has TODOs (the diagram at least): finish them, run `python -m app.cms.dryrun`, then send it to review.")
+                return 0
         if cmd == "assets-due":
             from app.ingest.recheck import due_for_recheck
             rows = due_for_recheck(db)

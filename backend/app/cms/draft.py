@@ -49,19 +49,24 @@ def find_todos(obj, path: str = "") -> list[str]:
     return out
 
 
-def write_skeleton(root: Path, chapter_slug: str, slug: str, title: str, concept_ids: list[str]) -> Path:
+def write_lesson(root: Path, chapter_slug: str, lesson: dict) -> Path:
+    """Write a lesson dict into its chapter folder and list it in chapter.yaml. Refuses to overwrite."""
     root = Path(root)
     chapter_file = next((p for p in (root / "chapters").glob("*/chapter.yaml") if yaml.safe_load(p.read_text(encoding="utf-8")).get("slug") == chapter_slug), None)
     if chapter_file is None:
         raise DraftError(f"No chapter '{chapter_slug}' in {root}.")
-    target = chapter_file.parent / "lessons" / f"{slug}.yaml"
+    target = chapter_file.parent / "lessons" / f"{lesson['slug']}.yaml"
     if target.exists():
         raise DraftError(f"{target.name} already exists; choose another slug.")
-    if not concept_ids:
-        raise DraftError("Give at least one concept id.")
     target.parent.mkdir(exist_ok=True)
-    target.write_text(yaml.safe_dump(new_lesson_skeleton(chapter_slug, slug, title, concept_ids), sort_keys=False, allow_unicode=True, width=120), encoding="utf-8")
+    target.write_text(yaml.safe_dump(lesson, sort_keys=False, allow_unicode=True, width=120), encoding="utf-8")
     chapter = yaml.safe_load(chapter_file.read_text(encoding="utf-8"))
-    chapter.setdefault("lessons", []).append(slug)
+    chapter.setdefault("lessons", []).append(lesson["slug"])
     chapter_file.write_text(yaml.safe_dump(chapter, sort_keys=False, allow_unicode=True, width=120), encoding="utf-8")
     return target
+
+
+def write_skeleton(root: Path, chapter_slug: str, slug: str, title: str, concept_ids: list[str]) -> Path:
+    if not concept_ids:
+        raise DraftError("Give at least one concept id.")
+    return write_lesson(root, chapter_slug, new_lesson_skeleton(chapter_slug, slug, title, concept_ids))

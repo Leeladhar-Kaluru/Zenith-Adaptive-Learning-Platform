@@ -1,0 +1,275 @@
+slug: kriya
+title: క్రియ
+minutes: 20
+language: te
+origin: ai_assisted
+objectives:
+- క్రియ అంటే ఏమిటో చెప్పగలగడం
+- వాక్యంలో క్రియను గుర్తించడం
+- భూత, వర్తమాన, భవిష్యత్ కాలాలను గుర్తించడం
+- క్రియ రూపాన్ని మార్చి వేరే కాలంలో రాయడం
+concepts:
+- telugu-kriya
+blocks:
+- kind: text
+  heading: ఉదయం నుండి రాత్రి వరకు పనులు
+  html: '<p>ఉదయం లేస్తాం, పళ్ళు తోముతాం, అన్నం తింటాం, బడికి వెళ్తాం, చదువుతాం, ఆడతాం. ఇవన్నీ మనం చేసే పనులు.</p><p>పని చేయడాన్ని తెలిపే మాటను <strong>క్రియ</strong> అంటారు. వాక్యంలో ఎవరు ఏ పని చేశారో క్రియ చెబుతుంది. ఉదాహరణకు గోపి అన్నం తిన్నాడు అనే వాక్యంలో ‘తిన్నాడు’ క్రియ.</p>'
+- kind: text
+  heading: కదలని పనులు కూడా క్రియలే
+  html: '<p>నడవడం, పరుగెత్తడం మాత్రమే క్రియలు కావు. ఆలోచించడం, నిద్రపోవడం, నవ్వడం కూడా పనులే. ఇవి చెప్పే మాటలూ క్రియలే. ఆలోచించాడు, నిద్రపోయింది, నవ్వాడు అనేవి క్రియలు.</p>'
+- kind: text
+  heading: 'పని జరిగే సమయం: కాలం'
+  html: '<p>పని ఎప్పుడు జరిగింది అని చెప్పడానికి క్రియ రూపం మారుతుంది. దీన్ని <strong>కాలం</strong> అంటారు.</p><ul><li><strong>భూతకాలం</strong>: జరిగిపోయిన పని. సీత పాడింది.</li><li><strong>వర్తమానకాలం</strong>: ఇప్పుడు జరుగుతున్న పని. సీత పాడుతోంది.</li><li><strong>భవిష్యత్ కాలం</strong>: తరువాత జరిగే పని. సీత పాడుతుంది.</li></ul>'
+- kind: figure
+  svg: '<svg viewBox="0 0 320 130" role="img"><g fill="none" stroke="#14193a" stroke-width="2"><rect x="8" y="30" width="96" height="86" rx="8"/><rect x="112" y="30" width="96" height="86" rx="8"/><rect x="216" y="30" width="96" height="86" rx="8"/><path d="M104 73 H112 M208 73 H216"/></g><g font-size="13" font-weight="700" fill="currentColor" text-anchor="middle"><text x="56" y="22">భూతకాలం</text><text x="160" y="22">వర్తమానకాలం</text><text x="264" y="22">భవిష్యత్ కాలం</text></g><g font-size="14" fill="currentColor" text-anchor="middle"><text x="56" y="62">నిన్న</text><text x="56" y="92">పాడింది</text><text x="160" y="62">ఇప్పుడు</text><text x="160" y="92">పాడుతోంది</text><text x="264" y="62">రేపు</text><text x="264" y="92">పాడుతుంది</text></g></svg>'
+  alt: మూడు పెట్టెలు ఎడమ నుండి కుడికి ఉన్నాయి. నిన్న పాడింది, ఇప్పుడు పాడుతోంది, రేపు పాడుతుంది అని మూడు కాలాల రూపాలు రాసి ఉన్నాయి.
+  caption: ఒకే పని మూడు కాలాల్లో. నిన్న పాడింది, ఇప్పుడు పాడుతోంది, రేపు పాడుతుంది.
+- kind: example
+  heading: ఉదాహరణ 1
+  prompt: ‘రాము పాఠం చదువుతాడు’ అనే వాక్యాన్ని భూతకాలంలో రాయండి.
+  steps:
+  - 'వాక్యంలో క్రియ ‘చదువుతాడు’. ఇది తరువాత జరిగే పనిని చెబుతుంది, అంటే భవిష్యత్ కాలం.'
+  - 'పని జరిగిపోయిందని చెప్పాలి. కాబట్టి క్రియ రూపం మారాలి: చదువుతాడు నుండి చదివాడు.'
+  - 'మిగిలిన మాటలు అలాగే ఉంటాయి: రాము, పాఠం.'
+  - 'సరిచూద్దాం: ‘రాము పాఠం చదివాడు’. పని జరిగిపోయింది, కాబట్టి ఇది భూతకాలం.'
+- kind: example
+  heading: ఉదాహరణ 2
+  prompt: ‘పక్షులు ఆకాశంలో ఎగురుతున్నాయి’ అనే వాక్యంలో క్రియను, కాలాన్ని కనుక్కోండి.
+  steps:
+  - 'వాక్యంలోని పేర్లు: పక్షులు, ఆకాశం. ఇవి నామవాచకాలు.'
+  - 'మిగిలిన మాట ‘ఎగురుతున్నాయి’. ఇది పనిని చెబుతుంది, కాబట్టి అది క్రియ.'
+  - 'పక్షులు ఇప్పుడు ఎగురుతున్నాయి, అంటే పని జరుగుతూ ఉంది. కాబట్టి ఇది వర్తమానకాలం.'
+  - 'సరిచూద్దాం: క్రియ ఎగురుతున్నాయి, కాలం వర్తమానకాలం.'
+- kind: callout
+  tone: watch
+  html: 'తరచుగా వచ్చే పొరపాటు: ‘పాడుతోంది’ వంటి క్రియను భూతకాలం అనుకోవడం. పని ఇంకా జరుగుతూ ఉంటే అది వర్తమానకాలం. జరిగిపోతే భూతకాలం.'
+- kind: callout
+  tone: real
+  html: 'రోజువారీ జీవితంలో: నిన్న ఏం చేశావు, ఇప్పుడు ఏం చేస్తున్నావు, రేపు ఏం చేస్తావు అని అడిగితే మూడు కాలాల క్రియలనే వాడుతాం.'
+- kind: check
+  item: q-kr-1
+- kind: check
+  item: q-kr-2
+- kind: check
+  item: q-kr-3
+- kind: summary
+  points:
+  - 'పని చేయడాన్ని తెలిపే మాటను క్రియ అంటారు.'
+  - 'ఆలోచించడం, నిద్రపోవడం వంటి కదలని పనులు చెప్పే మాటలు కూడా క్రియలే.'
+  - 'భూతకాలం జరిగిపోయిన పనిని, వర్తమానకాలం ఇప్పుడు జరుగుతున్న పనిని, భవిష్యత్ కాలం తరువాత జరిగే పనిని చెబుతాయి.'
+  - 'కాలం మారితే క్రియ రూపం మారుతుంది, నామవాచకం మారదు.'
+items:
+- key: q-kr-1
+  kind: mcq
+  stem: ఈ మాటల్లో క్రియ ఏది?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: telugu-kriya
+  explanation: ‘నవ్వాడు’ ఒక పనిని చెబుతుంది, కాబట్టి అది క్రియ. పర్వతం, పుస్తకం, గురువు పేర్లు, అంటే నామవాచకాలు.
+  hints:
+  - ఏ మాట పనిని చెబుతుంది?
+  correct: B
+  options:
+  - key: A
+    text: పర్వతం
+    misconception: noun-is-verb
+  - key: B
+    text: నవ్వాడు
+  - key: C
+    text: పుస్తకం
+    misconception: noun-is-verb
+  - key: D
+    text: గురువు
+    misconception: noun-is-verb
+- key: q-kr-2
+  kind: mcq
+  stem: క్రియ అంటే ఏమిటి?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: telugu-kriya
+  explanation: పని చేయడాన్ని తెలిపే మాటను క్రియ అంటారు. పేరును తెలిపే మాట నామవాచకం.
+  hints:
+  - క్రియ అంటే పని.
+  correct: B
+  options:
+  - key: A
+    text: పేరును తెలిపే మాట
+    misconception: noun-is-verb
+  - key: B
+    text: పని చేయడాన్ని తెలిపే మాట
+  - key: C
+    text: ప్రదేశం పేరు
+    misconception: noun-is-verb
+  - key: D
+    text: వాక్యం మొదటి మాట
+- key: q-kr-3
+  kind: mcq
+  stem: ‘గోపి అన్నం తిన్నాడు’ అనే వాక్యంలో క్రియ ఏది?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: telugu-kriya
+  explanation: గోపి వ్యక్తి పేరు, అన్నం వస్తువు పేరు. ‘తిన్నాడు’ పనిని చెబుతుంది, కాబట్టి అది క్రియ.
+  hints:
+  - గోపి ఏం చేశాడు?
+  correct: C
+  options:
+  - key: A
+    text: గోపి
+    misconception: noun-is-verb
+  - key: B
+    text: అన్నం
+    misconception: noun-is-verb
+  - key: C
+    text: తిన్నాడు
+  - key: D
+    text: ఈ వాక్యంలో క్రియ లేదు
+- key: q-kr-4
+  kind: mcq
+  stem: ‘ఆలోచించాడు’ అనే మాట క్రియ అవుతుందా?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: telugu-kriya
+  explanation: ఆలోచించడం కూడా ఒక పని. శరీరం కదలకపోయినా ఆ పనిని చెప్పే మాట క్రియ అవుతుంది.
+  hints:
+  - ఆలోచించడం ఒక పనా, కాదా?
+  correct: B
+  options:
+  - key: A
+    text: కాదు, ఎందుకంటే క్రియ శరీరం కదిలే పనిని మాత్రమే చెబుతుంది
+    misconception: verb-only-movement
+  - key: B
+    text: అవును, ఎందుకంటే అది ఒక పనిని తెలుపుతుంది
+  - key: C
+    text: కాదు, ఎందుకంటే అది ఒక పేరు
+    misconception: noun-is-verb
+  - key: D
+    text: కాదు, ఎందుకంటే క్రియలు పరుగెత్తడం, నడవడం వంటివే
+    misconception: verb-only-movement
+- key: q-kr-5
+  kind: mcq
+  stem: ‘రవి నిన్న పాఠం చదివాడు’ అనే వాక్యంలోని క్రియ ఏ కాలాన్ని తెలుపుతుంది?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: telugu-kriya
+  explanation: పని నిన్న జరిగిపోయింది. జరిగిపోయిన పనిని చెప్పేది భూతకాలం.
+  hints:
+  - పని జరిగిపోయిందా, జరుగుతోందా, జరగబోతోందా?
+  correct: A
+  options:
+  - key: A
+    text: భూతకాలం
+  - key: B
+    text: వర్తమానకాలం
+  - key: C
+    text: భవిష్యత్ కాలం
+  - key: D
+    text: చెప్పలేము
+- key: q-kr-6
+  kind: mcq
+  stem: ‘సీత ఇప్పుడు పాడుతోంది’ అనే వాక్యం ఏ కాలంలో ఉంది?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: telugu-kriya
+  explanation: సీత ఇప్పుడు పాడుతూ ఉంది, అంటే పని జరుగుతోంది. అది వర్తమానకాలం.
+  hints:
+  - ‘ఇప్పుడు’ అనే మాట చూడండి. పని ముగిసిందా?
+  correct: D
+  options:
+  - key: A
+    text: భూతకాలం
+    misconception: ongoing-is-past
+  - key: B
+    text: భవిష్యత్ కాలం
+  - key: C
+    text: ఏ కాలమూ కాదు
+  - key: D
+    text: వర్తమానకాలం
+- key: q-kr-7
+  kind: numeric
+  stem: 'ఈ వాక్యాల్లో భవిష్యత్ కాలంలో ఉన్నవి ఎన్ని? (1) రాము రేపు ఊరికి వెళ్తాడు. (2) అమ్మ నిన్న కూర వండింది. (3) మేము వచ్చే వారం ఆడతాం. (4) పక్షి ఇప్పుడు ఎగురుతోంది.'
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: telugu-kriya
+  explanation: (1) వెళ్తాడు, (3) ఆడతాం తరువాత జరిగే పనులు, అంటే భవిష్యత్ కాలం. (2) వండింది భూతకాలం. (4) ఎగురుతోంది వర్తమానకాలం. కాబట్టి 2.
+  hints:
+  - ప్రతి వాక్యంలో క్రియను గుర్తించి, పని ఎప్పుడు జరుగుతుందో చూడండి.
+  value: 2
+  tolerance: 0.0
+  verify: '2'
+- key: q-kr-8
+  kind: mcq
+  stem: ‘గోపి పళ్ళు తింటాడు’ అనే వాక్యాన్ని భూతకాలంలోకి మార్చి రాస్తే సరైనది ఏది?
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: telugu-kriya
+  explanation: జరిగిపోయిన పని కాబట్టి క్రియ ‘తిన్నాడు’ అవుతుంది. ‘తింటున్నాడు’ ఇప్పుడు జరుగుతున్న పని, అంటే వర్తమానకాలం.
+  hints:
+  - జరిగిపోయిన పనిని చెప్పే క్రియ రూపం ఏది?
+  correct: C
+  options:
+  - key: A
+    text: గోపి పళ్ళు తింటున్నాడు
+    misconception: ongoing-is-past
+  - key: B
+    text: గోపి పళ్ళు తింటాడు
+  - key: C
+    text: గోపి పళ్ళు తిన్నాడు
+  - key: D
+    text: గోపి పళ్ళు తినాలి
+- key: q-kr-9
+  pattern: case
+  kind: mcq
+  stem: 'అమ్మ ఉదయం లేచింది. ఆమె ఇప్పుడు వంట చేస్తోంది. సాయంత్రం అందరికీ భోజనం పెడుతుంది. ఈ మూడు వాక్యాల్లోని క్రియలు వరుసగా ఏ కాలాలను తెలుపుతున్నాయి?'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: telugu-kriya
+  explanation: లేచింది జరిగిపోయిన పని, అంటే భూతకాలం. చేస్తోంది ఇప్పుడు జరుగుతున్న పని, అంటే వర్తమానకాలం. పెడుతుంది తరువాత జరిగే పని, అంటే భవిష్యత్ కాలం.
+  hints:
+  - ‘ఉదయం’, ‘ఇప్పుడు’, ‘సాయంత్రం’ అనే మాటలను, క్రియ రూపాన్ని చూడండి.
+  correct: B
+  options:
+  - key: A
+    text: భవిష్యత్, వర్తమాన, భూత
+  - key: B
+    text: భూత, వర్తమాన, భవిష్యత్
+  - key: C
+    text: వర్తమాన, వర్తమాన, భవిష్యత్
+  - key: D
+    text: భూత, భూత, భవిష్యత్
+    misconception: ongoing-is-past
+misconceptions:
+- code: noun-is-verb
+  concept: telugu-kriya
+  description: పేర్లను తెలిపే మాటలను (నామవాచకాలను) క్రియలు అనుకోవడం.
+- code: verb-only-movement
+  concept: telugu-kriya
+  description: క్రియ అంటే నడవడం, పరుగెత్తడం వంటి శరీరం కదిలే పనులు మాత్రమే అనుకోవడం.
+- code: ongoing-is-past
+  concept: telugu-kriya
+  description: ఇప్పుడు జరుగుతున్న పనిని చెప్పే క్రియను భూతకాలం అనుకోవడం.
+cards:
+- key: kriya-card-1
+  concept: telugu-kriya
+  front: క్రియ అంటే ఏమిటి?
+  back: పని చేయడాన్ని తెలిపే మాట.
+- key: kriya-card-2
+  concept: telugu-kriya
+  front: మూడు కాలాల పేర్లు చెప్పండి.
+  back: భూతకాలం, వర్తమానకాలం, భవిష్యత్ కాలం.
+- key: kriya-card-3
+  concept: telugu-kriya
+  front: ‘పాడింది’ ఏ కాలం?
+  back: భూతకాలం, ఎందుకంటే పని జరిగిపోయింది.
+- key: kriya-card-4
+  concept: telugu-kriya
+  front: ‘పాడుతోంది’ ఏ కాలం?
+  back: వర్తమానకాలం, ఎందుకంటే పని ఇప్పుడు జరుగుతోంది.

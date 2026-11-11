@@ -1,0 +1,309 @@
+slug: sangya-ke-bhed
+title: संज्ञा और उसके भेद
+minutes: 20
+language: hi
+objectives:
+- संज्ञा की पहचान करना
+- व्यक्तिवाचक, जातिवाचक और भाववाचक संज्ञा में अंतर बताना
+- विशेषण या दूसरी संज्ञा से भाववाचक संज्ञा बनाना
+concepts:
+- hindi-sangya
+origin: ai_assisted
+blocks:
+- kind: text
+  heading: नाम के बिना बात कैसे होगी?
+  html: '<p>सोचिए, आपको अपनी कक्षा की किसी चीज़ के बारे में बताना है, पर आपके पास किसी का नाम नहीं है। न बच्चे का, न किताब का, न स्कूल का। बात करना बहुत कठिन हो जाएगा। इन्हीं नामों को हम <strong>संज्ञा</strong> कहते हैं।</p><p>किसी व्यक्ति, वस्तु, स्थान या भाव के नाम को <strong>संज्ञा</strong> कहते हैं। जैसे: <em>सीमा, किताब, स्कूल, खुशी</em>। वाक्य “सीमा रोज़ स्कूल जाती है” में “सीमा” और “स्कूल” संज्ञाएँ हैं।</p>'
+- kind: text
+  heading: संज्ञा के तीन भेद
+  html: '<p><strong>व्यक्तिवाचक संज्ञा</strong> किसी एक विशेष व्यक्ति, वस्तु या स्थान का नाम बताती है। जैसे: मोहन, गंगा, दिल्ली, ताजमहल।</p><p><strong>जातिवाचक संज्ञा</strong> एक ही प्रकार की सभी चीज़ों का नाम बताती है। जैसे: लड़का, नदी, शहर, पर्वत। यहाँ किसी एक का विशेष नाम नहीं है।</p><p><strong>भाववाचक संज्ञा</strong> किसी गुण, दशा या भाव का नाम बताती है। जैसे: मिठास, बचपन, ईमानदारी, खुशी। इन्हें हम देख या छू नहीं सकते, केवल अनुभव कर सकते हैं।</p>'
+- kind: figure
+  svg: '<svg viewBox="0 0 360 170" role="img"><g fill="none" stroke="#14193a" stroke-width="2"><rect x="8" y="30" width="108" height="100" rx="8"/><rect x="126" y="30" width="108" height="100" rx="8"/><rect x="244" y="30" width="108" height="100" rx="8"/></g><g font-size="13" font-weight="700" fill="currentColor" text-anchor="middle"><text x="62" y="22">व्यक्तिवाचक</text><text x="180" y="22">जातिवाचक</text><text x="298" y="22">भाववाचक</text></g><g font-size="13" fill="currentColor" text-anchor="middle"><text x="62" y="62">मोहन</text><text x="62" y="86">गंगा</text><text x="62" y="110">दिल्ली</text><text x="180" y="62">लड़का</text><text x="180" y="86">नदी</text><text x="180" y="110">शहर</text><text x="298" y="62">मिठास</text><text x="298" y="86">बचपन</text><text x="298" y="110">खुशी</text></g><text x="62" y="152" font-size="11" text-anchor="middle" fill="currentColor">एक विशेष नाम</text><text x="180" y="152" font-size="11" text-anchor="middle" fill="currentColor">पूरी जाति का नाम</text><text x="298" y="152" font-size="11" text-anchor="middle" fill="currentColor">गुण, दशा या भाव</text></svg>'
+  alt: तीन डिब्बों वाला चित्र जिसमें व्यक्तिवाचक, जातिवाचक और भाववाचक संज्ञा के तीन-तीन उदाहरण लिखे हैं।
+  caption: संज्ञा के तीन भेद और हर भेद के उदाहरण।
+- kind: text
+  heading: भाववाचक संज्ञा कैसे बनती है?
+  html: '<p>बहुत-सी भाववाचक संज्ञाएँ दूसरे शब्दों से बनती हैं। विशेषण (गुण बताने वाले शब्द) से: मीठा से <em>मिठास</em>, सुंदर से <em>सुंदरता</em>, बूढ़ा से <em>बुढ़ापा</em>। जातिवाचक संज्ञा से: बच्चा से <em>बचपन</em>, चोर से <em>चोरी</em>, मित्र से <em>मित्रता</em>।</p><p>शब्द के अंत में जुड़ने वाले ये टुकड़े (ता, पन, आस, आपा, ई) पहचान में मदद करते हैं।</p>'
+- kind: example
+  heading: हल किया हुआ उदाहरण
+  prompt: 'वाक्य में संज्ञाएँ छाँटिए और उनका भेद बताइए: “मोहन ने मीठा आम खाया और उसकी मिठास की प्रशंसा की।”'
+  steps:
+  - 'पहले वाक्य को ध्यान से पढ़ें और नाम बताने वाले शब्द ढूँढें: मोहन, आम, मिठास।'
+  - '“मोहन” किसी एक विशेष व्यक्ति का नाम है, इसलिए यह व्यक्तिवाचक संज्ञा है।'
+  - '“आम” एक पूरी जाति का नाम है, किसी एक आम का विशेष नाम नहीं, इसलिए यह जातिवाचक संज्ञा है।'
+  - '“मिठास” स्वाद का गुण है, जिसे छू नहीं सकते, इसलिए यह भाववाचक संज्ञा है। जाँच: “मीठा” गुण बताता है, इसलिए वह संज्ञा नहीं है।'
+- kind: example
+  heading: हल किया हुआ उदाहरण
+  prompt: '“सुंदर” शब्द से भाववाचक संज्ञा बनाइए और उसे वाक्य में प्रयोग कीजिए।'
+  steps:
+  - '“सुंदर” गुण बताने वाला शब्द है। इसे संज्ञा बनाने के लिए अंत में “ता” जोड़ना है।'
+  - 'सुंदर + ता = सुंदरता।'
+  - 'वाक्य: “इस बाग़ की सुंदरता सबको भाती है।”'
+  - 'जाँच: “सुंदरता” गुण का नाम है और इसे देख या छू नहीं सकते, इसलिए यह भाववाचक संज्ञा है।'
+- kind: callout
+  tone: watch
+  html: 'गुण बताने वाला हर शब्द भाववाचक संज्ञा नहीं होता। “सुंदर” गुण बताता है, इसलिए वह विशेषण है। गुण का नाम “सुंदरता” भाववाचक संज्ञा है।'
+- kind: callout
+  tone: real
+  html: 'पत्र या पते में अपना नाम, गाँव और शहर लिखना व्यक्तिवाचक संज्ञाओं का प्रयोग है। ये नाम केवल एक विशेष व्यक्ति या स्थान के होते हैं, इसलिए पते में इन्हें ठीक-ठीक लिखना ज़रूरी है।'
+- kind: check
+  item: q-sg-1
+- kind: check
+  item: q-sg-2
+- kind: check
+  item: q-sg-3
+- kind: summary
+  points:
+  - 'किसी व्यक्ति, वस्तु, स्थान या भाव के नाम को संज्ञा कहते हैं।'
+  - 'संज्ञा के तीन भेद हैं: व्यक्तिवाचक (विशेष नाम), जातिवाचक (पूरी जाति का नाम) और भाववाचक (गुण, दशा या भाव का नाम)।'
+  - 'भाववाचक संज्ञा को हम छू नहीं सकते। वह विशेषण या दूसरी संज्ञा से बनती है, जैसे मीठा से मिठास, बच्चा से बचपन।'
+items:
+- key: q-sg-1
+  kind: mcq
+  stem: संज्ञा किसे कहते हैं?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: hindi-sangya
+  explanation: किसी व्यक्ति, वस्तु, स्थान या भाव के नाम को संज्ञा कहते हैं। संज्ञा केवल व्यक्ति का नाम नहीं होती और गुण बताने वाला शब्द विशेषण कहलाता है।
+  hints:
+  - संज्ञा का अर्थ नाम से जुड़ा है।
+  correct: B
+  options:
+  - key: A
+    text: केवल किसी व्यक्ति के नाम को
+    misconception: sangya-sirf-vyakti
+  - key: B
+    text: किसी व्यक्ति, वस्तु, स्थान या भाव के नाम को
+  - key: C
+    text: काम के होने को बताने वाले शब्द को
+  - key: D
+    text: किसी के गुण बताने वाले शब्द को
+    misconception: visheshan-bhav
+- key: q-sg-2
+  kind: mcq
+  stem: इनमें से व्यक्तिवाचक संज्ञा कौन-सी है?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: hindi-sangya
+  explanation: “कावेरी” एक विशेष नदी का नाम है, इसलिए यह व्यक्तिवाचक संज्ञा है। नदी, शहर और लड़की पूरी जाति के नाम हैं, इसलिए ये जातिवाचक संज्ञाएँ हैं।
+  hints:
+  - किसी एक विशेष का नाम ढूँढिए, पूरी जाति का नहीं।
+  correct: C
+  options:
+  - key: A
+    text: नदी
+    misconception: jati-vyakti-mix
+  - key: B
+    text: शहर
+    misconception: jati-vyakti-mix
+  - key: C
+    text: कावेरी
+  - key: D
+    text: लड़की
+    misconception: jati-vyakti-mix
+- key: q-sg-3
+  kind: mcq
+  stem: “बच्चा” कौन-सी संज्ञा है?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: hindi-sangya
+  explanation: “बच्चा” सभी बच्चों के लिए आने वाला नाम है, किसी एक विशेष बच्चे का नाम नहीं है। इसलिए यह जातिवाचक संज्ञा है।
+  hints:
+  - क्या यह किसी एक बच्चे का विशेष नाम है?
+  correct: B
+  options:
+  - key: A
+    text: व्यक्तिवाचक संज्ञा
+    misconception: jati-vyakti-mix
+  - key: B
+    text: जातिवाचक संज्ञा
+  - key: C
+    text: भाववाचक संज्ञा
+  - key: D
+    text: इनमें से कोई नहीं
+- key: q-sg-4
+  kind: mcq
+  stem: “ईमानदारी” कौन-सी संज्ञा है?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: hindi-sangya
+  explanation: ईमानदारी एक गुण का नाम है। इसे देखा या छुआ नहीं जा सकता, केवल अनुभव किया जा सकता है, इसलिए यह भाववाचक संज्ञा है।
+  hints:
+  - क्या आप ईमानदारी को हाथ में पकड़ सकते हैं?
+  correct: C
+  options:
+  - key: A
+    text: व्यक्तिवाचक संज्ञा
+    misconception: jati-vyakti-mix
+  - key: B
+    text: जातिवाचक संज्ञा
+    misconception: jati-vyakti-mix
+  - key: C
+    text: भाववाचक संज्ञा
+  - key: D
+    text: विशेषण
+    misconception: visheshan-bhav
+- key: q-sg-5
+  kind: mcq
+  stem: “आगरा में ताजमहल देखने बहुत पर्यटक आते हैं।” इस वाक्य में कितनी व्यक्तिवाचक संज्ञाएँ हैं?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: hindi-sangya
+  explanation: “आगरा” और “ताजमहल” विशेष नाम हैं, इसलिए दो व्यक्तिवाचक संज्ञाएँ हैं। “पर्यटक” सभी घूमने वालों के लिए आता है, इसलिए वह जातिवाचक संज्ञा है।
+  hints:
+  - विशेष नाम गिनिए। “पर्यटक” किसी एक का नाम नहीं है।
+  correct: B
+  options:
+  - key: A
+    text: एक
+  - key: B
+    text: दो
+  - key: C
+    text: तीन
+    misconception: jati-vyakti-mix
+  - key: D
+    text: चार
+    misconception: jati-vyakti-mix
+- key: q-sg-6
+  kind: mcq
+  stem: “मीठा” शब्द से बनी भाववाचक संज्ञा कौन-सी है?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: hindi-sangya
+  explanation: “मीठा” से “मिठास” बनता है। यह स्वाद के गुण का नाम है, इसलिए भाववाचक संज्ञा है। मीठा, मीठी और मीठे गुण बताने वाले विशेषण के रूप हैं।
+  hints:
+  - गुण का नाम चाहिए, गुण बताने वाला शब्द नहीं।
+  correct: A
+  options:
+  - key: A
+    text: मिठास
+  - key: B
+    text: मीठा
+    misconception: visheshan-bhav
+  - key: C
+    text: मीठी
+    misconception: visheshan-bhav
+  - key: D
+    text: मीठे
+    misconception: visheshan-bhav
+- key: q-sg-7
+  kind: mcq
+  stem: किस वाक्य में भाववाचक संज्ञा है?
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: hindi-sangya
+  explanation: “सच्चाई” गुण का नाम है, इसलिए भाववाचक संज्ञा है। दूसरे वाक्यों में बच्चे, मैदान, सीता, नदी, माँ और रोटी जातिवाचक या व्यक्तिवाचक संज्ञाएँ हैं।
+  hints:
+  - ऐसा नाम खोजिए जिसे छू नहीं सकते।
+  correct: B
+  options:
+  - key: A
+    text: बच्चे मैदान में खेल रहे हैं।
+  - key: B
+    text: उसकी सच्चाई से सब खुश हुए।
+  - key: C
+    text: सीता नदी के किनारे बैठी है।
+  - key: D
+    text: माँ ने रोटी बनाई।
+- key: q-sg-8
+  kind: mcq
+  stem: 'अभिकथन (A): “गंगा” व्यक्तिवाचक संज्ञा है। कारण (R): “गंगा” एक विशेष नदी का नाम है।'
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: hindi-sangya
+  explanation: दोनों कथन सही हैं। “गंगा” किसी एक विशेष नदी का नाम है, इसीलिए वह व्यक्तिवाचक संज्ञा है। इसलिए R, A की सही व्याख्या करता है।
+  hints:
+  - व्यक्तिवाचक संज्ञा किसका नाम होती है?
+  correct: A
+  options:
+  - key: A
+    text: A और R दोनों सही हैं और R, A की सही व्याख्या करता है
+  - key: B
+    text: A और R दोनों सही हैं, पर R, A की सही व्याख्या नहीं करता
+  - key: C
+    text: A सही है, पर R गलत है
+    misconception: jati-vyakti-mix
+  - key: D
+    text: A गलत है, पर R सही है
+    misconception: jati-vyakti-mix
+- key: q-sg-9
+  kind: mcq
+  stem: 'अभिकथन (A): “सुंदर” भाववाचक संज्ञा है। कारण (R): “सुंदर” शब्द किसी का गुण बताता है।'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: hindi-sangya
+  explanation: A गलत है, क्योंकि “सुंदर” गुण बताने वाला विशेषण है। गुण का नाम “सुंदरता” भाववाचक संज्ञा है। R सही है, क्योंकि “सुंदर” सचमुच गुण बताता है।
+  hints:
+  - “सुंदर” और “सुंदरता” में कौन-सा गुण का नाम है?
+  correct: D
+  options:
+  - key: A
+    text: A और R दोनों सही हैं और R, A की सही व्याख्या करता है
+    misconception: visheshan-bhav
+  - key: B
+    text: A और R दोनों सही हैं, पर R, A की सही व्याख्या नहीं करता
+    misconception: visheshan-bhav
+  - key: C
+    text: A सही है, पर R गलत है
+    misconception: visheshan-bhav
+  - key: D
+    text: A गलत है, पर R सही है
+- key: q-sg-10
+  pattern: case
+  kind: mcq
+  stem: 'रोहन अपने गाँव से जयपुर गया। वहाँ उसने हवा महल देखा और उसकी सुंदरता देखकर हैरान रह गया। इस अनुच्छेद में भाववाचक संज्ञा कौन-सी है?'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: hindi-sangya
+  explanation: “सुंदरता” गुण का नाम है, इसलिए भाववाचक संज्ञा है। “जयपुर” विशेष स्थान का नाम है, इसलिए व्यक्तिवाचक संज्ञा है। “गाँव” जातिवाचक संज्ञा है।
+  hints:
+  - ऐसा नाम खोजिए जो गुण या भाव बताए और जिसे छू न सकें।
+  correct: C
+  options:
+  - key: A
+    text: जयपुर
+    misconception: jati-vyakti-mix
+  - key: B
+    text: गाँव
+    misconception: jati-vyakti-mix
+  - key: C
+    text: सुंदरता
+  - key: D
+    text: रोहन
+    misconception: jati-vyakti-mix
+misconceptions:
+- code: sangya-sirf-vyakti
+  concept: hindi-sangya
+  description: सोचता है कि संज्ञा केवल किसी व्यक्ति के नाम को कहते हैं, वस्तु, स्थान और भाव के नाम को नहीं।
+- code: jati-vyakti-mix
+  concept: hindi-sangya
+  description: जातिवाचक और व्यक्तिवाचक संज्ञा को मिला देता है। विशेष नाम को जाति का नाम या जाति के नाम को विशेष नाम समझ लेता है।
+- code: visheshan-bhav
+  concept: hindi-sangya
+  description: गुण बताने वाले शब्द (विशेषण) को ही भाववाचक संज्ञा मान लेता है, जबकि भाववाचक संज्ञा गुण का नाम होती है।
+cards:
+- key: sangya-ke-bhed-card-1
+  concept: hindi-sangya
+  front: संज्ञा किसे कहते हैं?
+  back: किसी व्यक्ति, वस्तु, स्थान या भाव के नाम को संज्ञा कहते हैं।
+- key: sangya-ke-bhed-card-2
+  concept: hindi-sangya
+  front: व्यक्तिवाचक संज्ञा क्या होती है? एक उदाहरण दीजिए।
+  back: किसी एक विशेष व्यक्ति, वस्तु या स्थान का नाम, जैसे दिल्ली।
+- key: sangya-ke-bhed-card-3
+  concept: hindi-sangya
+  front: जातिवाचक संज्ञा क्या होती है? एक उदाहरण दीजिए।
+  back: एक ही प्रकार की सभी चीज़ों का नाम, जैसे नदी।
+- key: sangya-ke-bhed-card-4
+  concept: hindi-sangya
+  front: भाववाचक संज्ञा क्या होती है? एक उदाहरण दीजिए।
+  back: गुण, दशा या भाव का नाम, जिसे छू नहीं सकते, जैसे बचपन।

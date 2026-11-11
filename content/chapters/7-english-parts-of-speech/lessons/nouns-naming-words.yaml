@@ -1,0 +1,268 @@
+slug: nouns-naming-words
+title: Nouns, the naming words
+minutes: 20
+objectives:
+- Say what a noun is and find nouns in a sentence
+- Tell a common noun from a proper noun and use capital letters correctly
+- Recognise idea nouns such as kindness and bravery
+- See that one word can be a noun in one sentence and another kind of word in another
+concepts:
+- english-nouns
+origin: ai_assisted
+blocks:
+- kind: text
+  heading: Every thing has a name
+  html: '<p>Think of your morning. You wake up in a room. You drink tea or milk from a cup. You walk to school with a friend. Every one of these words names something. A word that names a person, a place, an animal, a thing or an idea is called a <strong>noun</strong>.</p><p>Here are some nouns: teacher, kitchen, parrot, bicycle, courage. Without nouns we could not say who or what a sentence is about.</p>'
+- kind: figure
+  svg: <svg viewBox="0 0 320 200" role="img"><g fill="none" stroke="#14193a" stroke-width="2"><rect x="115" y="80" width="90" height="40" rx="8"/><path d="M135 80 L70 44 M160 80 V44 M185 80 L250 44 M135 120 L90 156 M185 120 L230 156"/></g><text x="160" y="105" text-anchor="middle" font-size="16" font-weight="700" fill="currentColor">NOUN</text><text x="62" y="36" text-anchor="middle" font-size="12" fill="currentColor">person - doctor</text><text x="160" y="36" text-anchor="middle" font-size="12" fill="currentColor">place - market</text><text x="258" y="36" text-anchor="middle" font-size="12" fill="currentColor">animal - goat</text><text x="84" y="174" text-anchor="middle" font-size="12" fill="currentColor">thing - umbrella</text><text x="238" y="174" text-anchor="middle" font-size="12" fill="currentColor">idea - honesty</text></svg>
+  alt: A diagram with the word noun in the middle and five lines to a person, a place, an animal, a thing and an idea, each with an example.
+  caption: A noun can name a person, a place, an animal, a thing or an idea.
+- kind: text
+  heading: Common nouns and proper nouns
+  html: '<p>A <strong>common noun</strong> names any one of a kind. City, river, boy and festival are common nouns. A <strong>proper noun</strong> names one particular person, place or thing. Jaipur, Godavari, Diwali and Monday are proper nouns.</p><p>A proper noun always begins with a capital letter, even in the middle of a sentence. A common noun gets a capital letter only when it is the first word of a sentence.</p>'
+- kind: text
+  heading: Nouns you cannot touch
+  html: '<p>Some nouns name things you cannot see or touch. They name ideas, feelings or qualities. Happiness, anger, friendship, bravery and hunger are such nouns. If you can put <em>the</em> or <em>some</em> in front of the word and it still makes sense, it is often a noun.</p>'
+- kind: example
+  heading: Worked example
+  prompt: 'Find the nouns in this sentence: Meena carried the water to the kitchen.'
+  steps:
+  - 'Ask: who or what is named? Read the sentence word by word.'
+  - 'Meena is a person, so Meena is a noun. It is a proper noun because it is one particular person.'
+  - 'Water is a thing, and kitchen is a place. Both are common nouns.'
+  - 'Carried is what Meena did, and the, to are small joining words. They do not name anything. So the nouns are Meena, water and kitchen.'
+- kind: example
+  heading: Worked example
+  prompt: 'Fix the capital letters: on sunday we went to hyderabad by train.'
+  steps:
+  - 'The first word of a sentence needs a capital letter. So On starts with O.'
+  - 'Sunday is the name of one particular day, so it is a proper noun. It becomes Sunday.'
+  - 'Hyderabad is the name of one particular city. It becomes Hyderabad.'
+  - 'Train is a common noun and stays small. Check: On Sunday we went to Hyderabad by train.'
+- kind: callout
+  tone: watch
+  html: A capital letter does not make a word a proper noun. The first word of every sentence has a capital letter, whatever kind of word it is. In the sentence Run to the shop, the word Run is a verb, not a proper noun.
+- kind: callout
+  tone: real
+  html: On a railway ticket, names of stations, days and passengers are proper nouns. Writing them with capital letters makes them easy to read. Words such as train, seat and platform are common nouns.
+- kind: check
+  item: q-nn-1
+- kind: check
+  item: q-nn-2
+- kind: check
+  item: q-nn-3
+- kind: summary
+  points:
+  - 'A noun names a person, place, animal, thing or idea.'
+  - 'A common noun names any one of a kind. A proper noun names one particular person, place or thing and begins with a capital letter.'
+  - 'Ideas and feelings such as bravery and happiness are nouns even though you cannot touch them.'
+  - 'A word can be a noun in one sentence and a different kind of word in another, so read the whole sentence.'
+items:
+- key: q-nn-1
+  kind: mcq
+  stem: Which of these words is a noun?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: english-nouns
+  explanation: Bicycle is a thing, so it is a noun. Quickly tells how, run tells what is done, and happy tells about a person or thing.
+  hints:
+  - A noun names something. Which word is the name of a thing?
+  correct: B
+  options:
+  - key: A
+    text: quickly
+  - key: B
+    text: bicycle
+  - key: C
+    text: run
+  - key: D
+    text: happy
+- key: q-nn-2
+  kind: mcq
+  stem: What does a noun do?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: english-nouns
+  explanation: A noun names a person, a place, an animal, a thing or an idea. It is not limited to people.
+  hints:
+  - Think of the five kinds of names in the diagram.
+  correct: C
+  options:
+  - key: A
+    text: It names only people
+    misconception: noun-people-only
+  - key: B
+    text: It names only things you can touch
+    misconception: noun-touch-only
+  - key: C
+    text: It names a person, place, animal, thing or idea
+  - key: D
+    text: It tells what someone does
+- key: q-nn-3
+  kind: mcq
+  stem: Which of these is a proper noun?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: english-nouns
+  explanation: Mumbai is the name of one particular city, so it is a proper noun. City, river and festival can name many places or events.
+  hints:
+  - A proper noun names one particular person, place or thing.
+  correct: B
+  options:
+  - key: A
+    text: city
+  - key: B
+    text: Mumbai
+  - key: C
+    text: river
+  - key: D
+    text: festival
+- key: q-nn-4
+  kind: numeric
+  stem: 'How many nouns are in this sentence? Meena put the books in her bag.'
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: english-nouns
+  explanation: The nouns are Meena, books and bag. That is 3. Her is not a noun, because it stands for a person instead of naming her. Put and in are not nouns.
+  hints:
+  - Look for a person, a thing and another thing.
+  value: 3
+  tolerance: 0.0
+  verify: '1+1+1'
+- key: q-nn-5
+  kind: mcq
+  stem: 'Is happiness a noun?'
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: english-nouns
+  explanation: Yes. Happiness names a feeling, which is an idea. A noun does not have to be something you can touch, and it needs a capital letter only at the start of a sentence.
+  hints:
+  - Can an idea or a feeling have a name?
+  correct: B
+  options:
+  - key: A
+    text: No, because you cannot touch it
+    misconception: noun-touch-only
+  - key: B
+    text: Yes, because it names a feeling, which is an idea
+  - key: C
+    text: Yes, but only when it starts with a capital letter
+    misconception: capital-means-proper
+  - key: D
+    text: No, because it names a person
+- key: q-nn-6
+  kind: mcq
+  stem: 'Which word needs a capital letter, apart from the first word? Sunita visited the fort in jaipur with her uncle.'
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: english-nouns
+  explanation: Jaipur is the name of one particular city, so it is a proper noun and needs a capital letter. Fort and uncle are common nouns, and visited is a verb.
+  hints:
+  - Which word names one particular place?
+  correct: B
+  options:
+  - key: A
+    text: fort
+    misconception: capital-means-proper
+  - key: B
+    text: jaipur
+  - key: C
+    text: uncle
+    misconception: capital-means-proper
+  - key: D
+    text: visited
+- key: q-nn-7
+  kind: mcq
+  stem: In which sentence is the word light used as a noun?
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: english-nouns
+  explanation: In Switch on the light, light names a thing, so it is a noun. In the bag is light and a light blue shirt it describes, and in light the lamp it is an action.
+  hints:
+  - Ask whether light names a thing, tells what someone does, or describes a thing.
+  correct: A
+  options:
+  - key: A
+    text: Switch on the light.
+  - key: B
+    text: The bag is light.
+    misconception: word-one-class
+  - key: C
+    text: Please light the lamp.
+    misconception: word-one-class
+  - key: D
+    text: This is a light blue shirt.
+    misconception: word-one-class
+- key: q-nn-8
+  kind: numeric
+  stem: 'How many proper nouns are in this sentence? On Monday, Ravi and Asha took a train from Pune to Nashik.'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: english-nouns
+  explanation: The proper nouns are Monday, Ravi, Asha, Pune and Nashik. That is 5. Train is a common noun.
+  hints:
+  - A day, two people and two cities are named. Is train one particular thing?
+  value: 5
+  tolerance: 0.0
+  verify: '2+3'
+- key: q-nn-9
+  pattern: case
+  kind: mcq
+  stem: 'Read the passage. Every summer, a girl travels by bus to her grandmother''s house near Guntur. The garden has mango trees and a well. In the evening, her grandmother tells stories under the stars. Which list has only common nouns from the passage?'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: english-nouns
+  explanation: Garden, well and stories all name things or places of a kind, so they are common nouns. Guntur is a proper noun, and Every is not a noun at all.
+  hints:
+  - Cross out any list that has a word naming one particular place, or a word that is not a noun.
+  correct: B
+  options:
+  - key: A
+    text: girl, bus, Guntur
+    misconception: capital-means-proper
+  - key: B
+    text: garden, well, stories
+  - key: C
+    text: summer, Guntur, well
+    misconception: capital-means-proper
+  - key: D
+    text: trees, stars, Every
+misconceptions:
+- code: noun-people-only
+  concept: english-nouns
+  description: Thinks a noun names only people.
+- code: noun-touch-only
+  concept: english-nouns
+  description: Thinks a noun must name something you can see or touch, so ideas and feelings are not nouns.
+- code: capital-means-proper
+  concept: english-nouns
+  description: Thinks any word with a capital letter is a proper noun, or that a proper noun is a common noun.
+- code: word-one-class
+  concept: english-nouns
+  description: Thinks a word is always the same kind of word, whatever sentence it is in.
+cards:
+- key: nouns-card-1
+  concept: english-nouns
+  front: What is a noun?
+  back: A word that names a person, place, animal, thing or idea.
+- key: nouns-card-2
+  concept: english-nouns
+  front: What is the difference between a common noun and a proper noun?
+  back: A common noun names any one of a kind, such as city. A proper noun names one particular one, such as Jaipur, and begins with a capital letter.
+- key: nouns-card-3
+  concept: english-nouns
+  front: Give two nouns that name ideas or feelings.
+  back: Bravery and happiness. You cannot touch them, but they are still nouns.
+- key: nouns-card-4
+  concept: english-nouns
+  front: Does the first word of a sentence always mean a proper noun?
+  back: No. It only needs a capital letter because it starts the sentence.

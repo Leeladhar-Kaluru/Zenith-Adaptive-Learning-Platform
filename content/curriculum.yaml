@@ -4,6 +4,9 @@ subjects:
   - {id: maths, name: Mathematics}
   - {id: science, name: Science}
   - {id: social, name: Social Science}
+  - {id: english, name: English}
+  - {id: hindi, name: Hindi}
+  - {id: telugu, name: Telugu}
 versions:
   - board: cbse
     label: NCERT current editions (to be confirmed by a reviewer)

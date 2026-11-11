@@ -1,0 +1,3 @@
+concepts:
+  - {id: hindi-sangya, title: "संज्ञा और उसके भेद", grade: 7, subject: hindi, description: "संज्ञा की पहचान और उसके तीन भेद: व्यक्तिवाचक, जातिवाचक और भाववाचक।", keywords: [संज्ञा, व्यक्तिवाचक, जातिवाचक, भाववाचक]}
+  - {id: hindi-sarvanam, title: "सर्वनाम और उसके भेद", grade: 7, subject: hindi, description: "संज्ञा के स्थान पर आने वाले शब्द: पुरुषवाचक, प्रश्नवाचक और अनिश्चयवाचक सर्वनाम।", keywords: [सर्वनाम, पुरुषवाचक, प्रश्नवाचक, अनिश्चयवाचक], prerequisites: [{id: hindi-sangya}]}

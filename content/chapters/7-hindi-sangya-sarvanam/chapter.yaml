@@ -1,0 +1,13 @@
+slug: 7-hindi-sangya-sarvanam
+board: cbse
+curriculum: NCERT current editions (to be confirmed by a reviewer)
+grade: 7
+subject: hindi
+title: संज्ञा और सर्वनाम
+summary: संज्ञा के तीन भेद पहचानना और सर्वनाम से संज्ञा की बार-बार आने वाली दोहराई को बचाना सीखें।
+concepts:
+- id: hindi-sangya
+- id: hindi-sarvanam
+lessons:
+- sangya-ke-bhed
+- sarvanam-ke-bhed

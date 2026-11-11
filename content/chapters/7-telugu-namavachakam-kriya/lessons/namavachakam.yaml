@@ -1,0 +1,256 @@
+slug: namavachakam
+title: నామవాచకం
+minutes: 20
+language: te
+origin: ai_assisted
+objectives:
+- నామవాచకం అంటే ఏమిటో చెప్పగలగడం
+- వాక్యంలో నామవాచకాలను గుర్తించడం
+- నామవాచకాన్ని పని చెప్పే మాట (క్రియ) నుండి వేరు చేయడం
+- ఏకవచనం నుండి బహువచనం రాయడం
+concepts:
+- telugu-namavachakam
+blocks:
+- kind: text
+  heading: మన చుట్టూ ఉన్న పేర్లు
+  html: '<p>మన చుట్టూ ఎన్నో మనుషులు, వస్తువులు, ప్రదేశాలు, జంతువులు ఉన్నాయి. వాటన్నింటికీ పేర్లు ఉంటాయి. ఉదాహరణకు అమ్మ, పుస్తకం, బడి, ఆవు.</p><p>వ్యక్తి, వస్తువు, ప్రదేశం లేదా జంతువు పేరును తెలిపే మాటను <strong>నామవాచకం</strong> అంటారు. నామం అంటే పేరు. వాచకం అంటే చెప్పే మాట.</p>'
+- kind: figure
+  svg: '<svg viewBox="0 0 320 140" role="img"><g fill="none" stroke="#14193a" stroke-width="2"><rect x="8" y="30" width="96" height="90" rx="8"/><rect x="112" y="30" width="96" height="90" rx="8"/><rect x="216" y="30" width="96" height="90" rx="8"/></g><g font-size="14" font-weight="700" fill="currentColor" text-anchor="middle"><text x="56" y="22">వ్యక్తి</text><text x="160" y="22">వస్తువు</text><text x="264" y="22">ప్రదేశం</text></g><g font-size="14" fill="currentColor" text-anchor="middle"><text x="56" y="62">అమ్మ</text><text x="56" y="86">గురువు</text><text x="56" y="110">రాముడు</text><text x="160" y="62">పుస్తకం</text><text x="160" y="86">కుర్చీ</text><text x="160" y="110">పెన్ను</text><text x="264" y="62">బడి</text><text x="264" y="86">తోట</text><text x="264" y="110">తిరుపతి</text></g></svg>'
+  alt: మూడు పెట్టెలు ఉన్నాయి. మొదటి పెట్టెలో వ్యక్తుల పేర్లు, రెండవ దానిలో వస్తువుల పేర్లు, మూడవ దానిలో ప్రదేశాల పేర్లు రాసి ఉన్నాయి.
+  caption: నామవాచకాలు మూడు రకాల పేర్లను తెలుపుతాయి. అవి వ్యక్తుల పేర్లు, వస్తువుల పేర్లు, ప్రదేశాల పేర్లు.
+- kind: text
+  heading: సామాన్య పేరు, ప్రత్యేక పేరు
+  html: '<p>కొన్ని పేర్లు ఒకే రకమైన అందరికీ వర్తిస్తాయి. నది, నగరం, పిల్లవాడు అనేవి అలాంటివి. కొన్ని పేర్లు ఒక్కరికే లేదా ఒక్క దానికే ఉంటాయి. గోదావరి, హైదరాబాద్, రాముడు అనేవి అలాంటివి.</p><p>ఈ రెండు రకాలూ నామవాచకాలే.</p>'
+- kind: text
+  heading: ఒకటి, ఎక్కువ
+  html: '<p>ఒక్క దాన్ని తెలిపితే అది <strong>ఏకవచనం</strong>. ఎక్కువ వాటిని తెలిపితే అది <strong>బహువచనం</strong>. బహువచనంలో నామవాచకం రూపం కొంచెం మారుతుంది.</p><ul><li>పుస్తకం, పుస్తకాలు</li><li>పువ్వు, పువ్వులు</li><li>బడి, బడులు</li><li>చెట్టు, చెట్లు</li></ul>'
+- kind: example
+  heading: ఉదాహరణ 1
+  prompt: ‘అమ్మ తోటలో పువ్వులు కోసింది’ అనే వాక్యంలో నామవాచకాలను కనుక్కోండి.
+  steps:
+  - 'వాక్యంలోని మాటలను వేరు చేయండి: అమ్మ, తోట (తోటలో అంటే తోట + లో), పువ్వులు, కోసింది.'
+  - 'ప్రతి మాటను అడగండి: ఇది పేరా? అమ్మ ఒక వ్యక్తి పేరు. తోట ఒక ప్రదేశం పేరు. పువ్వులు వస్తువుల పేరు.'
+  - '‘కోసింది’ ఒక పనిని చెబుతుంది. అది పేరు కాదు. కాబట్టి అది నామవాచకం కాదు.'
+  - 'సరిచూద్దాం: నామవాచకాలు అమ్మ, తోట, పువ్వులు. మూడు పేర్లు ఉన్నాయి.'
+- kind: example
+  heading: ఉదాహరణ 2
+  prompt: ‘చెట్టు’ అనే మాటను బహువచనంలో రాయండి.
+  steps:
+  - 'ఒకటి కంటే ఎక్కువ చెట్లను చెప్పాలి. అంటే బహువచనం కావాలి.'
+  - 'చెట్టు మాటలో ‘ట్టు’ ఉంది. బహువచనంలో అది ‘ట్లు’ గా మారుతుంది. కాబట్టి చెట్లు.'
+  - '‘చెట్టులు’ అని రాయడం తప్పు. ఎందుకంటే ‘లు’ ను నేరుగా చేర్చితే రూపం సరిగా ఉండదు.'
+  - 'సరిచూద్దాం: ఒక చెట్టు, రెండు చెట్లు. ఇది సరైన రూపం.'
+- kind: callout
+  tone: watch
+  html: 'తరచుగా వచ్చే పొరపాటు: పని చెప్పే మాటలను (పరుగెత్తాడు, తిన్నాడు) నామవాచకాలు అనుకోవడం. నామవాచకం పేరును తెలుపుతుంది. పనిని తెలిపే మాట వేరు. దాన్ని తరువాతి పాఠంలో నేర్చుకుందాం.'
+- kind: callout
+  tone: real
+  html: 'రోజువారీ జీవితంలో: మీ పేరు, మీ బడి పేరు, మీ ఊరు పేరు అన్నీ నామవాచకాలే. చిరునామా రాసినప్పుడు మనం నామవాచకాలనే వాడుతాం.'
+- kind: check
+  item: q-nv-1
+- kind: check
+  item: q-nv-2
+- kind: check
+  item: q-nv-3
+- kind: summary
+  points:
+  - 'వ్యక్తి, వస్తువు, ప్రదేశం, జంతువు పేరును తెలిపే మాటను నామవాచకం అంటారు.'
+  - 'సామాన్య పేర్లు (నది), ప్రత్యేక పేర్లు (గోదావరి) రెండూ నామవాచకాలే.'
+  - 'ఒకటిని ఏకవచనం అంటారు, ఎక్కువను బహువచనం అంటారు. రూపం కొంచెం మారుతుంది, ఉదాహరణకు చెట్టు, చెట్లు.'
+  - 'పని చెప్పే మాట నామవాచకం కాదు.'
+items:
+- key: q-nv-1
+  kind: mcq
+  stem: ఈ మాటల్లో నామవాచకం ఏది?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: telugu-namavachakam
+  explanation: ‘బడి’ ఒక ప్రదేశం పేరు, కాబట్టి అది నామవాచకం. మిగిలినవి పనిని తెలిపే మాటలు.
+  hints:
+  - ఏ మాట పేరును చెబుతుంది? ఏ మాట పనిని చెబుతుంది?
+  correct: B
+  options:
+  - key: A
+    text: చదువుతాడు
+    misconception: verb-as-noun
+  - key: B
+    text: బడి
+  - key: C
+    text: నడిచింది
+    misconception: verb-as-noun
+  - key: D
+    text: ఆడుతున్నారు
+    misconception: verb-as-noun
+- key: q-nv-2
+  kind: mcq
+  stem: ఏ మాట ఒక ప్రదేశం పేరు?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: telugu-namavachakam
+  explanation: ‘తిరుపతి’ ఒక ఊరు పేరు, అంటే ప్రదేశం పేరు. తల్లి వ్యక్తి, కుర్చీ వస్తువు, ఆడుతుంది పని చెప్పే మాట.
+  hints:
+  - ఎక్కడ ఉంటామో, ఎక్కడికి వెళ్తామో ఆ పేరు కోసం చూడండి.
+  correct: C
+  options:
+  - key: A
+    text: తల్లి
+  - key: B
+    text: కుర్చీ
+  - key: C
+    text: తిరుపతి
+  - key: D
+    text: ఆడుతుంది
+    misconception: verb-as-noun
+- key: q-nv-3
+  kind: mcq
+  stem: నామవాచకం అంటే ఏమిటి?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: telugu-namavachakam
+  explanation: వ్యక్తి, వస్తువు, ప్రదేశం, జంతువు పేరును తెలిపే మాట నామవాచకం. అది వస్తువుల పేర్లకే పరిమితం కాదు.
+  hints:
+  - నామం అంటే పేరు.
+  correct: B
+  options:
+  - key: A
+    text: పని చేయడాన్ని తెలిపే మాట
+    misconception: verb-as-noun
+  - key: B
+    text: వ్యక్తి, వస్తువు, ప్రదేశం, జంతువుల పేరును తెలిపే మాట
+  - key: C
+    text: వస్తువుల పేర్లను మాత్రమే తెలిపే మాట
+    misconception: noun-only-things
+  - key: D
+    text: వాక్యం చివర ఉండే మాట
+- key: q-nv-4
+  kind: numeric
+  stem: ‘కుక్క ఎముక కొరికింది’ అనే వాక్యంలో నామవాచకాలు ఎన్ని?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: telugu-namavachakam
+  explanation: కుక్క ఒక జంతువు పేరు, ఎముక ఒక వస్తువు పేరు. ఈ రెండూ నామవాచకాలు. ‘కొరికింది’ ఒక పని, కాబట్టి అది నామవాచకం కాదు. మొత్తం 2.
+  hints:
+  - ప్రతి మాటను అడగండి. అది పేరా, పనా?
+  value: 2
+  tolerance: 0.0
+  verify: '2'
+- key: q-nv-5
+  kind: mcq
+  stem: ‘చెట్టు’ యొక్క సరైన బహువచన రూపం ఏది?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: telugu-namavachakam
+  explanation: ‘చెట్టు’ బహువచనంలో ‘చెట్లు’ అవుతుంది. ‘చెట్టులు’ అని రాయడం తప్పు.
+  hints:
+  - ఒక చెట్టు, రెండు ... ?
+  correct: B
+  options:
+  - key: A
+    text: చెట్టులు
+    misconception: plural-direct-lu
+  - key: B
+    text: చెట్లు
+  - key: C
+    text: చెట్టు
+  - key: D
+    text: చెట్టుగా
+- key: q-nv-6
+  kind: mcq
+  stem: ఏ వరుసలో అన్నీ నామవాచకాలే ఉన్నాయి?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: telugu-namavachakam
+  explanation: ఆవు, తోట, గురువు అన్నీ పేర్లు. మిగిలిన వరుసల్లో వెళ్ళింది, చదివాడు, రాసింది, పాడాడు, ఆడింది వంటి పని చెప్పే మాటలు ఉన్నాయి.
+  hints:
+  - ప్రతి వరుసలో పని చెప్పే మాట ఉందేమో చూడండి.
+  correct: C
+  options:
+  - key: A
+    text: పిల్లి, కుర్చీ, వెళ్ళింది
+    misconception: verb-as-noun
+  - key: B
+    text: గురువు, ఊరు, చదివాడు
+    misconception: verb-as-noun
+  - key: C
+    text: ఆవు, తోట, గురువు
+  - key: D
+    text: రాసింది, పాడాడు, ఆడింది
+    misconception: verb-as-noun
+- key: q-nv-7
+  kind: mcq
+  stem: ‘నది’ ఒక సామాన్య పేరు. ‘గోదావరి’ ఒక నదికి ఉన్న ప్రత్యేక పేరు. ఈ రెండింటిలో నామవాచకాలు ఏవి?
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: telugu-namavachakam
+  explanation: ఒక వ్యక్తి, వస్తువు లేదా ప్రదేశం పేరు ఏదైనా నామవాచకమే. సామాన్య పేరు, ప్రత్యేక పేరు రెండూ నామవాచకాలు.
+  hints:
+  - ఇద్దరూ పేర్లేనా కాదా అని ఆలోచించండి.
+  correct: A
+  options:
+  - key: A
+    text: రెండూ నామవాచకాలే
+  - key: B
+    text: గోదావరి మాత్రమే
+  - key: C
+    text: నది మాత్రమే
+  - key: D
+    text: రెండూ కావు
+    misconception: noun-only-things
+- key: q-nv-8
+  pattern: case
+  kind: mcq
+  stem: రాజు ఉదయం పాలు తాగాడు. ‘తాగాడు’ కూడా నామవాచకమే అని రాజు అనుకున్నాడు. రాజు అనుకున్నది సరైనదేనా?
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: telugu-namavachakam
+  explanation: ‘తాగాడు’ ఒక పనిని చెబుతుంది, పేరును కాదు. కాబట్టి అది నామవాచకం కాదు. ‘రాజు’, ‘పాలు’ నామవాచకాలు.
+  hints:
+  - తాగాడు అనే మాట ఏమి చెబుతుంది, పేరునా పనినా?
+  correct: B
+  options:
+  - key: A
+    text: సరైనదే, ఎందుకంటే అది వాక్యంలో ఉంది
+    misconception: verb-as-noun
+  - key: B
+    text: సరైనది కాదు, ఎందుకంటే అది పనిని చెబుతుంది, పేరును కాదు
+  - key: C
+    text: సరైనది కాదు, ఎందుకంటే పాలు కూడా నామవాచకం కాదు
+    misconception: noun-only-things
+  - key: D
+    text: సరైనదే, ఎందుకంటే పని కూడా ఒక వస్తువు
+    misconception: verb-as-noun
+misconceptions:
+- code: verb-as-noun
+  concept: telugu-namavachakam
+  description: పని చెప్పే మాటలను (క్రియలను) నామవాచకాలు అనుకోవడం.
+- code: noun-only-things
+  concept: telugu-namavachakam
+  description: నామవాచకం అంటే వస్తువుల పేర్లు మాత్రమే అనుకోవడం. వ్యక్తులు, ప్రదేశాలు, జంతువుల పేర్లను మరచిపోవడం.
+- code: plural-direct-lu
+  concept: telugu-namavachakam
+  description: బహువచనం చేసేటప్పుడు మాట రూపం మారుతుందని గమనించకుండా నేరుగా ‘లు’ చేర్చడం.
+cards:
+- key: namavachakam-card-1
+  concept: telugu-namavachakam
+  front: నామవాచకం అంటే ఏమిటి?
+  back: వ్యక్తి, వస్తువు, ప్రదేశం, జంతువు పేరును తెలిపే మాట.
+- key: namavachakam-card-2
+  concept: telugu-namavachakam
+  front: మూడు నామవాచకాలు చెప్పండి.
+  back: అమ్మ, పుస్తకం, బడి.
+- key: namavachakam-card-3
+  concept: telugu-namavachakam
+  front: ఏకవచనం, బహువచనం అంటే ఏమిటి?
+  back: ఒకదాన్ని తెలిపితే ఏకవచనం. ఎక్కువ వాటిని తెలిపితే బహువచనం.
+- key: namavachakam-card-4
+  concept: telugu-namavachakam
+  front: ‘చెట్టు’ బహువచనం ఏమిటి?
+  back: చెట్లు.

@@ -1,0 +1,312 @@
+slug: sarvanam-ke-bhed
+title: सर्वनाम और उसके भेद
+minutes: 20
+language: hi
+objectives:
+- सर्वनाम की पहचान करना और उसे संज्ञा की जगह प्रयोग करना
+- उत्तम, मध्यम और अन्य पुरुष के सर्वनाम पहचानना
+- प्रश्नवाचक और अनिश्चयवाचक सर्वनाम पहचानना
+concepts:
+- hindi-sarvanam
+origin: ai_assisted
+blocks:
+- kind: text
+  heading: बार-बार एक ही नाम क्यों?
+  html: '<p>इन वाक्यों को पढ़िए: “सीमा स्कूल गई। सीमा ने बस्ता खोला। सीमा ने किताब निकाली।” एक ही नाम बार-बार आने से सुनने में अच्छा नहीं लगता।</p><p>अब इन्हें ऐसे पढ़िए: “सीमा स्कूल गई। उसने बस्ता खोला। फिर उसने किताब निकाली।” यहाँ “उसने” शब्द “सीमा” की जगह आया है। संज्ञा के स्थान पर आने वाले शब्द को <strong>सर्वनाम</strong> कहते हैं। जैसे: मैं, तुम, वह, कौन, कोई।</p>'
+- kind: text
+  heading: पुरुषवाचक सर्वनाम
+  html: '<p>जो सर्वनाम किसी व्यक्ति के लिए आते हैं, वे <strong>पुरुषवाचक सर्वनाम</strong> कहलाते हैं। इनके तीन भेद हैं।</p><p><strong>उत्तम पुरुष:</strong> बोलने वाला अपने लिए जिन शब्दों का प्रयोग करता है। जैसे: मैं, हम, मेरा।</p><p><strong>मध्यम पुरुष:</strong> सुनने वाले के लिए प्रयोग होने वाले शब्द। जैसे: तुम, आप, तुम्हारा।</p><p><strong>अन्य पुरुष:</strong> जिसके बारे में बात की जा रही हो, उसके लिए प्रयोग होने वाले शब्द। जैसे: वह, वे, उसका।</p>'
+- kind: figure
+  svg: '<svg viewBox="0 0 360 160" role="img"><g fill="none" stroke="#14193a" stroke-width="2"><rect x="8" y="30" width="108" height="100" rx="8"/><rect x="126" y="30" width="108" height="100" rx="8"/><rect x="244" y="30" width="108" height="100" rx="8"/></g><g font-size="13" font-weight="700" fill="currentColor" text-anchor="middle"><text x="62" y="22">उत्तम पुरुष</text><text x="180" y="22">मध्यम पुरुष</text><text x="298" y="22">अन्य पुरुष</text></g><g font-size="13" fill="currentColor" text-anchor="middle"><text x="62" y="62">मैं</text><text x="62" y="86">हम</text><text x="180" y="62">तुम</text><text x="180" y="86">आप</text><text x="298" y="62">वह</text><text x="298" y="86">वे</text></g><g font-size="11" fill="currentColor" text-anchor="middle"><text x="62" y="116">बोलने वाला</text><text x="180" y="116">सुनने वाला</text><text x="298" y="116">जिसके बारे में बात हो</text></g></svg>'
+  alt: तीन डिब्बों वाला चित्र जिसमें उत्तम, मध्यम और अन्य पुरुष के सर्वनाम और उनका अर्थ लिखा है।
+  caption: पुरुषवाचक सर्वनाम के तीन भेद। बोलने वाला, सुनने वाला और जिसके बारे में बात हो।
+- kind: text
+  heading: प्रश्नवाचक और अनिश्चयवाचक सर्वनाम
+  html: '<p>जो सर्वनाम प्रश्न पूछने के लिए आते हैं, वे <strong>प्रश्नवाचक सर्वनाम</strong> हैं। जैसे: कौन, क्या। उदाहरण: “दरवाज़े पर कौन है?”</p><p>जो सर्वनाम किसी निश्चित व्यक्ति या वस्तु के बारे में नहीं बताते, वे <strong>अनिश्चयवाचक सर्वनाम</strong> हैं। जैसे: कोई, कुछ। उदाहरण: “दरवाज़े पर कोई है।” यहाँ हमें नहीं पता कि वह कौन है।</p>'
+- kind: example
+  heading: हल किया हुआ उदाहरण
+  prompt: 'दूसरे वाक्य में संज्ञाओं की जगह सर्वनाम लगाइए: “राम और श्याम बाज़ार गए। राम और श्याम ने फल खरीदे।”'
+  steps:
+  - 'दूसरे वाक्य में “राम और श्याम” दोबारा आया है। इसकी जगह सर्वनाम आ सकता है।'
+  - 'राम और श्याम दो लोग हैं, और उनके बारे में बात की जा रही है। इसलिए अन्य पुरुष, बहुवचन का सर्वनाम “उन्होंने” आएगा।'
+  - 'नया वाक्य: “राम और श्याम बाज़ार गए। उन्होंने फल खरीदे।”'
+  - 'जाँच: “उन्होंने” और “खरीदे” दोनों बहुवचन में हैं, इसलिए वाक्य ठीक है।'
+- kind: example
+  heading: हल किया हुआ उदाहरण
+  prompt: 'इन दोनों वाक्यों में सर्वनाम का भेद बताइए: (क) “कौन आया है?” (ख) “कोई दरवाज़े पर खड़ा है।”'
+  steps:
+  - 'वाक्य (क) में “कौन” शब्द प्रश्न पूछ रहा है।'
+  - 'इसलिए “कौन” प्रश्नवाचक सर्वनाम है।'
+  - 'वाक्य (ख) में बोलने वाले को नहीं पता कि खड़ा हुआ व्यक्ति कौन है। “कोई” किसी निश्चित व्यक्ति को नहीं बताता।'
+  - 'इसलिए “कोई” अनिश्चयवाचक सर्वनाम है। जाँच: (क) में प्रश्न चिह्न है और (ख) में नहीं, यह भी दोनों का अंतर दिखाता है।'
+- kind: callout
+  tone: watch
+  html: 'बड़ों के लिए आदर में हम “आप” कहते हैं। पर “आप” का प्रयोग सुनने वाले के लिए होता है, इसलिए इसे मध्यम पुरुष में गिना जाता है। “आप” को अन्य पुरुष मत समझिए।'
+- kind: callout
+  tone: real
+  html: 'बातचीत में हर कोई सर्वनाम का प्रयोग करता है। शिक्षक से बात करते समय हम “आप” कहते हैं और दोस्त से “तुम”। सही सर्वनाम चुनने से बात में सम्मान और अपनापन दोनों आते हैं।'
+- kind: check
+  item: q-sv-1
+- kind: check
+  item: q-sv-2
+- kind: check
+  item: q-sv-3
+- kind: summary
+  points:
+  - 'संज्ञा के स्थान पर आने वाले शब्द को सर्वनाम कहते हैं। इससे एक ही नाम बार-बार नहीं दोहराना पड़ता।'
+  - 'पुरुषवाचक सर्वनाम के तीन भेद हैं: उत्तम पुरुष (बोलने वाला), मध्यम पुरुष (सुनने वाला) और अन्य पुरुष (जिसके बारे में बात हो)।'
+  - 'प्रश्नवाचक सर्वनाम प्रश्न पूछते हैं (कौन, क्या)। अनिश्चयवाचक सर्वनाम निश्चित नाम नहीं बताते (कोई, कुछ)।'
+items:
+- key: q-sv-1
+  kind: mcq
+  stem: सर्वनाम किसे कहते हैं?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: hindi-sarvanam
+  explanation: संज्ञा के स्थान पर आने वाले शब्द को सर्वनाम कहते हैं। जैसे “सीमा” की जगह “वह” आ सकता है।
+  hints:
+  - “सर्व” का अर्थ है सब, और सर्वनाम सभी संज्ञाओं की जगह आ सकता है।
+  correct: A
+  options:
+  - key: A
+    text: संज्ञा के स्थान पर आने वाले शब्द को
+  - key: B
+    text: संज्ञा से अलग एक नया नाम बताने वाले शब्द को
+    misconception: sarvanam-sangya-alag
+  - key: C
+    text: गुण बताने वाले शब्द को
+    misconception: sarvanam-sangya-alag
+  - key: D
+    text: काम बताने वाले शब्द को
+    misconception: sarvanam-sangya-alag
+- key: q-sv-2
+  kind: mcq
+  stem: इनमें से सर्वनाम कौन-सा है?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: hindi-sarvanam
+  explanation: “मैं” संज्ञा के स्थान पर आता है, इसलिए यह सर्वनाम है। किताब और दिल्ली संज्ञाएँ हैं और मिठास भाववाचक संज्ञा है।
+  hints:
+  - कौन-सा शब्द किसी नाम की जगह आ सकता है?
+  correct: B
+  options:
+  - key: A
+    text: किताब
+    misconception: sarvanam-sangya-alag
+  - key: B
+    text: मैं
+  - key: C
+    text: मिठास
+    misconception: sarvanam-sangya-alag
+  - key: D
+    text: दिल्ली
+    misconception: sarvanam-sangya-alag
+- key: q-sv-3
+  kind: mcq
+  stem: बोलने वाला अपने लिए किस शब्द का प्रयोग करता है?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: hindi-sarvanam
+  explanation: बोलने वाला अपने लिए “मैं” कहता है। “तुम” और “आप” सुनने वाले के लिए और “वह” किसी तीसरे के लिए आते हैं।
+  hints:
+  - अपने बारे में बात करते समय हम कौन-सा शब्द कहते हैं?
+  correct: A
+  options:
+  - key: A
+    text: मैं
+  - key: B
+    text: तुम
+    misconception: purush-mix
+  - key: C
+    text: वह
+    misconception: purush-mix
+  - key: D
+    text: आप
+    misconception: purush-mix
+- key: q-sv-4
+  kind: mcq
+  stem: “आप” शब्द किस पुरुष का सर्वनाम है?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: hindi-sarvanam
+  explanation: “आप” का प्रयोग सुनने वाले के लिए होता है, भले ही वह आदर के लिए हो। इसलिए यह मध्यम पुरुष का सर्वनाम है।
+  hints:
+  - “आप” किससे बात करते समय कहा जाता है?
+  correct: B
+  options:
+  - key: A
+    text: उत्तम पुरुष
+    misconception: purush-mix
+  - key: B
+    text: मध्यम पुरुष
+  - key: C
+    text: अन्य पुरुष
+    misconception: aap-anya
+  - key: D
+    text: इनमें से कोई नहीं
+- key: q-sv-5
+  kind: mcq
+  stem: “कोई दरवाज़े पर खड़ा है।” इस वाक्य में “कोई” कौन-सा सर्वनाम है?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: hindi-sarvanam
+  explanation: “कोई” किसी निश्चित व्यक्ति के बारे में नहीं बताता, इसलिए यह अनिश्चयवाचक सर्वनाम है। प्रश्न पूछने वाला सर्वनाम “कौन” होता।
+  hints:
+  - क्या वाक्य में प्रश्न पूछा गया है, या बोलने वाले को पता ही नहीं कि कौन खड़ा है?
+  correct: C
+  options:
+  - key: A
+    text: पुरुषवाचक सर्वनाम
+    misconception: purush-mix
+  - key: B
+    text: प्रश्नवाचक सर्वनाम
+  - key: C
+    text: अनिश्चयवाचक सर्वनाम
+  - key: D
+    text: संज्ञा
+    misconception: sarvanam-sangya-alag
+- key: q-sv-6
+  kind: mcq
+  stem: 'सही सर्वनाम चुनिए: “मीना खेल रही है। ___ बहुत खुश है।”'
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: hindi-sarvanam
+  explanation: “मीना” एक लड़की है और उसके बारे में बात हो रही है, इसलिए अन्य पुरुष का एकवचन सर्वनाम “वह” आएगा। “हम” और “तुम” इस वाक्य में ठीक नहीं बैठते।
+  hints:
+  - मीना के बारे में बात हो रही है, मीना से नहीं।
+  correct: A
+  options:
+  - key: A
+    text: वह
+  - key: B
+    text: वे
+  - key: C
+    text: हम
+    misconception: purush-mix
+  - key: D
+    text: तुम
+    misconception: purush-mix
+- key: q-sv-7
+  kind: mcq
+  stem: 'सही सर्वनाम चुनिए: “राहुल और उसके दोस्त मैदान में हैं। ___ क्रिकेट खेल रहे हैं।”'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: hindi-sarvanam
+  explanation: राहुल और उसके दोस्त कई लोग हैं और उनके बारे में बात हो रही है। इसलिए अन्य पुरुष, बहुवचन का सर्वनाम “वे” आएगा। “रहे हैं” भी बहुवचन है।
+  hints:
+  - बहुत लोग हैं, इसलिए सर्वनाम बहुवचन में होना चाहिए।
+  correct: B
+  options:
+  - key: A
+    text: वह
+  - key: B
+    text: वे
+  - key: C
+    text: मैं
+    misconception: purush-mix
+  - key: D
+    text: तुम
+    misconception: purush-mix
+- key: q-sv-8
+  kind: mcq
+  stem: 'अभिकथन (A): “हम” उत्तम पुरुष का सर्वनाम है। कारण (R): “हम” में बोलने वाला स्वयं शामिल होता है।'
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: hindi-sarvanam
+  explanation: दोनों कथन सही हैं। उत्तम पुरुष में बोलने वाला स्वयं शामिल होता है, इसीलिए “हम” उत्तम पुरुष है। इसलिए R, A की सही व्याख्या करता है।
+  hints:
+  - उत्तम पुरुष में कौन शामिल होता है?
+  correct: A
+  options:
+  - key: A
+    text: A और R दोनों सही हैं और R, A की सही व्याख्या करता है
+  - key: B
+    text: A और R दोनों सही हैं, पर R, A की सही व्याख्या नहीं करता
+  - key: C
+    text: A सही है, पर R गलत है
+    misconception: purush-mix
+  - key: D
+    text: A गलत है, पर R सही है
+    misconception: purush-mix
+- key: q-sv-9
+  kind: mcq
+  stem: 'अभिकथन (A): “आप” अन्य पुरुष का सर्वनाम है। कारण (R): “आप” का प्रयोग सुनने वाले के लिए होता है।'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: hindi-sarvanam
+  explanation: A गलत है, क्योंकि “आप” सुनने वाले के लिए आता है और इसलिए मध्यम पुरुष का सर्वनाम है। R सही है, क्योंकि “आप” सचमुच सुनने वाले के लिए प्रयोग होता है।
+  hints:
+  - सुनने वाले के लिए प्रयोग होने वाला सर्वनाम किस पुरुष का होता है?
+  correct: D
+  options:
+  - key: A
+    text: A और R दोनों सही हैं और R, A की सही व्याख्या करता है
+    misconception: aap-anya
+  - key: B
+    text: A और R दोनों सही हैं, पर R, A की सही व्याख्या नहीं करता
+    misconception: aap-anya
+  - key: C
+    text: A सही है, पर R गलत है
+    misconception: aap-anya
+  - key: D
+    text: A गलत है, पर R सही है
+- key: q-sv-10
+  pattern: case
+  kind: mcq
+  stem: 'सीमा अपनी सहेली से मिली। सीमा ने पूछा, “तुम कल स्कूल क्यों नहीं आई?” सहेली ने कहा, “मैं बीमार थी।” इस अनुच्छेद में “तुम” और “मैं” किसके लिए आए हैं?'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: hindi-sarvanam
+  explanation: सीमा ने सहेली से पूछा, इसलिए सुनने वाली सहेली है और “तुम” सहेली के लिए आया है। “मैं” बोलने वाली के लिए आता है। यह उत्तर सहेली ने दिया है, इसलिए “मैं” भी सहेली के लिए है।
+  hints:
+  - हर वाक्य में पहले देखिए कि बोलने वाला कौन है और सुनने वाला कौन।
+  correct: B
+  options:
+  - key: A
+    text: “तुम” सीमा के लिए और “मैं” सहेली के लिए
+    misconception: purush-mix
+  - key: B
+    text: “तुम” और “मैं” दोनों सहेली के लिए
+  - key: C
+    text: “तुम” सहेली के लिए और “मैं” सीमा के लिए
+    misconception: purush-mix
+  - key: D
+    text: “तुम” और “मैं” दोनों सीमा के लिए
+    misconception: purush-mix
+misconceptions:
+- code: sarvanam-sangya-alag
+  concept: hindi-sarvanam
+  description: सर्वनाम को संज्ञा की जगह आने वाला शब्द नहीं समझता। उसे संज्ञा या किसी दूसरे प्रकार का शब्द मान लेता है।
+- code: purush-mix
+  concept: hindi-sarvanam
+  description: उत्तम, मध्यम और अन्य पुरुष को मिला देता है। बोलने वाले, सुनने वाले और जिसके बारे में बात हो, उन तीनों में अंतर नहीं कर पाता।
+- code: aap-anya
+  concept: hindi-sarvanam
+  description: आदर के कारण “आप” को अन्य पुरुष समझ लेता है, जबकि “आप” सुनने वाले के लिए आने से मध्यम पुरुष है।
+cards:
+- key: sarvanam-ke-bhed-card-1
+  concept: hindi-sarvanam
+  front: सर्वनाम किसे कहते हैं? एक उदाहरण दीजिए।
+  back: संज्ञा के स्थान पर आने वाले शब्द को सर्वनाम कहते हैं, जैसे वह।
+- key: sarvanam-ke-bhed-card-2
+  concept: hindi-sarvanam
+  front: उत्तम, मध्यम और अन्य पुरुष में क्या अंतर है?
+  back: उत्तम पुरुष बोलने वाले के लिए, मध्यम पुरुष सुनने वाले के लिए और अन्य पुरुष जिसके बारे में बात हो उसके लिए आता है।
+- key: sarvanam-ke-bhed-card-3
+  concept: hindi-sarvanam
+  front: “आप” किस पुरुष का सर्वनाम है?
+  back: मध्यम पुरुष का, क्योंकि यह सुनने वाले के लिए आता है।
+- key: sarvanam-ke-bhed-card-4
+  concept: hindi-sarvanam
+  front: प्रश्नवाचक और अनिश्चयवाचक सर्वनाम में क्या अंतर है?
+  back: प्रश्नवाचक सर्वनाम प्रश्न पूछता है, जैसे कौन। अनिश्चयवाचक सर्वनाम किसी निश्चित नाम को नहीं बताता, जैसे कोई।

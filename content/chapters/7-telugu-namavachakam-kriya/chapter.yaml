@@ -1,0 +1,13 @@
+slug: 7-telugu-namavachakam-kriya
+board: cbse
+curriculum: NCERT current editions (to be confirmed by a reviewer)
+grade: 7
+subject: telugu
+title: నామవాచకం మరియు క్రియ
+summary: పేర్లను తెలిపే మాటలను (నామవాచకం), పనిని తెలిపే మాటలను (క్రియ) గుర్తించడం నేర్చుకుందాం.
+concepts:
+- id: telugu-namavachakam
+- id: telugu-kriya
+lessons:
+- namavachakam
+- kriya

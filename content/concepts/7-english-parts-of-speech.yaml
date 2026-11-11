@@ -1,0 +1,4 @@
+concepts:
+  - {id: english-nouns, title: "Nouns: common, proper and idea nouns", grade: 7, subject: english, description: "A noun names a person, place, animal, thing or idea. Common nouns name any one of a kind, proper nouns name one particular person, place or thing and begin with a capital letter.", keywords: [noun, common noun, proper noun, abstract noun, capital letter]}
+  - {id: english-verbs, title: "Verbs: action and state", grade: 7, subject: english, description: "A verb tells what someone or something does, or what it is or feels. Many verbs show action; some show a state such as is, know or like.", keywords: [verb, action word, state verb, sentence]}
+  - {id: english-adjectives, title: "Adjectives: describing nouns", grade: 7, subject: english, description: "An adjective tells more about a noun, such as its size, colour, taste or feeling. It can come before the noun or after a verb like is.", keywords: [adjective, describing word, noun, sentence]}

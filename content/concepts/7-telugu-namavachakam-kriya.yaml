@@ -1,0 +1,3 @@
+concepts:
+  - {id: telugu-namavachakam, title: "నామవాచకం", grade: 7, subject: telugu, description: "వ్యక్తి, వస్తువు, ప్రదేశం, జంతువుల పేర్లను తెలిపే మాటలైన నామవాచకాలను గుర్తించడం, ఏకవచన బహువచనాలు.", keywords: [నామవాచకం, పేరు, బహువచనం]}
+  - {id: telugu-kriya, title: "క్రియ", grade: 7, subject: telugu, description: "పని చేయడాన్ని తెలిపే మాటలైన క్రియలను గుర్తించడం, భూత వర్తమాన భవిష్యత్ కాలాలు.", keywords: [క్రియ, పని, కాలం], prerequisites: [{id: telugu-namavachakam}]}

@@ -1,0 +1,265 @@
+slug: verbs-and-adjectives
+title: Verbs and adjectives
+minutes: 20
+objectives:
+- Find the verb in a sentence, including verbs that do not show movement
+- Say what an adjective does and find adjectives before and after a noun
+- Use the job of a word in its sentence to decide if it is a verb, noun or adjective
+concepts:
+- english-verbs
+- english-adjectives
+origin: ai_assisted
+blocks:
+- kind: text
+  heading: The doing word
+  html: '<p>Listen to a cricket match on the radio. The batter hits, the fielder runs, the crowd cheers. The words hits, runs and cheers tell what someone does. A word that tells what a person, animal or thing does is a <strong>verb</strong>. Every full sentence needs a verb.</p><p>Some verbs do not show movement. They tell what someone is, knows, likes or feels. In <em>Ravi likes mangoes</em>, the verb is likes. In <em>The soup is hot</em>, the verb is is.</p>'
+- kind: text
+  heading: The describing word
+  html: '<p>An <strong>adjective</strong> tells more about a noun. It can tell the size, colour, taste, number or feeling of a person or thing. In <em>a red kite</em>, red is an adjective. It describes the noun kite.</p><p>An adjective can come before the noun, as in <em>a sweet mango</em>. It can also come after a verb such as is, as in <em>The mango is sweet</em>. In both sentences, sweet describes mango.</p>'
+- kind: figure
+  svg: <svg viewBox="0 0 340 150" role="img"><g fill="none" stroke="#14193a" stroke-width="2"><rect x="10" y="50" width="60" height="32" rx="6"/><rect x="82" y="50" width="86" height="32" rx="6"/><rect x="180" y="50" width="56" height="32" rx="6"/><rect x="248" y="50" width="82" height="32" rx="6"/><path d="M125 50 V30 H208 V50" stroke-dasharray="4 3"/></g><text x="40" y="71" text-anchor="middle" font-size="14" fill="currentColor">The</text><text x="125" y="71" text-anchor="middle" font-size="14" fill="currentColor">hungry</text><text x="208" y="71" text-anchor="middle" font-size="14" fill="currentColor">cat</text><text x="289" y="71" text-anchor="middle" font-size="14" fill="currentColor">drank</text><text x="125" y="108" text-anchor="middle" font-size="12" font-weight="700" fill="currentColor">adjective</text><text x="208" y="108" text-anchor="middle" font-size="12" font-weight="700" fill="currentColor">noun</text><text x="289" y="108" text-anchor="middle" font-size="12" font-weight="700" fill="currentColor">verb</text><text x="165" y="22" text-anchor="middle" font-size="11" fill="currentColor">describes</text></svg>
+  alt: The words The hungry cat drank in boxes, labelled adjective for hungry, noun for cat and verb for drank, with a dotted line from hungry to cat.
+  caption: Hungry is an adjective that describes the noun cat. Drank is the verb that tells what the cat did.
+- kind: text
+  heading: One word, different jobs
+  html: '<p>Many English words can do more than one job. The word <em>walk</em> is a verb in <em>We walk to school</em>. It is a noun in <em>The walk was long</em>. So do not decide from the word alone. Ask what the word does in its sentence: does it name something, tell what is done, or describe a noun?</p>'
+- kind: example
+  heading: Worked example
+  prompt: 'Find the verb and the adjectives: The tired farmer drank cold water.'
+  steps:
+  - 'Find the verb first. Ask what the farmer did. The farmer drank, so drank is the verb.'
+  - 'Find the nouns. Farmer and water name a person and a thing.'
+  - 'Ask which words describe them. Tired tells about the farmer, and cold tells about the water.'
+  - 'So the verb is drank and the adjectives are tired and cold.'
+- kind: example
+  heading: Worked example
+  prompt: 'Is the word cold an adjective in this sentence? The tea is cold.'
+  steps:
+  - 'Find the noun in the sentence. Tea names a thing.'
+  - 'The verb is is. It joins tea to the word that follows.'
+  - 'Cold tells how the tea is. A word that tells about a noun is an adjective, even when it comes after the verb.'
+  - 'So yes, cold is an adjective. It is not a verb, because nobody does anything.'
+- kind: callout
+  tone: watch
+  html: Not every verb shows movement. Words such as is, know, like and want are verbs too. If a sentence has no moving action, look for a word that tells what someone is, knows, likes or feels.
+- kind: callout
+  tone: real
+  html: Look at a menu in a restaurant. Words such as crispy, spicy and fresh are adjectives that describe the food. Words such as fried, served and baked are verbs or are made from verbs.
+- kind: check
+  item: q-va-1
+- kind: check
+  item: q-va-2
+- kind: check
+  item: q-va-3
+- kind: summary
+  points:
+  - 'A verb tells what someone or something does, or what it is, knows, likes or feels.'
+  - 'An adjective describes a noun. It can come before the noun or after a verb such as is.'
+  - 'The same word can be a noun, a verb or an adjective. Decide from its job in the sentence.'
+items:
+- key: q-va-1
+  kind: mcq
+  stem: 'Which word is the verb in this sentence? Birds fly over the field.'
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: english-verbs
+  explanation: Fly tells what the birds do, so it is the verb. Birds and field are nouns, and over joins words.
+  hints:
+  - Ask what the birds do.
+  correct: B
+  options:
+  - key: A
+    text: Birds
+  - key: B
+    text: fly
+  - key: C
+    text: over
+  - key: D
+    text: field
+- key: q-va-2
+  kind: mcq
+  stem: What does an adjective do?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: english-adjectives
+  explanation: An adjective describes a noun by telling its size, colour, taste, number or feeling. Naming is the job of a noun and doing is the job of a verb.
+  hints:
+  - Think of the word red in a red kite.
+  correct: A
+  options:
+  - key: A
+    text: It tells more about a noun
+  - key: B
+    text: It tells what someone does
+    misconception: adjective-verb-mix
+  - key: C
+    text: It names a place
+  - key: D
+    text: It starts every sentence
+- key: q-va-3
+  kind: mcq
+  stem: 'Which word is an adjective in this sentence? She wore a red scarf.'
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: english-adjectives
+  explanation: Red tells the colour of the scarf, so it is an adjective. Scarf is a noun, wore is a verb and she stands for a person.
+  hints:
+  - Which word tells what colour the scarf is?
+  correct: C
+  options:
+  - key: A
+    text: She
+  - key: B
+    text: wore
+    misconception: adjective-verb-mix
+  - key: C
+    text: red
+  - key: D
+    text: scarf
+- key: q-va-4
+  kind: mcq
+  stem: 'Which word is the verb in this sentence? Ravi likes mangoes.'
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: english-verbs
+  explanation: Likes is the verb. It tells a feeling, which is also a kind of state, and a verb does not have to show movement. Ravi and mangoes are nouns.
+  hints:
+  - Which word tells what Ravi feels about mangoes?
+  correct: B
+  options:
+  - key: A
+    text: Ravi
+  - key: B
+    text: likes
+  - key: C
+    text: mangoes
+  - key: D
+    text: There is no verb, because nobody moves
+    misconception: verb-needs-movement
+- key: q-va-5
+  kind: numeric
+  stem: 'How many verbs are in this sentence? The cat jumped on the wall and watched the birds.'
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: english-verbs
+  explanation: The cat did two things. It jumped and it watched. So there are 2 verbs. Wall, cat and birds are nouns.
+  hints:
+  - Count the things the cat did.
+  value: 2
+  tolerance: 0.0
+  verify: '1+1'
+- key: q-va-6
+  kind: mcq
+  stem: 'Is hot an adjective in this sentence? The soup is hot.'
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: english-adjectives
+  explanation: Yes. Hot tells how the soup is, so it describes the noun soup. An adjective can come after the verb is. It is not a verb, because it does not tell what anyone does.
+  hints:
+  - Which noun does hot tell about?
+  correct: A
+  options:
+  - key: A
+    text: Yes, it describes the noun soup
+  - key: B
+    text: No, because an adjective must come just before a noun
+    misconception: adjective-before-only
+  - key: C
+    text: No, it is a verb because it comes after is
+    misconception: adjective-verb-mix
+  - key: D
+    text: No, it is a noun
+- key: q-va-7
+  kind: mcq
+  stem: In which sentence is the word walk a verb?
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: english-verbs
+  explanation: In We walk to school, walk tells what we do, so it is a verb. In the other three sentences walk names a thing, so it is a noun.
+  hints:
+  - In which sentence does walk tell what someone does?
+  correct: A
+  options:
+  - key: A
+    text: We walk to school.
+  - key: B
+    text: The walk was long.
+    misconception: word-one-class
+  - key: C
+    text: She took a walk.
+    misconception: word-one-class
+  - key: D
+    text: A morning walk is healthy.
+    misconception: word-one-class
+- key: q-va-8
+  kind: numeric
+  stem: 'How many adjectives are in this sentence? Do not count a, an or the. The tall boy carried a heavy bag and a small blue bottle.'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: english-adjectives
+  explanation: Tall describes boy, heavy describes bag, and small and blue both describe bottle. That is 4 adjectives.
+  hints:
+  - Find each noun, then find the words that describe it.
+  value: 4
+  tolerance: 0.0
+  verify: '2+2'
+- key: q-va-9
+  pattern: case
+  kind: mcq
+  stem: 'Read the passage. On Sunday, a boy went to the crowded market with his father. He bought fresh guavas and a red kite, and then they ate hot jalebis. Which list has only adjectives from the passage?'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: english-adjectives
+  explanation: Crowded, fresh, red and hot all describe nouns. Sunday and boy are nouns, and bought is a verb.
+  hints:
+  - Cross out any list with a noun or a verb.
+  correct: A
+  options:
+  - key: A
+    text: crowded, fresh, red, hot
+  - key: B
+    text: Sunday, crowded, fresh, red
+  - key: C
+    text: bought, fresh, red, hot
+    misconception: adjective-verb-mix
+  - key: D
+    text: crowded, boy, red, hot
+misconceptions:
+- code: adjective-verb-mix
+  concept: english-adjectives
+  description: Mixes up adjectives and verbs, thinking a describing word tells what someone does, or that a word after is must be a verb.
+- code: adjective-before-only
+  concept: english-adjectives
+  description: Thinks an adjective must come directly before a noun and misses adjectives that come after is.
+- code: verb-needs-movement
+  concept: english-verbs
+  description: Thinks a verb must show movement, so words such as like, know and is are not verbs.
+- code: word-one-class
+  concept: english-verbs
+  description: Thinks a word is always the same kind of word, whatever sentence it is in.
+cards:
+- key: verbs-adj-card-1
+  concept: english-verbs
+  front: What is a verb?
+  back: A word that tells what someone or something does, or what it is, knows, likes or feels.
+- key: verbs-adj-card-2
+  concept: english-adjectives
+  front: What is an adjective?
+  back: A word that tells more about a noun, such as its size, colour, taste or feeling.
+- key: verbs-adj-card-3
+  concept: english-adjectives
+  front: Can an adjective come after the noun?
+  back: Yes. In The mango is sweet, the adjective sweet comes after the verb is and still describes mango.
+- key: verbs-adj-card-4
+  concept: english-verbs
+  front: How can you tell if walk is a noun or a verb?
+  back: Look at its job in the sentence. We walk to school uses it as a verb. The walk was long uses it as a noun.

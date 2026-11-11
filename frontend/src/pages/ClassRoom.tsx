@@ -2,6 +2,7 @@ import { lazy, Suspense, useCallback, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { api } from '../api/client';
 import { useApi } from '../api/useApi';
+import { useAuth } from '../context/AuthContext';
 import type { ClassDetail } from '../api/types';
 import { Avatar, Icon } from '../icons/Icon';
 import { Button, Card, Chip, EmptyState, Segmented, Skeleton, useToast } from '../ui/kit';
@@ -10,8 +11,9 @@ import { ClassResources } from './ClassResources';
 import s from './pages.module.css';
 import c from './classes.module.css';
 
-type Tab = 'chat' | 'news' | 'work' | 'files' | 'people' | 'reports';
+type Tab = 'chat' | 'news' | 'work' | 'files' | 'quiz' | 'people' | 'reports';
 const Chat = lazy(() => import('../chat/Chat').then((m) => ({ default: m.Chat })));
+const ClassQuiz = lazy(() => import('./ClassQuiz').then((m) => ({ default: m.ClassQuiz })));
 const Reports = lazy(() => import('../chat/Chat').then((m) => ({ default: m.Reports })));
 
 /** Classmates you chose not to see in chat, with a way back. */
@@ -33,6 +35,7 @@ export default function ClassRoom() {
   const nav = useNavigate();
   const toast = useToast();
   const { data, error, loading, reload } = useApi<ClassDetail>(`/classes/${id}`);
+  const { profile } = useAuth();
   const [tab, setTab] = useState<Tab>('chat');
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
@@ -71,10 +74,11 @@ export default function ClassRoom() {
 
       <div className={c.tabs}>
         <Segmented<Tab> label="Class sections" value={tab} onChange={setTab}
-          options={[{ value: 'chat', label: 'Chat' }, { value: 'news', label: `News (${data.announcements.length})` }, { value: 'work', label: `Work (${data.assignments.length})` }, { value: 'files', label: `Files (${data.resources?.length ?? 0})` }, { value: 'people', label: `People (${data.classmates.length})` }, ...(data.isTeacher ? [{ value: 'reports' as Tab, label: data.openReports ? `Reports (${data.openReports})` : 'Reports' }] : [])]} />
+          options={[{ value: 'chat', label: 'Chat' }, { value: 'news', label: `News (${data.announcements.length})` }, { value: 'work', label: `Work (${data.assignments.length})` }, { value: 'files', label: `Files (${data.resources?.length ?? 0})` }, ...(data.isTeacher ? [] : [{ value: 'quiz' as Tab, label: 'Quiz' }]), { value: 'people', label: `People (${data.classmates.length})` }, ...(data.isTeacher ? [{ value: 'reports' as Tab, label: data.openReports ? `Reports (${data.openReports})` : 'Reports' }] : [])]} />
       </div>
 
       {tab === 'chat' && <Suspense fallback={<Skeleton h={320} r={16} />}><Chat classId={id} isTeacher={data.isTeacher} /></Suspense>}
+      {tab === 'quiz' && !data.isTeacher && <Suspense fallback={<Skeleton h={160} r={16} />}><ClassQuiz classId={id} avatar={profile?.avatar} /></Suspense>}
       {tab === 'reports' && data.isTeacher && <Suspense fallback={<Skeleton h={80} r={16} />}><Reports classId={id} /></Suspense>}
 
       {tab === 'news' && (

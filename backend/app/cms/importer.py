@@ -264,7 +264,7 @@ def import_tree(db: Session, tree: Tree, actor_id: uuid.UUID | None = None) -> d
             def gate_version(lv, les=les, blocks=blocks, ch=ch, cv=cv, codes_to_concept=codes_to_concept):
                 """Run the automated gates for a version and set draft or in_review. Safe to repeat: earlier results are replaced."""
                 asset_rows = {}
-                wanted = set(les.sources) | {b["asset"] for b in blocks if b["kind"] == "figure" and b.get("asset")} | {b["config"]["dataset"] for b in blocks if b["kind"] == "widget" and (b.get("config") or {}).get("dataset")}
+                wanted = set(les.sources) | {b["asset"] for b in blocks if b["kind"] == "figure" and b.get("asset")} | {b["config"]["dataset"] for b in blocks if b["kind"] == "widget" and (b.get("config") or {}).get("dataset")} | {x.strip() for b in blocks if b["kind"] == "widget" for x in str((b.get("config") or {}).get("overlays", "")).split(",") if x.strip()}
                 for sid in wanted:
                     try:
                         row = db.get(SourceAsset, uuid.UUID(sid))

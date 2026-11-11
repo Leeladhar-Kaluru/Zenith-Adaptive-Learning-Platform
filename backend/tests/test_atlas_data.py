@@ -161,3 +161,57 @@ def test_the_india_outline_builder_joins_states_and_the_official_boundary_and_re
         india_outline.build(far, official)
     with pytest.raises(india_outline.OutlineError, match="exactly one India"):
         india_outline.build(states, {"type": "FeatureCollection", "features": []})
+
+
+def _river(name, pts):
+    return {"type": "Feature", "properties": {"NAME": name}, "geometry": {"type": "LineString", "coordinates": pts}}
+
+
+def _peak(name, lon, lat, info=""):
+    return {"type": "Feature", "properties": {"NAME": name, "INFO": info}, "geometry": {"type": "Point", "coordinates": [lon, lat]}}
+
+
+def test_overlays_are_drawn_in_exactly_the_frame_of_their_base_map():
+    base = naturalearth.project({"type": "FeatureCollection", "features": [_state("North", "TL-N", 70, 20), _state("South", "TL-S", 70, 10)]})
+    assert base["frame"]["w"] == base["viewBox"][0] and base["frame"]["h"] == base["viewBox"][1]
+    rivers = naturalearth.project({"type": "FeatureCollection", "features": [_river("Long River", [[70, 20], [72, 15], [74, 10]])]}, frame=base["frame"], label="Rivers")
+    assert rivers["viewBox"] == base["viewBox"] and rivers["label"] == "Rivers"
+    f = rivers["features"][0]
+    assert f["kind"] == "line" and f["id"] == "LONG-RIVER" and not f["d"].rstrip().endswith("Z")
+    start = f["d"][1:].split("L")[0].split(",")
+    corner = [float(n) for n in __import__("re").findall(r"-?\d+(?:\.\d+)?", base["features"][0]["d"])[:2]]          # the north state starts at lon 70, lat 20: the same point
+    assert abs(float(start[0]) - corner[0]) < 1.5 and abs(float(start[1]) - corner[1]) < 1.5
+
+
+def test_peaks_become_marked_points_with_their_height_and_a_layer_is_one_kind_of_thing():
+    base = naturalearth.project({"type": "FeatureCollection", "features": [_state("North", "TL-N", 70, 20)]})
+    peaks = naturalearth.project({"type": "FeatureCollection", "features": [_peak("Mount Test", 72, 22, "8,000 m"), _peak("Hill Two", 73, 21)]}, frame=base["frame"])
+    p = peaks["features"][0]
+    assert p["kind"] == "point" and p["info"] == "8,000 m" and 0 <= p["x"] <= 1000 and 0 <= p["y"] <= 1000 and "d" not in p
+    mixed = naturalearth.project({"type": "FeatureCollection", "features": [_state("North", "TL-N", 70, 20), _river("R", [[70, 20], [71, 21]]), _peak("P", 72, 22)]})
+    assert [f["name"] for f in mixed["features"]] == ["North"]                 # a map of places ignores stray lines and points
+
+
+def test_segments_of_one_river_are_joined_and_an_overlay_needs_a_base_with_a_frame(db):
+    segs = {"type": "FeatureCollection", "features": [_river("Ganga", [[70, 20], [71, 19]]), _river("Ganga", [[71, 19], [72, 18]]), _river("Other", [[75, 12], [76, 11]])]}
+    base = naturalearth.project({"type": "FeatureCollection", "features": [_state("North", "TL-N", 70, 12, w=8)]})
+    out = naturalearth.project(segs, frame=base["frame"])
+    ganga = next(f for f in out["features"] if f["name"] == "Ganga")
+    assert ganga["d"].count("M") == 2 and len(out["features"]) == 2
+    from app.models import SourceAsset
+    world_base = naturalearth.import_geojson(db, geojson(), "world-base", None)               # a world map has no regional frame
+    import pytest as _pt
+    with _pt.raises(naturalearth.GeoError, match="no stored frame"):
+        naturalearth.import_geojson(db, segs, "rivers-x", None, frame_from=world_base)
+
+
+def test_the_atlas_widget_accepts_overlays_and_the_credit_gate_counts_them():
+    WidgetBlock(kind="widget", widget="atlas", config={"dataset": "a1", "overlays": "r1, p1"}, task="Find the Ganga")
+    with pytest.raises(ValidationError, match="overlays"):
+        WidgetBlock(kind="widget", widget="atlas", config={"dataset": "a1", "overlays": " , "}, task="t")
+    from app.cms import gates
+    blocks = [{"kind": "text", "html": "x"}, {"kind": "widget", "widget": "atlas", "config": {"dataset": "a1", "overlays": "r1,p1"}, "task": "t"}, {"kind": "check", "item": "q"}]
+    out = gates.lesson_gates(title="t", grade=7, objectives=["o"], blocks=blocks, items=[], concept_ids=set(), known_concepts=set(), graph_error=None, curriculum_verified=True,
+                             misconception_codes=set(), sources=["a1"], assets={"a1": {"status": "approved", "attribution": "x", "kind": "geo"}})
+    credit = next(g for g in out if g.name == "Imported assets are credited")
+    assert not credit.passed and "r1 is used in the lesson but not listed in sources" in credit.detail and "p1" in credit.detail

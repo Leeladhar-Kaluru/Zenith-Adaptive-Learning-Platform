@@ -9,6 +9,7 @@ import uuid
 from datetime import datetime, timedelta, timezone
 from urllib.parse import quote, urlsplit
 
+import httpx
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
@@ -23,7 +24,8 @@ API = "https://commons.wikimedia.org/w/api.php"
 
 def user_agent() -> str:
     """Wikimedia's robot policy requires a contact in the User-Agent. The owner supplies it as BOT_CONTACT; it is never guessed."""
-    return f"ZenithEducationBot/1.0 (school learning platform; contact: {settings.BOT_CONTACT})"
+    contact = settings.BOT_CONTACT.strip()
+    return f"ZenithEducationBot/{settings.BOT_VERSION} (Zenith learning platform content importer; contact: {contact}) httpx/{httpx.__version__}"
 IMAGE_HOSTS = {"upload.wikimedia.org", "commons.wikimedia.org"}
 RECHECK_DAYS = 180
 

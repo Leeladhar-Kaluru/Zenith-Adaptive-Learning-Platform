@@ -12,6 +12,7 @@ class Settings(BaseSettings):
 
     DATABASE_URL: str
     # All ZENITH tables live in this PostgreSQL schema (production: zenith; tests: zenith_test). Never the legacy public schema.
+    BOT_VERSION: str = "1.1"   # version of our importer, sent in the User-Agent (not a secret)
     BOT_CONTACT: str = ""      # a real contact (email or URL) put in our crawler's User-Agent; Wikimedia refuses bots without one
     DB_SCHEMA: str = "zenith"
     # Sized for Supabase transaction pooler (port 6543)

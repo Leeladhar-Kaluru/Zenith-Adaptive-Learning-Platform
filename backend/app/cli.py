@@ -11,7 +11,7 @@
   retention <days>        set how long B2 keeps backups before deleting them
   backup-key              create BACKUP_KEY and append it to backend/.env (never printed)
   dataset worldbank <indicator> <country> "<Title>"   import a World Bank indicator (CC BY 4.0), left pending for approval
-  map import <file.geojson> <external-id>   import a Natural Earth GeoJSON a person has downloaded (public domain, left pending)
+  map import <file.geojson> <external-id> [frame-from=<asset-id>] [label=<text>]   import a Natural Earth GeoJSON a person has downloaded (public domain, left pending)
   assets-due              imported assets whose licence re-check date has passed
   new-lesson <content-dir> <chapter-slug> <lesson-slug> "<Title>" <concept,concept>   start a lesson from a TODO skeleton
   asset commons <File:Title>   import one Wikimedia Commons file (licence checked, left pending)
@@ -121,7 +121,13 @@ def main(argv: list[str]) -> int:
             from app.ingest import naturalearth
             who = db.scalar(select(Profile).where(Profile.role.in_(("reviewer", "admin"))))
             try:
-                a = naturalearth.import_geojson(db, _json.loads(Path(argv[3]).read_text(encoding="utf-8")), argv[4], who.id if who else None)
+                opts = dict(x.split("=", 1) for x in argv[5:] if "=" in x)             # frame-from=<asset id> label=<text>
+                base = None
+                if opts.get("frame-from"):
+                    import uuid as _uuid
+                    from app.models import SourceAsset
+                    base = db.get(SourceAsset, _uuid.UUID(opts["frame-from"]))
+                a = naturalearth.import_geojson(db, _json.loads(Path(argv[3]).read_text(encoding="utf-8")), argv[4], who.id if who else None, frame_from=base, label=opts.get("label"))
             except naturalearth.GeoError as e:
                 print("Not imported:", e)
                 return 1

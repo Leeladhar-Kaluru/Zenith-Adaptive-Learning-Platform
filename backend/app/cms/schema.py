@@ -122,7 +122,11 @@ class WidgetBlock(Strict):
             if not isinstance(self.config.get("dataset"), str) or not str(self.config["dataset"]).strip():
                 raise ValueError("atlas needs 'dataset' (an approved map layer) in config")
             if "find" in self.config and not isinstance(self.config["find"], str):
-                raise ValueError("atlas 'find' must be a country name")
+                raise ValueError("atlas 'find' must be the name of a place")
+            if "overlays" in self.config:
+                ids = [x.strip() for x in str(self.config["overlays"]).split(",") if x.strip()]
+                if not isinstance(self.config["overlays"], str) or not 1 <= len(ids) <= 4:
+                    raise ValueError("atlas 'overlays' must list 1 to 4 approved map layers, separated by commas")
             if not self.task.strip():
                 raise ValueError("atlas needs a plain-language task (what to find or explore).")
             return self

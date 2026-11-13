@@ -1,0 +1,281 @@
+slug: how-shadows-form
+title: How shadows form and change size
+minutes: 20
+objectives:
+- Explain how an opaque object makes a shadow
+- Predict whether a shadow gets bigger or smaller when the object moves
+- Explain why shadows change length during the day
+concepts:
+- shadows-size-distance
+origin: ai_assisted
+blocks:
+- kind: text
+  heading: Shadow play
+  html: '<p>In a village fair, a puppeteer holds a cut-out figure between a lamp and a white cloth. A dark figure of the same shape appears on the cloth. This dark shape is a <strong>shadow</strong>.</p><p>A shadow forms when an <strong>opaque</strong> object blocks light. Light travels in straight lines, so it cannot bend around the object. The space behind the object gets no light from the lamp. This dark space is the shadow. The surface that the shadow falls on is called the <strong>screen</strong>. A screen can be a wall, a cloth or the ground.</p><p>A transparent object lets most light pass, so it makes hardly any shadow. A translucent object makes a faint shadow. An opaque object makes a dark shadow.</p>'
+- kind: figure
+  svg: '<svg viewBox="0 0 320 190" role="img"><circle cx="30" cy="100" r="10" fill="#f5b50a"/><rect x="40" y="95" width="18" height="10" fill="#14193a"/><rect x="116" y="80" width="8" height="40" fill="#14193a"/><rect x="258" y="30" width="6" height="140" fill="#9aa3b5"/><line x1="58" y1="100" x2="260" y2="42" stroke="#f5b50a" stroke-width="2"/><line x1="58" y1="100" x2="260" y2="158" stroke="#f5b50a" stroke-width="2"/><rect x="258" y="42" width="6" height="116" fill="#14193a"/><text x="8" y="130" font-size="12" fill="currentColor">Torch</text><text x="92" y="72" font-size="12" fill="currentColor">Object</text><text x="226" y="22" font-size="12" fill="currentColor">Screen</text><text x="196" y="184" font-size="12" fill="currentColor">Shadow is dark part</text></svg>'
+  alt: Ray diagram with a torch on the left, a small upright object in the middle and a screen on the right with a tall dark shadow on it.
+  caption: Rays from the torch that pass the top and bottom of the object go straight on and reach the screen. The dark part of the screen between them gets no light. That part is the shadow.
+- kind: text
+  heading: Why the size of a shadow changes
+  html: '<p>Look at the diagram. The rays spread out from the torch. The two rays that just touch the top and the bottom of the object mark the edges of the shadow. The farther the object is from the screen, the more the rays spread before they reach it.</p><p>Now move the object closer to the torch. More of the light is blocked, so the shadow gets <strong>bigger</strong>. Move the object away from the torch, towards the screen, and the shadow gets <strong>smaller</strong>. It becomes about as large as the object itself when the object is touching the screen.</p><p>Try this at home. Hold your hand between a lit torch and a wall. Move your hand slowly towards the torch and watch the shadow grow. Then move it towards the wall and watch the shadow shrink and get sharp.</p>'
+- kind: text
+  heading: Shadows and the Sun
+  html: '<p>Your shadow outdoors changes through the day. In the morning and in the evening, the Sun is low in the sky and your shadow is long. Around noon, the Sun is high above and your shadow is at its shortest. The Sun does not become nearer or farther in a way that changes the shadow. What changes is the direction of the sunlight. The shadow of an object always falls on the side opposite to the Sun.</p>'
+- kind: example
+  heading: Worked example
+  prompt: A paper card 6 cm tall stands between a torch and a wall. The wall is 2 times as far from the torch as the card is. How tall is the shadow on the wall?
+  steps:
+  - 'The torch is a small source, so the shadow grows in the same ratio as the distance from the torch.'
+  - 'The wall is 2 times as far from the torch as the card is. So the shadow is 2 times as tall as the card.'
+  - 'Calculate: 6 cm × 2 = 12 cm.'
+  - 'Check: the shadow is taller than the card, as we expect for an object between the torch and a far wall.'
+- kind: example
+  heading: Worked example
+  prompt: Ravi makes a hand shadow on a wall using a lamp. His hand is 30 cm from the lamp and the shadow is small. He wants a bigger shadow without moving the lamp or the wall. What should he do?
+  steps:
+  - 'A shadow gets bigger when the object moves nearer the light.'
+  - 'So Ravi should move his hand closer to the lamp.'
+  - 'He must not touch the lamp, because it gets hot. He may move from 30 cm to 20 cm.'
+  - 'Check: nearer to the lamp means more light is blocked, so the shadow is bigger.'
+- kind: callout
+  tone: watch
+  html: A shadow is not a picture of the object with its colour. It is only a dark patch where light is blocked. A red ball and a blue ball of the same size make the same dark shadow. Also, the shadow gets bigger when the object moves nearer the light, not farther from it.
+- kind: callout
+  tone: real
+  html: 'Shadow puppets in village plays use this idea. The puppeteer moves the figure nearer the lamp to make a giant, and nearer the cloth to make it small and sharp. A sundial also uses shadows. The shadow of a stick shows the time of day, because its length and direction change as the Sun moves.'
+- kind: check
+  item: q-sh-1
+- kind: check
+  item: q-sh-2
+- kind: check
+  item: q-sh-3
+- kind: summary
+  points:
+  - 'A shadow forms when an opaque object blocks light. Light travels in straight lines, so the space behind the object gets no light.'
+  - 'The shadow is bigger when the object is nearer the light, and smaller when the object is nearer the screen.'
+  - 'Shadows from the Sun are long in the morning and evening, and shortest around noon. A shadow is dark and shows no colour.'
+items:
+- key: q-sh-1
+  kind: mcq
+  stem: What is needed to make a shadow?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: shadows-size-distance
+  explanation: A shadow needs a source of light, an opaque object that blocks the light, and a screen to fall on.
+  hints:
+  - Think of the lamp, the cut-out figure and the cloth.
+  correct: C
+  options:
+  - key: A
+    text: A transparent object and no light
+  - key: B
+    text: Only an opaque object, and no light
+  - key: C
+    text: A source of light, an opaque object and a screen
+  - key: D
+    text: A mirror and a torch
+- key: q-sh-2
+  kind: mcq
+  stem: Which object makes the darkest shadow?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: shadows-size-distance
+  explanation: An opaque object blocks all the light, so it makes the darkest shadow. A transparent object makes almost none.
+  hints:
+  - Which kind of material lets no light pass?
+  correct: B
+  options:
+  - key: A
+    text: A clear glass
+  - key: B
+    text: A steel plate
+  - key: C
+    text: A clear plastic sheet
+  - key: D
+    text: A sheet of clean water
+- key: q-sh-3
+  kind: mcq
+  stem: A ball is held between a torch and a wall. The ball is moved nearer to the torch. What happens to its shadow on the wall?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: shadows-size-distance
+  explanation: When the object moves nearer the light, more of the light is blocked and the shadow gets bigger.
+  hints:
+  - Nearer the light means more light is blocked.
+  correct: A
+  options:
+  - key: A
+    text: It gets bigger
+  - key: B
+    text: It gets smaller
+    misconception: shadow-bigger-when-far
+  - key: C
+    text: It stays the same size
+  - key: D
+    text: It disappears
+- key: q-sh-4
+  kind: mcq
+  stem: At which time of day is your shadow outdoors the shortest on a sunny day?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: shadows-size-distance
+  explanation: Around noon the Sun is high in the sky, so the shadow is at its shortest. It is longer in the morning and the evening.
+  hints:
+  - When is the Sun highest?
+  correct: C
+  options:
+  - key: A
+    text: Just after sunrise
+  - key: B
+    text: Just before sunset
+  - key: C
+    text: Around noon
+  - key: D
+    text: Midnight
+- key: q-sh-5
+  kind: numeric
+  stem: A card 10 cm tall is held between a torch and a wall. The wall is 3 times as far from the torch as the card is. How tall, in cm, is the shadow on the wall?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: shadows-size-distance
+  explanation: The shadow is 3 times as tall as the card, because the wall is 3 times as far from the torch. So 10 × 3 = 30 cm.
+  hints:
+  - The shadow grows in the same ratio as the distance from the torch.
+  value: 30
+  tolerance: 0.0
+  verify: 10*3
+- key: q-sh-6
+  kind: numeric
+  stem: A card 12 cm tall is 25 cm from a torch. A wall is 50 cm from the torch. How tall, in cm, is the shadow on the wall?
+  difficulty: challenge
+  purpose: practice
+  concepts:
+  - id: shadows-size-distance
+  explanation: The wall is 50 ÷ 25 = 2 times as far as the card, so the shadow is 2 times as tall. So 12 × 2 = 24 cm.
+  hints:
+  - First find how many times farther the wall is than the card.
+  value: 24
+  tolerance: 0.0
+  verify: 12*50/25
+- key: q-sh-7
+  kind: mcq
+  stem: 'Assertion (A): The shadow of a ball is bigger when the ball is held near a torch than when it is held far from the torch. Reason (R): Light travels in straight lines and the rays spread out from the torch.'
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: shadows-size-distance
+  explanation: Both statements are true. Rays spread out in straight lines from the torch, so a ball close to the torch blocks a wider spread of rays and the shadow is bigger. So R explains A.
+  hints:
+  - Draw the rays from the torch past the top and bottom of the ball.
+  correct: A
+  options:
+  - key: A
+    text: Both A and R are true and R explains A
+  - key: B
+    text: Both A and R are true but R does not explain A
+  - key: C
+    text: A is true but R is false
+  - key: D
+    text: A is false but R is true
+    misconception: shadow-bigger-when-far
+- key: q-sh-8
+  kind: mcq
+  stem: 'Assertion (A): The shadow of a red ball is red. Reason (R): A shadow is the dark space where the light is blocked.'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: shadows-size-distance
+  explanation: A is false, because a shadow is only a dark patch with no colour of the object. R is true, because a shadow is the space where light is blocked.
+  hints:
+  - Does the shadow get any light from the ball?
+  correct: D
+  options:
+  - key: A
+    text: Both A and R are true and R explains A
+    misconception: shadow-shows-colour
+  - key: B
+    text: Both A and R are true but R does not explain A
+    misconception: shadow-shows-colour
+  - key: C
+    text: A is true but R is false
+    misconception: shadow-shows-colour
+  - key: D
+    text: A is false but R is true
+- key: q-sh-9
+  pattern: case
+  kind: mcq
+  stem: 'At a school function, Asha does hand shadow play with a lamp and a white wall. Her elephant shadow looks small. She wants it to look bigger, and she must not move the lamp or the wall. What should she do?'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: shadows-size-distance
+  explanation: The shadow gets bigger when the object moves nearer to the light. So she should move her hands nearer the lamp.
+  hints:
+  - Which way should the hands move to block more light?
+  correct: B
+  options:
+  - key: A
+    text: Move her hands nearer the wall
+    misconception: shadow-bigger-when-far
+  - key: B
+    text: Move her hands nearer the lamp
+  - key: C
+    text: Paint her hands in a bright colour
+    misconception: shadow-shows-colour
+  - key: D
+    text: Nothing can change the size of a shadow
+- key: q-sh-10
+  kind: mcq
+  stem: Kiran notices that his shadow on the school ground is much longer at 8 in the morning than at noon. What is the best reason?
+  difficulty: challenge
+  purpose: practice
+  concepts:
+  - id: shadows-size-distance
+  explanation: Early in the morning the Sun is low in the sky. Light comes in at a slant, so shadows are long. At noon the Sun is high, so they are short.
+  hints:
+  - Where is the Sun in the sky in the morning?
+  correct: A
+  options:
+  - key: A
+    text: The Sun is low in the sky in the morning, so the shadow is long
+  - key: B
+    text: The Sun is much nearer to the Earth in the morning
+    misconception: sun-distance-changes-shadow
+  - key: C
+    text: The Sun is much bigger at noon
+    misconception: sun-distance-changes-shadow
+  - key: D
+    text: The ground changes colour in the morning
+misconceptions:
+- code: shadow-bigger-when-far
+  concept: shadows-size-distance
+  description: Thinks that moving an object away from the light, or nearer the screen, makes its shadow bigger. It is the other way round.
+- code: shadow-shows-colour
+  concept: shadows-size-distance
+  description: Thinks a shadow shows the colour or details of the object, when it is only a dark patch where light is blocked.
+- code: sun-distance-changes-shadow
+  concept: shadows-size-distance
+  description: Thinks the Sun moves much nearer or farther during the day, and that this changes the shadow, when the cause is the height of the Sun in the sky.
+cards:
+- key: how-shadows-form-card-1
+  concept: shadows-size-distance
+  front: How does a shadow form?
+  back: An opaque object blocks light that travels in straight lines. The dark space behind it, on a screen, is the shadow.
+- key: how-shadows-form-card-2
+  concept: shadows-size-distance
+  front: What happens to a shadow when the object moves nearer the light?
+  back: The shadow gets bigger. Moving the object nearer the screen makes it smaller.
+- key: how-shadows-form-card-3
+  concept: shadows-size-distance
+  front: When is a shadow from the Sun shortest?
+  back: Around noon, when the Sun is highest in the sky. It is long in the morning and evening.
+- key: how-shadows-form-card-4
+  concept: shadows-size-distance
+  front: Does a shadow show the colour of the object?
+  back: No. A shadow is only a dark patch where the light is blocked.

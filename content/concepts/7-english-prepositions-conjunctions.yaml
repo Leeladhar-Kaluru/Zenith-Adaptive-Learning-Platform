@@ -1,0 +1,3 @@
+concepts:
+  - {id: english-prepositions, title: "Prepositions of place, time and direction", grade: 7, subject: english, description: "A preposition is a word placed before a noun or pronoun to show where something is, when something happens, or which way something moves, such as under, after and into.", keywords: [preposition, place, time, direction, noun], prerequisites: [{id: english-nouns}]}
+  - {id: english-conjunctions, title: "Conjunctions: and, but, or, because, although", grade: 7, subject: english, description: "A conjunction joins words or parts of a sentence. And adds, but and although show a contrast, or gives a choice and because gives a reason.", keywords: [conjunction, joining word, and, but, or, because, although], prerequisites: [{id: english-verbs}]}

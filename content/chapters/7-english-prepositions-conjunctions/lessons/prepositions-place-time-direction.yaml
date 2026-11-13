@@ -1,0 +1,272 @@
+slug: prepositions-place-time-direction
+title: Prepositions of place, time and direction
+minutes: 20
+objectives:
+- Say what a preposition does and find it in a sentence
+- Tell prepositions of place, time and direction apart
+- Choose the correct preposition for a day, a month and a movement
+concepts:
+- english-prepositions
+origin: ai_assisted
+blocks:
+- kind: text
+  heading: Small words that give directions
+  html: '<p>Imagine you ask a friend where your school bag is. She says, <em>It is under the bed.</em> The small word <em>under</em> tells you the exact spot. A word like this is a <strong>preposition</strong>. It is placed before a noun or a pronoun and shows how that noun is linked to the rest of the sentence.</p><p>A noun is a word that names a person, place or thing. In <em>under the bed</em>, the noun is bed.</p>'
+- kind: text
+  heading: Place, time and direction
+  html: '<p>Some prepositions tell <strong>place</strong>, which means where something is. Examples are <em>under</em>, <em>beside</em>, <em>between</em> and <em>above</em>.</p><p>Some tell <strong>time</strong>, which means when something happens. Examples are <em>before</em>, <em>after</em>, <em>during</em> and <em>since</em>.</p><p>Some tell <strong>direction</strong>, which means which way something moves. Examples are <em>into</em>, <em>through</em>, <em>across</em> and <em>towards</em>.</p>'
+- kind: figure
+  svg: <svg viewBox="0 0 340 170" role="img"><g fill="none" stroke="#14193a" stroke-width="2"><rect x="20" y="100" width="100" height="14"/><line x1="30" y1="114" x2="30" y2="150"/><line x1="110" y1="114" x2="110" y2="150"/><circle cx="70" cy="86" r="12"/><circle cx="70" cy="132" r="12"/><circle cx="150" cy="107" r="12"/><path d="M230 140 V70 H300 V140"/><path d="M200 105 H320" stroke-dasharray="5 4"/><path d="M312 99 L322 105 L312 111"/></g><text x="70" y="70" text-anchor="middle" font-size="13" font-weight="700" fill="currentColor">on</text><text x="70" y="166" text-anchor="middle" font-size="13" font-weight="700" fill="currentColor">under</text><text x="150" y="90" text-anchor="middle" font-size="13" font-weight="700" fill="currentColor">beside</text><text x="265" y="60" text-anchor="middle" font-size="13" font-weight="700" fill="currentColor">through</text></svg>
+  alt: A table with a ball on top, a ball under it and a ball beside it, and a dotted arrow going through a doorway.
+  caption: On, under and beside show place. Through shows the direction of a movement.
+- kind: text
+  heading: Time words and a few rules
+  html: '<p>Many time words follow a pattern. We say <em>on Monday</em> for a day. We say <em>in July</em> for a month. We say <em>at night</em> for a part of the day. We say <em>at four o''clock</em> for a time on the clock.</p><p>A preposition is always followed by a noun or a pronoun. Look at <em>after lunch</em>. After is a preposition, and lunch is the noun that follows it.</p>'
+- kind: example
+  heading: Worked example
+  prompt: 'Find the prepositions: The boy ran from the house to the park and sat under a tree.'
+  steps:
+  - 'Find each noun first. The nouns are boy, house, park and tree.'
+  - 'Look at the small word just before each noun. Before house is from, before park is to, and before tree is under.'
+  - 'Ask what each word shows. From and to show the way the boy moved. Under shows where he sat.'
+  - 'So the prepositions are from, to and under. That makes 3.'
+- kind: example
+  heading: Worked example
+  prompt: 'Is the word after a preposition here? The meeting is after lunch.'
+  steps:
+  - 'Look at the word that follows after. It is lunch, which is a noun.'
+  - 'A preposition comes before a noun and links it to the sentence.'
+  - 'After tells when the meeting happens, so it shows time.'
+  - 'So yes, after is a preposition of time in this sentence.'
+- kind: callout
+  tone: watch
+  html: A preposition is not an action word. In <em>The cat sleeps under the bed</em>, the verb is sleeps, and under is the preposition. Also, prepositions do not only show place. Words such as after and since show time.
+- kind: callout
+  tone: real
+  html: Read a railway timetable or a bus board. Words such as from, to, at, before and after are prepositions. They tell you where the bus goes and when it leaves.
+- kind: check
+  item: q-pr-1
+- kind: check
+  item: q-pr-2
+- kind: check
+  item: q-pr-3
+- kind: summary
+  points:
+  - 'A preposition comes before a noun or pronoun and links it to the rest of the sentence.'
+  - 'Prepositions can show place (under), time (after) or direction (into).'
+  - 'Use on with days, in with months and at with clock times and parts of the day such as night.'
+items:
+- key: q-pr-1
+  kind: mcq
+  stem: 'Which word is the preposition in this sentence? The cat sleeps under the bed.'
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: english-prepositions
+  explanation: Under comes before the noun bed and tells where the cat sleeps, so it is the preposition. Sleeps is the verb, and cat and bed are nouns.
+  hints:
+  - Look for the small word that tells where the cat sleeps.
+  correct: C
+  options:
+  - key: A
+    text: cat
+  - key: B
+    text: sleeps
+    misconception: prep-is-verb
+  - key: C
+    text: under
+  - key: D
+    text: bed
+- key: q-pr-2
+  kind: mcq
+  stem: What does a preposition do?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: english-prepositions
+  explanation: A preposition comes before a noun or pronoun and shows how it is linked to the rest of the sentence, for example by place, time or direction.
+  hints:
+  - Think of the word under in under the bed.
+  correct: B
+  options:
+  - key: A
+    text: It tells what someone does
+    misconception: prep-is-verb
+  - key: B
+    text: It links a noun or pronoun to the rest of the sentence
+  - key: C
+    text: It always names a place
+    misconception: prep-place-only
+  - key: D
+    text: It joins two full sentences
+- key: q-pr-3
+  kind: mcq
+  stem: 'Which word shows direction of movement? The train goes ___ the tunnel.'
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: english-prepositions
+  explanation: Through shows the train moving in at one end and out at the other, so it fits. Between, beside and above do not describe a train travelling along a tunnel.
+  hints:
+  - A train enters the tunnel and comes out on the other side.
+  correct: A
+  options:
+  - key: A
+    text: through
+  - key: B
+    text: between
+  - key: C
+    text: beside
+  - key: D
+    text: above
+- key: q-pr-4
+  kind: mcq
+  stem: 'Which sentence has a preposition that tells time?'
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: english-prepositions
+  explanation: In The meeting is after lunch, the word after comes before the noun lunch and tells when. Under, into and beside in the other sentences tell place or direction.
+  hints:
+  - Look for a word that tells when, not where.
+  correct: D
+  options:
+  - key: A
+    text: The bag is under the chair.
+    misconception: prep-place-only
+  - key: B
+    text: The dog ran into the garden.
+    misconception: prep-place-only
+  - key: C
+    text: The bird sat beside the nest.
+    misconception: prep-place-only
+  - key: D
+    text: The meeting is after lunch.
+- key: q-pr-5
+  kind: mcq
+  stem: 'Which phrase is correct?'
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: english-prepositions
+  explanation: We use on with a day of the week, so on Monday is correct. The other phrases use words that we do not use with a day.
+  hints:
+  - Think of how you say Monday in a timetable sentence.
+  correct: A
+  options:
+  - key: A
+    text: on Monday
+  - key: B
+    text: in Monday
+    misconception: prep-time-mix
+  - key: C
+    text: at Monday
+    misconception: prep-time-mix
+  - key: D
+    text: to Monday
+- key: q-pr-6
+  kind: mcq
+  stem: 'Which phrase is correct?'
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: english-prepositions
+  explanation: We use in with a month, so in July is correct. We do not say on July or at July for a whole month.
+  hints:
+  - A month is a long stretch of time, not one day or one clock time.
+  correct: C
+  options:
+  - key: A
+    text: on July
+    misconception: prep-time-mix
+  - key: B
+    text: at July
+    misconception: prep-time-mix
+  - key: C
+    text: in July
+  - key: D
+    text: to July
+- key: q-pr-7
+  kind: numeric
+  stem: 'How many prepositions are in this sentence? The boy ran from the house to the park and sat under a tree.'
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: english-prepositions
+  explanation: From, to and under each come before a noun. That makes 3 prepositions. Ran and sat are verbs.
+  hints:
+  - Find the small word before each of the nouns house, park and tree.
+  value: 3
+  tolerance: 0.0
+  verify: '1+1+1'
+- key: q-pr-8
+  kind: mcq
+  stem: 'Assertion (A): In the sentence The cat jumped onto the roof, the word onto shows direction. Reason (R): Onto tells where the cat moved to.'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: english-prepositions
+  explanation: Both are true. Onto shows the cat moving towards the roof, which is direction, and the reason says exactly that, so R explains A.
+  hints:
+  - Does the cat stay still, or does it move?
+  correct: A
+  options:
+  - key: A
+    text: Both A and R are true, and R explains A
+  - key: B
+    text: Both A and R are true, but R does not explain A
+  - key: C
+    text: A is true, but R is false
+  - key: D
+    text: A is false, but R is true
+- key: q-pr-9
+  pattern: case
+  kind: mcq
+  stem: 'Read the passage. Sita left her house at seven. She walked along the river, crossed the bridge and went into the school. Which word from the passage is a preposition of time?'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: english-prepositions
+  explanation: At seven tells when Sita left, so at is the preposition of time. Along and into tell the way she moved, and crossed is a verb.
+  hints:
+  - Which small word comes before the time seven?
+  correct: B
+  options:
+  - key: A
+    text: along
+    misconception: prep-time-mix
+  - key: B
+    text: at
+  - key: C
+    text: into
+    misconception: prep-time-mix
+  - key: D
+    text: crossed
+    misconception: prep-is-verb
+misconceptions:
+- code: prep-is-verb
+  concept: english-prepositions
+  description: Thinks a preposition tells what someone does, and picks the verb of the sentence instead.
+- code: prep-place-only
+  concept: english-prepositions
+  description: Thinks prepositions only show place and misses prepositions of time such as after and since.
+- code: prep-time-mix
+  concept: english-prepositions
+  description: Uses the wrong word with days and months, or takes place and direction words for time words.
+cards:
+- key: prep-card-1
+  concept: english-prepositions
+  front: What is a preposition?
+  back: A word placed before a noun or pronoun that links it to the rest of the sentence, such as under, after or into.
+- key: prep-card-2
+  concept: english-prepositions
+  front: Name one preposition each of place, time and direction.
+  back: Place, under. Time, after. Direction, into.
+- key: prep-card-3
+  concept: english-prepositions
+  front: Which word do we use with a day, a month and a clock time?
+  back: On Monday, in July and at four o'clock.
+- key: prep-card-4
+  concept: english-prepositions
+  front: Is sleeps a preposition in The cat sleeps under the bed?
+  back: No. Sleeps is the verb. The preposition is under.

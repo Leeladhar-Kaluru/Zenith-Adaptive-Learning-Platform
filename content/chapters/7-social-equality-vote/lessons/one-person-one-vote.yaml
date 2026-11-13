@@ -1,0 +1,240 @@
+slug: one-person-one-vote
+title: One person, one vote
+minutes: 25
+objectives:
+- Say who may vote in India
+- Explain one person one vote and the secret ballot
+- Name who organises elections in India
+- Work out a simple majority
+concepts:
+- civics-universal-franchise
+origin: ai_assisted
+blocks:
+- kind: text
+  heading: Voting for your class
+  html: '<p>In a school election, you write your choice on a slip of paper and fold it. You drop it in a box. No one looks at your slip. You get one slip, just like everyone else.</p><p>India''s elections work on the same ideas. When the Constitution came into force on 26 January 1950, India gave every adult citizen the right to vote. This is called <strong>universal adult franchise</strong>. <em>Franchise</em> means the right to vote. <em>Universal</em> means it is for all.</p>'
+- kind: text
+  heading: Who may vote
+  html: '<p>Every citizen of India who is 18 years old or more may vote. It does not matter whether the person is rich or poor, educated or not, a woman or a man, or what religion or caste the person belongs to. To vote, a person''s name must be on the <strong>voters'' list</strong>, the list of people who may vote in an area.</p><p>Elections are organised by an independent body called the <strong>Election Commission of India</strong>. It makes sure elections are run by the rules.</p>'
+- kind: text
+  heading: One vote, in secret
+  html: '<p><strong>One person, one vote</strong> means every voter has just one vote, and every vote counts the same. A king and a farmer each have one vote.</p><p>The vote is cast in <strong>secret</strong>. This is called a <strong>secret ballot</strong>. A <em>ballot</em> is the way a vote is recorded. Because it is secret, no one can find out whom you chose. So no one can pressure you or punish you for your choice.</p><p>After the voting, the votes are counted. A <strong>majority</strong> means more than half of all the votes cast.</p>'
+- kind: figure
+  svg: <svg viewBox="0 0 320 130" role="img"><rect x="10" y="40" width="70" height="60" rx="6" fill="#ffb800" stroke="#14193a" stroke-width="2"/><text x="45" y="68" font-size="10" text-anchor="middle" fill="#14193a">Voter,</text><text x="45" y="82" font-size="10" text-anchor="middle" fill="#14193a">age 18+</text><rect x="125" y="20" width="70" height="30" rx="4" fill="#6cb7ff" stroke="#14193a" stroke-width="2"/><text x="160" y="40" font-size="10" text-anchor="middle" fill="#14193a">Private booth</text><rect x="125" y="70" width="70" height="40" rx="4" fill="#6cb7ff" stroke="#14193a" stroke-width="2"/><text x="160" y="94" font-size="10" text-anchor="middle" fill="#14193a">Ballot box</text><rect x="240" y="40" width="70" height="60" rx="6" fill="none" stroke="currentColor" stroke-width="2"/><text x="275" y="68" font-size="10" text-anchor="middle" fill="currentColor">Votes are</text><text x="275" y="82" font-size="10" text-anchor="middle" fill="currentColor">counted</text><line x1="80" y1="70" x2="125" y2="38" stroke="currentColor" stroke-width="2"/><line x1="80" y1="70" x2="125" y2="90" stroke="currentColor" stroke-width="2"/><line x1="195" y1="90" x2="240" y2="70" stroke="currentColor" stroke-width="2"/></svg>
+  alt: A diagram of a voter going to a private booth, then to a ballot box, and the votes then being counted at the end.
+  caption: A voter marks one choice in private, puts it in a box, and later all the votes are counted. No one sees which choice the voter made.
+- kind: example
+  heading: Worked example
+  prompt: 'In a school election with two choices, 45 students vote. 28 vote for choice A and the rest for choice B. Does A have a majority, and by how many votes does A win?'
+  steps:
+  - 'Votes for B = 45 - 28 = 17.'
+  - 'Half of 45 is 22.5. A majority is more than half, so it needs at least 23 votes.'
+  - '28 is more than 22.5, so A has a majority.'
+  - 'Margin = 28 - 17 = 11 votes.'
+- kind: example
+  heading: Worked reasoning
+  prompt: 'A landlord tells his workers, "Vote for my friend, and I will check your ballot slips afterwards." Is this allowed in a fair election?'
+  steps:
+  - 'Recall the secret ballot. No one may find out whom a voter chose.'
+  - 'The landlord says he will check, which tries to take away that secrecy.'
+  - 'Each worker has one vote, which is the worker''s own choice. It does not belong to the landlord.'
+  - 'So this is not allowed. The secret ballot protects the voter from this kind of pressure.'
+- kind: callout
+  tone: watch
+  html: Do not think only educated or well-off people may vote. Every citizen aged 18 or more may vote, and no one gets more than one vote.
+- kind: callout
+  tone: real
+  html: On voting day, people of every kind queue together and each marks one choice in private. Your vote is yours alone, and no one can ask you to show it.
+- kind: check
+  item: q-ov-1
+- kind: check
+  item: q-ov-2
+- kind: check
+  item: q-ov-3
+- kind: summary
+  points:
+  - 'Universal adult franchise means every citizen aged 18 or more may vote.'
+  - 'One person, one vote: each voter has one vote and every vote counts the same.'
+  - 'The secret ballot keeps a voter''s choice private so no one can pressure the voter.'
+  - 'The Election Commission of India organises elections. A majority is more than half of the votes cast.'
+items:
+- key: q-ov-1
+  kind: mcq
+  stem: What is the voting age in India?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: civics-universal-franchise
+  explanation: A citizen of India who is 18 years old or more may vote.
+  hints:
+  - It is the age at which a person is counted as an adult.
+  correct: C
+  options:
+  - key: A
+    text: 12 years
+    misconception: only-some-vote
+  - key: B
+    text: 25 years
+    misconception: only-some-vote
+  - key: C
+    text: 18 years
+  - key: D
+    text: 60 years
+    misconception: only-some-vote
+- key: q-ov-2
+  kind: mcq
+  stem: Which body organises elections in India?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: civics-universal-franchise
+  explanation: The Election Commission of India is the independent body that organises elections.
+  hints:
+  - The name has the word "Election" in it.
+  correct: A
+  options:
+  - key: A
+    text: The Election Commission of India
+  - key: B
+    text: Each school principal
+    misconception: only-some-vote
+  - key: C
+    text: The richest landlord in each village
+    misconception: ballot-not-secret
+  - key: D
+    text: A newspaper
+    misconception: only-some-vote
+- key: q-ov-3
+  kind: truefalse
+  stem: In a secret ballot, other people are not allowed to find out whom you voted for.
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: civics-universal-franchise
+  explanation: True. The vote is cast in secret so that no one can pressure or punish a voter.
+  hints:
+  - What does the word secret tell you?
+  correct: true
+- key: q-ov-4
+  kind: numeric
+  stem: In an election with two choices, 45 students vote. 28 vote for choice A and the rest vote for choice B. By how many votes does A win?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: civics-universal-franchise
+  explanation: B gets 45 - 28 = 17 votes. The margin is 28 - 17 = 11 votes.
+  hints:
+  - Find the votes for B first.
+  value: 11
+  tolerance: 0.0
+  verify: 28-(45-28)
+- key: q-ov-5
+  kind: numeric
+  stem: In an election with two choices, 45 students vote. A majority needs more than half of the votes cast. What is the smallest number of votes that gives a majority?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: civics-universal-franchise
+  explanation: Half of 45 is 22.5. More than 22.5 means at least 23 votes.
+  hints:
+  - Half of 45 is not a whole number, so go to the next whole number above it.
+  value: 23
+  tolerance: 0.0
+  verify: 45/2+1/2
+- key: q-ov-6
+  kind: mcq
+  stem: What does one person, one vote mean?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: civics-universal-franchise
+  explanation: Every voter gets just one vote, and every vote counts the same.
+  hints:
+  - Think about how many slips each student gets in a school election.
+  correct: B
+  options:
+  - key: A
+    text: Rich voters get more votes
+    misconception: more-votes-for-more
+  - key: B
+    text: Each voter has one vote and every vote counts the same
+  - key: C
+    text: Only one person in a village may vote
+    misconception: only-some-vote
+  - key: D
+    text: A voter may vote again and again
+    misconception: more-votes-for-more
+- key: q-ov-7
+  kind: mcq
+  stem: 'Assertion (A): India uses a secret ballot in elections. Reason (R): It keeps a voter''s choice private so that no one can pressure the voter.'
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: civics-universal-franchise
+  explanation: Both statements are true. Secrecy is what protects a voter from pressure, so R explains A.
+  hints:
+  - Ask what secrecy protects the voter from.
+  correct: A
+  options:
+  - key: A
+    text: Both A and R are true, and R explains A
+  - key: B
+    text: Both A and R are true, but R does not explain A
+    misconception: ballot-not-secret
+  - key: C
+    text: A is true, but R is false
+    misconception: ballot-not-secret
+  - key: D
+    text: A is false, but R is true
+    misconception: ballot-not-secret
+- key: q-ov-8
+  pattern: case
+  kind: mcq
+  stem: 'Read this note. In a town, a man says, "I did not study in school, so I should not vote. And my neighbour is rich, so she should get two votes." A teacher explains the rules for voting in India. What should the teacher say?'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: civics-universal-franchise
+  explanation: Every citizen aged 18 or more may vote, whether or not they went to school. Under one person one vote, no one gets more than one vote, however rich they are.
+  hints:
+  - Check both parts of what the man said against the rules.
+  correct: D
+  options:
+  - key: A
+    text: The man is right on both points
+    misconception: only-some-vote
+  - key: B
+    text: The man is right that rich people get two votes, but wrong about schooling
+    misconception: more-votes-for-more
+  - key: C
+    text: Only the neighbour may vote
+    misconception: only-some-vote
+  - key: D
+    text: Both may vote, schooling does not matter, and each gets just one vote
+misconceptions:
+- code: only-some-vote
+  concept: civics-universal-franchise
+  description: Thinks only some people, such as the educated or the well-off, may vote, when every citizen aged 18 or more may vote.
+- code: more-votes-for-more
+  concept: civics-universal-franchise
+  description: Thinks some people can have more than one vote, when one person one vote gives every voter just one.
+- code: ballot-not-secret
+  concept: civics-universal-franchise
+  description: Thinks others may find out or control how a person voted, when the secret ballot keeps each choice private.
+cards:
+- key: one-person-one-vote-card-1
+  concept: civics-universal-franchise
+  front: What is universal adult franchise?
+  back: Every adult citizen, aged 18 or more, has the right to vote.
+- key: one-person-one-vote-card-2
+  concept: civics-universal-franchise
+  front: What does one person one vote mean?
+  back: Each voter has one vote and every vote counts the same.
+- key: one-person-one-vote-card-3
+  concept: civics-universal-franchise
+  front: Why is the ballot secret?
+  back: So no one can find out how you voted or pressure you.
+- key: one-person-one-vote-card-4
+  concept: civics-universal-franchise
+  front: Who organises elections in India?
+  back: The Election Commission of India.

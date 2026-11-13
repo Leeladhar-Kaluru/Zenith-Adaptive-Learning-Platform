@@ -1,0 +1,14 @@
+slug: 6-social-local-government
+board: cbse
+curriculum: NCERT current editions (to be confirmed by a reviewer)
+grade: 6
+subject: social
+title: 'Local government: the panchayat and the municipality'
+summary: Find out why villages, towns and cities need their own elected bodies, who belongs to the gram sabha and gram panchayat, and how a municipality looks after a town.
+concepts:
+- id: civics-local-need
+- id: civics-gram-panchayat
+- id: civics-municipality
+lessons:
+- village-panchayat-gram-sabha
+- town-municipality

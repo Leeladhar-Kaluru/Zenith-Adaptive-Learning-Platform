@@ -1,0 +1,267 @@
+slug: village-panchayat-gram-sabha
+title: Local government and the village panchayat
+minutes: 20
+objectives:
+- Explain why some decisions are best made close to where people live
+- Say who belongs to the gram sabha
+- Explain how the gram panchayat is chosen and who heads it
+- Tell apart the gram sabha from the gram panchayat
+concepts:
+- civics-local-need
+- civics-gram-panchayat
+origin: ai_assisted
+blocks:
+- kind: text
+  heading: Problems that are close to home
+  html: '<p>The village well is dirty. The road to school is full of holes. The lamp on the lane has been dark for a week. Who should fix these things? The Prime Minister is far away and busy with the whole country. People who live in the village know these problems best.</p><p>So villages, towns and cities have their own <strong>local government</strong>. It is a group of people chosen by the local people to look after local needs, such as water, roads and lights.</p>'
+- kind: text
+  heading: The gram sabha and the gram panchayat
+  html: '<p>In a village, every grown-up who has the right to vote belongs to the <strong>gram sabha</strong>. Gram means village and sabha means meeting. So the gram sabha is a village meeting of all adult voters. They talk about village plans and ask questions.</p><p>It is hard for everyone to decide every small thing. So the villagers elect some people to work for them. These members form the <strong>gram panchayat</strong>. To elect means to choose by voting. The gram panchayat looks after the daily needs of the village.</p><p>The head of the gram panchayat is called the <strong>sarpanch</strong>. The sarpanch leads the work and the meetings.</p>'
+- kind: figure
+  svg: <svg viewBox="0 0 320 150" role="img"><rect x="10" y="10" width="300" height="40" rx="6" fill="#6cb7ff" stroke="#14193a" stroke-width="2"/><text x="160" y="35" font-size="13" text-anchor="middle" fill="#14193a">Gram sabha (all adult voters)</text><line x1="160" y1="50" x2="160" y2="70" stroke="currentColor" stroke-width="2"/><text x="215" y="66" font-size="11" fill="currentColor">elect</text><rect x="60" y="70" width="200" height="35" rx="6" fill="#ffb800" stroke="#14193a" stroke-width="2"/><text x="160" y="93" font-size="13" text-anchor="middle" fill="#14193a">Gram panchayat members</text><line x1="160" y1="105" x2="160" y2="120" stroke="currentColor" stroke-width="2"/><rect x="110" y="120" width="100" height="26" rx="6" fill="#ffffff" stroke="#14193a" stroke-width="2"/><text x="160" y="138" font-size="13" text-anchor="middle" fill="#14193a">Sarpanch (head)</text></svg>
+  alt: A chart with three boxes from top to bottom showing voters electing the gram panchayat, which is headed by the sarpanch.
+  caption: The gram sabha elects the members of the gram panchayat. The sarpanch is the head of the gram panchayat.
+- kind: example
+  heading: Worked example
+  prompt: A village needs a new hand pump near the school. Who does what?
+  steps:
+  - 'The villagers raise the need at a meeting of the gram sabha, where all adult voters can speak.'
+  - 'The gram panchayat, the elected members, looks after the daily work of the village, so it plans the hand pump.'
+  - 'The sarpanch, as head, leads the panchayat meeting where this is decided.'
+  - 'Check: the voters speak, the elected members act, and the sarpanch leads.'
+- kind: example
+  heading: Worked reasoning
+  prompt: Rani is 17 and lives in a village. Is she in the gram sabha?
+  steps:
+  - 'Recall who belongs to the gram sabha: adults who can vote in the village.'
+  - 'A person who is 17 is not yet an adult voter.'
+  - 'So Rani is not yet in the gram sabha.'
+  - 'Check: she can join it when she becomes an adult voter.'
+- kind: callout
+  tone: watch
+  html: Do not mix up the two names. The gram sabha is all the adult voters of the village. The gram panchayat is the smaller group of elected members. The sarpanch heads the gram panchayat. The gram sabha is a different body, made up of all the adult voters of the village.
+- kind: callout
+  tone: real
+  html: When a village repairs a lane, keeps a well clean or plans a street light, the gram panchayat is often the group that works on it.
+- kind: check
+  item: q-vp-1
+- kind: check
+  item: q-vp-2
+- kind: check
+  item: q-vp-3
+- kind: summary
+  points:
+  - 'Local government is chosen by local people to look after local needs.'
+  - 'The gram sabha is all the adult voters of a village.'
+  - 'The villagers elect the members of the gram panchayat.'
+  - 'The sarpanch is the head of the gram panchayat.'
+items:
+- key: q-vp-1
+  kind: mcq
+  stem: Who belongs to the gram sabha?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: civics-gram-panchayat
+  explanation: The gram sabha is made up of all the adult voters of the village.
+  hints:
+  - Think about who can vote.
+  correct: A
+  options:
+  - key: A
+    text: All adult voters of the village
+  - key: B
+    text: Only the sarpanch
+    misconception: sabha-is-panchayat
+  - key: C
+    text: Only the elected members
+    misconception: sabha-is-panchayat
+  - key: D
+    text: Only the village teacher
+    misconception: sabha-is-panchayat
+- key: q-vp-2
+  kind: mcq
+  stem: Who is the head of the gram panchayat?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: civics-gram-panchayat
+  explanation: The sarpanch is the head of the gram panchayat.
+  hints:
+  - The word starts with the letter S.
+  correct: C
+  options:
+  - key: A
+    text: The Prime Minister
+    misconception: far-govt-fixes-all
+  - key: B
+    text: The village teacher
+    misconception: far-govt-fixes-all
+  - key: C
+    text: The sarpanch
+  - key: D
+    text: The gram sabha
+    misconception: sabha-is-panchayat
+- key: q-vp-3
+  kind: mcq
+  stem: Why do villages have their own local government?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: civics-local-need
+  explanation: People who live in the village know its problems best, so local people choose a group to look after local needs.
+  hints:
+  - Who knows the village problems best?
+  correct: B
+  options:
+  - key: A
+    text: Because the Prime Minister does not want to work
+    misconception: far-govt-fixes-all
+  - key: B
+    text: Because local needs are best known and handled by local people
+  - key: C
+    text: Because villages have no laws
+    misconception: far-govt-fixes-all
+  - key: D
+    text: Because only the sarpanch can vote
+    misconception: sabha-is-panchayat
+- key: q-vp-4
+  kind: truefalse
+  stem: The members of the gram panchayat are chosen by the villagers.
+  difficulty: intro
+  purpose: practice
+  concepts:
+  - id: civics-gram-panchayat
+  explanation: True. The villagers elect the members of the gram panchayat by voting.
+  hints:
+  - Remember the word elect.
+  correct: true
+- key: q-vp-5
+  kind: mcq
+  stem: Which of these is a job for the village local government?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: civics-local-need
+  explanation: A broken lane or a dirty well is a local problem, so the local government looks after it. Deciding a rule for the whole country is not a village matter.
+  hints:
+  - Pick the problem that is local to the village.
+  correct: D
+  options:
+  - key: A
+    text: Making a rule for the whole country
+    misconception: far-govt-fixes-all
+  - key: B
+    text: Choosing the Prime Minister
+    misconception: far-govt-fixes-all
+  - key: C
+    text: Printing the national flag
+    misconception: far-govt-fixes-all
+  - key: D
+    text: Keeping the village lanes and wells in good order
+- key: q-vp-6
+  kind: truefalse
+  stem: The gram sabha and the gram panchayat are the same group of people.
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: civics-gram-panchayat
+  explanation: False. The gram sabha is all adult voters. The gram panchayat is the smaller group of elected members.
+  hints:
+  - Which group is bigger?
+  correct: false
+- key: q-vp-7
+  kind: mcq
+  stem: 'Assertion (A): The gram sabha is called a village meeting of all adult voters. Reason (R): Every adult voter of the village has the right to belong to it and to speak there.'
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: civics-gram-panchayat
+  explanation: Both statements are true. The gram sabha is open to every adult voter, so R explains why it is a meeting of all of them.
+  hints:
+  - Does R say why the meeting is for everyone?
+  correct: A
+  options:
+  - key: A
+    text: Both A and R are true, and R explains A
+  - key: B
+    text: Both A and R are true, but R does not explain A
+    misconception: sabha-is-panchayat
+  - key: C
+    text: A is true, but R is false
+    misconception: sabha-is-panchayat
+  - key: D
+    text: A is false, but R is true
+    misconception: sabha-is-panchayat
+- key: q-vp-8
+  kind: mcq
+  stem: 'Assertion (A): The sarpanch is the head of the gram panchayat. Reason (R): The sarpanch is the head of all the adult voters in the gram sabha.'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: civics-gram-panchayat
+  explanation: A is true. R is false, because the sarpanch is the head of the elected gram panchayat, while the gram sabha is made up of all the adult voters and they are not led by one person.
+  hints:
+  - Which group does the sarpanch head?
+  correct: C
+  options:
+  - key: A
+    text: Both A and R are true, and R explains A
+    misconception: sabha-is-panchayat
+  - key: B
+    text: Both A and R are true, but R does not explain A
+    misconception: sabha-is-panchayat
+  - key: C
+    text: A is true, but R is false
+  - key: D
+    text: A is false, but R is true
+    misconception: sabha-is-panchayat
+- key: q-vp-9
+  pattern: case
+  kind: mcq
+  stem: 'Read this note. The people of a village are worried because the lane to the school floods in the rains. They come to a meeting where every adult voter can speak. After the talk, the elected members of the village group agree to repair the lane, and their head leads the next meeting. What is the elected group called, and who is its head?'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: civics-gram-panchayat
+  - id: civics-local-need
+  explanation: The meeting of all adult voters is the gram sabha. The elected group that does the work is the gram panchayat, and its head is the sarpanch.
+  hints:
+  - The meeting of everyone is one thing. The elected members are another.
+  correct: B
+  options:
+  - key: A
+    text: Gram sabha, headed by the sarpanch
+    misconception: sabha-is-panchayat
+  - key: B
+    text: Gram panchayat, headed by the sarpanch
+  - key: C
+    text: Gram panchayat, headed by the Prime Minister
+    misconception: far-govt-fixes-all
+  - key: D
+    text: Gram sabha, headed by the Prime Minister
+    misconception: far-govt-fixes-all
+misconceptions:
+- code: sabha-is-panchayat
+  concept: civics-gram-panchayat
+  description: Mixes up the gram sabha (all adult voters) with the gram panchayat (the elected members), or thinks the sarpanch heads the whole gram sabha.
+- code: far-govt-fixes-all
+  concept: civics-local-need
+  description: Thinks faraway leaders handle every small local problem, when villages, towns and cities have their own elected local government.
+cards:
+- key: village-panchayat-gram-sabha-card-1
+  concept: civics-local-need
+  front: What is local government?
+  back: A group chosen by local people to look after local needs such as water, roads and lights.
+- key: village-panchayat-gram-sabha-card-2
+  concept: civics-gram-panchayat
+  front: Who belongs to the gram sabha?
+  back: All the adult voters of the village.
+- key: village-panchayat-gram-sabha-card-3
+  concept: civics-gram-panchayat
+  front: How are gram panchayat members chosen?
+  back: The villagers elect them by voting.
+- key: village-panchayat-gram-sabha-card-4
+  concept: civics-gram-panchayat
+  front: Who is the sarpanch?
+  back: The head of the gram panchayat.

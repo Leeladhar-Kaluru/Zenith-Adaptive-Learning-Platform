@@ -1,0 +1,295 @@
+slug: light-and-materials
+title: Light, materials and straight lines
+minutes: 20
+objectives:
+- Tell luminous objects from non-luminous objects
+- Sort materials into transparent, translucent and opaque
+- Show with a simple activity that light travels in straight lines
+concepts:
+- light-sources-materials
+origin: ai_assisted
+blocks:
+- kind: text
+  heading: Things that shine and things that do not
+  html: '<p>At night a candle lights up the whole room. A book on the table does not light up anything, yet you can see it when the candle burns. Why? We see an object when light from it enters our eyes.</p><p>An object that makes its own light is called <strong>luminous</strong>. The Sun, a candle flame, a tube light and a firefly are luminous. An object that does not make its own light is <strong>non-luminous</strong>. A book, a chair and a stone are non-luminous. We see them because light from a luminous object falls on them and bounces into our eyes.</p><p>The Moon looks bright at night, but it is non-luminous. It shines because it bounces back the light of the Sun.</p>'
+- kind: text
+  heading: Transparent, translucent and opaque
+  html: '<p>Materials treat light in different ways. A <strong>transparent</strong> material lets almost all the light pass through, so you can see things clearly through it. Clear glass and clean water are transparent.</p><p>A <strong>translucent</strong> material lets some light pass through, but you cannot see things clearly through it. Butter paper and frosted glass are translucent. You see a bright patch, but only a blurry shape behind it.</p><p>An <strong>opaque</strong> material lets no light pass through. You cannot see through it at all. Wood, metal, stone and a thick cardboard sheet are opaque.</p>'
+- kind: figure
+  svg: '<svg viewBox="0 0 320 170" role="img"><circle cx="28" cy="85" r="12" fill="#f5b50a"/><rect x="40" y="79" width="26" height="12" fill="#14193a"/><rect x="100" y="20" width="8" height="52" fill="#14193a"/><rect x="100" y="98" width="8" height="52" fill="#14193a"/><rect x="170" y="20" width="8" height="52" fill="#14193a"/><rect x="170" y="98" width="8" height="52" fill="#14193a"/><rect x="250" y="20" width="8" height="130" fill="#3e7bfa"/><line x1="66" y1="85" x2="250" y2="85" stroke="#f5b50a" stroke-width="3"/><text x="86" y="14" font-size="12" fill="currentColor">Card 1</text><text x="156" y="14" font-size="12" fill="currentColor">Card 2</text><text x="236" y="14" font-size="12" fill="currentColor">Screen</text><text x="4" y="125" font-size="12" fill="currentColor">Torch</text><text x="60" y="165" font-size="12" fill="currentColor">Holes in a straight line</text></svg>'
+  alt: A torch, two opaque cards with holes lined up, and a screen, with a straight ray of light passing through both holes onto the screen.
+  caption: Light from the torch reaches the screen only when the holes in both cards lie on one straight line with the torch.
+- kind: text
+  heading: Light travels in straight lines
+  html: '<p>Here is an activity you can do at home. Take two stiff cards. Make a small hole in the same place in each, using a pencil. Stand the cards upright, one behind the other. Put a lit torch behind them and a sheet of paper or a wall in front.</p><p>When the two holes and the torch are in a straight line, a bright spot appears on the paper. Move one card a little sideways. The spot vanishes. The card, which is opaque, now blocks the light.</p><p>This shows that <strong>light travels in straight lines</strong>. It does not bend around corners when it moves through air. A straight path of light is drawn in a diagram as a line with an arrow, called a <strong>ray</strong>.</p>'
+- kind: example
+  heading: Worked example
+  prompt: 'Sort these into luminous and non-luminous: the Sun, the Moon, a burning candle, a mirror, a lit bulb.'
+  steps:
+  - 'Ask for each one: does it make its own light?'
+  - 'The Sun makes its own light. A burning candle makes light. A lit bulb makes light. These are luminous.'
+  - 'The Moon only bounces back sunlight. A mirror only bounces back light that falls on it. These make no light of their own.'
+  - 'Check: three are luminous (Sun, candle, lit bulb) and two are non-luminous (Moon, mirror).'
+- kind: example
+  heading: Worked example
+  prompt: 'A bathroom window is made of frosted glass. In the morning you see bright light coming in but cannot see a person standing outside clearly. Which kind of material is it?'
+  steps:
+  - 'The light comes in, so the glass is not opaque.'
+  - 'You cannot see the person clearly, so it is not transparent.'
+  - 'A material that lets some light through but gives no clear view is translucent.'
+  - 'Check: bright light comes in, but shapes are blurry. So frosted glass is translucent.'
+- kind: callout
+  tone: watch
+  html: Do not mix up translucent and transparent. Through a transparent sheet you see clearly. Through a translucent sheet you only see a blur. Also, a bright thing is not always luminous. The Moon is bright, but it does not make its own light.
+- kind: callout
+  tone: real
+  html: 'Think of everyday uses. Windows are made of clear glass so that we can see out. Bathroom windows use frosted glass so that light comes in but nobody can see in. A lamp shade is often translucent, which gives soft light. Walls and doors are opaque, which gives us privacy.'
+- kind: check
+  item: q-lm-1
+- kind: check
+  item: q-lm-2
+- kind: check
+  item: q-lm-3
+- kind: summary
+  points:
+  - 'Luminous objects make their own light, such as the Sun and a candle. Non-luminous objects, such as the Moon and a book, are seen because they bounce back light.'
+  - 'Transparent materials let light pass and give a clear view. Translucent materials let some light pass and give a blurry view. Opaque materials let no light pass.'
+  - 'Light travels in straight lines. Two cards with holes show this, because the light reaches the screen only when the holes are in a straight line.'
+items:
+- key: q-lm-1
+  kind: mcq
+  stem: Which of these is a luminous object?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: light-sources-materials
+  explanation: A candle flame makes its own light, so it is luminous. A book, a wall and a mirror only bounce back light that falls on them.
+  hints:
+  - Which one makes light by itself?
+  correct: B
+  options:
+  - key: A
+    text: A book
+  - key: B
+    text: A burning candle
+  - key: C
+    text: A wall
+  - key: D
+    text: A mirror
+    misconception: shiny-means-luminous
+- key: q-lm-2
+  kind: mcq
+  stem: Through which material can you see things most clearly?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: light-sources-materials
+  explanation: Clear glass is transparent. It lets almost all light pass, so things behind it look clear.
+  hints:
+  - Which word means you can see clearly through it?
+  correct: C
+  options:
+  - key: A
+    text: A wooden board
+  - key: B
+    text: Butter paper
+    misconception: translucent-is-clear
+  - key: C
+    text: Clear glass
+  - key: D
+    text: A steel plate
+- key: q-lm-3
+  kind: mcq
+  stem: Why is the bright spot of a torch beam seen on the screen only when the holes in two cards are in a line with the torch?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: light-sources-materials
+  explanation: Light travels in straight lines. If a hole is moved off the line, the opaque card blocks the light.
+  hints:
+  - What kind of path does light follow?
+  correct: A
+  options:
+  - key: A
+    text: Light travels in a straight line and an opaque card blocks it
+  - key: B
+    text: Light bends around the card to find the holes
+    misconception: light-bends-corners
+  - key: C
+    text: The cards make their own light
+  - key: D
+    text: The screen pulls the light toward it
+    misconception: light-bends-corners
+- key: q-lm-4
+  kind: mcq
+  stem: A sheet of butter paper is held in front of a lit lamp. You see a glow on it but not the shape of the lamp. What kind of material is butter paper?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: light-sources-materials
+  explanation: Some light passes through, but the view is blurry. That describes a translucent material.
+  hints:
+  - Some light passes, but not a clear view.
+  correct: B
+  options:
+  - key: A
+    text: Transparent
+    misconception: translucent-is-clear
+  - key: B
+    text: Translucent
+  - key: C
+    text: Opaque
+  - key: D
+    text: Luminous
+- key: q-lm-5
+  kind: numeric
+  stem: 'Here are six things: the Sun, the Moon, a firefly, a tube light, a mirror and a book. How many of them are luminous?'
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: light-sources-materials
+  explanation: The Sun, a firefly and a tube light make their own light. The Moon, the mirror and the book only bounce back light. So 3 are luminous.
+  hints:
+  - Count only those that make their own light.
+  value: 3
+  tolerance: 0.0
+  verify: 1+1+1
+- key: q-lm-6
+  kind: mcq
+  stem: Why can we see the Moon at night?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: light-sources-materials
+  explanation: The Moon does not make light. It bounces back sunlight, and some of that light reaches our eyes.
+  hints:
+  - Is the Moon luminous or non-luminous?
+  correct: D
+  options:
+  - key: A
+    text: It makes its own light like a lamp
+    misconception: moon-is-luminous
+  - key: B
+    text: Stars make it shine
+  - key: C
+    text: It is a transparent object
+  - key: D
+    text: It bounces back the light of the Sun
+- key: q-lm-7
+  kind: mcq
+  stem: 'Assertion (A): You cannot see a person standing behind a thick wooden door. Reason (R): Wood is opaque and lets no light pass through.'
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: light-sources-materials
+  explanation: Both statements are true. Since wood lets no light pass, light from the person cannot reach your eyes. So R explains A.
+  hints:
+  - What does an opaque material do to light?
+  correct: A
+  options:
+  - key: A
+    text: Both A and R are true and R explains A
+  - key: B
+    text: Both A and R are true but R does not explain A
+  - key: C
+    text: A is true but R is false
+  - key: D
+    text: A is false but R is true
+- key: q-lm-8
+  kind: mcq
+  stem: 'Assertion (A): The Moon is a luminous object. Reason (R): The Moon can be seen in the sky at night.'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: light-sources-materials
+  explanation: A is false, because the Moon does not make its own light. R is true, because we do see the Moon. Being seen is not proof of being luminous.
+  hints:
+  - Does the Moon make its own light?
+  correct: D
+  options:
+  - key: A
+    text: Both A and R are true and R explains A
+    misconception: moon-is-luminous
+  - key: B
+    text: Both A and R are true but R does not explain A
+    misconception: moon-is-luminous
+  - key: C
+    text: A is true but R is false
+    misconception: moon-is-luminous
+  - key: D
+    text: A is false but R is true
+- key: q-lm-9
+  pattern: case
+  kind: mcq
+  stem: 'Meena puts a lit candle on a table. She holds three cardboard sheets with a hole in the middle of each, in a row between her eye and the candle. She can see the flame through all three holes. Then she slides the middle card a little to the left. The flame disappears. What explains this?'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: light-sources-materials
+  explanation: Light travels in straight lines. When the middle hole moves off the line, the opaque card blocks the light, so it cannot reach her eye.
+  hints:
+  - Did the three holes still lie on one straight line?
+  - Is cardboard transparent or opaque?
+  correct: C
+  options:
+  - key: A
+    text: Light bends around the card, so the flame should still be seen
+    misconception: light-bends-corners
+  - key: B
+    text: The flame stopped making light when the card moved
+  - key: C
+    text: The holes are no longer in a straight line, and the opaque card blocks the light
+  - key: D
+    text: Cardboard is transparent, so it hides the flame by itself
+- key: q-lm-10
+  kind: mcq
+  stem: Which pair correctly matches a material with its type?
+  difficulty: challenge
+  purpose: practice
+  concepts:
+  - id: light-sources-materials
+  explanation: Clean water is transparent and a brick is opaque. The other pairs mix up the types.
+  hints:
+  - Check each pair one by one.
+  correct: A
+  options:
+  - key: A
+    text: Clean water is transparent and a brick is opaque
+  - key: B
+    text: Frosted glass is transparent and clean water is opaque
+    misconception: translucent-is-clear
+  - key: C
+    text: A brick is translucent and butter paper is transparent
+    misconception: translucent-is-clear
+  - key: D
+    text: Clear glass is opaque and wood is transparent
+misconceptions:
+- code: shiny-means-luminous
+  concept: light-sources-materials
+  description: Thinks a mirror or any shiny thing is luminous, when it only bounces back light from another source.
+- code: translucent-is-clear
+  concept: light-sources-materials
+  description: Mixes up translucent and transparent, thinking that a translucent material gives a clear view.
+- code: light-bends-corners
+  concept: light-sources-materials
+  description: Thinks light bends around corners and obstacles when it travels through air.
+- code: moon-is-luminous
+  concept: light-sources-materials
+  description: Thinks the Moon makes its own light, when it only bounces back sunlight.
+cards:
+- key: light-and-materials-card-1
+  concept: light-sources-materials
+  front: What is a luminous object? Give two examples.
+  back: An object that makes its own light, such as the Sun and a candle flame.
+- key: light-and-materials-card-2
+  concept: light-sources-materials
+  front: Why can we see the Moon?
+  back: The Moon is non-luminous. It bounces back the light of the Sun to our eyes.
+- key: light-and-materials-card-3
+  concept: light-sources-materials
+  front: What is the difference between transparent, translucent and opaque?
+  back: Transparent lets light pass and gives a clear view. Translucent lets some light pass and gives a blurry view. Opaque lets no light pass.
+- key: light-and-materials-card-4
+  concept: light-sources-materials
+  front: How can you show that light travels in a straight line?
+  back: Put a torch behind two cards with holes. The light reaches the screen only when the holes and the torch are in one straight line.

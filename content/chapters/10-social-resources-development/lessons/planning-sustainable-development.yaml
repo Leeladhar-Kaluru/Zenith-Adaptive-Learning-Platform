@@ -1,0 +1,285 @@
+slug: planning-sustainable-development
+title: Planning resources and sustainable development
+minutes: 25
+objectives:
+- Explain why resources are not spread evenly
+- Give reasons why resources must be planned
+- Define sustainable development in simple words
+- Suggest ways of using resources carefully
+concepts:
+- resource-planning
+- sustainable-development
+origin: ai_assisted
+blocks:
+- kind: text
+  heading: Why plan at all?
+  html: '<p>Think of a class that gets one box of chalk for the whole term. If the first week uses half of it, the class will have none later. Resources in a country are like that box. Some are limited, and everyone needs a share. <strong>Resource planning</strong> means deciding how to find, use and share resources carefully so they last and reach the people who need them.</p>'
+- kind: text
+  heading: Resources are not spread evenly
+  html: '<p>Resources are not found equally in every place. Coal is found in some regions and not in others. Some areas get strong sunshine, such as the desert areas of Rajasthan. Some areas get a lot of rain and others get little. A region that is rich in one resource may lack another. Because of this uneven spread, regions depend on each other, and a country must plan how to use what it has and how to share it.</p><p>Planning is also needed because many resources are limited, and because using them carelessly harms people who live nearby and people who will live later.</p>'
+- kind: figure
+  svg: '<svg viewBox="0 0 340 120" role="img"><rect x="20" y="30" width="130" height="40" fill="none" stroke="currentColor"/><rect x="20" y="30" width="90" height="40" fill="#ffb800"/><text x="85" y="54" font-size="10" text-anchor="middle" fill="#14193a">used now</text><rect x="190" y="30" width="130" height="40" fill="none" stroke="currentColor"/><rect x="190" y="30" width="45" height="40" fill="#6cb7ff"/><text x="212" y="54" font-size="10" text-anchor="middle" fill="#14193a">used</text><text x="85" y="95" font-size="10" text-anchor="middle" fill="currentColor">Careless use</text><text x="255" y="95" font-size="10" text-anchor="middle" fill="currentColor">Planned use</text><text x="170" y="15" font-size="10" text-anchor="middle" fill="currentColor">Same stock, two ways of using it (made-up)</text></svg>'
+  alt: Two boxes show the same stock of a resource, with more used in the careless box and less in the planned box.
+  caption: The same stock of a resource under careless use and planned use. The sizes are made up to show the idea.
+- kind: text
+  heading: Sustainable development
+  html: '<p><strong>Development</strong> means improving how people live, for example with better homes, schools and power. <strong>Sustainable development</strong> means growing and improving life today without harming the ability of future generations to meet their own needs. It does not mean stopping development or never using resources. It means using them wisely.</p><p>Some ways to do this are to use renewable energy such as solar power, to save and reuse water by rainwater harvesting, to use coal and petroleum carefully, and to recycle materials. <strong>Rainwater harvesting</strong> means collecting and storing rain, for example from a roof, so it can be used later or can refill the ground water.</p>'
+- kind: example
+  heading: Sharing a limited stock
+  prompt: A made-up village store has 600 litres of stored water for 4 weeks. The village wants to use the same amount each week. How many litres can it use per week, and what happens if it uses 200 litres in week one?
+  steps:
+  - 'Divide the stock by the weeks. 600 / 4 = 150 litres per week.'
+  - 'If the village uses 200 litres in week one, it has used 50 litres more than its plan.'
+  - 'Water left is 600 - 200 = 400 litres, for 3 weeks.'
+  - 'That is 400 / 3, about 133 litres per week, which is less than 150. Using too much early makes later weeks short, so planning matters.'
+- kind: example
+  heading: Choosing wisely
+  prompt: A town needs more electricity. One plan uses only coal. Another adds solar power from sunny land and saves some coal. Which plan is closer to sustainable development, and why?
+  steps:
+  - 'Coal is non-renewable. Using only coal uses up a stock that cannot be replaced.'
+  - 'Sunlight is renewable, so solar power does not use up a limited stock.'
+  - 'Adding solar saves coal for the future, and the town still gets the electricity it needs today.'
+  - 'So the second plan is closer to sustainable development, because it meets present needs and leaves more for later.'
+- kind: callout
+  tone: watch
+  html: Sustainable development does not mean stopping development or never using resources. It means meeting today's needs while leaving enough for the future.
+- kind: callout
+  tone: real
+  html: Rainwater harvesting on a school roof stores rain for later use. It is a simple, local way to make a limited resource last longer.
+- kind: check
+  item: q-ps-1
+- kind: check
+  item: q-ps-4
+- kind: check
+  item: q-ps-6
+- kind: summary
+  points:
+  - 'Resources are spread unevenly, and many are limited, so they must be planned and shared carefully.'
+  - 'Careless use harms people nearby and people in the future.'
+  - 'Sustainable development means meeting present needs without harming the ability of future generations to meet theirs.'
+  - 'Ways to practise it include solar power, rainwater harvesting, careful use of coal and petroleum, and recycling.'
+items:
+- key: q-ps-1
+  kind: mcq
+  stem: What does resource planning mean?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: resource-planning
+  explanation: Planning means deciding how to find, use and share resources carefully so they last and reach those who need them.
+  hints:
+  - Think of the one box of chalk for the whole term.
+  correct: B
+  options:
+  - key: A
+    text: Using up a resource as quickly as possible
+    misconception: planning-means-not-using
+  - key: B
+    text: Deciding how to use and share resources carefully
+  - key: C
+    text: Never using any resource
+    misconception: planning-means-not-using
+  - key: D
+    text: Keeping all resources in one region
+    misconception: planning-means-not-using
+- key: q-ps-2
+  kind: mcq
+  stem: Which sentence about resources in a country is true?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: resource-planning
+  explanation: Resources are spread unevenly. A region rich in one resource may lack another, so sharing and planning are needed.
+  hints:
+  - Is every region equally rich in coal, sunshine and rain?
+  correct: C
+  options:
+  - key: A
+    text: Every region has the same resources
+    misconception: planning-means-not-using
+  - key: B
+    text: Resources are always found where they are needed
+    misconception: planning-means-not-using
+  - key: C
+    text: Regions differ, so they depend on each other
+  - key: D
+    text: Only the desert has any resources
+    misconception: planning-means-not-using
+- key: q-ps-3
+  kind: mcq
+  stem: Which is a way of practising sustainable development?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: sustainable-development
+  explanation: Rainwater harvesting stores rain for later use, so it saves a limited resource. It meets needs while helping the future.
+  hints:
+  - Which choice makes a limited resource last longer?
+  correct: A
+  options:
+  - key: A
+    text: Rainwater harvesting
+  - key: B
+    text: Using water as fast as possible
+    misconception: sustainable-means-no-development
+  - key: C
+    text: Wasting electricity
+    misconception: sustainable-means-no-development
+  - key: D
+    text: Stopping all schools and factories
+    misconception: sustainable-means-no-development
+- key: q-ps-4
+  kind: mcq
+  stem: Which describes sustainable development best?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: sustainable-development
+  explanation: Sustainable development meets present needs without harming the ability of future generations to meet theirs.
+  hints:
+  - It cares about today and about the future.
+  correct: D
+  options:
+  - key: A
+    text: Stopping all development to save resources
+    misconception: sustainable-means-no-development
+  - key: B
+    text: Using resources only for the present
+    misconception: sustainable-means-no-development
+  - key: C
+    text: Using resources only for the rich
+    misconception: sustainable-means-no-development
+  - key: D
+    text: Meeting present needs without harming future generations
+- key: q-ps-5
+  kind: numeric
+  stem: A made-up village has 900 litres of stored water for 6 weeks. It wants to use the same amount each week. How many litres can it use each week?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: resource-planning
+  explanation: Divide the stock by the weeks, 900 / 6 = 150 litres per week.
+  hints:
+  - Divide the total water by the number of weeks.
+  value: 150
+  tolerance: 0.0
+  verify: 900/6
+- key: q-ps-6
+  kind: mcq
+  stem: Why is solar power in sunny regions closer to sustainable development than using only coal?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: sustainable-development
+  - id: resource-types
+  explanation: Sunlight is renewable, so solar power does not use up a limited stock, and coal is saved for later.
+  hints:
+  - Which resource is replaced by nature, and which is not?
+  correct: B
+  options:
+  - key: A
+    text: Because solar power needs no workers
+    misconception: sustainable-means-no-development
+  - key: B
+    text: Because sunlight is renewable, so coal is saved for later
+  - key: C
+    text: Because coal is a human resource
+    misconception: sustainable-means-no-development
+  - key: D
+    text: Because sunlight is unlimited and can be used in any way without thought
+    misconception: planning-means-not-using
+- key: q-ps-7
+  kind: mcq
+  stem: 'Assertion (A): Resources must be planned and shared carefully. Reason (R): Many resources are limited and they are spread unevenly between regions.'
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: resource-planning
+  explanation: Both statements are true. Limited stock and uneven spread are the reasons planning is needed, so R explains A.
+  hints:
+  - Does R give a reason for A?
+  correct: A
+  options:
+  - key: A
+    text: Both A and R are true, and R explains A
+  - key: B
+    text: Both A and R are true, but R does not explain A
+    misconception: planning-means-not-using
+  - key: C
+    text: A is true, but R is false
+    misconception: planning-means-not-using
+  - key: D
+    text: A is false, but R is true
+    misconception: planning-means-not-using
+- key: q-ps-8
+  kind: mcq
+  stem: 'Assertion (A): Sustainable development means that a country must stop using all its resources. Reason (R): Using a resource always harms future generations.'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: sustainable-development
+  explanation: Both statements are false. Sustainable development means wise use, not no use, and careful use need not harm the future.
+  hints:
+  - Is the idea to stop development or to use resources wisely?
+  correct: B
+  options:
+  - key: A
+    text: Both A and R are true, and R explains A
+    misconception: sustainable-means-no-development
+  - key: B
+    text: Both A and R are false
+  - key: C
+    text: A is true, but R is false
+    misconception: sustainable-means-no-development
+  - key: D
+    text: A is false, but R is true
+    misconception: sustainable-means-no-development
+- key: q-ps-9
+  pattern: case
+  kind: mcq
+  stem: 'Read this made-up example. A town has a stock of coal and grows fast. The council can burn coal freely, saving nothing for later, or it can add solar panels and collect rainwater. A resident says, "Planning means we should simply stop using any coal and stop building." Which statement is correct?'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: sustainable-development
+  - id: resource-planning
+  explanation: Sustainable development does not mean stopping. Adding solar power and rainwater harvesting meets present needs and saves coal for the future.
+  hints:
+  - The idea is wise use, not no use.
+  correct: C
+  options:
+  - key: A
+    text: The resident is right, because any use of coal is wrong
+    misconception: sustainable-means-no-development
+  - key: B
+    text: Burning coal freely is best, because the future will plan for itself
+    misconception: planning-means-not-using
+  - key: C
+    text: The resident is wrong, because careful use and renewable options can meet needs and save resources
+  - key: D
+    text: Solar panels and rainwater are natural resources that cannot help
+    misconception: planning-means-not-using
+misconceptions:
+- code: planning-means-not-using
+  concept: resource-planning
+  description: Thinks planning means doing nothing or not caring about use, when planning means deciding how to use and share resources so they last and reach those who need them.
+- code: sustainable-means-no-development
+  concept: sustainable-development
+  description: Thinks sustainable development means stopping development or never using resources, when it means meeting present needs while leaving enough for the future.
+cards:
+- key: planning-sustainable-development-card-1
+  concept: resource-planning
+  front: Why must resources be planned?
+  back: Many are limited and they are spread unevenly, so they must be used and shared carefully.
+- key: planning-sustainable-development-card-2
+  concept: sustainable-development
+  front: What is sustainable development?
+  back: Meeting present needs without harming the ability of future generations to meet theirs.
+- key: planning-sustainable-development-card-3
+  concept: sustainable-development
+  front: Name two ways of practising it.
+  back: Solar power and rainwater harvesting. Careful use of coal and recycling also help.
+- key: planning-sustainable-development-card-4
+  concept: sustainable-development
+  front: Does it mean stopping development?
+  back: No. It means using resources wisely so that development can continue.

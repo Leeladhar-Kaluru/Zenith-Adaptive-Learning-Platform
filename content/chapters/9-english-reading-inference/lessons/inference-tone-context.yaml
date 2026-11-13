@@ -1,0 +1,295 @@
+slug: inference-tone-context
+title: Inference, tone and words in context
+minutes: 20
+objectives:
+- Make an inference from clues in a passage and tell it from a stated fact
+- Say what the tone of a passage is from its word choice
+- Work out the meaning of an unknown word from the words around it
+concepts:
+- english-inference
+- english-context-clues
+origin: ai_assisted
+blocks:
+- kind: text
+  heading: What the writer does not say
+  html: '<p>Your friend walks in with wet hair and a dripping umbrella. Nobody says "It is raining", but you know. You used clues and what you already know to reach a conclusion. That is an <strong>inference</strong>.</p><p>Writers often leave things unsaid and trust the reader to work them out. A good inference is a conclusion that the clues in the text support. It is not a wild guess.</p>'
+- kind: figure
+  svg: <svg viewBox="0 0 340 150" role="img"><g fill="none" stroke="#14193a" stroke-width="2"><rect x="8" y="20" width="96" height="50" rx="8"/><rect x="118" y="20" width="96" height="50" rx="8"/><rect x="228" y="80" width="104" height="50" rx="8"/><path d="M104 45 H118 M166 70 L228 100 M56 70 L228 105" stroke-dasharray="4 3"/></g><text x="56" y="42" text-anchor="middle" font-size="12" font-weight="700" fill="currentColor">Clue</text><text x="56" y="58" text-anchor="middle" font-size="11" fill="currentColor">in the text</text><text x="166" y="42" text-anchor="middle" font-size="12" font-weight="700" fill="currentColor">What I know</text><text x="166" y="58" text-anchor="middle" font-size="11" fill="currentColor">from life</text><text x="280" y="102" text-anchor="middle" font-size="12" font-weight="700" fill="currentColor">Inference</text><text x="280" y="118" text-anchor="middle" font-size="11" fill="currentColor">my conclusion</text></svg>
+  alt: Two boxes, Clue in the text and What I know from life, with dotted lines leading to a third box labelled Inference, my conclusion.
+  caption: An inference joins a clue from the text with what you know. Both parts are needed.
+- kind: text
+  heading: A worked passage and tone
+  html: '<p>Read this passage.</p><p><em>Arjun looked at the grey sky, picked up his umbrella and tucked his books into a plastic bag before he left.</em></p><p>The passage does not say it will rain. But grey sky, umbrella and a plastic bag for books are clues. We know that these things protect us from rain. So we infer that Arjun expects rain.</p><p><strong>Tone</strong> is the writer''s attitude, such as warm, angry, amused or gloomy. You find it in word choice. In <em>The old watchman waved his cap at every child, and the children shouted back</em>, words such as waved and shouted back make the tone warm and friendly.</p>'
+- kind: text
+  heading: Words you do not know
+  html: '<p>When you meet a new word, do not stop. Read the sentence and the ones near it. They often give clues. In <em>The shop was deserted; not one customer, not even a cat, was inside</em>, the part after the semicolon explains the word. Nobody was there, so <em>deserted</em> means empty of people.</p><p>After you guess, put your meaning back in the sentence. If the sentence still makes sense, your guess is likely right.</p>'
+- kind: example
+  heading: Worked example
+  prompt: 'What can you infer? Kavya''s lunch box came back full. She went straight to her room and shut the door.'
+  steps:
+  - 'List the stated facts: the lunch box came back full, she went to her room, she shut the door.'
+  - 'Ask what we know. A person who is happy and hungry usually eats and talks. A person who is upset often wants to be alone.'
+  - 'Join clue and knowledge: she did not eat and she wants to be alone, so she is probably upset about something.'
+  - 'The word probably matters. The passage gives no reason, so we should not say why she is upset.'
+- kind: example
+  heading: Worked example
+  prompt: 'What does reluctant mean? Ila was reluctant to jump into the cold river. She stood at the edge, shuffled her feet and said, "Maybe later."'
+  steps:
+  - 'Find the clues around the word: the river is cold, she stood at the edge, she shuffled her feet, she said maybe later.'
+  - 'These actions show she is putting the jump off.'
+  - 'Try a meaning: unwilling, or hesitant. Put it back in: Ila was unwilling to jump into the cold river. It fits.'
+  - 'Test the opposite, eager. Eager does not fit, because an eager person would jump.'
+- kind: callout
+  tone: watch
+  html: An inference must have evidence in the passage. If you cannot point to a clue, you are only guessing. Also, do not confuse a topic with a tone. A passage about an old person is not sad just because the person is old.
+- kind: callout
+  tone: real
+  html: When you read a message that says "Fine." after a long argument, you know from the short word that the writer is not happy. You use inference and tone every day, not only in exams.
+- kind: check
+  item: q-it-1
+- kind: check
+  item: q-it-2
+- kind: check
+  item: q-it-3
+- kind: summary
+  points:
+  - 'An inference is a conclusion built from a clue in the text plus what you already know. It must have evidence.'
+  - 'Tone is the writer''s attitude, shown by word choice and details, not by the topic alone.'
+  - 'To find a word''s meaning, read the words around it, make a guess, and test the guess in the sentence.'
+items:
+- key: q-it-1
+  kind: mcq
+  stem: 'Read. Arjun looked at the grey sky, picked up his umbrella and tucked his books into a plastic bag before he left. What is the best inference?'
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: english-inference
+  explanation: The grey sky, the umbrella and the plastic bag for the books are all clues that Arjun expects rain. The other choices have no clue in the passage, or go against the clues.
+  hints:
+  - What do an umbrella and a plastic bag for books protect against?
+  correct: B
+  options:
+  - key: A
+    text: Arjun has lost his books.
+    misconception: infer-no-evidence
+  - key: B
+    text: Arjun expects it to rain.
+  - key: C
+    text: The sky is clear and bright.
+    misconception: infer-no-evidence
+  - key: D
+    text: Arjun is going to be late for school.
+    misconception: infer-no-evidence
+- key: q-it-2
+  kind: mcq
+  stem: What is an inference?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: english-inference
+  explanation: An inference is a conclusion that follows from clues in the text and what you already know. It is not a fact the writer states, and it is not a random guess.
+  hints:
+  - Think of the clue plus what I know in the figure.
+  correct: C
+  options:
+  - key: A
+    text: A fact that the writer states directly
+  - key: B
+    text: Any guess, even with no clue in the passage
+    misconception: infer-no-evidence
+  - key: C
+    text: A conclusion based on clues in the text and what you know
+  - key: D
+    text: The main idea of the passage
+- key: q-it-3
+  kind: mcq
+  stem: 'What does deserted mean here? The shop was deserted. Not one customer, not even a cat, was inside.'
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: english-context-clues
+  explanation: The second sentence says no customer and not even a cat was inside, so the shop was empty. Crowded is the opposite meaning.
+  hints:
+  - Read the sentence after the word. It explains it.
+  correct: A
+  options:
+  - key: A
+    text: empty, with nobody there
+  - key: B
+    text: full of customers
+    misconception: context-ignored
+  - key: C
+    text: very new
+    misconception: context-ignored
+  - key: D
+    text: very noisy
+    misconception: context-ignored
+- key: q-it-4
+  kind: mcq
+  stem: 'Read. The old watchman waved his cap at every child who passed, and the children shouted back, "Good morning, Dada!" What is the tone of the passage?'
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: english-inference
+  explanation: The watchman waves at every child and the children answer cheerfully, so the tone is warm and friendly. The passage has no angry or frightened words. The watchman being old does not make the tone sad.
+  hints:
+  - Look at what the watchman does and what the children shout.
+  correct: D
+  options:
+  - key: A
+    text: sad, because the watchman is old
+    misconception: tone-from-topic
+  - key: B
+    text: angry
+    misconception: tone-from-topic
+  - key: C
+    text: bored
+    misconception: tone-from-topic
+  - key: D
+    text: warm and friendly
+- key: q-it-5
+  kind: mcq
+  stem: 'Read. Kavya''s lunch box came back full. She went straight to her room and shut the door. Which sentence below is an inference and not a stated fact?'
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: english-inference
+  explanation: The passage states that the lunch box came back full, that she went to her room and that she shut the door. That she is probably upset is a conclusion we draw from those clues, so it is an inference.
+  hints:
+  - Which sentence is not written in the passage but follows from it?
+  correct: C
+  options:
+  - key: A
+    text: Kavya's lunch box came back full.
+    misconception: infer-vs-stated
+  - key: B
+    text: Kavya went to her room.
+    misconception: infer-vs-stated
+  - key: C
+    text: Kavya is probably upset about something.
+  - key: D
+    text: Kavya shut the door.
+    misconception: infer-vs-stated
+- key: q-it-6
+  kind: mcq
+  stem: 'A student reads the passage about Kavya and writes: Kavya is angry with her mother. Why is this a weak inference?'
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: english-inference
+  explanation: Nothing in the passage mentions her mother or says she is angry. The clues support only that Kavya is probably upset. The inference goes beyond the evidence. Inferences are allowed, so the last two options are wrong.
+  hints:
+  - Can you point to a clue about her mother?
+  correct: A
+  options:
+  - key: A
+    text: No clue in the passage points to her mother or to anger.
+  - key: B
+    text: Inferences are never allowed in reading.
+    misconception: infer-vs-stated
+  - key: C
+    text: A person who shuts a door can never be upset.
+    misconception: infer-vs-stated
+  - key: D
+    text: The passage states that Kavya is happy.
+    misconception: infer-no-evidence
+- key: q-it-7
+  pattern: case
+  kind: mcq
+  stem: 'Read the passage. The minister''s speech was long. After an hour, many people in the hall were yawning or checking their phones, and the man beside Neha had begun to snore. What can you infer about most of the audience?'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: english-inference
+  explanation: Yawning, checking phones and snoring are clues that people have lost interest, so most of the audience is bored. Nothing in the passage shows that they were moved, angry or eager to ask questions.
+  hints:
+  - What do yawning and snoring tell you about how people feel?
+  correct: B
+  options:
+  - key: A
+    text: They are deeply moved by the speech.
+    misconception: infer-no-evidence
+  - key: B
+    text: They are bored by the long speech.
+  - key: C
+    text: They are angry and ready to shout.
+    misconception: infer-no-evidence
+  - key: D
+    text: They are waiting eagerly to ask questions.
+    misconception: infer-no-evidence
+- key: q-it-8
+  kind: mcq
+  stem: 'What does reluctant mean here? Ila was reluctant to jump into the cold river. She stood at the edge, shuffled her feet and said, "Maybe later."'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: english-context-clues
+  explanation: Standing at the edge, shuffling and saying maybe later all show that Ila is putting off the jump, so reluctant means unwilling or hesitant. Eager is the opposite, and nothing says she is angry or very tired.
+  hints:
+  - What do her actions at the edge tell you about how she feels about jumping?
+  correct: D
+  options:
+  - key: A
+    text: eager and excited
+    misconception: context-ignored
+  - key: B
+    text: angry
+    misconception: context-ignored
+  - key: C
+    text: too tired to swim
+    misconception: context-ignored
+  - key: D
+    text: unwilling or hesitant
+- key: q-it-9
+  kind: mcq
+  stem: 'Read. Our new bus is sleek and shining, and every seat is soft. The driver greets each rider with a smile. What is the tone of the passage?'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: english-inference
+  explanation: The writer chooses pleasing words such as sleek, shining, soft and smile, so the tone is admiring and cheerful. Words like bitter or worried would need complaint words, and none appear.
+  hints:
+  - Are the describing words pleasant or unpleasant?
+  correct: A
+  options:
+  - key: A
+    text: admiring and cheerful
+  - key: B
+    text: bitter and complaining
+    misconception: tone-from-topic
+  - key: C
+    text: worried and nervous
+    misconception: tone-from-topic
+  - key: D
+    text: cold and unfriendly
+    misconception: tone-from-topic
+misconceptions:
+- code: infer-no-evidence
+  concept: english-inference
+  description: Makes an inference with no clue in the passage, or one that goes against the clues, treating a guess as a conclusion.
+- code: infer-vs-stated
+  concept: english-inference
+  description: Cannot tell a stated fact from an inference, or thinks that any inference is wrong because the writer did not say it.
+- code: tone-from-topic
+  concept: english-inference
+  description: Decides the tone from the topic or from a guess, instead of from the writer's choice of words.
+- code: context-ignored
+  concept: english-context-clues
+  description: Chooses a meaning for an unknown word without using the clues around it, or picks the opposite of what the sentence shows.
+cards:
+- key: inference-card-1
+  concept: english-inference
+  front: What is an inference?
+  back: A conclusion built from a clue in the text plus what you already know.
+- key: inference-card-2
+  concept: english-inference
+  front: What is tone?
+  back: The writer's attitude, such as warm, angry or amused, shown by word choice and details.
+- key: inference-card-3
+  concept: english-context-clues
+  front: How do you find a new word's meaning from context?
+  back: Read the words around it, guess a meaning, then put it back in the sentence to test that it fits.
+- key: inference-card-4
+  concept: english-inference
+  front: How do you know an inference is weak?
+  back: You cannot point to a clue in the passage that supports it.

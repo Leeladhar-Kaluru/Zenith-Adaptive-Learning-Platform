@@ -1,0 +1,3 @@
+concepts:
+  - {id: civics-equality-democracy, title: "Equality in a democracy", grade: 7, subject: social, description: "What equality means, why a democracy treats every person as equal, and how equal does not mean identical.", keywords: [equality, democracy, equal, rights, dignity]}
+  - {id: civics-universal-franchise, title: "Universal adult franchise and the vote", grade: 7, subject: social, description: "Who may vote in India, one person one vote, the secret ballot, and how a simple majority is counted.", keywords: [vote, franchise, secret ballot, Election Commission, majority, election], prerequisites: [{id: civics-equality-democracy, strength: 0.8}]}

@@ -1,0 +1,13 @@
+slug: 6-science-light-shadows
+board: cbse
+curriculum: NCERT current editions (to be confirmed by a reviewer)
+grade: 6
+subject: science
+title: Light and shadows
+summary: Find out which things make their own light, how materials let light through, why light travels in straight lines, and how shadows form and change size.
+concepts:
+- id: light-sources-materials
+- id: shadows-size-distance
+lessons:
+- light-and-materials
+- how-shadows-form

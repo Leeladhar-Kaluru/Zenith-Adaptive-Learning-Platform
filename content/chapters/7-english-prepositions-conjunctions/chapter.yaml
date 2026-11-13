@@ -1,0 +1,13 @@
+slug: 7-english-prepositions-conjunctions
+board: cbse
+curriculum: NCERT current editions (to be confirmed by a reviewer)
+grade: 7
+subject: english
+title: Prepositions and conjunctions
+summary: Learn the small words that show where, when and which way, and the joining words that connect ideas with and, but, or, because and although.
+concepts:
+- id: english-prepositions
+- id: english-conjunctions
+lessons:
+- prepositions-place-time-direction
+- joining-words-conjunctions

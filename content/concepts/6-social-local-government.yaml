@@ -1,0 +1,4 @@
+concepts:
+  - {id: civics-local-need, title: "Why we need local government", grade: 6, subject: social, description: "Why some decisions are best made close to where people live, and what local government is.", keywords: [local government, village, town, services, decisions]}
+  - {id: civics-gram-panchayat, title: "Gram sabha, gram panchayat and the sarpanch", grade: 6, subject: social, description: "Who belongs to the gram sabha, how the gram panchayat is chosen, and who heads it.", keywords: [gram sabha, gram panchayat, sarpanch, election, village], prerequisites: [{id: civics-local-need, strength: 0.7}]}
+  - {id: civics-municipality, title: "Municipalities in towns and cities", grade: 6, subject: social, description: "How towns and cities are looked after by an elected municipality and what services it provides.", keywords: [municipality, mayor, chairperson, water, drains, garbage], prerequisites: [{id: civics-local-need, strength: 0.7}]}

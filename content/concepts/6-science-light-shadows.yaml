@@ -1,0 +1,3 @@
+concepts:
+  - {id: light-sources-materials, title: "Sources of light and how materials treat light", grade: 6, subject: science, description: "Luminous and non-luminous objects, transparent, translucent and opaque materials, and light travelling in straight lines.", keywords: [light, luminous, non-luminous, transparent, translucent, opaque, straight line]}
+  - {id: shadows-size-distance, title: "Shadows and their size", grade: 6, subject: science, description: "How an opaque object blocking light forms a shadow, and why the size of a shadow changes with the distance of the object from the light.", keywords: [shadow, screen, light source, size, distance, noon]}

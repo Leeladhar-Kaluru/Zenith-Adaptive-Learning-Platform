@@ -223,3 +223,9 @@ Shipped and verified: Postgres-queue worker (retries, stale-lock recovery, heart
 Verified live end to end: a real student request (Class 10 English) from the signed-in pane travelled API to Render worker, the job was claimed, ran, and ended `blocked` with the plain reason that no curriculum topics are defined for that class and subject. Two dependency bugs found and fixed on the way (PyYAML, SymPy), each with a regression test.
 
 Not done: no source page has been stored or drafted yet, because the vetted sources cover English-language science and geography only and the empty subjects have no defined curriculum topics. A reviewer must add topic lists (concepts) per class and subject before the pipeline can look for pages. Hindi and Telugu still need native-language reviewers.
+
+## Final content wave and wrap-up (2026-11-13)
+
+Six more chapters authored by agents, checked on the whole folder, answers and flagged facts read by me, imported and published (12 lessons): Class 6 Science light and shadows; Class 6 Social Science local government (reworded one claim about the sarpanch and the gram sabha); Class 7 English prepositions and conjunctions; Class 7 Social Science equality and the right to vote; Class 9 English reading and inference; Class 10 Social Science resources and sustainable development. Each publish notified students of that class once.
+
+Open items (see docs/ROADMAP.md): curriculum topic lists for the empty class and subject pairs, Hindi and Telugu native-language review, remaining simulations (atoms, mixtures, reactions, cells, organs, Maths lab), real two-browser Realtime test, 360 px review of newer pages, one-click export of approved drafts.

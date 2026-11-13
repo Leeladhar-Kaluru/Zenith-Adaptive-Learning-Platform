@@ -1,0 +1,288 @@
+slug: main-idea-and-details
+title: Finding the main idea and details
+minutes: 20
+objectives:
+- Say what the main idea of a short passage is, in one sentence
+- Tell a supporting detail from the main idea
+- Choose a title or summary that fits the whole passage and not just one part
+concepts:
+- english-main-idea
+origin: ai_assisted
+blocks:
+- kind: text
+  heading: What is this passage about?
+  html: '<p>A friend tells you a long story about a school trip. Later, someone asks, "What was it about?" You do not repeat every word. You say one thing, such as "It was about a bus that broke down." That one thing is the <strong>main idea</strong>. It is the point the whole passage is about.</p><p>The smaller facts that fill in the story are <strong>details</strong>. A detail supports the main idea by giving a fact, an example or a reason.</p>'
+- kind: text
+  heading: A short passage to try
+  html: '<p>Read this passage.</p><p><em>Meena''s grandmother grows tulsi, curry leaves and chillies in old tins on the balcony of their flat in Pune. She waters them every evening. The curry leaves go into the dal, and the tulsi goes into tea when someone has a cold. The flat has no garden, but the family still has fresh leaves close at hand.</em></p><p>The main idea is that the family grows useful plants in tins on a balcony. Watering in the evening, dal and tea are details. Each one is true, but each one covers only a small part.</p>'
+- kind: figure
+  svg: <svg viewBox="0 0 340 170" role="img"><g fill="none" stroke="#14193a" stroke-width="2"><rect x="95" y="10" width="150" height="40" rx="8"/><rect x="10" y="110" width="90" height="40" rx="8"/><rect x="125" y="110" width="90" height="40" rx="8"/><rect x="240" y="110" width="90" height="40" rx="8"/><path d="M150 50 L55 110 M170 50 V110 M190 50 L285 110"/></g><text x="170" y="28" text-anchor="middle" font-size="13" font-weight="700" fill="currentColor">Main idea</text><text x="170" y="43" text-anchor="middle" font-size="11" fill="currentColor">plants in tins</text><text x="55" y="135" text-anchor="middle" font-size="12" fill="currentColor">evening water</text><text x="170" y="135" text-anchor="middle" font-size="12" fill="currentColor">leaves in dal</text><text x="285" y="135" text-anchor="middle" font-size="12" fill="currentColor">tulsi in tea</text></svg>
+  alt: A box labelled Main idea at the top joined by lines to three lower boxes, evening water, leaves in dal and tulsi in tea, which are details.
+  caption: The main idea sits at the top. Each detail below it supports the idea but is smaller than it.
+- kind: text
+  heading: How to find it
+  html: '<ul><li>Read the whole passage first.</li><li>Ask: what are all the sentences helping to say?</li><li>Test your answer. It must cover most of the passage, not just one sentence.</li><li>Check that the passage states it or clearly shows it. Do not add an idea of your own.</li></ul><p>The main idea is often in the first or last sentence, but not always. Do not pick a sentence only because of where it sits.</p>'
+- kind: example
+  heading: Worked example
+  prompt: 'Find the main idea: Raju mends punctures for schoolchildren. He oils chains for the milkmen. He lends a pump to anyone who asks. On rainy days he lets cyclists wait under his tin roof.'
+  steps:
+  - 'List what each sentence says: punctures for children, chains for milkmen, a pump for all, shelter in rain.'
+  - 'Ask what they have in common. Each one is a way Raju helps people with cycles.'
+  - 'Write one sentence that covers all four: Raju helps many people with his cycle shop.'
+  - 'Check: one sentence alone, such as the pump, covers only a small part. Our sentence covers all four.'
+- kind: example
+  heading: Worked example
+  prompt: 'Is this sentence the main idea or a detail? Tulsi goes into tea when someone has a cold.'
+  steps:
+  - 'Go back to the passage about Meena''s grandmother. Its main idea is that the family grows useful plants in tins.'
+  - 'The sentence tells one use of one plant. It does not cover the curry leaves or the chillies.'
+  - 'It supports the main idea by giving an example of a use.'
+  - 'So it is a detail.'
+- kind: callout
+  tone: watch
+  html: A true sentence from the passage is not always the main idea. A detail can be true and interesting, but if it covers only one small part, it is not the main idea.
+- kind: callout
+  tone: real
+  html: A news headline, a title for a school essay and a message that starts "In short" all give the main idea. Each one packs a whole passage into a few words.
+- kind: check
+  item: q-mi-1
+- kind: check
+  item: q-mi-2
+- kind: check
+  item: q-mi-3
+- kind: summary
+  points:
+  - 'The main idea is the one point the whole passage is about. Details support it.'
+  - 'A good main idea covers most of the passage and is clearly shown in it. A detail covers only one small part.'
+  - 'The main idea is not always the first sentence. Read the whole passage and test your answer.'
+items:
+- key: q-mi-1
+  kind: mcq
+  stem: 'Read the passage about Meena''s grandmother again. Which sentence gives its main idea?'
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: english-main-idea
+  explanation: The whole passage is about plants the family grows in tins on the balcony. The watering and the tulsi tea are only parts of that.
+  hints:
+  - Ask what all the sentences are about together.
+  correct: A
+  options:
+  - key: A
+    text: The family grows useful plants in tins on a balcony.
+  - key: B
+    text: Meena's grandmother waters the plants every evening.
+    misconception: detail-as-main
+  - key: C
+    text: Tulsi is used in tea when someone has a cold.
+    misconception: detail-as-main
+  - key: D
+    text: Pune is a very crowded city.
+    misconception: not-in-passage
+- key: q-mi-2
+  kind: mcq
+  stem: 'In the passage about Meena''s grandmother, when does she water the plants?'
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: english-main-idea
+  explanation: The passage says she waters them every evening. This is a detail stated directly.
+  hints:
+  - Find the sentence about watering.
+  correct: B
+  options:
+  - key: A
+    text: Early in the morning
+  - key: B
+    text: Every evening
+  - key: C
+    text: Only on Sundays
+  - key: D
+    text: Only when someone has a cold
+- key: q-mi-3
+  kind: mcq
+  stem: What is the main idea of a passage?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: english-main-idea
+  explanation: The main idea is the one point that the whole passage is about. A single fact is only a detail, and an idea the passage never mentions is not in the passage at all.
+  hints:
+  - Think of the main idea as the answer to the question, what is the whole passage about?
+  correct: C
+  options:
+  - key: A
+    text: The first sentence, always
+    misconception: first-sentence-only
+  - key: B
+    text: The most surprising fact
+    misconception: detail-as-main
+  - key: C
+    text: The one point the whole passage is about
+  - key: D
+    text: Anything the reader already knows about the topic
+    misconception: not-in-passage
+- key: q-mi-4
+  kind: mcq
+  stem: 'Read the passage about Meena''s grandmother again. Which is the best title?'
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: english-main-idea
+  explanation: A good title fits the whole passage. Green Leaves in Tins covers the tulsi, the curry leaves and the chillies. The other titles cover one small part or a different topic.
+  hints:
+  - A title should fit all the sentences, not just one.
+  correct: D
+  options:
+  - key: A
+    text: Tulsi Tea for a Cold
+    misconception: detail-as-main
+  - key: B
+    text: Evening Is the Best Time to Water
+    misconception: detail-as-main
+  - key: C
+    text: A Walk Through Pune
+    misconception: not-in-passage
+  - key: D
+    text: Green Leaves in Tins
+- key: q-mi-5
+  kind: mcq
+  stem: 'Read. Raju''s repair shop is small, but the whole lane depends on it. He mends punctures for schoolchildren, oils chains for milkmen and lends a pump to anyone who asks. Which sentence from the passage is a supporting detail for the idea that the whole lane depends on the shop?'
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: english-main-idea
+  explanation: Lending a pump to anyone who asks is a concrete example of how people in the lane use the shop. The size of the shop does not show that anyone depends on it.
+  hints:
+  - Which sentence gives an example of people using the shop?
+  correct: A
+  options:
+  - key: A
+    text: He lends a pump to anyone who asks.
+  - key: B
+    text: Raju's repair shop is small.
+    misconception: detail-as-main
+  - key: C
+    text: The lane is full of cyclists.
+    misconception: not-in-passage
+  - key: D
+    text: Raju is the only repairer in the city.
+    misconception: not-in-passage
+- key: q-mi-6
+  kind: mcq
+  stem: 'Read the passage about Meena''s grandmother again. Which of these is NOT stated in the passage?'
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: english-main-idea
+  explanation: The passage never says the family sells plants. It does say that the curry leaves go into dal, that tulsi goes into tea, and that the flat has no garden.
+  hints:
+  - Look for the option that you cannot find in the passage.
+  correct: C
+  options:
+  - key: A
+    text: Curry leaves are put into the dal.
+  - key: B
+    text: The flat has no garden.
+  - key: C
+    text: The family sells the plants at a market.
+    misconception: not-in-passage
+  - key: D
+    text: Tulsi is put into tea when someone has a cold.
+- key: q-mi-7
+  pattern: case
+  kind: mcq
+  stem: 'Read the passage. The bus from the village arrives at six. By then, Savitri has already lit her stove. Within minutes, farmers with sacks, nurses on early shifts and students with heavy bags crowd round her small stall. She pours tea fast, because most of them have only ten minutes. By seven the crowd has gone, and she sits down to wash her steel glasses. What is the main idea?'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: english-main-idea
+  explanation: Every sentence is about the short, busy rush of bus travellers at Savitri's stall in the early morning. Washing the glasses is only the last small event, and the sacks are one small detail. Nothing in the passage says tea is the best drink.
+  hints:
+  - Which answer covers the bus, the crowd, the quick pouring and the quiet at seven?
+  correct: A
+  options:
+  - key: A
+    text: Savitri's stall has a short, busy rush of bus travellers early in the morning.
+  - key: B
+    text: Tea is the best drink for the morning.
+    misconception: not-in-passage
+  - key: C
+    text: Savitri washes her steel glasses at seven.
+    misconception: detail-as-main
+  - key: D
+    text: Farmers carry sacks on the bus.
+    misconception: detail-as-main
+- key: q-mi-8
+  kind: mcq
+  stem: 'Read. Raju mends punctures for schoolchildren. He oils chains for the milkmen. He lends a pump to anyone who asks. On rainy days he lets cyclists wait under his tin roof. Which sentence below states the main idea and not a detail?'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: english-main-idea
+  explanation: Raju helps many different people with his cycle shop covers all four sentences. The other three each describe one single thing that Raju does.
+  hints:
+  - Which sentence covers all four sentences of the passage?
+  correct: B
+  options:
+  - key: A
+    text: Raju mends punctures for schoolchildren.
+    misconception: detail-as-main
+  - key: B
+    text: Raju helps many different people with his cycle shop.
+  - key: C
+    text: Raju lends a pump to anyone who asks.
+    misconception: detail-as-main
+  - key: D
+    text: Cyclists wait under Raju's tin roof on rainy days.
+    misconception: detail-as-main
+- key: q-mi-9
+  kind: mcq
+  stem: 'A student says the main idea of the passage about Savitri''s tea stall is: Savitri washes her steel glasses. Why is this answer weak?'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: english-main-idea
+  explanation: Washing the glasses happens at the very end and is one small event. It does not cover the bus, the crowd or the quick pouring. A main idea has to cover most of the passage, and it does not matter that this sentence is last.
+  hints:
+  - Does washing glasses cover the rest of the passage?
+  correct: A
+  options:
+  - key: A
+    text: It is one small detail near the end and does not cover most of the passage.
+  - key: B
+    text: Washing the glasses is not mentioned in the passage.
+    misconception: not-in-passage
+  - key: C
+    text: A main idea can only be the first sentence, and this is the last.
+    misconception: first-sentence-only
+  - key: D
+    text: A main idea must always be a question.
+    misconception: not-in-passage
+misconceptions:
+- code: detail-as-main
+  concept: english-main-idea
+  description: Picks one true detail, often the most vivid one, as the main idea even though it covers only a small part of the passage.
+- code: first-sentence-only
+  concept: english-main-idea
+  description: Believes the main idea is always the first sentence, or always the last, and does not read the whole passage.
+- code: not-in-passage
+  concept: english-main-idea
+  description: Chooses a statement that sounds sensible but is not in the passage, or adds an idea of the reader's own.
+cards:
+- key: main-idea-card-1
+  concept: english-main-idea
+  front: What is the main idea?
+  back: The one point the whole passage is about, which covers most of its sentences.
+- key: main-idea-card-2
+  concept: english-main-idea
+  front: What is a supporting detail?
+  back: A smaller fact, example or reason that supports the main idea but covers only one part.
+- key: main-idea-card-3
+  concept: english-main-idea
+  front: Is the main idea always the first sentence?
+  back: No. It can be anywhere, or not written as one sentence. Read the whole passage and test your answer.
+- key: main-idea-card-4
+  concept: english-main-idea
+  front: How do you test a main idea you have chosen?
+  back: Ask if it covers most of the passage and is shown in it. If it covers only one sentence, it is a detail.

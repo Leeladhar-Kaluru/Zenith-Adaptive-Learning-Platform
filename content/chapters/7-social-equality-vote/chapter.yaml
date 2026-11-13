@@ -1,0 +1,13 @@
+slug: 7-social-equality-vote
+board: cbse
+curriculum: NCERT current editions (to be confirmed by a reviewer)
+grade: 7
+subject: social
+title: Equality and the right to vote
+summary: Learn what equality means in a democracy and how every adult citizen of India gets one equal vote, cast in secret.
+concepts:
+- id: civics-equality-democracy
+- id: civics-universal-franchise
+lessons:
+- what-equality-means
+- one-person-one-vote

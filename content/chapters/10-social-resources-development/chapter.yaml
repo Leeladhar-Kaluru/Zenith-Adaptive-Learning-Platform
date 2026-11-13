@@ -1,0 +1,14 @@
+slug: 10-social-resources-development
+board: cbse
+curriculum: NCERT current editions (to be confirmed by a reviewer)
+grade: 10
+subject: social
+title: Resources and Sustainable Development
+summary: Sort resources into natural, human-made and human, tell renewable from non-renewable, and see why planning and sustainable development matter.
+concepts:
+- id: resource-types
+- id: resource-planning
+- id: sustainable-development
+lessons:
+- types-of-resources
+- planning-sustainable-development

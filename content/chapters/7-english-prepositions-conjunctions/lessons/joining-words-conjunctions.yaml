@@ -1,0 +1,268 @@
+slug: joining-words-conjunctions
+title: Joining words and, but, or, because, although
+minutes: 20
+objectives:
+- Say what a conjunction does
+- Choose and, but, or, because or although by the idea it shows
+- Join two short sentences into one correct sentence
+concepts:
+- english-conjunctions
+origin: ai_assisted
+blocks:
+- kind: text
+  heading: Words that join
+  html: '<p>Think of a railway coupling. It joins one coach to the next so the train moves as one. In English, a <strong>conjunction</strong> does the same job. It joins words or parts of a sentence. In <em>Asha likes tea and Ravi likes milk</em>, the word <em>and</em> joins two parts.</p>'
+- kind: text
+  heading: Five joining words
+  html: '<p><strong>And</strong> adds one idea to another: <em>I bought a pen and a book.</em></p><p><strong>But</strong> joins two ideas that do not match: <em>I like cricket but my sister likes kabaddi.</em></p><p><strong>Or</strong> gives a choice: <em>Shall we go by bus or by train?</em></p><p><strong>Because</strong> gives a reason: <em>I took an umbrella because it was cloudy.</em></p><p><strong>Although</strong> shows a surprise. It means in spite of something: <em>Although it was raining, we played football.</em></p>'
+- kind: figure
+  svg: <svg viewBox="0 0 340 150" role="img"><g fill="none" stroke="#14193a" stroke-width="2"><rect x="10" y="40" width="90" height="40" rx="6"/><rect x="240" y="40" width="90" height="40" rx="6"/><rect x="125" y="46" width="90" height="28" rx="14"/><line x1="100" y1="60" x2="125" y2="60"/><line x1="215" y1="60" x2="240" y2="60"/></g><text x="55" y="65" text-anchor="middle" font-size="12" fill="currentColor">It was cloudy</text><text x="285" y="65" text-anchor="middle" font-size="12" fill="currentColor">I took a coat</text><text x="170" y="65" text-anchor="middle" font-size="13" font-weight="700" fill="currentColor">because</text><text x="170" y="115" text-anchor="middle" font-size="12" fill="currentColor">the joining word links the two ideas</text></svg>
+  alt: Two boxes holding the ideas It was cloudy and I took a coat, joined by a rounded box holding the word because.
+  caption: A conjunction links two ideas. Here because joins a reason to what happened.
+- kind: text
+  heading: Do not use two for one job
+  html: '<p>Although and but both show a contrast, but we do not use them together. Say <em>Although it was hot, we played</em> or say <em>It was hot but we played</em>. Do not say <em>Although it was hot but we played</em>.</p>'
+- kind: example
+  heading: Worked example
+  prompt: 'Join the two sentences with the best word. The match was cancelled. It rained heavily.'
+  steps:
+  - 'Ask how the two ideas are linked. The rain is the reason for the cancelling.'
+  - 'A word that gives a reason is because.'
+  - 'Put because between the parts: The match was cancelled because it rained heavily.'
+  - 'Check the meaning. The sentence says why the match was cancelled, so it is correct.'
+- kind: example
+  heading: Worked example
+  prompt: 'Join the two sentences with the best word. Meena was tired. She finished her homework.'
+  steps:
+  - 'Ask if the ideas match. Being tired would usually make us stop, but she did not stop. This is a surprise.'
+  - 'A surprise can be shown by although or by but.'
+  - 'With although: Although Meena was tired, she finished her homework.'
+  - 'With but: Meena was tired but she finished her homework. Both are correct.'
+- kind: callout
+  tone: watch
+  html: Do not put a contrast word twice. Although it was cold, but we went out is wrong. Use although with a comma, or use but, and never both in one sentence.
+- kind: callout
+  tone: real
+  html: Look at the notices on a shop door. Open on weekdays but closed on Sundays uses but. Pay by cash or by UPI uses or. Closed because of repairs uses because.
+- kind: check
+  item: q-cj-1
+- kind: check
+  item: q-cj-2
+- kind: check
+  item: q-cj-3
+- kind: summary
+  points:
+  - 'A conjunction joins words or parts of a sentence.'
+  - 'And adds, but and although show a contrast, or gives a choice and because gives a reason.'
+  - 'Do not use although and but together in one sentence.'
+items:
+- key: q-cj-1
+  kind: mcq
+  stem: 'Which word is the conjunction in this sentence? Asha likes tea and Ravi likes milk.'
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: english-conjunctions
+  explanation: And joins the two parts of the sentence, so it is the conjunction. Likes is a verb, and tea and milk are nouns.
+  hints:
+  - Which word links the part about Asha to the part about Ravi?
+  correct: C
+  options:
+  - key: A
+    text: likes
+    misconception: conj-is-verb
+  - key: B
+    text: tea
+  - key: C
+    text: and
+  - key: D
+    text: milk
+- key: q-cj-2
+  kind: mcq
+  stem: Which word shows a choice between two things?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: english-conjunctions
+  explanation: Or is the word we use to offer a choice, as in tea or coffee. And adds, but shows a contrast and because gives a reason.
+  hints:
+  - Think of a question such as Do you want rice or roti?
+  correct: B
+  options:
+  - key: A
+    text: and
+    misconception: conj-and-for-all
+  - key: B
+    text: or
+  - key: C
+    text: because
+  - key: D
+    text: but
+- key: q-cj-3
+  kind: mcq
+  stem: 'The match was cancelled ___ it rained heavily. Which word shows the reason?'
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: english-conjunctions
+  explanation: Because gives the reason. The rain is why the match was cancelled. But, or and although do not give a reason.
+  hints:
+  - Which word answers the question why?
+  correct: C
+  options:
+  - key: A
+    text: but
+    misconception: conj-and-for-all
+  - key: B
+    text: or
+  - key: C
+    text: because
+  - key: D
+    text: although
+- key: q-cj-4
+  kind: mcq
+  stem: 'Which sentence uses although correctly?'
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: english-conjunctions
+  explanation: Although it was raining, we played football is correct. The other sentences use a second joining word or put although in the wrong place.
+  hints:
+  - Check each sentence for two joining words doing one job.
+  correct: A
+  options:
+  - key: A
+    text: Although it was raining, we played football.
+  - key: B
+    text: Although it was raining, but we played football.
+    misconception: conj-double
+  - key: C
+    text: It was raining although, we played football.
+  - key: D
+    text: Although it was raining because we played football.
+    misconception: conj-double
+- key: q-cj-5
+  kind: mcq
+  stem: 'Which word can replace although in this sentence without changing the meaning? Although he was tired, he smiled.'
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: english-conjunctions
+  explanation: Though means the same as although here. Because gives a reason, or gives a choice, and and only adds, so none of those keeps the meaning.
+  hints:
+  - Which word also shows a surprise?
+  correct: D
+  options:
+  - key: A
+    text: because
+  - key: B
+    text: or
+  - key: C
+    text: and
+    misconception: conj-and-for-all
+  - key: D
+    text: though
+- key: q-cj-6
+  kind: numeric
+  stem: 'How many conjunctions are in this sentence? Meena likes dosa and idli, but she does not like upma because it is dry.'
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: english-conjunctions
+  explanation: And joins dosa and idli, but joins the two parts of the sentence, and because gives the reason. That is 3 conjunctions.
+  hints:
+  - Look for words that join and, contrast or give a reason.
+  value: 3
+  tolerance: 0.0
+  verify: '1+1+1'
+- key: q-cj-7
+  kind: mcq
+  stem: 'Ravi studied hard. He did not pass. Which sentence joins them so that it shows a surprise?'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: english-conjunctions
+  explanation: Studying hard should lead to passing, so not passing is a surprise. But joins ideas that do not match. Because would say that studying caused the failure, and or would offer a choice.
+  hints:
+  - Do the two ideas match, or does the second surprise you?
+  correct: B
+  options:
+  - key: A
+    text: Ravi studied hard because he did not pass.
+    misconception: conj-and-for-all
+  - key: B
+    text: Ravi studied hard but he did not pass.
+  - key: C
+    text: Ravi studied hard or he did not pass.
+  - key: D
+    text: Ravi studied hard because he passed.
+- key: q-cj-8
+  kind: mcq
+  stem: 'Assertion (A): Or shows that two things must both happen. Reason (R): Or gives a choice between two things.'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: english-conjunctions
+  explanation: In You can have tea or coffee, you pick one, so A is false. R is true, because or gives a choice.
+  hints:
+  - If you can have tea or coffee, do you get both?
+  correct: D
+  options:
+  - key: A
+    text: Both A and R are true, and R explains A
+  - key: B
+    text: Both A and R are true, but R does not explain A
+  - key: C
+    text: A is true, but R is false
+  - key: D
+    text: A is false, but R is true
+- key: q-cj-9
+  pattern: case
+  kind: mcq
+  stem: 'Read the passage. Anil wanted to play cricket, but it was raining. He could read a book or draw a picture. He chose to draw because he likes colours. Which word from the passage tells why Anil chose to draw?'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: english-conjunctions
+  explanation: Because he likes colours is the reason for the choice, so because is the answer. But shows the rain spoiled his plan, and or gave him two choices.
+  hints:
+  - Find the words that answer why he drew.
+  correct: C
+  options:
+  - key: A
+    text: but
+    misconception: conj-and-for-all
+  - key: B
+    text: or
+  - key: C
+    text: because
+  - key: D
+    text: chose
+    misconception: conj-is-verb
+misconceptions:
+- code: conj-is-verb
+  concept: english-conjunctions
+  description: Picks a verb or other word of the sentence as the joining word instead of looking for the word that links two parts.
+- code: conj-and-for-all
+  concept: english-conjunctions
+  description: Uses and, or or but for every kind of link without asking whether the idea is addition, choice, contrast or reason.
+- code: conj-double
+  concept: english-conjunctions
+  description: Uses two joining words together, such as although with but, when one is enough.
+cards:
+- key: conj-card-1
+  concept: english-conjunctions
+  front: What is a conjunction?
+  back: A word that joins words or parts of a sentence, such as and, but, or, because and although.
+- key: conj-card-2
+  concept: english-conjunctions
+  front: What idea does each word show? And, but, or, because.
+  back: And adds. But shows a contrast. Or gives a choice. Because gives a reason.
+- key: conj-card-3
+  concept: english-conjunctions
+  front: What does although show?
+  back: A surprise, or in spite of. Although it was raining, we played football.
+- key: conj-card-4
+  concept: english-conjunctions
+  front: Can we use although and but together?
+  back: No. Use one of them. Although it was cold, we went out. Or, It was cold but we went out.

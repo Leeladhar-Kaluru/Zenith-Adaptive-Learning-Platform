@@ -1,0 +1,4 @@
+concepts:
+  - {id: resource-types, title: "Types of resources", grade: 10, subject: social, description: "Natural, human-made and human resources, and the difference between renewable and non-renewable natural resources.", keywords: [resource, natural, human-made, human, renewable, non-renewable]}
+  - {id: resource-planning, title: "Why resources are planned", grade: 10, subject: social, description: "Resources are spread unevenly and some are limited, so careful planning and fair use are needed.", keywords: [resource planning, uneven distribution, conservation]}
+  - {id: sustainable-development, title: "Sustainable development", grade: 10, subject: social, description: "Meeting present needs without harming the ability of future generations to meet theirs, by using resources carefully.", keywords: [sustainable development, future generations, conservation]}

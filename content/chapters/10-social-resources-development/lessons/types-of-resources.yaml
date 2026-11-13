@@ -1,0 +1,292 @@
+slug: types-of-resources
+title: Types of resources
+minutes: 25
+objectives:
+- Explain what makes something a resource
+- Sort resources into natural, human-made and human
+- Tell renewable from non-renewable natural resources
+- Explain why renewable does not mean unlimited
+concepts:
+- resource-types
+origin: ai_assisted
+blocks:
+- kind: text
+  heading: What is a resource?
+  html: '<p>A village has a coal mine, a stretch of sunny land and a school full of children. Are these all useful? A <strong>resource</strong> is anything that people can use to meet their needs and that they know how to use. Coal becomes a resource only when people know how to burn it for heat or power. Before that, it is just rock under the ground.</p>'
+- kind: text
+  heading: Three kinds of resource
+  html: '<p><strong>Natural resources</strong> come from nature. Examples are soil, water, coal, wind and sunlight. <strong>Human-made resources</strong> are things people build from natural resources, such as roads, bridges, machines and solar panels. <strong>Human resources</strong> are the people themselves, with their skills, knowledge and health. A doctor, a farmer and an engineer are human resources.</p><p>The three work together. A solar power plant in Rajasthan needs sunlight (natural), panels and wires (human-made) and trained workers (human).</p>'
+- kind: figure
+  svg: '<svg viewBox="0 0 340 120" role="img"><rect x="10" y="20" width="95" height="50" fill="#6cb7ff"/><rect x="122" y="20" width="95" height="50" fill="#ffb800"/><rect x="235" y="20" width="95" height="50" fill="#8fd694"/><text x="57" y="42" font-size="11" text-anchor="middle" fill="#14193a">Natural</text><text x="57" y="58" font-size="10" text-anchor="middle" fill="#14193a">coal, water</text><text x="170" y="42" font-size="11" text-anchor="middle" fill="#14193a">Human-made</text><text x="170" y="58" font-size="10" text-anchor="middle" fill="#14193a">roads, panels</text><text x="282" y="42" font-size="11" text-anchor="middle" fill="#14193a">Human</text><text x="282" y="58" font-size="10" text-anchor="middle" fill="#14193a">skills, health</text><text x="170" y="100" font-size="10" text-anchor="middle" fill="currentColor">Three kinds of resource with examples</text></svg>'
+  alt: Three boxes side by side naming natural, human-made and human resources with an example in each.
+  caption: The three kinds of resource. A real project, such as a power plant, uses all three.
+- kind: text
+  heading: Renewable and non-renewable
+  html: '<p>Natural resources are of two kinds. <strong>Renewable</strong> resources can be replaced by nature in a reasonable time. Sunlight, wind and a well-managed forest are examples. <strong>Non-renewable</strong> resources take so long to form that, for human purposes, they cannot be replaced once used up. Coal and petroleum are examples. They formed over a very long time, so we cannot make more when they run low.</p><p>Renewable does not mean unlimited. Water in a river is renewed by rain, but if people draw out more than the rain refills, the supply still runs short. A forest is renewable only if trees are cut more slowly than they grow back.</p>'
+- kind: example
+  heading: Sorting resources
+  prompt: Sort these into natural, human-made or human, and for each natural one say renewable or non-renewable. Coal, a bridge, a teacher, wind.
+  steps:
+  - 'Coal comes from nature, so it is natural. It cannot be replaced in a human lifetime, so it is non-renewable.'
+  - 'A bridge is built by people from materials, so it is human-made.'
+  - 'A teacher is a person with skills, so a teacher is a human resource.'
+  - 'Wind comes from nature and keeps blowing, so it is natural and renewable. Check: each item has exactly one kind.'
+- kind: example
+  heading: Can a renewable resource run short?
+  prompt: A village pumps water from the ground faster than rain refills it. Water is renewable. Will the well stay full? Explain.
+  steps:
+  - 'Water is renewable because rain adds new water over time.'
+  - 'Renewing takes time. Rain adds water at a certain pace.'
+  - 'If people take out water faster than it is added, the level falls.'
+  - 'So a renewable resource can still run short when it is used faster than it is renewed. Renewable does not mean unlimited.'
+- kind: callout
+  tone: watch
+  html: Do not think that renewable means it can never run out. A renewable resource lasts only if we use it more slowly than nature renews it.
+- kind: callout
+  tone: real
+  html: Solar power plants in Rajasthan use sunlight, a renewable resource, while coal power stations use coal, a non-renewable one. Both need machines and skilled people.
+- kind: check
+  item: q-rt-1
+- kind: check
+  item: q-rt-4
+- kind: check
+  item: q-rt-6
+- kind: summary
+  points:
+  - 'A resource is something people can use and know how to use to meet their needs.'
+  - 'Natural, human-made and human resources work together in any real project.'
+  - 'Renewable resources are replaced by nature in a reasonable time, and non-renewable ones are not.'
+  - 'Renewable does not mean unlimited, because overuse can still make a renewable resource run short.'
+items:
+- key: q-rt-1
+  kind: mcq
+  stem: Which of these is a human-made resource?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: resource-types
+  explanation: A road is built by people, so it is human-made. Soil and sunlight come from nature, and a farmer is a human resource.
+  hints:
+  - Human-made means built by people from natural materials.
+  correct: C
+  options:
+  - key: A
+    text: Sunlight
+    misconception: only-things-are-resources
+  - key: B
+    text: Soil
+    misconception: only-things-are-resources
+  - key: C
+    text: A road
+  - key: D
+    text: A farmer
+    misconception: only-things-are-resources
+- key: q-rt-2
+  kind: mcq
+  stem: Which is an example of a non-renewable resource?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: resource-types
+  explanation: Coal took a very long time to form and cannot be replaced in a human lifetime. Wind and sunlight keep coming.
+  hints:
+  - Which one cannot be replaced once it is used up?
+  correct: A
+  options:
+  - key: A
+    text: Coal
+  - key: B
+    text: Wind
+    misconception: renewable-means-unlimited
+  - key: C
+    text: Sunlight
+    misconception: renewable-means-unlimited
+  - key: D
+    text: A well-managed forest
+    misconception: renewable-means-unlimited
+- key: q-rt-3
+  kind: mcq
+  stem: A skilled electrician is best described as
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: resource-types
+  explanation: People with skills and knowledge are human resources. An electrician is not a natural material or a built object.
+  hints:
+  - Think about who or what is being described.
+  correct: D
+  options:
+  - key: A
+    text: A natural resource
+    misconception: only-things-are-resources
+  - key: B
+    text: A human-made resource
+    misconception: only-things-are-resources
+  - key: C
+    text: Not a resource, because a person is not a thing
+    misconception: only-things-are-resources
+  - key: D
+    text: A human resource
+- key: q-rt-4
+  kind: mcq
+  stem: Why is coal called non-renewable?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: resource-types
+  explanation: Coal forms over a very long time, so for human purposes it cannot be replaced once it is used.
+  hints:
+  - Think about how long coal takes to form.
+  correct: B
+  options:
+  - key: A
+    text: Because it is found only in India
+    misconception: renewable-means-unlimited
+  - key: B
+    text: Because nature cannot replace it in a time useful to people
+  - key: C
+    text: Because it is made by people
+    misconception: only-things-are-resources
+  - key: D
+    text: Because it burns
+    misconception: renewable-means-unlimited
+- key: q-rt-5
+  kind: mcq
+  stem: A town cuts trees faster than new trees grow. What is most likely to happen to the forest?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: resource-types
+  explanation: A forest is renewable only when cutting is slower than regrowth. If cutting is faster, the forest shrinks.
+  hints:
+  - Compare the speed of cutting with the speed of regrowth.
+  correct: A
+  options:
+  - key: A
+    text: It will shrink, even though forests are renewable
+  - key: B
+    text: It will stay the same, because forests are renewable
+    misconception: renewable-means-unlimited
+  - key: C
+    text: It will grow bigger, because trees are natural
+    misconception: renewable-means-unlimited
+  - key: D
+    text: It will turn into coal at once
+    misconception: renewable-means-unlimited
+- key: q-rt-6
+  kind: mcq
+  stem: A solar power plant needs sunlight, panels and trained workers. Which line sorts these correctly?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: resource-types
+  explanation: Sunlight is natural, panels are built by people so they are human-made, and trained workers are human resources.
+  hints:
+  - Sort each by where it comes from.
+  correct: C
+  options:
+  - key: A
+    text: Sunlight is human-made, panels are natural, workers are human
+    misconception: only-things-are-resources
+  - key: B
+    text: All three are natural resources
+    misconception: only-things-are-resources
+  - key: C
+    text: Sunlight is natural, panels are human-made, workers are human
+  - key: D
+    text: Workers are not a resource at all
+    misconception: only-things-are-resources
+- key: q-rt-7
+  kind: mcq
+  stem: 'Assertion (A): Coal can become a resource only when people know how to use it. Reason (R): A resource is something that people can use and know how to use to meet their needs.'
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: resource-types
+  explanation: Both statements are true. The meaning of resource in R is the reason coal counts only once people know how to use it.
+  hints:
+  - Does R give the meaning of resource that explains A?
+  correct: A
+  options:
+  - key: A
+    text: Both A and R are true, and R explains A
+  - key: B
+    text: Both A and R are true, but R does not explain A
+    misconception: only-things-are-resources
+  - key: C
+    text: A is true, but R is false
+    misconception: only-things-are-resources
+  - key: D
+    text: A is false, but R is true
+    misconception: only-things-are-resources
+- key: q-rt-8
+  kind: mcq
+  stem: 'Assertion (A): Because water is renewable, it can never run short. Reason (R): Rain adds new water to rivers and the ground.'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: resource-types
+  explanation: R is true, but A is false. Renewal takes time, and water can run short if it is used faster than it is renewed.
+  hints:
+  - Can people use water faster than rain refills it?
+  correct: D
+  options:
+  - key: A
+    text: Both A and R are true, and R explains A
+    misconception: renewable-means-unlimited
+  - key: B
+    text: Both A and R are true, but R does not explain A
+    misconception: renewable-means-unlimited
+  - key: C
+    text: A is true, but R is false
+    misconception: renewable-means-unlimited
+  - key: D
+    text: A is false, but R is true
+- key: q-rt-9
+  pattern: case
+  kind: mcq
+  stem: 'Read this made-up example. Farm Village draws water from a pond for its fields. The pond is filled by rain each monsoon. In recent years, the village added many pumps and now takes out more water each year than the rain refills. By summer the pond is dry. A student says, "Water is renewable, so the pond problem cannot be caused by us." Which statement is correct?'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: resource-types
+  explanation: Water is renewable, but only at the pace of the rain. The village used it faster than it was renewed, so overuse caused the shortage.
+  hints:
+  - Compare how fast water is taken out with how fast rain refills it.
+  correct: B
+  options:
+  - key: A
+    text: The student is right, because renewable resources cannot run short
+    misconception: renewable-means-unlimited
+  - key: B
+    text: The student is wrong, because use faster than renewal can empty a renewable resource
+  - key: C
+    text: Pond water is a human resource
+    misconception: only-things-are-resources
+  - key: D
+    text: Pond water is non-renewable because it dried up
+    misconception: renewable-means-unlimited
+misconceptions:
+- code: renewable-means-unlimited
+  concept: resource-types
+  description: Thinks renewable means it can never run out, when a renewable resource can still run short if it is used faster than nature renews it.
+- code: only-things-are-resources
+  concept: resource-types
+  description: Thinks only objects or materials are resources, forgetting human resources and that human-made things are resources too.
+cards:
+- key: types-of-resources-card-1
+  concept: resource-types
+  front: What is a resource?
+  back: Anything people can use, and know how to use, to meet their needs.
+- key: types-of-resources-card-2
+  concept: resource-types
+  front: Name the three kinds of resource.
+  back: Natural, human-made and human resources.
+- key: types-of-resources-card-3
+  concept: resource-types
+  front: What is the difference between renewable and non-renewable?
+  back: Renewable resources are replaced by nature in a reasonable time. Non-renewable ones, such as coal, are not.
+- key: types-of-resources-card-4
+  concept: resource-types
+  front: Does renewable mean unlimited?
+  back: No. A renewable resource still runs short if it is used faster than it is renewed.

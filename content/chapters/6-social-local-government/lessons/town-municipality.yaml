@@ -1,0 +1,270 @@
+slug: town-municipality
+title: Towns and cities have a municipality
+minutes: 20
+objectives:
+- Explain why a town or city needs its own local government
+- Name services a municipality looks after
+- Say how a municipality is like and unlike a gram panchayat
+concepts:
+- civics-municipality
+- civics-local-need
+origin: ai_assisted
+blocks:
+- kind: text
+  heading: Many people, many needs
+  html: '<p>Think of a busy town. Thousands of people need clean water. Rubbish piles up every day. Rain water must flow away through drains. Streets need lamps and repairs. Someone has to plan all this, or the town would be dirty and hard to live in.</p><p>In towns and cities this work is done by the <strong>municipality</strong>. It is the local government of a town or city.</p>'
+- kind: text
+  heading: Who runs it
+  html: '<p>Like a village, a town chooses its local government by voting. The people of the town elect their members. These members are often called <strong>councillors</strong>. A councillor is an elected member of the municipality.</p><p>The municipality also has a head. In a city the head is often called the <strong>mayor</strong>. In a smaller town the head may be called the <strong>chairperson</strong>. The title can differ from place to place, but the idea is the same: elected people lead the work for the town.</p>'
+- kind: text
+  heading: What a municipality looks after
+  html: '<p>A municipality takes care of the services that people in a town share. These include clean water supply, drains, streets, street lights and the collection of garbage, which is the rubbish that homes and shops throw away.</p><p>A village panchayat and a municipality are alike in one way. Both are local government chosen by the people they serve. They differ in the place they look after: a panchayat looks after a village, and a municipality looks after a town or a city.</p>'
+- kind: figure
+  svg: <svg viewBox="0 0 320 160" role="img"><rect x="100" y="10" width="120" height="36" rx="6" fill="#ffb800" stroke="#14193a" stroke-width="2"/><text x="160" y="33" font-size="13" text-anchor="middle" fill="#14193a">Municipality</text><line x1="160" y1="46" x2="160" y2="62" stroke="currentColor" stroke-width="2"/><line x1="45" y1="62" x2="275" y2="62" stroke="currentColor" stroke-width="2"/><line x1="45" y1="62" x2="45" y2="76" stroke="currentColor" stroke-width="2"/><line x1="120" y1="62" x2="120" y2="76" stroke="currentColor" stroke-width="2"/><line x1="200" y1="62" x2="200" y2="76" stroke="currentColor" stroke-width="2"/><line x1="275" y1="62" x2="275" y2="76" stroke="currentColor" stroke-width="2"/><rect x="5" y="76" width="80" height="40" rx="6" fill="#6cb7ff" stroke="#14193a" stroke-width="2"/><text x="45" y="101" font-size="12" text-anchor="middle" fill="#14193a">Water</text><rect x="80" y="76" width="80" height="40" rx="6" fill="#6cb7ff" stroke="#14193a" stroke-width="2"/><text x="120" y="101" font-size="12" text-anchor="middle" fill="#14193a">Drains</text><rect x="160" y="76" width="80" height="40" rx="6" fill="#6cb7ff" stroke="#14193a" stroke-width="2"/><text x="200" y="101" font-size="12" text-anchor="middle" fill="#14193a">Streets</text><rect x="235" y="76" width="80" height="40" rx="6" fill="#6cb7ff" stroke="#14193a" stroke-width="2"/><text x="275" y="101" font-size="12" text-anchor="middle" fill="#14193a">Garbage</text><text x="160" y="145" font-size="12" text-anchor="middle" fill="currentColor">Led by a mayor or chairperson</text></svg>
+  alt: A chart with the municipality at the top joined to four boxes for water, drains, streets and garbage collection.
+  caption: A municipality looks after shared town services. It is led by a mayor or a chairperson.
+- kind: example
+  heading: Worked example
+  prompt: Rainwater stands on a town road and mosquitoes breed there. Whom should the residents ask, and why?
+  steps:
+  - 'Find the kind of problem. Water that does not flow away is a drain problem, which is a shared town service.'
+  - 'Shared town services are the work of the municipality.'
+  - 'So the residents should tell the municipality, for example through their elected councillor.'
+  - 'Check: the town problem goes to the town local government, not to a faraway leader.'
+- kind: example
+  heading: Worked reasoning
+  prompt: Which place would have a municipality, a village of a few families or a big busy city?
+  steps:
+  - 'Recall: a municipality looks after a town or a city.'
+  - 'A village of a few families is looked after by a gram panchayat.'
+  - 'A big busy city has a municipality.'
+  - 'Check: the city, with its water, drains, streets and garbage, has a municipality.'
+- kind: callout
+  tone: watch
+  html: A municipality is not the same as a gram panchayat. A gram panchayat is for a village. A municipality is for a town or city. Both are elected by local people.
+- kind: callout
+  tone: real
+  html: When a truck comes to collect garbage, when a tap supplies water or when a street light is mended in a town, the municipality is often behind it.
+- kind: check
+  item: q-tm-1
+- kind: check
+  item: q-tm-2
+- kind: check
+  item: q-tm-3
+- kind: summary
+  points:
+  - 'A municipality is the local government of a town or city.'
+  - 'Its elected members are often called councillors.'
+  - 'It is led by a mayor or a chairperson, depending on the place.'
+  - 'It looks after services such as water, drains, streets and garbage collection.'
+items:
+- key: q-tm-1
+  kind: mcq
+  stem: What is a municipality?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: civics-municipality
+  explanation: A municipality is the local government of a town or city.
+  hints:
+  - Think of where people live close together in large numbers.
+  correct: A
+  options:
+  - key: A
+    text: The local government of a town or city
+  - key: B
+    text: The local government of one village
+    misconception: municipality-is-panchayat
+  - key: C
+    text: A meeting of all voters of a village
+    misconception: municipality-is-panchayat
+  - key: D
+    text: A court of law
+    misconception: municipality-for-everything
+- key: q-tm-2
+  kind: mcq
+  stem: Which of these is a service looked after by a municipality?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: civics-municipality
+  explanation: Garbage collection is a shared town service that a municipality looks after.
+  hints:
+  - Pick a service that all town people share.
+  correct: C
+  options:
+  - key: A
+    text: Making laws for the whole country
+    misconception: municipality-for-everything
+  - key: B
+    text: Printing school books
+    misconception: municipality-for-everything
+  - key: C
+    text: Collecting garbage
+  - key: D
+    text: Choosing the Prime Minister
+    misconception: municipality-for-everything
+- key: q-tm-3
+  kind: mcq
+  stem: What is the head of a municipality in a city often called?
+  difficulty: intro
+  purpose: check
+  concepts:
+  - id: civics-municipality
+  explanation: In a city the head is often called the mayor. In a smaller town the head may be called the chairperson.
+  hints:
+  - It is not the sarpanch.
+  correct: B
+  options:
+  - key: A
+    text: Sarpanch
+    misconception: municipality-is-panchayat
+  - key: B
+    text: Mayor
+  - key: C
+    text: Gram sabha
+    misconception: municipality-is-panchayat
+  - key: D
+    text: Village teacher
+    misconception: municipality-is-panchayat
+- key: q-tm-4
+  kind: truefalse
+  stem: The members of a municipality are chosen by the people of the town or city.
+  difficulty: intro
+  purpose: practice
+  concepts:
+  - id: civics-municipality
+  explanation: True. The people of the town or city elect the members, who are often called councillors.
+  hints:
+  - Think about how a village chooses its panchayat members.
+  correct: true
+- key: q-tm-5
+  kind: truefalse
+  stem: A municipality looks after a village of a few families.
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: civics-municipality
+  explanation: False. A village has a gram panchayat. A municipality looks after a town or a city.
+  hints:
+  - Which body belongs to a village?
+  correct: false
+- key: q-tm-6
+  kind: mcq
+  stem: Drains in a town are blocked and rainwater fills the street. Which body should deal with it?
+  difficulty: standard
+  purpose: practice
+  concepts:
+  - id: civics-municipality
+  - id: civics-local-need
+  explanation: Drains are a shared service of the town, so the municipality should deal with it.
+  hints:
+  - Drains are a shared town service.
+  correct: D
+  options:
+  - key: A
+    text: A gram sabha of a faraway village
+    misconception: municipality-is-panchayat
+  - key: B
+    text: The Prime Minister alone
+    misconception: municipality-for-everything
+  - key: C
+    text: The class teacher
+    misconception: municipality-for-everything
+  - key: D
+    text: The municipality
+- key: q-tm-7
+  kind: mcq
+  stem: 'Assertion (A): Towns and cities need a municipality. Reason (R): Many people live close together and share services such as water, drains, streets and garbage collection.'
+  difficulty: standard
+  purpose: test
+  concepts:
+  - id: civics-municipality
+  explanation: Both statements are true. Because so many people share these services, someone must plan and look after them, and R explains A.
+  hints:
+  - Does R give the reason why the body is needed?
+  correct: A
+  options:
+  - key: A
+    text: Both A and R are true, and R explains A
+  - key: B
+    text: Both A and R are true, but R does not explain A
+    misconception: municipality-for-everything
+  - key: C
+    text: A is true, but R is false
+    misconception: municipality-for-everything
+  - key: D
+    text: A is false, but R is true
+    misconception: municipality-for-everything
+- key: q-tm-8
+  kind: mcq
+  stem: 'Assertion (A): A municipality is the same as a gram panchayat. Reason (R): Both are chosen by local people.'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: civics-municipality
+  - id: civics-gram-panchayat
+  explanation: R is true, because both are elected by local people. But A is false, because a gram panchayat looks after a village and a municipality looks after a town or city.
+  hints:
+  - Both are elected. Do they look after the same kind of place?
+  correct: D
+  options:
+  - key: A
+    text: Both A and R are true, and R explains A
+    misconception: municipality-is-panchayat
+  - key: B
+    text: Both A and R are true, but R does not explain A
+    misconception: municipality-is-panchayat
+  - key: C
+    text: A is true, but R is false
+    misconception: municipality-is-panchayat
+  - key: D
+    text: A is false, but R is true
+- key: q-tm-9
+  pattern: case
+  kind: mcq
+  stem: 'Read this note. A family lives in a large city. Garbage is piling up near their lane, and a street lamp is broken. Their elected councillor takes the matter to the head of the local government, who is called the mayor. What is this local government called, and what kind of problem is this?'
+  difficulty: challenge
+  purpose: test
+  concepts:
+  - id: civics-municipality
+  explanation: A city has a municipality led by a mayor. Garbage and street lights are shared city services, so these are matters for the municipality.
+  hints:
+  - A city has a municipality. A village has a gram panchayat.
+  correct: B
+  options:
+  - key: A
+    text: A gram panchayat, and it is a village matter
+    misconception: municipality-is-panchayat
+  - key: B
+    text: A municipality, and it is a shared city service
+  - key: C
+    text: A gram sabha, and it is a matter for the sarpanch
+    misconception: municipality-is-panchayat
+  - key: D
+    text: The national Parliament, and it is a country-wide matter
+    misconception: municipality-for-everything
+misconceptions:
+- code: municipality-is-panchayat
+  concept: civics-municipality
+  description: Mixes up the municipality (town or city) with the gram panchayat, gram sabha or sarpanch (village).
+- code: municipality-for-everything
+  concept: civics-municipality
+  description: Thinks the municipality or some faraway body handles every kind of matter, when a municipality looks after local town services such as water, drains, streets and garbage.
+cards:
+- key: town-municipality-card-1
+  concept: civics-municipality
+  front: What is a municipality?
+  back: The elected local government of a town or city.
+- key: town-municipality-card-2
+  concept: civics-municipality
+  front: Who heads a municipality?
+  back: Often a mayor in a city or a chairperson in a smaller town.
+- key: town-municipality-card-3
+  concept: civics-municipality
+  front: Name services a municipality looks after.
+  back: Water, drains, streets, street lights and garbage collection.
+- key: town-municipality-card-4
+  concept: civics-municipality
+  front: How are a municipality and a gram panchayat alike?
+  back: Both are local governments elected by the people they serve.

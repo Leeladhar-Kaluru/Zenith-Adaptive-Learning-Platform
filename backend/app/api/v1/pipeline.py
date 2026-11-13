@@ -105,12 +105,13 @@ ALIVE_S = 90
 def health(r: Profile = Depends(reviewer_only), db: Session = Depends(get_db)):
     """Is the background worker alive, and is the queue moving? Everything comes from the heartbeat rows and the job table."""
     now = datetime.now(timezone.utc)
-    workers = [{"name": w.name, "alive": (now - w.last_seen).total_seconds() < ALIVE_S, "lastSeen": w.last_seen.isoformat(), "startedAt": w.started_at.isoformat(), "version": w.version, "stats": w.stats}
+    workers = [{"name": w.name, "alive": (now - w.last_seen).total_seconds() < ALIVE_S, "lastSeen": w.last_seen.isoformat(), "mode": (w.stats or {}).get("mode", "always-on"), "startedAt": w.started_at.isoformat(), "version": w.version, "stats": w.stats}
                for w in db.scalars(select(WorkerHeartbeat).order_by(WorkerHeartbeat.last_seen.desc()).limit(10))]
     counts = dict(db.execute(select(IngestJob.status, func.count(IngestJob.id)).where(IngestJob.kind == "request").group_by(IngestJob.status)).all())
     oldest = db.scalar(select(func.min(IngestJob.created_at)).where(IngestJob.kind == "request", IngestJob.status == "queued"))
     failed_24h = db.scalar(select(func.count(IngestJob.id)).where(IngestJob.status == "failed", IngestJob.updated_at > now - timedelta(days=1))) or 0
-    return {"workerAlive": any(w["alive"] for w in workers), "workers": workers, "queue": counts, "oldestQueuedSeconds": int((now - oldest).total_seconds()) if oldest else None, "failedLast24h": failed_24h}
+    sleeping = any(w["mode"] == "free-web" and not w["alive"] and (now - datetime.fromisoformat(w["lastSeen"])).total_seconds() < 3 * 86400 for w in workers)
+    return {"workerAlive": any(w["alive"] for w in workers), "workerSleeping": sleeping, "workers": workers, "queue": counts, "oldestQueuedSeconds": int((now - oldest).total_seconds()) if oldest else None, "failedLast24h": failed_24h}
 
 
 @router.post("/pipeline/jobs/{job_id}/retry")

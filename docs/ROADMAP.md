@@ -10,7 +10,7 @@
 - Pipeline: requests, source discovery from vetted open-licence sources, evaluator scorecard, infographics, reviewer screen, **background worker with retries, stale-lock recovery, heartbeat and health screen (new, code only until a Render worker is approved)**.
 
 ## Needs your decision
-1. Create the Render Background Worker (docs/RENDER_MIGRATION.md). Until then the daily Vercel cron is the only runner.
+1. DONE on the free tier: `zenith-worker` runs on Render (wakes on real triggers, sleeps when idle). Move to a paid always-on worker later by switching the service type and start command.
 2. Set `ENABLE_REMOTE_AI` and the Groq key where drafting runs, or drafts are never made.
 3. A native Hindi reader and a native Telugu reader to approve those chapters.
 4. Whether to move the API to Render later (not recommended until Vercel limits bite).

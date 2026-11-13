@@ -84,3 +84,15 @@ def test_the_pipeline_health_screen_says_whether_a_worker_is_alive_and_a_reviewe
     db.commit()
     assert client.post(f"{API}/pipeline/jobs/{jid}/retry", headers=h).json()["status"] == "queued"
     assert db.get(IngestJob, jid).attempts == 0 and client.post(f"{API}/pipeline/jobs/{jid}/retry", headers=h).status_code == 404       # only failed or blocked ones
+
+
+def test_a_sleeping_free_tier_worker_is_reported_as_asleep_not_dead(client, db, people):
+    h = auth(people["reviewer"])
+    worker.heartbeat(db, "render-1", worker._now(), {"mode": "free-web"})
+    db.get(WorkerHeartbeat, "render-1").last_seen = worker._now() - timedelta(minutes=30)
+    db.commit()
+    out = client.get(f"{API}/pipeline/health", headers=h).json()
+    assert out["workerAlive"] is False and out["workerSleeping"] is True and out["workers"][0]["mode"] == "free-web"
+    db.get(WorkerHeartbeat, "render-1").last_seen = worker._now() - timedelta(days=5)
+    db.commit()
+    assert client.get(f"{API}/pipeline/health", headers=h).json()["workerSleeping"] is False        # silent for days: that is a problem, not sleep

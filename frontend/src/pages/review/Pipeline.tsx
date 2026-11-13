@@ -10,7 +10,7 @@ interface Overview {
   pages: Array<{ id: string; url: string; title: string | null; licence: string; credit: string; sections: number }>;
   drafts: Array<{ id: string; title: string; grade: number; subject: string; score: number; verdict: string; at: string }>;
 }
-interface Health { workerAlive: boolean; workers: Array<{ name: string; alive: boolean; lastSeen: string; stats: Record<string, number> }>; queue: Record<string, number>; oldestQueuedSeconds: number | null; failedLast24h: number }
+interface Health { workerAlive: boolean; workerSleeping?: boolean; workers: Array<{ name: string; alive: boolean; lastSeen: string; stats: Record<string, number> }>; queue: Record<string, number>; oldestQueuedSeconds: number | null; failedLast24h: number }
 interface Draft { id: string; title: string; scorecard: { checks: Array<{ name: string; passed: boolean; detail: string; hard: boolean }>; score: number; verdict: string }; yaml: string }
 
 /** The reviewer's view of the content pipeline: what students asked for, source pages to approve, drafts with their scorecards. Nothing here publishes. */
@@ -35,7 +35,7 @@ export default function Pipeline() {
       <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
         <Chip tone={data.cronConfigured ? 'ok' : 'gap'}>{data.cronConfigured ? 'Scheduled daily run is on' : 'Scheduled run is off (CRON_SECRET not set)'}</Chip>
         <Chip tone={data.aiEnabled ? 'ok' : 'gap'}>{data.aiEnabled ? 'AI drafting is on' : 'AI drafting is off: pages are found but not drafted'}</Chip>
-        <Chip tone={health.data?.workerAlive ? 'ok' : 'gap'}>{health.data ? (health.data.workerAlive ? `Background worker is running (${health.data.workers.filter((w) => w.alive).length})` : 'No background worker is running') : 'Checking the worker'}</Chip>
+        <Chip tone={health.data?.workerAlive || health.data?.workerSleeping ? 'ok' : 'gap'}>{health.data ? (health.data.workerAlive ? `Background worker is running (${health.data.workers.filter((w) => w.alive).length})` : health.data.workerSleeping ? 'Worker is asleep (free plan) and wakes when there is work' : 'No background worker has reported in') : 'Checking the worker'}</Chip>
         {health.data && health.data.failedLast24h > 0 && <Chip tone="gap">{health.data.failedLast24h} failed in the last day</Chip>}
         {health.data?.oldestQueuedSeconds != null && <Chip tone="soft">Oldest waiting: {Math.max(1, Math.round(health.data.oldestQueuedSeconds / 60))} min</Chip>}
         <Chip tone="soft">{data.queued} request{data.queued === 1 ? '' : 's'} waiting</Chip>

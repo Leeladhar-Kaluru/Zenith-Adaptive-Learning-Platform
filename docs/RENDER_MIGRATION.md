@@ -78,3 +78,7 @@ Phase 2 only (API on Render): all current API variables, plus `VITE_API_BASE_URL
 1. Approve creating one Render Background Worker (Starter), about $6 to $7 per month, in "My Workspace".
 2. Whether to move the API to Render later (not recommended until Vercel limits actually bite).
 3. Production AI drafting: set `ENABLE_REMOTE_AI` and the Groq key on the worker so it can draft lessons.
+
+## 8. Outcome (13 Nov 2026): free tier chosen and deployed
+Render has no free background worker, so the worker runs as a **free web service** (`zenith-worker`, Singapore) wrapped by `app/worker_web.py`. It wakes on real triggers only (a student asking for lessons, the daily Vercel cron, or a reviewer pressing Run a batch), drains the queue, and sleeps again after the 15-minute idle limit. No keep-alive pings. Cold start is about a minute; a job cut off by a sleep is recovered by the stale-lock reaper. Vercel holds `WORKER_URL` and `WORKER_SECRET`; Render holds `DATABASE_URL`, `WORKER_SECRET` and the settings above. AI drafting stays off there until `ENABLE_REMOTE_AI` and `GROQ_API_KEY` are added.
+Verified live: the service answers, rejects calls without the secret, ran a drain against the production database and wrote heartbeat rows. Not yet verified: a real student request travelling API to worker to a stored source page.

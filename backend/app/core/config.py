@@ -22,6 +22,8 @@ class Settings(BaseSettings):
     SUPABASE_URL: str = ""
     SUPABASE_PUBLISHABLE_KEY: str = ""
     SUPABASE_SECRET_KEY: str = ""
+    WORKER_URL: str = ""         # the Render worker service (free tier); empty means pipeline work runs inside the API as before
+    WORKER_SECRET: str = ""      # shared secret for POST /run on that service
     CRON_SECRET: str = ""        # shared secret the scheduler sends to /ingest/run; empty means the scheduled run is off
     
     # AI provider (Groq in production, LM Studio locally via LLM_PROVIDER=lmstudio)

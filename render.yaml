@@ -1,28 +1,28 @@
-# Render blueprint for the ZENITH background worker. NOT applied: creating it needs the owner's approval (docs/RENDER_MIGRATION.md).
+# Render blueprint for the ZENITH worker on the FREE tier (a web service that wakes on real triggers; see backend/app/worker_web.py).
+# For a paid always-on worker later, change to `type: worker`, drop `plan: free`, and use `startCommand: python -m app.worker`.
 services:
-  - type: worker
+  - type: web
     name: zenith-worker
     runtime: python
-    plan: starter
+    plan: free
     region: singapore
+    branch: master
     rootDir: backend
     buildCommand: pip install -r requirements-worker.txt
-    startCommand: python -m app.worker
+    startCommand: uvicorn app.worker_web:app --host 0.0.0.0 --port $PORT
     autoDeploy: true
     envVars:
       - key: PYTHON_VERSION
-        value: 3.13.0
+        value: 3.12.8
       - key: DB_SCHEMA
         value: zenith
       - key: LLM_PROVIDER
         value: groq
-      - key: WORKER_POLL_SECONDS
-        value: "5"
       - key: DATABASE_URL
+        sync: false
+      - key: WORKER_SECRET
         sync: false
       - key: ENABLE_REMOTE_AI
         sync: false
       - key: GROQ_API_KEY
-        sync: false
-      - key: BOT_CONTACT
         sync: false

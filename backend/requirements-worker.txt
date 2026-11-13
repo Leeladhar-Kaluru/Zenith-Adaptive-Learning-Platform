@@ -1,2 +1,3 @@
 # What the background worker needs: the API runtime plus PyYAML (lesson drafts). No SymPy, Shapely or Alembic.
 -r requirements.txt
+uvicorn>=0.30

@@ -5,7 +5,7 @@ import hmac
 import uuid
 from typing import Optional
 
-from fastapi import APIRouter, Depends, Header, HTTPException
+from fastapi import APIRouter, BackgroundTasks, Depends, Header, HTTPException
 from pydantic import BaseModel, Field
 from sqlalchemy import func, select
 from sqlalchemy.orm import Session
@@ -18,7 +18,7 @@ from app.ingest import assets as asset_svc
 from datetime import datetime, timedelta, timezone
 
 from app.models import IngestJob, LessonDraft, Profile, SourceAsset, WorkerHeartbeat
-from app.services import coverage, notifications, pipeline
+from app.services import coverage, notifications, pipeline, wake
 from app.services.tutor import ai_enabled
 
 router = APIRouter()
@@ -51,11 +51,13 @@ def my_coverage(p: Profile = Depends(get_profile), db: Session = Depends(get_db)
 
 
 @router.post("/coverage/request")
-def ask_for_lessons(body: RequestIn, p: Profile = Depends(get_profile), db: Session = Depends(get_db)):
+def ask_for_lessons(body: RequestIn, tasks: BackgroundTasks, p: Profile = Depends(get_profile), db: Session = Depends(get_db)):
     try:
-        return coverage.request_lessons(db, p, body.subject, body.topic)
+        out = coverage.request_lessons(db, p, body.subject, body.topic)
     except coverage.CoverageError as e:
         raise HTTPException(e.status, str(e))
+    tasks.add_task(wake.wake_worker)          # after the response: a cold worker can take a minute to wake and the student should not wait for it
+    return out
 
 
 async def _generate(**kw) -> str:
@@ -68,12 +70,16 @@ async def scheduled_run(authorization: str = Header(default=""), db: Session = D
     secret = settings.CRON_SECRET
     if not secret or not hmac.compare_digest(authorization.removeprefix("Bearer ").strip(), secret):
         raise HTTPException(401, "Not allowed.")
+    if wake.configured():
+        return {"mode": "worker", "woke": wake.wake_worker()}
     return await pipeline.run_once(db, _generate if ai_enabled() else None)
 
 
 @router.post("/pipeline/run")
 async def run_now(r: Profile = Depends(reviewer_only), db: Session = Depends(get_db)):
     """A reviewer can run one batch by hand from the pipeline screen."""
+    if wake.configured():
+        return {"mode": "worker", "woke": wake.wake_worker()}
     return await pipeline.run_once(db, _generate if ai_enabled() else None)
 
 
@@ -83,7 +89,7 @@ def overview(r: Profile = Depends(reviewer_only), db: Session = Depends(get_db))
     pending = db.scalars(select(SourceAsset).where(SourceAsset.kind == "text", SourceAsset.status == "pending").order_by(SourceAsset.retrieved_at.desc()).limit(30)).all()
     drafts = db.scalars(select(LessonDraft).where(LessonDraft.status == "ready").order_by(LessonDraft.created_at.desc()).limit(30)).all()
     return {
-        "aiEnabled": ai_enabled(), "cronConfigured": bool(settings.CRON_SECRET), "workerAlive": bool(db.scalar(select(func.count(WorkerHeartbeat.name)).where(WorkerHeartbeat.last_seen > datetime.now(timezone.utc) - timedelta(seconds=ALIVE_S)))),
+        "aiEnabled": ai_enabled(), "cronConfigured": bool(settings.CRON_SECRET), "workerConfigured": wake.configured(), "workerAlive": bool(db.scalar(select(func.count(WorkerHeartbeat.name)).where(WorkerHeartbeat.last_seen > datetime.now(timezone.utc) - timedelta(seconds=ALIVE_S)))),
         "jobs": [{"id": str(j.id), "kind": j.kind, "status": j.status, "grade": j.grade, "subject": j.subject_id, "concept": j.concept_id, "topic": j.topic, "demand": j.demand,
                   "error": j.error, "result": j.result, "attempts": j.attempts, "maxAttempts": j.max_attempts, "log": (j.log or [])[-6:], "at": (j.updated_at or j.created_at).isoformat()} for j in jobs],
         "pages": [{"id": str(a.id), "url": a.url, "title": (a.data or {}).get("title"), "licence": a.licence_id, "credit": a.attribution_text, "sections": len((a.data or {}).get("sections", []))} for a in pending],

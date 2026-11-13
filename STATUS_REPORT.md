@@ -215,3 +215,11 @@ Verified in the browser (local, dev tokens): quiz match end to end, dashboard wi
 Blockers and decisions for the owner: `CRON_SECRET` is not set in Vercel, so the scheduled pipeline run is off; AI drafting needs `ENABLE_REMOTE_AI` and `GROQ_API_KEY` in production; Hindi and Telugu chapters need a native-language reviewer before publishing; Vercel Hobby limits cron to once a day (set for 03:00 IST).
 
 Next: offline pack suggestions from the recommendation engine; confidence tap and calibration; more chapters in every class and subject (coverage table shows the gaps); remaining simulations (atoms 3D, mixtures, reactions, cells, organs, Maths lab); re-run the full backend suite.
+
+## Render worker (free tier) and offline work (2026-11-13)
+
+Shipped and verified: Postgres-queue worker (retries, stale-lock recovery, heartbeats, health screen); free Render web-service wrapper `zenith-worker` that wakes on real triggers and sleeps when idle (no keep-alive pings); API and daily cron hand work to it via `WORKER_URL` and `WORKER_SECRET`; AI drafting enabled on the worker (`ai: true` in its heartbeat). Migrations 010 (queue columns, heartbeats) and 011 (answer confidence) applied after a verified backup. PWA install prompt, offline practice from saved lessons, suggested chapters to save, confidence tap with calibration. Full backend suite 472 passed before the worker-web additions; worker, pipeline, drafting tests (33) pass after them.
+
+Verified live end to end: a real student request (Class 10 English) from the signed-in pane travelled API to Render worker, the job was claimed, ran, and ended `blocked` with the plain reason that no curriculum topics are defined for that class and subject. Two dependency bugs found and fixed on the way (PyYAML, SymPy), each with a regression test.
+
+Not done: no source page has been stored or drafted yet, because the vetted sources cover English-language science and geography only and the empty subjects have no defined curriculum topics. A reviewer must add topic lists (concepts) per class and subject before the pipeline can look for pages. Hindi and Telugu still need native-language reviewers.

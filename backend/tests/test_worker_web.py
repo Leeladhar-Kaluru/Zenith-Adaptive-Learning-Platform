@@ -96,3 +96,22 @@ def test_asking_for_lessons_wakes_the_worker_and_the_cron_hands_over_to_it(clien
     out = client.get(f"{API}/ingest/run", headers={"Authorization": "Bearer c"}).json()
     assert out == {"mode": "worker", "woke": True} and woke == [1, 1]            # handed to the worker, not run inside the API
     assert client.get(f"{API}/pipeline/overview", headers=auth(people["reviewer"])).json()["workerConfigured"] is True
+
+
+def test_the_worker_dependency_list_covers_the_third_party_modules_drafting_imports():
+    import pathlib
+    import re
+    reqs = (pathlib.Path(__file__).resolve().parents[1] / "requirements-worker.txt").read_text(encoding="utf-8").lower()
+    base = (pathlib.Path(__file__).resolve().parents[1] / "requirements.txt").read_text(encoding="utf-8").lower()
+    have = reqs + base
+    for pkg, why in (("pyyaml", "app.cms.draft imports yaml"), ("uvicorn", "start command"), ("httpx", "wake and fetch"), ("fastapi", "worker_web")):
+        assert re.search(rf"^{pkg}\b", have, re.M), f"{pkg} missing from the worker requirements ({why})"
+
+
+def test_the_drafting_path_imports_without_sympy_because_the_worker_does_not_install_it():
+    import pathlib
+    import subprocess
+    import sys
+    code = "import sys\nsys.modules['sympy'] = None\nimport app.worker_web, app.cms.autodraft, app.cms.evaluator, app.services.pipeline\nfrom app.services import pipeline\n"
+    r = subprocess.run([sys.executable, "-c", code], capture_output=True, text=True, cwd=str(pathlib.Path(__file__).resolve().parents[1]))
+    assert r.returncode == 0, r.stderr[-400:]

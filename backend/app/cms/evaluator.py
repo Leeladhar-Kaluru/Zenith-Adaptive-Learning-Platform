@@ -7,7 +7,7 @@ from __future__ import annotations
 import re
 
 from app.cms.draft import find_todos
-from app.cms.gates import fk_grade
+from app.cms.readability import fk_grade
 
 NGRAM = 8
 MAX_OVERLAP = 0.15                       # share of the lesson's 8-word runs that also appear in the source: above this it is copying, not rewriting

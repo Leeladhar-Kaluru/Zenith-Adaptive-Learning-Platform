@@ -6,6 +6,8 @@ import { Button, Card, Segmented, useToast } from '../ui/kit';
 import type { Profile } from '../api/types';
 import s from './pages.module.css';
 
+import { InstallApp } from '../ui/InstallApp';
+
 export default function Settings() {
   const { profile, setProfile, theme, setTheme, logout } = useAuth();
   const toast = useToast();
@@ -23,6 +25,7 @@ export default function Settings() {
   return (
     <div className={s.stack} style={{ maxWidth: 760 }}>
       <h1 className={s.title}>Settings</h1>
+      <InstallApp />
 
       <Card>
         <h3>Your character</h3>

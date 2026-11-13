@@ -13,7 +13,7 @@ export interface Battle {
 }
 interface Topic { id: string; title: string; subject: string; grade: number; understanding: number; answers: number; correct: number; band: string; confidence: string; practice: string }
 interface Dash {
-  generatedAt: string; fading: Array<Topic & { recall: number }>;
+  generatedAt: string; calibration: Array<{ level: number; label: string; answers: number; right: number }>; fading: Array<Topic & { recall: number }>;
   me: { nickname: string | null; avatar: string | null; grade: number | null; xp: { level: number; xp: number; into?: number; next?: number }; streak: { days: number } };
   today: { answers: number; correct: number; minutes: number };
   days: Array<{ day: string; answers: number; correct: number; minutes: number }>;
@@ -152,6 +152,9 @@ export function Dashboard() {
           </ul>)}
           <p className="sm muted" style={{ marginTop: 10 }}>Based on your last 30 days of answers.</p>
         </Card>
+        {d.calibration.some((c) => c.answers > 0) && <Card><h3>How well you know what you know</h3>
+          {d.calibration.filter((c) => c.answers > 0).map((c) => <div key={c.level} style={{ marginTop: 8 }}><span className="sm">When you said <b>{c.label}</b> ({c.answers} answer{c.answers === 1 ? '' : 's'}): right {pct(c.right / c.answers)}</span></div>)}
+          <p className="sm muted" style={{ marginTop: 10 }}>If "sure" answers are right far more often than "guessing" ones, you judge yourself well. Your marks never depend on this tap.</p></Card>}
         <Card><h3>Arena</h3>
           <p className="muted sm" style={{ marginTop: 6 }}>{d.battles.games} battle{d.battles.games === 1 ? '' : 's'} · rating <b>{d.battles.rating}</b></p>
           {d.battles.recent.slice(0, 3).map((b) => <div key={b.id} style={{ marginTop: 8 }}><BattleRow b={b} /></div>)}

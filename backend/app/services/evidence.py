@@ -51,7 +51,7 @@ def _result(db: Session, item: Item, g: grading.Grade, concepts: list[dict], mis
 
 
 def record(db: Session, student_id: uuid.UUID, *, item_id: uuid.UUID, response: dict, hints_used: int, ms: int, context: str,
-           client_event_id: str, session_id: uuid.UUID | None = None, occurred_at: datetime | None = None) -> dict:
+           client_event_id: str, session_id: uuid.UUID | None = None, occurred_at: datetime | None = None, confidence: int | None = None) -> dict:
     item = db.get(Item, item_id)
     if item is None or item.status not in ("published", "generated"):
         raise EvidenceError("That question is not available.", 404)
@@ -129,7 +129,7 @@ def record(db: Session, student_id: uuid.UUID, *, item_id: uuid.UUID, response: 
 
     mis = item_svc.misconception_for(db, item, g.selected) if not g.correct else None
     ev = EvidenceEvent(student_id=student_id, item_id=item.id, session_id=session_id, client_event_id=client_event_id, context=context,
-                       response=response, correct=g.correct, score=g.score, hints_used=hints, ms=max(0, ms), attempt_no=attempt_no,
+                       response=response, correct=g.correct, score=g.score, hints_used=hints, ms=max(0, ms), attempt_no=attempt_no, confidence=confidence if confidence in (1, 2, 3) else None,
                        concepts=[{k: v for k, v in c.items() if k != "status"} for c in concept_rows],
                        misconception_id=mis.id if mis else None, param_version=bkt.PARAM_VERSION, occurred_at=occurred_at or now)
     db.add(ev)

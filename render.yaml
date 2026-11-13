@@ -1,0 +1,28 @@
+# Render blueprint for the ZENITH background worker. NOT applied: creating it needs the owner's approval (docs/RENDER_MIGRATION.md).
+services:
+  - type: worker
+    name: zenith-worker
+    runtime: python
+    plan: starter
+    region: singapore
+    rootDir: backend
+    buildCommand: pip install -r requirements-worker.txt
+    startCommand: python -m app.worker
+    autoDeploy: true
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.13.0
+      - key: DB_SCHEMA
+        value: zenith
+      - key: LLM_PROVIDER
+        value: groq
+      - key: WORKER_POLL_SECONDS
+        value: "5"
+      - key: DATABASE_URL
+        sync: false
+      - key: ENABLE_REMOTE_AI
+        sync: false
+      - key: GROQ_API_KEY
+        sync: false
+      - key: BOT_CONTACT
+        sync: false

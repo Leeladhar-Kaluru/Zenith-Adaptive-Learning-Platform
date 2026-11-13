@@ -36,6 +36,11 @@ class IngestJob(Base):
     attempts = Column(Integer, nullable=False, default=0)
     created_at = now_col()
     updated_at = Column(DateTime(timezone=True))
+    run_after = Column(DateTime(timezone=True))            # a retry waits until this time
+    locked_by = Column(String(60))                          # which worker holds the job right now
+    locked_at = Column(DateTime(timezone=True))
+    max_attempts = Column(Integer, nullable=False, default=3)
+    log = Column(JSONB, nullable=False, default=list)       # short run history: [{at, level, msg}], newest last, capped
     __table_args__ = (
         CheckConstraint("kind in ('request','import','draft')", name="ck_job_kind"),
         CheckConstraint("status in ('queued','running','done','failed','blocked')", name="ck_job_status"),
@@ -73,3 +78,13 @@ class LessonDraft(Base):
         CheckConstraint("verdict in ('review','rejected')", name="ck_draft_verdict"),
         CheckConstraint("status in ('ready','exported','dismissed')", name="ck_draft_status"),
     )
+
+
+class WorkerHeartbeat(Base):
+    """One row per running worker, touched on every loop, so the API can tell whether the background worker is alive."""
+    __tablename__ = "worker_heartbeats"
+    name = Column(String(60), primary_key=True)
+    started_at = Column(DateTime(timezone=True), nullable=False)
+    last_seen = Column(DateTime(timezone=True), nullable=False)
+    version = Column(String(40), nullable=False, default="")
+    stats = Column(JSONB, nullable=False, default=dict)

@@ -33,3 +33,23 @@ def test_the_dashboard_numbers_come_from_the_students_own_answers(client, db, wo
     assert sum(x["answers"] for x in d["days"]) == 5
     other = client.get(f"{API}/profile/dashboard", headers=__import__("tests.conftest", fromlist=["x"]).auth(world["reviewer"]))
     assert other.status_code in (401, 403)                                                 # only students have a learner dashboard
+
+
+def test_confidence_is_optional_stored_and_summarised_without_changing_marks(client, db, world):
+    h = world["h"]
+    items = db.scalars(select(Item).where(Item.status == "published", Item.kind == "mcq").order_by(Item.key)).all()[:4]
+
+    def send(item, right, conf):
+        spec = item.answer_spec
+        resp = {"choice": spec["correct"] if right else next(o["key"] for o in item.payload["options"] if o["key"] != spec["correct"])}
+        body = {"itemId": str(item.id), "response": resp, "hintsUsed": 0, "ms": 4000, "context": "solve", "clientEventId": uuid.uuid4().hex}
+        if conf:
+            body["confidence"] = conf
+        return client.post(f"{API}/evidence", json=body, headers=h)
+
+    assert send(items[0], True, 3).status_code == 200 and send(items[1], True, 3).status_code == 200
+    assert send(items[2], False, 1).status_code == 200 and send(items[3], True, None).status_code == 200            # no tap is fine
+    bad = send(items[0], True, 7)
+    assert bad.status_code == 422                                                                                 # outside 1 to 3 is refused
+    cal = {c["level"]: c for c in client.get(f"{API}/profile/dashboard", headers=h).json()["calibration"]}
+    assert (cal[3]["answers"], cal[3]["right"]) == (2, 2) and (cal[1]["answers"], cal[1]["right"]) == (1, 0) and cal[2]["answers"] == 0

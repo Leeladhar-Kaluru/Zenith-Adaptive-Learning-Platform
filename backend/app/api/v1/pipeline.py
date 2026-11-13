@@ -15,7 +15,9 @@ from app.core.config import settings
 from app.core.database import get_db
 from app.core.security import get_profile, reviewer_only
 from app.ingest import assets as asset_svc
-from app.models import IngestJob, LessonDraft, Profile, SourceAsset
+from datetime import datetime, timedelta, timezone
+
+from app.models import IngestJob, LessonDraft, Profile, SourceAsset, WorkerHeartbeat
 from app.services import coverage, notifications, pipeline
 from app.services.tutor import ai_enabled
 
@@ -81,13 +83,38 @@ def overview(r: Profile = Depends(reviewer_only), db: Session = Depends(get_db))
     pending = db.scalars(select(SourceAsset).where(SourceAsset.kind == "text", SourceAsset.status == "pending").order_by(SourceAsset.retrieved_at.desc()).limit(30)).all()
     drafts = db.scalars(select(LessonDraft).where(LessonDraft.status == "ready").order_by(LessonDraft.created_at.desc()).limit(30)).all()
     return {
-        "aiEnabled": ai_enabled(), "cronConfigured": bool(settings.CRON_SECRET),
+        "aiEnabled": ai_enabled(), "cronConfigured": bool(settings.CRON_SECRET), "workerAlive": bool(db.scalar(select(func.count(WorkerHeartbeat.name)).where(WorkerHeartbeat.last_seen > datetime.now(timezone.utc) - timedelta(seconds=ALIVE_S)))),
         "jobs": [{"id": str(j.id), "kind": j.kind, "status": j.status, "grade": j.grade, "subject": j.subject_id, "concept": j.concept_id, "topic": j.topic, "demand": j.demand,
-                  "error": j.error, "result": j.result, "at": (j.updated_at or j.created_at).isoformat()} for j in jobs],
+                  "error": j.error, "result": j.result, "attempts": j.attempts, "maxAttempts": j.max_attempts, "log": (j.log or [])[-6:], "at": (j.updated_at or j.created_at).isoformat()} for j in jobs],
         "pages": [{"id": str(a.id), "url": a.url, "title": (a.data or {}).get("title"), "licence": a.licence_id, "credit": a.attribution_text, "sections": len((a.data or {}).get("sections", []))} for a in pending],
         "drafts": [{"id": str(d.id), "title": d.title, "grade": d.grade, "subject": d.subject_id, "score": d.score, "verdict": d.verdict, "at": d.created_at.isoformat()} for d in drafts],
         "queued": db.scalar(select(func.count(IngestJob.id)).where(IngestJob.kind == "request", IngestJob.status == "queued")) or 0,
     }
+
+
+ALIVE_S = 90
+
+
+@router.get("/pipeline/health")
+def health(r: Profile = Depends(reviewer_only), db: Session = Depends(get_db)):
+    """Is the background worker alive, and is the queue moving? Everything comes from the heartbeat rows and the job table."""
+    now = datetime.now(timezone.utc)
+    workers = [{"name": w.name, "alive": (now - w.last_seen).total_seconds() < ALIVE_S, "lastSeen": w.last_seen.isoformat(), "startedAt": w.started_at.isoformat(), "version": w.version, "stats": w.stats}
+               for w in db.scalars(select(WorkerHeartbeat).order_by(WorkerHeartbeat.last_seen.desc()).limit(10))]
+    counts = dict(db.execute(select(IngestJob.status, func.count(IngestJob.id)).where(IngestJob.kind == "request").group_by(IngestJob.status)).all())
+    oldest = db.scalar(select(func.min(IngestJob.created_at)).where(IngestJob.kind == "request", IngestJob.status == "queued"))
+    failed_24h = db.scalar(select(func.count(IngestJob.id)).where(IngestJob.status == "failed", IngestJob.updated_at > now - timedelta(days=1))) or 0
+    return {"workerAlive": any(w["alive"] for w in workers), "workers": workers, "queue": counts, "oldestQueuedSeconds": int((now - oldest).total_seconds()) if oldest else None, "failedLast24h": failed_24h}
+
+
+@router.post("/pipeline/jobs/{job_id}/retry")
+def retry_job(job_id: uuid.UUID, r: Profile = Depends(reviewer_only), db: Session = Depends(get_db)):
+    j = db.get(IngestJob, job_id)
+    if j is None or j.kind != "request" or j.status not in ("failed", "blocked"):
+        raise HTTPException(404, "Only a failed or blocked request can be retried.")
+    j.status, j.attempts, j.run_after, j.error, j.updated_at = "queued", 0, None, None, datetime.now(timezone.utc)
+    db.commit()
+    return {"id": str(j.id), "status": j.status}
 
 
 @router.post("/pipeline/pages/{asset_id}/approve")

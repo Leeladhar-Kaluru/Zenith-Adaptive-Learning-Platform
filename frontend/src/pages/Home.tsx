@@ -9,6 +9,8 @@ import s from './pages.module.css';
 const KIND_ICON: Record<string, string> = { prereq: 'compass', lesson: 'book', practice: 'target', challenge: 'bolt', review: 'refresh', probe: 'search', assigned: 'clipboard' };
 const due = (iso: string | null) => (iso ? new Date(iso).toLocaleDateString(undefined, { day: 'numeric', month: 'short' }) : null);
 
+import { InstallApp } from '../ui/InstallApp';
+
 export default function Home() {
   const { profile } = useAuth();
   const { data, error, loading, reload } = useApi<Today>('/today');
@@ -23,6 +25,7 @@ export default function Home() {
   return (
     <div className={s.stack}>
       <div><h1 className={s.title}>{greet}, {profile?.nickname}</h1><p className={s.lead}>Class {profile?.grade}{profile?.boardId ? ` · ${profile.boardId.toUpperCase()}` : ''}</p></div>
+      <InstallApp compact />
 
       {step ? (
         <Reveal><section className={s.hero2} aria-label="Your next step">

@@ -10,6 +10,7 @@ const Auth = lazy(() => import('./pages/Auth'));
 const Onboarding = lazy(() => import('./pages/Onboarding'));
 const Pipeline = lazy(() => import('./pages/review/Pipeline'));
 const AdaptiveCheck = lazy(() => import('./pages/AdaptiveCheck'));
+const OfflinePractice = lazy(() => import('./pages/OfflinePractice'));
 const ArenaPage = lazy(() => import('./pages/Arena'));
 const HomePage = lazy(() => import('./pages/Home'));
 const Learn = lazy(() => import('./pages/Learn'));
@@ -83,6 +84,7 @@ export default function App() {
           <Route path="/ask" element={<Guard roles={['student']}><Ask /></Guard>} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/offline" element={<Offline />} />
+          <Route path="/offline/practice" element={<OfflinePractice />} />
           <Route path="/teacher" element={<Guard roles={['teacher', 'admin']}><TeacherClass /></Guard>} />
           <Route path="/teacher/class/:id" element={<Guard roles={['teacher', 'admin']}><TeacherClass /></Guard>} />
           <Route path="/teacher/class/:cid/student/:id" element={<Guard roles={['teacher', 'admin']}><TeacherStudent /></Guard>} />

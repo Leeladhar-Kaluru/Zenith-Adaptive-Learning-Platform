@@ -6,15 +6,17 @@ import s from '../pages.module.css';
 
 interface Overview {
   aiEnabled: boolean; cronConfigured: boolean; queued: number;
-  jobs: Array<{ id: string; kind: string; status: string; grade: number | null; subject: string | null; concept: string | null; topic: string | null; demand: number; error: string | null; at: string }>;
+  jobs: Array<{ id: string; kind: string; status: string; grade: number | null; subject: string | null; concept: string | null; topic: string | null; demand: number; error: string | null; attempts: number; maxAttempts: number; log: Array<{ at: string; level: string; msg: string }>; at: string }>;
   pages: Array<{ id: string; url: string; title: string | null; licence: string; credit: string; sections: number }>;
   drafts: Array<{ id: string; title: string; grade: number; subject: string; score: number; verdict: string; at: string }>;
 }
+interface Health { workerAlive: boolean; workers: Array<{ name: string; alive: boolean; lastSeen: string; stats: Record<string, number> }>; queue: Record<string, number>; oldestQueuedSeconds: number | null; failedLast24h: number }
 interface Draft { id: string; title: string; scorecard: { checks: Array<{ name: string; passed: boolean; detail: string; hard: boolean }>; score: number; verdict: string }; yaml: string }
 
 /** The reviewer's view of the content pipeline: what students asked for, source pages to approve, drafts with their scorecards. Nothing here publishes. */
 export default function Pipeline() {
   const { data, error, loading, reload } = useApi<Overview>('/pipeline/overview');
+  const health = useApi<Health>('/pipeline/health');
   const toast = useToast();
   const [busy, setBusy] = useState('');
   const [open, setOpen] = useState<Draft | null>(null);
@@ -33,6 +35,9 @@ export default function Pipeline() {
       <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
         <Chip tone={data.cronConfigured ? 'ok' : 'gap'}>{data.cronConfigured ? 'Scheduled daily run is on' : 'Scheduled run is off (CRON_SECRET not set)'}</Chip>
         <Chip tone={data.aiEnabled ? 'ok' : 'gap'}>{data.aiEnabled ? 'AI drafting is on' : 'AI drafting is off: pages are found but not drafted'}</Chip>
+        <Chip tone={health.data?.workerAlive ? 'ok' : 'gap'}>{health.data ? (health.data.workerAlive ? `Background worker is running (${health.data.workers.filter((w) => w.alive).length})` : 'No background worker is running') : 'Checking the worker'}</Chip>
+        {health.data && health.data.failedLast24h > 0 && <Chip tone="gap">{health.data.failedLast24h} failed in the last day</Chip>}
+        {health.data?.oldestQueuedSeconds != null && <Chip tone="soft">Oldest waiting: {Math.max(1, Math.round(health.data.oldestQueuedSeconds / 60))} min</Chip>}
         <Chip tone="soft">{data.queued} request{data.queued === 1 ? '' : 's'} waiting</Chip>
       </div>
 
@@ -63,7 +68,8 @@ export default function Pipeline() {
         {data.jobs.length === 0 ? <Card><p className="muted">No pipeline work yet.</p></Card> : data.jobs.map((j) => (
           <div key={j.id} className={s.between} style={{ padding: '6px 0', borderBottom: '1px solid var(--line)' }}>
             <span><strong>{j.kind}</strong> {j.grade ? `· Class ${j.grade}` : ''} {j.subject ?? ''} {j.concept ?? j.topic ?? ''}{j.error ? <span className="sm muted"> — {j.error}</span> : null}</span>
-            <Chip tone={j.status === 'done' ? 'ok' : j.status === 'failed' || j.status === 'blocked' ? 'gap' : 'soft'}>{j.status}{j.kind === 'request' ? ` · ${j.demand} asked` : ''}</Chip>
+            <span className={s.row}><Chip tone={j.status === 'done' ? 'ok' : j.status === 'failed' || j.status === 'blocked' ? 'gap' : 'soft'}>{j.status}{j.kind === 'request' ? ` · ${j.demand} asked · try ${j.attempts}/${j.maxAttempts}` : ''}</Chip>
+              {j.kind === 'request' && (j.status === 'failed' || j.status === 'blocked') && <Button size="sm" variant="ghost" loading={busy === `r${j.id}`} onClick={() => void act(`r${j.id}`, () => api(`/pipeline/jobs/${j.id}/retry`, { method: 'POST' }), 'Queued again')}>Retry</Button>}</span>
           </div>))}
       </section>
     </div>

@@ -1,4 +1,4 @@
-from sqlalchemy import (Boolean, CheckConstraint, Column, Date, DateTime, Float, ForeignKey, Index, Integer, String, Text,
+from sqlalchemy import (Boolean, CheckConstraint, Column, Date, DateTime, Float, ForeignKey, Index, Integer, SmallInteger, String, Text,
                         UniqueConstraint)
 from sqlalchemy.dialects.postgresql import JSONB, UUID
 
@@ -21,6 +21,7 @@ class EvidenceEvent(Base):
     score = Column(Float, nullable=False)
     hints_used = Column(Integer, nullable=False, default=0)
     ms = Column(Integer, nullable=False, default=0)
+    confidence = Column(SmallInteger)                       # optional: 1 guessing, 2 not sure, 3 sure. Reflection only: it never changes mastery
     attempt_no = Column(Integer, nullable=False, default=1)
     concepts = Column(JSONB, nullable=False, default=list)       # [{id, w, p_before, p_after}]
     misconception_id = Column(UUID(as_uuid=True), ForeignKey("misconceptions.id"))

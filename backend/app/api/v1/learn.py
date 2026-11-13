@@ -149,11 +149,12 @@ class EvidenceIn(BaseModel):
     clientEventId: str = Field(min_length=8, max_length=64)
     sessionId: Optional[uuid.UUID] = None
     occurredAt: Optional[datetime] = None
+    confidence: Optional[int] = Field(default=None, ge=1, le=3)
 
 
 def _record(db: Session, p: Profile, e: EvidenceIn) -> dict:
     res = _wrap(evidence.record, db, p.id, item_id=e.itemId, response=e.response, hints_used=e.hintsUsed, ms=e.ms, context=e.context,
-                client_event_id=e.clientEventId, session_id=e.sessionId, occurred_at=e.occurredAt)
+                client_event_id=e.clientEventId, session_id=e.sessionId, occurred_at=e.occurredAt, confidence=e.confidence)
     res["newBadges"] = engage.check_badges(db, p.id)
     db.commit()
     return res

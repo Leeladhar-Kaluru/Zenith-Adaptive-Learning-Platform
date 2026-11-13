@@ -25,11 +25,11 @@ def _median(xs: list[int]) -> int | None:
 def build(db: Session, p: Profile) -> dict:
     now = datetime.now(timezone.utc)
     since = now - timedelta(days=max(WINDOW_DAYS, 30))
-    ev = db.execute(select(EvidenceEvent.occurred_at, EvidenceEvent.correct, EvidenceEvent.ms, EvidenceEvent.hints_used, Item.difficulty)
+    ev = db.execute(select(EvidenceEvent.occurred_at, EvidenceEvent.correct, EvidenceEvent.ms, EvidenceEvent.hints_used, Item.difficulty, EvidenceEvent.confidence)
                     .join(Item, Item.id == EvidenceEvent.item_id).where(EvidenceEvent.student_id == p.id, EvidenceEvent.occurred_at >= since)).all()
 
     by_day: dict[str, dict] = defaultdict(lambda: {"answers": 0, "correct": 0, "ms": 0})
-    for at, ok, ms, _h, _d in ev:
+    for at, ok, ms, _h, _d, _c in ev:
         d = by_day[at.astimezone(timezone.utc).date().isoformat()]
         d["answers"] += 1
         d["correct"] += int(ok)
@@ -41,16 +41,21 @@ def build(db: Session, p: Profile) -> dict:
         days.append({"day": key, "answers": d["answers"], "correct": d["correct"], "minutes": round(d["ms"] / 60000, 1)})
     today = days[-1]
 
-    right = [ms for _, ok, ms, _, _ in ev if ok and ms]
-    wrong = [ms for _, ok, ms, _, _ in ev if not ok and ms]
+    right = [ms for _, ok, ms, _, _, _ in ev if ok and ms]
+    wrong = [ms for _, ok, ms, _, _, _ in ev if not ok and ms]
     by_diff: dict[str, list[int]] = defaultdict(lambda: [0, 0])
-    for _, ok, _, _, diff in ev:
+    for _, ok, _, _, diff, _ in ev:
         by_diff[diff][0] += int(ok)
         by_diff[diff][1] += 1
     pace = {"answers30d": len(ev), "medianMsRight": _median(right), "medianMsWrong": _median(wrong),
             "hintRate": round(sum(1 for e in ev if e[3] > 0) / len(ev), 3) if ev else None,
-            "guessRate": round(sum(1 for _, ok, ms, _, _ in ev if not ok and ms and ms < FAST_WRONG_MS) / len(ev), 3) if ev else None,
+            "guessRate": round(sum(1 for _, ok, ms, _, _, _ in ev if not ok and ms and ms < FAST_WRONG_MS) / len(ev), 3) if ev else None,
             "byDifficulty": [{"level": k, "right": by_diff[k][0], "total": by_diff[k][1]} for k in ("intro", "standard", "challenge") if by_diff[k][1]]}
+
+    calib = []
+    for lvl in (1, 2, 3):
+        got = [e for e in ev if e[5] == lvl]
+        calib.append({"level": lvl, "label": {1: "guessing", 2: "not sure", 3: "sure"}[lvl], "answers": len(got), "right": sum(1 for e in got if e[1])})
 
     stt = st_svc.states(db, p.id)
     concepts = {c.id: c for c in db.scalars(select(Concept).where(Concept.id.in_(list(stt)) if stt else Concept.id == "-"))}
@@ -93,7 +98,7 @@ def build(db: Session, p: Profile) -> dict:
     return {
         "generatedAt": now.isoformat(),
         "me": {"nickname": p.nickname, "avatar": p.avatar, "grade": p.grade, "xp": streaks.level(engage.total_xp(db, p.id)), "streak": engage.streak_info(db, p.id)},
-        "fading": fading[:5], "retentionModel": retention.MODEL_VERSION, "today": today, "days": days, "pace": pace, "subjects": subjects, "focus": focus, "strong": strong,
+        "calibration": calib, "fading": fading[:5], "retentionModel": retention.MODEL_VERSION, "today": today, "days": days, "pace": pace, "subjects": subjects, "focus": focus, "strong": strong,
         "revisionDue": len(home.due_revision(db, p.id)), "openMistakes": home.mistake_count(db, p.id),
         "battles": {"rating": round(r.rating), "games": r.games, "wins": sum(g["youWon"] for g in games), "draws": sum(g["draw"] for g in games),
                     "losses": sum(not g["youWon"] and not g["draw"] for g in games), "recent": games[:5]},

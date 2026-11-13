@@ -81,7 +81,7 @@ export default function Practice() {
         options={[{ value: '', label: 'All' }, { value: 'mcq', label: 'Multiple choice' }, { value: 'assertion', label: 'Assertion and reason' }, { value: 'numeric', label: 'Numerical' }, { value: 'case', label: 'Case-based' }]} />}
       {!cur ? <div className={s.stack}><Skeleton h={40} w="70%" /><Skeleton h={60} r={14} /><Skeleton h={60} r={14} /><Skeleton h={60} r={14} /></div> : (
         <Card key={n}>
-          <Question item={cur.item} context="solve" resetKey={n} onResult={(r) => { if (r) { setResults((x) => [...x, r]); setAnswered(true); } }} />
+          <Question item={cur.item} askConfidence context="solve" resetKey={n} onResult={(r) => { if (r) { setResults((x) => [...x, r]); setAnswered(true); } }} />
           <p className="sm muted" style={{ marginTop: 12 }}><Icon name="info" size={16} /> {cur.why}</p>
         </Card>
       )}

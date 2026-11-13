@@ -67,8 +67,41 @@ def _topic_concepts(db: Session, job: IngestJob) -> list[Concept]:
     return cs[:PER_REQUEST_TOPICS]
 
 
+def process_request(db: Session, job: IngestJob, fetcher: Callable[..., bytes] = fetch, deadline: float | None = None) -> dict:
+    """Run one request job: find and store source pages for its missing topics. Raises on unexpected errors so the caller can retry with back-off."""
+    made, missed = [], []
+    for c in _topic_concepts(db, job):
+        if deadline is not None and time.monotonic() > deadline:
+            break
+        cands = discover(db, _keywords(c), fetcher)
+        done = False
+        for key, url, text in cands[:3]:
+            try:
+                a = textsource.import_page(db, url, key, None, keywords=_keywords(c), fetcher=fetcher)
+            except (textsource.TextSourceError, ValueError, OSError) as e:
+                missed.append({"concept": c.id, "url": url, "why": str(e)[:160]})
+                continue
+            db.add(IngestJob(kind="import", status="done", grade=job.grade, subject_id=job.subject_id, concept_id=c.id, asset_id=a.id,
+                             result={"url": url, "title": text[:120]}, updated_at=_now()))
+            made.append({"concept": c.id, "asset": str(a.id), "url": url})
+            done = True
+            break
+        if not done and not any(m["concept"] == c.id for m in missed):
+            missed.append({"concept": c.id, "why": "No page about this topic was found in the vetted open-licence sources."})
+    job.result = {"imported": made, "missed": missed}
+    job.status = "done" if made else "blocked"
+    job.error = None if made else "No open-licence source page could be found yet. It will be tried again."
+    job.updated_at = _now()
+    db.commit()
+    if made:
+        notifications.notify_role(db, ("reviewer", "admin"), "pipeline", f"{len(made)} new source page{'s' if len(made) != 1 else ''} to approve",
+                                  "Open the pipeline to check the licence and approve them.", "/review/pipeline", f"pages-{_now().date()}-{job.id}")
+        db.commit()
+    return {"pages": len(made), "nothing": int(not made)}
+
+
 def run_requests(db: Session, fetcher: Callable[..., bytes] = fetch, budget_s: float = 20.0) -> dict:
-    """Work through the most requested topics first. Returns counts for the log."""
+    """Scheduled-call version (Vercel Cron fallback): work through the most requested topics first within a time budget."""
     start = time.monotonic()
     out = {"requests": 0, "pages": 0, "nothing": 0}
     stale = _now() - RETRY_BLOCKED_AFTER
@@ -79,37 +112,10 @@ def run_requests(db: Session, fetcher: Callable[..., bytes] = fetch, budget_s: f
             break
         job.status, job.attempts, job.updated_at = "running", job.attempts + 1, _now()
         db.commit()
-        made, missed = [], []
-        for c in _topic_concepts(db, job):
-            if time.monotonic() - start > budget_s:
-                break
-            cands = discover(db, _keywords(c), fetcher)
-            done = False
-            for key, url, text in cands[:3]:
-                try:
-                    a = textsource.import_page(db, url, key, None, keywords=_keywords(c), fetcher=fetcher)
-                except (textsource.TextSourceError, ValueError, OSError) as e:
-                    missed.append({"concept": c.id, "url": url, "why": str(e)[:160]})
-                    continue
-                db.add(IngestJob(kind="import", status="done", grade=job.grade, subject_id=job.subject_id, concept_id=c.id, asset_id=a.id,
-                                 result={"url": url, "title": text[:120]}, updated_at=_now()))
-                made.append({"concept": c.id, "asset": str(a.id), "url": url})
-                done = True
-                break
-            if not done and not any(m["concept"] == c.id for m in missed):
-                missed.append({"concept": c.id, "why": "No page about this topic was found in the vetted open-licence sources."})
-        job.result = {"imported": made, "missed": missed}
-        job.status = "done" if made else "blocked"
-        job.error = None if made else "No open-licence source page could be found yet. It will be tried again."
-        job.updated_at = _now()
-        db.commit()
+        r = process_request(db, job, fetcher, deadline=start + budget_s)
         out["requests"] += 1
-        out["pages"] += len(made)
-        out["nothing"] += int(not made)
-    if out["pages"]:
-        notifications.notify_role(db, ("reviewer", "admin"), "pipeline", f"{out['pages']} new source page{'s' if out['pages'] != 1 else ''} to approve",
-                                  "Open the pipeline to check the licence and approve them.", "/review/pipeline", f"pages-{_now().date()}")
-        db.commit()
+        out["pages"] += r["pages"]
+        out["nothing"] += r["nothing"]
     return out
 
 

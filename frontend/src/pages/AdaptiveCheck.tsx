@@ -63,7 +63,7 @@ export default function AdaptiveCheck() {
     <div className={s.q}>
       <div className={s.between}><div><span className="eyebrow">Adaptive check</span><div className="muted sm">Question {step.answered + 1}</div></div>
         <Chip tone="soft">Right so far: {step.right}</Chip></div>
-      {step.item && <Card key={step.item.id}><Question item={step.item} context="probe" resetKey={step.item.id} onResult={(r) => { if (r) setAnswered(true); }} />
+      {step.item && <Card key={step.item.id}><Question item={step.item} askConfidence context="probe" resetKey={step.item.id} onResult={(r) => { if (r) setAnswered(true); }} />
         <p className="sm muted" style={{ marginTop: 12 }}>{step.why}</p></Card>}
       {answered && <div style={{ display: 'flex', justifyContent: 'flex-end' }}><Button variant="brand" iconRight="arrowR" onClick={() => void load(since)}>Next</Button></div>}
     </div>

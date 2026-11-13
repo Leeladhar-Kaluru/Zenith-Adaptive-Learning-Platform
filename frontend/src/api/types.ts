@@ -41,7 +41,7 @@ export interface Lesson {
 }
 
 export type Response = Record<string, unknown>;
-export interface EvidenceRequest { itemId: string; response: Response; hintsUsed: number; ms: number; context: 'learn_check' | 'solve' | 'test' | 'probe'; clientEventId: string; sessionId?: string; occurredAt?: string }
+export interface EvidenceRequest { itemId: string; response: Response; hintsUsed: number; ms: number; context: 'learn_check' | 'solve' | 'test' | 'probe'; clientEventId: string; sessionId?: string; occurredAt?: string; confidence?: 1 | 2 | 3 }
 export interface EvidenceResult {
   correct: boolean; score: number; reveal: unknown; feedback: string; misconception: string | null; xp: number; alreadyRecorded: boolean; newBadges: string[];
   concepts: Array<{ id: string; title: string; band: Band; pKnown: number; evidence: number; confidence: 'low' | 'medium' | 'high' }>;

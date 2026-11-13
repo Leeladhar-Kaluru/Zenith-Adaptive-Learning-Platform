@@ -18,6 +18,8 @@ interface Props {
   deferFeedback?: boolean;
   onResult?: (r: EvidenceResult | null) => void;
   resetKey?: string | number;
+  /** Ask 'how sure are you?' before checking. Optional for the student, and used only for reflection, never for marks. */
+  askConfidence?: boolean;
 }
 
 const prettyBadge = (c: string) => c.replace(/_/g, ' ').replace(/^./, (x) => x.toUpperCase());
@@ -31,7 +33,8 @@ function reveal(item: PublicItem, r: unknown): string {
   return String(r);
 }
 
-export function Question({ item, context = 'learn_check', sessionId, deferFeedback, onResult, resetKey }: Props) {
+export function Question({ item, context = 'learn_check', sessionId, deferFeedback, onResult, resetKey, askConfidence }: Props) {
+  const [conf, setConf] = useState<1 | 2 | 3 | null>(null);
   const [choice, setChoice] = useState<string | null>(null);
   const [multi, setMulti] = useState<string[]>([]);
   const [step, setStep] = useState<number | null>(null);
@@ -47,7 +50,7 @@ export function Question({ item, context = 'learn_check', sessionId, deferFeedba
   const toast = useToast();
 
   useEffect(() => {
-    setChoice(null); setStep(null); setMulti([]); setTf(null); setText(''); setPairs({}); setHints([]); setRes(null); setSaved(false); t0.current = Date.now(); picked.current = false;
+    setChoice(null); setStep(null); setMulti([]); setTf(null); setText(''); setPairs({}); setHints([]); setRes(null); setSaved(false); setConf(null); t0.current = Date.now(); picked.current = false;
   }, [item.id, resetKey]);
 
   // Changing a picked answer (not the first pick) is a signal the student was unsure.
@@ -78,7 +81,7 @@ export function Question({ item, context = 'learn_check', sessionId, deferFeedba
     const r = response();
     if (!r || busy) return;
     setBusy(true);
-    const req = { itemId: item.id, response: r, hintsUsed: hints.length, ms: Date.now() - t0.current, context, clientEventId: crypto.randomUUID(), sessionId };
+    const req = { itemId: item.id, response: r, hintsUsed: hints.length, ms: Date.now() - t0.current, context, clientEventId: crypto.randomUUID(), sessionId, ...(conf ? { confidence: conf } : {}) };
     try {
       const out = await api<EvidenceResult>('/evidence', { method: 'POST', body: req });
       clearApiCache();
@@ -196,6 +199,7 @@ export function Question({ item, context = 'learn_check', sessionId, deferFeedba
 
       {!done && (
         <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
+          {askConfidence && <div role="group" aria-label="How sure are you?" style={{ display: 'flex', gap: 6, flexWrap: 'wrap', alignItems: 'center', marginBottom: 10 }}><span className="sm muted">How sure are you?</span>{([[1, 'Guessing'], [2, 'Not sure'], [3, 'Sure']] as const).map(([v, l]) => <button key={v} type="button" aria-pressed={conf === v} onClick={() => setConf(conf === v ? null : v)} style={{ padding: '4px 12px', borderRadius: 999, border: '2px solid var(--ink)', background: conf === v ? 'var(--brand)' : 'var(--surface)', color: conf === v ? 'var(--brand-ink)' : 'var(--ink)', fontWeight: 700, font: 'inherit', cursor: 'pointer' }}>{l}</button>)}</div>}
           <Button variant="brand" onClick={() => void submit()} loading={busy} disabled={!response()}>{deferFeedback ? 'Save answer' : 'Check my answer'}</Button>
           {!deferFeedback && item.hintCount > hints.length && <Button variant="ghost" icon="bulb" onClick={() => void hint()}>Hint ({hints.length}/{item.hintCount})</Button>}
         </div>

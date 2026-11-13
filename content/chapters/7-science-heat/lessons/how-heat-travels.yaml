@@ -177,7 +177,6 @@ items:
     text: Metal is a good conductor and plastic is a poor conductor
   - key: B
     text: Plastic is a better conductor than metal
-    misconception: warm-things-are-heavier
   - key: C
     text: Metal is cheaper
   - key: D

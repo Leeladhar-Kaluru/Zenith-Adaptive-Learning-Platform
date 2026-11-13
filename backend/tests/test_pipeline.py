@@ -162,3 +162,16 @@ def test_the_api_starts_without_sympy_and_yaml_because_the_serverless_runtime_do
     code = "import sys\nfor m in ('sympy', 'yaml'):\n    sys.modules[m] = None\nimport app.main\n"
     r = subprocess.run([sys.executable, "-c", code], capture_output=True, text=True, cwd=str(__import__("pathlib").Path(__file__).resolve().parents[1]))
     assert r.returncode == 0, r.stderr[-400:]
+
+
+def test_a_subject_with_nothing_for_the_class_is_still_listed_and_a_request_for_it_is_blocked_with_a_plain_reason(client, db, people):
+    from app.models import Subject
+    db.add(Subject(id="telugu-test", name="Telugu test"))
+    db.commit()
+    rows = client.get(f"{API}/coverage", headers=auth(people["s7"])).json()["rows"]
+    row = next(r for r in rows if r["subject"] == "telugu-test")
+    assert (row["chapters"], row["lessons"], row["topics"]) == (0, 0, 0) and row["youRequested"] is False
+    jid = client.post(f"{API}/coverage/request", headers=auth(people["s7"]), json={"subject": "telugu-test"}).json()["id"]
+    out = pipeline.run_requests(db, fetcher=site)
+    job = db.get(IngestJob, jid)
+    assert out["pages"] == 0 and job.status == "blocked" and "No topics are defined yet" in job.error

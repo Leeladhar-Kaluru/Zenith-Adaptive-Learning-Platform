@@ -70,7 +70,15 @@ def _topic_concepts(db: Session, job: IngestJob) -> list[Concept]:
 def process_request(db: Session, job: IngestJob, fetcher: Callable[..., bytes] = fetch, deadline: float | None = None) -> dict:
     """Run one request job: find and store source pages for its missing topics. Raises on unexpected errors so the caller can retry with back-off."""
     made, missed = [], []
-    for c in _topic_concepts(db, job):
+    concepts = _topic_concepts(db, job)
+    if not concepts:
+        declared = db.scalar(select(Concept.id).where(Concept.grade == job.grade, Concept.subject_id == job.subject_id).limit(1))
+        why = ("Every topic defined for this class and subject already has a lesson." if declared
+               else "No topics are defined yet for this class and subject, so a reviewer has to add the curriculum topics before lessons can be found.")
+        job.result, job.status, job.error, job.updated_at = {"imported": [], "missed": [{"why": why}]}, "blocked", why, _now()
+        db.commit()
+        return {"pages": 0, "nothing": 1}
+    for c in concepts:
         if deadline is not None and time.monotonic() > deadline:
             break
         cands = discover(db, _keywords(c), fetcher)

@@ -19,14 +19,15 @@ export function Coverage({ subject, grade, name }: { subject: string; grade: num
     setBusy(false);
   };
   const missing = row.topics - row.topicsCovered;
+  const wants = missing > 0 || row.lessons === 0;          // nothing published at all is the clearest reason to ask
   return (
     <Card flat>
       <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between' }}>
         <div style={{ minWidth: 0 }}>
           <strong>Class {grade} {name}: what is ready</strong>
-          <div className="sm muted">{row.chapters} chapter{row.chapters === 1 ? '' : 's'} and {row.lessons} lesson{row.lessons === 1 ? '' : 's'} published · {row.topicsCovered} of {row.topics} topics have a lesson{row.inReview ? ` · ${row.inReview} lesson${row.inReview === 1 ? '' : 's'} being reviewed by a teacher` : ''}</div>
+          <div className="sm muted">{row.lessons === 0 ? 'Nothing is published for this class and subject yet. ' : ''}{row.chapters} chapter{row.chapters === 1 ? '' : 's'} and {row.lessons} lesson{row.lessons === 1 ? '' : 's'} published · {row.topicsCovered} of {row.topics} topics have a lesson{row.inReview ? ` · ${row.inReview} lesson${row.inReview === 1 ? '' : 's'} being reviewed by a teacher` : ''}</div>
         </div>
-        {missing > 0 && (row.youRequested ? <Chip icon="check" tone="ok">You asked for more{row.requested > 1 ? ` · ${row.requested} requests` : ''}</Chip>
+        {wants && (row.youRequested ? <Chip icon="check" tone="ok">You asked for more{row.requested > 1 ? ` · ${row.requested} requests` : ''}</Chip>
           : <Button size="sm" variant="brand" icon="spark" loading={busy} onClick={() => void ask()}>Ask for more lessons</Button>)}
       </div>
       {missing > 0 && row.missingTopics && row.missingTopics.length > 0 && <p className="sm muted" style={{ marginTop: 8 }}>Still to come: {row.missingTopics.join(', ')}{missing > row.missingTopics.length ? ' and more' : ''}. New lessons are checked by a teacher before they appear.</p>}

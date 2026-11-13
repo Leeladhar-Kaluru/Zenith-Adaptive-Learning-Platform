@@ -64,6 +64,10 @@ def table(db: Session, grade: int | None = None) -> list[dict]:
 
 def for_student(db: Session, p: Profile) -> dict:
     rows = table(db, p.grade)
+    have = {r["subject"] for r in rows}
+    for sid, name in db.execute(select(Subject.id, Subject.name).order_by(Subject.name)):
+        if sid not in have:                     # a subject with nothing for this class is still listed, so the student can say they want it
+            rows.append({"grade": p.grade, "subject": sid, "name": name, "chapters": 0, "lessons": 0, "topics": 0, "topicsCovered": 0, "inReview": 0, "requested": 0})
     mine = {(r[0], r[1]) for r in db.execute(select(IngestJob.grade, IngestJob.subject_id).join(JobRequester, JobRequester.job_id == IngestJob.id)
                                               .where(JobRequester.student_id == p.id, IngestJob.kind == "request", IngestJob.status != "done"))}
     for r in rows:
